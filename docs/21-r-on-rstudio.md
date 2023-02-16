@@ -212,14 +212,350 @@ RStudio は多くの機能を持っています。
 
 ## R Script 実行記録
 
-* In RStudio (create Project in RStudio) choose File > New File > R Script
-* Choose File > Save As, save with a name; e.g. {file names} (.R will be added automatically)
-* To run a code: at the cursor press Ctrl+Shift+Enter (Win) or Cmd+Shift+Enter (Mac).
+R Script を使って、コードを実行すると、その記録を残すことができます。
+
+### R Script の作成
+
+* RStudio の上のメニュー・バーからFile > New File > R Script を選択します。
+* File > Save As で、名前をつけて保存します。{file_name}.R が作成されます。
+  - 右下の、Files から、ファイルを確認してください。
+* `head(cars)`, `str(cars)`, `summary(cars)`, `plot(cars)` などと改行をしながらコードを書きます。
+* 実行するには、カーソルの場所で Ctrl+Shift+Enter (Win) または Cmd+Shift+Enter (Mac) とすると、カーソルのある行か、その下の行で、最初のコードが実行されます。
+  - R Script エディターの上にある、Run ボタンを押しても、同様に実行されます。
+  - Run ボタンの右の、Source ボタンを押すと、そのスクリプトの、最初からすべて実行されます。
+* 最後には保存しておきましょう。
+
+### R Script による実行
+
+新しく、R Script を作成し、この下の、コード（ハイライトされている部分）をコピー・ペーストして、保存し、実行してみてください。
+
+それぞれ、どのようなことをしているでしょうか。
+
+
+#### スクリプト1: basics.R
+
+
+```r
+#################
+#
+# basics.R
+#
+################
+# 'Quick R' by DataCamp may be a handy reference: 
+#     https://www.statmethods.net/management/index.html
+# Cheat Sheet at RStudio: https://www.rstudio.com/resources/cheatsheets/
+# Base R Cheat Sheet: https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf
+# To execute the line: Control + Enter (Window and Linux), Command + Enter (Mac)
+## try your experiments on the console
+
+## calculator
+
+3 + 7
+
+### +, -, *, /, ^ (or **), %%, %/%
+
+3 + 10 / 2
+
+3^2
+
+2^3
+
+2*2*2
+
+### assignment: <-, (=, ->, assign()) 
+
+x <- 5
+
+x 
+
+#### object_name <- value, '<-' shortcut: Alt (option) + '-' (hyphen or minus) 
+#### Object names must start with a letter and can only contain letter, numbers, _ and .
+
+this_is_a_long_name <- 5^3
+
+this_is_a_long_name
+
+char_name <- "What is your name?"
+
+char_name
+
+#### Use 'tab completion' and 'up arrow'
+
+### ls(): list of all assignments
+
+ls()
+ls.str()
+
+#### check Environment in the upper right pane
+
+### (atomic) vectors
+
+5:10
+
+a <- seq(5,10)
+
+a
+
+b <- 5:10
+
+identical(a,b)
+
+seq(5,10,2) # same as seq(from = 5, to = 10, by = 2)
+
+c1 <- seq(0,100, by = 10)
+
+c2 <- seq(0,100, length.out = 10)
+
+c1
+
+c2
+
+length(c1)
+
+#### ? seq   ? length   ? identical
+
+(die <- 1:6)
+
+zero_one <- c(0,1) # same as 0:1
+
+die + zero_one # c(1,2,3,4,5,6) + c(0,1). re-use
+
+d1 <- rep(1:3,2) # repeat
+
+
+d1
+
+die == d1
+
+d2 <- as.character(die == d1)
+
+d2
+
+d3 <- as.numeric(die == d1)
+
+d3
+
+### class() for class and typeof() for mode
+### class of vectors: numeric, charcters, logical
+### types of vectors: doubles, integers, characters, logicals (complex and raw)
+
+typeof(d1); class(d1)
+
+typeof(d2); class(d2)
+
+typeof(d3); class(d3)
+
+sqrt(2)
+
+sqrt(2)^2
+
+sqrt(2)^2 - 2
+
+typeof(sqrt(2))
+
+typeof(2)
+
+typeof(2L)
+
+5 == c(5)
+
+length(5)
+
+### Subsetting
+
+(A_Z <- LETTERS)
+
+A_F <- A_Z[1:6]
+
+A_F
+
+A_F[3]
+
+A_F[c(3,5)]
+
+large <- die > 3
+
+large
+
+even <- die %in% c(2,4,6)
+
+even
+
+A_F[large]
+
+A_F[even]
+
+A_F[die < 4]
+
+### Compare df with df1 <- data.frame(number = die, alphabet = A_F)
+df <- data.frame(number = die, alphabet = A_F, stringsAsFactors = FALSE)
+
+df
+
+df$number
+
+df$alphabet
+
+df[3,2]
+
+df[4,1]
+
+df[1]
+
+class(df[1])
+
+class(df[[1]])
+
+identical(df[[1]], die)
+
+identical(df[1],die)
+
+####################
+# The First Example
+####################
+
+plot(cars)
+
+# Help
+
+? cars
+
+# cars is in the 'datasets' package
+
+data()
+
+# help(cars) does the same as ? cars
+# You can use Help tab in the right bottom pane
+
+help(plot)
+? par
+
+head(cars)
+
+str(cars)
+
+summary(cars)
+
+x <- cars$speed
+y <- cars$dist
+
+min(x)
+mean(x)
+quantile(x)
+
+plot(cars)
+
+abline(lm(cars$dist ~ cars$speed))
+
+summary(lm(cars$dist ~ cars$speed))
+
+boxplot(cars)
+
+hist(cars$speed)
+hist(cars$dist)
+hist(cars$dist, breaks = seq(0,120, 10))
+```
+
+#### スクリプト2: coronavirus.T
+
+
+```r
+# https://coronavirus.jhu.edu/map.html
+# JHU Covid-19 global time series data
+# See R package coronavirus at: https://github.com/RamiKrispin/coronavirus
+# Data taken from: https://github.com/RamiKrispin/coronavirus/tree/master/csv
+# Last Updated
+Sys.Date()
+
+## Download and read csv (comma separated value) file
+coronavirus <- read.csv("https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv")
+# write.csv(coronavirus, "data/coronavirus.csv")
+
+## Summaries and structures of the data
+head(coronavirus)
+str(coronavirus)
+coronavirus$date <- as.Date(coronavirus$date)
+str(coronavirus)
+
+range(coronavirus$date)
+unique(coronavirus$country)
+unique(coronavirus$type)
+
+## Set Country
+COUNTRY <- "Japan"
+df0 <- coronavirus[coronavirus$country == COUNTRY,]
+head(df0)
+tail(df0)
+(pop <- df0$population[1])
+df <- df0[c(1,6,7,13)]
+str(df)
+head(df)
+### alternatively,
+head(df0[c("date", "type", "cases", "population")])
+###
+
+## Set types
+df_confirmed <- df[df$type == "confirmed",]
+df_death <- df[df$type == "death",]
+df_recovery <- df[df$data_type == "recovery",]
+head(df_confirmed)
+head(df_death)
+head(df_recovery)
+
+## Histogram
+plot(df_confirmed$date, df_confirmed$cases, type = "h")
+plot(df_death$date, df_death$cases, type = "h")
+# plot(df_recovered$date, df_recovered$cases, type = "h") # no data for recovery
+
+## Scatter plot and correlation
+plot(df_confirmed$cases, df_death$cases, type = "p")
+cor(df_confirmed$cases, df_death$cases)
+
+
+## In addition set a period
+start_date <- as.Date("2022-07-01")
+end_date <- Sys.Date() 
+df_date <- df[df$date >=start_date & df$date <= end_date,]
+##
+
+## Set types
+df_date_confirmed <- df_date[df_date$type == "confirmed",]
+df_date_death <- df_date[df_date$type == "death",]
+df_date_recovery <- df_date[df_date$data_type == "recovery",]
+head(df_date_confirmed)
+head(df_date_death)
+head(df_date_recovery)
+
+## Histogram
+plot(df_date_confirmed$date, df_date_confirmed$cases, type = "h")
+plot(df_date_death$date, df_date_death$cases, type = "h")
+# plot(df_date_recovered$date, df_date_recovered$cases, type = "h") # no data for recovery
+
+plot(df_date_confirmed$cases, df_date_death$cases, type = "p")
+cor(df_date_confirmed$cases, df_date_death$cases)
+
+#### Extra
+plot(df_confirmed$date, df_confirmed$cases, type = "h", 
+     main = paste("Comfirmed Cases in",COUNTRY), 
+     xlab = "Date", ylab = "Number of Cases")
+```
+
+### 練習
+
+上の、`coronavirus.R` について
+
+1. `COUNTRY <- "Japan"` の Japan を他の国に変えてみましょう。
+2. `start_date <- as.Date("2022-07-01")` の日付を、他の日付に変えてみましょう。
+3. `df_confirmed$cases` と `df_death$cases` についてどんなことがわかりますか。
+4. 発見や、問いがあれば、書き出してみましょう。
+
 
 ### Tips
 
-* Top Manu: Help > Keyboard Short Cut Help contains many shortcuts.
-* Bottom Right Pane: Check the files by selecting the Files tab.
+キーボード・ショートカットと言われる、さまざまな機能があります。
+
+* 上のメニュー・バー： Help > Keyboard Short Cut Help 確認してみてください。
+* 右下の窓枠: Files タブから、ファイルの確認ができます。
 
 
 ## パッケージ - Packages

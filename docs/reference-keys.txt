@@ -26,6 +26,11 @@ r-studio-の-インストール
 rstudio-について
 四つの窓枠とタブ-four-panes-and-tabs
 r-script-実行記録
+r-script-の作成
+r-script-による実行
+スクリプト1-basics.r
+スクリプト2-coronavirus.t
+練習-1
 tips
 パッケージ---packages
 パッケージのインストール

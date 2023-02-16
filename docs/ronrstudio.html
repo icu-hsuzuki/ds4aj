@@ -301,18 +301,367 @@
 <h2>
 <span class="header-section-number">4.7</span> R Script 実行記録<a class="anchor" aria-label="anchor" href="#r-script-%E5%AE%9F%E8%A1%8C%E8%A8%98%E9%8C%B2"><i class="fas fa-link"></i></a>
 </h2>
-<ul>
-<li>In RStudio (create Project in RStudio) choose File &gt; New File &gt; R Script</li>
-<li>Choose File &gt; Save As, save with a name; e.g. {file names} (.R will be added automatically)</li>
-<li>To run a code: at the cursor press Ctrl+Shift+Enter (Win) or Cmd+Shift+Enter (Mac).</li>
-</ul>
-<div id="tips" class="section level3" number="4.7.1">
+<p>R Script を使って、コードを実行すると、その記録を残すことができます。</p>
+<div id="r-script-の作成" class="section level3" number="4.7.1">
 <h3>
-<span class="header-section-number">4.7.1</span> Tips<a class="anchor" aria-label="anchor" href="#tips"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7.1</span> R Script の作成<a class="anchor" aria-label="anchor" href="#r-script-%E3%81%AE%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
-<li>Top Manu: Help &gt; Keyboard Short Cut Help contains many shortcuts.</li>
-<li>Bottom Right Pane: Check the files by selecting the Files tab.</li>
+<li>RStudio の上のメニュー・バーからFile &gt; New File &gt; R Script を選択します。</li>
+<li>File &gt; Save As で、名前をつけて保存します。{file_name}.R が作成されます。
+<ul>
+<li>右下の、Files から、ファイルを確認してください。</li>
+</ul>
+</li>
+<li>
+<code>head(cars)</code>, <code>str(cars)</code>, <code>summary(cars)</code>, <code>plot(cars)</code> などと改行をしながらコードを書きます。</li>
+<li>実行するには、カーソルの場所で Ctrl+Shift+Enter (Win) または Cmd+Shift+Enter (Mac) とすると、カーソルのある行か、その下の行で、最初のコードが実行されます。
+<ul>
+<li>R Script エディターの上にある、Run ボタンを押しても、同様に実行されます。</li>
+<li>Run ボタンの右の、Source ボタンを押すと、そのスクリプトの、最初からすべて実行されます。</li>
+</ul>
+</li>
+<li>最後には保存しておきましょう。</li>
+</ul>
+</div>
+<div id="r-script-による実行" class="section level3" number="4.7.2">
+<h3>
+<span class="header-section-number">4.7.2</span> R Script による実行<a class="anchor" aria-label="anchor" href="#r-script-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9F%E8%A1%8C"><i class="fas fa-link"></i></a>
+</h3>
+<p>新しく、R Script を作成し、この下の、コード（ハイライトされている部分）をコピー・ペーストして、保存し、実行してみてください。</p>
+<p>それぞれ、どのようなことをしているでしょうか。</p>
+<div id="スクリプト1-basics.r" class="section level4" number="4.7.2.1">
+<h4>
+<span class="header-section-number">4.7.2.1</span> スクリプト1: basics.R<a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%881-basics.r"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#################</span></span>
+<span><span class="co">#</span></span>
+<span><span class="co"># basics.R</span></span>
+<span><span class="co">#</span></span>
+<span><span class="co">################</span></span>
+<span><span class="co"># 'Quick R' by DataCamp may be a handy reference: </span></span>
+<span><span class="co">#     https://www.statmethods.net/management/index.html</span></span>
+<span><span class="co"># Cheat Sheet at RStudio: https://www.rstudio.com/resources/cheatsheets/</span></span>
+<span><span class="co"># Base R Cheat Sheet: https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf</span></span>
+<span><span class="co"># To execute the line: Control + Enter (Window and Linux), Command + Enter (Mac)</span></span>
+<span><span class="co">## try your experiments on the console</span></span>
+<span></span>
+<span><span class="co">## calculator</span></span>
+<span></span>
+<span><span class="fl">3</span> <span class="op">+</span> <span class="fl">7</span></span>
+<span></span>
+<span><span class="co">### +, -, *, /, ^ (or **), %%, %/%</span></span>
+<span></span>
+<span><span class="fl">3</span> <span class="op">+</span> <span class="fl">10</span> <span class="op">/</span> <span class="fl">2</span></span>
+<span></span>
+<span><span class="fl">3</span><span class="op">^</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="fl">2</span><span class="op">^</span><span class="fl">3</span></span>
+<span></span>
+<span><span class="fl">2</span><span class="op">*</span><span class="fl">2</span><span class="op">*</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="co">### assignment: &lt;-, (=, -&gt;, assign()) </span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span></span>
+<span><span class="va">x</span> </span>
+<span></span>
+<span><span class="co">#### object_name &lt;- value, '&lt;-' shortcut: Alt (option) + '-' (hyphen or minus) </span></span>
+<span><span class="co">#### Object names must start with a letter and can only contain letter, numbers, _ and .</span></span>
+<span></span>
+<span><span class="va">this_is_a_long_name</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">^</span><span class="fl">3</span></span>
+<span></span>
+<span><span class="va">this_is_a_long_name</span></span>
+<span></span>
+<span><span class="va">char_name</span> <span class="op">&lt;-</span> <span class="st">"What is your name?"</span></span>
+<span></span>
+<span><span class="va">char_name</span></span>
+<span></span>
+<span><span class="co">#### Use 'tab completion' and 'up arrow'</span></span>
+<span></span>
+<span><span class="co">### ls(): list of all assignments</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/ls_str.html">ls.str</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#### check Environment in the upper right pane</span></span>
+<span></span>
+<span><span class="co">### (atomic) vectors</span></span>
+<span></span>
+<span><span class="fl">5</span><span class="op">:</span><span class="fl">10</span></span>
+<span></span>
+<span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">a</span></span>
+<span></span>
+<span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">:</span><span class="fl">10</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># same as seq(from = 5, to = 10, by = 2)</span></span>
+<span></span>
+<span><span class="va">c1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">c2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, length.out <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">c1</span></span>
+<span></span>
+<span><span class="va">c2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">c1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#### ? seq   ? length   ? identical</span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">die</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">zero_one</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span> <span class="co"># same as 0:1</span></span>
+<span></span>
+<span><span class="va">die</span> <span class="op">+</span> <span class="va">zero_one</span> <span class="co"># c(1,2,3,4,5,6) + c(0,1). re-use</span></span>
+<span></span>
+<span><span class="va">d1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># repeat</span></span>
+<span></span>
+<span></span>
+<span><span class="va">d1</span></span>
+<span></span>
+<span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span></span>
+<span></span>
+<span><span class="va">d2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">d2</span></span>
+<span></span>
+<span><span class="va">d3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">d3</span></span>
+<span></span>
+<span><span class="co">### class() for class and typeof() for mode</span></span>
+<span><span class="co">### class of vectors: numeric, charcters, logical</span></span>
+<span><span class="co">### types of vectors: doubles, integers, characters, logicals (complex and raw)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d1</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d2</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d3</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fl">5</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">### Subsetting</span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">A_Z</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">A_F</span> <span class="op">&lt;-</span> <span class="va">A_Z</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">large</span> <span class="op">&lt;-</span> <span class="va">die</span> <span class="op">&gt;</span> <span class="fl">3</span></span>
+<span></span>
+<span><span class="va">large</span></span>
+<span></span>
+<span><span class="va">even</span> <span class="op">&lt;-</span> <span class="va">die</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">even</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">large</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">even</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">die</span> <span class="op">&lt;</span> <span class="fl">4</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co">### Compare df with df1 &lt;- data.frame(number = die, alphabet = A_F)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>number <span class="op">=</span> <span class="va">die</span>, alphabet <span class="op">=</span> <span class="va">A_F</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">number</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">alphabet</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">die</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,<span class="va">die</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">####################</span></span>
+<span><span class="co"># The First Example</span></span>
+<span><span class="co">####################</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Help</span></span>
+<span></span>
+<span><span class="op">?</span> <span class="va">cars</span></span>
+<span></span>
+<span><span class="co"># cars is in the 'datasets' package</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># help(cars) does the same as ? cars</span></span>
+<span><span class="co"># You can use Help tab in the right bottom pane</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span></span>
+<span><span class="op">?</span> <span class="va">par</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">cars</span><span class="op">$</span><span class="va">dist</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span> <span class="op">~</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span> <span class="op">~</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">120</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="スクリプト2-coronavirus.t" class="section level4" number="4.7.2.2">
+<h4>
+<span class="header-section-number">4.7.2.2</span> スクリプト2: coronavirus.T<a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%882-coronavirus.t"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># https://coronavirus.jhu.edu/map.html</span></span>
+<span><span class="co"># JHU Covid-19 global time series data</span></span>
+<span><span class="co"># See R package coronavirus at: https://github.com/RamiKrispin/coronavirus</span></span>
+<span><span class="co"># Data taken from: https://github.com/RamiKrispin/coronavirus/tree/master/csv</span></span>
+<span><span class="co"># Last Updated</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Download and read csv (comma separated value) file</span></span>
+<span><span class="va">coronavirus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv"</span><span class="op">)</span></span>
+<span><span class="co"># write.csv(coronavirus, "data/coronavirus.csv")</span></span>
+<span></span>
+<span><span class="co">## Summaries and structures of the data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">type</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Set Country</span></span>
+<span><span class="va">COUNTRY</span> <span class="op">&lt;-</span> <span class="st">"Japan"</span></span>
+<span><span class="va">df0</span> <span class="op">&lt;-</span> <span class="va">coronavirus</span><span class="op">[</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="va">COUNTRY</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df0</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">df0</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">pop</span> <span class="op">&lt;-</span> <span class="va">df0</span><span class="op">$</span><span class="va">population</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df0</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">13</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">### alternatively,</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df0</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"date"</span>, <span class="st">"type"</span>, <span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">###</span></span>
+<span></span>
+<span><span class="co">## Set types</span></span>
+<span><span class="va">df_confirmed</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"confirmed"</span>,<span class="op">]</span></span>
+<span><span class="va">df_death</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"death"</span>,<span class="op">]</span></span>
+<span><span class="va">df_recovery</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">data_type</span> <span class="op">==</span> <span class="st">"recovery"</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_death</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_recovery</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Histogram</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_death</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="co"># plot(df_recovered$date, df_recovered$cases, type = "h") # no data for recovery</span></span>
+<span></span>
+<span><span class="co">## Scatter plot and correlation</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">## In addition set a period</span></span>
+<span><span class="va">start_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2022-07-01"</span><span class="op">)</span></span>
+<span><span class="va">end_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="va">df_date</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">date</span> <span class="op">&gt;=</span><span class="va">start_date</span> <span class="op">&amp;</span> <span class="va">df</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;=</span> <span class="va">end_date</span>,<span class="op">]</span></span>
+<span><span class="co">##</span></span>
+<span></span>
+<span><span class="co">## Set types</span></span>
+<span><span class="va">df_date_confirmed</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"confirmed"</span>,<span class="op">]</span></span>
+<span><span class="va">df_date_death</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"death"</span>,<span class="op">]</span></span>
+<span><span class="va">df_date_recovery</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">data_type</span> <span class="op">==</span> <span class="st">"recovery"</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_death</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_recovery</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Histogram</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_death</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="co"># plot(df_date_recovered$date, df_date_recovered$cases, type = "h") # no data for recovery</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#### Extra</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span>, </span>
+<span>     main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Comfirmed Cases in"</span>,<span class="va">COUNTRY</span><span class="op">)</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"Date"</span>, ylab <span class="op">=</span> <span class="st">"Number of Cases"</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div id="練習-1" class="section level3" number="4.7.3">
+<h3>
+<span class="header-section-number">4.7.3</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>上の、<code>coronavirus.R</code> について</p>
+<ol style="list-style-type: decimal">
+<li>
+<code>COUNTRY &lt;- "Japan"</code> の Japan を他の国に変えてみましょう。</li>
+<li>
+<code>start_date &lt;- as.Date("2022-07-01")</code> の日付を、他の日付に変えてみましょう。</li>
+<li>
+<code>df_confirmed$cases</code> と <code>df_death$cases</code> についてどんなことがわかりますか。</li>
+<li>発見や、問いがあれば、書き出してみましょう。</li>
+</ol>
+</div>
+<div id="tips" class="section level3" number="4.7.4">
+<h3>
+<span class="header-section-number">4.7.4</span> Tips<a class="anchor" aria-label="anchor" href="#tips"><i class="fas fa-link"></i></a>
+</h3>
+<p>キーボード・ショートカットと言われる、さまざまな機能があります。</p>
+<ul>
+<li>上のメニュー・バー： Help &gt; Keyboard Short Cut Help 確認してみてください。</li>
+<li>右下の窓枠: Files タブから、ファイルの確認ができます。</li>
 </ul>
 </div>
 </div>
@@ -450,7 +799,12 @@
 <a class="nav-link" href="#rstudio-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">4.6</span> RStudio について</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E5%9B%9B%E3%81%A4%E3%81%AE%E7%AA%93%E6%9E%A0%E3%81%A8%E3%82%BF%E3%83%96-four-panes-and-tabs"><span class="header-section-number">4.6.1</span> 四つの窓枠とタブ Four Panes and Tabs</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#r-script-%E5%AE%9F%E8%A1%8C%E8%A8%98%E9%8C%B2"><span class="header-section-number">4.7</span> R Script 実行記録</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#tips"><span class="header-section-number">4.7.1</span> Tips</a></li></ul>
+<a class="nav-link" href="#r-script-%E5%AE%9F%E8%A1%8C%E8%A8%98%E9%8C%B2"><span class="header-section-number">4.7</span> R Script 実行記録</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-script-%E3%81%AE%E4%BD%9C%E6%88%90"><span class="header-section-number">4.7.1</span> R Script の作成</a></li>
+<li><a class="nav-link" href="#r-script-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9F%E8%A1%8C"><span class="header-section-number">4.7.2</span> R Script による実行</a></li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-1"><span class="header-section-number">4.7.3</span> 練習</a></li>
+<li><a class="nav-link" href="#tips"><span class="header-section-number">4.7.4</span> Tips</a></li>
+</ul>
 </li>
 <li>
 <a class="nav-link" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8---packages"><span class="header-section-number">4.8</span> パッケージ - Packages</a><ul class="nav navbar-nav">
