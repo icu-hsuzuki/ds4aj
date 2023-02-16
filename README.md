@@ -1,6 +1,10 @@
 Welcome!
 
-TThis book is created using a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+This book is created using a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+
+## Git-GitHub Setup
+
+### Original 
 
 1. Create a book using bs4_book style of a book  as a new project in RStudio.
 2. Rename the  _book folder created as a default to docs folder
@@ -21,14 +25,14 @@ TThis book is created using a minimal example of a book based on R Markdown and 
 8. Git: Commit "first build" > Push
 9. @GitHub: Pages > main > docs
 
-Another PC
+### Another PC
 
 1. Login to GitHub account
 2. Copy SSH address under Code>Clone
 3. Create a new project using Version Control:Git with the SSH address by setting the directory name
 4. Edit README.md and test Git Commit and Push
 
-Additional resources:
+## Additional resources:
 
 The **bookdown** book: https://bookdown.org/yihui/bookdown/
 
