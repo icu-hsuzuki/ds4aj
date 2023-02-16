@@ -1,6 +1,13 @@
 # (PART) PART V EXAMPLES {-}
 # Example 1 {#example1}
 
+```{r include=FALSE}
+library(tidyverse)
+library(showtext) 
+font_add_google('Noto Sans')
+showtext_auto()
+```
+
 ## Publishing
 
 HTML books can be published online, see: https://bookdown.org/yihui/bookdown/publishing.html

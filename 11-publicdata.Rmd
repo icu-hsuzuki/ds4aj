@@ -1,6 +1,13 @@
 # (PART) PART I PUBLIC DATA {-}
 # Public Data {#publicdata}
 
+```{r include=FALSE}
+library(tidyverse)
+library(showtext) 
+font_add_google('Noto Sans')
+showtext_auto()
+```
+
 Cross-references make it easier for your readers to find and link to elements in your book.
 
 ## Chapters and sub-chapters

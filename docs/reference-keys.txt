@@ -3,9 +3,8 @@ tab:nice-tab
 eq:binom
 thm:tri
 about
-usage
-render-book
-preview-book
+著者について
+言語について
 introduction
 a-section
 publicdata
@@ -26,9 +25,9 @@ metadata-for-sharing
 japanese
 bookdown
 about-1
-usage-1
-render-book-1
-preview-book-1
+usage
+render-book
+preview-book
 hello-bookdown
 a-section-1
 cross

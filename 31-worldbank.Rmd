@@ -1,6 +1,13 @@
 # (PART) PART III INSTITUTIONAL DATA {-}
 # World Bank {#worldbank}
 
+```{r include=FALSE}
+library(tidyverse)
+library(showtext) 
+font_add_google('Noto Sans')
+showtext_auto()
+```
+
 ## Footnotes
 
 Footnotes are put inside the square brackets after a caret `^[]`. Like this one ^[This is a footnote.]. 
