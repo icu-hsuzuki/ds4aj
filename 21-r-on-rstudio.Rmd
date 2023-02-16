@@ -8,13 +8,122 @@ font_add_google('Noto Sans')
 showtext_auto()
 ```
 
-You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file. 
+## 最初の一歩 Let's get started! {-}
 
-Add a numbered part: `# (PART) Act one {-}` (followed by `# A chapter`)
+1. R と R Studio のインストール
+2. プロジェクト - Project
+3. コンソール - Console
+4. R Studio について
+5. R Script 実行記録
+6. パッケージ - Packages
+7. クラウド - Posit Cloud
+8. 練習問題 Posit Primers 
+9. 参考文献 References
 
-Add an unnumbered part: `# (PART\*) Act one {-}` (followed by `# A chapter`)
+## R と R Studio のインストール
 
-Add an appendix as a special kind of un-numbered part: `# (APPENDIX) Other stuff {-}` (followed by `# A chapter`). Chapters in an appendix are prepended with letters instead of numbers.
+まず、R と R Studio をインストールします。
 
+### R のインストール
+
+https://cloud.r-project.org
+
+### R Studio の インストール
+
+http://www.rstudio.com/download
+
+
+
+## プロジェクト - Project
+
+* R Studio の起動
+* New Project 
+  - Directory を指定してプロジェクトを作成
+* 終了
+* プロジェクトの起動
+
+## コンソールで実行 - Run in Console
+
+* `head(cars)`
+* `str(cars)`
+* `summary(cars)`
+* `plot(cars)`
+* `df <- cars`
+* `head(df)`
+* `View(cars)`
+* `?cars`
+* `?datasets`
+* `library(help = "datasets")`
+
+おすすめ：`Sys.setenv(LANG = "en")`
+
+## R Studio について
+
+### 四つの窓枠とタブ Four Panes and Tabs
+
+* Top Left: Source Editor
+* Top Right: Environment, History, etc.
+* Bottom Left: Console, Terminal, Render, Background Jobs
+* Bottom Right: Files, Plots, Packages, Help, Viewer, Presentation
+
+## R Script 実行記録
+
+* In RStudio (create Project in RStudio) choose File > New File > R Script
+* Choose File > Save As, save with a name; e.g. {file names} (.R will be added automatically)
+* To run a code: at the cursor press Ctrl+Shift+Enter (Win) or Cmd+Shift+Enter (Mac).
+
+### Tips
+
+* Top Manu: Help > Keyboard Short Cut Help contains many shortcuts.
+* Bottom Right Pane: Check the files by selecting the Files tab.
+
+
+## パッケージ - Packages
+
+R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool > Install Packages in the top menu bar of R Studio.
+
+Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool > Install Packages からインストールできます。
+
+* `tidyverse`
+* `rmarkdown`
+* `tinytex`
+
+インストールは一回だけ。ときどき、Tools > Check for Package Update をつかって、Update しておくと良いでしょう。
+
+## クラウド - Posit Cloud
+
+RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。
+
+### クラウドサービス　How to Start Posit Cloud
+
+1. Go to https://posit.cloud/
+2. Sign Up: top right
+3. Email address or Google account
+4. New Project: Project Name
+
+
+## 練習問題 Posit Primers 
+
+Posit Primers https://posit.cloud/learn/primers
+
+### 最初の演習　The Basics – r4ds: Explore, I
+
+* [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+* [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
+
+
+## 参考文献 References
+
+* R For Data Science, by H. Wickham: https://r4ds.had.co.nz
+  - Introduction: https://r4ds.had.co.nz/explore-intro.html#explore-intro
+* Bookdown: https://bookdown.org, [Archive](https://bookdown.org/home/archive/)
+
+  
+* [Introducton to R](https://ds-sl.github.io/intro2r/intro2r.nb.html#3_Data_Analysis_Using_RStudio)
+* [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
+
+## YouTube Video - getstarted
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9uQmMZoG74g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
