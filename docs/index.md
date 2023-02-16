@@ -1,23 +1,43 @@
 --- 
-title: "A Minimal Book Example"
+title: "Data Science for All"
 author: "John Doe"
 date: "2023-02-16"
 site: bookdown::bookdown_site
-documentclass: book
+documentclass: bxjsbook #book
 bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
+url: https://icu-hsuzuki.github.io/ds4aj/
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
-  This is a minimal example of using the bookdown package to write a book.
+  This is a lecture note using the bookdown package to write a book in Japanese.
   The HTML output format for this example is bookdown::bs4_book,
   set in the _output.yml file.
 biblio-style: apalike
 csl: chicago-fullnote-bibliography.csl
 ---
 
+
 # About
 
+
+```r
+library(tidyverse)
+#> ── Attaching packages ─────────────────── tidyverse 1.3.2 ──
+#> ✔ ggplot2 3.4.1     ✔ purrr   1.0.1
+#> ✔ tibble  3.1.8     ✔ dplyr   1.1.0
+#> ✔ tidyr   1.3.0     ✔ stringr 1.5.0
+#> ✔ readr   2.1.4     ✔ forcats 1.0.0
+#> ── Conflicts ────────────────────── tidyverse_conflicts() ──
+#> ✖ dplyr::filter() masks stats::filter()
+#> ✖ dplyr::lag()    masks stats::lag()
+library(showtext) 
+#> Loading required package: sysfonts
+#> Loading required package: showtextdb
+font_add_google('Noto Sans')
+showtext_auto()
+```
+
 This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+
 
 ## Usage 
 
@@ -35,10 +55,7 @@ You can render the HTML version of this example book without changing anything:
 
 1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
 
-Or build the book from the R console:
-
-
-```r
+Or build the book from the R console:```{r, eval=FALSE}
 bookdown::render_book()
 ```
 
