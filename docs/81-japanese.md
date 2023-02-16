@@ -1,0 +1,2 @@
+# (APPENDIX) APPENDIX {-}
+# 日本語の扱いについて {#japanese}
