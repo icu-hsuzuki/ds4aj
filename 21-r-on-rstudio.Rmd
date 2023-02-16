@@ -8,33 +8,52 @@ font_add_google('Noto Sans')
 showtext_auto()
 ```
 
-## 最初の一歩 Let's get started! {-}
+## はじめに
 
-1. R と R Studio のインストール
-2. プロジェクト - Project
-3. コンソール - Console
-4. R Studio について
-5. R Script 実行記録
-6. パッケージ - Packages
-7. クラウド - Posit Cloud
-8. 練習問題 Posit Primers 
-9. 参考文献 References
+R Studio で R を使うことを始めましょう。
+
+## R と R Studio
+
+> R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS. 
+> R は、無償で提供されている、統計解析とグラフを描写する環境です。Windows、MacOS や、Linux で利用することが可能です。
+https://www.r-project.org
+
+> RStudio is an integrated development environment (IDE) for R and Python. It includes a console, syntax-highlighting editor that supports direct code execution, and tools for plotting, history, debugging, and workspace management. RStudio is available in open source and commercial editions and runs on the desktop (Windows, Mac, and Linux).
+> RStudio は、R と Python のための、総合開発環境です。RStudio には、プログラムを実行したり、制御やジョブ管理のための、コンソール（console）、コードを書いたり、実行したりする、文書の編集をする、エディター（Editor）とともに、グラフを表示したり、履歴や、プログラムを修正するなどのための、さまざまなツールが付属しています。RStudio はオープンソースで提供され、Windows、Mac および、Linux で利用可能で、有償版のサービスと無償版を提供しています。
+https://posit.co/products/open-source/rstudio/
+
+R は、統計解析のためのシステムで、R Studio は、R（および Python）を利用するための、総合開発環境です。そこで、「R Studio で R を利用する」という表現をします。
+
 
 ## R と R Studio のインストール
 
-まず、R と R Studio をインストールします。
+R と R Studio をインストールします。
+
+両方とも、インストールすることが必要です。
 
 ### R のインストール
 
 https://cloud.r-project.org
 
+上のリンクから、Windows、macOS または、Linux を選択して、インストールしてください。
+
+macOS の場合は、M1, M2 など、最近の Apple Silicon の CPU で動くコンピュータか、以前の、Intel の CPU で動くものか、選択してください。Mac の左上の、りんごマークの、このコンピュータについてから、確認できます。 
+
+不明の場合は、「R のインストール」と検索してみてください。
+
 ### R Studio の インストール
 
 http://www.rstudio.com/download
 
+上のリンクから、Windows 10/11 または、macOS 11+ を 選択してください。これら以外の、古いシステムのコンピュータの場合は、 下のサイトから、探してください。
 
+https://docs.posit.co/previous-versions/
+
+不明の場合は、「RStudio のインストール」と検索してみてください。
 
 ## プロジェクト - Project
+
+RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。
 
 * R Studio の起動
 * New Project 

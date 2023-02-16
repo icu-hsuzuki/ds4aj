@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 5 R Markdown | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="John Doe">
-<meta name="description" content="最初の一歩 Let’s get started! 準備：パッケージのインストール R Notebook 日本語のテンプレート R Markdown いくつかの Output R Script 実行記録 パッケージ - Packages  5.1 準備：パッケージのインストール...">
+<meta name="description" content="5.1 はじめに   5.2 準備：パッケージのインストール Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool &gt; Install Packages からインストールできます。 tidyverse rmarkdown tinytex...">
 <meta name="generator" content="bookdown 0.32 with bs4_book()">
 <meta property="og:title" content="Chapter 5 R Markdown | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/rmarkdown.html">
-<meta property="og:description" content="最初の一歩 Let’s get started! 準備：パッケージのインストール R Notebook 日本語のテンプレート R Markdown いくつかの Output R Script 実行記録 パッケージ - Packages  5.1 準備：パッケージのインストール...">
+<meta property="og:description" content="5.1 はじめに   5.2 準備：パッケージのインストール Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool &gt; Install Packages からインストールできます。 tidyverse rmarkdown tinytex...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 5 R Markdown | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="最初の一歩 Let’s get started! 準備：パッケージのインストール R Notebook 日本語のテンプレート R Markdown いくつかの Output R Script 実行記録 パッケージ - Packages  5.1 準備：パッケージのインストール...">
+<meta name="twitter:description" content="5.1 はじめに   5.2 準備：パッケージのインストール Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool &gt; Install Packages からインストールできます。 tidyverse rmarkdown tinytex...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -93,21 +93,14 @@
 <h1>
 <span class="header-section-number">5</span> R Markdown<a class="anchor" aria-label="anchor" href="#rmarkdown"><i class="fas fa-link"></i></a>
 </h1>
-<div id="最初の一歩-lets-get-started-1" class="section level2 unnumbered">
-<h2>最初の一歩 Let’s get started!<a class="anchor" aria-label="anchor" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E4%B8%80%E6%AD%A9-lets-get-started-1"><i class="fas fa-link"></i></a>
-</h2>
-<ol style="list-style-type: decimal">
-<li>準備：パッケージのインストール</li>
-<li>R Notebook</li>
-<li>日本語のテンプレート</li>
-<li>R Markdown いくつかの Output</li>
-<li>R Script 実行記録</li>
-<li>パッケージ - Packages</li>
-</ol>
-</div>
-<div id="準備パッケージのインストール" class="section level2" number="5.1">
+<div id="はじめに-1" class="section level2" number="5.1">
 <h2>
-<span class="header-section-number">5.1</span> 準備：パッケージのインストール<a class="anchor" aria-label="anchor" href="#%E6%BA%96%E5%82%99%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1</span> はじめに<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB-1"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="準備パッケージのインストール" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> 準備：パッケージのインストール<a class="anchor" aria-label="anchor" href="#%E6%BA%96%E5%82%99%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
 </h2>
 <p>Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool &gt; Install Packages からインストールできます。</p>
 <ul>
@@ -118,9 +111,9 @@
 <p>インストールを複数回しても問題はありませんが、インストールされているかどうかは、Packages タブから確認することができます。</p>
 <p>インストールは一回だけ。ときどき、Tools &gt; Check for Package Update をつかって、Update しておくと良いでしょう。</p>
 </div>
-<div id="r-notebook" class="section level2" number="5.2">
+<div id="r-notebook" class="section level2" number="5.3">
 <h2>
-<span class="header-section-number">5.2</span> R Notebook<a class="anchor" aria-label="anchor" href="#r-notebook"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.3</span> R Notebook<a class="anchor" aria-label="anchor" href="#r-notebook"><i class="fas fa-link"></i></a>
 </h2>
 <p>R Markdownはデータサイエンスのためのオーサリングフレームワーク。</p>
 <p>コード（プログラム）とその実行結果、を記録・表示し、高品質のレポートの作成を可能にします。</p>
@@ -132,9 +125,9 @@
 <li>Run Code Chunk plot(cars) and then Preview again.</li>
 </ol>
 </div>
-<div id="日本語のテンプレート" class="section level2" number="5.3">
+<div id="日本語のテンプレート" class="section level2" number="5.4">
 <h2>
-<span class="header-section-number">5.3</span> 日本語のテンプレート<a class="anchor" aria-label="anchor" href="#%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%81%AE%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.4</span> 日本語のテンプレート<a class="anchor" aria-label="anchor" href="#%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%81%AE%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88"><i class="fas fa-link"></i></a>
 </h2>
 <p>下のリンクを開き、右上の Code ボタンから、Download Rmd を選択すると、ダウンロードできますから、ダインロードしたものを、プロジェクト・フォールダーに移動またはコピーしてください。ダウンロードできないときは、Ctrl を押しながら、Download Rmd をクリックすると、Save As で保存できると思います。ブラウザーによって仕様が異なりますから、適切な方法を選んでください。</p>
 <ul>
@@ -143,9 +136,9 @@
 </ul>
 <p>Windows でも、Mac でも提供されている、Google Chrome の場合には、Code ボタンから、ダンロードされるはずです。</p>
 </div>
-<div id="r-markdown-いくつかの-output" class="section level2" number="5.4">
+<div id="r-markdown-いくつかの-output" class="section level2" number="5.5">
 <h2>
-<span class="header-section-number">5.4</span> R Markdown いくつかの Output<a class="anchor" aria-label="anchor" href="#r-markdown-%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE-output"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.5</span> R Markdown いくつかの Output<a class="anchor" aria-label="anchor" href="#r-markdown-%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE-output"><i class="fas fa-link"></i></a>
 </h2>
 <pre><code>---
 title: "Testing R Markdown Formats"
@@ -166,9 +159,9 @@ output:
 <li>TeX システムがインストールされている場合は不要</li>
 </ul>
 </div>
-<div id="youtube-video---rmarkdown" class="section level2" number="5.5">
+<div id="youtube-video---rmarkdown" class="section level2" number="5.6">
 <h2>
-<span class="header-section-number">5.5</span> YouTube Video - rmarkdown<a class="anchor" aria-label="anchor" href="#youtube-video---rmarkdown"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.6</span> YouTube Video - rmarkdown<a class="anchor" aria-label="anchor" href="#youtube-video---rmarkdown"><i class="fas fa-link"></i></a>
 </h2>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-E_XLf15YHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 </iframe>
@@ -185,12 +178,12 @@ output:
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#rmarkdown"><span class="header-section-number">5</span> R Markdown</a></li>
-<li><a class="nav-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E4%B8%80%E6%AD%A9-lets-get-started-1">最初の一歩 Let’s get started!</a></li>
-<li><a class="nav-link" href="#%E6%BA%96%E5%82%99%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">5.1</span> 準備：パッケージのインストール</a></li>
-<li><a class="nav-link" href="#r-notebook"><span class="header-section-number">5.2</span> R Notebook</a></li>
-<li><a class="nav-link" href="#%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%81%AE%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88"><span class="header-section-number">5.3</span> 日本語のテンプレート</a></li>
-<li><a class="nav-link" href="#r-markdown-%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE-output"><span class="header-section-number">5.4</span> R Markdown いくつかの Output</a></li>
-<li><a class="nav-link" href="#youtube-video---rmarkdown"><span class="header-section-number">5.5</span> YouTube Video - rmarkdown</a></li>
+<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB-1"><span class="header-section-number">5.1</span> はじめに</a></li>
+<li><a class="nav-link" href="#%E6%BA%96%E5%82%99%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">5.2</span> 準備：パッケージのインストール</a></li>
+<li><a class="nav-link" href="#r-notebook"><span class="header-section-number">5.3</span> R Notebook</a></li>
+<li><a class="nav-link" href="#%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%81%AE%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88"><span class="header-section-number">5.4</span> 日本語のテンプレート</a></li>
+<li><a class="nav-link" href="#r-markdown-%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE-output"><span class="header-section-number">5.5</span> R Markdown いくつかの Output</a></li>
+<li><a class="nav-link" href="#youtube-video---rmarkdown"><span class="header-section-number">5.6</span> YouTube Video - rmarkdown</a></li>
 </ul>
 
       <div class="book-extra">

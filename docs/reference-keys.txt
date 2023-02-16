@@ -12,6 +12,8 @@ publicdata
 chapters-and-sub-chapters
 captioned-figures-and-tables
 ronrstudio
+はじめに
+r-と-r-studio
 r-と-r-studio-のインストール
 r-のインストール
 r-studio-の-インストール
@@ -29,6 +31,7 @@ tips
 参考文献-references
 youtube-video---getstarted
 rmarkdown
+はじめに-1
 準備パッケージのインストール
 r-notebook
 日本語のテンプレート

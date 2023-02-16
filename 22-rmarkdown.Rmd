@@ -1,13 +1,6 @@
 # R Markdown {#rmarkdown}
 
-## 最初の一歩 Let's get started! {-}
-
-1. 準備：パッケージのインストール
-2. R Notebook
-3. 日本語のテンプレート
-4. R Markdown いくつかの Output
-5. R Script 実行記録
-6. パッケージ - Packages
+## はじめに
 
 ## 準備：パッケージのインストール
 
