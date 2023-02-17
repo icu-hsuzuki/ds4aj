@@ -200,8 +200,26 @@
 <h2>
 <span class="header-section-number">A.5</span> <code>ggplot</code> でグラフを作成<a class="anchor" aria-label="anchor" href="#ggplot-%E3%81%A7%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
 </h2>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">`葉長`</span>, y <span class="op">=</span> <span class="va">`葉幅`</span>, col <span class="op">=</span> <span class="va">`種別`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"散布図"</span>, x <span class="op">=</span> <span class="st">"葉長"</span>, y <span class="op">=</span> <span class="st">"葉幅"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="81-japanese_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
-
+</div>
+<div id="備考-1" class="section level2" number="8.6">
+<h2>
+<span class="header-section-number">A.6</span> 備考：<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>実は、一番難しいのが、PDF の作成だと思いますが、一応、上のものも、PDF を作成することが可能です。
+下のリンクのファイルを、いろいろな、形式で、出力してみてください。R Notebook と、PDF に出力したもののリンクを付けておきます。</p>
+<ul>
+<li>
+<a href="https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html">R Notebook</a>
+<ul>
+<li>右上の Code ボタンから、Rmd ファイルも取得できます。</li>
+</ul>
+</li>
+<li><a href="https://ds-sl.github.io/intro2r/Rmarkdown-J.pdf">PDF</a></li>
+</ul>
 </div>
 </div>
   <div class="chapter-nav">
@@ -218,6 +236,7 @@
 <li><a class="nav-link" href="#%E5%88%97%E5%90%8D%E3%82%84%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E6%97%A5%E6%9C%AC%E8%AA%9E"><span class="header-section-number">A.3</span> 列名や、データに日本語</a></li>
 <li><a class="nav-link" href="#kable-%E3%81%A7%E8%A1%A8%E7%A4%BA"><span class="header-section-number">A.4</span> kable で表示</a></li>
 <li><a class="nav-link" href="#ggplot-%E3%81%A7%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><span class="header-section-number">A.5</span> ggplot でグラフを作成</a></li>
+<li><a class="nav-link" href="#%E5%82%99%E8%80%83-1"><span class="header-section-number">A.6</span> 備考：</a></li>
 </ul>
 
       <div class="book-extra">

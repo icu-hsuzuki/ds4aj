@@ -1376,7 +1376,34 @@ output:
 \hypertarget{ggplot-ux3067ux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
 \subsection{\texorpdfstring{\texttt{ggplot} でグラフを作成}{ggplot でグラフを作成}}\label{ggplot-ux3067ux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{葉長}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{y =} \StringTok{\textasciigrave{}}\AttributeTok{葉幅}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{col =} \StringTok{\textasciigrave{}}\AttributeTok{種別}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"散布図"}\NormalTok{, }\AttributeTok{x =} \StringTok{"葉長"}\NormalTok{, }\AttributeTok{y =} \StringTok{"葉幅"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\hypertarget{ux5099ux8003-1}{%
+\subsection{備考：}\label{ux5099ux8003-1}}
+
+実は、一番難しいのが、PDF の作成だと思いますが、一応、上のものも、PDF を作成することが可能です。
+下のリンクのファイルを、いろいろな、形式で、出力してみてください。R Notebook と、PDF に出力したもののリンクを付けておきます。
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html}{R Notebook}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    右上の Code ボタンから、Rmd ファイルも取得できます。
+  \end{itemize}
+\item
+  \href{https://ds-sl.github.io/intro2r/Rmarkdown-J.pdf}{PDF}
+\end{itemize}
 
 \hypertarget{bookdown}{%
 \section{Bookdown}\label{bookdown}}

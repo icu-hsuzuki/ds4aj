@@ -64,6 +64,7 @@ base-r-でタイトルに日本語
 列名やデータに日本語
 kable-で表示
 ggplot-でグラフを作成
+備考-1
 bookdown
 about
 usage

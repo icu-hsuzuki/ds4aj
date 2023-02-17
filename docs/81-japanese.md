@@ -72,6 +72,20 @@ knitr::kable(df_iris[1:6, ])
 
 ## `ggplot` でグラフを作成
 
+
+```r
+ggplot(df_iris, aes(x = `葉長`, y = `葉幅`, col = `種別`)) +
+  geom_point() + labs(title = "散布図", x = "葉長", y = "葉幅")
+```
+
 ![](81-japanese_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
 
 
+## 備考：
+
+実は、一番難しいのが、PDF の作成だと思いますが、一応、上のものも、PDF を作成することが可能です。
+下のリンクのファイルを、いろいろな、形式で、出力してみてください。R Notebook と、PDF に出力したもののリンクを付けておきます。
+
+* [R Notebook](https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html)
+  - 右上の Code ボタンから、Rmd ファイルも取得できます。
+* [PDF](https://ds-sl.github.io/intro2r/Rmarkdown-J.pdf)
