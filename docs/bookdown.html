@@ -116,7 +116,7 @@
 <li><p>Click on <strong>Build Book</strong>, then select your output format, or select “All formats” if you’d like to use multiple formats from the same book source files.</p></li>
 </ol>
 <p>Or build the book from the R console:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">bookdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/bookdown/reference/render_book.html">render_book</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>To render this example to PDF as a <code><a href="https://pkgs.rstudio.com/bookdown/reference/pdf_book.html">bookdown::pdf_book</a></code>, you’ll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.org/tinytex/" class="uri">https://yihui.org/tinytex/</a>.</p>
 </div>
@@ -125,7 +125,7 @@
 <span class="header-section-number">B.1.3</span> Preview book<a class="anchor" aria-label="anchor" href="#preview-book"><i class="fas fa-link"></i></a>
 </h3>
 <p>As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in “Preview book”, or from the R console:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">bookdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/bookdown/reference/serve_book.html">serve_book</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -176,7 +176,7 @@
 </h3>
 <p>Figures and tables <em>with captions</em> can also be cross-referenced from elsewhere in your book using <code>\@ref(fig:chunk-label)</code> and <code>\@ref(tab:chunk-label)</code>, respectively.</p>
 <p>See Figure <a href="bookdown.html#fig:nice-fig">B.1</a>.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pressure</span>, type <span class="op">=</span> <span class="st">'b'</span>, pch <span class="op">=</span> <span class="fl">19</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -186,7 +186,7 @@ Figure B.1: Here is a nice figure!
 </p>
 </div>
 <p>Don’t miss Table <a href="bookdown.html#tab:nice-tab">B.1</a>.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pressure</span>, <span class="fl">10</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">'Here is a nice table!'</span>,</span>
 <span>  booktabs <span class="op">=</span> <span class="cn">TRUE</span></span>
@@ -256,18 +256,18 @@ Figure B.1: Here is a nice figure!
 <h2>
 <span class="header-section-number">B.5</span> Footnotes and citations<a class="anchor" aria-label="anchor" href="#footnotes-and-citations"><i class="fas fa-link"></i></a>
 </h2>
-<div id="footnotes-1" class="section level3" number="9.5.1">
+<div id="footnotes" class="section level3" number="9.5.1">
 <h3>
-<span class="header-section-number">B.5.1</span> Footnotes<a class="anchor" aria-label="anchor" href="#footnotes-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.5.1</span> Footnotes<a class="anchor" aria-label="anchor" href="#footnotes"><i class="fas fa-link"></i></a>
 </h3>
-<p>Footnotes are put inside the square brackets after a caret <code>^[]</code>. Like this one <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This is a footnote.&lt;/p&gt;"><sup>4</sup></a>.</p>
+<p>Footnotes are put inside the square brackets after a caret <code>^[]</code>. Like this one <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This is a footnote.&lt;/p&gt;"><sup>1</sup></a>.</p>
 </div>
-<div id="citations-1" class="section level3" number="9.5.2">
+<div id="citations" class="section level3" number="9.5.2">
 <h3>
-<span class="header-section-number">B.5.2</span> Citations<a class="anchor" aria-label="anchor" href="#citations-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.5.2</span> Citations<a class="anchor" aria-label="anchor" href="#citations"><i class="fas fa-link"></i></a>
 </h3>
 <p>Reference items in your bibliography file(s) using <code>@key</code>.</p>
-<p>For example, we are using the <strong>bookdown</strong> package<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Xie, &lt;em&gt;Bookdown&lt;/em&gt;.&lt;/p&gt;"><sup>5</sup></a></span> (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and <strong>knitr</strong><span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Xie, &lt;em&gt;Dynamic Documents with &lt;span&gt;R&lt;/span&gt; and Knitr&lt;/em&gt;.&lt;/p&gt;"><sup>6</sup></a></span> (this citation was added manually in an external file book.bib).
+<p>For example, we are using the <strong>bookdown</strong> package<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Yihui Xie, &lt;em&gt;Bookdown: Authoring Books and Technical Documents with r Markdown&lt;/em&gt;, 2023, &lt;a href="https://CRAN.R-project.org/package=bookdown" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=bookdown&lt;/a&gt;.&lt;/p&gt;'><sup>2</sup></a></span> (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and <strong>knitr</strong><span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Yihui Xie, &lt;em&gt;Dynamic Documents with &lt;span&gt;R&lt;/span&gt; and Knitr&lt;/em&gt;, 2nd ed. (Boca Raton, Florida: Chapman; Hall/CRC, 2015), &lt;a href="http://yihui.org/knitr/" role="doc-biblioref"&gt;http://yihui.org/knitr/&lt;/a&gt;.&lt;/p&gt;'><sup>3</sup></a></span> (this citation was added manually in an external file book.bib).
 Note that the <code>.bib</code> files need to be listed in the index.Rmd with the YAML <code>bibliography</code> key.</p>
 <p>The <code>bs4_book</code> theme makes footnotes appear inline when you click on them. In this example book, we added <code>csl: chicago-fullnote-bibliography.csl</code> to the <code>index.Rmd</code> YAML, and include the <code>.csl</code> file. To download a new style, we recommend: <a href="https://www.zotero.org/styles/" class="uri">https://www.zotero.org/styles/</a></p>
 <p>The RStudio Visual Markdown Editor can also make it easier to insert citations: <a href="https://rstudio.github.io/visual-markdown-editing/#/citations" class="uri">https://rstudio.github.io/visual-markdown-editing/#/citations</a></p>
@@ -277,37 +277,37 @@ Note that the <code>.bib</code> files need to be listed in the index.Rmd with th
 <h2>
 <span class="header-section-number">B.6</span> Blocks<a class="anchor" aria-label="anchor" href="#blocks"><i class="fas fa-link"></i></a>
 </h2>
-<div id="equations-1" class="section level3" number="9.6.1">
+<div id="equations" class="section level3" number="9.6.1">
 <h3>
-<span class="header-section-number">B.6.1</span> Equations<a class="anchor" aria-label="anchor" href="#equations-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.6.1</span> Equations<a class="anchor" aria-label="anchor" href="#equations"><i class="fas fa-link"></i></a>
 </h3>
 <p>Here is an equation.</p>
 <p><span class="math display" id="eq:binom">\[\begin{equation}
   f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
-  \tag{6.1}
+  \tag{B.1}
 \end{equation}\]</span></p>
-<p>You may refer to using <code>\@ref(eq:binom)</code>, like see Equation <a href="intro2eda.html#eq:binom">(6.1)</a>.</p>
+<p>You may refer to using <code>\@ref(eq:binom)</code>, like see Equation <a href="bookdown.html#eq:binom">(B.1)</a>.</p>
 </div>
-<div id="theorems-and-proofs-1" class="section level3" number="9.6.2">
+<div id="theorems-and-proofs" class="section level3" number="9.6.2">
 <h3>
-<span class="header-section-number">B.6.2</span> Theorems and proofs<a class="anchor" aria-label="anchor" href="#theorems-and-proofs-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.6.2</span> Theorems and proofs<a class="anchor" aria-label="anchor" href="#theorems-and-proofs"><i class="fas fa-link"></i></a>
 </h3>
-<p>Labeled theorems can be referenced in text using <code>\@ref(thm:tri)</code>, for example, check out this smart theorem <a href="intro2eda.html#thm:tri">6.1</a>.</p>
+<p>Labeled theorems can be referenced in text using <code>\@ref(thm:tri)</code>, for example, check out this smart theorem <a href="bookdown.html#thm:tri">B.1</a>.</p>
 <div class="theorem">
-<p><span id="thm:tri" class="theorem"><strong>Theorem 6.1  </strong></span>For a right triangle, if <span class="math inline">\(c\)</span> denotes the <em>length</em> of the hypotenuse
+<p><span id="thm:tri" class="theorem"><strong>Theorem B.1  </strong></span>For a right triangle, if <span class="math inline">\(c\)</span> denotes the <em>length</em> of the hypotenuse
 and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> denote the lengths of the <strong>other</strong> two sides, we have
 <span class="math display">\[a^2 + b^2 = c^2\]</span></p>
 </div>
 <p>Read more here <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html" class="uri">https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html</a>.</p>
 </div>
-<div id="callout-blocks-1" class="section level3" number="9.6.3">
+<div id="callout-blocks" class="section level3" number="9.6.3">
 <h3>
-<span class="header-section-number">B.6.3</span> Callout blocks<a class="anchor" aria-label="anchor" href="#callout-blocks-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.6.3</span> Callout blocks<a class="anchor" aria-label="anchor" href="#callout-blocks"><i class="fas fa-link"></i></a>
 </h3>
 <p>The <code>bs4_book</code> theme also includes special callout blocks, like this <code>.rmdnote</code>.</p>
 <div class="rmdnote">
 <p>You can use <strong>markdown</strong> inside a block.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">beaver1</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   day time  temp activ</span></span>
 <span><span class="co">#&gt; 1 346  840 36.33     0</span></span>
@@ -325,28 +325,28 @@ and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</
 <h2>
 <span class="header-section-number">B.7</span> Sharing your book<a class="anchor" aria-label="anchor" href="#sharing-your-book"><i class="fas fa-link"></i></a>
 </h2>
-<div id="publishing-1" class="section level3" number="9.7.1">
+<div id="publishing" class="section level3" number="9.7.1">
 <h3>
-<span class="header-section-number">B.7.1</span> Publishing<a class="anchor" aria-label="anchor" href="#publishing-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.7.1</span> Publishing<a class="anchor" aria-label="anchor" href="#publishing"><i class="fas fa-link"></i></a>
 </h3>
 <p>HTML books can be published online, see: <a href="https://bookdown.org/yihui/bookdown/publishing.html" class="uri">https://bookdown.org/yihui/bookdown/publishing.html</a></p>
 </div>
-<div id="pages-1" class="section level3" number="9.7.2">
+<div id="pages" class="section level3" number="9.7.2">
 <h3>
-<span class="header-section-number">B.7.2</span> 404 pages<a class="anchor" aria-label="anchor" href="#pages-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.7.2</span> 404 pages<a class="anchor" aria-label="anchor" href="#pages"><i class="fas fa-link"></i></a>
 </h3>
 <p>By default, users will be directed to a 404 page if they try to access a webpage that cannot be found. If you’d like to customize your 404 page instead of using the default, you may add either a <code>_404.Rmd</code> or <code>_404.md</code> file to your project root and use code and/or Markdown syntax.</p>
 </div>
-<div id="metadata-for-sharing-1" class="section level3" number="9.7.3">
+<div id="metadata-for-sharing" class="section level3" number="9.7.3">
 <h3>
-<span class="header-section-number">B.7.3</span> Metadata for sharing<a class="anchor" aria-label="anchor" href="#metadata-for-sharing-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.7.3</span> Metadata for sharing<a class="anchor" aria-label="anchor" href="#metadata-for-sharing"><i class="fas fa-link"></i></a>
 </h3>
 <p>Bookdown HTML books will provide HTML metadata for social sharing on platforms like Twitter, Facebook, and LinkedIn, using information you provide in the <code>index.Rmd</code> YAML. To setup, set the <code>url</code> for your book and the path to your <code>cover-image</code> file. Your book’s <code>title</code> and <code>description</code> are also used.</p>
 <p>This <code>bs4_book</code> provides enhanced metadata for social sharing, so that each chapter shared will have a unique description, auto-generated based on the content.</p>
 <p>Specify your book’s source repository on GitHub as the <code>repo</code> in the <code>_output.yml</code> file, which allows users to view each chapter’s source file or suggest an edit. Read more about the features of this output format here:</p>
 <p><a href="https://pkgs.rstudio.com/bookdown/reference/bs4_book.html" class="uri">https://pkgs.rstudio.com/bookdown/reference/bs4_book.html</a></p>
 <p>Or use:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="fu">bookdown</span><span class="fu">::</span><span class="va"><a href="https://pkgs.rstudio.com/bookdown/reference/bs4_book.html">bs4_book</a></span></span></code></pre></div>
 </div>
 </div>
@@ -364,9 +364,6 @@ Xie, Yihui. <em>Bookdown: Authoring Books and Technical Documents with r Markdow
 </div>
 </div>
 </div>
-
-
-
 
 
 
@@ -402,22 +399,22 @@ Xie, Yihui. <em>Bookdown: Authoring Books and Technical Documents with r Markdow
 <li><a class="nav-link" href="#parts"><span class="header-section-number">B.4</span> Parts</a></li>
 <li>
 <a class="nav-link" href="#footnotes-and-citations"><span class="header-section-number">B.5</span> Footnotes and citations</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#footnotes-1"><span class="header-section-number">B.5.1</span> Footnotes</a></li>
-<li><a class="nav-link" href="#citations-1"><span class="header-section-number">B.5.2</span> Citations</a></li>
+<li><a class="nav-link" href="#footnotes"><span class="header-section-number">B.5.1</span> Footnotes</a></li>
+<li><a class="nav-link" href="#citations"><span class="header-section-number">B.5.2</span> Citations</a></li>
 </ul>
 </li>
 <li>
 <a class="nav-link" href="#blocks"><span class="header-section-number">B.6</span> Blocks</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#equations-1"><span class="header-section-number">B.6.1</span> Equations</a></li>
-<li><a class="nav-link" href="#theorems-and-proofs-1"><span class="header-section-number">B.6.2</span> Theorems and proofs</a></li>
-<li><a class="nav-link" href="#callout-blocks-1"><span class="header-section-number">B.6.3</span> Callout blocks</a></li>
+<li><a class="nav-link" href="#equations"><span class="header-section-number">B.6.1</span> Equations</a></li>
+<li><a class="nav-link" href="#theorems-and-proofs"><span class="header-section-number">B.6.2</span> Theorems and proofs</a></li>
+<li><a class="nav-link" href="#callout-blocks"><span class="header-section-number">B.6.3</span> Callout blocks</a></li>
 </ul>
 </li>
 <li>
 <a class="nav-link" href="#sharing-your-book"><span class="header-section-number">B.7</span> Sharing your book</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#publishing-1"><span class="header-section-number">B.7.1</span> Publishing</a></li>
-<li><a class="nav-link" href="#pages-1"><span class="header-section-number">B.7.2</span> 404 pages</a></li>
-<li><a class="nav-link" href="#metadata-for-sharing-1"><span class="header-section-number">B.7.3</span> Metadata for sharing</a></li>
+<li><a class="nav-link" href="#publishing"><span class="header-section-number">B.7.1</span> Publishing</a></li>
+<li><a class="nav-link" href="#pages"><span class="header-section-number">B.7.2</span> 404 pages</a></li>
+<li><a class="nav-link" href="#metadata-for-sharing"><span class="header-section-number">B.7.3</span> Metadata for sharing</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#references">References</a></li>

@@ -181,7 +181,7 @@
 \subsection*{コンピュータ言語について}\label{ux30b3ux30f3ux30d4ux30e5ux30fcux30bfux8a00ux8a9eux306bux3064ux3044ux3066}}
 \addcontentsline{toc}{subsection}{コンピュータ言語について}
 
-統計解析のために開発された R を使います。いずれは、python についても触れたいと思いますが、プログラミングの経験がない方も含めて、最初にデータサイエンスを学ぶには、R は最適だと考えています。特に、R Studio IDE（integrated development environment, 統合開発環境） で、R を使うことがとても、簡単になっています。さらに、簡単なものであれば、Posit Cloud で試したり、共有することも可能です。また、再現性（Reproducibility）や、なにを実行しているのかの説明を同時に記述すること（Literate Programming）は、非常に重要ですが、その記述も、R Markdown によって、可能いなっています。この文書も、R Markdown の一つの形式の、bookdown を利用しています。最後に、Bookdown に関連して、膨大な数の、参考書も、無償で提供されており、オンラインで読むことができることも、R をお薦めする理由です。
+統計解析のために開発された R を使います。いずれは、python についても触れたいと思いますが、プログラミングの経験がない方も含めて、最初にデータサイエンスを学ぶには、R は最適だと考えています。特に、R Studio IDE（integrated development environment, 統合開発環境） で、R を使うことがとても、簡単になっています。さらに、簡単なものであれば、Posit Cloud で試したり、共有することも可能です。また、再現性（Reproducibility）や、なにを実行しているのかの説明を同時に記述すること（Literate Programming）は、非常に重要ですが、その記述も、R Markdown によって、可能になっています。この文書も、R Markdown の一つの形式の、bookdown を利用しています。最後に、Bookdown に関連して、膨大な数の、参考書も、無償で提供されており、オンラインで読むことができることも、R をお薦めする理由です。
 
 ただし、日本語のものは、まだ十分とは言えない状況です。この文書を書き始めたのも、すこしでも、お役に立つことができればとの、気持ちが背景にあります。
 
@@ -1259,113 +1259,17 @@ output:
 \hypertarget{worldbank}{%
 \section{World Bank}\label{worldbank}}
 
-\hypertarget{footnotes}{%
-\subsection{Footnotes}\label{footnotes}}
-
-Footnotes are put inside the square brackets after a caret \texttt{\^{}{[}{]}}. Like this one \footnote{This is a footnote.}.
-
-\hypertarget{citations}{%
-\subsection{Citations}\label{citations}}
-
-Reference items in your bibliography file(s) using \texttt{@key}.
-
-For example, we are using the \textbf{bookdown} package \citep{R-bookdown} (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and \textbf{knitr} \citep{xie2015} (this citation was added manually in an external file book.bib).
-Note that the \texttt{.bib} files need to be listed in the index.Rmd with the YAML \texttt{bibliography} key.
-
-The \texttt{bs4\_book} theme makes footnotes appear inline when you click on them. In this example book, we added \texttt{csl:\ chicago-fullnote-bibliography.csl} to the \texttt{index.Rmd} YAML, and include the \texttt{.csl} file. To download a new style, we recommend: \url{https://www.zotero.org/styles/}
-
-The RStudio Visual Markdown Editor can also make it easier to insert citations: \url{https://rstudio.github.io/visual-markdown-editing/\#/citations}
-
 \hypertarget{part-part-iv-eda}{%
 \part{PART IV EDA}\label{part-part-iv-eda}}
 
 \hypertarget{intro2eda}{%
 \section{What is EDA?}\label{intro2eda}}
 
-\hypertarget{equations}{%
-\subsection{Equations}\label{equations}}
-
-Here is an equation.
-
-\begin{equation} 
-  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
-  \label{eq:binom}
-\end{equation}
-
-You may refer to using \texttt{\textbackslash{}@ref(eq:binom)}, like see Equation \eqref{eq:binom}.
-
-\hypertarget{theorems-and-proofs}{%
-\subsection{Theorems and proofs}\label{theorems-and-proofs}}
-
-Labeled theorems can be referenced in text using \texttt{\textbackslash{}@ref(thm:tri)}, for example, check out this smart theorem \ref{thm:tri}.
-
-\begin{theorem}
-\protect\hypertarget{thm:tri}{}\label{thm:tri}For a right triangle, if \(c\) denotes the \emph{length} of the hypotenuse
-and \(a\) and \(b\) denote the lengths of the \textbf{other} two sides, we have
-\[a^2 + b^2 = c^2\]
-\end{theorem}
-
-Read more here \url{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html}.
-
-\hypertarget{callout-blocks}{%
-\subsection{Callout blocks}\label{callout-blocks}}
-
-The \texttt{bs4\_book} theme also includes special callout blocks, like this \texttt{.rmdnote}.
-
-You can use \textbf{markdown} inside a block.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{head}\NormalTok{(beaver1, }\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
-\CommentTok{\#\textgreater{}   day time  temp activ}
-\CommentTok{\#\textgreater{} 1 346  840 36.33     0}
-\CommentTok{\#\textgreater{} 2 346  850 36.34     0}
-\CommentTok{\#\textgreater{} 3 346  900 36.35     0}
-\CommentTok{\#\textgreater{} 4 346  910 36.42     0}
-\CommentTok{\#\textgreater{} 5 346  920 36.55     0}
-\end{Highlighting}
-\end{Shaded}
-
-It is up to the user to define the appearance of these blocks for LaTeX output.
-
-You may also use: \texttt{.rmdcaution}, \texttt{.rmdimportant}, \texttt{.rmdtip}, or \texttt{.rmdwarning} as the block name.
-
-The R Markdown Cookbook provides more help on how to use custom blocks to design your own callouts: \url{https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html}
-
 \hypertarget{part-part-v-examples}{%
 \part{PART V EXAMPLES}\label{part-part-v-examples}}
 
 \hypertarget{example1}{%
 \section{Example 1}\label{example1}}
-
-\hypertarget{publishing}{%
-\subsection{Publishing}\label{publishing}}
-
-HTML books can be published online, see: \url{https://bookdown.org/yihui/bookdown/publishing.html}
-
-\hypertarget{pages}{%
-\subsection{404 pages}\label{pages}}
-
-By default, users will be directed to a 404 page if they try to access a webpage that cannot be found. If you'd like to customize your 404 page instead of using the default, you may add either a \texttt{\_404.Rmd} or \texttt{\_404.md} file to your project root and use code and/or Markdown syntax.
-
-\hypertarget{metadata-for-sharing}{%
-\subsection{Metadata for sharing}\label{metadata-for-sharing}}
-
-Bookdown HTML books will provide HTML metadata for social sharing on platforms like Twitter, Facebook, and LinkedIn, using information you provide in the \texttt{index.Rmd} YAML. To setup, set the \texttt{url} for your book and the path to your \texttt{cover-image} file. Your book's \texttt{title} and \texttt{description} are also used.
-
-This \texttt{bs4\_book} provides enhanced metadata for social sharing, so that each chapter shared will have a unique description, auto-generated based on the content.
-
-Specify your book's source repository on GitHub as the \texttt{repo} in the \texttt{\_output.yml} file, which allows users to view each chapter's source file or suggest an edit. Read more about the features of this output format here:
-
-\url{https://pkgs.rstudio.com/bookdown/reference/bs4_book.html}
-
-Or use:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{?bookdown}\SpecialCharTok{::}\NormalTok{bs4\_book}
-\end{Highlighting}
-\end{Shaded}
 
 \hypertarget{appendix-appendix}{%
 \appendix}
@@ -1545,13 +1449,13 @@ Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ O
 \hypertarget{footnotes-and-citations}{%
 \subsection{Footnotes and citations}\label{footnotes-and-citations}}
 
-\hypertarget{footnotes-1}{%
-\subsubsection{Footnotes}\label{footnotes-1}}
+\hypertarget{footnotes}{%
+\subsubsection{Footnotes}\label{footnotes}}
 
 Footnotes are put inside the square brackets after a caret \texttt{\^{}{[}{]}}. Like this one \footnote{This is a footnote.}.
 
-\hypertarget{citations-1}{%
-\subsubsection{Citations}\label{citations-1}}
+\hypertarget{citations}{%
+\subsubsection{Citations}\label{citations}}
 
 Reference items in your bibliography file(s) using \texttt{@key}.
 
@@ -1565,8 +1469,8 @@ The RStudio Visual Markdown Editor can also make it easier to insert citations: 
 \hypertarget{blocks}{%
 \subsection{Blocks}\label{blocks}}
 
-\hypertarget{equations-1}{%
-\subsubsection{Equations}\label{equations-1}}
+\hypertarget{equations}{%
+\subsubsection{Equations}\label{equations}}
 
 Here is an equation.
 
@@ -1577,8 +1481,8 @@ Here is an equation.
 
 You may refer to using \texttt{\textbackslash{}@ref(eq:binom)}, like see Equation \eqref{eq:binom}.
 
-\hypertarget{theorems-and-proofs-1}{%
-\subsubsection{Theorems and proofs}\label{theorems-and-proofs-1}}
+\hypertarget{theorems-and-proofs}{%
+\subsubsection{Theorems and proofs}\label{theorems-and-proofs}}
 
 Labeled theorems can be referenced in text using \texttt{\textbackslash{}@ref(thm:tri)}, for example, check out this smart theorem \ref{thm:tri}.
 
@@ -1590,8 +1494,8 @@ and \(a\) and \(b\) denote the lengths of the \textbf{other} two sides, we have
 
 Read more here \url{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html}.
 
-\hypertarget{callout-blocks-1}{%
-\subsubsection{Callout blocks}\label{callout-blocks-1}}
+\hypertarget{callout-blocks}{%
+\subsubsection{Callout blocks}\label{callout-blocks}}
 
 The \texttt{bs4\_book} theme also includes special callout blocks, like this \texttt{.rmdnote}.
 
@@ -1618,18 +1522,18 @@ The R Markdown Cookbook provides more help on how to use custom blocks to design
 \hypertarget{sharing-your-book}{%
 \subsection{Sharing your book}\label{sharing-your-book}}
 
-\hypertarget{publishing-1}{%
-\subsubsection{Publishing}\label{publishing-1}}
+\hypertarget{publishing}{%
+\subsubsection{Publishing}\label{publishing}}
 
 HTML books can be published online, see: \url{https://bookdown.org/yihui/bookdown/publishing.html}
 
-\hypertarget{pages-1}{%
-\subsubsection{404 pages}\label{pages-1}}
+\hypertarget{pages}{%
+\subsubsection{404 pages}\label{pages}}
 
 By default, users will be directed to a 404 page if they try to access a webpage that cannot be found. If you'd like to customize your 404 page instead of using the default, you may add either a \texttt{\_404.Rmd} or \texttt{\_404.md} file to your project root and use code and/or Markdown syntax.
 
-\hypertarget{metadata-for-sharing-1}{%
-\subsubsection{Metadata for sharing}\label{metadata-for-sharing-1}}
+\hypertarget{metadata-for-sharing}{%
+\subsubsection{Metadata for sharing}\label{metadata-for-sharing}}
 
 Bookdown HTML books will provide HTML metadata for social sharing on platforms like Twitter, Facebook, and LinkedIn, using information you provide in the \texttt{index.Rmd} YAML. To setup, set the \texttt{url} for your book and the path to your \texttt{cover-image} file. Your book's \texttt{title} and \texttt{description} are also used.
 
