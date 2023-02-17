@@ -1,10 +1,6 @@
 eq:binom
 fig:nice-fig
 tab:nice-tab
-about
-著者について
-コンピュータ言語について
-言語について
 introduction
 publicdata
 world-bank
@@ -71,7 +67,7 @@ pages
 metadata-for-sharing
 japanese
 bookdown
-about-1
+about
 usage
 render-book
 preview-book

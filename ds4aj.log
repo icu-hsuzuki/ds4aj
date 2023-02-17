@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.18)  17 FEB 2023 09:30
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.18)  17 FEB 2023 09:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1167,7 +1167,7 @@ Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=
 flt;!
 [6]
 LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
-(Font)              scaled to size 15.86269pt on input line 204.
+(Font)              scaled to size 15.86269pt on input line 208.
 [7
 
 ] [8] [9] [10] [11
@@ -1211,7 +1211,7 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 
 [15]
 LaTeX Font Info:    Font shape `TU/STFangsong(0)/m/n' will be
-(Font)              scaled to size 10.23074pt on input line 476.
+(Font)              scaled to size 10.23074pt on input line 480.
 Missing character: There is no 、 (U+3001) in font [latinmodern-math.otf]/OT:scr
 ipt=math;language=dflt;!
 File: 21-r-on-rstudio_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (ty
@@ -1221,7 +1221,7 @@ pe pdf)
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
 flt;!
 
-Underfull \hbox (badness 4595) in paragraph at lines 637--638
+Underfull \hbox (badness 4595) in paragraph at lines 641--642
 []\TU/SongtiSCLight(0)/m/n/10.53937 実 行 す る に は、|  カ ー ソ ル の 場 所 で \TU/lmr/m/n/
 10.53937 Ctrl+Shift+Enter (Win) \TU/SongtiSCLight(0)/m/n/10.53937 ま た は
  []
@@ -1230,53 +1230,53 @@ Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=
 flt;!
 [19]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.53937> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 662.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 666.
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10.53937> not available
 
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 662.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 666.
 
 [20]
-Underfull \vbox (badness 10000) detected at line 881
+Underfull \vbox (badness 10000) detected at line 885
  []
 
 
-Underfull \vbox (badness 10000) detected at line 881
+Underfull \vbox (badness 10000) detected at line 885
  []
 
 [21]
-Underfull \vbox (badness 10000) detected at line 881
+Underfull \vbox (badness 10000) detected at line 885
  []
 
 
-Underfull \vbox (badness 10000) detected at line 881
+Underfull \vbox (badness 10000) detected at line 885
  []
 
 [22]
-Underfull \vbox (badness 10000) detected at line 881
+Underfull \vbox (badness 10000) detected at line 885
  []
 
 
-Underfull \vbox (badness 10000) detected at line 881
+Underfull \vbox (badness 10000) detected at line 885
  []
 
 [23]
-Underfull \vbox (badness 10000) detected at line 881
+Underfull \vbox (badness 10000) detected at line 885
  []
 
 
-Underfull \vbox (badness 10000) detected at line 881
+Underfull \vbox (badness 10000) detected at line 885
  []
 
 [24]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 [25]
-Underfull \vbox (badness 10000) detected at line 967
+Underfull \vbox (badness 10000) detected at line 971
  []
 
 
-Underfull \vbox (badness 10000) detected at line 967
+Underfull \vbox (badness 10000) detected at line 971
  []
 
 [26]
@@ -1297,22 +1297,22 @@ Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=
 flt;!
 [32]
 LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/b/n' will be
-(Font)              scaled to size 10.18492pt on input line 1241.
+(Font)              scaled to size 10.18492pt on input line 1245.
 [33] [34
 
 ] [35] [36]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.52812pt on input line 1261.
+(Font)              scaled to size 7.52812pt on input line 1265.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 1261.
+(Font)              scaled to size 5.0pt on input line 1265.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.52881pt on input line 1261.
+(Font)              scaled to size 7.52881pt on input line 1265.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 1261.
+(Font)              scaled to size 5.00046pt on input line 1265.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.52731pt on input line 1261.
+(Font)              scaled to size 7.52731pt on input line 1265.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 1261.
+(Font)              scaled to size 4.99947pt on input line 1265.
 [37] [38
 
 ] [39] [40] [41] [42] [43
@@ -1321,13 +1321,13 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 
-Overfull \hbox (9.32794pt too wide) in paragraph at lines 1461--1462
+Overfull \hbox (9.32794pt too wide) in paragraph at lines 1465--1466
 []\TU/lmr/m/n/10.53937 To label an un-numbered heading, use: \TU/lmtt/m/n/10.53
 937 # Hello world {-#nice-label}
  []
 
 
-Underfull \hbox (badness 3364) in paragraph at lines 1464--1465
+Underfull \hbox (badness 3364) in paragraph at lines 1468--1469
 []\TU/lmr/m/n/10.53937 Next, reference the labeled heading anywhere in the text
  using
  []
@@ -1335,7 +1335,7 @@ Underfull \hbox (badness 3364) in paragraph at lines 1464--1465
 File: 90-bookdown_files/figure-latex/nice-fig-1.pdf Graphic file (type pdf)
 <use 90-bookdown_files/figure-latex/nice-fig-1.pdf>
 LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/m/n' will be
-(Font)              scaled to size 8.72992pt on input line 1493.
+(Font)              scaled to size 8.72992pt on input line 1497.
 [47] [48] [49] [50] (./ds4aj.bbl [51] [52
 
 ]) [53] (./ds4aj.aux)
@@ -1345,8 +1345,8 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  23837 strings out of 476179
- 470870 string characters out of 5809543
- 937399 words of memory out of 5000000
+ 470917 string characters out of 5809543
+ 937371 words of memory out of 5000000
  44168 multiletter control sequences out of 15000+600000
  479594 words of font info for 133 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
