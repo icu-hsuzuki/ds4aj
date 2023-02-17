@@ -1,9 +1,64 @@
 # (APPENDIX) APPENDIX {-}
 # 日本語の扱いについて {#japanese}
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE}
 library(tidyverse)
 library(showtext) 
 font_add_google('Noto Sans')
 showtext_auto()
 ```
+
+## 日本語・中国語・韓国語
+
+文字化けが、起こることが多く、対応が、一定せず、難しかったのですが、どうやら、現在は、どの場合も、次の設定で、解決しているようです。下の例を確認してください。
+
+```{r eval=FALSE}
+# showtext を、インストールしていない場合は、一回だけ、右上の三角をクリックして実行
+install.packages('showtext')
+```
+
+### パッケージをロード
+
+`library` によって、Package をロード（いつでも使えるように）します。
+
+```{r setup, echo=TRUE, message=FALSE}
+library(tidyverse)
+library(showtext) 
+font_add_google('Noto Sans')
+showtext_auto()
+```
+
+## Base R でタイトルに日本語
+
+```{r}
+plot(cars, main="散布図")
+```
+
+
+## 列名や、データに日本語
+
+
+```{r}
+df_iris <- iris
+colnames(df_iris) <- c("萼長","萼幅","葉長","葉幅","Species" )
+tab <- data.frame(Species = c("setosa", "versicolor", "virginica"), 
+                  "種別" = c("ヒオウギアヤメ", "ブルーフラッグ", "バージニカ"))
+df_iris <- df_iris %>% left_join(tab, by=c("Species" = "Species")) %>% select(-5)
+df_iris %>% slice(1:2)
+```
+
+## `kable` で表示
+
+```{r kableiris}
+knitr::kable(df_iris[1:6, ])
+```
+
+
+## `ggplot` でグラフを作成
+
+```{r echo=FALSE}
+ggplot(df_iris, aes(x = `葉長`, y = `葉幅`, col = `種別`)) +
+  geom_point() + labs(title = "散布図", x = "葉長", y = "葉幅")
+```
+
+

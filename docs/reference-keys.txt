@@ -1,7 +1,6 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
-pdfepub-版について
 introduction
 publicdata
 world-bank
@@ -59,6 +58,12 @@ worldbank
 intro2eda
 example1
 japanese
+日本語中国語韓国語
+パッケージをロード
+base-r-でタイトルに日本語
+列名やデータに日本語
+kable-で表示
+ggplot-でグラフを作成
 bookdown
 about
 usage

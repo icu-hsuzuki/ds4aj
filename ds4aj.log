@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.18)  17 FEB 2023 10:21
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.18)  17 FEB 2023 10:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1142,30 +1142,9 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 5.26912pt on input line 1.
 LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
 (Font)              scaled to size 8.65237pt on input line 7.
-[3])
-\tf@toc=\write4
-\openout4 = `ds4aj.toc'.
-
-LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
-(Font)              scaled to size 10.81546pt on input line 163.
-[4]
+[3]
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
 flt;!
-[5]
-Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
-flt;!
-Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
-flt;!
-Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
-flt;!
-[6]
-LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
-(Font)              scaled to size 15.86269pt on input line 221.
-[7
-
-] [8] [9] [10] [11
-
-] [12] [13] [14]
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
 flt;!
 
@@ -1202,9 +1181,35 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 (fontspec)             <->s*[0.9707181870057879]"STFangsong/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
+)
+\tf@toc=\write4
+\openout4 = `ds4aj.toc'.
+
+LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
+(Font)              scaled to size 10.81546pt on input line 163.
+[4]
+Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
+flt;!
+[5]
+Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
+flt;!
+Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
+flt;!
+Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
+flt;!
+[6]
+LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
+(Font)              scaled to size 15.86269pt on input line 222.
+[7
+
+] [8] [9] [10] [11
+
+] [12] [13] [14]
+Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
+flt;!
 [15]
 LaTeX Font Info:    Font shape `TU/STFangsong(0)/m/n' will be
-(Font)              scaled to size 10.23074pt on input line 493.
+(Font)              scaled to size 10.23074pt on input line 494.
 Missing character: There is no 、 (U+3001) in font [latinmodern-math.otf]/OT:scr
 ipt=math;language=dflt;!
 File: 21-r-on-rstudio_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (ty
@@ -1214,7 +1219,7 @@ pe pdf)
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
 flt;!
 
-Underfull \hbox (badness 4595) in paragraph at lines 654--655
+Underfull \hbox (badness 4595) in paragraph at lines 655--656
 []\TU/SongtiSCLight(0)/m/n/10.53937 実 行 す る に は、|  カ ー ソ ル の 場 所 で \TU/lmr/m/n/
 10.53937 Ctrl+Shift+Enter (Win) \TU/SongtiSCLight(0)/m/n/10.53937 ま た は
  []
@@ -1223,53 +1228,53 @@ Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=
 flt;!
 [19]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.53937> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 679.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 680.
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10.53937> not available
 
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 679.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 680.
 
 [20]
-Underfull \vbox (badness 10000) detected at line 898
+Underfull \vbox (badness 10000) detected at line 899
  []
 
 
-Underfull \vbox (badness 10000) detected at line 898
+Underfull \vbox (badness 10000) detected at line 899
  []
 
 [21]
-Underfull \vbox (badness 10000) detected at line 898
+Underfull \vbox (badness 10000) detected at line 899
  []
 
 
-Underfull \vbox (badness 10000) detected at line 898
+Underfull \vbox (badness 10000) detected at line 899
  []
 
 [22]
-Underfull \vbox (badness 10000) detected at line 898
+Underfull \vbox (badness 10000) detected at line 899
  []
 
 
-Underfull \vbox (badness 10000) detected at line 898
+Underfull \vbox (badness 10000) detected at line 899
  []
 
 [23]
-Underfull \vbox (badness 10000) detected at line 898
+Underfull \vbox (badness 10000) detected at line 899
  []
 
 
-Underfull \vbox (badness 10000) detected at line 898
+Underfull \vbox (badness 10000) detected at line 899
  []
 
 [24]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 [25]
-Underfull \vbox (badness 10000) detected at line 984
+Underfull \vbox (badness 10000) detected at line 985
  []
 
 
-Underfull \vbox (badness 10000) detected at line 984
+Underfull \vbox (badness 10000) detected at line 985
  []
 
 [26]
@@ -1290,56 +1295,71 @@ Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=
 flt;!
 [32]
 LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/b/n' will be
-(Font)              scaled to size 10.18492pt on input line 1258.
+(Font)              scaled to size 10.18492pt on input line 1259.
 [33] [34
 
 ] [35] [36] [37] [38
 
 ] [39] [40] [41] [42
 
-] [43] [44] [45]
+] [43] [44]
+
+LaTeX Font Warning: Font shape `TU/STFangsong(0)/m/it' undefined
+(Font)              using `TU/STFangsong(0)/m/n' instead on input line 1302.
+
+File: 81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type p
+df)
+<use 81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf>
+[45]
+File: 81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type p
+df)
+<use 81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf>
+[46] [47]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
-
-Overfull \hbox (9.32794pt too wide) in paragraph at lines 1382--1383
+[48]
+Overfull \hbox (9.32794pt too wide) in paragraph at lines 1469--1470
 []\TU/lmr/m/n/10.53937 To label an un-numbered heading, use: \TU/lmtt/m/n/10.53
 937 # Hello world {-#nice-label}
  []
 
 
-Underfull \hbox (badness 3364) in paragraph at lines 1385--1386
+Underfull \hbox (badness 3364) in paragraph at lines 1472--1473
 []\TU/lmr/m/n/10.53937 Next, reference the labeled heading anywhere in the text
  using
  []
 
-[46]
 File: 90-bookdown_files/figure-latex/nice-fig-1.pdf Graphic file (type pdf)
 <use 90-bookdown_files/figure-latex/nice-fig-1.pdf>
 LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/m/n' will be
-(Font)              scaled to size 8.72992pt on input line 1414.
-[47]
+(Font)              scaled to size 8.72992pt on input line 1501.
+[49]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.52812pt on input line 1468.
+(Font)              scaled to size 7.52812pt on input line 1555.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 1468.
+(Font)              scaled to size 5.0pt on input line 1555.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.52881pt on input line 1468.
+(Font)              scaled to size 7.52881pt on input line 1555.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 1468.
+(Font)              scaled to size 5.00046pt on input line 1555.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.52731pt on input line 1468.
+(Font)              scaled to size 7.52731pt on input line 1555.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 1468.
-[48] [49] (./ds4aj.bbl [50]) [51
+(Font)              scaled to size 4.99947pt on input line 1555.
+[50] [51] [52] (./ds4aj.bbl [53] [54
 
-] (./ds4aj.aux) ) 
+]) [55] (./ds4aj.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
 Here is how much of TeX's memory you used:
- 23834 strings out of 476179
- 471539 string characters out of 5809543
- 936992 words of memory out of 5000000
- 44165 multiletter control sequences out of 15000+600000
- 479594 words of font info for 133 fonts, out of 8000000 for 9000
+ 23890 strings out of 476179
+ 474483 string characters out of 5809543
+ 937325 words of memory out of 5000000
+ 44217 multiletter control sequences out of 15000+600000
+ 479602 words of font info for 134 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
  86i,10n,140p,1002b,927s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ds4aj.pdf (51 pages).
+Output written on ds4aj.pdf (55 pages).
