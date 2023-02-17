@@ -1,6 +1,7 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
+pdfepub-版について
 introduction
 publicdata
 world-bank
