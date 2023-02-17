@@ -188,7 +188,7 @@
 </ul>
 <p>エラーが表示されたら、もう一度、スペルを確認して、入力してみてください。</p>
 <p>次のような、結果が表示されると思います。簡単な説明をつけます。</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   speed dist</span></span>
 <span><span class="co">#&gt; 1     4    2</span></span>
@@ -198,14 +198,14 @@
 <span><span class="co">#&gt; 5     8   16</span></span>
 <span><span class="co">#&gt; 6     9   10</span></span></code></pre></div>
 <p><code>head(cars)</code> は、<code>cars</code> という、R に付属している、データの、最初（頭 head）の6行を、表示します。</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 'data.frame':    50 obs. of  2 variables:</span></span>
 <span><span class="co">#&gt;  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...</span></span>
 <span><span class="co">#&gt;  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</span></span></code></pre></div>
 <p><code>str(cars)</code> は、<code>cars</code> という、R に付属している、データの構造（structure）を表示します。<code>data.frame</code> とありますが、これは、矩形になったデータ（各列の長さがおなじ）の一番簡単なクラスの名前で、2変数、それぞれが、50 個の数値データ（numerical data） からなっていることがわかります。</p>
 <p>head(cars)<code>では、縦に表示されていたものが、横に表示されています。</code><span class="math inline">\(speed`、`\)</span>dist<code>とありますが、</code>cars<span class="math inline">\(speed`, `cars\)</span>dist<code>は、</code>cars` データの、それぞれの列を意味します。</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      speed           dist       </span></span>
 <span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
@@ -215,7 +215,7 @@
 <span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
 <span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
 <p><code>cars</code> データの概要（summary）が表示されます。各列（変数）について、最小値（Minimum）、小さい方から、4分の1を切り捨てたときの最小の値（1st Quadrant）、中央値（Median）、平均（Mean）、大きい方から、4分の1を切り捨てたときの最大の値（3rd Quadrant）、最大値（Maximum）が表示されます。</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="21-r-on-rstudio_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 </div>
@@ -334,7 +334,7 @@
 <h4>
 <span class="header-section-number">4.7.2.1</span> スクリプト1: basics.R<a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%881-basics.r"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#################</span></span>
 <span><span class="co">#</span></span>
 <span><span class="co"># basics.R</span></span>
@@ -558,7 +558,7 @@
 <h4>
 <span class="header-section-number">4.7.2.2</span> スクリプト2: coronavirus.T<a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%882-coronavirus.t"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># https://coronavirus.jhu.edu/map.html</span></span>
 <span><span class="co"># JHU Covid-19 global time series data</span></span>
 <span><span class="co"># See R package coronavirus at: https://github.com/RamiKrispin/coronavirus</span></span>
@@ -837,7 +837,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう - Data Science for All -</strong>" was written by John Doe. It was last built on 2023-02-16.</p>
+    <p>"<strong>データサイエンスをはじめましょう - Data Science for All -</strong>" was written by John Doe. It was last built on 2023-02-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

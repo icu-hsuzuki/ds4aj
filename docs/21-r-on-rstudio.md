@@ -136,7 +136,7 @@ summary(cars)
 plot(cars)
 ```
 
-<img src="21-r-on-rstudio_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+![](21-r-on-rstudio_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
 
 ### アサインメント、ヘルプ
 
