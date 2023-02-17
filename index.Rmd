@@ -16,7 +16,7 @@ csl: chicago-fullnote-bibliography.csl
 ---
 
 
-# この文書について {#about} {-}
+# この文書について  {-} 
 
 ```{r include=FALSE}
 library(tidyverse)
