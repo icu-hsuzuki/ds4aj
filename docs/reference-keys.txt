@@ -42,6 +42,9 @@ tips
 最初の演習-the-basics-r4ds-explore-i
 参考文献-references
 youtube-video---getstarted
+追記
+google-colab-で-r
+参考にしたもの
 rmarkdown
 reproducible-and-literate-programming
 目的問いなど

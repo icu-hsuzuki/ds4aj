@@ -594,7 +594,7 @@ Package によっては、Source から Compile するかと聞いてくる場�
 
 ## クラウド - Posit Cloud
 
-RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。
+RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。2022年11月に、会社名が、RStuio から Posit に変更になったこともあり、Posit Cloud となっていますが、また、RStudio Cloud と表示されている箇所もありますので、併記しておきます。
 
 ### クラウドサービス　How to Start Posit Cloud
 
@@ -638,3 +638,31 @@ Posit Primers https://posit.cloud/learn/primers
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9uQmMZoG74g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 * ファイル：https://ds-sl.github.io/intro2r/getstarted.html
+
+## 追記
+
+R Studio または、RStudio Cloud（Posit Cloud） 以外で、R を使われる方のために、少しだけ書いておきます。個人的には、[Google colab](https://colab.research.google.com) と、[Cocalc](https://cocalc.com) を利用しています。
+
+Google colab は、Google アカウントの作成、Cocalc は、Cocalc アカウントの作成、または、Google アカウントか、GitHub アカウントのリンクが必要です。
+
+Google アカウントをお持ちの方は多いと思うので、Google colab について、最低限のことのみ、書いておきます。
+
+### Google colab で R
+
+基本的に、`python` 開発環境として構築されているものですが、R でも使うことができます。
+
+1. Google アカウントにログインします。
+2. [ここ](https://colab.research.google.com/#create=true&language=r) をクリックして起動します。
+3. 一番上に、ノートブック名が `Untitled0.ipynb` などと表示されますから、適当に変更します。
+4. ＋コード、＋テキスト　とあり、最初のコードの１行が表示されていますから、たとえば、`head(cars)` と入れて、左の三角を押します。すると、最初だけ少し時間がかかりますが、その下に結果がでます。
+5. 次に、上や、最後の行の直下に、表示される、＋コード、＋テキスト をクリックして、あたらしい、コード・チャンクか、テキスト・チャンクを書き入れていきます。
+6. `tidyverse` などは、すでにインストールされていますが、使いたいときは、`library(tidyverse)` とし、インストールされていないときは、`install.packages("WDI")` などとします。
+
+ノートを、保存、印刷、ダウンロードなど可能です。
+
+フォルダーを作成して、外部ファイルを読み込んだり、書き出したりすることも可能です。
+
+#### 参考にしたもの
+
+* [How to use R in Google Colab:](https://towardsdatascience.com/how-to-use-r-in-google-colab-b6e02d736497)
+

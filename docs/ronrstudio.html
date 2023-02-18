@@ -705,7 +705,7 @@
 <h2>
 <span class="header-section-number">3.9</span> クラウド - Posit Cloud<a class="anchor" aria-label="anchor" href="#%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89---posit-cloud"><i class="fas fa-link"></i></a>
 </h2>
-<p>RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。</p>
+<p>RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。2022年11月に、会社名が、RStuio から Posit に変更になったこともあり、Posit Cloud となっていますが、また、RStudio Cloud と表示されている箇所もありますので、併記しておきます。</p>
 <div id="クラウドサービス-how-to-start-posit-cloud" class="section level3" number="3.9.1">
 <h3>
 <span class="header-section-number">3.9.1</span> クラウドサービス　How to Start Posit Cloud<a class="anchor" aria-label="anchor" href="#%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9-how-to-start-posit-cloud"><i class="fas fa-link"></i></a>
@@ -770,6 +770,40 @@
 </li>
 </ul>
 </div>
+<div id="追記" class="section level2" number="3.13">
+<h2>
+<span class="header-section-number">3.13</span> 追記<a class="anchor" aria-label="anchor" href="#%E8%BF%BD%E8%A8%98"><i class="fas fa-link"></i></a>
+</h2>
+<p>R Studio または、RStudio Cloud（Posit Cloud） 以外で、R を使われる方のために、少しだけ書いておきます。個人的には、<a href="https://colab.research.google.com">Google colab</a> と、<a href="https://cocalc.com">Cocalc</a> を利用しています。</p>
+<p>Google colab は、Google アカウントの作成、Cocalc は、Cocalc アカウントの作成、または、Google アカウントか、GitHub アカウントのリンクが必要です。</p>
+<p>Google アカウントをお持ちの方は多いと思うので、Google colab について、最低限のことのみ、書いておきます。</p>
+<div id="google-colab-で-r" class="section level3" number="3.13.1">
+<h3>
+<span class="header-section-number">3.13.1</span> Google colab で R<a class="anchor" aria-label="anchor" href="#google-colab-%E3%81%A7-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>基本的に、<code>python</code> 開発環境として構築されているものですが、R でも使うことができます。</p>
+<ol style="list-style-type: decimal">
+<li>Google アカウントにログインします。</li>
+<li>
+<a href="https://colab.research.google.com/#create=true&amp;language=r">ここ</a> をクリックして起動します。</li>
+<li>一番上に、ノートブック名が <code>Untitled0.ipynb</code> などと表示されますから、適当に変更します。</li>
+<li>＋コード、＋テキスト　とあり、最初のコードの１行が表示されていますから、たとえば、<code>head(cars)</code> と入れて、左の三角を押します。すると、最初だけ少し時間がかかりますが、その下に結果がでます。</li>
+<li>次に、上や、最後の行の直下に、表示される、＋コード、＋テキスト をクリックして、あたらしい、コード・チャンクか、テキスト・チャンクを書き入れていきます。</li>
+<li>
+<code>tidyverse</code> などは、すでにインストールされていますが、使いたいときは、<code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> とし、インストールされていないときは、<code>install.packages("WDI")</code> などとします。</li>
+</ol>
+<p>ノートを、保存、印刷、ダウンロードなど可能です。</p>
+<p>フォルダーを作成して、外部ファイルを読み込んだり、書き出したりすることも可能です。</p>
+<div id="参考にしたもの" class="section level4" number="3.13.1.1">
+<h4>
+<span class="header-section-number">3.13.1.1</span> 参考にしたもの<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E3%82%82%E3%81%AE"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li><a href="https://towardsdatascience.com/how-to-use-r-in-google-colab-b6e02d736497">How to use R in Google Colab:</a></li>
+</ul>
+</div>
+</div>
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="publicdata.html"><span class="header-section-number">2</span> Public Data</a></div>
@@ -820,6 +854,9 @@
 </li>
 <li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-references"><span class="header-section-number">3.11</span> 参考文献 References</a></li>
 <li><a class="nav-link" href="#youtube-video---getstarted"><span class="header-section-number">3.12</span> YouTube Video - getstarted</a></li>
+<li>
+<a class="nav-link" href="#%E8%BF%BD%E8%A8%98"><span class="header-section-number">3.13</span> 追記</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#google-colab-%E3%81%A7-r"><span class="header-section-number">3.13.1</span> Google colab で R</a></li></ul>
+</li>
 </ul>
 
       <div class="book-extra">

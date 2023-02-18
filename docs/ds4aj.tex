@@ -193,7 +193,7 @@
 
 しかし、基本的に、コード（プログラムの記述）には、日本語を使わないで書いていく予定です。とくに、初心者にとっては、日本語の扱いは、負担になることが多いからです。最近は、コードの中で日本語を使用しても、ほとんど、問題は起きないように思います。そうであっても、世界の人の共通言語として、プログラム言語を学んでいくときには、日本語を使わないことは意義があると思います。
 
-少し慣れてきて、日本語のデータなどを扱うときには、コードにも日本語を使う必要ができていますから、日本語の利用についても、追って説明していきます。\ref{japanese} を参照してください。
+少し慣れてきて、日本語のデータなどを扱うときには、コードにも日本語を使う必要ができていますから、日本語の利用についても、追って説明していきます。APPENDIX \ref{japanese} を参照してください。
 
 最初は、みなさんも、変数（variable）や、オブジェクト（object）に名前をつけるときは、半角英数を使い、日本語は、使わないようにすることをお勧めします。
 
@@ -1065,7 +1065,7 @@ Package によっては、Source から Compile するかと聞いてくる場�
 \hypertarget{ux30afux30e9ux30a6ux30c9---posit-cloud}{%
 \subsection{クラウド - Posit Cloud}\label{ux30afux30e9ux30a6ux30c9---posit-cloud}}
 
-RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。
+RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。2022年11月に、会社名が、RStuio から Posit に変更になったこともあり、Posit Cloud となっていますが、また、RStudio Cloud と表示されている箇所もありますので、併記しておきます。
 
 \hypertarget{ux30afux30e9ux30a6ux30c9ux30b5ux30fcux30d3ux30b9-how-to-start-posit-cloud}{%
 \subsubsection{クラウドサービス　How to Start Posit Cloud}\label{ux30afux30e9ux30a6ux30c9ux30b5ux30fcux30d3ux30b9-how-to-start-posit-cloud}}
@@ -1143,6 +1143,50 @@ Posit Primers \url{https://posit.cloud/learn/primers}
 \tightlist
 \item
   ファイル：\url{https://ds-sl.github.io/intro2r/getstarted.html}
+\end{itemize}
+
+\hypertarget{ux8ffdux8a18}{%
+\subsection{追記}\label{ux8ffdux8a18}}
+
+R Studio または、RStudio Cloud（Posit Cloud） 以外で、R を使われる方のために、少しだけ書いておきます。個人的には、\href{https://colab.research.google.com}{Google colab} と、\href{https://cocalc.com}{Cocalc} を利用しています。
+
+Google colab は、Google アカウントの作成、Cocalc は、Cocalc アカウントの作成、または、Google アカウントか、GitHub アカウントのリンクが必要です。
+
+Google アカウントをお持ちの方は多いと思うので、Google colab について、最低限のことのみ、書いておきます。
+
+\hypertarget{google-colab-ux3067-r}{%
+\subsubsection{Google colab で R}\label{google-colab-ux3067-r}}
+
+基本的に、\texttt{python} 開発環境として構築されているものですが、R でも使うことができます。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Google アカウントにログインします。
+\item
+  \href{https://colab.research.google.com/\#create=true\&language=r}{ここ} をクリックして起動します。
+\item
+  一番上に、ノートブック名が \texttt{Untitled0.ipynb} などと表示されますから、適当に変更します。
+\item
+  ＋コード、＋テキスト　とあり、最初のコードの１行が表示されていますから、たとえば、\texttt{head(cars)} と入れて、左の三角を押します。すると、最初だけ少し時間がかかりますが、その下に結果がでます。
+\item
+  次に、上や、最後の行の直下に、表示される、＋コード、＋テキスト をクリックして、あたらしい、コード・チャンクか、テキスト・チャンクを書き入れていきます。
+\item
+  \texttt{tidyverse} などは、すでにインストールされていますが、使いたいときは、\texttt{library(tidyverse)} とし、インストールされていないときは、\texttt{install.packages("WDI")} などとします。
+\end{enumerate}
+
+ノートを、保存、印刷、ダウンロードなど可能です。
+
+フォルダーを作成して、外部ファイルを読み込んだり、書き出したりすることも可能です。
+
+\hypertarget{ux53c2ux8003ux306bux3057ux305fux3082ux306e}{%
+\paragraph{参考にしたもの}\label{ux53c2ux8003ux306bux3057ux305fux3082ux306e}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://towardsdatascience.com/how-to-use-r-in-google-colab-b6e02d736497}{How to use R in Google Colab:}
 \end{itemize}
 
 \hypertarget{rmarkdown}{%
