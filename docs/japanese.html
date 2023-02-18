@@ -221,6 +221,109 @@
 <li><a href="https://ds-sl.github.io/intro2r/Rmarkdown-J.pdf">PDF</a></li>
 </ul>
 </div>
+<div id="参考日本語の表示について" class="section level2" number="8.7">
+<h2>
+<span class="header-section-number">A.7</span> 参考：日本語の表示について<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%81%AE%E8%A1%A8%E7%A4%BA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>日本語が適切に表示されない！？</p>
+</blockquote>
+<p>簡単ではなく、未解決の部分が何かなどを含め、わたしも十分理解できているか不明であるが、理解できていると思われる範囲で、備忘録のように記す。</p>
+<p>R を使うという場合に限っても、R Studio IDE を使う場合、RStudio Cloud を使う場合、Google colab を使う場合、他のプラットフォームで使う場合で違ってくると思われる。一応、上にあげた、三種類のプラットフォームで確かめられるものについて書いていく。上に書いた以外に、R Studio IDE を、Windows 上で使う場合と、Mac 上で使う場合（Mac のシステムは Unix 系であるが、さまざまな Linux ）でも、状況が異なる。そこで、場合分けをして書いていくほうが安全であるが、それは、極力避け、どれにでも適用可能な方法を模索しながら書いていこうと思っている。個人的に、日常的に分断を避ける努力をすることが大切だとおもっていることも背景にある。さらに、ソフトウェア開発者は、むろん、そのような差異を理解して、どの環境でも、可能なように設計することを心がけていると思われるし、そのようなものが、R Project の正規のパッケージとして採用されていくべきだとも考えているので、多少、理想も入っているが、これを基本として書いていこうと思う。十分なチェックができていないものもあるので、不具合などは、ぜひ、お知らせ願いたい。この文章も少しずつ、改善していければと思う。</p>
+<p>通常、日本語、中国語、韓国語などが適切に表示できない場合は、文字のエンコーディング（Encoding: どのような情報として記録されているか）と、フォントの問題、さらに、システムがこれらをどう処理しているかの問題があると思われる。しかし、R の利用者として考えると、文字化けが起きたり、適切に文字が表示されないのは、以下の三つに分けられるように思われる。</p>
+<ol style="list-style-type: decimal">
+<li>データファイルなどを読み込んだときに適切に表示されない</li>
+<li>図の中のタイトルなどが、適切に表示されない</li>
+<li>R Markdown の出力において、適切に表示されない</li>
+</ol>
+<div id="データファイルの読み込み" class="section level3" number="8.7.1">
+<h3>
+<span class="header-section-number">A.7.1</span> データファイルの読み込み<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>tidyverse に含まれる readr には、guess_encoding が含まれており、一般的には、たとえば、
+<ul>
+<li>read_csv(“./data/file_name.csv”) とすると、一番可能性の高いエンコーディングで読み込まれる。</li>
+</ul>
+</li>
+<li>使い方：guess_encoding(file, n_max = 10000, threshold = 0.2) とあり、10000行で推測されたエンコーディング、または、確率を計算することを Default にしている。Help によると、すべての行をチェックする場合は、n_max = -1 とすることが書かれている。</li>
+<li>これで問題がない場合が多い。他の、readr 関数も同様である。</li>
+<li>なお、read_csv などにも、guess_max = min(1000, n_max) も含まれるが、これは、column type を決めるためのものである。</li>
+<li>read.csv() など、base R では、fileEncoding = ““, encoding =”unknown” がオプションに含まれていたので、指定して読み込むことが通常であった。</li>
+</ul>
+</div>
+<div id="図の中のテキスト" class="section level3" number="8.7.2">
+<h3>
+<span class="header-section-number">A.7.2</span> 図の中のテキスト<a class="anchor" aria-label="anchor" href="#%E5%9B%B3%E3%81%AE%E4%B8%AD%E3%81%AE%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>基本的には、図の表示の前にlibrary(showtext); font_add_google(‘Noto Sans’); showtext_auto() となっていれば、これ以降の図は、Google Fonts ‘Noto Sans’ が使われ、表示されるはずである。</li>
+<li>二種類以上のフォントを使い分けたいときは、名前をつけて、それを family = name で指定する。
+<ul>
+<li>showtext: Using Fonts More Easily in R Graphs 参照。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="r-markdown-の出力" class="section level3" number="8.7.3">
+<h3>
+<span class="header-section-number">A.7.3</span> R Markdown の出力<a class="anchor" aria-label="anchor" href="#r-markdown-%E3%81%AE%E5%87%BA%E5%8A%9B"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>PDF 作成における問題が最後まで残っていたが、最近は、showtext Package で解決しているようである。設定については、図の中のテキストの場合と同じ。</li>
+</ul>
+</div>
+<div id="参考としたもの" class="section level3" number="8.7.4">
+<h3>
+<span class="header-section-number">A.7.4</span> 参考としたもの<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E3%81%A8%E3%81%97%E3%81%9F%E3%82%82%E3%81%AE"><i class="fas fa-link"></i></a>
+</h3>
+<div id="showtext-using-fonts-more-easily-in-r-graphs" class="section level4" number="8.7.4.1">
+<h4>
+<span class="header-section-number">A.7.4.1</span> showtext: Using Fonts More Easily in R Graphs<a class="anchor" aria-label="anchor" href="#showtext-using-fonts-more-easily-in-r-graphs"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>
+<a href="https://CRAN.R-project.org/package=showtext" class="uri">https://CRAN.R-project.org/package=showtext</a>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/showtext/readme/README.html" class="uri">https://cran.r-project.org/web/packages/showtext/readme/README.html</a></li>
+<li>showtext: Using Fonts More Easily in R Graphs:
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/showtext/vignettes/introduction.html" class="uri">https://cran.r-project.org/web/packages/showtext/vignettes/introduction.html</a></li>
+<li><a href="https://fonts.google.com" class="uri">https://fonts.google.com</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="sysfonts-loading-fonts-into-r" class="section level4" number="8.7.4.2">
+<h4>
+<span class="header-section-number">A.7.4.2</span> sysfonts: Loading Fonts into R<a class="anchor" aria-label="anchor" href="#sysfonts-loading-fonts-into-r"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>
+<a href="https://CRAN.R-project.org/package=sysfonts" class="uri">https://CRAN.R-project.org/package=sysfonts</a>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/sysfonts/sysfonts.pdf" class="uri">https://cran.r-project.org/web/packages/sysfonts/sysfonts.pdf</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="foods4all-examples-of-graphs" class="section level4" number="8.7.4.3">
+<h4>
+<span class="header-section-number">A.7.4.3</span> foods4all: Examples of Graphs<a class="anchor" aria-label="anchor" href="#foods4all-examples-of-graphs"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>
+<a href="https://foods4all.github.io/examples/examples_of_graphs.html" class="uri">https://foods4all.github.io/examples/examples_of_graphs.html</a>
+<ul>
+<li>77.2 Japanese Environments 日本語環境（昔の記事：Last Updated: 2020-04-22）</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="example1.html"><span class="header-section-number">7</span> Example 1</a></div>
@@ -237,6 +340,14 @@
 <li><a class="nav-link" href="#kable-%E3%81%A7%E8%A1%A8%E7%A4%BA"><span class="header-section-number">A.4</span> kable で表示</a></li>
 <li><a class="nav-link" href="#ggplot-%E3%81%A7%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><span class="header-section-number">A.5</span> ggplot でグラフを作成</a></li>
 <li><a class="nav-link" href="#%E5%82%99%E8%80%83-1"><span class="header-section-number">A.6</span> 備考：</a></li>
+<li>
+<a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%81%AE%E8%A1%A8%E7%A4%BA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">A.7</span> 参考：日本語の表示について</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF"><span class="header-section-number">A.7.1</span> データファイルの読み込み</a></li>
+<li><a class="nav-link" href="#%E5%9B%B3%E3%81%AE%E4%B8%AD%E3%81%AE%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88"><span class="header-section-number">A.7.2</span> 図の中のテキスト</a></li>
+<li><a class="nav-link" href="#r-markdown-%E3%81%AE%E5%87%BA%E5%8A%9B"><span class="header-section-number">A.7.3</span> R Markdown の出力</a></li>
+<li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E3%81%A8%E3%81%97%E3%81%9F%E3%82%82%E3%81%AE"><span class="header-section-number">A.7.4</span> 参考としたもの</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">
@@ -254,7 +365,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう - Data Science for All -</strong>" was written by John Doe. It was last built on 2023-02-17.</p>
+    <p>"<strong>データサイエンスをはじめましょう - Data Science for All -</strong>" was written by John Doe. It was last built on 2023-02-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

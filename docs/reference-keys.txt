@@ -65,6 +65,14 @@ base-r-でタイトルに日本語
 kable-で表示
 ggplot-でグラフを作成
 備考-1
+参考日本語の表示について
+データファイルの読み込み
+図の中のテキスト
+r-markdown-の出力
+参考としたもの
+showtext-using-fonts-more-easily-in-r-graphs
+sysfonts-loading-fonts-into-r
+foods4all-examples-of-graphs
 bookdown
 about
 usage

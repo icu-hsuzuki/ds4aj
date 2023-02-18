@@ -89,3 +89,61 @@ ggplot(df_iris, aes(x = `葉長`, y = `葉幅`, col = `種別`)) +
 * [R Notebook](https://ds-sl.github.io/intro2r/Rmarkdown-J.nb.html)
   - 右上の Code ボタンから、Rmd ファイルも取得できます。
 * [PDF](https://ds-sl.github.io/intro2r/Rmarkdown-J.pdf)
+
+## 参考：日本語の表示について
+
+> 日本語が適切に表示されない！？
+
+簡単ではなく、未解決の部分が何かなどを含め、わたしも十分理解できているか不明であるが、理解できていると思われる範囲で、備忘録のように記す。
+
+R を使うという場合に限っても、R Studio IDE を使う場合、RStudio Cloud を使う場合、Google colab を使う場合、他のプラットフォームで使う場合で違ってくると思われる。一応、上にあげた、三種類のプラットフォームで確かめられるものについて書いていく。上に書いた以外に、R Studio IDE を、Windows 上で使う場合と、Mac 上で使う場合（Mac のシステムは Unix 系であるが、さまざまな Linux ）でも、状況が異なる。そこで、場合分けをして書いていくほうが安全であるが、それは、極力避け、どれにでも適用可能な方法を模索しながら書いていこうと思っている。個人的に、日常的に分断を避ける努力をすることが大切だとおもっていることも背景にある。さらに、ソフトウェア開発者は、むろん、そのような差異を理解して、どの環境でも、可能なように設計することを心がけていると思われるし、そのようなものが、R Project の正規のパッケージとして採用されていくべきだとも考えているので、多少、理想も入っているが、これを基本として書いていこうと思う。十分なチェックができていないものもあるので、不具合などは、ぜひ、お知らせ願いたい。この文章も少しずつ、改善していければと思う。
+
+通常、日本語、中国語、韓国語などが適切に表示できない場合は、文字のエンコーディング（Encoding: どのような情報として記録されているか）と、フォントの問題、さらに、システムがこれらをどう処理しているかの問題があると思われる。しかし、R の利用者として考えると、文字化けが起きたり、適切に文字が表示されないのは、以下の三つに分けられるように思われる。
+
+1. データファイルなどを読み込んだときに適切に表示されない
+2. 図の中のタイトルなどが、適切に表示されない
+3. R Markdown の出力において、適切に表示されない
+
+
+### データファイルの読み込み
+
+
+- tidyverse に含まれる readr には、guess_encoding が含まれており、一般的には、たとえば、
+	- read_csv("./data/file_name.csv")  とすると、一番可能性の高いエンコーディングで読み込まれる。
+- 使い方：guess_encoding(file, n_max = 10000, threshold = 0.2) とあり、10000行で推測されたエンコーディング、または、確率を計算することを Default にしている。Help によると、すべての行をチェックする場合は、n_max =  -1 とすることが書かれている。
+- これで問題がない場合が多い。他の、readr 関数も同様である。
+- なお、read_csv などにも、guess_max = min(1000, n_max) も含まれるが、これは、column type を決めるためのものである。
+- read.csv() など、base R では、fileEncoding = "", encoding = "unknown" がオプションに含まれていたので、指定して読み込むことが通常であった。
+
+
+### 図の中のテキスト
+
+- 基本的には、図の表示の前にlibrary(showtext); font_add_google('Noto Sans'); showtext_auto() となっていれば、これ以降の図は、Google Fonts 'Noto Sans' が使われ、表示されるはずである。
+- 二種類以上のフォントを使い分けたいときは、名前をつけて、それを family = name で指定する。
+	- showtext: Using Fonts More Easily in R Graphs 参照。
+
+### R Markdown の出力
+
+- PDF 作成における問題が最後まで残っていたが、最近は、showtext Package で解決しているようである。設定については、図の中のテキストの場合と同じ。
+
+
+### 参考としたもの
+
+#### showtext: Using Fonts More Easily in R Graphs
+
+- https://CRAN.R-project.org/package=showtext
+	- https://cran.r-project.org/web/packages/showtext/readme/README.html
+	- showtext: Using Fonts More Easily in R Graphs: 
+		- https://cran.r-project.org/web/packages/showtext/vignettes/introduction.html
+		- https://fonts.google.com
+
+#### sysfonts: Loading Fonts into R
+
+- https://CRAN.R-project.org/package=sysfonts
+	- https://cran.r-project.org/web/packages/sysfonts/sysfonts.pdf
+
+
+#### foods4all: Examples of Graphs
+
+- https://foods4all.github.io/examples/examples_of_graphs.html
+	- 77.2 Japanese Environments 日本語環境（昔の記事：Last Updated: 2020-04-22）
