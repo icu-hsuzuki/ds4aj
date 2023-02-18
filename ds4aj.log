@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.18)  18 FEB 2023 11:26
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.18)  18 FEB 2023 22:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -681,7 +681,7 @@ Package: amsthm 2020/05/29 v2.20.6
 \c@example=\count347
 \c@exercise=\count348
 \c@hypothesis=\count349
-(./ds4aj.aux)
+No file ds4aj.aux.
 \openout1 = `ds4aj.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 155.
@@ -1036,6 +1036,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 155.
 LaTeX Info: Redefining \pageref on input line 155.
 LaTeX Info: Redefining \nameref on input line 155.
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
 LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/m/n' will be
 (Font)              scaled to size 17.45987pt on input line 157.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
@@ -1121,30 +1124,51 @@ LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
 ]
 LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
 (Font)              scaled to size 18.74681pt on input line 160.
-(./ds4aj.toc
-LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/m/n' will be
-(Font)              scaled to size 10.18492pt on input line 1.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.37756pt on input line 1.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.26968pt on input line 1.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.54033pt on input line 1.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.37823pt on input line 1.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.27016pt on input line 1.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.53824pt on input line 1.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.37677pt on input line 1.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.26912pt on input line 1.
+\tf@toc=\write4
+\openout4 = `ds4aj.toc'.
+
 LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
-(Font)              scaled to size 8.65237pt on input line 7.
-[3]
+(Font)              scaled to size 10.81546pt on input line 163.
+LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/m/n' will be
+(Font)              scaled to size 10.18492pt on input line 166.
+LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
+(Font)              scaled to size 8.65237pt on input line 173.
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
 flt;!
+[3]
+
+LaTeX Warning: Reference `japanese' on page 4 undefined on input line 196.
+
+Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
+flt;!
+Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
+flt;!
+Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
+flt;!
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.37756pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.26968pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.54033pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.37823pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.27016pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.53824pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.37677pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.26912pt on input line 219.
+[4] [5] [6
+
+]
+LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
+(Font)              scaled to size 15.86269pt on input line 222.
+[7] [8] [9] [10] [11
+
+] [12] [13] [14]
 Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
 flt;!
 
@@ -1181,32 +1205,6 @@ Package fontspec Info: Font family 'STFangsong(0)' created for font
 (fontspec)             <->s*[0.9707181870057879]"STFangsong/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
-)
-\tf@toc=\write4
-\openout4 = `ds4aj.toc'.
-
-LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
-(Font)              scaled to size 10.81546pt on input line 163.
-[4]
-Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
-flt;!
-[5]
-Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
-flt;!
-Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
-flt;!
-Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
-flt;!
-[6]
-LaTeX Font Info:    Font shape `TU/PingFangSC(0)/m/n' will be
-(Font)              scaled to size 15.86269pt on input line 222.
-[7
-
-] [8] [9] [10] [11
-
-] [12] [13] [14]
-Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
-flt;!
 [15]
 LaTeX Font Info:    Font shape `TU/STFangsong(0)/m/n' will be
 (Font)              scaled to size 10.23074pt on input line 494.
@@ -1317,75 +1315,70 @@ LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/b/n' will be
 (Font)              scaled to size 10.18492pt on input line 1303.
 [34] [35
 
-] [36] [37] [38
+] [36]
+Overfull \hbox (39.56927pt too wide) in paragraph at lines 1379--1379
+[]\TU/lmtt/m/n/10.53937 #> i Use []spec()[] to retrieve the full column specifi
+cation for this data.[] 
+ []
 
-] [39] [40] [41] [42
 
-] [43] [44]
+Overfull \hbox (94.90097pt too wide) in paragraph at lines 1379--1379
+[]\TU/lmtt/m/n/10.53937 #> i Specify the column types or set []show_col_types =
+ FALSE[] to quiet this message.[] 
+ []
+
+[37]
+Overfull \hbox (39.56927pt too wide) in paragraph at lines 1400--1400
+[]\TU/lmtt/m/n/10.53937 #> i Use []spec()[] to retrieve the full column specifi
+cation for this data.[] 
+ []
+
+
+Overfull \hbox (94.90097pt too wide) in paragraph at lines 1400--1400
+[]\TU/lmtt/m/n/10.53937 #> i Specify the column types or set []show_col_types =
+ FALSE[] to quiet this message.[] 
+ []
+
+File: 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type 
+pdf)
+<use 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf>
+[38]
+Overfull \hbox (39.56927pt too wide) in paragraph at lines 1425--1425
+[]\TU/lmtt/m/n/10.53937 #> i Use []spec()[] to retrieve the full column specifi
+cation for this data.[] 
+ []
+
+
+Overfull \hbox (94.90097pt too wide) in paragraph at lines 1425--1425
+[]\TU/lmtt/m/n/10.53937 #> i Specify the column types or set []show_col_types =
+ FALSE[] to quiet this message.[] 
+ []
+
+File: 31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type
+ pdf)
+<use 31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf>
+[39] [40] [41]
+Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
+x-text;!
+Missing character: There is no ・ (U+30FB) in font Songti SC Light/OT:language=d
+flt;!
+[42]
 
 LaTeX Font Warning: Font shape `TU/STFangsong(0)/m/it' undefined
-(Font)              using `TU/STFangsong(0)/m/n' instead on input line 1346.
+(Font)              using `TU/STFangsong(0)/m/n' instead on input line 2395.
 
-File: 81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type p
-df)
-<use 81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf>
-[45]
-File: 81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type p
-df)
-<use 81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf>
-[46] [47] [48]
-Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
-x-text;!
-Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
-x-text;!
-Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
-x-text;!
-[49] [50]
-Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
-x-text;!
-
-Overfull \hbox (9.32794pt too wide) in paragraph at lines 1671--1672
-[]\TU/lmr/m/n/10.53937 To label an un-numbered heading, use: \TU/lmtt/m/n/10.53
-937 # Hello world {-#nice-label}
- []
-
-
-Underfull \hbox (badness 3364) in paragraph at lines 1674--1675
-[]\TU/lmr/m/n/10.53937 Next, reference the labeled heading anywhere in the text
- using
- []
-
-File: 90-bookdown_files/figure-latex/nice-fig-1.pdf Graphic file (type pdf)
-<use 90-bookdown_files/figure-latex/nice-fig-1.pdf>
-LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/m/n' will be
-(Font)              scaled to size 8.72992pt on input line 1703.
-[51] [52]
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.52812pt on input line 1757.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 1757.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.52881pt on input line 1757.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 1757.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.52731pt on input line 1757.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 1757.
-[53] [54] (./ds4aj.bbl [55] [56
-
-]) [57] (./ds4aj.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
- ) 
+! Dimension too large.
+\fb@put@frame ...p \ifdim \dimen@ >\ht \@tempboxa 
+                                                  \fb@putboxa #1\fb@afterfra...
+l.2646 \end{Shaded}
+                    
 Here is how much of TeX's memory you used:
- 23936 strings out of 476179
- 477282 string characters out of 5809543
- 938027 words of memory out of 5000000
- 44263 multiletter control sequences out of 15000+600000
- 479602 words of font info for 134 fonts, out of 8000000 for 9000
+ 23695 strings out of 476179
+ 469615 string characters out of 5809543
+ 1334969 words of memory out of 5000000
+ 44049 multiletter control sequences out of 15000+600000
+ 477616 words of font info for 116 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
- 86i,10n,140p,1002b,558s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,10n,140p,1002b,920s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ds4aj.pdf (57 pages).
+Output written on ds4aj.pdf (42 pages).

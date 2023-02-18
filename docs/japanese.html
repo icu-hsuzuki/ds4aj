@@ -98,7 +98,7 @@
 <span class="header-section-number">A.1</span> 日本語・中国語・韓国語<a class="anchor" aria-label="anchor" href="#%E6%97%A5%E6%9C%AC%E8%AA%9E%E4%B8%AD%E5%9B%BD%E8%AA%9E%E9%9F%93%E5%9B%BD%E8%AA%9E"><i class="fas fa-link"></i></a>
 </h2>
 <p>文字化けが、起こることが多く、対応が、一定せず、難しかったのですが、どうやら、現在は、どの場合も、次の設定で、解決しているようです。下の例を確認してください。</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># showtext を、インストールしていない場合は、一回だけ、右上の三角をクリックして実行</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'showtext'</span><span class="op">)</span></span></code></pre></div>
 <div id="パッケージをロード" class="section level3" number="8.1.1">
@@ -106,7 +106,7 @@
 <span class="header-section-number">A.1.1</span> パッケージをロード<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E3%83%AD%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>library</code> によって、Package をロード（いつでも使えるように）します。</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op">(</span><span class="st">'Noto Sans'</span><span class="op">)</span></span>
@@ -117,7 +117,7 @@
 <h2>
 <span class="header-section-number">A.2</span> Base R でタイトルに日本語<a class="anchor" aria-label="anchor" href="#base-r-%E3%81%A7%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%81%AB%E6%97%A5%E6%9C%AC%E8%AA%9E"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span>, main<span class="op">=</span><span class="st">"散布図"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="81-japanese_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
 </div>
@@ -125,7 +125,7 @@
 <h2>
 <span class="header-section-number">A.3</span> 列名や、データに日本語<a class="anchor" aria-label="anchor" href="#%E5%88%97%E5%90%8D%E3%82%84%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E6%97%A5%E6%9C%AC%E8%AA%9E"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">&lt;-</span> <span class="va">iris</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"萼長"</span>,<span class="st">"萼幅"</span>,<span class="st">"葉長"</span>,<span class="st">"葉幅"</span>,<span class="st">"Species"</span> <span class="op">)</span></span>
 <span><span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"virginica"</span><span class="op">)</span>, </span>
@@ -140,7 +140,7 @@
 <h2>
 <span class="header-section-number">A.4</span> <code>kable</code> で表示<a class="anchor" aria-label="anchor" href="#kable-%E3%81%A7%E8%A1%A8%E7%A4%BA"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -200,7 +200,7 @@
 <h2>
 <span class="header-section-number">A.5</span> <code>ggplot</code> でグラフを作成<a class="anchor" aria-label="anchor" href="#ggplot-%E3%81%A7%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">`葉長`</span>, y <span class="op">=</span> <span class="va">`葉幅`</span>, col <span class="op">=</span> <span class="va">`種別`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"散布図"</span>, x <span class="op">=</span> <span class="st">"葉長"</span>, y <span class="op">=</span> <span class="st">"葉幅"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="81-japanese_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>

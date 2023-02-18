@@ -1,10 +1,530 @@
 # (PART) PART III INSTITUTIONAL DATA {-}
 # World Bank {#worldbank}
 
-```{r include=FALSE}
-library(tidyverse)
+```{r include=FALSE, eval=FALSE}
+# library(tidyverse)
 library(showtext) 
 font_add_google('Noto Sans')
 showtext_auto()
 ```
+
+## World Development Indicator (WDI)
+
+パッケージ と `tidyverse` と `WDI` を使いますから、下のコードによって、ロードします。
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+まず、三つの例を見てみましょう。なにをしているかわかりますか。考えて見てください。
+
+```{r cache=TRUE, echo=TRUE, eval=FALSE}
+WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"),
+    extra=TRUE) %>% drop_na(gdp) %>%
+  filter(year==max(year), income !="Aggregates") %>% 
+  drop_na(region) %>% arrange(desc(gdp))
+```
+
+```{r eval=FALSE, include=FALSE}
+df_wdi_gdp <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"),
+    extra=TRUE)
+write_csv(df_wdi_gdp, "./data/df_wdi_gdp.csv")
+```
+
+```{r echo=FALSE, eval=TRUE}
+df_wdi_gdp <- read_csv("./data/df_wdi_gdp.csv")
+df_wdi_gdp %>% drop_na(gdp) %>%
+  filter(year==max(year), income !="Aggregates") %>% 
+  drop_na(region) %>% arrange(desc(gdp))
+```
+
+
+```{r cache=TRUE, echo=TRUE, eval=FALSE}
+WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE) %>% drop_na(gdp) %>% 
+  ggplot(aes(year, gdp, col = country)) + geom_line() +
+  labs(title = "WDI NY.GDP.MKTP.CD: gdp")
+```
+
+```{r eval=FALSE, include=FALSE}
+df_wdi_gdp_top6 <- WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE)
+write_csv(df_wdi_gdp_top6, "./data/df_wdi_gdp_top6.csv")
+```
+
+```{r eval=TRUE, echo=FALSE}
+df_wdi_gdp_top6 <- read_csv("./data/df_wdi_gdp_top6.csv")
+df_wdi_gdp_top6 %>% drop_na(gdp) %>% 
+  ggplot(aes(year, gdp, col = country)) + geom_line() +
+  labs(title = "WDI NY.GDP.MKTP.CD: gdp")
+```
+
+```{r cache=TRUE, echo=TRUE, eval=FALSE}
+WDI(country = c("CN","IN","JP","US"), 
+    indicator = c(gdp_growth_rate = "NY.GDP.MKTP.KD.ZG"), extra=TRUE) %>%
+  drop_na(gdp_growth_rate) %>% 
+  ggplot(aes(year, gdp_growth_rate, col = country)) + geom_line() +
+  labs(title = paste("WDI NY.GDP.MKTP.KD.ZG: gdp growth rate"))
+```
+
+```{r eval=FALSE, include=FALSE}
+df_wdi_gdp_growth_rate_top4 <- WDI(country = c("CN","IN","JP","US"), 
+    indicator = c(gdp_growth_rate = "NY.GDP.MKTP.KD.ZG"), extra=TRUE) 
+write_csv(df_wdi_gdp_growth_rate_top4, "./data/df_wdi_gdp_growth_rate_top4.csv")
+```
+
+```{r echo=FALSE, eval=TRUE}
+df_wdi_gdp_growth_rate_top4 <- read_csv("./data/df_wdi_gdp_growth_rate_top4.csv")
+df_wdi_gdp_growth_rate_top4 %>%
+  drop_na(gdp_growth_rate) %>% 
+  ggplot(aes(year, gdp_growth_rate, col = country)) + geom_line() +
+  labs(title = paste("WDI NY.GDP.MKTP.KD.ZG: gdp growth rate"))
+```
+
+まず、世界の国々の、GDP（gross domestic product 国内総生産）のデータを、取得して、2021年の GDP を大きな順に並べています。
+
+値は、たとえば、$2.331508e+13$ のように書かれていますが、これは、科学的記法と呼ばれるもので、$2.331508 \times 10^{13}$ を意味しています。約23兆ドルです。
+
+次に、3兆ドル以上の、６カ国を選択し、その、iso2c と呼ばれるコードを使って、それらの国のデータをもう一度取得し、年次変化をあらわすグラフを描いています。
+
+さらにその中から、４カ国を選んで、今度は、GDP の年次変化率を描いています。単位は、パーセントです。
+
+これは、ひとつの例ですが、ここで使われているのが、WDI World Development Indicator というもので、世界銀行が、いくつかの指標を定めて、編纂しているものです。
+
+### 指標 Indicators (WDI)
+
+上の例では、次の二つの指標のコード Indicator Code (WDI Code) が使われました。
+
+-   NY.GDP.MKTP.CD: GDP (current US\$)
+-   NY.GDP.MKTP.KD.ZG: GDP growth (annual %)
+
+### 指標 WDI (World Development Indicators)
+
+> The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,400 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.
+
+> WDIは、世界の開発状況と、貧困との戦いに関する、適切で上質、かつ、国際的に比較可能な時系列の統計データを編纂したものです。このデータベースは、217の経済と40以上の国グループについて1,400の時系列指標を含み、指標のデータの多くは50年以上前に遡ることができます。
+
+-   世界銀行（World Bank）: <https://www.worldbank.org>
+-   World Bank Open Data: <https://data.worldbank.org>
+    -   Country / Indicator \> Featured & All \> Details
+-   [World Development Indicators (WDI)](https://datatopics.worldbank.org/world-development-indicators/) :
+    -   Themes: Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links
+    -   Open Data & DataBank: Explore data, Query database
+
+### 指標 のコード、WDI code を探してみよう
+
+いくつかの探し方があります。まず、ここでは、World Bank のサイトから探す方法を説明しましょう。
+
+ふた通りあります。
+
+1. [World Bank Open Data](https://data.worldbank.org) にいくと、表題の下の検索窓の下に、 Country / Indicator とありますから、Indicator を選択します。すると、そこに、項目のリストが、Featured と All という二つのタブに分かれて出ています。かなり膨大です。それを選択すると、その項目のサイトに行きます。それが、指標のサイトです。図などの、右上に、Details とありますから、それを選択すると、その中に、Indicator が書かれています。
+実は、指標のサイトのアドレス（URL）を見ると、そこにも、この Indicator が書かれていることがわかります。
+
+2. [World Development Indicators (WDI)](https://datatopics.worldbank.org/world-development-indicators/) にいくと、下のようなテーマに分かれています。
+
+Themes: Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links
+
+その中から、選択して、スクロールすると、そこに、指標が書かれています。
+
+Indicator, Code, Time coverage, Region coverage, Get data
+
+とあり、Code が、指標のコードです。実は、すべての年や、すべての地域のデータが揃っているわけではないので、この情報を見ておくことはとても重要です。ほとんど、データがない場合もあります。
+
+一番右端の Get data からは、CSV や、データバンク（Data Bank）へのリンクがあります。
+
+それぞれの方法で、上で使った、二つの指標およびそのコードは見つかりましたか。
+
+1 の方法の途中に出てきた、検索窓から検索することも可能です。
+
+### 指標 WDIの例
+
+このあとの、例で使う指標を書いておきます。
+
+* NY.GDP.MKTP.CD: GDP (current US$)
+* NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+* SL.UEM.TOTL.NE.ZS: Unemployment, total (% of total labor force) (national estimate)
+* CPTOTNSXN: CPI Price, nominal
+* SL.TLF.CACT.MA.NE.ZS: Labor force participation rate, male (% of male population ages 15+) (national estimate)
+* SL.TLF.CACT.FE.NE.ZS: Labor force participation rate, female (% of male population ages 15+) (national estimate)
+
+### 練習 1. - 調べてみたい WDI 指標とそのコード
+
+いくつか、リストしてみましょう。
+
+## WDI パッケージ
+
+`WDI` パッケージ の使い方を紹介します。
+
+`WDI` パッケージで、データをダウンロードしたり、探したり、詳細情報を得たりできます。
+
+### 指標 WDI 検索
+
+まず、検索です。上で、サイトから調べる方法を紹介しましたが、`WDI` パッケージの、`WDIsearch` でも探すことができます。詳細は、右下の窓枠の Help タブの検索窓に、WDIsearch といれて調べて見てください。ここでは、二種類の検索方法を紹介します。
+
+#### 検索例 1（WDI名）
+
+WDI 名に、ある文字列が含まれているものを検索します。検索文字列は、大文字・小文字は関係ありません。
+
+```{r cache=TRUE}
+WDIsearch(string = "gdp", field = "name", short = TRUE, cache = NULL)
+```
+
+なんと、500件以上出てきました。Indicator（指標コード）と、Name（指標名）が列挙されます。すべてに、GDP という文字列が入っていることを確認できると思います。
+
+#### 検索例 2（WDI）
+
+Indicator（指標コード）から、Name（指標名）を検索します。
+
+```{r cache=TRUE}
+WDIsearch(string = "NY.GDP.MKTP.CD", field = "indicator", short = TRUE, cache = NULL)
+```
+
+二件出てきました。
+  
+#### 練習 2. - 検索（short）
+
+名前で検索（"" の間に、（なるべく簡単な）検索文字列を入れてください。）
+
+```{r eval=FALSE, cache=TRUE}
+WDIsearch(string = "", field = "name", short = TRUE, cache = NULL)
+```
+
+Indicator で検索（"" の間に、調べたい indicator を入れてください。）
+
+```{r eval=FALSE, cache=TRUE}
+WDIsearch(string = "", field = "indicator", short = TRUE, cache = NULL)
+```
+
+  
+#### 詳しい情報を得るには
+
+上では、Indicator（指標コード）と、Name（指標名）だけでしたが、Description（説明） なども得ることができます。
+
+それには、`short = FALSE` とします。
+
+一回一回、World Bank にアクセスして調べるのは、時間もかかりますから、Indicator と、名前などの情報をもったファイルを手元に持っておくことにします。それには、次のようにします。
+
+```{r cache=TRUE, eval=FALSE}
+wdi_cache <- WDIcache()
+```
+
+これは、series と、country の二つのデータ・フレームからなっているリストです。
+
+右上の窓枠（pane）から、`wdi_cache` を探して、中身を見てみましょう。三角印や、右から二番目の巻物のようなアイコンをクリックすると中身が見えます。
+
+series には、すべての指標がリストされ、その情報が書かれています。
+
+また、country には、それぞれについて、さまざまな情報が書かれています。これは、とても、たいせつな情報です。国名と、iso2c, iso3c のようなコードもありますし、地域（region）や、その国が、どの income level（収入の階級）に入るかも書かれています。また、国だけではなく、地域など、グループの名称も含まれています。
+
+今後、さまざまに利用していきたいと思います。
+
+```{r include=FALSE, eval = FALSE}
+write_rds(wdi_cache, "./data/wdi_cache.RData")
+```
+```{r include=FALSE, eval = TRUE}
+wdi_cache <- read_rds("./data/wdi_cache.RData")
+```
+  
+#### 検索例 3（WDI名）
+
+`short = FALSE` として、検索してみましょう。文字列が入っている、指標名を検索します。
+
+```{r}
+WDIsearch(string = "CPI Price", field = "name", short = FALSE, cache = wdi_cache)
+```
+
+- CPTOTNSXN: CPI Price, nominal
+  - The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.
+
+#### 検索例 4（WDI）
+
+指標コードから、詳細情報を得ます。
+
+```{r}
+WDIsearch(string = "NY.GDP.MKTP.KD.ZG", field = "indicator", short = FALSE, cache = wdi_cache)
+```
+
+  
+#### 練習 2 - 検索（long w/ cache）
+
+`string` と、`field` を、ふたつとも入れてください。
+
+```{r eval=FALSE}
+WDIsearch(string = "", field = "", short = FALSE, cache = wdi_cache)
+```
+
+
+  
+### 指標 WDI データのダウンロード
+
+Indicator が決まったら、ダウンロードします。右下の窓枠の Help タブの検索枠に、`WDI` と入れて確認しましょう。 
+
+```
+WDI(
+  country = "all",
+  indicator = "NY.GDP.PCAP.KD",
+  start = 1960,
+  end = NULL,
+  extra = FALSE,
+  cache = NULL,
+  latest = NULL,
+  language = "en"
+)
+```
+
+上が基本的な用法ですが、`start` 以下は、Default（初期値）が書かれていますから、たいせつなのは、最初の二つ、country と、indicator です。
+  
+#### ダウンロード例 1-1
+
+country は、初期値も、"all" となっていますから、最も簡単なのは、indicator に、指標コードを入れることです。引用符を忘れずに。
+
+```{r cache=TRUE, eval=FALSE}
+df_gdp1 <- WDI(country = "all", indicator = "NY.GDP.MKTP.CD")
+df_gdp1
+```
+```{r include=FALSE, eval=FALSE}
+df_gdp1 <- WDI(country = "all", indicator = "NY.GDP.MKTP.CD")
+write_csv(df_gdp1, "./data/df_gdp1.csv")
+```
+```{r echo=FALSE, eval=TRUE}
+df_gdp1 <- read_csv("./data/df_gdp1.csv")
+df_gdp1
+```
+
+これでも良いのですが、利用するには、指標コードではわかりにくいので、それを簡単な名前に置き換えて、データを読み込むこができます。
+
+#### ダウンロード例 1-2
+
+```{r cache=TRUE, eval=FALSE}
+df_gdp2 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"))
+df_gdp2
+```
+```{r include=FALSE, eval=FALSE}
+df_gdp2 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"))
+write_csv(df_gdp2, "./data/df_gdp2.csv")
+```
+```{r echo=FALSE, eval=TRUE}
+df_gdp2 <- read_csv("./data/df_gdp2.csv")
+df_gdp2
+```
+  
+#### ダウンロード例 1-3\
+
+今度は、`extra = TRUE` として、読み込みましょう。先ほど、読み込んである、`wdi_cache` を使います。
+
+```{r cache=TRUE, eval=FALSE}
+df_gdp3 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"), 
+               extra=TRUE, cache=wdi_cache)
+df_gdp3
+```
+```{r include=FALSE, eval=FALSE}
+df_gdp3 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
+write_csv(df_gdp3, "./data/df_gdp3.csv")
+```
+```{r echo=FALSE, eval=TRUE}
+df_gdp3 <- read_csv("./data/df_gdp3.csv")
+df_gdp3
+```
+右上の三角印を使って、どのような詳細情報が付加されたか見て見ましょう。どんなことがわかりますか。
+
+#### ダウンロード例 1-4
+
+国名を指定します。`WDI` では、iso2c コードを使って、国名を指定します。上で見たように、Envoronment から、`wdi_cache` を選択すると、国名と、iso2c コード両方を見ることができました。iso2c や、iso3c は、よく使われるので、web 検索でも簡単にみつけることができます。最初に紹介した例ですから、どの国かはわかりますね、
+
+```{r cache=TRUE, eval=FALSE}
+df_gdp4 <- WDI(country = c("CN","GB","JP","IN","US","DE"), 
+               indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
+df_gdp4
+```
+```{r include=FALSE, eval=FALSE}
+df_gdp4 <- WDI(country = c("CN","GB","JP","IN","US","DE"), 
+               indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
+write_csv(df_gdp4, "./data/df_gdp4.csv")
+```
+```{r echo=FALSE, eval=TRUE}
+df_gdp4 <- read_csv("./data/df_gdp4.csv")
+df_gdp4
+```
+
+#### ダウンロード例 2-1
+
+二つの、指標コードを使って、同時に読み込むこともできます。そのときは、`c()` (combine) を使います。
+
+* NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+* CPTOTNSXN: CPI Price, nominal
+
+```{r cache=TRUE, eval=FALSE}
+df_gdp21 <- WDI(country = "all", 
+                indicator = c(gdp_deflator = "NY.GDP.DEFL.KD.ZG", 
+                              cpi_price = "CPTOTNSXN"), 
+                extra=TRUE, cache=wdi_cache)
+df_gdp21
+```
+```{r include=FALSE, eval=FALSE}
+df_gdp21 <- WDI(country = "all", 
+                indicator = c(gdp_deflator = "NY.GDP.DEFL.KD.ZG", 
+                              cpi_price = "CPTOTNSXN"), 
+                extra=TRUE, cache=wdi_cache)
+write_csv(df_gdp21, "./data/df_gdp21.csv")
+```
+```{r echo=FALSE, eval=TRUE}
+df_gdp21 <- read_csv("./data/df_gdp21.csv")
+df_gdp21
+```
+
+NA (not available) つまり、データがないものが多いことがわかります。もう少し、データをよく見て見ましょう。
+
+
+```{r}
+str(df_gdp21)
+```
+
+```{r}
+summary(df_gdp21)
+```
+
+どんなことが分かりましたか。
+
+右上の窓枠の、Environment でも `df_gdp21` を見てみましょう。
+
+## 可視化 Visualization
+
+グラフ（Chart）を描いて視覚化します。ここでは、年ごとの変化をみる、折れ線グラフだけを描いて見ます。
+
+### グラフ 1
+
+`x = year`, `y = gdp` の、`x=`, `y=` は省略してあります。`col=country` は、国ごとに、グループにして、色分けをします。`col` は、`color` としても `colour` としても、問題ありません。
+`
+```{r}
+df_gdp4 %>% ggplot(aes(year, gdp, col=country)) + geom_line()
+```
+
+Warning として、missing values があると出ています。どこかは、分かりませんが、図を書くときですから、`y` に対応する、`gdp` の値がないものと思われます。
+
+### グラフ 2
+
+`drop_na(gdp)` で、`gdp` の値が、NA であるものを削除します。また、`labs` で、図にタイトルをつけます。
+
+```{r}
+df_gdp4 %>% drop_na(gdp) %>% 
+  ggplot(aes(year, gdp, col=country)) + geom_line() +
+  labs(title = "WDI - NY.GDP.MKTP.CD: gdp")
+```
+
+### テンプレート Templates
+
+下に、テンプレートをつけます。コピーして、指標コードや、略称、国などを、それぞれ置き換えて、試して見てください。少し、複雑な変形をしていますが、少しずつ説明します。
+
+#### 一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with one indicator with abbreviation and one country
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, short_name)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name, " - ", chosen_country),
+       y = short_name)
+```
+
+#### 一つの国についての、一つの指標（WDI）から、折線グラフを作成
+
+Line Plot with one indicator and one country
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(chosen_indicator = chosen_indicator), 
+    extra=TRUE, cache=wdi_cache) %>%
+  filter(country == chosen_country) %>% 
+  ggplot(aes(year, chosen_indicator)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, " - ", chosen_country), 
+       y = chosen_indicator)
+```
+
+#### いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with one indicator with abbreviation and several countries
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator <- "SL.UEM.TOTL.NE.ZS"
+short_name <- "unemployment"
+chosen_countries <- c("United States","United Kingdom", "Japan")
+WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, cache=wdi_cache) %>% drop_na(short_name) %>% 
+  filter(country %in% chosen_countries) %>% 
+  ggplot(aes(year, short_name, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator, ": ", short_name), y = short_name)
+```
+
+
+#### 一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with two indicators with abbreviation and one country
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp_deflator"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi_price"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_country <- "United States"
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country == chosen_country) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, col = class)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2, " - ", chosen_country)) +
+  scale_color_manual(labels = c(short_name_1, short_name_2), values = scales::hue_pal()(2))
+```
+
+#### いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成
+
+Line Plot with two indicators with abbreviation and several countries
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator_1 <- "NY.GDP.DEFL.KD.ZG"
+short_name_1 <- "gdp_deflator"
+chosen_indicator_2 <- "CPTOTSAXNZGY"
+short_name_2 <- "cpi_price"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+
+```{r eval=FALSE, cache=TRUE}
+chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
+short_name_1 <- "male"
+chosen_indicator_2 <- "SL.TLF.CACT.FE.NE.ZS"
+short_name_2 <- "female"
+chosen_countries <- c("United States", "France", "Japan")
+WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name_2 = chosen_indicator_2), extra=TRUE, cache=wdi_cache) %>% 
+  filter(country %in% chosen_countries) %>% 
+  pivot_longer(c(short_name_1, short_name_2), names_to = "class", values_to = "value") %>% drop_na(value) %>%
+  ggplot(aes(year, value, linetype = class, col = country)) + geom_line() +
+  labs(title = paste("WDI ", chosen_indicator_1, ": ", short_name_1, "\n", chosen_indicator_2, ": ", short_name_2)) +
+  scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
+```
+
+## 課題　Assignment
+
+上のテンプレートをコピーして、下に貼り付け、指標 `indicator` と、略称 `short_name` と、いくつかの国名 `chosen_countries` を、入れ替えて、試してみてください。
 

@@ -1,0 +1,373 @@
+country,iso2c,iso3c,year,gdp,status,lastupdated,region,capital,longitude,latitude,income,lending
+China,CN,CHN,2021,17734062645371.4,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2020,14687673892882,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2019,14279937500606.5,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2018,13894817549374.2,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2017,12310409370892.8,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2016,11233276536737.2,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2015,11061553079876.4,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2014,10475682920594.5,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2013,9570406235659.64,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2012,8532229986993.65,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2011,7551500124203.36,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2010,6087163874512.21,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2009,5101703073086.04,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2008,4594307032660.79,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2007,3550342737010.84,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2006,2752131773355.16,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2005,2285965892360.54,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2004,1955347004963.27,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2003,1660287965662.68,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2002,1470550015081.55,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2001,1339395718865.3,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,2000,1211346869605.24,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1999,1093997267271.06,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1998,1029043097554.08,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1997,961603952951.82,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1996,863746717503.789,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1995,734547898220.508,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1994,564324670005.917,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1993,444731282436.762,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1992,426915712711.146,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1991,383373318083.624,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1990,360857912565.966,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1989,347768051311.741,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1988,312353631207.819,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1987,272972974764.574,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1986,300758100107.246,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1985,309488028132.653,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1984,259946510957.143,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1983,230686747153.257,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1982,205089699858.779,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1981,195866382432.54,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1980,191149211575,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1979,178280594413.043,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1978,149540752829.268,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1977,174938098826.569,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1976,153940455341.506,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1975,163431551779.761,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1974,144182133387.722,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1973,138544284708.957,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1972,113687586299.051,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1971,99800958648.1436,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1970,92602973434.0726,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1969,79705906247.4612,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1968,70846535055.6503,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1967,72881631326.6715,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1966,76720285969.6157,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1965,70436266146.7219,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1964,59708343488.5043,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1963,50706799902.5104,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1962,47209359005.6057,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1961,50056868957.6732,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+China,CN,CHN,1960,59716467625.3148,,2022-12-22,East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+Germany,DE,DEU,2021,4259934911821.64,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2020,3889668895299.62,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2019,3888226035921.56,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2018,3974443355019.6,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2017,3690849152517.65,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2016,3469853463945.53,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2015,3357585719351.56,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2014,3889093051023.52,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2013,3733804649549.03,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2012,3527143188785.16,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2011,3749314991050.59,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2010,3399667820000.01,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2009,3411261212652.34,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2008,3745264093617.19,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2007,3425578382921.58,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2006,2994703642023.53,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2005,2846864211175.1,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2004,2814353869359.08,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2003,2501640388482.35,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2002,2078484517474.51,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2001,1945790973803.15,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,2000,1947981991011.77,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1999,2194945278872.59,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1998,2238990774702.68,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1997,2211989623279.95,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1996,2497244606186.64,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1995,2585792275146.72,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1994,2205074123177.05,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1993,2071323790370.28,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1992,2131571696931.75,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1991,1868945197407.19,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1990,1771671206875.68,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1989,1398967436804.33,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1988,1401233225303.49,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1987,1298176105549.51,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1986,1046259374943.71,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1985,732534887058.198,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1984,725111123634.115,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1983,770684323247.798,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1982,776576439106.956,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1981,800472055387.278,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1980,950290856466.538,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1979,881345176608.686,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1978,740469983446.933,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1977,600498238019.035,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1976,519754453161.411,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1975,490636517211.225,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1974,445303484241.554,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1973,398374021953.897,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1972,299801542047.476,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1971,249985055484.303,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1970,215838448137.658,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1969,NA,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1968,NA,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1967,NA,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1966,NA,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1965,NA,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1964,NA,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1963,NA,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1962,NA,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1961,NA,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+Germany,DE,DEU,1960,NA,,2022-12-22,Europe & Central Asia,Berlin,13.4115,52.5235,High income,Not classified
+India,IN,IND,2021,3176295065497.24,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2020,2667687951796.5,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2019,2831552222519.99,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2018,2702929718960.46,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2017,2651472946375.05,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2016,2294797980509.01,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2015,2103587813812.75,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2014,2039127446299.3,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2013,1856722121394.42,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2012,1827637859506.25,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2011,1823049927772.05,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2010,1675615335600.56,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2009,1341886602798.69,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2008,1198895582137.51,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2007,1216735441524.86,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2006,940259888792.141,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2005,820381595512.902,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2004,709148514804.659,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2003,607699285433.872,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2002,514937948870.08,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2001,485441014538.638,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,2000,468394937262.37,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1999,458820417337.807,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1998,421351477504.743,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1997,415867753863.874,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1996,392897054348.071,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1995,360281952716.797,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1994,327275583539.559,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1993,279296022987.919,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1992,288208430383.964,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1991,270105341879.226,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1990,320979026420.035,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1989,296042354984.876,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1988,296588994812.354,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1987,279033584092.223,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1986,248985994040.59,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1985,232511877841.698,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1984,212158234167.312,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1983,218262273406.969,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1982,200715145363.148,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1981,193490610029.789,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1980,186325345086.661,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1979,152991653793.77,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1978,137300295313.3,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1977,121487322475.912,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1976,102717164466.397,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1975,98472796456.884,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1974,99525899116.054,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1973,85515269585.4,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1972,71463193831.0092,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1971,67350988021.3932,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1970,62422483054.6667,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1969,58447995017.3333,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1968,53085455870.6667,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1967,50134942204,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1966,45865462034.2857,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1965,59554854575.8085,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1964,56480289940.9899,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1963,48421923459.1235,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1962,42161481858.0819,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1961,39232435784.0358,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+India,IN,IND,1960,37029883876.1839,,2022-12-22,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+Japan,JP,JPN,2021,4940877780755.33,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2020,5040107754084.11,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2019,5123318151510.62,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2018,5037835383110.97,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2017,4930837369151.42,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2016,5003677627544.24,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2015,4444930651964.18,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2014,4896994405353.29,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2013,5212328181166.18,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2012,6272362996105.03,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2011,6233147172341.35,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2010,5759071769013.11,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2009,5289493117993.89,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2008,5106679115127.3,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2007,4579750920354.81,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2006,4601663122649.92,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2005,4831467035389.8,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2004,4893116005656.56,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2003,4519561645253.53,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2002,4182846045873.61,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2001,4374711694090.87,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,2000,4968359075956.59,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1999,4635982224063.88,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1998,4098362709531.24,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1997,4492448605638.94,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1996,4923391533851.63,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1995,5545563663889.7,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1994,4998797547740.97,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1993,4454143876947.21,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1992,3908809463463.86,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1991,3584420077100.84,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1990,3132817652848.04,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1989,3054914166263.18,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1988,3071683013178.91,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1987,2532808573157.03,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1986,2078953333673.55,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1985,1398892744820.69,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1984,1318381627003.76,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1983,1243323592058.83,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1982,1134518001884.56,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1981,1218988935129.81,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1980,1105385973763.87,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1979,1055012119526.33,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1978,1013612173518.84,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1977,721411786536.814,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1976,586161858999.671,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1975,521541905673.251,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1974,479625998613.406,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1973,432082670450.719,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1972,318031297492.352,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1971,240151807460.241,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1970,212609187919.444,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1969,172204199480.889,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1968,146601072685.511,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1967,123781880217.6,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1966,105628070343.111,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1965,90950278257.7778,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1964,81749006381.5111,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1963,69498131797.3333,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1962,60723018683.7333,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1961,53508617739.3778,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+Japan,JP,JPN,1960,44307342950.4,,2022-12-22,East Asia & Pacific,Tokyo,139.77,35.67,High income,Not classified
+United Kingdom,GB,GBR,2021,3131377762925.95,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2020,2704609160088.15,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2019,2857057847953.02,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2018,2878152147315.82,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2017,2683399006715.79,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2016,2699659680997.2,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2015,2934857946213.47,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2014,3065223279583.79,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2013,2786315215249.95,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2012,2706340967030.68,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2011,2666403005061.42,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2010,2491397494467.95,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2009,2417638261411.43,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2008,2931501838235.29,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2007,3092821128451.38,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2006,2709911683532.66,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2005,2544805454545.45,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2004,2422958623214.94,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2003,2056612244897.96,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2002,1785843824940.05,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2001,1648658413703.76,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,2000,1666126494174.61,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1999,1689289758938.68,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1998,1655061278569.06,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1997,1561807465618.86,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1996,1421619344773.79,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1995,1346184314344.33,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1994,1140489745944.29,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1993,1061388722255.55,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1992,1179659529659.53,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1991,1142797178130.51,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1990,1093169389204.55,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1989,926884816753.927,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1988,910122732123.799,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1987,745162608269.325,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1986,601452653180.885,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1985,489285164271.047,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1984,461487097632.349,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1983,489618008185.539,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1982,515048916841.37,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1981,540765675241.158,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1980,564947710899.373,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1979,438994070309.191,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1978,335883029721.956,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1977,263066457352.172,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1976,232614555256.065,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1975,241756637168.142,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1974,206131369798.971,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1973,192537971582.558,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1972,169965034965.035,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1971,148113896325.14,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1970,130671946244.3,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1969,116464702803.218,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1968,107759910067.889,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1967,113116888210.787,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1966,108572752102.045,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1965,101824755078.991,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1964,94407558351.1616,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1963,86561961812.3249,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1962,81247564156.8246,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1961,77741965703.3544,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United Kingdom,GB,GBR,1960,73233967692.1028,,2022-12-22,Europe & Central Asia,London,-0.126236,51.5002,High income,Not classified
+United States,US,USA,2021,23315080560000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2020,21060473613000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2019,21380976119000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2018,20533057312000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2017,19477336549000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2016,18695110842000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2015,18206020741000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2014,17550680174000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2013,16843190993000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2012,16253972230000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2011,15599728123000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2010,15048964444000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2009,14478064934000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2008,14769857911000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2007,14474226905000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2006,13815586948000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2005,13039199193000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2004,12217193198000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2003,11456442041000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2002,10929112955000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2001,10581929774000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,2000,10250947997000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1999,9631174489000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1998,9062818202000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1997,8577554457000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1996,8073122000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1995,7639749000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1994,7287236000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1993,6858559000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1992,6520327000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1991,6158129000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1990,5963144000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1989,5641580000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1988,5236438000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1987,4855215000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1986,4579631000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1985,4338979000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1984,4037613000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1983,3634038000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1982,3343789000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1981,3207041000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1980,2857307000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1979,2627333000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1978,2351599000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1977,2081826000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1976,1873412000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1975,1684904000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1974,1545243000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1973,1425376000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1972,1279110000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1971,1164850000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1970,1073303000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1969,1019900000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1968,942500000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1967,861700000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1966,815000000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1965,743700000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1964,685800000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1963,638600000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1962,605100000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1961,563300000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
+United States,US,USA,1960,543300000000,,2022-12-22,North America,Washington D.C.,-77.032,38.8895,High income,Not classified
