@@ -190,6 +190,26 @@ output:
 <ul>
 <li>TeX システムがインストールされている場合は不要</li>
 </ul>
+<p>エラーの例を書いておきます。<code><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">tinytex::install_tinytex()</a></code> おらず、他の TeX システムもインストールしていない環境で、上に引用した、<code>RNotebook-J</code> から、PDF を作成したときに生じたエラーです。ここに</p>
+<pre><code>If you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()</code></pre>
+<p>「よくわからない場合は、RでTinyTeXをインストールすることもできます: <code><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">tinytex::install_tinytex()</a></code>」</p>
+<p>と書いてあります。</p>
+<p><strong>エラーメッセージの例</strong></p>
+<pre><code>processing file: RNotebook-J.Rmd
+
+“C:/Program Files/RStudio/bin/quarto/bin/tools/pandoc” +RTS -K512m -RTS RNotebook-J.knit.md –to latex –from markdown+autolink_bare_uris+tex_math_single_backslash –output RNotebook-J.tex –lua-filter “C:000117x-library\4.2.lua” –lua-filter “C:000117x-library\4.2-div.lua” –embed-resources –standalone –highlight-style tango –pdf-engine pdflatex –variable graphics –variable “geometry:margin=1in” output file: RNotebook-J.knit.md
+
+Error: LaTeX failed to compile RNotebook-J.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. In addition: Warning message: In system2(…, stdout = if (use_file_stdout()) f1 else FALSE, stderr = f2) : ‘“pdflatex”’ not found Execution halted
+
+No LaTeX installation detected (LaTeX is required to create PDF output). You should install a LaTeX distribution for your platform: https://www.latex-project.org/get/
+
+If you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()
+
+Otherwise consider MiKTeX on Windows - http://miktex.org
+
+MacTeX on macOS - https://tug.org/mactex/ (NOTE: Download with Safari rather than Chrome strongly recommended)
+
+Linux: Use system package manager</code></pre>
 </div>
 <div id="youtube-video---rmarkdown" class="section level2" number="4.6">
 <h2>
@@ -241,7 +261,7 @@ output:
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう - Data Science for All -</strong>" was written by John Doe. It was last built on 2023-02-18.</p>
+    <p>"<strong>データサイエンスをはじめましょう - Data Science for All -</strong>" was written by John Doe. It was last built on 2023-02-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

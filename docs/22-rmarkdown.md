@@ -83,6 +83,36 @@ output:
 
 * TeX システムがインストールされている場合は不要
 
+エラーの例を書いておきます。`tinytex::install_tinytex()` おらず、他の TeX システムもインストールしていない環境で、上に引用した、`RNotebook-J` から、PDF を作成したときに生じたエラーです。ここに
+
+```
+If you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()
+```
+
+「よくわからない場合は、RでTinyTeXをインストールすることもできます: `tinytex::install_tinytex()`」
+
+と書いてあります。
+
+**エラーメッセージの例**
+
+```
+processing file: RNotebook-J.Rmd
+
+“C:/Program Files/RStudio/bin/quarto/bin/tools/pandoc” +RTS -K512m -RTS RNotebook-J.knit.md –to latex –from markdown+autolink_bare_uris+tex_math_single_backslash –output RNotebook-J.tex –lua-filter “C:000117x-library\4.2.lua” –lua-filter “C:000117x-library\4.2-div.lua” –embed-resources –standalone –highlight-style tango –pdf-engine pdflatex –variable graphics –variable “geometry:margin=1in” output file: RNotebook-J.knit.md
+
+Error: LaTeX failed to compile RNotebook-J.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. In addition: Warning message: In system2(…, stdout = if (use_file_stdout()) f1 else FALSE, stderr = f2) : ‘“pdflatex”’ not found Execution halted
+
+No LaTeX installation detected (LaTeX is required to create PDF output). You should install a LaTeX distribution for your platform: https://www.latex-project.org/get/
+
+If you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()
+
+Otherwise consider MiKTeX on Windows - http://miktex.org
+
+MacTeX on macOS - https://tug.org/mactex/ (NOTE: Download with Safari rather than Chrome strongly recommended)
+
+Linux: Use system package manager
+```
+
 ## YouTube Video - rmarkdown
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-E_XLf15YHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

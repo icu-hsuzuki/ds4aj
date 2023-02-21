@@ -1,7 +1,7 @@
 --- 
 title: "データサイエンスをはじめましょう - Data Science for All -"
 author: "John Doe"
-date: "2023-02-18"
+date: "2023-02-21"
 site: bookdown::bookdown_site
 documentclass: bxjsbook #book
 bibliography: [book.bib, packages.bib]
