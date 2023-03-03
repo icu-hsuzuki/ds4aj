@@ -61,6 +61,12 @@ R Notebook は、独立してインタラクティブに実行できるチャン
 
 Windows でも、Mac でも提供されている、Google Chrome の場合には、Code ボタンから、ダンロードされるはずです。
 
+RNotebook の新しいファイルを作成し、下のサイトを表示させて、コピー・ペーストで、書き換えることも可能です。
+
+* https://ds-sl.github.io/intro2r/RNotebook-J.html
+* https://ds-sl.github.io/intro2r/Rmarkdown-J.html
+
+
 ## R Markdown いくつかの Output
 ```
 ---
