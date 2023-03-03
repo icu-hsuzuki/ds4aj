@@ -1,6 +1,6 @@
 --- 
-title: "データサイエンスをはじめましょう - Data Science for All -"
-author: "John Doe"
+title: "データサイエンスをはじめましょう   \n- Data Science for All -"
+author: "鈴木寛（Hirosi Suzuki）"
 date: "2023-03-03"
 site: bookdown::bookdown_site
 documentclass: bxjsbook #book
