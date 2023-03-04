@@ -31,7 +31,7 @@ r-script-実行記録
 r-script-の作成
 r-script-による実行
 スクリプト1-basics.r
-スクリプト2-coronavirus.t
+スクリプト2-coronavirus.r
 練習-1
 tips
 パッケージ---packages
