@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 6 探索的データ解析 | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="6.1 探索的データ解析 (EDA)とは  image from r4ds   6.2 探索的データ解析 (EDA) の一例 WDI の一つの指標を使って、流れを見てみましょう。  6.2.1 データの取得と読み込み - Data Import NY.GDP.PCAP.CD: GDP per capita (current US$) df_wdi_gdppcap &lt;-...">
+<meta name="description" content="6.1 探索的データ解析 (EDA)とは  image from r4ds 以下は、Posit Primers: Visualise Data から 探索的データ解析 (EDA) は、データを理解するための反復的なサイクルです。EDAでは、以下のことを行います。 データに関する問いを作成する データの可視化、変形・整形、モデリングによって、問いの答えを探索する。...">
 <meta name="generator" content="bookdown 0.32 with bs4_book()">
 <meta property="og:title" content="Chapter 6 探索的データ解析 | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/intro2eda.html">
-<meta property="og:description" content="6.1 探索的データ解析 (EDA)とは  image from r4ds   6.2 探索的データ解析 (EDA) の一例 WDI の一つの指標を使って、流れを見てみましょう。  6.2.1 データの取得と読み込み - Data Import NY.GDP.PCAP.CD: GDP per capita (current US$) df_wdi_gdppcap &lt;-...">
+<meta property="og:description" content="6.1 探索的データ解析 (EDA)とは  image from r4ds 以下は、Posit Primers: Visualise Data から 探索的データ解析 (EDA) は、データを理解するための反復的なサイクルです。EDAでは、以下のことを行います。 データに関する問いを作成する データの可視化、変形・整形、モデリングによって、問いの答えを探索する。...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 6 探索的データ解析 | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="6.1 探索的データ解析 (EDA)とは  image from r4ds   6.2 探索的データ解析 (EDA) の一例 WDI の一つの指標を使って、流れを見てみましょう。  6.2.1 データの取得と読み込み - Data Import NY.GDP.PCAP.CD: GDP per capita (current US$) df_wdi_gdppcap &lt;-...">
+<meta name="twitter:description" content="6.1 探索的データ解析 (EDA)とは  image from r4ds 以下は、Posit Primers: Visualise Data から 探索的データ解析 (EDA) は、データを理解するための反復的なサイクルです。EDAでは、以下のことを行います。 データに関する問いを作成する データの可視化、変形・整形、モデリングによって、問いの答えを探索する。...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -101,6 +101,14 @@
 <div class="figure">
 <img src="https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png" alt=""><p class="caption">image from r4ds</p>
 </div>
+<p>以下は、<a href="https://posit.cloud/learn/primers/3.1">Posit Primers: Visualise Data</a> から</p>
+<p>探索的データ解析 (EDA) は、データを理解するための反復的なサイクルです。EDAでは、以下のことを行います。</p>
+<ol style="list-style-type: decimal">
+<li><p>データに関する問いを作成する</p></li>
+<li><p>データの可視化、変形・整形、モデリングによって、問いの答えを探索する。</p></li>
+<li><p>学んだことを使って、問いをより洗練されたものとする。</p></li>
+</ol>
+<p>EDAは、あらゆるデータ分析において重要な役割を担います。EDA によって、課題解決のいとぐちを発見することもありますし、他の課題との関係性を発見する場合もあります。EDAを使用してデータの問題や品質を確認したり、データが信頼できるものであるかを見極める問いを作成できる場合もあります。</p>
 </div>
 <div id="探索的データ解析-eda-の一例" class="section level2" number="6.2">
 <h2>
@@ -140,6 +148,7 @@
 <h4>
 <span class="header-section-number">6.2.2.1</span> 列を <code>select</code><a class="anchor" aria-label="anchor" href="#%E5%88%97%E3%82%92-select"><i class="fas fa-link"></i></a>
 </h4>
+<p>どの変数について分析するかを選ぶ。</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_gdppcap_small</span> <span class="op">&lt;-</span> <span class="va">df_wdi_gdppcap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span>, <span class="va">gdp_pcap</span><span class="op">)</span></span>
@@ -163,6 +172,7 @@
 <h4>
 <span class="header-section-number">6.2.2.2</span> 行を <code>filter</code><a class="anchor" aria-label="anchor" href="#%E8%A1%8C%E3%82%92-filter"><i class="fas fa-link"></i></a>
 </h4>
+<p>いくつかの国に、フォーカスして調べる。</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_gdppcap_short</span> <span class="op">&lt;-</span> <span class="va">df_wdi_gdppcap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Japan"</span>, <span class="st">"Germany"</span>, <span class="st">"United States"</span><span class="op">)</span><span class="op">)</span></span>
@@ -181,6 +191,8 @@
 <span><span class="co">#&gt;  9 Germany DE    DEU    2013   46299.</span></span>
 <span><span class="co">#&gt; 10 Germany DE    DEU    2012   43856.</span></span>
 <span><span class="co">#&gt; # … with 176 more rows</span></span></code></pre></div>
+<p>列（変数）と、行（国）の選択を続けて、実行すると次のようになる。
+一つ一つ変形したデータ（オブジェクト）に名前をつけて、保存する必要がないので、パイプ（<code>%&gt;%</code>）の活用は有用である。</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_gdppcap_small_short</span> <span class="op">&lt;-</span> <span class="va">df_wdi_gdppcap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span>, <span class="va">gdp_pcap</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Japan"</span>, <span class="st">"Germany"</span>, <span class="st">"United States"</span><span class="op">)</span><span class="op">)</span></span>
@@ -212,25 +224,30 @@
 <span><span class="co">#&gt; Warning: Removed 1 row containing missing values</span></span>
 <span><span class="co">#&gt; (`geom_line()`).</span></span></code></pre></div>
 <div class="inline-figure"><img src="41-eda_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
+<p>同じ年に、多くのデータがあるので、折れ線グラフを適切に書くことができませんでした。</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_gdppcap_small_short</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Japan"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdp_pcap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="41-eda_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+<p>一般的には、散布図をまず、書いてみるのも一つです。</p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_gdppcap_small_short</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdp_pcap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Removed 10 rows containing missing values</span></span>
 <span><span class="co">#&gt; (`geom_point()`).</span></span></code></pre></div>
 <div class="inline-figure"><img src="41-eda_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
+<p>国別に、異なる色を使うことで、折れ線グラフを書くことも可能です。</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_gdppcap_small_short</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp_pcap</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdp_pcap</span>, col <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="41-eda_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
+<p>折線グラフと、散布図を同時に描くこともかのうです。</p>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_gdppcap_small_short</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp_pcap</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdp_pcap</span>, col <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="41-eda_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+<p>点を、曲線で近似する方法はいくつも知られているが、ある幅で、近似していく、LOESS が初期値となっている。<code>method='loess'</code> を省略しても、同じ近似がなされる。<code>span</code> という値を調節することで、ことなる幅での近似曲線を書くことも可能である。初期値は、0.75。</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_gdppcap_small_short</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp_pcap</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdp_pcap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -242,8 +259,18 @@
 <h3>
 <span class="header-section-number">6.2.4</span> データモデリング Data Modeling<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0-data-modeling"><i class="fas fa-link"></i></a>
 </h3>
-<p>簡単な線形回帰</p>
+<p>上の例では、曲線ではなく、直線で近似することも考えられる。</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi_gdppcap_small_short</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp_pcap</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdp_pcap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">'lm'</span>, formula <span class="op">=</span> <span class="st">'y ~ x'</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="41-eda_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
+<p>簡単な線形回帰モデルでの、回帰直線の y-切片や、傾きは、次のコードで与えられ、p-value や、R squared の値も求められる。</p>
+<p>この例では、年とともに、増加の傾向があること。そして、線形モデルが$$、90% 程度説明していると表現される。すなわち、</p>
+<p><span class="math display">\[gdppcap \sim 98.3 \cdot year -1902497.5\]</span></p>
+<p>は、良い、近似であることがわかる。</p>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_gdppcap_small_short</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">gdp_pcap</span> <span class="op">~</span> <span class="va">year</span>, <span class="va">.</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Call:</span></span>
