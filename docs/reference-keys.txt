@@ -12,6 +12,12 @@ open-government-data-toolkit-open-data-defined
 world-bank-wdi---world-development-indicaters
 世界開発指標world-development-indicator
 例
+gdp-per-capita-constant-2015-us
+central-government-debt-total-of-gdp
+co2-emissions-metric-tons-per-capita
+military-expenditure-of-gdp
+military-expenditure-current-usd
+proportion-of-seats-held-by-women-in-natinal-parliaments
 世界のさまざまな課題から見る
 oecd
 un-data
