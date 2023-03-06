@@ -1,10 +1,111 @@
 # (PART) PART IV EDA {-}
-# What is EDA? {#intro2eda}
+# 探索的データ解析 {#intro2eda}
 
 ```{r include=FALSE}
 library(tidyverse)
 library(showtext) 
 font_add_google('Noto Sans')
 showtext_auto()
+```
+
+## 探索的データ解析 (EDA)とは
+
+![image from r4ds](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png)
+
+
+## 探索的データ解析 (EDA) の一例
+
+WDI の一つの指標を使って、流れを見てみましょう。
+
+```{r include=FALSE, eval=TRUE}
+library(tidyverse)
+library(WDI)
+```
+
+### データの取得と読み込み - Data Import
+
+NY.GDP.PCAP.CD: GDP per capita (current US$)
+
+```{r eval=FALSE}
+df_wdi_gdppcap <- WDI(country = "all", indicator = c(gdp_pcap = "NY.GDP.PCAP.CD"))
+write_csv(df_wdi_gdppcap, "./data/df_wdi_gdppcap.csv")
+```
+
+```{r include=FALSE, eval=TRUE}
+df_wdi_gdppcap <- read_csv("./data/df_wdi_gdppcap.csv")
+```
+
+```{r}
+df_wdi_gdppcap
+```
+
+### データ変形・整形 - Data Transformation
+
+#### 列を `select`
+
+```{r}
+df_wdi_gdppcap_small <- df_wdi_gdppcap %>% 
+  select(country, year, gdp_pcap)
+df_wdi_gdppcap_small
+```
+
+#### 行を `filter`
+
+```{r}
+df_wdi_gdppcap_short <- df_wdi_gdppcap %>% 
+  filter(country %in% c("Japan", "Germany", "United States"))
+df_wdi_gdppcap_short
+```
+
+```{r}
+df_wdi_gdppcap_small_short <- df_wdi_gdppcap %>% select(country, year, gdp_pcap) %>%
+  filter(country %in% c("Japan", "Germany", "United States"))
+df_wdi_gdppcap_small_short
+```
+
+
+### 可視化 Data Visualization
+
+次は、よく生じる、誤りの例で、ノコギリの歯（sawtoothed）のようなギザギザ・グラフと呼ばれます。なぜこのようなことが起きているかわかりますか。
+
+```{r}
+df_wdi_gdppcap_small_short %>%
+  ggplot(aes(x = year, y = gdp_pcap)) + geom_line()
+```
+
+```{r}
+df_wdi_gdppcap_small_short %>% filter(country %in% c("Japan")) %>%
+  ggplot(aes(x = year, y = gdp_pcap)) + geom_line()
+```
+
+```{r}
+df_wdi_gdppcap_small_short %>%
+  ggplot(aes(x = year, y = gdp_pcap)) + geom_point()
+```
+
+```{r}
+df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
+  ggplot(aes(x = year, y = gdp_pcap, col = country)) + geom_line()
+```
+
+```{r}
+df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
+  ggplot(aes(x = year, y = gdp_pcap, col = country)) + geom_line() +
+  geom_point()
+```
+
+```{r}
+df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
+  ggplot(aes(x = year, y = gdp_pcap)) + 
+  geom_point(aes(color = country)) + 
+  geom_smooth(method = 'loess', formula = 'y ~ x')
+```
+
+### データモデリング Data Modeling
+
+簡単な線形回帰
+
+```{r}
+df_wdi_gdppcap_small_short %>% lm(gdp_pcap ~ year, .) %>% summary()
 ```
 

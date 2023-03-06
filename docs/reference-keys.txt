@@ -94,6 +94,14 @@ wdi-パッケージ
 いくつかの国についての二つの指標wdiとその略称から折線グラフを作成
 課題-assignment
 intro2eda
+探索的データ解析-edaとは
+探索的データ解析-eda-の一例
+データの取得と読み込み---data-import
+データ変形整形---data-transformation
+列を-select
+行を-filter
+可視化-data-visualization
+データモデリング-data-modeling
 example1
 japanese
 日本語中国語韓国語
