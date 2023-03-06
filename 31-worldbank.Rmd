@@ -165,7 +165,8 @@ Indicator, Code, Time coverage, Region coverage, Get data
 WDI 名に、ある文字列が含まれているものを検索します。検索文字列は、大文字・小文字は関係ありません。
 
 ```{r cache=TRUE}
-WDIsearch(string = "gdp", field = "name", short = TRUE, cache = NULL)
+WDIsearch(string = "gdp", field = "name", short = TRUE, cache = NULL) %>%
+  as_tibble()
 ```
 
 なんと、500件以上出てきました。Indicator（指標コード）と、Name（指標名）が列挙されます。すべてに、GDP という文字列が入っていることを確認できると思います。
