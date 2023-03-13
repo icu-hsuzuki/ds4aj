@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>B IT ツール | データサイエンスをはじめましょう - Data Science for All -</title>
+<meta name="author" content="鈴木寛（Hirosi Suzuki）">
+<meta name="description" content="いくつかの便利なツールについて紹介します。  B.1 Git と GitHub Git は バージョン管理システムで、GitHub...">
+<meta name="generator" content="bookdown 0.32 with bs4_book()">
+<meta property="og:title" content="B IT ツール | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/tools.html">
+<meta property="og:description" content="いくつかの便利なツールについて紹介します。  B.1 Git と GitHub Git は バージョン管理システムで、GitHub...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="B IT ツール | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="いくつかの便利なツールについて紹介します。  B.1 Git と GitHub Git は バージョン管理システムで、GitHub...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+- Data Science for All -</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">この文書について</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
+<li class="book-part">PART I PUBLIC DATA</li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">2</span> Public Data</a></li>
+<li class="book-part">PART II BASICS</li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">3</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">4</span> R Markdown</a></li>
+<li class="book-part">PART III INSTITUTIONAL DATA</li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">5</span> World Bank</a></li>
+<li class="book-part">PART IV EDA</li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">6</span> 探索的データ解析</a></li>
+<li class="book-part">PART V EXAMPLES</li>
+<li><a class="" href="example1.html"><span class="header-section-number">7</span> Example 1</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
+<li><a class="active" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
+<li><a class="" href="bookdown.html"><span class="header-section-number">C</span> Bookdown</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tools" class="section level1" number="9">
+<h1>
+<span class="header-section-number">B</span> IT ツール<a class="anchor" aria-label="anchor" href="#tools"><i class="fas fa-link"></i></a>
+</h1>
+<blockquote>
+<p>いくつかの便利なツールについて紹介します。</p>
+</blockquote>
+<div id="git-と-github" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">B.1</span> Git と GitHub<a class="anchor" aria-label="anchor" href="#git-%E3%81%A8-github"><i class="fas fa-link"></i></a>
+</h2>
+<p>Git は バージョン管理システムで、GitHub はそれを、活用し、かつ他のメンバーと協力して開発など、さまざまな活動をするためのサイトです。公開が基本となっています。非公開にすることも可能ですが、公開することで、世界中のひとたちと協力していくことが可能になりますからので、その利点も学んでいただければと思います。</p>
+<div id="はじめかた" class="section level3" number="9.1.1">
+<h3>
+<span class="header-section-number">B.1.1</span> はじめかた<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%8B%E3%81%9F"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Git のインストール</li>
+</ol>
+<ul>
+<li>Windows と Mac で異なりますので注意が必要です。</li>
+<li>Windows の場合は、<a href="https://git-scm.com/download/win">git-scm</a> にアクセスしてダウンロード、インストールしてください。
+<ul>
+<li>設定で、Editor を設定しますが、vi, vim に慣れていない方は、nano を選択することをお勧めします。Windows の command line tool を使っていない方は、Git Bash のインストールを選択してください。最後に、RStudio の設定（Tools &gt; Global Option）で、Terminal　から、Git Bash を選択します。</li>
+</ul>
+</li>
+<li>Mac は、最初から、Install されていると思います。Utility&gt;Terminal を開いて、<code>git --version</code> とすると、インストールされているバージョンが表示されると思います。</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>GitHub のアカウント取得</li>
+</ol>
+<ul>
+<li>
+<a href="https://github.com">GitHub サイト</a> に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>RStudio から、GitHub アカウントに連携する設定を行います。</li>
+</ol>
+<pre><code>git config --global user.name "Your Name"
+git config --global user.mail "your@email.com"</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>RStudio の、Tools&gt;Global Option から、Git/SVN を設定します。RSA キーを作成</li>
+</ol>
+</div>
+<div id="github-のリポジトリremote-repoから始める場合" class="section level3" number="9.1.2">
+<h3>
+<span class="header-section-number">B.1.2</span> GitHub のリポジトリ（Remote Repo）から始める場合<a class="anchor" aria-label="anchor" href="#github-%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAremote-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>GitHub にログインして、リポジトリを作成します。Create a new Repository</li>
+<li>Code の、Clone から、リンク先のアドレスを入手</li>
+<li>RStudio から、Version Control を利用して、Project を作成</li>
+</ol>
+</div>
+<div id="自分のコンピュータのリポジトリlocal-repoから始める場合" class="section level3" number="9.1.3">
+<h3>
+<span class="header-section-number">B.1.3</span> 自分のコンピュータのリポジトリ（Local Repo）から始める場合<a class="anchor" aria-label="anchor" href="#%E8%87%AA%E5%88%86%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAlocal-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>RStudio から新しい、Project を作成</li>
+<li>GitHub に、新しい、レポジトリを作成して繋げる</li>
+</ol>
+</div>
+<div id="大きなファイルに関すること" class="section level3" number="9.1.4">
+<h3>
+<span class="header-section-number">B.1.4</span> 大きなファイルに関すること<a class="anchor" aria-label="anchor" href="#%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8"><i class="fas fa-link"></i></a>
+</h3>
+<p>100M 未満のファイルだけを利用するのがよいですが、それより大きいものを、GitHub に挙げようとして、問題が起こることがあります。その対処法を書いておきます。</p>
+<p>個人的には、大きなデータや、本などを、Build して、100M 以上の、非常に大きな、TeX 関連のファイルができることがありました。</p>
+<p>備忘録も含めて、書いておきます。</p>
+<div id="大きなファイルの取り除きかた" class="section level4" number="9.1.4.1">
+<h4>
+<span class="header-section-number">B.1.4.1</span> 大きなファイルの取り除きかた<a class="anchor" aria-label="anchor" href="#%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%8F%96%E3%82%8A%E9%99%A4%E3%81%8D%E3%81%8B%E3%81%9F"><i class="fas fa-link"></i></a>
+</h4>
+<p>下のサイトからの引用です。非常に分かりやすく書かれています。Terminal で作業を行いますが、いま、Add した場合と、いくつか、前のステップで、Add した場合で、対応の方法が異なります。</p>
+<ul>
+<li>
+<a href="https://medium.com/analytics-vidhya/tutorial-removing-large-files-from-git-78dbf4cf83a">Tutorial: Removing Large Files from Git</a>
+<ul>
+<li>Scenario 1: The Large File Was Just Added in the Most Recent Commit
+<ul>
+<li>git rm –cached big_file_name</li>
+<li>git commit –amend -C HEAD</li>
+</ul>
+</li>
+<li>Scenario 2: The Large File Was Committed Prior to The Most Recent Commit
+<ul>
+<li>Locating the Last “Good” Commit: git log –oneline</li>
+<li>Initiate a Rebase Between the Last “Good” Commit and the Current Commit: git rebase -i 8464da4</li>
+<li>This will open up a file in your Git editor (in my case, Vim), that looks something like this:
+<ul>
+<li>pick -&gt; edit</li>
+</ul>
+</li>
+<li>git rm –cached csv_building_damage_assessment.csv</li>
+<li>git commit –amend -C HEAD</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="参考にしたサイト" class="section level3" number="9.1.5">
+<h3>
+<span class="header-section-number">B.1.5</span> 参考にしたサイト<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>GitHub Docs: <a href="https://docs.github.com/ja/get-started/quickstart/hello-world">Hellow World</a>
+<ul>
+<li>基本的なことがコンパクトにまとまっている GitHub のサイトです。日本語もサポートしています。</li>
+</ul>
+</li>
+<li>Introduction to Data Science, by Rafael A. Irizarry
+<ul>
+<li><a href="http://rafalab.dfci.harvard.edu/dsbook/git.html#git">Git and GitHub</a></li>
+<li>edX の、データサイエンスのコースの教科書に入っています。よく、まとまっていると思います。原語は英語ですが、Google などの翻訳機能を使っても、十分理解することがdけいると思います。</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></div>
+<div class="next"><a href="bookdown.html"><span class="header-section-number">C</span> Bookdown</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#tools"><span class="header-section-number">B</span> IT ツール</a></li>
+<li>
+<a class="nav-link" href="#git-%E3%81%A8-github"><span class="header-section-number">B.1</span> Git と GitHub</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%8B%E3%81%9F"><span class="header-section-number">B.1.1</span> はじめかた</a></li>
+<li><a class="nav-link" href="#github-%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAremote-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><span class="header-section-number">B.1.2</span> GitHub のリポジトリ（Remote Repo）から始める場合</a></li>
+<li><a class="nav-link" href="#%E8%87%AA%E5%88%86%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAlocal-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><span class="header-section-number">B.1.3</span> 自分のコンピュータのリポジトリ（Local Repo）から始める場合</a></li>
+<li><a class="nav-link" href="#%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8"><span class="header-section-number">B.1.4</span> 大きなファイルに関すること</a></li>
+<li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88"><span class="header-section-number">B.1.5</span> 参考にしたサイト</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/85-tools.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/85-tools.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>データサイエンスをはじめましょう<br>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-03-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

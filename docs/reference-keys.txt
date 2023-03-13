@@ -125,6 +125,14 @@ r-markdown-の出力
 showtext-using-fonts-more-easily-in-r-graphs
 sysfonts-loading-fonts-into-r
 foods4all-examples-of-graphs
+tools
+git-と-github
+はじめかた
+github-のリポジトリremote-repoから始める場合
+自分のコンピュータのリポジトリlocal-repoから始める場合
+大きなファイルに関すること
+大きなファイルの取り除きかた
+参考にしたサイト
 bookdown
 about
 usage
