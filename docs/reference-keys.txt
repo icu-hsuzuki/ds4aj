@@ -127,9 +127,17 @@ sysfonts-loading-fonts-into-r
 foods4all-examples-of-graphs
 tools
 git-と-github
+概要
+git
+git-hub
+rstudio-連携
 はじめかた
 github-のリポジトリremote-repoから始める場合
 自分のコンピュータのリポジトリlocal-repoから始める場合
+bookdown-パッケージによる電子書籍の執筆
+rstudio-での設定
+他の-pc-での作業
+参考にしたもの-1
 大きなファイルに関すること
 大きなファイルの取り除きかた
 参考にしたサイト

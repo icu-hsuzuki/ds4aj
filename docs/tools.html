@@ -103,9 +103,49 @@
 <span class="header-section-number">B.1</span> Git と GitHub<a class="anchor" aria-label="anchor" href="#git-%E3%81%A8-github"><i class="fas fa-link"></i></a>
 </h2>
 <p>Git は バージョン管理システムで、GitHub はそれを、活用し、かつ他のメンバーと協力して開発など、さまざまな活動をするためのサイトです。公開が基本となっています。非公開にすることも可能ですが、公開することで、世界中のひとたちと協力していくことが可能になりますからので、その利点も学んでいただければと思います。</p>
-<div id="はじめかた" class="section level3" number="9.1.1">
+<div id="概要" class="section level3" number="9.1.1">
 <h3>
-<span class="header-section-number">B.1.1</span> はじめかた<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%8B%E3%81%9F"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.1.1</span> 概要<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
+</h3>
+<p>RStudio で R を使っている場合、Git-GitHub-RStudio の連携で使うことをお勧めします。しかし、これらは、三つとも、まったく異なるものですから、簡単な概要を書いておくことにします。</p>
+<div id="git" class="section level4" number="9.1.1.1">
+<h4>
+<span class="header-section-number">B.1.1.1</span> Git<a class="anchor" aria-label="anchor" href="#git"><i class="fas fa-link"></i></a>
+</h4>
+<p>これは、バージョンを管理システムで、単独で機能します。他の、プログラムなどに関係しない、他のファイルであっても、バージョンを管理する場合に活用できます。また、基本的には、Unix の Shell プログラムで動作させるのが一般的です。Mac では、最初から、Utility&gt; Terminal で、Shell コマンドが利用可能になっていますが、Windows の場合には、bash と呼ばれる Shell プログラムをインストールすることをお勧めします。Windows システムについてよくご存知の方は、他の方法を使っていただいて構いませんが、Git の孫ストールの時に、Git bash を選択して、簡単に インストールできますし、Mac とも同じ環境で説明できますから、ここでは、そちらを使います。</p>
+<p>基本的なコマンドとしては、以下のものがあります。</p>
+<ul>
+<li>
+<code>git init</code>: 特定のディレクトリ（フォルダ）で バージョン管理を始める時に使います。</li>
+<li>
+<code>git status</code>: 現在の状況を確認するときに使います。</li>
+<li>
+<code>git diff file_name</code>: ファイルへの変更を確認します。</li>
+<li>
+<code>git log</code>: 過去の commit による履歴を確認する時に使います。</li>
+<li>
+<code>git add file_name</code>: ステージングという中間的な場所に登録します。</li>
+<li>
+<code>git commit -m "log message here"</code>: ステージングにあるものを、確定させます。引用符で囲まれた短いコメントを加えます。50文字が上限です。</li>
+</ul>
+</div>
+<div id="git-hub" class="section level4" number="9.1.1.2">
+<h4>
+<span class="header-section-number">B.1.1.2</span> Git Hub<a class="anchor" aria-label="anchor" href="#git-hub"><i class="fas fa-link"></i></a>
+</h4>
+<p>Git でバージョン管理されているディレクトリ（フォルダ）の状態を示す、クラウドサービスです。更新されている、状態を確認するとともに、変更履歴なども確認できます。また、Git Hub サービスを利用して、ファイルを公開、共有することも可能です。Pages サイトを利用することで、ホームページとして HTML ファイルなどを公開することも可能です。</p>
+<p>最初に、Git で管理されている、ディレクトリ（フォルダ）（これを、ローカル・リポジトリと言います）と、GitHub 内のリポジトリ（リモート・リポジトリと言います）を結びつけるステップが必要です。</p>
+</div>
+<div id="rstudio-連携" class="section level4" number="9.1.1.3">
+<h4>
+<span class="header-section-number">B.1.1.3</span> RStudio 連携<a class="anchor" aria-label="anchor" href="#rstudio-%E9%80%A3%E6%90%BA"><i class="fas fa-link"></i></a>
+</h4>
+<p>コマンドライン（シェル）で行う作業や、ローカル・リポジトリを、リモート・リポジトリに結びつける作業を、RStudio の中で行うことが可能です。</p>
+</div>
+</div>
+<div id="はじめかた" class="section level3" number="9.1.2">
+<h3>
+<span class="header-section-number">B.1.2</span> はじめかた<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%8B%E3%81%9F"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li>Git のインストール</li>
@@ -135,9 +175,9 @@ git config --global user.mail "your@email.com"</code></pre>
 <li>RStudio の、Tools&gt;Global Option から、Git/SVN を設定します。RSA キーを作成</li>
 </ol>
 </div>
-<div id="github-のリポジトリremote-repoから始める場合" class="section level3" number="9.1.2">
+<div id="github-のリポジトリremote-repoから始める場合" class="section level3" number="9.1.3">
 <h3>
-<span class="header-section-number">B.1.2</span> GitHub のリポジトリ（Remote Repo）から始める場合<a class="anchor" aria-label="anchor" href="#github-%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAremote-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.1.3</span> GitHub のリポジトリ（Remote Repo）から始める場合<a class="anchor" aria-label="anchor" href="#github-%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAremote-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li>GitHub にログインして、リポジトリを作成します。Create a new Repository</li>
@@ -145,25 +185,81 @@ git config --global user.mail "your@email.com"</code></pre>
 <li>RStudio から、Version Control を利用して、Project を作成</li>
 </ol>
 </div>
-<div id="自分のコンピュータのリポジトリlocal-repoから始める場合" class="section level3" number="9.1.3">
+<div id="自分のコンピュータのリポジトリlocal-repoから始める場合" class="section level3" number="9.1.4">
 <h3>
-<span class="header-section-number">B.1.3</span> 自分のコンピュータのリポジトリ（Local Repo）から始める場合<a class="anchor" aria-label="anchor" href="#%E8%87%AA%E5%88%86%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAlocal-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.1.4</span> 自分のコンピュータのリポジトリ（Local Repo）から始める場合<a class="anchor" aria-label="anchor" href="#%E8%87%AA%E5%88%86%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAlocal-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li>RStudio から新しい、Project を作成</li>
 <li>GitHub に、新しい、レポジトリを作成して繋げる</li>
 </ol>
 </div>
-<div id="大きなファイルに関すること" class="section level3" number="9.1.4">
+<div id="bookdown-パッケージによる電子書籍の執筆" class="section level3" number="9.1.5">
 <h3>
-<span class="header-section-number">B.1.4</span> 大きなファイルに関すること<a class="anchor" aria-label="anchor" href="#%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.1.5</span> Bookdown パッケージによる、電子書籍の執筆<a class="anchor" aria-label="anchor" href="#bookdown-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AB%E3%82%88%E3%82%8B%E9%9B%BB%E5%AD%90%E6%9B%B8%E7%B1%8D%E3%81%AE%E5%9F%B7%E7%AD%86"><i class="fas fa-link"></i></a>
+</h3>
+<p><a href="https://github.com/rstudio/bookdown">bookdown</a> を利用して、始める方法を簡単に記します。</p>
+<p>Git-GitHub-RStuio の設定は済んでいると仮定して書きます。</p>
+<div id="rstudio-での設定" class="section level4" number="9.1.5.1">
+<h4>
+<span class="header-section-number">B.1.5.1</span> RStudio での設定<a class="anchor" aria-label="anchor" href="#rstudio-%E3%81%A7%E3%81%AE%E8%A8%AD%E5%AE%9A"><i class="fas fa-link"></i></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li>新しい book プロジェクトを始めます、標準設定の <code>book</code> と、<code>bs4_book</code> を選択できます。このディレクトリ（フォルダ。ローカル・リポジトリと呼びます）の名前をリモート・リポジトリの名前と同じにして、作成します<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;異なる名前でも可能ですが、特別な理由がない限り同じにしておいた方が良いでしょう&lt;/p&gt;"><sup>5</sup></a>。</li>
+<li>Files の、Rename 機能を使って <code>_book</code> ディレクトリ（フォルダ）の名前を、<code>docs</code> に変更します。</li>
+<li>
+<code>_bookdown.yml</code> を編集し次の行を加えます（私は２行目に入れています）。<br><code>output_dir: docs</code><br>
+GitHub Pages の機能を使って、公開するための変更です。</li>
+<li>
+<strong>@GitHub:</strong> 新いリポジトリー（リモート・リポジトリと言います）を作成します。ロー角・リポジトリと同じ名前にし、簡単な説明を加えます。</li>
+<li>左下の窓枠から、Terminal タブを選択します。<br>
+5.1. <code>git init</code><br>
+5.2. <code>git add README.md</code><br>
+5.3. <code>git commit -m "first commit"</code><br>
+5.4. <code>git branch -M main</code><br>
+5.5. <code>git remote add origin git@github.com:icu-hsuzuki/ds4aj.git</code><br>
+適当に変更します。GitHub のコードから取得可能です。<br>
+5.6. <code>git push -u origin main</code><br>
+</li>
+<li>Restart R Studio</li>
+<li>Build Book</li>
+<li>Git: Commit “first build” &gt; Push</li>
+<li>
+<strong>@GitHub:</strong> Settings から、Pages &gt; main &gt; docs と変更する。</li>
+</ol>
+</div>
+<div id="他の-pc-での作業" class="section level4" number="9.1.5.2">
+<h4>
+<span class="header-section-number">B.1.5.2</span> 他の PC での作業<a class="anchor" aria-label="anchor" href="#%E4%BB%96%E3%81%AE-pc-%E3%81%A7%E3%81%AE%E4%BD%9C%E6%A5%AD"><i class="fas fa-link"></i></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li>Login to GitHub account</li>
+<li>Copy SSH address under Code&gt;Clone</li>
+<li>Create a new project using Version Control:Git with the SSH address by setting the directory name</li>
+<li>Edit README.md and test Git Commit and Push</li>
+</ol>
+</div>
+<div id="参考にしたもの-1" class="section level4" number="9.1.5.3">
+<h4>
+<span class="header-section-number">B.1.5.3</span> 参考にしたもの<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E3%82%82%E3%81%AE-1"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li><p>The bookdown book: <a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a></p></li>
+<li><p>The bookdown package reference site: <a href="https://pkgs.rstudio.com/bookdown" class="uri">https://pkgs.rstudio.com/bookdown</a></p></li>
+<li><p>How to create a bookdown book in 5 minutes: <a href="https://www.youtube.com/watch?v=m5D-yoH416Y" class="uri">https://www.youtube.com/watch?v=m5D-yoH416Y</a></p></li>
+</ul>
+</div>
+</div>
+<div id="大きなファイルに関すること" class="section level3" number="9.1.6">
+<h3>
+<span class="header-section-number">B.1.6</span> 大きなファイルに関すること<a class="anchor" aria-label="anchor" href="#%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8"><i class="fas fa-link"></i></a>
 </h3>
 <p>100M 未満のファイルだけを利用するのがよいですが、それより大きいものを、GitHub に挙げようとして、問題が起こることがあります。その対処法を書いておきます。</p>
 <p>個人的には、大きなデータや、本などを、Build して、100M 以上の、非常に大きな、TeX 関連のファイルができることがありました。</p>
 <p>備忘録も含めて、書いておきます。</p>
-<div id="大きなファイルの取り除きかた" class="section level4" number="9.1.4.1">
+<div id="大きなファイルの取り除きかた" class="section level4" number="9.1.6.1">
 <h4>
-<span class="header-section-number">B.1.4.1</span> 大きなファイルの取り除きかた<a class="anchor" aria-label="anchor" href="#%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%8F%96%E3%82%8A%E9%99%A4%E3%81%8D%E3%81%8B%E3%81%9F"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.1.6.1</span> 大きなファイルの取り除きかた<a class="anchor" aria-label="anchor" href="#%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%8F%96%E3%82%8A%E9%99%A4%E3%81%8D%E3%81%8B%E3%81%9F"><i class="fas fa-link"></i></a>
 </h4>
 <p>下のサイトからの引用です。非常に分かりやすく書かれています。Terminal で作業を行いますが、いま、Add した場合と、いくつか、前のステップで、Add した場合で、対応の方法が異なります。</p>
 <ul>
@@ -194,9 +290,9 @@ git config --global user.mail "your@email.com"</code></pre>
 </ul>
 </div>
 </div>
-<div id="参考にしたサイト" class="section level3" number="9.1.5">
+<div id="参考にしたサイト" class="section level3" number="9.1.7">
 <h3>
-<span class="header-section-number">B.1.5</span> 参考にしたサイト<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.1.7</span> 参考にしたサイト<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>GitHub Docs: <a href="https://docs.github.com/ja/get-started/quickstart/hello-world">Hellow World</a>
@@ -214,6 +310,7 @@ git config --global user.mail "your@email.com"</code></pre>
 </div>
 </div>
 </div>
+
   <div class="chapter-nav">
 <div class="prev"><a href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></div>
 <div class="next"><a href="bookdown.html"><span class="header-section-number">C</span> Bookdown</a></div>
@@ -223,11 +320,13 @@ git config --global user.mail "your@email.com"</code></pre>
 <li><a class="nav-link" href="#tools"><span class="header-section-number">B</span> IT ツール</a></li>
 <li>
 <a class="nav-link" href="#git-%E3%81%A8-github"><span class="header-section-number">B.1</span> Git と GitHub</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%8B%E3%81%9F"><span class="header-section-number">B.1.1</span> はじめかた</a></li>
-<li><a class="nav-link" href="#github-%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAremote-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><span class="header-section-number">B.1.2</span> GitHub のリポジトリ（Remote Repo）から始める場合</a></li>
-<li><a class="nav-link" href="#%E8%87%AA%E5%88%86%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAlocal-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><span class="header-section-number">B.1.3</span> 自分のコンピュータのリポジトリ（Local Repo）から始める場合</a></li>
-<li><a class="nav-link" href="#%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8"><span class="header-section-number">B.1.4</span> 大きなファイルに関すること</a></li>
-<li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88"><span class="header-section-number">B.1.5</span> 参考にしたサイト</a></li>
+<li><a class="nav-link" href="#%E6%A6%82%E8%A6%81"><span class="header-section-number">B.1.1</span> 概要</a></li>
+<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%8B%E3%81%9F"><span class="header-section-number">B.1.2</span> はじめかた</a></li>
+<li><a class="nav-link" href="#github-%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAremote-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><span class="header-section-number">B.1.3</span> GitHub のリポジトリ（Remote Repo）から始める場合</a></li>
+<li><a class="nav-link" href="#%E8%87%AA%E5%88%86%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAlocal-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><span class="header-section-number">B.1.4</span> 自分のコンピュータのリポジトリ（Local Repo）から始める場合</a></li>
+<li><a class="nav-link" href="#bookdown-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AB%E3%82%88%E3%82%8B%E9%9B%BB%E5%AD%90%E6%9B%B8%E7%B1%8D%E3%81%AE%E5%9F%B7%E7%AD%86"><span class="header-section-number">B.1.5</span> Bookdown パッケージによる、電子書籍の執筆</a></li>
+<li><a class="nav-link" href="#%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8"><span class="header-section-number">B.1.6</span> 大きなファイルに関すること</a></li>
+<li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E3%81%AB%E3%81%97%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88"><span class="header-section-number">B.1.7</span> 参考にしたサイト</a></li>
 </ul>
 </li>
 </ul>
@@ -248,7 +347,7 @@ git config --global user.mail "your@email.com"</code></pre>
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-03-13.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-03-14.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
