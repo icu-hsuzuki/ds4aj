@@ -43,7 +43,7 @@ Git でバージョン管理されているディレクトリ（フォルダ）�
     - Choosing the default editor used by Git: 設定で、エディタ（Editor）を設定しますが、vi, vim に慣れていない方は、nano を選択することをお勧めします。（nano は、メニューが下に出るので、それを見て操作することが可能なエディターです。）
     - Adjusting Your Path Environment: Windows の コマンドライン・ツール（command line prompt) を使っていない方は、Git Bash のインストールを選択してください。さらに、Git and optional Unix tools from the Windows Command Prompt を選択することをお勧めしますが、上で書いたように、Windows の コマンド・プロンプトになれておられる方で、それを使い続けたいかたは、Use Git from Git Bash only を選択されるのが良いかもしれません。
     - 最後に、RStudio の設定（Tools > Global Option）で、Terminal　から、Git Bash を選択し、Tools から、New Terminal を選択します。
-  - **Mac** は、最初から、Install されていると思います。ユーティリティ（Utility）> ターミナル（Terminal）を開いて^[RStudio を既にお使いの方は、左下の窓枠から、Terminal タブを選択できますので、それを使うことも可能です。]、`git --version` とすると、インストールされているバージョンが表示されると思います。バージョンがでない場合には、Install するかと聞かれます。このときに、Git だけをインストールすることも、Xcode という開発環境を同時にインストールすることも可能です。インストールが終了したら、もう一度、`git --version` と Terminal に入力して、結果を確認してください。
+  - **Mac** は、最初から、Install されていると思います。ユーティリティ（Utility）> ターミナル（Terminal）を開いて^[RStudio を既にお使いの方は、左下の窓枠から、Terminal タブを選択できますので、それを使うことも可能です。]、`git --version` とすると、インストールされているバージョンが表示されると思います。バージョンがでない場合には、Install するかと聞かれます。このときに、Git だけをインストールすることも、Xcode という開発環境を同時にインストールすることも可能です。（インストールするように指示が出なければ、App Store からも、インストールできます。もし、そのあとで、git などのコマンドで xcrun: error などとエラーが出たら、`xcode-select --install` としてください。）インストールが終了したら、もう一度、`git --version` と Terminal に入力して、結果を確認してください。
 2. GitHub のアカウント取得
   - [GitHub サイト](https://github.com) に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。
 3. RStudio の 左下の窓枠のTerminal タブ^[Terminal がない場合は、Tools > Terminal > New Terminal とすると表示されます。]から、GitHub アカウントに連携する設定を行います。
