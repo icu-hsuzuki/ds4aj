@@ -59,14 +59,31 @@ git config --global user.mail "your@email.com" # GitHub に登録したメール
 
 ### GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合
 
-1. GitHub にログインして、リポジトリを作成します。Create a new Repository
-2. Code の、Clone から、リンク先のアドレスを入手
-3. RStudio から、Version Control を利用して、Project を作成
+1. GitHub にログインして、既存のリポジトリを開きます。
+2. Code の、Clone から、リンク先のアドレスを入手。https と SSH を選べますが、SSH を選び、コピーします。
+3. RStudio から、New Project とし、Version Control を選択し、ディレクトリーを決めたら、上でコピーした、ものを、貼り付けて、Project を作成します。
+
+この手続きで、リモート・リポジトリのファイルがすべて、RStudio のプロジェクトに入ります。
+
+実はこの手続きで、公開されている、他のリポジトリも取り込むことができます。ただし、編集して、改訂していくには、自分のリポジトリに、繋ぐことになります。そのときは、次の項目を見てください。
 
 ### 自分のコンピュータのリポジトリ（Local Repo）から始める場合
 
-1. RStudio から新しい、Project を作成
+1. RStudio から新しい、プロジェクト（Project） を作成 `test0` としておきましょう。
 2. GitHub に、新しい、レポジトリを作成して繋げる
+  - 自分の GitHub アカウントに、新しい、レポジトリをプロジェクトと同じ名前 `test0` で作成します。同じ名前でなくてもかまわないのですが、関連がしやすいので、同じ名前がお勧めです。
+  - Code の Clone から、https と SSH を選べますが、SSH を選び、コピーします。
+  - プロジェクトの中の 左下の窓枠の、Terminal から次を実行します。
+```
+echo "# Project test0" >> README.md # REAME の表題を書きます。
+git init
+git add README.md
+git commit -m "First commit. README.md"
+git remote add origin `git@github.com:icu-hsuzuki/test0.git`
+# わたしのアカウントの場合には、上で貼り付けたものは、上のようになります。
+git push
+```
+
 
 ### Bookdown パッケージによる、電子書籍の執筆
 

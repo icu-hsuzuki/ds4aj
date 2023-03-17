@@ -195,19 +195,33 @@ git config --global user.mail "your@email.com" # GitHub に登録したメール
 <span class="header-section-number">B.1.3</span> GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合<a class="anchor" aria-label="anchor" href="#github-%E3%81%AB%E3%81%82%E3%82%8B%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAremote-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
-<li>GitHub にログインして、リポジトリを作成します。Create a new Repository</li>
-<li>Code の、Clone から、リンク先のアドレスを入手</li>
-<li>RStudio から、Version Control を利用して、Project を作成</li>
+<li>GitHub にログインして、既存のリポジトリを開きます。</li>
+<li>Code の、Clone から、リンク先のアドレスを入手。https と SSH を選べますが、SSH を選び、コピーします。</li>
+<li>RStudio から、New Project とし、Version Control を選択し、ディレクトリーを決めたら、上でコピーした、ものを、貼り付けて、Project を作成します。</li>
 </ol>
+<p>この手続きで、リモート・リポジトリのファイルがすべて、RStudio のプロジェクトに入ります。</p>
+<p>実はこの手続きで、公開されている、他のリポジトリも取り込むことができます。ただし、編集して、改訂していくには、自分のリポジトリに、繋ぐことになります。そのときは、次の項目を見てください。</p>
 </div>
 <div id="自分のコンピュータのリポジトリlocal-repoから始める場合" class="section level3" number="9.1.4">
 <h3>
 <span class="header-section-number">B.1.4</span> 自分のコンピュータのリポジトリ（Local Repo）から始める場合<a class="anchor" aria-label="anchor" href="#%E8%87%AA%E5%88%86%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AAlocal-repo%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E5%A0%B4%E5%90%88"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
-<li>RStudio から新しい、Project を作成</li>
+<li>RStudio から新しい、プロジェクト（Project） を作成 <code>test0</code> としておきましょう。</li>
 <li>GitHub に、新しい、レポジトリを作成して繋げる</li>
 </ol>
+<ul>
+<li>自分の GitHub アカウントに、新しい、レポジトリをプロジェクトと同じ名前 <code>test0</code> で作成します。同じ名前でなくてもかまわないのですが、関連がしやすいので、同じ名前がお勧めです。</li>
+<li>Code の Clone から、https と SSH を選べますが、SSH を選び、コピーします。</li>
+<li>プロジェクトの中の 左下の窓枠の、Terminal から次を実行します。</li>
+</ul>
+<pre><code>echo "# Project test0" &gt;&gt; README.md # REAME の表題を書きます。
+git init
+git add README.md
+git commit -m "First commit. README.md"
+git remote add origin `git@github.com:icu-hsuzuki/test0.git`
+# わたしのアカウントの場合には、上で貼り付けたものは、上のようになります。
+git push</code></pre>
 </div>
 <div id="bookdown-パッケージによる電子書籍の執筆" class="section level3" number="9.1.5">
 <h3>
