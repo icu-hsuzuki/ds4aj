@@ -22,6 +22,8 @@ RStudio で R を使っている場合、Git-GitHub-RStudio の連携で使う�
 * `git log`: 過去の commit による履歴を確認する時に使います。
 * `git add file_name`: ステージングという中間的な場所に登録します。
 * `git commit -m "log message here"`: ステージングにあるものを、確定させます。引用符で囲まれた短いコメントを加えます。50文字が上限です。
+* `git help`: Help のリストが表示されます。
+  - 例：`git help init` などと入力すると、説明を見ることができます。
 
 #### Git Hub
 
@@ -80,16 +82,25 @@ git init
 git add README.md
 git commit -m "First commit. README.md"
 git remote add origin `git@github.com:icu-hsuzuki/test0.git`
-# わたしのアカウントの場合には、上で貼り付けたものは、上のようになります。
+# わたしのアカウントの場合には、コピーしたものを貼り付けると、上のようになります。
 git push
 ```
 
+### GitHub Pages について
+
+GitHub は、Web 上のサービスですが、たとえ、リポジトリーの中に、HTML ファイルなどが存在しても、ブラウザーで表示させることはできません。公開する方法として、わたしは、以下のようにしています。
+
+公開しブラウザーで読めるようにしたいファイルを、`docs` という ディレクトリに入れます。Setting を選択し、左の帯から、Pages を選び、Branch を、`main`、`/docs` として、Save します。すると、docs に入っているファイルは、リンクを指定すれば、ブラウザーで、見ることができます。
+
+リンクは、まず、リポジトリーの右上の、About の右のギアマークから、Use your GitHub Pages website に、チェックを入れると、URL が表示されますから、その URL に続けて、ファイル名を加えたものが、そのファイルの、リンクとなります。
 
 ### Bookdown パッケージによる、電子書籍の執筆
 
 [bookdown](https://github.com/rstudio/bookdown) を利用して、始める方法を簡単に記します。
 
-Git-GitHub-RStuio の設定は済んでいると仮定して書きます。
+Git-GitHub-RStuio の設定は済んでいると仮定して書きます。また、Bookdown を利用するには、`bookdown` パッケージのインストールが必要です。RStudio の Tools から、Install Packages を選択して、インストールしてください。また、`bs4_book` スタイルを利用する場合は、RStudio などのバージョンによっては、`bslib` と `downlit` も、インストールする必要があるようです。
+
+以下では、R Studio で新しい、プロジェクトとして始める場合と、テンプレート・リポジトリ を使う方法を説明します。
 
 #### RStudio での設定
 
@@ -117,14 +128,48 @@ git push -u origin main
 
 
 
-#### 他の PC での作業
+##### 他の PC での作業
 
 1. Login to GitHub account
 2. Copy SSH address under Code>Clone
 3. Create a new project using Version Control:Git with the SSH address by setting the directory name
 4. Edit README.md and test Git Commit and Push
 
+#### テンプレートを利用する方法
 
+##### bookdown-demo
+
+[`bookdown` の電子書籍（bookdown: Authoring Books and Technical Documents with R Markdown）](https://bookdown.org/yihui/bookdown/) の、はじめてみよう（Get started）から、GitHub リポジトリー [rstudio/bookdown-demo](https://github.com/rstudio/bookdown-demo) にリンクがついています。
+
+1. 自分の、GitHub アカウントに、ログインします。
+2. [rstudio/bookdown-demo](https://github.com/rstudio/bookdown-demo) にアクセスし、Use this template から、create a new repository を選択します。
+3. 自分のアカウントの中に、コピーされたリポジトリーがつくられます。
+4. 上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
+
+よくできているテンプレートです。しかし、このままでは、公開されません。[bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) には、いくつかの公開方法が書かれていますから、参照してください。
+
+##### `jtr13/bookdown-template`
+
+YouTube ビデオ [5分間で、bookdown の本を作成する方法（How to create a bookdown book in 5 minutes）](https://www.youtube.com/watch?v=m5D-yoH416Y) で紹介されているものです。
+
+1. 自分の、GitHub アカウントに、ログインします。
+2. [jtr13/bookdown-template](https://github.com/jtr13/bookdown-template) にアクセスし、Use this template から、create a new repository を選択します。
+3. 自分のアカウントの中に、コピーされたリポジトリーがつくられます。
+4. 上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
+
+ビデオの中では、簡単に、GitHub Pages（GitHub のホームページサービス）に、公開する方法が説明されています。最も、大切な部分は、テンプレートがコピーされた、自分のリポジトリの Settings から、Pages を選び、Branch を main > docs とする部分です。このようにすることで、公開されます。上の、「GitHub Pages」で説明していることと同じです。
+
+##### 日本語テンプレート
+
+`bs4_book` スタイルでの、簡単な、日本語テンプレートを作成しました。
+
+1. 自分の、GitHub アカウントに、ログインします。
+2. [icu-hsuzuki/bs4_book_template](https://github.com/icu-hsuzuki/bs4_book_template) にアクセスし、Use this template から、create a new repository を選択します。
+3. 自分のアカウントの中に、コピーされたリポジトリーがつくられます。
+4. 上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
+
+まだ、不十分ですが、少しずつ、改訂していきます。
+使い方は、リポジトリの README に、注意点などは、最後の章 Bookdown に書いておく予定です。
 
 ### 大きなファイルに関すること
 
@@ -183,10 +228,35 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 
 詳しくは、参考にしたサイトを参照してください。
 
+### 共同作業をする場合
+
+以下では、本の共同編集を想定して、書きます。
+
+1. 編集に関わる全員が、それぞれ、GitHub アカウントを作成します。
+
+2. リポジトリを Fork： 共同編集する本のレポジトリにいき、フォークします。フォークすることで、編集者のリポジトリに、コピーが作成され、大元のリポジトリの変更を依頼することができます。
+
+3. リポジトリをクローン: 編集者のコンピュータにフォークして得られたリポジトリを、クローンします。
+
+4. 編集: 編集者のコンピュータで編集を行います。
+
+5. 編集結果をコミット : 編集者のコンピュータで編集した後に、簡単な説明を書いて、コミットします。
+
+6. 編集結果をプッシュ : フォークした GitHub の自分のリポジトリに、プッシュします。
+
+7. プル依頼を作成 : 大元のリポジトリで、編集の内容を簡単に記述して、プルリクエストをします。
+
+8. 編集結果の確認 : 大元の、リポジトリの所有者は、編集結果を確認し、承認する場合は、main に、統合します。
+
+9. 変更の同期: 編集者は、承認された、大元のリポジトリを、フォークした自分のリポジトリに、同期させます。
+
+
 ### 参考にしたサイト
 
 #### Git - GitHub - RStudio 関連
 
+* [git -- everything is local](https://git-scm.com/about)
+  - About、Documentation など
 * GitHub Docs: [Hellow World](https://docs.github.com/ja/get-started/quickstart/hello-world)
   - 基本的なことがコンパクトにまとまっている GitHub のサイトです。日本語もサポートしています。
 * Introduction to Data Science, by Rafael A. Irizarry
