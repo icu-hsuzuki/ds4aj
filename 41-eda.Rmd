@@ -10,7 +10,7 @@ showtext_auto()
 
 ## 探索的データ解析 (EDA)とは
 
-![image from r4ds](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png)
+![image from r4ds](./data/data-science.png)
 
 以下は、[Posit Primers: Visualise Data](https://posit.cloud/learn/primers/3.1) から
 

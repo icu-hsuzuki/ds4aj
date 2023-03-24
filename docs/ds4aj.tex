@@ -101,11 +101,14 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
-\usepackage{ctex}
+\usepackage{xeCJK}
+\setCJKmainfont{ipaexm.ttf}
+\setCJKsansfont{ipaexg.ttf}
+\setCJKmonofont{ipaexg.ttf}
 
-\renewcommand{\contentsname}{目次}
+%\renewcommand{\contentsname}{目次}
 
-%\usepackage{xeCJK}
+%
 %\usepackage{CJKutf8} 
 %\usepackage{zxjatype}
 %\usepackage{xltxtra} 
@@ -113,9 +116,6 @@
 %\setCJKmainfont{Noto Serif CJK TC}
 %\setCJKsansfont{Noto Sans CJK TC}
 %\setCJKmonofont{Noto Sans Mono CJK TC}
-%\setCJKmainfont{IPAMincho}
-%\setCJKsansfont{IPAGothic}
-%\setCJKmonofont{IPAGothic}
 %\RequirePackage{plautopatch}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -127,13 +127,14 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={データサイエンスをはじめましょう - Data Science for All -},
-  pdfauthor={John Doe},
+  pdfauthor={鈴木寛（Hirosi Suzuki）},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{データサイエンスをはじめましょう - Data Science for All -}
-\author{John Doe}
-\date{2023-02-18}
+\title{データサイエンスをはじめましょう\\
+- Data Science for All -}
+\author{鈴木寛（Hirosi Suzuki）}
+\date{2023-03-24}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[section]
@@ -226,8 +227,8 @@ Data Science: データ (Data) を活用して課題を発見・探求し、適�
 
 まずは、パブリックデータを見てみましょう。大きな機関のパグリックデータには、ダッシュボード（dashboard）と呼ばれている、パラメタを変更して、そのグラフを描くなどの機能が付いているものもあります。
 
-\hypertarget{world-bank}{%
-\subsection{World Bank}\label{world-bank}}
+\hypertarget{ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}{%
+\subsection{オープンデータ}\label{ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}}
 
 \hypertarget{open-government-data-toolkit-open-data-defined}{%
 \subsubsection{\texorpdfstring{\href{http://opendatatoolkit.worldbank.org}{Open Government Data Toolkit}: \href{http://opendatatoolkit.worldbank.org/en/essentials.html}{Open Data Defined}}{Open Government Data Toolkit: Open Data Defined}}\label{open-government-data-toolkit-open-data-defined}}
@@ -243,23 +244,30 @@ The term \textbf{Open Data} has a very precise meaning. Data or content is open 
   The data must be \emph{technically open}, which means they must be published in electronic formats that are machine readable and non-proprietary, so that anyone can access and use the data using common, freely available software tools. Data must also be publicly available and accessible on a public server, without password or firewall restrictions. To make Open Data easier to find, most organizations create and manage Open Data catalogs.
 \end{enumerate}
 
-\hypertarget{worldbank-data}{%
-\subsection{Worldbank Data}\label{worldbank-data}}
+オープンデータの定義
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  オープンデータという言葉は、非常に正確な意味を持っています。データまたはコンテンツは、誰でも自由に使用、再利用、再配布でき、せいぜい出所とオープン性を維持するための措置に従うだけであればオープンです。
+\item
+  データは法的にオープンでなければなりません。つまり、パブリックドメインに置かれるか、最小限の制限で自由な使用条件のもとに置かれなければなりません。
+  データは技術的にオープンでなければならない。つまり、誰でも自由に使える一般的なソフトウェアツールを使ってデータにアクセスし利用できるように、機械可読で非専有の電子フォーマットで公開されていなければならない。また、データは一般に公開され、パスワードやファイアウォールによる制限を受けずに、公共のサーバーでアクセスできなければなりません。オープンデータを見つけやすくするために、ほとんどの組織がオープンデータカタログを作成し管理しています。
+\end{enumerate}
+
+\hypertarget{ux65e5ux672cux304bux3089ux4e16ux754cux3092ux898bux308b}{%
+\subsection{日本から世界を見る}\label{ux65e5ux672cux304bux3089ux4e16ux754cux3092ux898bux308b}}
+
+以下では、世界銀行の、世界開発指標を利用するが、他にも、\href{https://data.un.org}{UNdata}、\href{https://data.oecd.org}{OECD data}、\href{https://wid.world}{WID}、\href{https://ec.europa.eu/eurostat}{Eurostat}、\href{https://ourworldindata.org}{Our World in Data} なども、同様の、ダッシュボードを備えており、データの提供もしている。日本では、\href{https://www.e-stat.go.jp/}{e-Stat}、\href{https://dashboard.e-stat.go.jp}{ダッシュボード}
 
 \begin{itemize}
 \tightlist
 \item
-  Climate Change Knowledge Portal: \url{https://climateknowledgeportal.worldbank.org}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    country summary
-  \end{itemize}
+  日本のデータはどうでしょうか。
 \end{itemize}
 
-\hypertarget{world-bank-wdi---world-development-indicaters}{%
-\subsection{World Bank: WDI - World Development Indicaters}\label{world-bank-wdi---world-development-indicaters}}
+\hypertarget{ux4e16ux754cux9280ux884cworld-bank}{%
+\subsection{世界銀行（World Bank）}\label{ux4e16ux754cux9280ux884cworld-bank}}
 
 \begin{itemize}
 \tightlist
@@ -285,8 +293,8 @@ The term \textbf{Open Data} has a very precise meaning. Data or content is open 
   \end{itemize}
 \end{itemize}
 
-\hypertarget{world-development-indicator}{%
-\subsubsection{World Development Indicator}\label{world-development-indicator}}
+\hypertarget{ux4e16ux754cux958bux767aux6307ux6570world-development-indicator-wdi}{%
+\subsubsection{世界開発指数（World Development Indicator (WDI)）}\label{ux4e16ux754cux958bux767aux6307ux6570world-development-indicator-wdi}}
 
 \begin{itemize}
 \tightlist
@@ -305,6 +313,104 @@ The term \textbf{Open Data} has a very precise meaning. Data or content is open 
     API Documentation
   \end{itemize}
 \end{itemize}
+
+\hypertarget{world-bank-wdi---world-development-indicaters}{%
+\subsubsection{World Bank: WDI - World Development Indicaters}\label{world-bank-wdi---world-development-indicaters}}
+
+\begin{itemize}
+\tightlist
+\item
+  世界銀行（World Bank）: \url{https://www.worldbank.org}
+\item
+  \href{https://www.worldbank.org/en/who-we-are}{世界銀行について（Who we are）}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    極度の貧困状態の削減（To end extreme poverty）: 2030年までに、極度の貧困状態にある世界人口の割合を3\%に削減する。By reducing the share of the global population that lives in extreme poverty to 3 percent by 2030.
+  \item
+    繁栄を共に享受（To promote shared prosperity）: すべての国の最貧困層の40％の人々の所得を増加させることによって共栄を促進。By increasing the incomes of the poorest 40 percent of people in every country.
+  \end{itemize}
+\item
+  世界銀行オープンデータ（World Bank Open Data）: \url{https://data.worldbank.org}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Data Bank, World Development Indicators, etc.
+  \end{itemize}
+\end{itemize}
+
+日本について：\url{https://data.worldbank.org/country/japan?view=chart}
+
+\hypertarget{ux4e16ux754cux958bux767aux6307ux6a19world-development-indicator}{%
+\subsubsection{世界開発指標（World Development Indicator）}\label{ux4e16ux754cux958bux767aux6307ux6a19world-development-indicator}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://datatopics.worldbank.org/world-development-indicators/}{World Development Indicators (WDI)} : 世界銀行が開発に関する各国間比較可能なデータの集大成である1400の時系列指標（the World Bank's premier compilation of cross-country comparable data on development; 1400 time series indicators）
+
+  \begin{itemize}
+  \tightlist
+  \item
+    テーマ別（Themes）: 貧困と格差、人間、環境、経済、国家と市場、グローバルリンク集（Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links）
+  \item
+    オープンデータとデータバンク（Open Data \& DataBank）: Explore data, Query database
+  \item
+    Bulk Download: Excel, CSV
+  \item
+    API Documentation
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux4f8b}{%
+\subsubsection{例}\label{ux4f8b}}
+
+\hypertarget{gdp-per-capita-constant-2015-us}{%
+\paragraph{GDP per capita (constant 2015 US\$)}\label{gdp-per-capita-constant-2015-us}}
+
+実質GDP（2015年を基準にしたもの）を、総人口で割った値。アメリカ合衆国、英国、ドイツ、フランス、日本、中国、日本、ロシア、ウクライナの2021年における比較棒グラフ - \href{https://data.worldbank.org/indicator/NY.GDP.PCAP.KD?locations=JP-GB-RU-FR-CN-US-UA-DE\&start=2021\&end=2021\&view=bar}{リンク}
+
+年次変化を示す折線グラフ -
+
+\hypertarget{central-government-debt-total-of-gdp}{%
+\paragraph{Central government debt, total (\% of GDP)}\label{central-government-debt-total-of-gdp}}
+
+2020年の政府の負債（GDP の百分率）- \href{https://data.worldbank.org/indicator/GC.DOD.TOTL.GD.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE\&start=2020\&end=2020\&view=bar}{リンク}
+
+政府の負債（GDP の百分率）の年次変化を示す折線グラフ
+
+\hypertarget{co2-emissions-metric-tons-per-capita}{%
+\paragraph{CO2 emissions (metric tons per capita)}\label{co2-emissions-metric-tons-per-capita}}
+
+CO2 排出量 (1 人あたりのメートル トン) - \href{https://data.worldbank.org/indicator/EN.ATM.CO2E.PC?locations=JP-GB-RU-FR-CN-US-UA-DE\&start=2019\&end=2019\&view=bar}{リンク}
+
+CO2 排出量 (1 人あたりのメートル トン) の年次変化の折線グラフ
+
+\hypertarget{military-expenditure-of-gdp}{%
+\paragraph{Military expenditure (\% of GDP)}\label{military-expenditure-of-gdp}}
+
+2021年の軍事費 (GDP の \%) - \href{https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS?locations=JP-GB-RU-FR-CN-UA\&start=2021\&end=2021\&view=bar}{リンク}
+
+軍事費 (GDP の \%) の年次変化
+
+\hypertarget{military-expenditure-current-usd}{%
+\paragraph{Military expenditure (current USD)}\label{military-expenditure-current-usd}}
+
+2021年の軍事費 (現在の米ドル)
+
+軍事費の年次変化
+
+\hypertarget{proportion-of-seats-held-by-women-in-natinal-parliaments}{%
+\paragraph{Proportion of seats held by women in natinal parliaments (\%)}\label{proportion-of-seats-held-by-women-in-natinal-parliaments}}
+
+2021年、国会で女性が占める議席の割合 (\%) - \href{https://data.worldbank.org/indicator/SG.GEN.PARL.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE\&start=2021\&end=2021\&view=bar}{リンク}
+
+国会で女性が占める議席の割合 (\%) の年次変化
+
+\hypertarget{ux4e16ux754cux306eux3055ux307eux3056ux307eux306aux8ab2ux984cux304bux3089ux898bux308b}{%
+\subsection{世界のさまざまな課題から見る}\label{ux4e16ux754cux306eux3055ux307eux3056ux307eux306aux8ab2ux984cux304bux3089ux898bux308b}}
 
 \hypertarget{oecd}{%
 \subsection{OECD}\label{oecd}}
@@ -330,7 +436,7 @@ eurostat: \url{https://ec.europa.eu/eurostat}
 \part{PART II BASICS}\label{part-part-ii-basics}}
 
 \hypertarget{ronrstudio}{%
-\section{R on R Studio}\label{ronrstudio}}
+\section{R Studio で R}\label{ronrstudio}}
 
 \hypertarget{ux306fux3058ux3081ux306b}{%
 \subsection{はじめに}\label{ux306fux3058ux3081ux306b}}
@@ -338,6 +444,8 @@ eurostat: \url{https://ec.europa.eu/eurostat}
 R Studio で R を使うことを始めましょう。
 
 このページの一番下に、簡単な解説ビデオがついています。
+
+また、R Studio 以外での利用についても、少しだけ書いてあります。
 
 \hypertarget{r-ux3068-r-studio}{%
 \subsection{R と R Studio}\label{r-ux3068-r-studio}}
@@ -388,6 +496,19 @@ macOS の場合は、M1, M2 など、最近の Apple Silicon の CPU で動く�
 \url{https://docs.posit.co/previous-versions/}
 
 不明の場合は、「RStudio のインストール」と検索してみてください。
+
+\textbf{Windows 日本語アカウント名の場合の不具合について:}
+Windows の日本語システムで、アカウント名に日本語を使っておられる方、または、OneDrive を使っていて、Documents（書類）ディレクトリーのすべてをバックアップしておられる方は、ファイルを作成したり、パッケージをインストールするときに、問題が発生する可能性があります。\texttt{Sys.getenv(\textquotesingle{}HOME\textquotesingle{})} と、\texttt{Sys.getenv(\textquotesingle{}R\_LIBS\_USER\textquotesingle{})} をそれぞれ、コピーして、RStudio 左下の窓枠の Console タブに、ペーストして、エンターして、???? や、カタカナ、漢字が現れなければ、問題ありません。\texttt{Sys.getenv()} とすれば、すべての環境変数を確認することもできます。
+
+上のコードで、???? または、カタカナ、漢字が現れた場合は、このあとの、パッケージのところを読み、\texttt{rmarkdown} をインストールし、File のところから、New File \textgreater{} R Notebook を選択してください。すると、追加のパッケージがインストールされ、R Notebook が左上に表示されますが、そこで、エラーになる可能性が大きいです。
+
+上の過程で、エラーが出たら、まず、上のメニューの、Tools の一番下の、Global Options を開き、左のメニューから、Packages を選び、Primary CRAN Repository を Change として、CRAN mirror から、Japan: The Institute of Statistical Mathematics, Tokyo を選択してください。これで解決することもあるようです。（理由は未確認、問い合わせ中）
+
+これで解決しない場合は、Windows に、もう一つ、アカウントを作成し\footnote{{[}スタート{]} \textgreater{} {[}設定{]} \textgreater{} {[}アカウント{]} の順に選択し、{[}ファミリとその他のユーザー{]} を選択し、{[}アカウントの追加{]} から作成。}、アカウント名を英語にして、そちらから、インストールしてください。元の日本語アカウントとファイルを共有したいときは、共有ディレクトリーにコピーしてください。
+
+すべての状況は確認できませんので、ここまでとします\footnote{元のアカウントから、利用したり、Home を変更したりなど、いろいろな方法で、解決することも可能ですが、自信がない場合には、上の方法で、別のアカウントから、利用してください。}。Chat GPT に確認したやりとりは、\href{https://icu-hsuzuki.github.io/ds_education/chatgpt.html\#chatgpt}{ここ}にあります。自分で確認をして、HOME の変更などをしてみても良いですが、問題が生じた時に、サポートできませんから、一般的な方法としては、書かないことにします。
+
+注：矢内勇生さんの\href{https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf}{サイト}には、詳細な説明があります。
 
 \hypertarget{ux30d7ux30edux30b8ux30a7ux30afux30c8---project}{%
 \subsection{プロジェクト - Project}\label{ux30d7ux30edux30b8ux30a7ux30afux30c8---project}}
@@ -442,7 +563,7 @@ RStudio で R を利用する場合には、プロジェクトを作成するこ
 \hypertarget{ux30b3ux30f3ux30bdux30fcux30ebux3067ux5b9fux884c---run-in-console}{%
 \subsection{コンソールで実行 - Run in Console}\label{ux30b3ux30f3ux30bdux30fcux30ebux3067ux5b9fux884c---run-in-console}}
 
-プログラム（コード）の実行は、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行にすいて、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console を選択してください。）
+プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console を選択してください。）
 
 \hypertarget{ux6700ux521dux306eux56dbux3064}{%
 \subsubsection{最初の四つ}\label{ux6700ux521dux306eux56dbux3064}}
@@ -516,6 +637,10 @@ head(cars)\texttt{では、縦に表示されていたものが、横に表示�
 
 \includegraphics{21-r-on-rstudio_files/figure-latex/unnamed-chunk-5-1.pdf}
 
+右下の、窓枠の、Plots に、上のグラフ（散布図）が表示されると思います。Export と書いてある、プルダウンメニューがあり、そこから、画像として保存することも、可能です。
+
+以前は、このように取り出した画像を、Word などに貼り付けて、使っていました。現在でも、そのような方法を知っていることは有効だと思います。
+
 \hypertarget{ux30a2ux30b5ux30a4ux30f3ux30e1ux30f3ux30c8ux30d8ux30ebux30d7}{%
 \subsubsection{アサインメント、ヘルプ}\label{ux30a2ux30b5ux30a4ux30f3ux30e1ux30f3ux30c8ux30d8ux30ebux30d7}}
 
@@ -543,7 +668,7 @@ head(cars)\texttt{では、縦に表示されていたものが、横に表示�
   \texttt{View(cars)}
 \end{itemize}
 
-左上の、窓枠が開き、\texttt{cars} の内容が表示されます。列名のところには、三角形も表示され、それを用いると、大きい順、小さい順などに、並び替えることも可能です。
+左上の、窓枠が開き、\texttt{cars} というデータ の内容が表示されます。列名のところには、三角形も表示され、それを用いると、大きい順、小さい順などに、並び替えることも可能です。また、フィルター機能も使えます。
 
 \begin{itemize}
 \tightlist
@@ -583,7 +708,7 @@ This package contains a variety of datasets. For a complete list, use library(he
 \hypertarget{ux304aux3059ux3059ux3081}{%
 \subsubsection{おすすめ}\label{ux304aux3059ux3059ux3081}}
 
-コンピュータのシステムが、日本語であると、R の言語も日本語になっているはずです。そこで、エラーが発生すると、一部、日本語で表示されます。しかし、ネット上などで、そのエラーの対応を検索するときは、英語のエラーメッセージで検索した方が、解決方法が得られる可能性が高いので、わたしは、英語に設定しています。英語にするには、Console で次のようにします。
+コンピュータのシステムが、日本語であると、R の言語も日本語になっているはずです。そこで、エラーが発生すると、一部、日本語で表示されます。しかし、ネット上などで、そのエラーの対応を検索するときは、英語のエラーメッセージで検索した方が、解決方法が得られる可能性が圧倒的に高いので、わたしは、英語に設定しています。英語にするには、Console で次のようにします。
 
 言語を英語に設定：\texttt{Sys.setenv(LANG\ =\ "en")}
 
@@ -620,13 +745,13 @@ RStudio は多くの機能を持っています。
 \begin{itemize}
 \tightlist
 \item
-  Top Left: Source Editor
+  左上（Top Left）: スクリプトや文書、データなどの編集（Source Editor）
 \item
-  Top Right: Environment, History, etc.
+  右上（Top Right）: 環境変数（Environment）, 履歴（History） など（etc.）
 \item
-  Bottom Left: Console, Terminal, Render, Background Jobs
+  左下（Bottom Left）: コードの実行・実行結果などを表示するコンソール（Console）, コンピュータシステムの端末（Terminal）, 文書の機械語翻訳（Render）, 背後での作業（Background Jobs）
 \item
-  Bottom Right: Files, Plots, Packages, Help, Viewer, Presentation
+  右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation\footnote{Viewerへの表示を使っており、Presentationへの表示を使っておらず不明}）
 \end{itemize}
 
 \hypertarget{r-script-ux5b9fux884cux8a18ux9332}{%
@@ -659,10 +784,10 @@ R Script を使って、コードを実行すると、その記録を残すこ�
   \item
     R Script エディターの上にある、Run ボタンを押しても、同様に実行されます。
   \item
-    Run ボタンの右の、Source ボタンを押すと、そのスクリプトの、最初からすべて実行されます。
+    Run ボタンの右の、Source ボタンを押すと、そのスクリプトの、最初からすべてが実行されます。
   \end{itemize}
 \item
-  最後には保存しておきましょう。
+  最後には保存しておきましょう。たとえば、\texttt{myfirstscript} などとすると、File のところに、\texttt{myfirstscript.R} というファイルができていることを確認できます。
 \end{itemize}
 
 \hypertarget{r-script-ux306bux3088ux308bux5b9fux884c}{%
@@ -673,7 +798,7 @@ R Script を使って、コードを実行すると、その記録を残すこ�
 それぞれ、どのようなことをしているでしょうか。
 
 \hypertarget{ux30b9ux30afux30eaux30d7ux30c81-basics.r}{%
-\paragraph{スクリプト1: basics.R}\label{ux30b9ux30afux30eaux30d7ux30c81-basics.r}}
+\paragraph{\texorpdfstring{スクリプト1: \texttt{basics.R}}{スクリプト1: basics.R}}\label{ux30b9ux30afux30eaux30d7ux30c81-basics.r}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -898,8 +1023,8 @@ R Script を使って、コードを実行すると、その記録を残すこ�
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{ux30b9ux30afux30eaux30d7ux30c82-coronavirus.t}{%
-\paragraph{スクリプト2: coronavirus.T}\label{ux30b9ux30afux30eaux30d7ux30c82-coronavirus.t}}
+\hypertarget{ux30b9ux30afux30eaux30d7ux30c82-coronavirus.r}{%
+\paragraph{\texorpdfstring{スクリプト2: \texttt{coronavirus.R}}{スクリプト2: coronavirus.R}}\label{ux30b9ux30afux30eaux30d7ux30c82-coronavirus.r}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1055,6 +1180,10 @@ Console に、\texttt{install.packages("tidyverse")} などと表示され、た
 
 インストールは一回だけ。ときどき、Tools \textgreater{} Check for Package Update をつかって、Update しておくと良いでしょう。
 
+パッケージのインストールで問題が生じることがあります。特に、Windows の日本語システムの場合です。（4.3.2 R Studio の インストール の下に書いてある部分を参照してください。）
+
+回避方法もいくつかあるようですが、混乱をさけるため、その場合は、Posit Cloud（旧：RStudio Cloud）を使うと良いでしょう。それを見越して、最初は、Posit Cloud ではじめることを、わたしはお薦めしています。自分のコンピュータで、R が RStudio 上で問題なく動いていても、Cloud 上にアカウントを持っていて、実行できることは有効ですし、全員が、同じ環境で作業できることもたいせつなことです。他にも、すぐ、Cheat Sheets（早見表）や、Posit Primers という練習問題（Tutorial）を利用できたり、プロジェクトを共有したりなど、さまざまなメリットがあります。
+
 \hypertarget{ux5099ux8003}{%
 \subsubsection{備考}\label{ux5099ux8003}}
 
@@ -1065,7 +1194,7 @@ Package によっては、Source から Compile するかと聞いてくる場�
 \hypertarget{ux30afux30e9ux30a6ux30c9---posit-cloud}{%
 \subsection{クラウド - Posit Cloud}\label{ux30afux30e9ux30a6ux30c9---posit-cloud}}
 
-RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。2022年11月に、会社名が、RStuio から Posit に変更になったこともあり、Posit Cloud となっていますが、また、RStudio Cloud と表示されている箇所もありますので、併記しておきます。
+RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。2022年11月に、会社名が、RStuio から Posit に変更になったこともあり、Posit Cloud となっていますが、まだ、RStudio Cloud と表示されている箇所もあります。
 
 \hypertarget{ux30afux30e9ux30a6ux30c9ux30b5ux30fcux30d3ux30b9-how-to-start-posit-cloud}{%
 \subsubsection{クラウドサービス　How to Start Posit Cloud}\label{ux30afux30e9ux30a6ux30c9ux30b5ux30fcux30d3ux30b9-how-to-start-posit-cloud}}
@@ -1076,13 +1205,62 @@ RStudio Cloudは、誰でもオンラインでデータサイエンスを行い�
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Go to \url{https://posit.cloud/}
+  \href{https://posit.cloud/}{Posit Cloud} にアクセスします。Go to \url{https://posit.cloud/}
 \item
-  Sign Up: top right
+  Get Started または、右上から、Sign UP を選択します。Sign Up: top right
 \item
   Email address or Google account
 \item
   New Project: Project Name
+\end{enumerate}
+
+\textbf{特徴：制限など（Key Features）}
+
+\begin{itemize}
+\tightlist
+\item
+  プロジェクト数の上限は50。Up to 50 projects total
+\item
+  共有スペースは一つのみ（5人までのメンバーが10個のプロジェクトまで共有できます） 1 shared space (5 members and 10 projects max)
+\item
+  コンピュータ時間としては月間最大25時間\footnote{右の\texttt{i}マークを押すと詳細な条件を確認できます。}。25 compute hours per month
+\item
+  各プロジェクトについて最大 1GB のRAM（Read Access Memory）。Up to 1 GB RAM per project
+\item
+  各プロジェクトについて 1 CPU。Up to 1 CPU per project
+\item
+  背後で実行する作業は1時間が上限。Up to 1 hour background execution time
+\end{itemize}
+
+大学で課題などに取り組むと、まず、月間25時間の制限に引っかかり、次のようなメッセージが表示されます。
+
+Your account exceeded its compute hour limit. You can continue to open projects in your account until \emph{such and such time}, or until you have used at total of 40 compute hours. After that you will be unable to open projects in space owned by your account until your next usage period begins on \emph{such and such day}.
+
+わたしは、このようなメッセージが出たら、重要度にもよりますが、まずは、プロジェクトをダウンロードし、いつても、自分のコンピュータで使えるようにしてから、他の、アカウントに引っ越して、作業を続けています。その方法を追記しておきます。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{-1}
+\tightlist
+\item
+  プロジェクトのダウンロード：自分のコンピュータに R と R Studio が使える場合は、必要なプロジェクトをダンロードします。ダウンロードするには、左上の3本線から、自分の Workspace にもどり、プロジェクトの右についている、ダウンロードボタンを押します。これは、プロジェクトとして、RStudio から開くことができます。（If you have installed R Studio and R on your computer, From the three lines on the top left, go back to your workspace.
+  Then there is a download button on the right of your project. You can open it on your computer.）
+\end{enumerate}
+
+\textbf{他のアカウントとの共有：}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  異なる電子メールアドレスで別の Posit Cloud アカウントを作成します。（create another Posit Cloud account with another email address.）
+\item
+  使っていたプロジェクトを開き、右上のギアマークから、Change Access を、\texttt{You} から、\texttt{everyone} に変更します。（In your current project, open the gear mark on the top right, and change access from \texttt{You} to \texttt{everyone}.）
+\item
+  使っていたプロジェクトのアカウント名の隣にある、三つの点が丸で囲まれているものを選び、\texttt{Share\ Link} を、別のアカウントを作成したアドレスに送ります。（In your currentproject, next to your account name, there is a circle with three dots. Share the link and send the email to another account.）
+\item
+  使っていた、元のアカウントからログアウトし、新しいアカウントを開き、送られてきたアドレスクリック、またはコードを入れると、使っていたプロジェクトが開き、Temporary Copy と出ます。編集して使いたい時は、それを Permanent Copy にすると、新しいアカウントで編集し、使うことができます。（Then, you can get an access code to your current project. Log out from the existing account, log in to your new account, and then use the link.
+  Then you can see the temporary file containing everything in your old account and use it for a permanent project.)
 \end{enumerate}
 
 \hypertarget{ux7df4ux7fd2ux554fux984c-posit-primers}{%
@@ -1091,6 +1269,8 @@ RStudio Cloudは、誰でもオンラインでデータサイエンスを行い�
 Posit Primers \url{https://posit.cloud/learn/primers}
 
 教科書 \href{https://r4ds.had.co.nz}{``R for Data Science''} は、\texttt{tidyverse} パッケージを中心に、データサイエンスについて解説したものですが、Posit Primers は、演習問題をしながら、教科書の内容を理解できるように構成されています。
+
+Posit Cloud からは、左のメニュー（隠れている場合は左上の3本線をクリックして表示させて）から選ぶことができます。そうでない場合は、直接、上のリンクから、利用してください。
 
 \hypertarget{ux6700ux521dux306eux6f14ux7fd2-the-basics-r4ds-explore-i}{%
 \subsubsection{最初の演習　The Basics -- r4ds: Explore, I}\label{ux6700ux521dux306eux6f14ux7fd2-the-basics-r4ds-explore-i}}
@@ -1280,6 +1460,16 @@ R Notebook は、独立してインタラクティブに実行できるチャン
 
 Windows でも、Mac でも提供されている、Google Chrome の場合には、Code ボタンから、ダンロードされるはずです。
 
+RNotebook の新しいファイルを作成し、下のサイトを表示させて、コピー・ペーストで、書き換えることも可能です。
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://ds-sl.github.io/intro2r/RNotebook-J.html}
+\item
+  \url{https://ds-sl.github.io/intro2r/Rmarkdown-J.html}
+\end{itemize}
+
 \hypertarget{r-markdown-ux3044ux304fux3064ux304bux306e-output}{%
 \subsection{R Markdown いくつかの Output}\label{r-markdown-ux3044ux304fux3064ux304bux306e-output}}
 
@@ -1308,6 +1498,36 @@ output:
   TeX システムがインストールされている場合は不要
 \end{itemize}
 
+エラーの例を書いておきます。\texttt{tinytex::install\_tinytex()} おらず、他の TeX システムもインストールしていない環境で、上に引用した、\texttt{RNotebook-J} から、PDF を作成したときに生じたエラーです。ここに
+
+\begin{verbatim}
+If you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()
+\end{verbatim}
+
+「よくわからない場合は、RでTinyTeXをインストールすることもできます: \texttt{tinytex::install\_tinytex()}」
+
+と書いてあります。
+
+\textbf{エラーメッセージの例}
+
+\begin{verbatim}
+processing file: RNotebook-J.Rmd
+
+“C:/Program Files/RStudio/bin/quarto/bin/tools/pandoc” +RTS -K512m -RTS RNotebook-J.knit.md –to latex –from markdown+autolink_bare_uris+tex_math_single_backslash –output RNotebook-J.tex –lua-filter “C:000117x-library\4.2.lua” –lua-filter “C:000117x-library\4.2-div.lua” –embed-resources –standalone –highlight-style tango –pdf-engine pdflatex –variable graphics –variable “geometry:margin=1in” output file: RNotebook-J.knit.md
+
+Error: LaTeX failed to compile RNotebook-J.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. In addition: Warning message: In system2(…, stdout = if (use_file_stdout()) f1 else FALSE, stderr = f2) : ‘“pdflatex”’ not found Execution halted
+
+No LaTeX installation detected (LaTeX is required to create PDF output). You should install a LaTeX distribution for your platform: https://www.latex-project.org/get/
+
+If you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()
+
+Otherwise consider MiKTeX on Windows - http://miktex.org
+
+MacTeX on macOS - https://tug.org/mactex/ (NOTE: Download with Safari rather than Chrome strongly recommended)
+
+Linux: Use system package manager
+\end{verbatim}
+
 \hypertarget{youtube-video---rmarkdown}{%
 \subsection{YouTube Video - rmarkdown}\label{youtube-video---rmarkdown}}
 
@@ -1317,11 +1537,1186 @@ output:
 \hypertarget{worldbank}{%
 \section{World Bank}\label{worldbank}}
 
+\hypertarget{world-development-indicator-wdi}{%
+\subsection{World Development Indicator (WDI)}\label{world-development-indicator-wdi}}
+
+パッケージ と \texttt{tidyverse} と \texttt{WDI} を使いますから、下のコードによって、ロードします。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\CommentTok{\#\textgreater{} {-}{-} Attaching packages {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-} tidyverse 1.3.2 {-}{-}}
+\CommentTok{\#\textgreater{} v ggplot2 3.4.1     v purrr   1.0.1}
+\CommentTok{\#\textgreater{} v tibble  3.1.8     v dplyr   1.1.0}
+\CommentTok{\#\textgreater{} v tidyr   1.3.0     v stringr 1.5.0}
+\CommentTok{\#\textgreater{} v readr   2.1.4     v forcats 1.0.0}
+\CommentTok{\#\textgreater{} {-}{-} Conflicts {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-} tidyverse\_conflicts() {-}{-}}
+\CommentTok{\#\textgreater{} x dplyr::filter() masks stats::filter()}
+\CommentTok{\#\textgreater{} x dplyr::lag()    masks stats::lag()}
+\FunctionTok{library}\NormalTok{(WDI)}
+\end{Highlighting}
+\end{Shaded}
+
+まず、三つの例を見てみましょう。なにをしているかわかりますか。考えて見てください。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{gdp =} \StringTok{"NY.GDP.MKTP.CD"}\NormalTok{),}
+    \AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(gdp) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(year}\SpecialCharTok{==}\FunctionTok{max}\NormalTok{(year), income }\SpecialCharTok{!=}\StringTok{"Aggregates"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{drop\_na}\NormalTok{(region) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(gdp))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> Rows: 16492 Columns: 13
+#> -- Column specification ------------------------------------
+#> Delimiter: ","
+#> chr  (7): country, iso2c, iso3c, region, capital, income...
+#> dbl  (4): year, gdp, longitude, latitude
+#> lgl  (1): status
+#> date (1): lastupdated
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 196 x 13
+#>    country       iso2c iso3c  year     gdp status lastupda~1
+#>    <chr>         <chr> <chr> <dbl>   <dbl> <lgl>  <date>    
+#>  1 United States US    USA    2021 2.33e13 NA     2022-12-22
+#>  2 China         CN    CHN    2021 1.77e13 NA     2022-12-22
+#>  3 Japan         JP    JPN    2021 4.94e12 NA     2022-12-22
+#>  4 Germany       DE    DEU    2021 4.26e12 NA     2022-12-22
+#>  5 India         IN    IND    2021 3.18e12 NA     2022-12-22
+#>  6 United Kingd~ GB    GBR    2021 3.13e12 NA     2022-12-22
+#>  7 France        FR    FRA    2021 2.96e12 NA     2022-12-22
+#>  8 Italy         IT    ITA    2021 2.11e12 NA     2022-12-22
+#>  9 Canada        CA    CAN    2021 1.99e12 NA     2022-12-22
+#> 10 Korea, Rep.   KR    KOR    2021 1.81e12 NA     2022-12-22
+#> # ... with 186 more rows, 6 more variables: region <chr>,
+#> #   capital <chr>, longitude <dbl>, latitude <dbl>,
+#> #   income <chr>, lending <chr>, and abbreviated variable
+#> #   name 1: lastupdated
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \FunctionTok{c}\NormalTok{(}\StringTok{"CN"}\NormalTok{,}\StringTok{"GB"}\NormalTok{,}\StringTok{"JP"}\NormalTok{,}\StringTok{"IN"}\NormalTok{,}\StringTok{"US"}\NormalTok{,}\StringTok{"DE"}\NormalTok{), }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{gdp =} \StringTok{"NY.GDP.MKTP.CD"}\NormalTok{), }\AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(gdp) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, gdp, }\AttributeTok{col =}\NormalTok{ country)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"WDI NY.GDP.MKTP.CD: gdp"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> Rows: 372 Columns: 13
+#> -- Column specification ------------------------------------
+#> Delimiter: ","
+#> chr  (7): country, iso2c, iso3c, region, capital, income...
+#> dbl  (4): year, gdp, longitude, latitude
+#> lgl  (1): status
+#> date (1): lastupdated
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\includegraphics{31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \FunctionTok{c}\NormalTok{(}\StringTok{"CN"}\NormalTok{,}\StringTok{"IN"}\NormalTok{,}\StringTok{"JP"}\NormalTok{,}\StringTok{"US"}\NormalTok{), }
+    \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{gdp\_growth\_rate =} \StringTok{"NY.GDP.MKTP.KD.ZG"}\NormalTok{), }\AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{drop\_na}\NormalTok{(gdp\_growth\_rate) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, gdp\_growth\_rate, }\AttributeTok{col =}\NormalTok{ country)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"WDI NY.GDP.MKTP.KD.ZG: gdp growth rate"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> Rows: 248 Columns: 13
+#> -- Column specification ------------------------------------
+#> Delimiter: ","
+#> chr  (7): country, iso2c, iso3c, region, capital, income...
+#> dbl  (4): year, gdp_growth_rate, longitude, latitude
+#> lgl  (1): status
+#> date (1): lastupdated
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\includegraphics{31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+まず、世界の国々の、GDP（gross domestic product 国内総生産）のデータを、取得して、2021年の GDP を大きな順に並べています。
+
+値は、たとえば、\(2.331508e+13\) のように書かれていますが、これは、科学的記法と呼ばれるもので、\(2.331508 \times 10^{13}\) を意味しています。約23兆ドルです。
+
+次に、3兆ドル以上の、６カ国を選択し、その、iso2c と呼ばれるコードを使って、それらの国のデータをもう一度取得し、年次変化をあらわすグラフを描いています。
+
+さらにその中から、４カ国を選んで、今度は、GDP の年次変化率を描いています。単位は、パーセントです。
+
+これは、ひとつの例ですが、ここで使われているのが、WDI World Development Indicator というもので、世界銀行が、いくつかの指標を定めて、編纂しているものです。
+
+\hypertarget{ux6307ux6a19-indicators-wdi}{%
+\subsubsection{指標 Indicators (WDI)}\label{ux6307ux6a19-indicators-wdi}}
+
+上の例では、次の二つの指標のコード Indicator Code (WDI Code) が使われました。
+
+\begin{itemize}
+\tightlist
+\item
+  NY.GDP.MKTP.CD: GDP (current US\$)
+\item
+  NY.GDP.MKTP.KD.ZG: GDP growth (annual \%)
+\end{itemize}
+
+\hypertarget{ux6307ux6a19-wdi-world-development-indicators}{%
+\subsubsection{指標 WDI (World Development Indicators)}\label{ux6307ux6a19-wdi-world-development-indicators}}
+
+\begin{quote}
+The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,400 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.
+\end{quote}
+
+\begin{quote}
+WDIは、世界の開発状況と、貧困との戦いに関する、適切で上質、かつ、国際的に比較可能な時系列の統計データを編纂したものです。このデータベースは、217の経済と40以上の国グループについて1,400の時系列指標を含み、指標のデータの多くは50年以上前に遡ることができます。
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  世界銀行（World Bank）: \url{https://www.worldbank.org}
+\item
+  World Bank Open Data: \url{https://data.worldbank.org}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Country / Indicator \textgreater{} Featured \& All \textgreater{} Details
+  \end{itemize}
+\item
+  \href{https://datatopics.worldbank.org/world-development-indicators/}{World Development Indicators (WDI)} :
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Themes: Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links
+  \item
+    Open Data \& DataBank: Explore data, Query database
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux6307ux6a19-ux306eux30b3ux30fcux30c9wdi-code-ux3092ux63a2ux3057ux3066ux307fux3088ux3046}{%
+\subsubsection{指標 のコード、WDI code を探してみよう}\label{ux6307ux6a19-ux306eux30b3ux30fcux30c9wdi-code-ux3092ux63a2ux3057ux3066ux307fux3088ux3046}}
+
+いくつかの探し方があります。まず、ここでは、World Bank のサイトから探す方法を説明しましょう。
+
+ふた通りあります。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \href{https://data.worldbank.org}{World Bank Open Data} にいくと、表題の下の検索窓の下に、 Country / Indicator とありますから、Indicator を選択します。すると、そこに、項目のリストが、Featured と All という二つのタブに分かれて出ています。かなり膨大です。それを選択すると、その項目のサイトに行きます。それが、指標のサイトです。図などの、右上に、Details とありますから、それを選択すると、その中に、Indicator が書かれています。
+  実は、指標のサイトのアドレス（URL）を見ると、そこにも、この Indicator が書かれていることがわかります。
+\item
+  \href{https://datatopics.worldbank.org/world-development-indicators/}{World Development Indicators (WDI)} にいくと、下のようなテーマに分かれています。
+\end{enumerate}
+
+Themes: Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links
+
+その中から、選択して、スクロールすると、そこに、指標が書かれています。
+
+Indicator, Code, Time coverage, Region coverage, Get data
+
+とあり、Code が、指標のコードです。実は、すべての年や、すべての地域のデータが揃っているわけではないので、この情報を見ておくことはとても重要です。ほとんど、データがない場合もあります。
+
+一番右端の Get data からは、CSV や、データバンク（Data Bank）へのリンクがあります。
+
+それぞれの方法で、上で使った、二つの指標およびそのコードは見つかりましたか。
+
+1 の方法の途中に出てきた、検索窓から検索することも可能です。
+
+\hypertarget{ux6307ux6a19-wdiux306eux4f8b}{%
+\subsubsection{指標 WDIの例}\label{ux6307ux6a19-wdiux306eux4f8b}}
+
+このあとの、例で使う指標を書いておきます。
+
+\begin{itemize}
+\tightlist
+\item
+  NY.GDP.MKTP.CD: GDP (current US\$)
+\item
+  NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual \%)
+\item
+  SL.UEM.TOTL.NE.ZS: Unemployment, total (\% of total labor force) (national estimate)
+\item
+  CPTOTNSXN: CPI Price, nominal
+\item
+  SL.TLF.CACT.MA.NE.ZS: Labor force participation rate, male (\% of male population ages 15+) (national estimate)
+\item
+  SL.TLF.CACT.FE.NE.ZS: Labor force participation rate, female (\% of male population ages 15+) (national estimate)
+\end{itemize}
+
+\hypertarget{ux7df4ux7fd2-1.---ux8abfux3079ux3066ux307fux305fux3044-wdi-ux6307ux6a19ux3068ux305dux306eux30b3ux30fcux30c9}{%
+\subsubsection{練習 1. - 調べてみたい WDI 指標とそのコード}\label{ux7df4ux7fd2-1.---ux8abfux3079ux3066ux307fux305fux3044-wdi-ux6307ux6a19ux3068ux305dux306eux30b3ux30fcux30c9}}
+
+いくつか、リストしてみましょう。
+
+\hypertarget{wdi-ux30d1ux30c3ux30b1ux30fcux30b8}{%
+\subsection{WDI パッケージ}\label{wdi-ux30d1ux30c3ux30b1ux30fcux30b8}}
+
+\texttt{WDI} パッケージ の使い方を紹介します。
+
+\texttt{WDI} パッケージで、データをダウンロードしたり、探したり、詳細情報を得たりできます。
+
+\hypertarget{ux6307ux6a19-wdi-ux691cux7d22}{%
+\subsubsection{指標 WDI 検索}\label{ux6307ux6a19-wdi-ux691cux7d22}}
+
+まず、検索です。上で、サイトから調べる方法を紹介しましたが、\texttt{WDI} パッケージの、\texttt{WDIsearch} でも探すことができます。詳細は、右下の窓枠の Help タブの検索窓に、WDIsearch といれて調べて見てください。ここでは、二種類の検索方法を紹介します。
+
+\hypertarget{ux691cux7d22ux4f8b-1wdiux540d}{%
+\paragraph{検索例 1（WDI名）}\label{ux691cux7d22ux4f8b-1wdiux540d}}
+
+WDI 名に、ある文字列が含まれているものを検索します。検索文字列は、大文字・小文字は関係ありません。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{WDIsearch}\NormalTok{(}\AttributeTok{string =} \StringTok{"gdp"}\NormalTok{, }\AttributeTok{field =} \StringTok{"name"}\NormalTok{, }\AttributeTok{short =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as\_tibble}\NormalTok{()}
+\CommentTok{\#\textgreater{} \# A tibble: 540 x 2}
+\CommentTok{\#\textgreater{}    indicator            name                                }
+\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}                \textless{}chr\textgreater{}                               }
+\CommentTok{\#\textgreater{}  1 5.51.01.10.gdp       "Per capita GDP growth"             }
+\CommentTok{\#\textgreater{}  2 6.0.GDP\_current      "GDP (current $)"                   }
+\CommentTok{\#\textgreater{}  3 6.0.GDP\_growth       "GDP growth (annual \%)"             }
+\CommentTok{\#\textgreater{}  4 6.0.GDP\_usd          "GDP (constant 2005 $)"             }
+\CommentTok{\#\textgreater{}  5 6.0.GDPpc\_constant   "GDP per capita, PPP (constant 2011\textasciitilde{}}
+\CommentTok{\#\textgreater{}  6 BG.GSR.NFSV.GD.ZS    "Trade in services (\% of GDP)"      }
+\CommentTok{\#\textgreater{}  7 BG.KAC.FNEI.GD.PP.ZS "Gross private capital flows (\% of \textasciitilde{}}
+\CommentTok{\#\textgreater{}  8 BG.KAC.FNEI.GD.ZS    "Gross private capital flows (\% of \textasciitilde{}}
+\CommentTok{\#\textgreater{}  9 BG.KLT.DINV.GD.PP.ZS "Gross foreign direct investment (\%\textasciitilde{}}
+\CommentTok{\#\textgreater{} 10 BG.KLT.DINV.GD.ZS    "Gross foreign direct investment (\%\textasciitilde{}}
+\CommentTok{\#\textgreater{} \# ... with 530 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+なんと、500件以上出てきました。Indicator（指標コード）と、Name（指標名）が列挙されます。すべてに、GDP という文字列が入っていることを確認できると思います。
+
+\hypertarget{ux691cux7d22ux4f8b-2wdi}{%
+\paragraph{検索例 2（WDI）}\label{ux691cux7d22ux4f8b-2wdi}}
+
+Indicator（指標コード）から、Name（指標名）を検索します。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{WDIsearch}\NormalTok{(}\AttributeTok{string =} \StringTok{"NY.GDP.MKTP.CD"}\NormalTok{, }\AttributeTok{field =} \StringTok{"indicator"}\NormalTok{, }\AttributeTok{short =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache =} \ConstantTok{NULL}\NormalTok{)}
+\CommentTok{\#\textgreater{}               indicator}
+\CommentTok{\#\textgreater{} 11410    NY.GDP.MKTP.CD}
+\CommentTok{\#\textgreater{} 11411 NY.GDP.MKTP.CD.XD}
+\CommentTok{\#\textgreater{}                                             name}
+\CommentTok{\#\textgreater{} 11410                          GDP (current US$)}
+\CommentTok{\#\textgreater{} 11411 GDP deflator, index (2000=100; US$ series)}
+\end{Highlighting}
+\end{Shaded}
+
+二件出てきました。
+
+\hypertarget{ux7df4ux7fd2-2.---ux691cux7d22short}{%
+\paragraph{練習 2. - 検索（short）}\label{ux7df4ux7fd2-2.---ux691cux7d22short}}
+
+名前で検索（``\,'' の間に、（なるべく簡単な）検索文字列を入れてください。）
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{WDIsearch}\NormalTok{(}\AttributeTok{string =} \StringTok{""}\NormalTok{, }\AttributeTok{field =} \StringTok{"name"}\NormalTok{, }\AttributeTok{short =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache =} \ConstantTok{NULL}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Indicator で検索（``\,'' の間に、調べたい indicator を入れてください。）
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{WDIsearch}\NormalTok{(}\AttributeTok{string =} \StringTok{""}\NormalTok{, }\AttributeTok{field =} \StringTok{"indicator"}\NormalTok{, }\AttributeTok{short =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache =} \ConstantTok{NULL}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux8a73ux3057ux3044ux60c5ux5831ux3092ux5f97ux308bux306bux306f}{%
+\paragraph{詳しい情報を得るには}\label{ux8a73ux3057ux3044ux60c5ux5831ux3092ux5f97ux308bux306bux306f}}
+
+上では、Indicator（指標コード）と、Name（指標名）だけでしたが、Description（説明） なども得ることができます。
+
+それには、\texttt{short\ =\ FALSE} とします。
+
+一回一回、World Bank にアクセスして調べるのは、時間もかかりますから、Indicator と、名前などの情報をもったファイルを手元に持っておくことにします。それには、次のようにします。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wdi\_cache }\OtherTok{\textless{}{-}} \FunctionTok{WDIcache}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+これは、series と、country の二つのデータ・フレームからなっているリストです。
+
+右上の窓枠（pane）から、\texttt{wdi\_cache} を探して、中身を見てみましょう。三角印や、右から二番目の巻物のようなアイコンをクリックすると中身が見えます。
+
+series には、すべての指標がリストされ、その情報が書かれています。
+
+また、country には、それぞれについて、さまざまな情報が書かれています。これは、とても、たいせつな情報です。国名と、iso2c, iso3c のようなコードもありますし、地域（region）や、その国が、どの income level（収入の階級）に入るかも書かれています。また、国だけではなく、地域など、グループの名称も含まれています。
+
+今後、さまざまに利用していきたいと思います。
+
+\hypertarget{ux691cux7d22ux4f8b-3wdiux540d}{%
+\paragraph{検索例 3（WDI名）}\label{ux691cux7d22ux4f8b-3wdiux540d}}
+
+\texttt{short\ =\ FALSE} として、検索してみましょう。文字列が入っている、指標名を検索します。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{WDIsearch}\NormalTok{(}\AttributeTok{string =} \StringTok{"CPI Price"}\NormalTok{, }\AttributeTok{field =} \StringTok{"name"}\NormalTok{, }\AttributeTok{short =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{cache =}\NormalTok{ wdi\_cache)}
+\CommentTok{\#\textgreater{}         indicator}
+\CommentTok{\#\textgreater{} 2586    CPTOTNSXN}
+\CommentTok{\#\textgreater{} 2587 CPTOTSAXMZGY}
+\CommentTok{\#\textgreater{} 2588    CPTOTSAXN}
+\CommentTok{\#\textgreater{} 2589 CPTOTSAXNZGY}
+\CommentTok{\#\textgreater{}                                                 name}
+\CommentTok{\#\textgreater{} 2586                              CPI Price, nominal}
+\CommentTok{\#\textgreater{} 2587 CPI Price, \% y{-}o{-}y, median weighted, seas. adj.}
+\CommentTok{\#\textgreater{} 2588                  CPI Price, nominal, seas. adj.}
+\CommentTok{\#\textgreater{} 2589         CPI Price, \% y{-}o{-}y, nominal, seas. adj.}
+\CommentTok{\#\textgreater{}                                                                                                                                                                                                                  description}
+\CommentTok{\#\textgreater{} 2586                                                                The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.}
+\CommentTok{\#\textgreater{} 2587                                                                Median inflation rate calculated for geographical aggregates (regions, world, etc) of the annual percent change of the CPI. Data is seasonally adjusted.}
+\CommentTok{\#\textgreater{} 2588                                               The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is in nominal terms and seasonally adjusted.}
+\CommentTok{\#\textgreater{} 2589 The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is in nominal percentage terms, measured on a year{-}on{-}year basis, and seasonally adjusted.}
+\CommentTok{\#\textgreater{}               sourceDatabase}
+\CommentTok{\#\textgreater{} 2586 Global Economic Monitor}
+\CommentTok{\#\textgreater{} 2587 Global Economic Monitor}
+\CommentTok{\#\textgreater{} 2588 Global Economic Monitor}
+\CommentTok{\#\textgreater{} 2589 Global Economic Monitor}
+\CommentTok{\#\textgreater{}                                           sourceOrganization}
+\CommentTok{\#\textgreater{} 2586 World Bank staff calculations based on Datastream data.}
+\CommentTok{\#\textgreater{} 2587 World Bank staff calculations based on Datastream data.}
+\CommentTok{\#\textgreater{} 2588 World Bank staff calculations based on Datastream data.}
+\CommentTok{\#\textgreater{} 2589 World Bank staff calculations based on Datastream data.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  CPTOTNSXN: CPI Price, nominal
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux691cux7d22ux4f8b-4wdi}{%
+\paragraph{検索例 4（WDI）}\label{ux691cux7d22ux4f8b-4wdi}}
+
+指標コードから、詳細情報を得ます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{WDIsearch}\NormalTok{(}\AttributeTok{string =} \StringTok{"NY.GDP.MKTP.KD.ZG"}\NormalTok{, }\AttributeTok{field =} \StringTok{"indicator"}\NormalTok{, }\AttributeTok{short =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{cache =}\NormalTok{ wdi\_cache)}
+\CommentTok{\#\textgreater{}               indicator                  name}
+\CommentTok{\#\textgreater{} 12114 NY.GDP.MKTP.KD.ZG GDP growth (annual \%)}
+\CommentTok{\#\textgreater{}                                                                                                                                                                                                                                                                                                                                                                                                                                                                           description}
+\CommentTok{\#\textgreater{} 12114 Annual percentage growth rate of GDP at market prices based on constant local currency. Aggregates are based on constant 2015 prices, expressed in U.S. dollars. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources.}
+\CommentTok{\#\textgreater{}                     sourceDatabase}
+\CommentTok{\#\textgreater{} 12114 World Development Indicators}
+\CommentTok{\#\textgreater{}                                                              sourceOrganization}
+\CommentTok{\#\textgreater{} 12114 World Bank national accounts data, and OECD National Accounts data files.}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux7df4ux7fd2-2---ux691cux7d22long-w-cache}{%
+\paragraph{練習 2 - 検索（long w/ cache）}\label{ux7df4ux7fd2-2---ux691cux7d22long-w-cache}}
+
+\texttt{string} と、\texttt{field} を、ふたつとも入れてください。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{WDIsearch}\NormalTok{(}\AttributeTok{string =} \StringTok{""}\NormalTok{, }\AttributeTok{field =} \StringTok{""}\NormalTok{, }\AttributeTok{short =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{cache =}\NormalTok{ wdi\_cache)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6307ux6a19-wdi-ux30c7ux30fcux30bfux306eux30c0ux30a6ux30f3ux30edux30fcux30c9}{%
+\subsubsection{指標 WDI データのダウンロード}\label{ux6307ux6a19-wdi-ux30c7ux30fcux30bfux306eux30c0ux30a6ux30f3ux30edux30fcux30c9}}
+
+Indicator が決まったら、ダウンロードします。右下の窓枠の Help タブの検索枠に、\texttt{WDI} と入れて確認しましょう。
+
+\begin{verbatim}
+WDI(
+  country = "all",
+  indicator = "NY.GDP.PCAP.KD",
+  start = 1960,
+  end = NULL,
+  extra = FALSE,
+  cache = NULL,
+  latest = NULL,
+  language = "en"
+)
+\end{verbatim}
+
+上が基本的な用法ですが、\texttt{start} 以下は、Default（初期値）が書かれていますから、たいせつなのは、最初の二つ、country と、indicator です。
+
+\hypertarget{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-1}{%
+\paragraph{ダウンロード例 1-1}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-1}}
+
+country は、初期値も、``all'' となっていますから、最も簡単なのは、indicator に、指標コードを入れることです。引用符を忘れずに。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_gdp1 }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \StringTok{"NY.GDP.MKTP.CD"}\NormalTok{)}
+\NormalTok{df\_gdp1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> Rows: 16492 Columns: 5
+#> -- Column specification ------------------------------------
+#> Delimiter: ","
+#> chr (3): country, iso2c, iso3c
+#> dbl (2): year, NY.GDP.MKTP.CD
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 16,492 x 5
+#>    country                     iso2c iso3c  year NY.GDP.MK~1
+#>    <chr>                       <chr> <chr> <dbl>       <dbl>
+#>  1 Africa Eastern and Southern ZH    AFE    2021     1.08e12
+#>  2 Africa Eastern and Southern ZH    AFE    2020     9.27e11
+#>  3 Africa Eastern and Southern ZH    AFE    2019     1.00e12
+#>  4 Africa Eastern and Southern ZH    AFE    2018     1.01e12
+#>  5 Africa Eastern and Southern ZH    AFE    2017     1.02e12
+#>  6 Africa Eastern and Southern ZH    AFE    2016     8.83e11
+#>  7 Africa Eastern and Southern ZH    AFE    2015     9.25e11
+#>  8 Africa Eastern and Southern ZH    AFE    2014     1.00e12
+#>  9 Africa Eastern and Southern ZH    AFE    2013     9.83e11
+#> 10 Africa Eastern and Southern ZH    AFE    2012     9.73e11
+#> # ... with 16,482 more rows, and abbreviated variable name
+#> #   1: NY.GDP.MKTP.CD
+\end{verbatim}
+
+これでも良いのですが、利用するには、指標コードではわかりにくいので、それを簡単な名前に置き換えて、データを読み込むこができます。
+
+\hypertarget{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-2}{%
+\paragraph{ダウンロード例 1-2}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_gdp2 }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{gdp =} \StringTok{"NY.GDP.MKTP.CD"}\NormalTok{))}
+\NormalTok{df\_gdp2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> Rows: 16492 Columns: 5
+#> -- Column specification ------------------------------------
+#> Delimiter: ","
+#> chr (3): country, iso2c, iso3c
+#> dbl (2): year, gdp
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 16,492 x 5
+#>    country                     iso2c iso3c  year     gdp
+#>    <chr>                       <chr> <chr> <dbl>   <dbl>
+#>  1 Africa Eastern and Southern ZH    AFE    2021 1.08e12
+#>  2 Africa Eastern and Southern ZH    AFE    2020 9.27e11
+#>  3 Africa Eastern and Southern ZH    AFE    2019 1.00e12
+#>  4 Africa Eastern and Southern ZH    AFE    2018 1.01e12
+#>  5 Africa Eastern and Southern ZH    AFE    2017 1.02e12
+#>  6 Africa Eastern and Southern ZH    AFE    2016 8.83e11
+#>  7 Africa Eastern and Southern ZH    AFE    2015 9.25e11
+#>  8 Africa Eastern and Southern ZH    AFE    2014 1.00e12
+#>  9 Africa Eastern and Southern ZH    AFE    2013 9.83e11
+#> 10 Africa Eastern and Southern ZH    AFE    2012 9.73e11
+#> # ... with 16,482 more rows
+\end{verbatim}
+
+\hypertarget{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-3}{%
+\paragraph{\texorpdfstring{ダウンロード例 1-3\\
+}{ダウンロード例 1-3 }}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-3}}
+
+今度は、\texttt{extra\ =\ TRUE} として、読み込みましょう。先ほど、読み込んである、\texttt{wdi\_cache} を使います。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_gdp3 }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{gdp =} \StringTok{"NY.GDP.MKTP.CD"}\NormalTok{), }
+               \AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache=}\NormalTok{wdi\_cache)}
+\NormalTok{df\_gdp3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> Rows: 16492 Columns: 13
+#> -- Column specification ------------------------------------
+#> Delimiter: ","
+#> chr  (7): country, iso2c, iso3c, region, capital, income...
+#> dbl  (4): year, gdp, longitude, latitude
+#> lgl  (1): status
+#> date (1): lastupdated
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 16,492 x 13
+#>    country     iso2c iso3c  year       gdp status lastupda~1
+#>    <chr>       <chr> <chr> <dbl>     <dbl> <lgl>  <date>    
+#>  1 Afghanistan AF    AFG    2021   1.48e10 NA     2022-12-22
+#>  2 Afghanistan AF    AFG    2020   2.01e10 NA     2022-12-22
+#>  3 Afghanistan AF    AFG    2019   1.89e10 NA     2022-12-22
+#>  4 Afghanistan AF    AFG    2018   1.84e10 NA     2022-12-22
+#>  5 Afghanistan AF    AFG    2017   1.89e10 NA     2022-12-22
+#>  6 Afghanistan AF    AFG    2016   1.80e10 NA     2022-12-22
+#>  7 Afghanistan AF    AFG    2015   2.00e10 NA     2022-12-22
+#>  8 Afghanistan AF    AFG    2014   2.06e10 NA     2022-12-22
+#>  9 Afghanistan AF    AFG    2013   2.06e10 NA     2022-12-22
+#> 10 Afghanistan AF    AFG    2012   2.02e10 NA     2022-12-22
+#> # ... with 16,482 more rows, 6 more variables:
+#> #   region <chr>, capital <chr>, longitude <dbl>,
+#> #   latitude <dbl>, income <chr>, lending <chr>, and
+#> #   abbreviated variable name 1: lastupdated
+\end{verbatim}
+
+右上の三角印を使って、どのような詳細情報が付加されたか見て見ましょう。どんなことがわかりますか。
+
+\hypertarget{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-4}{%
+\paragraph{ダウンロード例 1-4}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-4}}
+
+国名を指定します。\texttt{WDI} では、iso2c コードを使って、国名を指定します。上で見たように、Envoronment から、\texttt{wdi\_cache} を選択すると、国名と、iso2c コード両方を見ることができました。iso2c や、iso3c は、よく使われるので、web 検索でも簡単にみつけることができます。最初に紹介した例ですから、どの国かはわかりますね、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_gdp4 }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \FunctionTok{c}\NormalTok{(}\StringTok{"CN"}\NormalTok{,}\StringTok{"GB"}\NormalTok{,}\StringTok{"JP"}\NormalTok{,}\StringTok{"IN"}\NormalTok{,}\StringTok{"US"}\NormalTok{,}\StringTok{"DE"}\NormalTok{), }
+               \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{gdp =} \StringTok{"NY.GDP.MKTP.CD"}\NormalTok{), }\AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache=}\NormalTok{wdi\_cache)}
+\NormalTok{df\_gdp4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> Rows: 372 Columns: 13
+#> -- Column specification ------------------------------------
+#> Delimiter: ","
+#> chr  (7): country, iso2c, iso3c, region, capital, income...
+#> dbl  (4): year, gdp, longitude, latitude
+#> lgl  (1): status
+#> date (1): lastupdated
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 372 x 13
+#>    country iso2c iso3c  year     gdp status lastupdated
+#>    <chr>   <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
+#>  1 China   CN    CHN    2021 1.77e13 NA     2022-12-22 
+#>  2 China   CN    CHN    2020 1.47e13 NA     2022-12-22 
+#>  3 China   CN    CHN    2019 1.43e13 NA     2022-12-22 
+#>  4 China   CN    CHN    2018 1.39e13 NA     2022-12-22 
+#>  5 China   CN    CHN    2017 1.23e13 NA     2022-12-22 
+#>  6 China   CN    CHN    2016 1.12e13 NA     2022-12-22 
+#>  7 China   CN    CHN    2015 1.11e13 NA     2022-12-22 
+#>  8 China   CN    CHN    2014 1.05e13 NA     2022-12-22 
+#>  9 China   CN    CHN    2013 9.57e12 NA     2022-12-22 
+#> 10 China   CN    CHN    2012 8.53e12 NA     2022-12-22 
+#> # ... with 362 more rows, and 6 more variables:
+#> #   region <chr>, capital <chr>, longitude <dbl>,
+#> #   latitude <dbl>, income <chr>, lending <chr>
+\end{verbatim}
+
+\hypertarget{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-2-1}{%
+\paragraph{ダウンロード例 2-1}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-2-1}}
+
+二つの、指標コードを使って、同時に読み込むこともできます。そのときは、\texttt{c()} (combine) を使います。
+
+\begin{itemize}
+\tightlist
+\item
+  NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual \%)
+\item
+  CPTOTNSXN: CPI Price, nominal
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_gdp21 }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }
+                \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{gdp\_deflator =} \StringTok{"NY.GDP.DEFL.KD.ZG"}\NormalTok{, }
+                              \AttributeTok{cpi\_price =} \StringTok{"CPTOTNSXN"}\NormalTok{), }
+                \AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache=}\NormalTok{wdi\_cache)}
+\NormalTok{df\_gdp21}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> Rows: 23972 Columns: 14
+#> -- Column specification ------------------------------------
+#> Delimiter: ","
+#> chr  (7): country, iso2c, iso3c, region, capital, income...
+#> dbl  (5): year, gdp_deflator, cpi_price, longitude, lati...
+#> lgl  (1): status
+#> date (1): lastupdated
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 23,972 x 14
+#>    country       iso2c iso3c  year status lastupda~1 gdp_d~2
+#>    <chr>         <chr> <chr> <dbl> <lgl>  <date>       <dbl>
+#>  1 Advanced Eco~ AME   <NA>   1987 NA     2020-07-27      NA
+#>  2 Advanced Eco~ AME   <NA>   1988 NA     2020-07-27      NA
+#>  3 Advanced Eco~ AME   <NA>   1989 NA     2020-07-27      NA
+#>  4 Advanced Eco~ AME   <NA>   1990 NA     2020-07-27      NA
+#>  5 Advanced Eco~ AME   <NA>   1991 NA     2020-07-27      NA
+#>  6 Advanced Eco~ AME   <NA>   1992 NA     2020-07-27      NA
+#>  7 Advanced Eco~ AME   <NA>   1993 NA     2020-07-27      NA
+#>  8 Advanced Eco~ AME   <NA>   1994 NA     2020-07-27      NA
+#>  9 Advanced Eco~ AME   <NA>   1995 NA     2020-07-27      NA
+#> 10 Advanced Eco~ AME   <NA>   1996 NA     2020-07-27      NA
+#> # ... with 23,962 more rows, 7 more variables:
+#> #   cpi_price <dbl>, region <chr>, capital <chr>,
+#> #   longitude <dbl>, latitude <dbl>, income <chr>,
+#> #   lending <chr>, and abbreviated variable names
+#> #   1: lastupdated, 2: gdp_deflator
+\end{verbatim}
+
+NA (not available) つまり、データがないものが多いことがわかります。もう少し、データをよく見て見ましょう。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(df\_gdp21)}
+\CommentTok{\#\textgreater{} spc\_tbl\_ [23,972 x 14] (S3: spec\_tbl\_df/tbl\_df/tbl/data.frame)}
+\CommentTok{\#\textgreater{}  $ country     : chr [1:23972] "Advanced Economies" "Advanced Economies" "Advanced Economies" "Advanced Economies" ...}
+\CommentTok{\#\textgreater{}  $ iso2c       : chr [1:23972] "AME" "AME" "AME" "AME" ...}
+\CommentTok{\#\textgreater{}  $ iso3c       : chr [1:23972] NA NA NA NA ...}
+\CommentTok{\#\textgreater{}  $ year        : num [1:23972] 1987 1988 1989 1990 1991 ...}
+\CommentTok{\#\textgreater{}  $ status      : logi [1:23972] NA NA NA NA NA NA ...}
+\CommentTok{\#\textgreater{}  $ lastupdated : Date[1:23972], format: "2020{-}07{-}27" ...}
+\CommentTok{\#\textgreater{}  $ gdp\_deflator: num [1:23972] NA NA NA NA NA NA NA NA NA NA ...}
+\CommentTok{\#\textgreater{}  $ cpi\_price   : num [1:23972] 58.7 60.5 63 66 69.1 ...}
+\CommentTok{\#\textgreater{}  $ region      : chr [1:23972] NA NA NA NA ...}
+\CommentTok{\#\textgreater{}  $ capital     : chr [1:23972] NA NA NA NA ...}
+\CommentTok{\#\textgreater{}  $ longitude   : num [1:23972] NA NA NA NA NA NA NA NA NA NA ...}
+\CommentTok{\#\textgreater{}  $ latitude    : num [1:23972] NA NA NA NA NA NA NA NA NA NA ...}
+\CommentTok{\#\textgreater{}  $ income      : chr [1:23972] NA NA NA NA ...}
+\CommentTok{\#\textgreater{}  $ lending     : chr [1:23972] NA NA NA NA ...}
+\CommentTok{\#\textgreater{}  {-} attr(*, "spec")=}
+\CommentTok{\#\textgreater{}   .. cols(}
+\CommentTok{\#\textgreater{}   ..   country = col\_character(),}
+\CommentTok{\#\textgreater{}   ..   iso2c = col\_character(),}
+\CommentTok{\#\textgreater{}   ..   iso3c = col\_character(),}
+\CommentTok{\#\textgreater{}   ..   year = col\_double(),}
+\CommentTok{\#\textgreater{}   ..   status = col\_logical(),}
+\CommentTok{\#\textgreater{}   ..   lastupdated = col\_date(format = ""),}
+\CommentTok{\#\textgreater{}   ..   gdp\_deflator = col\_double(),}
+\CommentTok{\#\textgreater{}   ..   cpi\_price = col\_double(),}
+\CommentTok{\#\textgreater{}   ..   region = col\_character(),}
+\CommentTok{\#\textgreater{}   ..   capital = col\_character(),}
+\CommentTok{\#\textgreater{}   ..   longitude = col\_double(),}
+\CommentTok{\#\textgreater{}   ..   latitude = col\_double(),}
+\CommentTok{\#\textgreater{}   ..   income = col\_character(),}
+\CommentTok{\#\textgreater{}   ..   lending = col\_character()}
+\CommentTok{\#\textgreater{}   .. )}
+\CommentTok{\#\textgreater{}  {-} attr(*, "problems")=\textless{}externalptr\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(df\_gdp21)}
+\CommentTok{\#\textgreater{}    country             iso2c              iso3c          }
+\CommentTok{\#\textgreater{}  Length:23972       Length:23972       Length:23972      }
+\CommentTok{\#\textgreater{}  Class :character   Class :character   Class :character  }
+\CommentTok{\#\textgreater{}  Mode  :character   Mode  :character   Mode  :character  }
+\CommentTok{\#\textgreater{}                                                          }
+\CommentTok{\#\textgreater{}                                                          }
+\CommentTok{\#\textgreater{}                                                          }
+\CommentTok{\#\textgreater{}                                                          }
+\CommentTok{\#\textgreater{}       year       status         lastupdated        }
+\CommentTok{\#\textgreater{}  Min.   :1960   Mode:logical   Min.   :2020{-}07{-}27  }
+\CommentTok{\#\textgreater{}  1st Qu.:1982   NA\textquotesingle{}s:23972     1st Qu.:2020{-}07{-}27  }
+\CommentTok{\#\textgreater{}  Median :1996                  Median :2022{-}12{-}22  }
+\CommentTok{\#\textgreater{}  Mean   :1995                  Mean   :2022{-}03{-}23  }
+\CommentTok{\#\textgreater{}  3rd Qu.:2009                  3rd Qu.:2022{-}12{-}22  }
+\CommentTok{\#\textgreater{}  Max.   :2021                  Max.   :2022{-}12{-}22  }
+\CommentTok{\#\textgreater{}                                                    }
+\CommentTok{\#\textgreater{}   gdp\_deflator         cpi\_price         region         }
+\CommentTok{\#\textgreater{}  Min.   :  {-}98.704   Min.   :  0.00   Length:23972      }
+\CommentTok{\#\textgreater{}  1st Qu.:    2.317   1st Qu.: 55.95   Class :character  }
+\CommentTok{\#\textgreater{}  Median :    5.273   Median : 83.28   Mode  :character  }
+\CommentTok{\#\textgreater{}  Mean   :   25.308   Mean   : 84.18                     }
+\CommentTok{\#\textgreater{}  3rd Qu.:   10.411   3rd Qu.:108.75                     }
+\CommentTok{\#\textgreater{}  Max.   :26765.858   Max.   :551.25                     }
+\CommentTok{\#\textgreater{}  NA\textquotesingle{}s   :11616       NA\textquotesingle{}s   :18410                      }
+\CommentTok{\#\textgreater{}    capital            longitude          latitude      }
+\CommentTok{\#\textgreater{}  Length:23972       Min.   :{-}175.22   Min.   :{-}41.286  }
+\CommentTok{\#\textgreater{}  Class :character   1st Qu.: {-}15.18   1st Qu.:  4.174  }
+\CommentTok{\#\textgreater{}  Mode  :character   Median :  19.26   Median : 17.300  }
+\CommentTok{\#\textgreater{}                     Mean   :  19.14   Mean   : 18.889  }
+\CommentTok{\#\textgreater{}                     3rd Qu.:  50.53   3rd Qu.: 40.050  }
+\CommentTok{\#\textgreater{}                     Max.   : 179.09   Max.   : 64.184  }
+\CommentTok{\#\textgreater{}                     NA\textquotesingle{}s   :10890     NA\textquotesingle{}s   :10890    }
+\CommentTok{\#\textgreater{}     income            lending         }
+\CommentTok{\#\textgreater{}  Length:23972       Length:23972      }
+\CommentTok{\#\textgreater{}  Class :character   Class :character  }
+\CommentTok{\#\textgreater{}  Mode  :character   Mode  :character  }
+\CommentTok{\#\textgreater{}                                       }
+\CommentTok{\#\textgreater{}                                       }
+\CommentTok{\#\textgreater{}                                       }
+\CommentTok{\#\textgreater{} }
+\end{Highlighting}
+\end{Shaded}
+
+どんなことが分かりましたか。
+
+右上の窓枠の、Environment でも \texttt{df\_gdp21} を見てみましょう。
+
+\hypertarget{ux53efux8996ux5316-visualization}{%
+\subsection{可視化 Visualization}\label{ux53efux8996ux5316-visualization}}
+
+グラフ（Chart）を描いて視覚化します。ここでは、年ごとの変化をみる、折れ線グラフだけを描いて見ます。
+
+\hypertarget{ux30b0ux30e9ux30d5-1}{%
+\subsubsection{グラフ 1}\label{ux30b0ux30e9ux30d5-1}}
+
+\texttt{x\ =\ year}, \texttt{y\ =\ gdp} の、\texttt{x=}, \texttt{y=} は省略してあります。\texttt{col=country} は、国ごとに、グループにして、色分けをします。\texttt{col} は、\texttt{color} としても \texttt{colour} としても、問題ありません。
+`
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_gdp4 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, gdp, }\AttributeTok{col=}\NormalTok{country)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{()}
+\CommentTok{\#\textgreater{} Warning: Removed 10 rows containing missing values}
+\CommentTok{\#\textgreater{} (\textasciigrave{}geom\_line()\textasciigrave{}).}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{31-worldbank_files/figure-latex/unnamed-chunk-39-1.pdf}
+
+Warning として、missing values があると出ています。どこかは、分かりませんが、図を書くときですから、\texttt{y} に対応する、\texttt{gdp} の値がないものと思われます。
+
+\hypertarget{ux30b0ux30e9ux30d5-2}{%
+\subsubsection{グラフ 2}\label{ux30b0ux30e9ux30d5-2}}
+
+\texttt{drop\_na(gdp)} で、\texttt{gdp} の値が、NA であるものを削除します。また、\texttt{labs} で、図にタイトルをつけます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_gdp4 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(gdp) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, gdp, }\AttributeTok{col=}\NormalTok{country)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"WDI {-} NY.GDP.MKTP.CD: gdp"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{31-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf}
+
+\hypertarget{ux30c6ux30f3ux30d7ux30ecux30fcux30c8-templates}{%
+\subsubsection{テンプレート Templates}\label{ux30c6ux30f3ux30d7ux30ecux30fcux30c8-templates}}
+
+下に、テンプレートをつけます。コピーして、指標コードや、略称、国などを、それぞれ置き換えて、試して見てください。少し、複雑な変形をしていますが、少しずつ説明します。
+
+\hypertarget{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
+\paragraph{一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
+
+Line Plot with one indicator with abbreviation and one country
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chosen\_indicator }\OtherTok{\textless{}{-}} \StringTok{"SL.UEM.TOTL.NE.ZS"}
+\NormalTok{short\_name }\OtherTok{\textless{}{-}} \StringTok{"unemployment"}
+\NormalTok{chosen\_country }\OtherTok{\textless{}{-}} \StringTok{"United States"}
+\FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{short\_name =}\NormalTok{ chosen\_indicator), }\AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache=}\NormalTok{wdi\_cache) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{==}\NormalTok{ chosen\_country) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, short\_name)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"WDI "}\NormalTok{, chosen\_indicator, }\StringTok{": "}\NormalTok{, short\_name, }\StringTok{" {-} "}\NormalTok{, chosen\_country),}
+       \AttributeTok{y =}\NormalTok{ short\_name)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
+\paragraph{一つの国についての、一つの指標（WDI）から、折線グラフを作成}\label{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
+
+Line Plot with one indicator and one country
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chosen\_indicator }\OtherTok{\textless{}{-}} \StringTok{"SL.UEM.TOTL.NE.ZS"}
+\NormalTok{chosen\_country }\OtherTok{\textless{}{-}} \StringTok{"United States"}
+\FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{chosen\_indicator =}\NormalTok{ chosen\_indicator), }
+    \AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache=}\NormalTok{wdi\_cache) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{==}\NormalTok{ chosen\_country) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, chosen\_indicator)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"WDI "}\NormalTok{, chosen\_indicator, }\StringTok{" {-} "}\NormalTok{, chosen\_country), }
+       \AttributeTok{y =}\NormalTok{ chosen\_indicator)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux3044ux304fux3064ux304bux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
+\paragraph{いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux3044ux304fux3064ux304bux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
+
+Line Plot with one indicator with abbreviation and several countries
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chosen\_indicator }\OtherTok{\textless{}{-}} \StringTok{"SL.UEM.TOTL.NE.ZS"}
+\NormalTok{short\_name }\OtherTok{\textless{}{-}} \StringTok{"unemployment"}
+\NormalTok{chosen\_countries }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"United States"}\NormalTok{,}\StringTok{"United Kingdom"}\NormalTok{, }\StringTok{"Japan"}\NormalTok{)}
+\FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{short\_name =}\NormalTok{ chosen\_indicator), }\AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache=}\NormalTok{wdi\_cache) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(short\_name) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%}\NormalTok{ chosen\_countries) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, short\_name, }\AttributeTok{col =}\NormalTok{ country)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"WDI "}\NormalTok{, chosen\_indicator, }\StringTok{": "}\NormalTok{, short\_name), }\AttributeTok{y =}\NormalTok{ short\_name)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e8cux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
+\paragraph{一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e8cux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
+
+Line Plot with two indicators with abbreviation and one country
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chosen\_indicator\_1 }\OtherTok{\textless{}{-}} \StringTok{"NY.GDP.DEFL.KD.ZG"}
+\NormalTok{short\_name\_1 }\OtherTok{\textless{}{-}} \StringTok{"gdp\_deflator"}
+\NormalTok{chosen\_indicator\_2 }\OtherTok{\textless{}{-}} \StringTok{"CPTOTSAXNZGY"}
+\NormalTok{short\_name\_2 }\OtherTok{\textless{}{-}} \StringTok{"cpi\_price"}
+\NormalTok{chosen\_country }\OtherTok{\textless{}{-}} \StringTok{"United States"}
+\FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{short\_name\_1 =}\NormalTok{ chosen\_indicator\_1, }\AttributeTok{short\_name\_2 =}\NormalTok{ chosen\_indicator\_2), }\AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache=}\NormalTok{wdi\_cache) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{==}\NormalTok{ chosen\_country) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\FunctionTok{c}\NormalTok{(short\_name\_1, short\_name\_2), }\AttributeTok{names\_to =} \StringTok{"class"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"value"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(value) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, value, }\AttributeTok{col =}\NormalTok{ class)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"WDI "}\NormalTok{, chosen\_indicator\_1, }\StringTok{": "}\NormalTok{, short\_name\_1, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, chosen\_indicator\_2, }\StringTok{": "}\NormalTok{, short\_name\_2, }\StringTok{" {-} "}\NormalTok{, chosen\_country)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(short\_name\_1, short\_name\_2), }\AttributeTok{values =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{hue\_pal}\NormalTok{()(}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chosen\_indicator\_1 }\OtherTok{\textless{}{-}} \StringTok{"SL.TLF.CACT.MA.NE.ZS"}
+\NormalTok{short\_name\_1 }\OtherTok{\textless{}{-}} \StringTok{"male"}
+\NormalTok{chosen\_indicator\_2 }\OtherTok{\textless{}{-}} \StringTok{"SL.TLF.CACT.FE.NE.ZS"}
+\NormalTok{short\_name\_2 }\OtherTok{\textless{}{-}} \StringTok{"female"}
+\NormalTok{chosen\_country }\OtherTok{\textless{}{-}} \StringTok{"United States"}
+\FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{short\_name\_1 =}\NormalTok{ chosen\_indicator\_1, }\AttributeTok{short\_name\_2 =}\NormalTok{ chosen\_indicator\_2), }\AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache=}\NormalTok{wdi\_cache) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{==}\NormalTok{ chosen\_country) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\FunctionTok{c}\NormalTok{(short\_name\_1, short\_name\_2), }\AttributeTok{names\_to =} \StringTok{"class"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"value"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(value) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, value, }\AttributeTok{col =}\NormalTok{ class)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"WDI "}\NormalTok{, chosen\_indicator\_1, }\StringTok{": "}\NormalTok{, short\_name\_1, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, chosen\_indicator\_2, }\StringTok{": "}\NormalTok{, short\_name\_2, }\StringTok{" {-} "}\NormalTok{, chosen\_country)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(short\_name\_1, short\_name\_2), }\AttributeTok{values =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{hue\_pal}\NormalTok{()(}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux3044ux304fux3064ux304bux306eux56fdux306bux3064ux3044ux3066ux306eux4e8cux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
+\paragraph{いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux3044ux304fux3064ux304bux306eux56fdux306bux3064ux3044ux3066ux306eux4e8cux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
+
+Line Plot with two indicators with abbreviation and several countries
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chosen\_indicator\_1 }\OtherTok{\textless{}{-}} \StringTok{"NY.GDP.DEFL.KD.ZG"}
+\NormalTok{short\_name\_1 }\OtherTok{\textless{}{-}} \StringTok{"gdp\_deflator"}
+\NormalTok{chosen\_indicator\_2 }\OtherTok{\textless{}{-}} \StringTok{"CPTOTSAXNZGY"}
+\NormalTok{short\_name\_2 }\OtherTok{\textless{}{-}} \StringTok{"cpi\_price"}
+\NormalTok{chosen\_countries }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"United States"}\NormalTok{, }\StringTok{"France"}\NormalTok{, }\StringTok{"Japan"}\NormalTok{)}
+\FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{short\_name\_1 =}\NormalTok{ chosen\_indicator\_1, }\AttributeTok{short\_name\_2 =}\NormalTok{ chosen\_indicator\_2), }\AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache=}\NormalTok{wdi\_cache) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%}\NormalTok{ chosen\_countries) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\FunctionTok{c}\NormalTok{(short\_name\_1, short\_name\_2), }\AttributeTok{names\_to =} \StringTok{"class"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"value"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(value) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, value, }\AttributeTok{linetype =}\NormalTok{ class, }\AttributeTok{col =}\NormalTok{ country)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"WDI "}\NormalTok{, chosen\_indicator\_1, }\StringTok{": "}\NormalTok{, short\_name\_1, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, chosen\_indicator\_2, }\StringTok{": "}\NormalTok{, short\_name\_2)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_linetype\_manual}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(short\_name\_1, short\_name\_2), }\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"solid"}\NormalTok{, }\StringTok{"dashed"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chosen\_indicator\_1 }\OtherTok{\textless{}{-}} \StringTok{"SL.TLF.CACT.MA.NE.ZS"}
+\NormalTok{short\_name\_1 }\OtherTok{\textless{}{-}} \StringTok{"male"}
+\NormalTok{chosen\_indicator\_2 }\OtherTok{\textless{}{-}} \StringTok{"SL.TLF.CACT.FE.NE.ZS"}
+\NormalTok{short\_name\_2 }\OtherTok{\textless{}{-}} \StringTok{"female"}
+\NormalTok{chosen\_countries }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"United States"}\NormalTok{, }\StringTok{"France"}\NormalTok{, }\StringTok{"Japan"}\NormalTok{)}
+\FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{short\_name\_1 =}\NormalTok{ chosen\_indicator\_1, }\AttributeTok{short\_name\_2 =}\NormalTok{ chosen\_indicator\_2), }\AttributeTok{extra=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache=}\NormalTok{wdi\_cache) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%}\NormalTok{ chosen\_countries) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\FunctionTok{c}\NormalTok{(short\_name\_1, short\_name\_2), }\AttributeTok{names\_to =} \StringTok{"class"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"value"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(value) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, value, }\AttributeTok{linetype =}\NormalTok{ class, }\AttributeTok{col =}\NormalTok{ country)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"WDI "}\NormalTok{, chosen\_indicator\_1, }\StringTok{": "}\NormalTok{, short\_name\_1, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, chosen\_indicator\_2, }\StringTok{": "}\NormalTok{, short\_name\_2)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_linetype\_manual}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(short\_name\_1, short\_name\_2), }\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"solid"}\NormalTok{, }\StringTok{"dashed"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux8ab2ux984c-assignment}{%
+\subsection{課題　Assignment}\label{ux8ab2ux984c-assignment}}
+
+上のテンプレートをコピーして、下に貼り付け、指標 \texttt{indicator} と、略称 \texttt{short\_name} と、いくつかの国名 \texttt{chosen\_countries} を、入れ替えて、試してみてください。
+
 \hypertarget{part-part-iv-eda}{%
 \part{PART IV EDA}\label{part-part-iv-eda}}
 
 \hypertarget{intro2eda}{%
-\section{What is EDA?}\label{intro2eda}}
+\section{探索的データ解析}\label{intro2eda}}
+
+\hypertarget{ux63a2ux7d22ux7684ux30c7ux30fcux30bfux89e3ux6790-edaux3068ux306f}{%
+\subsection{探索的データ解析 (EDA)とは}\label{ux63a2ux7d22ux7684ux30c7ux30fcux30bfux89e3ux6790-edaux3068ux306f}}
+
+\begin{figure}
+\centering
+\includegraphics{./data/data-science.png}
+\caption{image from r4ds}
+\end{figure}
+
+以下は、\href{https://posit.cloud/learn/primers/3.1}{Posit Primers: Visualise Data} から
+
+探索的データ解析 (EDA) は、データを理解するための反復的なサイクルです。EDAでは、以下のことを行います。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  データに関する問いを作成する
+\item
+  データの可視化、変形・整形、モデリングによって、問いの答えを探索する。
+\item
+  学んだことを使って、問いをより洗練されたものとする。
+\end{enumerate}
+
+EDAは、あらゆるデータ分析において重要な役割を担います。EDA によって、課題解決のいとぐちを発見することもありますし、他の課題との関係性を発見する場合もあります。EDAを使用してデータの問題や品質を確認したり、データが信頼できるものであるかを見極める問いを作成できる場合もあります。
+
+\hypertarget{ux63a2ux7d22ux7684ux30c7ux30fcux30bfux89e3ux6790-eda-ux306eux4e00ux4f8b}{%
+\subsection{探索的データ解析 (EDA) の一例}\label{ux63a2ux7d22ux7684ux30c7ux30fcux30bfux89e3ux6790-eda-ux306eux4e00ux4f8b}}
+
+WDI の一つの指標を使って、流れを見てみましょう。
+
+\hypertarget{ux30c7ux30fcux30bfux306eux53d6ux5f97ux3068ux8aadux307fux8fbcux307f---data-import}{%
+\subsubsection{データの取得と読み込み - Data Import}\label{ux30c7ux30fcux30bfux306eux53d6ux5f97ux3068ux8aadux307fux8fbcux307f---data-import}}
+
+NY.GDP.PCAP.CD: GDP per capita (current US\$)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}\AttributeTok{country =} \StringTok{"all"}\NormalTok{, }\AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{gdp\_pcap =} \StringTok{"NY.GDP.PCAP.CD"}\NormalTok{))}
+\FunctionTok{write\_csv}\NormalTok{(df\_wdi\_gdppcap, }\StringTok{"./data/df\_wdi\_gdppcap.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap}
+\CommentTok{\#\textgreater{} \# A tibble: 16,492 x 5}
+\CommentTok{\#\textgreater{}    country                     iso2c iso3c  year gdp\_pcap}
+\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}                       \textless{}chr\textgreater{} \textless{}chr\textgreater{} \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1 Africa Eastern and Southern ZH    AFE    2021    1550.}
+\CommentTok{\#\textgreater{}  2 Africa Eastern and Southern ZH    AFE    2020    1364.}
+\CommentTok{\#\textgreater{}  3 Africa Eastern and Southern ZH    AFE    2019    1512.}
+\CommentTok{\#\textgreater{}  4 Africa Eastern and Southern ZH    AFE    2018    1565.}
+\CommentTok{\#\textgreater{}  5 Africa Eastern and Southern ZH    AFE    2017    1629.}
+\CommentTok{\#\textgreater{}  6 Africa Eastern and Southern ZH    AFE    2016    1444.}
+\CommentTok{\#\textgreater{}  7 Africa Eastern and Southern ZH    AFE    2015    1539.}
+\CommentTok{\#\textgreater{}  8 Africa Eastern and Southern ZH    AFE    2014    1719.}
+\CommentTok{\#\textgreater{}  9 Africa Eastern and Southern ZH    AFE    2013    1730.}
+\CommentTok{\#\textgreater{} 10 Africa Eastern and Southern ZH    AFE    2012    1759.}
+\CommentTok{\#\textgreater{} \# ... with 16,482 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux30c7ux30fcux30bfux5909ux5f62ux6574ux5f62---data-transformation}{%
+\subsubsection{データ変形・整形 - Data Transformation}\label{ux30c7ux30fcux30bfux5909ux5f62ux6574ux5f62---data-transformation}}
+
+\hypertarget{ux5217ux3092-select}{%
+\paragraph{\texorpdfstring{列を \texttt{select}}{列を select}}\label{ux5217ux3092-select}}
+
+どの変数について分析するかを選ぶ。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap\_small }\OtherTok{\textless{}{-}}\NormalTok{ df\_wdi\_gdppcap }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(country, year, gdp\_pcap)}
+\NormalTok{df\_wdi\_gdppcap\_small}
+\CommentTok{\#\textgreater{} \# A tibble: 16,492 x 3}
+\CommentTok{\#\textgreater{}    country                      year gdp\_pcap}
+\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}                       \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1 Africa Eastern and Southern  2021    1550.}
+\CommentTok{\#\textgreater{}  2 Africa Eastern and Southern  2020    1364.}
+\CommentTok{\#\textgreater{}  3 Africa Eastern and Southern  2019    1512.}
+\CommentTok{\#\textgreater{}  4 Africa Eastern and Southern  2018    1565.}
+\CommentTok{\#\textgreater{}  5 Africa Eastern and Southern  2017    1629.}
+\CommentTok{\#\textgreater{}  6 Africa Eastern and Southern  2016    1444.}
+\CommentTok{\#\textgreater{}  7 Africa Eastern and Southern  2015    1539.}
+\CommentTok{\#\textgreater{}  8 Africa Eastern and Southern  2014    1719.}
+\CommentTok{\#\textgreater{}  9 Africa Eastern and Southern  2013    1730.}
+\CommentTok{\#\textgreater{} 10 Africa Eastern and Southern  2012    1759.}
+\CommentTok{\#\textgreater{} \# ... with 16,482 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux884cux3092-filter}{%
+\paragraph{\texorpdfstring{行を \texttt{filter}}{行を filter}}\label{ux884cux3092-filter}}
+
+いくつかの国に、フォーカスして調べる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap\_short }\OtherTok{\textless{}{-}}\NormalTok{ df\_wdi\_gdppcap }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Japan"}\NormalTok{, }\StringTok{"Germany"}\NormalTok{, }\StringTok{"United States"}\NormalTok{))}
+\NormalTok{df\_wdi\_gdppcap\_short}
+\CommentTok{\#\textgreater{} \# A tibble: 186 x 5}
+\CommentTok{\#\textgreater{}    country iso2c iso3c  year gdp\_pcap}
+\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}   \textless{}chr\textgreater{} \textless{}chr\textgreater{} \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1 Germany DE    DEU    2021   51204.}
+\CommentTok{\#\textgreater{}  2 Germany DE    DEU    2020   46773.}
+\CommentTok{\#\textgreater{}  3 Germany DE    DEU    2019   46794.}
+\CommentTok{\#\textgreater{}  4 Germany DE    DEU    2018   47939.}
+\CommentTok{\#\textgreater{}  5 Germany DE    DEU    2017   44653.}
+\CommentTok{\#\textgreater{}  6 Germany DE    DEU    2016   42136.}
+\CommentTok{\#\textgreater{}  7 Germany DE    DEU    2015   41103.}
+\CommentTok{\#\textgreater{}  8 Germany DE    DEU    2014   48024.}
+\CommentTok{\#\textgreater{}  9 Germany DE    DEU    2013   46299.}
+\CommentTok{\#\textgreater{} 10 Germany DE    DEU    2012   43856.}
+\CommentTok{\#\textgreater{} \# ... with 176 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+列（変数）と、行（国）の選択を続けて、実行すると次のようになる。
+一つ一つ変形したデータ（オブジェクト）に名前をつけて、保存する必要がないので、パイプ（\texttt{\%\textgreater{}\%}）の活用は有用である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap\_small\_short }\OtherTok{\textless{}{-}}\NormalTok{ df\_wdi\_gdppcap }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(country, year, gdp\_pcap) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Japan"}\NormalTok{, }\StringTok{"Germany"}\NormalTok{, }\StringTok{"United States"}\NormalTok{))}
+\NormalTok{df\_wdi\_gdppcap\_small\_short}
+\CommentTok{\#\textgreater{} \# A tibble: 186 x 3}
+\CommentTok{\#\textgreater{}    country  year gdp\_pcap}
+\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}   \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1 Germany  2021   51204.}
+\CommentTok{\#\textgreater{}  2 Germany  2020   46773.}
+\CommentTok{\#\textgreater{}  3 Germany  2019   46794.}
+\CommentTok{\#\textgreater{}  4 Germany  2018   47939.}
+\CommentTok{\#\textgreater{}  5 Germany  2017   44653.}
+\CommentTok{\#\textgreater{}  6 Germany  2016   42136.}
+\CommentTok{\#\textgreater{}  7 Germany  2015   41103.}
+\CommentTok{\#\textgreater{}  8 Germany  2014   48024.}
+\CommentTok{\#\textgreater{}  9 Germany  2013   46299.}
+\CommentTok{\#\textgreater{} 10 Germany  2012   43856.}
+\CommentTok{\#\textgreater{} \# ... with 176 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux53efux8996ux5316-data-visualization}{%
+\subsubsection{可視化 Data Visualization}\label{ux53efux8996ux5316-data-visualization}}
+
+次は、よく生じる、誤りの例で、ノコギリの歯（sawtoothed）のようなギザギザ・グラフと呼ばれます。なぜこのようなことが起きているかわかりますか。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap\_small\_short }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ gdp\_pcap)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{()}
+\CommentTok{\#\textgreater{} Warning: Removed 1 row containing missing values}
+\CommentTok{\#\textgreater{} (\textasciigrave{}geom\_line()\textasciigrave{}).}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{41-eda_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+同じ年に、多くのデータがあるので、折れ線グラフを適切に書くことができませんでした。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap\_small\_short }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Japan"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ gdp\_pcap)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{41-eda_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+一般的には、散布図をまず、書いてみるのも一つです。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap\_small\_short }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ gdp\_pcap)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
+\CommentTok{\#\textgreater{} Warning: Removed 10 rows containing missing values}
+\CommentTok{\#\textgreater{} (\textasciigrave{}geom\_point()\textasciigrave{}).}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{41-eda_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+国別に、異なる色を使うことで、折れ線グラフを書くことも可能です。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap\_small\_short }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(gdp\_pcap) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ gdp\_pcap, }\AttributeTok{col =}\NormalTok{ country)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{41-eda_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+折線グラフと、散布図を同時に描くこともかのうです。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap\_small\_short }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(gdp\_pcap) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ gdp\_pcap, }\AttributeTok{col =}\NormalTok{ country)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{41-eda_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+点を、曲線で近似する方法はいくつも知られているが、ある幅で、近似していく、LOESS が初期値となっている。\texttt{method=\textquotesingle{}loess\textquotesingle{}} を省略しても、同じ近似がなされる。\texttt{span} という値を調節することで、ことなる幅での近似曲線を書くことも可能である。初期値は、0.75。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap\_small\_short }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(gdp\_pcap) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ gdp\_pcap)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ country)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{\textquotesingle{}loess\textquotesingle{}}\NormalTok{, }\AttributeTok{formula =} \StringTok{\textquotesingle{}y \textasciitilde{} x\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{41-eda_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\hypertarget{ux30c7ux30fcux30bfux30e2ux30c7ux30eaux30f3ux30b0-data-modeling}{%
+\subsubsection{データモデリング Data Modeling}\label{ux30c7ux30fcux30bfux30e2ux30c7ux30eaux30f3ux30b0-data-modeling}}
+
+上の例では、曲線ではなく、直線で近似することも考えられる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap\_small\_short }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(gdp\_pcap) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ gdp\_pcap)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ country)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{\textquotesingle{}lm\textquotesingle{}}\NormalTok{, }\AttributeTok{formula =} \StringTok{\textquotesingle{}y \textasciitilde{} x\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{41-eda_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+簡単な線形回帰モデルでの、回帰直線の y-切片や、傾きは、次のコードで与えられ、p-value や、R squared の値も求められる。
+
+この例では、年とともに、増加の傾向があること。そして、線形モデルが\$\$、90\% 程度説明していると表現される。すなわち、
+
+は、良い、近似であることがわかる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_gdppcap\_small\_short }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(gdp\_pcap }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summary}\NormalTok{()}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} lm(formula = gdp\_pcap \textasciitilde{} year, data = .)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residuals:}
+\CommentTok{\#\textgreater{}      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\textgreater{} {-}14156.8  {-}3200.5   {-}507.4   3237.7  16779.2 }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Coefficients:}
+\CommentTok{\#\textgreater{}               Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\textgreater{} (Intercept) {-}1903497.5    48007.9  {-}39.65   \textless{}2e{-}16 ***}
+\CommentTok{\#\textgreater{} year             968.3       24.1   40.18   \textless{}2e{-}16 ***}
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residual standard error: 5514 on 174 degrees of freedom}
+\CommentTok{\#\textgreater{}   (10 observations deleted due to missingness)}
+\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.9027, Adjusted R{-}squared:  0.9021 }
+\CommentTok{\#\textgreater{} F{-}statistic:  1614 on 1 and 174 DF,  p{-}value: \textless{} 2.2e{-}16}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{part-part-v-examples}{%
 \part{PART V EXAMPLES}\label{part-part-v-examples}}
@@ -1339,7 +2734,7 @@ output:
 \hypertarget{ux65e5ux672cux8a9eux4e2dux56fdux8a9eux97d3ux56fdux8a9e}{%
 \subsection{日本語・中国語・韓国語}\label{ux65e5ux672cux8a9eux4e2dux56fdux8a9eux97d3ux56fdux8a9e}}
 
-文字化けが、起こることが多く、対応が、一定せず、難しかったのですが、どうやら、現在は、どの場合も、次の設定で、解決しているようです。下の例を確認してください。
+文字化けが、起こることが多く、対応が、一定せず、特に、図の表示において、Windows や、macOS や、Linux などの、OS ごとに、フォントが違ったり、それを、図のタイトルなどに、使ったりが、難しかったのですが、どうやら、現在は、どの場合も、次の設定で、解決しているようです。下の例を確認してください。特に、フォントについては、好みも関係しますから、難しいですが、ここでは、どのプラットフォーム（OS）でも、共通に扱えることを中心に書きます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1357,7 +2752,6 @@ output:
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \FunctionTok{library}\NormalTok{(showtext) }
-\FunctionTok{font\_add\_google}\NormalTok{(}\StringTok{\textquotesingle{}Noto Sans\textquotesingle{}}\NormalTok{)}
 \FunctionTok{showtext\_auto}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1446,8 +2840,24 @@ output:
     右上の Code ボタンから、Rmd ファイルも取得できます。
   \end{itemize}
 \item
+  \href{https://ds-sl.github.io/intro2r/Rmarkdown-J.html}{R Notebook RMD}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Rmd の中身がテキストで表示されますから、コピーして、新規作成した、RNotebook ファイルに貼り付けることも可能です。
+  \end{itemize}
+\item
   \href{https://ds-sl.github.io/intro2r/Rmarkdown-J.pdf}{PDF}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    通常のPDFも、やはり PDF 形式の、beamer presentation も作成できます。
+  \end{itemize}
 \end{itemize}
+
+詳細は、これらのファイルに記載されていますから、参考にしてください。
 
 \hypertarget{ux53c2ux8003ux65e5ux672cux8a9eux306eux8868ux793aux306bux3064ux3044ux3066}{%
 \subsection{参考：日本語の表示について}\label{ux53c2ux8003ux65e5ux672cux8a9eux306eux8868ux793aux306bux3064ux3044ux3066}}
@@ -1456,11 +2866,11 @@ output:
 日本語が適切に表示されない！？
 \end{quote}
 
-簡単ではなく、未解決の部分が何かなどを含め、わたしも十分理解できているか不明であるが、理解できていると思われる範囲で、備忘録のように記す。
+簡単ではなく、未解決の部分が何かなどを含め、わたしも十分理解できているか不明であるが、理解できていると思われる範囲で、備忘録のように記します。
 
-R を使うという場合に限っても、R Studio IDE を使う場合、RStudio Cloud を使う場合、Google colab を使う場合、他のプラットフォームで使う場合で違ってくると思われる。一応、上にあげた、三種類のプラットフォームで確かめられるものについて書いていく。上に書いた以外に、R Studio IDE を、Windows 上で使う場合と、Mac 上で使う場合（Mac のシステムは Unix 系であるが、さまざまな Linux ）でも、状況が異なる。そこで、場合分けをして書いていくほうが安全であるが、それは、極力避け、どれにでも適用可能な方法を模索しながら書いていこうと思っている。個人的に、日常的に分断を避ける努力をすることが大切だとおもっていることも背景にある。さらに、ソフトウェア開発者は、むろん、そのような差異を理解して、どの環境でも、可能なように設計することを心がけていると思われるし、そのようなものが、R Project の正規のパッケージとして採用されていくべきだとも考えているので、多少、理想も入っているが、これを基本として書いていこうと思う。十分なチェックができていないものもあるので、不具合などは、ぜひ、お知らせ願いたい。この文章も少しずつ、改善していければと思う。
+R を使うという場合に限っても、R Studio IDE を使う場合、RStudio Cloud を使う場合、Google colab を使う場合、他のプラットフォームで使う場合で違ってくると思われますが、上にあげた、三種類のプラットフォームで確かめられるものについて書いていく。上に書いた以外に、R Studio IDE を、Windows 上で使う場合と、Mac 上で使う場合（Mac のシステムは Unix 系であるが、さまざまな Linux ）でも、状況が異なるかもしれません。そこで、場合分けをして書いていくほうが安全ですが、それは、極力避け、どれにでも適用可能な方法を模索しながら書いていこうと思います。個人的に、日常的に分断を避ける努力をすることが大切だと思っていることも背景にある。さらに、ソフトウェア開発者は、むろん、そのような差異を理解して、どの環境でも、可能なように設計することを心がけていると思われますし、そのようなものが、R Project の正規のパッケージとして採用されていくべきだとも考えていますので、多少、理想も入っているが、これを基本として書いていこうと思います。十分なチェックができていないものもあるので、不具合などは、ぜひ、お知らせ願いたい。この文章も少しずつ、改善していければと思う。
 
-通常、日本語、中国語、韓国語などが適切に表示できない場合は、文字のエンコーディング（Encoding: どのような情報として記録されているか）と、フォントの問題、さらに、システムがこれらをどう処理しているかの問題があると思われる。しかし、R の利用者として考えると、文字化けが起きたり、適切に文字が表示されないのは、以下の三つに分けられるように思われる。
+通常、日本語、中国語、韓国語などが適切に表示できない場合は、文字のエンコーディング（Encoding: どのような情報として記録されているか）と、フォントの問題、さらに、システムがこれらをどう処理しているかの問題があると思われます。しかし、R の利用者として考えると、文字化けが起きたり、適切に文字が表示されないのは、以下の三つに分けられるようです。
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1484,16 +2894,16 @@ R を使うという場合に限っても、R Studio IDE を使う場合、RStud
   \begin{itemize}
   \tightlist
   \item
-    read\_csv(``./data/file\_name.csv'') とすると、一番可能性の高いエンコーディングで読み込まれる。
+    read\_csv(``./data/file\_name.csv'') とすると、一番可能性の高いエンコーディングで読み込まれるようになっています。
   \end{itemize}
 \item
-  使い方：guess\_encoding(file, n\_max = 10000, threshold = 0.2) とあり、10000行で推測されたエンコーディング、または、確率を計算することを Default にしている。Help によると、すべての行をチェックする場合は、n\_max = -1 とすることが書かれている。
+  使い方：guess\_encoding(file, n\_max = 10000, threshold = 0.2) とあり、10000行で推測されたエンコーディング、または、確率を計算することを 初期設定値（Default）にしてます。Help によると、すべての行をチェックする場合は、n\_max = -1 とすることが書かれています。
 \item
-  これで問題がない場合が多い。他の、readr 関数も同様である。
+  これで問題がない場合が多いです。他の、readr 関数も同様です。しかし、これは、あくまでも、CSV などのテキストファイルについてです。
 \item
-  なお、read\_csv などにも、guess\_max = min(1000, n\_max) も含まれるが、これは、column type を決めるためのものである。
+  なお、read\_csv などにも、guess\_max = min(1000, n\_max) もありますが、これは、column type を決めるためのものである。
 \item
-  read.csv() など、base R では、fileEncoding = ````, encoding =''unknown'' がオプションに含まれていたので、指定して読み込むことが通常であった。
+  read.csv() など、base R では、fileEncoding = ````, encoding =''unknown'' がオプションに含まれていたので、指定して読み込むことが通常でした。
 \end{itemize}
 
 \hypertarget{ux56f3ux306eux4e2dux306eux30c6ux30adux30b9ux30c8}{%
@@ -1502,7 +2912,9 @@ R を使うという場合に限っても、R Studio IDE を使う場合、RStud
 \begin{itemize}
 \tightlist
 \item
-  基本的には、図の表示の前にlibrary(showtext); font\_add\_google(`Noto Sans'); showtext\_auto() となっていれば、これ以降の図は、Google Fonts `Noto Sans' が使われ、表示されるはずである。
+  基本的には、日本語を表示できるフォントがインストールされていて、図の表示の前にlibrary(showtext); showtext\_auto() となっていれば、これ以降の図は、問題なく、表示されるはずです。
+\item
+  通常使っている、コンピュータ以外で、使うときに、フォントが入っていない場合などは、\texttt{tinytex} の命令を使って、\texttt{tinytex::tlmgr\_install("ipaex")} とすれば、PDF を作成するときも、IPA フォント（International Phonetic Alphabet）を使えます。
 \item
   二種類以上のフォントを使い分けたいときは、名前をつけて、それを family = name で指定する。
 
@@ -1519,8 +2931,23 @@ R を使うという場合に限っても、R Studio IDE を使う場合、RStud
 \begin{itemize}
 \tightlist
 \item
-  PDF 作成における問題が最後まで残っていたが、最近は、showtext Package で解決しているようである。設定については、図の中のテキストの場合と同じ。
+  PDF 作成には、\TeX システムを使っているので、日本語を扱えるように、tex-engine や、document class や、mainfont を設定する必要があるが、R Markdown ファイルの YAML に、以下を加えれば問題がないようである。
 \end{itemize}
+
+\begin{verbatim}
+header-includes:
+  - \usepackage{xeCJK}
+  - \setCJKmainfont{ipaexm.ttf}
+  - \setCJKsansfont{ipaexg.ttf}
+  - \setCJKmonofont{ipaexg.ttf}
+\end{verbatim}
+
+\hypertarget{bookdown}{%
+\subsubsection{\texorpdfstring{\texttt{bookdown}}{bookdown}}\label{bookdown}}
+
+\texttt{bookdown} を使って、電子書籍を出版する場合には、\href{https://bookdown.org/yihui/bookdown/}{\texttt{bookdown} （リンク）} を参照してください。
+
+日本語におけるテンプレートは、\href{https://github.com/icu-hsuzuki/bs4_book_template}{こちら} にあります。まずは、ページの下にある、README を読んでください。
 
 \hypertarget{ux53c2ux8003ux3068ux3057ux305fux3082ux306e}{%
 \subsubsection{参考としたもの}\label{ux53c2ux8003ux3068ux3057ux305fux3082ux306e}}
@@ -1578,6 +3005,534 @@ R を使うという場合に限っても、R Studio IDE を使う場合、RStud
   \item
     77.2 Japanese Environments 日本語環境（昔の記事：Last Updated: 2020-04-22）
   \end{itemize}
+\end{itemize}
+
+\hypertarget{tools}{%
+\section{IT ツール}\label{tools}}
+
+\begin{quote}
+いくつかの便利なツールについて紹介します。
+\end{quote}
+
+\hypertarget{git-ux3068-github}{%
+\subsection{Git と GitHub}\label{git-ux3068-github}}
+
+Git は バージョン管理システムで、GitHub はそれを、活用し、かつ他のメンバーと協力して開発など、さまざまな活動をするためのサイトです。公開が基本となっています。非公開にすることも可能ですが、公開することで、世界中のひとたちと協力していくことが可能になりますからので、その利点も学んでいただければと思います。
+
+\hypertarget{ux6982ux8981}{%
+\subsubsection{概要}\label{ux6982ux8981}}
+
+RStudio で R を使っている場合、Git-GitHub-RStudio の連携で使うことをお勧めします。しかし、これらは、三つとも、まったく異なるものですから、簡単な概要を書いておくことにします。
+
+\hypertarget{git}{%
+\paragraph{Git}\label{git}}
+
+これは、ファイルのバージョン（更新履歴）の管理システムで、単独で機能します。他の、プログラムなどに関係しない、他の文書ファイルであっても、バージョンを管理する場合に活用できます。特に、テキスト・ファイルの場合には、どこがどう改訂されているかを確認することもできます。また、基本的には、Unix の Shell プログラムで動作させるのが一般的です。Mac は、Unix システムの上に構築されているため、最初から、ユーティリティ（Utility）\textgreater{} ターミナル（Terminal）で、Shell コマンドが利用可能になっていますが、Windows の場合には、bash と呼ばれる Shell プログラムをインストールすることをお勧めします。Windows システムについてよくご存知の方は、他の方法を使っていただいて構いませんが、Git のインストールの時に、Git bash を選択して、簡単に インストールできますし、Unix システムの基本を理解するチャンスでもあり、Mac とも同じ環境で説明できますから、ここでは、そちらを使います。Shell コマンドは、R Studio の中のターミナルを使って、利用することも可能です。（注：Windows のコマンド・プロンプト、または、パワー・シェルをお使いの方は、利用環境が変化する可能性がありますから、そのまま使われる方が良いかもしれません。）
+
+基本的なコマンドとしては、以下のものがあります。いまは、このようなものがある程度に、眺めておいてください。
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{git\ init}: 特定のディレクトリ（フォルダ）で バージョン管理を始める時に使います。
+\item
+  \texttt{git\ status}: 現在の状況を確認するときに使います。
+\item
+  \texttt{git\ diff\ file\_name}: ファイルへの変更を確認します。
+\item
+  \texttt{git\ log}: 過去の commit による履歴を確認する時に使います。
+\item
+  \texttt{git\ add\ file\_name}: ステージングという中間的な場所に登録します。
+\item
+  \texttt{git\ commit\ -m\ "log\ message\ here"}: ステージングにあるものを、確定させます。引用符で囲まれた短いコメントを加えます。50文字が上限です。
+\item
+  \texttt{git\ help}: Help のリストが表示されます。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    例：\texttt{git\ help\ init} などと入力すると、説明を見ることができます。
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{git-hub}{%
+\paragraph{Git Hub}\label{git-hub}}
+
+Git でバージョン管理されているディレクトリ（フォルダ）の状態を示す、クラウドサービスです。更新されている、状態を確認するとともに、変更履歴なども確認できます。また、Git Hub サービスを利用して、ファイルを公開、共有することも可能です。Pages サイトを利用することで、ホームページとして HTML ファイルなどを公開することもできるため、レポートを公開したり、この電子書籍のように、\texttt{bookdown} パッケージを利用して作成したものを、インターネット上に公開することも可能です。
+
+お気付きかと思いますが、この電子書籍も、リンクされている、他の文書も、URL（アドレス）をみると、GitHub になっていますし、パッケージや、データなども、GitHub へのリンクが示されている割合が、非常に高いと思います。
+
+最初に、Git で管理されている、ディレクトリ（フォルダ）（これを、ローカル・リポジトリと言います）と、GitHub 内のリポジトリ（リモート・リポジトリまはたアップストリーム・リポジトリと言います。ここでは、リモート・リポジトリと呼ぶことにします）を結びつけるステップが必要です。
+
+\hypertarget{rstudio-ux9023ux643a}{%
+\paragraph{RStudio 連携}\label{rstudio-ux9023ux643a}}
+
+コマンドライン（シェル）で行う作業や、ローカル・リポジトリを、リモート・リポジトリに結びつける作業を、RStudio の中で行うことが可能です。
+
+\hypertarget{ux306fux3058ux3081ux304bux305f}{%
+\subsubsection{はじめかた}\label{ux306fux3058ux3081ux304bux305f}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Git のインストール
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Windows と Mac で異なりますので注意が必要です。Mac については、\textbf{Mac} と書いてあるところを読んでください。
+\item
+  \textbf{Windows} の場合は、\href{https://git-scm.com/download/win}{git-scm} にアクセスしてダウンロード、インストールしてください。セットアップ（Setup）で、２箇所、注意点があります、それ以外は、すべて、初期設定のままで変更は必要ありません。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Choosing the default editor used by Git: 設定で、エディタ（Editor）を設定しますが、vi, vim に慣れていない方は、nano を選択することをお勧めします。（nano は、メニューが下に出るので、それを見て操作することが可能なエディターです。）
+  \item
+    Adjusting Your Path Environment: Windows の コマンドライン・ツール（command line prompt) を使っていない方は、Git Bash のインストールを選択してください。さらに、Git and optional Unix tools from the Windows Command Prompt を選択することをお勧めしますが、上で書いたように、Windows の コマンド・プロンプトになれておられる方で、それを使い続けたいかたは、Use Git from Git Bash only を選択されるのが良いかもしれません。
+  \item
+    最後に、RStudio の設定（Tools \textgreater{} Global Option）で、Terminal　から、Git Bash を選択し、Tools から、New Terminal を選択します。
+  \end{itemize}
+\item
+  \textbf{Mac} は、最初から、Install されていると思います。ユーティリティ（Utility）\textgreater{} ターミナル（Terminal）を開いて\footnote{RStudio を既にお使いの方は、左下の窓枠から、Terminal タブを選択できますので、それを使うことも可能です。}、\texttt{git\ -\/-version} とすると、インストールされているバージョンが表示されると思います。バージョンがでない場合には、Install するかと聞かれます。このときに、Git だけをインストールすることも、Xcode という開発環境を同時にインストールすることも可能です。（インストールするように指示が出なければ、App Store からも、インストールできます。もし、そのあとで、git などのコマンドで xcrun: error などとエラーが出たら、\texttt{xcode-select\ -\/-install} としてください。）インストールが終了したら、もう一度、\texttt{git\ -\/-version} と Terminal に入力して、結果を確認してください。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  GitHub のアカウント取得
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com}{GitHub サイト} に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  RStudio の 左下の窓枠のTerminal タブ\footnote{Terminal がない場合は、Tools \textgreater{} Terminal \textgreater{} New Terminal とすると表示されます。}から、GitHub アカウントに連携する設定を行います。
+  下の２行を、１行ずつ、コピーして、Terminal に入力してください。
+\end{enumerate}
+
+\begin{verbatim}
+git config --global user.name "Your Name" # GitHub の User Name
+git config --global user.mail "your@email.com" # GitHub に登録したメールアドレス
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  RStudio の、Tools \textgreater{} Global Opton の、Git/SVN タブを開き、Git Executable とあるところに、Git 実行プログラムのある場所を入れます。
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Windows} の場合は、\texttt{C:/Program\ Files/Git/bin/git.exe} だと思いますが、Browse ボタンから確認してください。
+\item
+  \textbf{Mac} の場合は、\texttt{/usr/bin/git} になるかと思いますが、Browse ボタンから確認してください。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  その下に、Create RSA key とありますから、それを押してください。すると、View RSA key から、暗号キーも確認できます。（この作業は、Terminal から、\texttt{ssh-keygen\ -t\ rsa} として作成することも可能です。この作業で、\texttt{\textasciitilde{}/.ssh/} 内に、SSH キーが記述されたファイルが作成されます。）
+\end{enumerate}
+
+\hypertarget{github-ux306bux3042ux308bux30eaux30e2ux30fcux30c8ux30eaux30ddux30b8ux30c8ux30earemote-repoux304bux3089ux59cbux3081ux308bux5834ux5408}{%
+\subsubsection{GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合}\label{github-ux306bux3042ux308bux30eaux30e2ux30fcux30c8ux30eaux30ddux30b8ux30c8ux30earemote-repoux304bux3089ux59cbux3081ux308bux5834ux5408}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  GitHub にログインして、既存のリポジトリを開きます。
+\item
+  Code の、Clone から、リンク先のアドレスを入手。https と SSH を選べますが、SSH を選び、コピーします。
+\item
+  RStudio から、New Project とし、Version Control を選択し、ディレクトリーを決めたら、上でコピーした、ものを、貼り付けて、Project を作成します。
+\end{enumerate}
+
+この手続きで、リモート・リポジトリのファイルがすべて、RStudio のプロジェクトに入ります。
+
+実はこの手続きで、公開されている、他のリポジトリも取り込むことができます。ただし、編集して、改訂していくには、自分のリポジトリに、繋ぐことになります。そのときは、次の項目を見てください。
+
+\hypertarget{ux81eaux5206ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux306eux30eaux30ddux30b8ux30c8ux30ealocal-repoux304bux3089ux59cbux3081ux308bux5834ux5408}{%
+\subsubsection{自分のコンピュータのリポジトリ（Local Repo）から始める場合}\label{ux81eaux5206ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux306eux30eaux30ddux30b8ux30c8ux30ealocal-repoux304bux3089ux59cbux3081ux308bux5834ux5408}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  RStudio から新しい、プロジェクト（Project） を作成 \texttt{test0} としておきましょう。
+\item
+  GitHub に、新しい、レポジトリを作成して繋げる
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  自分の GitHub アカウントに、新しい、レポジトリをプロジェクトと同じ名前 \texttt{test0} で作成します。同じ名前でなくてもかまわないのですが、関連がしやすいので、同じ名前がお勧めです。
+\item
+  Code の Clone から、https と SSH を選べますが、SSH を選び、コピーします。
+\item
+  プロジェクトの中の 左下の窓枠の、Terminal から次を実行します。
+\end{itemize}
+
+\begin{verbatim}
+echo "# Project test0" >> README.md # REAME の表題を書きます。
+git init
+git add README.md
+git commit -m "First commit. README.md"
+git remote add origin `git@github.com:icu-hsuzuki/test0.git`
+# わたしのアカウントの場合には、コピーしたものを貼り付けると、上のようになります。
+git push
+\end{verbatim}
+
+\hypertarget{github-pages-ux306bux3064ux3044ux3066}{%
+\subsubsection{GitHub Pages について}\label{github-pages-ux306bux3064ux3044ux3066}}
+
+GitHub は、Web 上のサービスですが、たとえ、リポジトリーの中に、HTML ファイルなどが存在しても、ブラウザーで表示させることはできません。公開する方法として、わたしは、以下のようにしています。
+
+公開しブラウザーで読めるようにしたいファイルを、\texttt{docs} という ディレクトリに入れます。Setting を選択し、左の帯から、Pages を選び、Branch を、\texttt{main}、\texttt{/docs} として、Save します。すると、docs に入っているファイルは、リンクを指定すれば、ブラウザーで、見ることができます。
+
+リンクは、まず、リポジトリーの右上の、About の右のギアマークから、Use your GitHub Pages website に、チェックを入れると、URL が表示されますから、その URL に続けて、ファイル名を加えたものが、そのファイルの、リンクとなります。
+
+\hypertarget{bookdown-ux30d1ux30c3ux30b1ux30fcux30b8ux306bux3088ux308bux96fbux5b50ux66f8ux7c4dux306eux57f7ux7b46}{%
+\subsubsection{Bookdown パッケージによる、電子書籍の執筆}\label{bookdown-ux30d1ux30c3ux30b1ux30fcux30b8ux306bux3088ux308bux96fbux5b50ux66f8ux7c4dux306eux57f7ux7b46}}
+
+\href{https://github.com/rstudio/bookdown}{bookdown} を利用して、始める方法を簡単に記します。
+
+Git-GitHub-RStuio の設定は済んでいると仮定して書きます。また、Bookdown を利用するには、\texttt{bookdown} パッケージのインストールが必要です。RStudio の Tools から、Install Packages を選択して、インストールしてください。また、\texttt{bs4\_book} スタイルを利用する場合は、RStudio などのバージョンによっては、\texttt{bslib} と \texttt{downlit} も、インストールする必要があるようです。
+
+以下では、R Studio で新しい、プロジェクトとして始める場合と、テンプレート・リポジトリ を使う方法を説明します。
+
+\hypertarget{rstudio-ux3067ux306eux8a2dux5b9a}{%
+\paragraph{RStudio での設定}\label{rstudio-ux3067ux306eux8a2dux5b9a}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  新しい book プロジェクトを始めます、標準設定の \texttt{book} と、\texttt{bs4\_book} を選択できます。このディレクトリ（フォルダ。ローカル・リポジトリと呼びます）の名前をリモート・リポジトリの名前と同じにして、作成します\footnote{異なる名前でも可能ですが、特別な理由がない限り同じにしておいた方が良いでしょう}。
+\item
+  Files の、Rename 機能を使って \texttt{\_book} ディレクトリ（フォルダ）の名前を、\texttt{docs} に変更します。
+\item
+  \texttt{\_bookdown.yml} を編集し次の行を加えます（私は２行目に入れています）。\\
+  \texttt{output\_dir:\ docs}\strut \\
+  GitHub Pages の機能を使って、公開するための変更です。
+\item
+  \textbf{@GitHub:} 新いリポジトリー（リモート・リポジトリと言います）を作成します。ローカル・リポジトリと同じ名前にし、簡単な説明を加えます。
+\item
+  左下の窓枠から、Terminal タブを選択します。 以下は例です。\texttt{git\ remote\ add\ origin} のところは、適当に変更してください。
+\end{enumerate}
+
+\begin{verbatim}
+echo "# ds-book" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:icu-hsuzuki/ds4aj.git # 変更
+git push -u origin main
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  RStudio を一旦終了し、もう一度、そのプロジェクトを立ち上げると、右上の窓枠に、Git タブが表示されるはずです。
+\item
+  Build から、Build Book ボタンを利用すれば、作成されます。
+\item
+  Git タブから: Commit ``first build'' とし、 Push をします。
+\item
+  \textbf{@GitHub:} Settings から、Pages \textgreater{} main \textgreater{} docs と変更すると、公開されます。
+\item
+  Code に戻り、About の右のギアマークから、
+\end{enumerate}
+
+\hypertarget{ux4ed6ux306e-pc-ux3067ux306eux4f5cux696d}{%
+\subparagraph{他の PC での作業}\label{ux4ed6ux306e-pc-ux3067ux306eux4f5cux696d}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Login to GitHub account
+\item
+  Copy SSH address under Code\textgreater Clone
+\item
+  Create a new project using Version Control:Git with the SSH address by setting the directory name
+\item
+  Edit README.md and test Git Commit and Push
+\end{enumerate}
+
+\hypertarget{ux30c6ux30f3ux30d7ux30ecux30fcux30c8ux3092ux5229ux7528ux3059ux308bux65b9ux6cd5}{%
+\paragraph{テンプレートを利用する方法}\label{ux30c6ux30f3ux30d7ux30ecux30fcux30c8ux3092ux5229ux7528ux3059ux308bux65b9ux6cd5}}
+
+\hypertarget{bookdown-demo}{%
+\subparagraph{bookdown-demo}\label{bookdown-demo}}
+
+\href{https://bookdown.org/yihui/bookdown/}{\texttt{bookdown} の電子書籍（bookdown: Authoring Books and Technical Documents with R Markdown）} の、はじめてみよう（Get started）から、GitHub リポジトリー \href{https://github.com/rstudio/bookdown-demo}{rstudio/bookdown-demo} にリンクがついています。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  自分の、GitHub アカウントに、ログインします。
+\item
+  \href{https://github.com/rstudio/bookdown-demo}{rstudio/bookdown-demo} にアクセスし、Use this template から、create a new repository を選択します。
+\item
+  自分のアカウントの中に、コピーされたリポジトリーがつくられます。
+\item
+  上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
+\end{enumerate}
+
+よくできているテンプレートです。しかし、このままでは、公開されません。\href{https://bookdown.org/yihui/bookdown/}{bookdown: Authoring Books and Technical Documents with R Markdown} には、いくつかの公開方法が書かれていますから、参照してください。
+
+\hypertarget{jtr13bookdown-template}{%
+\subparagraph{\texorpdfstring{\texttt{jtr13/bookdown-template}}{jtr13/bookdown-template}}\label{jtr13bookdown-template}}
+
+YouTube ビデオ \href{https://www.youtube.com/watch?v=m5D-yoH416Y}{5分間で、bookdown の本を作成する方法（How to create a bookdown book in 5 minutes）} で紹介されているものです。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  自分の、GitHub アカウントに、ログインします。
+\item
+  \href{https://github.com/jtr13/bookdown-template}{jtr13/bookdown-template} にアクセスし、Use this template から、create a new repository を選択します。
+\item
+  自分のアカウントの中に、コピーされたリポジトリーがつくられます。
+\item
+  上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
+\end{enumerate}
+
+ビデオの中では、簡単に、GitHub Pages（GitHub のホームページサービス）に、公開する方法が説明されています。最も、大切な部分は、テンプレートがコピーされた、自分のリポジトリの Settings から、Pages を選び、Branch を main \textgreater{} docs とする部分です。このようにすることで、公開されます。上の、「GitHub Pages」で説明していることと同じです。
+
+\hypertarget{ux65e5ux672cux8a9eux30c6ux30f3ux30d7ux30ecux30fcux30c8}{%
+\subparagraph{日本語テンプレート}\label{ux65e5ux672cux8a9eux30c6ux30f3ux30d7ux30ecux30fcux30c8}}
+
+\texttt{bs4\_book} スタイルでの、簡単な、日本語テンプレートを作成しました。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  自分の、GitHub アカウントに、ログインします。
+\item
+  \href{https://github.com/icu-hsuzuki/bs4_book_template}{icu-hsuzuki/bs4\_book\_template} にアクセスし、Use this template から、create a new repository を選択します。
+\item
+  自分のアカウントの中に、コピーされたリポジトリーがつくられます。
+\item
+  上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
+\end{enumerate}
+
+まだ、不十分ですが、少しずつ、改訂していきます。
+使い方は、リポジトリの README に、注意点などは、最後の章 Bookdown に書いておく予定です。
+
+\hypertarget{ux5927ux304dux306aux30d5ux30a1ux30a4ux30ebux306bux95a2ux3059ux308bux3053ux3068}{%
+\subsubsection{大きなファイルに関すること}\label{ux5927ux304dux306aux30d5ux30a1ux30a4ux30ebux306bux95a2ux3059ux308bux3053ux3068}}
+
+100M 未満のファイルだけを利用するのがよいですが、それより大きいものを、GitHub に挙げようとして、問題が起こることがあります。その対処法を書いておきます。
+
+個人的には、大きなデータや、本などを、Build して、100M 以上の、非常に大きな、TeX 関連のファイルができることがありました。
+
+備忘録も含めて、書いておきます。
+
+\hypertarget{ux5927ux304dux306aux30d5ux30a1ux30a4ux30ebux306eux53d6ux308aux9664ux304dux304bux305f}{%
+\paragraph{大きなファイルの取り除きかた}\label{ux5927ux304dux306aux30d5ux30a1ux30a4ux30ebux306eux53d6ux308aux9664ux304dux304bux305f}}
+
+下のサイトからの引用です。非常に分かりやすく書かれています。Terminal で作業を行いますが、いま、Add した場合と、いくつか、前のステップで、Add した場合で、対応の方法が異なります。
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://medium.com/analytics-vidhya/tutorial-removing-large-files-from-git-78dbf4cf83a}{Tutorial: Removing Large Files from Git}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Scenario 1: The Large File Was Just Added in the Most Recent Commit
+
+    \begin{itemize}
+    \tightlist
+    \item
+      git rm --cached big\_file\_name
+    \item
+      git commit --amend -C HEAD
+    \end{itemize}
+  \item
+    Scenario 2: The Large File Was Committed Prior to The Most Recent Commit
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Locating the Last ``Good'' Commit: git log --oneline
+    \item
+      Initiate a Rebase Between the Last ``Good'' Commit and the Current Commit: git rebase -i 8464da4
+    \item
+      This will open up a file in your Git editor (in my case, Vim), that looks something like this:
+
+      \begin{itemize}
+      \tightlist
+      \item
+        pick -\textgreater{} edit
+      \end{itemize}
+    \item
+      git rm --cached csv\_building\_damage\_assessment.csv
+    \item
+      git commit --amend -C HEAD
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux8907ux6570ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux304bux3089ux5229ux7528ux3059ux308bux65b9ux6cd5}{%
+\subsubsection{複数のコンピュータから利用する方法}\label{ux8907ux6570ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux304bux3089ux5229ux7528ux3059ux308bux65b9ux6cd5}}
+
+わたしも、いくつかのコンピュータから、同じGitHub アカウントにアクセスして作業しています。
+
+同じSSHキーを、複数のコンピュータで利用することも可能です。特に、コンピュータの更新時に、移行する場合は、元の環境をそのまま使うことも可能で便利です。
+
+ただし、基本的には、それぞれのコンピュータで別々のSSHキーを使用するのがお勧めです。問題が発生した時に、個別のコンピュータの課題として解決することができます。
+
+（たとえば、RSA 形式で作成した）複数の SSH キーを使用するときは、GitHub アカウントに公開鍵を追加する必要があります。
+
+GitHub アカウントに別の公開鍵を追加するには、GitHubにログインし、右上のアイコンの右の三角から、設定（Setting）を選択し、SSH公開鍵（SSH and GPG Keys）を選択します。新しい公開鍵を追加（New SSH Key）を選択すると、SSH キーを貼り付けることができます。（リポジトリの左上にある、アカウント名をクリックし現れるダッシュボードの左上の大きなアイコンをクリックしても「アカウント設定」が現れ、SSH and GPG Keysを見つけることができると思います。）
+
+コピーを貼り付ける時には、RStudio の、Global Option の、Git/SVN タブから、View public key を見ると、コピーできるようになっています。
+
+Terminal からコピーするときは、Unix では、\texttt{pbcopy\ \textless{}\ \textasciitilde{}/.ssh/id\_rsa.pub} などとします。Windows の場合は、\texttt{pbcopy} が使えない可能性があるので、そのときは、Terminal から、Git Bash を使い、\texttt{use\ \textless{}\ \textasciitilde{}/.ssh/id\_rsa.pub} とします。Terminal に慣れておられない方には、上に紹介した、RStudio からコピーする方が簡便かと思います。
+
+SSH キーの最後には、コンピュータ名とコンピュータのアカウント名などが入っていると思います。
+
+この設定をすれば、どちらのマシンからでもSSH経由でGithubリポジトリにアクセスできるようになります。
+
+\hypertarget{ux8907ux6570ux306eux30a2ux30abux30a6ux30f3ux30c8ux3092ux4e00ux3064ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux304bux3089ux5229ux7528ux3059ux308bux65b9ux6cd5}{%
+\subsubsection{複数のアカウントを一つのコンピュータから利用する方法}\label{ux8907ux6570ux306eux30a2ux30abux30a6ux30f3ux30c8ux3092ux4e00ux3064ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux304bux3089ux5229ux7528ux3059ux308bux65b9ux6cd5}}
+
+わたしも複数のGitHub アカウントを利用しています。
+
+\begin{itemize}
+\tightlist
+\item
+  \textasciitilde/.ssh 内に 複数（例では三つ）、ssh-keygen -t rsa でファイル作成
+
+  \begin{itemize}
+  \tightlist
+  \item
+    id\_rsa , id\_sub1\_rsa, id\_sub2\_rsa
+  \end{itemize}
+\item
+  上の複数のコンピュータから利用する時に説明してあるように、SSH キーを GitHub に登録
+\item
+  \textasciitilde/.ssh 内の config ファイル（\textasciitilde/.ssh/config）を編集　(nano などを利用)
+\item
+  \textasciitilde/.gitconfig, \textasciitilde/.gitconfig\_sub1, \textasciitilde/.gitconfig\_sub2 を作成
+\end{itemize}
+
+詳しくは、参考にしたサイトを参照してください。
+
+\hypertarget{ux5171ux540cux4f5cux696dux3092ux3059ux308bux5834ux5408}{%
+\subsubsection{共同作業をする場合}\label{ux5171ux540cux4f5cux696dux3092ux3059ux308bux5834ux5408}}
+
+以下では、本の共同編集を想定して、書きます。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  編集に関わる全員が、それぞれ、GitHub アカウントを作成します。
+\item
+  リポジトリを Fork： 共同編集する本のレポジトリにいき、フォークします。フォークすることで、編集者のリポジトリに、コピーが作成され、大元のリポジトリの変更を依頼することができます。
+\item
+  リポジトリをクローン: 編集者のコンピュータにフォークして得られたリポジトリを、クローンします。
+\item
+  編集: 編集者のコンピュータで編集を行います。
+\item
+  編集結果をコミット : 編集者のコンピュータで編集した後に、簡単な説明を書いて、コミットします。
+\item
+  編集結果をプッシュ : フォークした GitHub の自分のリポジトリに、プッシュします。
+\item
+  プル依頼を作成 : 大元のリポジトリで、編集の内容を簡単に記述して、プルリクエストをします。
+\item
+  編集結果の確認 : 大元の、リポジトリの所有者は、編集結果を確認し、承認する場合は、main に、統合します。
+\item
+  変更の同期: 編集者は、承認された、大元のリポジトリを、フォークした自分のリポジトリに、同期させます。
+\end{enumerate}
+
+\hypertarget{ux53c2ux8003ux306bux3057ux305fux30b5ux30a4ux30c8}{%
+\subsubsection{参考にしたサイト}\label{ux53c2ux8003ux306bux3057ux305fux30b5ux30a4ux30c8}}
+
+\hypertarget{git---github---rstudio-ux95a2ux9023}{%
+\paragraph{Git - GitHub - RStudio 関連}\label{git---github---rstudio-ux95a2ux9023}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://git-scm.com/about}{git -- everything is local}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    About、Documentation など
+  \end{itemize}
+\item
+  GitHub Docs: \href{https://docs.github.com/ja/get-started/quickstart/hello-world}{Hellow World}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    基本的なことがコンパクトにまとまっている GitHub のサイトです。日本語もサポートしています。
+  \end{itemize}
+\item
+  Introduction to Data Science, by Rafael A. Irizarry
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{http://rafalab.dfci.harvard.edu/dsbook/git.html\#git}{Git and GitHub}
+  \item
+    edX の、データサイエンスのコースの教科書に入っています。よく、まとまっていると思います。原語は英語ですが、Google などの翻訳機能を使っても、十分理解することができると思います。Git と GitHub の概要から、Bookdown パッケージによる、電子書籍の執筆の前までは、基本的に、この教科書を参考にしていますが、それぞれのステップでの、スクリーンショットもたくさん掲載されており、確認がしやすいようになっています。
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{bookdown-ux95a2ux9023}{%
+\paragraph{Bookdown 関連}\label{bookdown-ux95a2ux9023}}
+
+\begin{itemize}
+\item
+  The bookdown book: \url{https://bookdown.org/yihui/bookdown/}
+\item
+  The bookdown package reference site: \url{https://pkgs.rstudio.com/bookdown}
+\item
+  How to create a bookdown book in 5 minutes: \url{https://www.youtube.com/watch?v=m5D-yoH416Y}
+\end{itemize}
+
+\hypertarget{ux8907ux6570ux30a2ux30abux30a6ux30f3ux30c8ux8907ux6570ux306eux30adux30fcux95a2ux9023}{%
+\paragraph{複数アカウント・複数のキー関連}\label{ux8907ux6570ux30a2ux30abux30a6ux30f3ux30c8ux8907ux6570ux306eux30adux30fcux95a2ux9023}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://serverfault.com/questions/206907/using-the-same-github-account-from-multiple-pcs}{Using the same github account from multiple PCs}
+\item
+  \href{https://zenn.dev/taichifukumoto/articles/how-to-use-multiple-github-accounts}{複数のGitHubアカウントを使い分けたい時の設定方法とTips}
+\item
+  \href{https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account}{Adding a new SSH key to your GitHub account}
 \end{itemize}
 
 \hypertarget{bookdown}{%

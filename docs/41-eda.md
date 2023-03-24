@@ -5,7 +5,7 @@
 
 ## 探索的データ解析 (EDA)とは
 
-![image from r4ds](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png)
+![image from r4ds](./data/data-science.png)
 
 以下は、[Posit Primers: Visualise Data](https://posit.cloud/learn/primers/3.1) から
 
@@ -146,7 +146,7 @@ df_wdi_gdppcap_small_short %>%
 #> (`geom_line()`).
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+![](41-eda_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
 
 同じ年に、多くのデータがあるので、折れ線グラフを適切に書くことができませんでした。
 
@@ -156,7 +156,7 @@ df_wdi_gdppcap_small_short %>% filter(country %in% c("Japan")) %>%
   ggplot(aes(x = year, y = gdp_pcap)) + geom_line()
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+![](41-eda_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
 
 一般的には、散布図をまず、書いてみるのも一つです。
 
@@ -168,7 +168,7 @@ df_wdi_gdppcap_small_short %>%
 #> (`geom_point()`).
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+![](41-eda_files/figure-epub3/unnamed-chunk-11-1.png)<!-- -->
 
 国別に、異なる色を使うことで、折れ線グラフを書くことも可能です。
 
@@ -178,7 +178,7 @@ df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
   ggplot(aes(x = year, y = gdp_pcap, col = country)) + geom_line()
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+![](41-eda_files/figure-epub3/unnamed-chunk-12-1.png)<!-- -->
 
 折線グラフと、散布図を同時に描くこともかのうです。
 
@@ -189,7 +189,7 @@ df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
   geom_point()
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+![](41-eda_files/figure-epub3/unnamed-chunk-13-1.png)<!-- -->
 
 点を、曲線で近似する方法はいくつも知られているが、ある幅で、近似していく、LOESS が初期値となっている。`method='loess'` を省略しても、同じ近似がなされる。`span` という値を調節することで、ことなる幅での近似曲線を書くことも可能である。初期値は、0.75。
 
@@ -201,7 +201,7 @@ df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
   geom_smooth(method = 'loess', formula = 'y ~ x')
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+![](41-eda_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
 
 ### データモデリング Data Modeling
 
@@ -215,7 +215,7 @@ df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
   geom_smooth(method = 'lm', formula = 'y ~ x')
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+![](41-eda_files/figure-epub3/unnamed-chunk-15-1.png)<!-- -->
 
 簡単な線形回帰モデルでの、回帰直線の y-切片や、傾きは、次のコードで与えられ、p-value や、R squared の値も求められる。
 

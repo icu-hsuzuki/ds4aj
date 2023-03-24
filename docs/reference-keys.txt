@@ -1,7 +1,6 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
-thm:tri
 introduction
 publicdata
 オープンデータ
@@ -121,6 +120,7 @@ ggplot-でグラフを作成
 データファイルの読み込み
 図の中のテキスト
 r-markdown-の出力
+bookdown
 参考としたもの
 showtext-using-fonts-more-easily-in-r-graphs
 sysfonts-loading-fonts-into-r
@@ -151,7 +151,6 @@ jtr13bookdown-template
 git---github---rstudio-関連
 bookdown-関連
 複数アカウント複数のキー関連
-bookdown
 about
 usage
 render-book
