@@ -92,7 +92,7 @@ git remote add origin `git@github.com:icu-hsuzuki/test0.git`
 git push -u origin main
 ```
 
-再起動すると、プロジェクトの右上の窓枠に、Git と表示されていると思います。開いて、いくつかファイル名があれば、これを選択し、Commit ボタンを押し、短い message を書いて、Commit とし、そのあとで、Push ボタンを押してください。
+再起動すると、プロジェクトの右上の窓枠に、Git と表示されていると思います。開いて、いくつかファイル名があれば、これを選択し、Commit ボタンを押し、短い message を書いて、Commit とし、そのあとで、Push ボタンを押してください。 `HEAD -> main` と表示されれば、OK です。
 
 ### GitHub Pages について
 
