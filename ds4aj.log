@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  24 MAR 2023 11:24
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  27 MAR 2023 13:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1449,49 +1449,49 @@ Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=t
 x-text;!
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
-[81]
-Overfull \hbox (50.11475pt too wide) in paragraph at lines 3128--3128
-[]\TU/lmtt/m/n/10 git config --global user.mail "your@email.com" # GitHub  \TU/
-ipaexg.ttf(0)/m/n/10 に 登 録 し た メ ー ル ア ド レ ス [] 
+[81] [82]
+Overfull \hbox (55.36475pt too wide) in paragraph at lines 3128--3128
+[]\TU/lmtt/m/n/10 git config --global user.email "your@email.com" # GitHub  \TU
+/ipaexg.ttf(0)/m/n/10 に 登 録 し た メ ー ル ア ド レ ス [] 
  []
 
-[82]
-Overfull \hbox (60.61475pt too wide) in paragraph at lines 3202--3202
+[83]
+Overfull \hbox (60.61475pt too wide) in paragraph at lines 3208--3208
 []\TU/lmtt/m/n/10 #  \TU/ipaexg.ttf(0)/m/n/10 わ た し の ア カ ウ ン ト の 場 合 に は 、 コ ピ
  ー し た も の を 貼 り 付 け る と 、 上 の よ う に な り ま す 。 [] 
  []
 
-[83]
-Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
-x-text;!
 [84]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 [85]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
-[86] [87] [88]
+[86]
+Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
+x-text;!
+[87] [88]
+Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
+x-text;!
+[89]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
+[90]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
-[89] [90]
-Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
-x-text;!
-
-Overfull \hbox (15.80815pt too wide) in paragraph at lines 3629--3630
+[91]
+Overfull \hbox (15.80815pt too wide) in paragraph at lines 3637--3638
 []\TU/lmr/m/n/10 Next, reference the labeled heading anywhere in the text using
  \TU/lmtt/m/n/10 \@ref(nice-label)\TU/lmr/m/n/10 ;
  []
 
-[91]
 File: 90-bookdown_files/figure-latex/nice-fig-1.pdf Graphic file (type pdf)
 <use 90-bookdown_files/figure-latex/nice-fig-1.pdf>
-[92] [93] [94] (./ds4aj.bbl [95] [96
+[92] [93] [94] [95] (./ds4aj.bbl [96]) [97
 
-]) [97] (./ds4aj.aux)
+] (./ds4aj.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 

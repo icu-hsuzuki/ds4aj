@@ -4,7 +4,7 @@
 
 ## Git と GitHub
 
-Git は バージョン管理システムで、GitHub はそれを、活用し、かつ他のメンバーと協力して開発など、さまざまな活動をするためのサイトです。公開が基本となっています。非公開にすることも可能ですが、公開することで、世界中のひとたちと協力していくことが可能になりますからので、その利点も学んでいただければと思います。
+Git は バージョン管理システムで、GitHub はそれを、活用し、かつ他のメンバーと協力して開発など、さまざまな活動をするためのサイトです。公開が基本となっています。非公開にすることも可能ですが、公開することで、世界中のひとたちと協力していくことが可能になりますので、その利点も学んでいただければと思います。
 
 ### 概要
 
@@ -42,9 +42,9 @@ Git でバージョン管理されているディレクトリ（フォルダ）�
 1. Git のインストール
   - Windows と Mac で異なりますので注意が必要です。Mac については、**Mac** と書いてあるところを読んでください。
   - **Windows** の場合は、[git-scm](https://git-scm.com/download/win) にアクセスしてダウンロード、インストールしてください。セットアップ（Setup）で、２箇所、注意点があります、それ以外は、すべて、初期設定のままで変更は必要ありません。
-    - Choosing the default editor used by Git: 設定で、エディタ（Editor）を設定しますが、vi, vim に慣れていない方は、nano を選択することをお勧めします。（nano は、メニューが下に出るので、それを見て操作することが可能なエディターです。）
+    - Choosing the default editor used by Git: 設定で、エディタ（Editor）を設定しますが、vi, vim に慣れていない方は、nano を選択することをお勧めします。（nano^[GNU nanoは、コンソールウィンドウで動作する小型でフレンドリーなテキストエディタです。(GNU nano is a small and friendly text editor running in the console window.)] は、メニューが下に出るので、それを見て操作することが可能なエディターです。）
     - Adjusting Your Path Environment: Windows の コマンドライン・ツール（command line prompt) を使っていない方は、Git Bash のインストールを選択してください。さらに、Git and optional Unix tools from the Windows Command Prompt を選択することをお勧めしますが、上で書いたように、Windows の コマンド・プロンプトになれておられる方で、それを使い続けたいかたは、Use Git from Git Bash only を選択されるのが良いかもしれません。
-    - 最後に、RStudio の設定（Tools > Global Option）で、Terminal　から、Git Bash を選択し、Tools から、New Terminal を選択します。
+    - 最後に、RStudio の設定（Tools > Global Option）で、Terminal　から、Git Bash を選択^[自動的に選択されているかもしれません]し、Tools から、New Terminal を選択^[すでにタブがあればこの作業は不要です]します。
   - **Mac** は、最初から、Install されていると思います。ユーティリティ（Utility）> ターミナル（Terminal）を開いて^[RStudio を既にお使いの方は、左下の窓枠から、Terminal タブを選択できますので、それを使うことも可能です。]、`git --version` とすると、インストールされているバージョンが表示されると思います。バージョンがでない場合には、Install するかと聞かれます。このときに、Git だけをインストールすることも、Xcode という開発環境を同時にインストールすることも可能です。（インストールするように指示が出なければ、App Store からも、インストールできます。もし、そのあとで、git などのコマンドで xcrun: error などとエラーが出たら、`xcode-select --install` としてください。）インストールが終了したら、もう一度、`git --version` と Terminal に入力して、結果を確認してください。
 2. GitHub のアカウント取得
   - [GitHub サイト](https://github.com) に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。
@@ -52,12 +52,17 @@ Git でバージョン管理されているディレクトリ（フォルダ）�
 下の２行を、１行ずつ、コピーして、Terminal に入力してください。
 ```
 git config --global user.name "Your Name" # GitHub の User Name
-git config --global user.mail "your@email.com" # GitHub に登録したメールアドレス
+git config --global user.email "your@email.com" # GitHub に登録したメールアドレス
 ```
 4. RStudio の、Tools > Global Opton の、Git/SVN タブを開き、Git Executable とあるところに、Git 実行プログラムのある場所を入れます。
   - **Windows** の場合は、`C:/Program Files/Git/bin/git.exe` だと思いますが、Browse ボタンから確認してください。
   - **Mac** の場合は、`/usr/bin/git` になるかと思いますが、Browse ボタンから確認してください。
-5. その下に、Create RSA key とありますから、それを押してください。すると、View RSA key から、暗号キーも確認できます。（この作業は、Terminal から、`ssh-keygen -t rsa` として作成することも可能です。この作業で、`~/.ssh/` 内に、SSH キーが記述されたファイルが作成されます。）
+5. その下に、Create RSA key とありますから、それを押し、Create ボタンを押しててください^[Passphrase (optional) と出ますが、無視してくださって構いません。]。すると、View RSA key から、暗号キーも確認できます。（この作業は、Terminal から、`ssh-keygen -t rsa` として作成することも可能です。この作業で、`~/.ssh/` 内に、SSH キーが記述されたファイルが作成されます。）
+6. GitHub アカウントで公開鍵を利用できるようにします。まず、RStudio の方で作成した、RSA key （Tools の、Global Option の Git/SVN）の下にある view を押すと見ることができ、上に、書いてあるように、そこに出てきたものを、コピーします。次に、GitHubにログインし、右上のアイコンの右の三角から、設定（Setting）を選択し、SSH公開鍵（SSH and GPG Keys）を選択します。新しい公開鍵を追加（New SSH Key）を選択すると、SSH  キーを貼り付けることができます。（リポジトリの左上にある、アカウント名をクリックし現れるダッシュボードの左上の大きなアイコンをクリックしても「アカウント設定」が現れ、SSH and GPG Keysを見つけることができると思います。）
+
+（なお、RStudio ではなく、Terminal からコピーするときは、Unix では、`pbcopy < ~/.ssh/id_rsa.pub` などとします。Windows の場合は、`pbcopy` が使えない可能性があるので、そのときは、Terminal から、Git Bash を使い、`use < ~/.ssh/id_rsa.pub` とします。Terminal に慣れておられない方には、上に紹介した、RStudio からコピーする方が簡便かと思います。）
+7. これで設定終了ですので、R Studio を再起動させてください。
+
 
 ### GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合
 
@@ -74,17 +79,20 @@ git config --global user.mail "your@email.com" # GitHub に登録したメール
 1. RStudio から新しい、プロジェクト（Project） を作成 `test0` としておきましょう。
 2. GitHub に、新しい、レポジトリを作成して繋げる
   - 自分の GitHub アカウントに、新しい、レポジトリをプロジェクトと同じ名前 `test0` で作成します。同じ名前でなくてもかまわないのですが、関連がしやすいので、同じ名前がお勧めです。
-  - Code の Clone から、https と SSH を選べますが、SSH を選び、コピーします。
+  - Quick Setup というページが表示されますから、その、下の Set up in Desktop or  の右から、https と SSH を選べますが、SSH を選び、コピーします。
   - プロジェクトの中の 左下の窓枠の、Terminal から次を実行します。
 ```
 echo "# Project test0" >> README.md # REAME の表題を書きます。
 git init
 git add README.md
 git commit -m "First commit. README.md"
+git branch -M main
 git remote add origin `git@github.com:icu-hsuzuki/test0.git`
 # わたしのアカウントの場合には、コピーしたものを貼り付けると、上のようになります。
-git push
+git push -u origin main
 ```
+
+再起動すると、プロジェクトの右上の窓枠に、Git と表示されていると思います。開いて、いくつかファイル名があれば、これを選択し、Commit ボタンを押し、短い message を書いて、Commit とし、そのあとで、Push ボタンを押してください。
 
 ### GitHub Pages について
 
