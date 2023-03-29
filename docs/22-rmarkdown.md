@@ -123,3 +123,32 @@ Linux: Use system package manager
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-E_XLf15YHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+### RMarkdown で PDF を作成するときの注意
+
+RMarkdown では、`tinytex` パッケージというとても素晴らしいものが提供されています。これは、TeXLive というシステムを扱うためのものですが、LiveTeX 全体は、3GB 程度ありますが、非常に小さなファイルで、必要なものだけ、導入できるようになっています。
+
+\TeX システムを、使われる方は、TeXLive が、インストールされているかと思いますので、それを使うことが狩野樹になっています。
+
+一応、TeXLive がインストールされていて、そのあとに、TinyTeX をインストールしようとすると、拒否されますが、インストール、アンインストールなどをしていると、Path も変更になるため、問題が起こり、PDF が作成できなくなる場合もあります。
+
+その場合の対処も含めて、下に書きます。
+
+アカウントに漢字やカタカナが入っていると、PDF が作成できません。
+
+#### `tinytex` によるインストール方法
+
+* tinytex::install_tinytex(dir = "C:/TTeX") 
+* 環境変数の設定：
+  - `Path=C:\**UserName**\AppData\Local\Microsoft\WindowsApps;C:\TTeX\bin\windows`
+  - UserName の部分は、ご自分のユーザネームに変更　\ は日本語システムでは、¥ と表示されているかもしれません。
+
+:::{.rmdnote}
+
+これで解決しない場合は、Windows に、もう一つ、アカウントを作成し^[[スタート] > [設定] > [アカウント] の順に選択し、[ファミリとその他のユーザー] を選択し、[アカウントの追加] から作成。]、アカウント名を英語にして、そちらから、インストールしてください。元の日本語アカウントとファイルを共有したいときは、共有ディレクトリーにコピーしてください。
+
+すべての状況は確認できませんので、ここまでとします^[元のアカウントから、利用したり、Home を変更したりなど、いろいろな方法で、解決することも可能ですが、自信がない場合には、上の方法で、別のアカウントから、利用してください。]。Chat GPT に確認したやりとりは、[ここ](https://icu-hsuzuki.github.io/ds_education/chatgpt.html#chatgpt)にあります。自分で確認をして、HOME の変更などをしてみても良いですが、問題が生じた時に、サポートできませんから、一般的な方法としては、書かないことにします。
+
+注：矢内勇生さんの[サイト](https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf)には、詳細な説明があります。
+:::
+
+

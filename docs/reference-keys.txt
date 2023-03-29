@@ -28,6 +28,10 @@ r-と-r-studio
 r-と-r-studio-のインストール
 r-のインストール
 r-studio-の-インストール
+r-および-rstudio-やパッケージでのインストールの問題
+r-および-rstudio-のアンインストール
+別のアカウントを作成してインストール
+rmarkdown-で-pdf-を作成するときの注意
 プロジェクト---project
 コンソールで実行---run-in-console
 最初の四つ
@@ -67,6 +71,8 @@ r-notebook
 日本語のテンプレート
 r-markdown-いくつかの-output
 youtube-video---rmarkdown
+rmarkdown-で-pdf-を作成するときの注意-1
+tinytex-によるインストール方法
 worldbank
 world-development-indicator-wdi
 指標-indicators-wdi

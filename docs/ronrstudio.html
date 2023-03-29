@@ -127,6 +127,7 @@
 </h2>
 <p>R と R Studio をインストールします。</p>
 <p>両方とも、インストールすることが必要です。</p>
+<p>注意：以下は、自分のコンピュータ、すなわち、管理者権限があるコンピュータにインストールすることを前提に書きます。</p>
 <div id="r-のインストール" class="section level3" number="3.3.1">
 <h3>
 <span class="header-section-number">3.3.1</span> R のインストール<a class="anchor" aria-label="anchor" href="#r-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
@@ -146,12 +147,58 @@
 <p>不明の場合は、「RStudio のインストール」と検索してみてください。</p>
 <div class="rmdcaution">
 <p><strong>Windows 日本語アカウント名の場合の不具合について:</strong>
-Windows の日本語システムで、アカウント名に日本語を使っておられる方、または、OneDrive を使っていて、Documents（書類）ディレクトリーのすべてをバックアップしておられる方は、ファイルを作成したり、パッケージをインストールするときに、問題が発生する可能性があります。<code>Sys.getenv('HOME')</code> と、<code>Sys.getenv('R_LIBS_USER')</code> をそれぞれ、コピーして、RStudio 左下の窓枠の Console タブに、ペーストして、エンターして、???? や、カタカナ、漢字が現れなければ、問題ありません。<code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv()</a></code> とすれば、すべての環境変数を確認することもできます。</p>
-<p>上のコードで、???? または、カタカナ、漢字が現れた場合は、このあとの、パッケージのところを読み、<code>rmarkdown</code> をインストールし、File のところから、New File &gt; R Notebook を選択してください。すると、追加のパッケージがインストールされ、R Notebook が左上に表示されますが、そこで、エラーになる可能性が大きいです。</p>
-<p>上の過程で、エラーが出たら、まず、上のメニューの、Tools の一番下の、Global Options を開き、左のメニューから、Packages を選び、Primary CRAN Repository を Change として、CRAN mirror から、Japan: The Institute of Statistical Mathematics, Tokyo を選択してください。これで解決することもあるようです。（理由は未確認、問い合わせ中）</p>
-<p>これで解決しない場合は、Windows に、もう一つ、アカウントを作成し<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;[スタート] &amp;gt; [設定] &amp;gt; [アカウント] の順に選択し、[ファミリとその他のユーザー] を選択し、[アカウントの追加] から作成。&lt;/p&gt;"><sup>1</sup></a>、アカウント名を英語にして、そちらから、インストールしてください。元の日本語アカウントとファイルを共有したいときは、共有ディレクトリーにコピーしてください。</p>
-<p>すべての状況は確認できませんので、ここまでとします<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;元のアカウントから、利用したり、Home を変更したりなど、いろいろな方法で、解決することも可能ですが、自信がない場合には、上の方法で、別のアカウントから、利用してください。&lt;/p&gt;"><sup>2</sup></a>。Chat GPT に確認したやりとりは、<a href="https://icu-hsuzuki.github.io/ds_education/chatgpt.html#chatgpt">ここ</a>にあります。自分で確認をして、HOME の変更などをしてみても良いですが、問題が生じた時に、サポートできませんから、一般的な方法としては、書かないことにします。</p>
-<p>注：矢内勇生さんの<a href="https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf">サイト</a>には、詳細な説明があります。</p>
+Windows の日本語システムで、アカウント名に日本語を使っておられる方、または、OneDrive を使っていて、Documents（書類）ディレクトリーのすべてをバックアップしておられる方は、ファイルを作成したり、パッケージをインストールするときに、問題が発生する可能性があります。<code>Sys.getenv('HOME')</code> と、<code>Sys.getenv('R_LIBS_USER')</code> をそれぞれ、コピーして、RStudio 左下の窓枠の Console タブに、ペーストして、エンターして、???? や、カタカナ、漢字が現れなければ、問題ありません。<code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv()</a></code> とすれば、すべての環境変数を確認することもできます<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;エクスプローラからユーザ（&lt;code&gt;C:\Users&lt;/code&gt;）を見ると漢字になっているかどうかの確認ができます。&lt;/p&gt;"><sup>1</sup></a>。</p>
+<p>漢字やカタカナが現れないのにパッケージなどがインストールできず、エラーが出たら、まず、RStudio の上のメニューの、Tools の一番下の、Global Options を開き、左のメニューから、Packages を選び、Primary CRAN Repository を Change として、CRAN mirror から、Japan: The Institute of Statistical Mathematics, Tokyo を選択してください。これで解決することもあるようです<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;理由は不明ですが、特定のミラーサイトが理由ではなく、https を能動的に設定することで解決が図れるのかなと思います。&lt;/p&gt;"><sup>2</sup></a>。</p>
+<p>カタカナや漢字のユーザネームを使っている場合は、RMarkdown で、文書を作成し、PDF で出力するときには、問題が起こります。解決方法は下に書きます。</p>
+<p>OneDrive で、ドキュメントフォルダ全体のバックアップをとっている場合も、問題が起こる可能性がありますが、一般的には書けませんので、困ったときは、下に書く方法を参照してください。</p>
+</div>
+<div id="r-および-rstudio-やパッケージでのインストールの問題" class="section level4" number="3.3.2.1">
+<h4>
+<span class="header-section-number">3.3.2.1</span> R および RStudio やパッケージでのインストールの問題<a class="anchor" aria-label="anchor" href="#r-%E3%81%8A%E3%82%88%E3%81%B3-rstudio-%E3%82%84%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%A7%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C"><i class="fas fa-link"></i></a>
+</h4>
+<p>Windows で、インストール時、または、その後の、パッケージのインストールで問題が起こった場合の対処法を書きます。</p>
+<p>実際には、さまざまな理由がありますから、以下の方法では対処できないかもしれません。まず、エラーメッセージを丁寧に見ることが大切ですが、簡単には理解できない場合が多いかと思います。そこで、まず、試してみる方法を以下に書きます。</p>
+<div id="r-および-rstudio-のアンインストール" class="section level5" number="3.3.2.1.1">
+<h5>
+<span class="header-section-number">3.3.2.1.1</span> R および RStudio のアンインストール<a class="anchor" aria-label="anchor" href="#r-%E3%81%8A%E3%82%88%E3%81%B3-rstudio-%E3%81%AE%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
+</h5>
+<ul>
+<li>
+<strong>Windows</strong>: 設定から、アプリを選び、アンインストール（削除）したいものを選択して、実行。</li>
+<li>
+<strong>Mac</strong>: アプリケーションから、アプリをみつけ、ゴミ箱へ。</li>
+</ul>
+<div class="rmdnote">
+<p>上記の方法で、残ってしまうものがあります。それは、環境変数 Path の設定です。</p>
+<p>Mac は、システムのベースにあるのは、Linux などと同じ、Unix なので、アプリケーションの、ユーティリティ（Utilities）から、Terminal を立ち上げ、
+<code>echo $PATH</code> とすると、確認できます。RStudio の左下の窓枠にも Terminal があり、そこからでも、同じように確認できます。</p>
+<p>Windows の場合は、対応するものには、コマンド・プロンプト（Command Prompt）と、パワーシェル（PowerShell）があります。PowerShell: <code>echo $Env:Path</code> とすれば、表示できます。</p>
+<p>Windows の場合、「設定」から、「環境変数の編集」を検索して、選択すると、Path を見ることができます。上の枠が、ユーザの環境変数、下の枠が、システム環境変数です。ユーザの環境変数の中の、Path（他には、TEMP, TMP もあるかと思います。）をコピーしておくと良いでしょう。Path をダブルクリックして、編集することも可能です。</p>
+</div>
+</div>
+<div id="別のアカウントを作成してインストール" class="section level5" number="3.3.2.1.2">
+<h5>
+<span class="header-section-number">3.3.2.1.2</span> 別のアカウントを作成してインストール<a class="anchor" aria-label="anchor" href="#%E5%88%A5%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
+</h5>
+<p>Windows に、もう一つ、アカウントを作成します。</p>
+<ol style="list-style-type: decimal">
+<li><p>[スタート] <span class="math inline">\(&gt;\)</span> [設定] <span class="math inline">\(&gt;\)</span> [アカウント] の順に選択し、[ファミリとその他のユーザー] を選択し、[アカウントの追加] から作成します。</p></li>
+<li><p>どのようにサインインしますかと出ますから、下にある、「このユーザーのサインイン
+情報がありません」を選択します。[次へ]</p></li>
+<li><p>つぎに、アカウントを作成しましょうでますから、特に、なにも入力せず、「Microsoft ア
+カウントを持たないユーザーを追加する」を選択します。[次へ]</p></li>
+<li><p>アカウント設定、名前とパスワード、名前は、ローマ字と数字で作成。パスワードは２回入れる。アカウントの名前と、パスワードは記録しておくこと。</p></li>
+<li><p>そのあとに、三つの質問とその答えを記録する。これも、おぼられるものにするか、記録すること。</p></li>
+<li><p>アカウントが作成されるが、そのアカウントを選択すると、「アカウントの種類の変更」が選択できるので、「管理者」に変更。[OK] をクリックして終了。</p></li>
+</ol>
+<p>アカウント名をローマ字にします。、そちらから、インストールしてください。元の日本語アカウントとファイルを共有したいときは、共有ディレクトリーにコピーしてください。[次へ]</p>
+</div>
+</div>
+<div id="rmarkdown-で-pdf-を作成するときの注意" class="section level4" number="3.3.2.2">
+<h4>
+<span class="header-section-number">3.3.2.2</span> RMarkdown で PDF を作成するときの注意<a class="anchor" aria-label="anchor" href="#rmarkdown-%E3%81%A7-pdf-%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AE%E6%B3%A8%E6%84%8F"><i class="fas fa-link"></i></a>
+</h4>
+<p>アカウントに漢字やカタカナが入っていると、PDF が作成できません。対処方法は、RMarkdown の項に書きます。</p>
 </div>
 </div>
 </div>
@@ -926,7 +973,7 @@ Then you can see the temporary file containing everything in your old account an
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-03-27.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-03-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -134,7 +134,7 @@
 \title{データサイエンスをはじめましょう\\
 - Data Science for All -}
 \author{鈴木寛（Hirosi Suzuki）}
-\date{2023-03-27}
+\date{2023-03-28}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[section]
@@ -475,6 +475,8 @@ R と R Studio をインストールします。
 
 両方とも、インストールすることが必要です。
 
+注意：以下は、自分のコンピュータ、すなわち、管理者権限があるコンピュータにインストールすることを前提に書きます。
+
 \hypertarget{r-ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}{%
 \subsubsection{R のインストール}\label{r-ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
 
@@ -498,17 +500,70 @@ macOS の場合は、M1, M2 など、最近の Apple Silicon の CPU で動く�
 不明の場合は、「RStudio のインストール」と検索してみてください。
 
 \textbf{Windows 日本語アカウント名の場合の不具合について:}
-Windows の日本語システムで、アカウント名に日本語を使っておられる方、または、OneDrive を使っていて、Documents（書類）ディレクトリーのすべてをバックアップしておられる方は、ファイルを作成したり、パッケージをインストールするときに、問題が発生する可能性があります。\texttt{Sys.getenv(\textquotesingle{}HOME\textquotesingle{})} と、\texttt{Sys.getenv(\textquotesingle{}R\_LIBS\_USER\textquotesingle{})} をそれぞれ、コピーして、RStudio 左下の窓枠の Console タブに、ペーストして、エンターして、???? や、カタカナ、漢字が現れなければ、問題ありません。\texttt{Sys.getenv()} とすれば、すべての環境変数を確認することもできます。
+Windows の日本語システムで、アカウント名に日本語を使っておられる方、または、OneDrive を使っていて、Documents（書類）ディレクトリーのすべてをバックアップしておられる方は、ファイルを作成したり、パッケージをインストールするときに、問題が発生する可能性があります。\texttt{Sys.getenv(\textquotesingle{}HOME\textquotesingle{})} と、\texttt{Sys.getenv(\textquotesingle{}R\_LIBS\_USER\textquotesingle{})} をそれぞれ、コピーして、RStudio 左下の窓枠の Console タブに、ペーストして、エンターして、???? や、カタカナ、漢字が現れなければ、問題ありません。\texttt{Sys.getenv()} とすれば、すべての環境変数を確認することもできます\footnote{エクスプローラからユーザ（\texttt{C:\textbackslash{}Users}）を見ると漢字になっているかどうかの確認ができます。}。
 
-上のコードで、???? または、カタカナ、漢字が現れた場合は、このあとの、パッケージのところを読み、\texttt{rmarkdown} をインストールし、File のところから、New File \textgreater{} R Notebook を選択してください。すると、追加のパッケージがインストールされ、R Notebook が左上に表示されますが、そこで、エラーになる可能性が大きいです。
+漢字やカタカナが現れないのにパッケージなどがインストールできず、エラーが出たら、まず、RStudio の上のメニューの、Tools の一番下の、Global Options を開き、左のメニューから、Packages を選び、Primary CRAN Repository を Change として、CRAN mirror から、Japan: The Institute of Statistical Mathematics, Tokyo を選択してください。これで解決することもあるようです\footnote{理由は不明ですが、特定のミラーサイトが理由ではなく、https を能動的に設定することで解決が図れるのかなと思います。}。
 
-上の過程で、エラーが出たら、まず、上のメニューの、Tools の一番下の、Global Options を開き、左のメニューから、Packages を選び、Primary CRAN Repository を Change として、CRAN mirror から、Japan: The Institute of Statistical Mathematics, Tokyo を選択してください。これで解決することもあるようです。（理由は未確認、問い合わせ中）
+カタカナや漢字のユーザネームを使っている場合は、RMarkdown で、文書を作成し、PDF で出力するときには、問題が起こります。解決方法は下に書きます。
 
-これで解決しない場合は、Windows に、もう一つ、アカウントを作成し\footnote{{[}スタート{]} \textgreater{} {[}設定{]} \textgreater{} {[}アカウント{]} の順に選択し、{[}ファミリとその他のユーザー{]} を選択し、{[}アカウントの追加{]} から作成。}、アカウント名を英語にして、そちらから、インストールしてください。元の日本語アカウントとファイルを共有したいときは、共有ディレクトリーにコピーしてください。
+OneDrive で、ドキュメントフォルダ全体のバックアップをとっている場合も、問題が起こる可能性がありますが、一般的には書けませんので、困ったときは、下に書く方法を参照してください。
 
-すべての状況は確認できませんので、ここまでとします\footnote{元のアカウントから、利用したり、Home を変更したりなど、いろいろな方法で、解決することも可能ですが、自信がない場合には、上の方法で、別のアカウントから、利用してください。}。Chat GPT に確認したやりとりは、\href{https://icu-hsuzuki.github.io/ds_education/chatgpt.html\#chatgpt}{ここ}にあります。自分で確認をして、HOME の変更などをしてみても良いですが、問題が生じた時に、サポートできませんから、一般的な方法としては、書かないことにします。
+\hypertarget{r-ux304aux3088ux3073-rstudio-ux3084ux30d1ux30c3ux30b1ux30fcux30b8ux3067ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30ebux306eux554fux984c}{%
+\paragraph{R および RStudio やパッケージでのインストールの問題}\label{r-ux304aux3088ux3073-rstudio-ux3084ux30d1ux30c3ux30b1ux30fcux30b8ux3067ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30ebux306eux554fux984c}}
 
-注：矢内勇生さんの\href{https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf}{サイト}には、詳細な説明があります。
+Windows で、インストール時、または、その後の、パッケージのインストールで問題が起こった場合の対処法を書きます。
+
+実際には、さまざまな理由がありますから、以下の方法では対処できないかもしれません。まず、エラーメッセージを丁寧に見ることが大切ですが、簡単には理解できない場合が多いかと思います。そこで、まず、試してみる方法を以下に書きます。
+
+\hypertarget{r-ux304aux3088ux3073-rstudio-ux306eux30a2ux30f3ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}{%
+\subparagraph{R および RStudio のアンインストール}\label{r-ux304aux3088ux3073-rstudio-ux306eux30a2ux30f3ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Windows}: 設定から、アプリを選び、アンインストール（削除）したいものを選択して、実行。
+\item
+  \textbf{Mac}: アプリケーションから、アプリをみつけ、ゴミ箱へ。
+\end{itemize}
+
+上記の方法で、残ってしまうものがあります。それは、環境変数 Path の設定です。
+
+Mac は、システムのベースにあるのは、Linux などと同じ、Unix なので、アプリケーションの、ユーティリティ（Utilities）から、Terminal を立ち上げ、
+\texttt{echo\ \$PATH} とすると、確認できます。RStudio の左下の窓枠にも Terminal があり、そこからでも、同じように確認できます。
+
+Windows の場合は、対応するものには、コマンド・プロンプト（Command Prompt）と、パワーシェル（PowerShell）があります。PowerShell: \texttt{echo\ \$Env:Path} とすれば、表示できます。
+
+Windows の場合、「設定」から、「環境変数の編集」を検索して、選択すると、Path を見ることができます。上の枠が、ユーザの環境変数、下の枠が、システム環境変数です。ユーザの環境変数の中の、Path（他には、TEMP, TMP もあるかと思います。）をコピーしておくと良いでしょう。Path をダブルクリックして、編集することも可能です。
+
+\hypertarget{ux5225ux306eux30a2ux30abux30a6ux30f3ux30c8ux3092ux4f5cux6210ux3057ux3066ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}{%
+\subparagraph{別のアカウントを作成してインストール}\label{ux5225ux306eux30a2ux30abux30a6ux30f3ux30c8ux3092ux4f5cux6210ux3057ux3066ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
+
+Windows に、もう一つ、アカウントを作成します。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  {[}スタート{]} \(>\) {[}設定{]} \(>\) {[}アカウント{]} の順に選択し、{[}ファミリとその他のユーザー{]} を選択し、{[}アカウントの追加{]} から作成します。
+\item
+  どのようにサインインしますかと出ますから、下にある、「このユーザーのサインイン
+  情報がありません」を選択します。{[}次へ{]}
+\item
+  つぎに、アカウントを作成しましょうでますから、特に、なにも入力せず、「Microsoft ア
+  カウントを持たないユーザーを追加する」を選択します。{[}次へ{]}
+\item
+  アカウント設定、名前とパスワード、名前は、ローマ字と数字で作成。パスワードは２回入れる。アカウントの名前と、パスワードは記録しておくこと。
+\item
+  そのあとに、三つの質問とその答えを記録する。これも、おぼられるものにするか、記録すること。
+\item
+  アカウントが作成されるが、そのアカウントを選択すると、「アカウントの種類の変更」が選択できるので、「管理者」に変更。{[}OK{]} をクリックして終了。
+\end{enumerate}
+
+アカウント名をローマ字にします。、そちらから、インストールしてください。元の日本語アカウントとファイルを共有したいときは、共有ディレクトリーにコピーしてください。{[}次へ{]}
+
+\hypertarget{rmarkdown-ux3067-pdf-ux3092ux4f5cux6210ux3059ux308bux3068ux304dux306eux6ce8ux610f}{%
+\paragraph{RMarkdown で PDF を作成するときの注意}\label{rmarkdown-ux3067-pdf-ux3092ux4f5cux6210ux3059ux308bux3068ux304dux306eux6ce8ux610f}}
+
+アカウントに漢字やカタカナが入っていると、PDF が作成できません。対処方法は、RMarkdown の項に書きます。
 
 \hypertarget{ux30d7ux30edux30b8ux30a7ux30afux30c8---project}{%
 \subsection{プロジェクト - Project}\label{ux30d7ux30edux30b8ux30a7ux30afux30c8---project}}
@@ -1530,6 +1585,44 @@ Linux: Use system package manager
 
 \hypertarget{youtube-video---rmarkdown}{%
 \subsection{YouTube Video - rmarkdown}\label{youtube-video---rmarkdown}}
+
+\hypertarget{rmarkdown-ux3067-pdf-ux3092ux4f5cux6210ux3059ux308bux3068ux304dux306eux6ce8ux610f-1}{%
+\subsubsection{RMarkdown で PDF を作成するときの注意}\label{rmarkdown-ux3067-pdf-ux3092ux4f5cux6210ux3059ux308bux3068ux304dux306eux6ce8ux610f-1}}
+
+RMarkdown では、\texttt{tinytex} パッケージというとても素晴らしいものが提供されています。これは、TeXLive というシステムを扱うためのものですが、LiveTeX 全体は、3GB 程度ありますが、非常に小さなファイルで、必要なものだけ、導入できるようになっています。
+
+\TeX システムを、使われる方は、TeXLive が、インストールされているかと思いますので、それを使うことが狩野樹になっています。
+
+一応、TeXLive がインストールされていて、そのあとに、TinyTeX をインストールしようとすると、拒否されますが、インストール、アンインストールなどをしていると、Path も変更になるため、問題が起こり、PDF が作成できなくなる場合もあります。
+
+その場合の対処も含めて、下に書きます。
+
+アカウントに漢字やカタカナが入っていると、PDF が作成できません。
+
+\hypertarget{tinytex-ux306bux3088ux308bux30a4ux30f3ux30b9ux30c8ux30fcux30ebux65b9ux6cd5}{%
+\paragraph{\texorpdfstring{\texttt{tinytex} によるインストール方法}{tinytex によるインストール方法}}\label{tinytex-ux306bux3088ux308bux30a4ux30f3ux30b9ux30c8ux30fcux30ebux65b9ux6cd5}}
+
+\begin{itemize}
+\tightlist
+\item
+  tinytex::install\_tinytex(dir = ``C:/TTeX'')
+\item
+  環境変数の設定：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{Path=C:\textbackslash{}**UserName**\textbackslash{}AppData\textbackslash{}Local\textbackslash{}Microsoft\textbackslash{}WindowsApps;C:\textbackslash{}TTeX\textbackslash{}bin\textbackslash{}windows}
+  \item
+    UserName の部分は、ご自分のユーザネームに変更　~は日本語システムでは、¥ と表示されているかもしれません。
+  \end{itemize}
+\end{itemize}
+
+これで解決しない場合は、Windows に、もう一つ、アカウントを作成し\footnote{{[}スタート{]} \textgreater{} {[}設定{]} \textgreater{} {[}アカウント{]} の順に選択し、{[}ファミリとその他のユーザー{]} を選択し、{[}アカウントの追加{]} から作成。}、アカウント名を英語にして、そちらから、インストールしてください。元の日本語アカウントとファイルを共有したいときは、共有ディレクトリーにコピーしてください。
+
+すべての状況は確認できませんので、ここまでとします\footnote{元のアカウントから、利用したり、Home を変更したりなど、いろいろな方法で、解決することも可能ですが、自信がない場合には、上の方法で、別のアカウントから、利用してください。}。Chat GPT に確認したやりとりは、\href{https://icu-hsuzuki.github.io/ds_education/chatgpt.html\#chatgpt}{ここ}にあります。自分で確認をして、HOME の変更などをしてみても良いですが、問題が生じた時に、サポートできませんから、一般的な方法としては、書かないことにします。
+
+注：矢内勇生さんの\href{https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf}{サイト}には、詳細な説明があります。
 
 \hypertarget{part-part-iii-institutional-data}{%
 \part{PART III INSTITUTIONAL DATA}\label{part-part-iii-institutional-data}}

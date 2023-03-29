@@ -162,13 +162,13 @@
 <li>
 <strong>Windows</strong> の場合は、<a href="https://git-scm.com/download/win">git-scm</a> にアクセスしてダウンロード、インストールしてください。セットアップ（Setup）で、２箇所、注意点があります、それ以外は、すべて、初期設定のままで変更は必要ありません。
 <ul>
-<li>Choosing the default editor used by Git: 設定で、エディタ（Editor）を設定しますが、vi, vim に慣れていない方は、nano を選択することをお勧めします。（nano<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;GNU nanoは、コンソールウィンドウで動作する小型でフレンドリーなテキストエディタです。(GNU nano is a small and friendly text editor running in the console window.)&lt;/p&gt;"><sup>5</sup></a> は、メニューが下に出るので、それを見て操作することが可能なエディターです。）</li>
+<li>Choosing the default editor used by Git: 設定で、エディタ（Editor）を設定しますが、vi, vim に慣れていない方は、nano を選択することをお勧めします。（nano<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;GNU nanoは、コンソールウィンドウで動作する小型でフレンドリーなテキストエディタです。(GNU nano is a small and friendly text editor running in the console window.)&lt;/p&gt;"><sup>7</sup></a> は、メニューが下に出るので、それを見て操作することが可能なエディターです。）</li>
 <li>Adjusting Your Path Environment: Windows の コマンドライン・ツール（command line prompt) を使っていない方は、Git Bash のインストールを選択してください。さらに、Git and optional Unix tools from the Windows Command Prompt を選択することをお勧めしますが、上で書いたように、Windows の コマンド・プロンプトになれておられる方で、それを使い続けたいかたは、Use Git from Git Bash only を選択されるのが良いかもしれません。</li>
-<li>最後に、RStudio の設定（Tools &gt; Global Option）で、Terminal　から、Git Bash を選択<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;自動的に選択されているかもしれません&lt;/p&gt;"><sup>6</sup></a>し、Tools から、New Terminal を選択<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;すでにタブがあればこの作業は不要です&lt;/p&gt;"><sup>7</sup></a>します。</li>
+<li>最後に、RStudio の設定（Tools &gt; Global Option）で、Terminal　から、Git Bash を選択<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;自動的に選択されているかもしれません&lt;/p&gt;"><sup>8</sup></a>し、Tools から、New Terminal を選択<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;すでにタブがあればこの作業は不要です&lt;/p&gt;"><sup>9</sup></a>します。</li>
 </ul>
 </li>
 <li>
-<strong>Mac</strong> は、最初から、Install されていると思います。ユーティリティ（Utility）&gt; ターミナル（Terminal）を開いて<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;RStudio を既にお使いの方は、左下の窓枠から、Terminal タブを選択できますので、それを使うことも可能です。&lt;/p&gt;"><sup>8</sup></a>、<code>git --version</code> とすると、インストールされているバージョンが表示されると思います。バージョンがでない場合には、Install するかと聞かれます。このときに、Git だけをインストールすることも、Xcode という開発環境を同時にインストールすることも可能です。（インストールするように指示が出なければ、App Store からも、インストールできます。もし、そのあとで、git などのコマンドで xcrun: error などとエラーが出たら、<code>xcode-select --install</code> としてください。）インストールが終了したら、もう一度、<code>git --version</code> と Terminal に入力して、結果を確認してください。</li>
+<strong>Mac</strong> は、最初から、Install されていると思います。ユーティリティ（Utility）&gt; ターミナル（Terminal）を開いて<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;RStudio を既にお使いの方は、左下の窓枠から、Terminal タブを選択できますので、それを使うことも可能です。&lt;/p&gt;"><sup>10</sup></a>、<code>git --version</code> とすると、インストールされているバージョンが表示されると思います。バージョンがでない場合には、Install するかと聞かれます。このときに、Git だけをインストールすることも、Xcode という開発環境を同時にインストールすることも可能です。（インストールするように指示が出なければ、App Store からも、インストールできます。もし、そのあとで、git などのコマンドで xcrun: error などとエラーが出たら、<code>xcode-select --install</code> としてください。）インストールが終了したら、もう一度、<code>git --version</code> と Terminal に入力して、結果を確認してください。</li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
 <li>GitHub のアカウント取得</li>
@@ -178,7 +178,7 @@
 <a href="https://github.com">GitHub サイト</a> に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
-<li>RStudio の 左下の窓枠のTerminal タブ<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Terminal がない場合は、Tools &amp;gt; Terminal &amp;gt; New Terminal とすると表示されます。&lt;/p&gt;"><sup>9</sup></a>から、GitHub アカウントに連携する設定を行います。
+<li>RStudio の 左下の窓枠のTerminal タブ<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Terminal がない場合は、Tools &amp;gt; Terminal &amp;gt; New Terminal とすると表示されます。&lt;/p&gt;"><sup>11</sup></a>から、GitHub アカウントに連携する設定を行います。
 下の２行を、１行ずつ、コピーして、Terminal に入力してください。</li>
 </ol>
 <pre><code>git config --global user.name "Your Name" # GitHub の User Name
@@ -193,7 +193,7 @@ git config --global user.email "your@email.com" # GitHub に登録したメー�
 <strong>Mac</strong> の場合は、<code>/usr/bin/git</code> になるかと思いますが、Browse ボタンから確認してください。</li>
 </ul>
 <ol start="5" style="list-style-type: decimal">
-<li>その下に、Create RSA key とありますから、それを押し、Create ボタンを押しててください<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Passphrase (optional) と出ますが、無視してくださって構いません。&lt;/p&gt;"><sup>10</sup></a>。すると、View RSA key から、暗号キーも確認できます。（この作業は、Terminal から、<code>ssh-keygen -t rsa</code> として作成することも可能です。この作業で、<code>~/.ssh/</code> 内に、SSH キーが記述されたファイルが作成されます。）</li>
+<li>その下に、Create RSA key とありますから、それを押し、Create ボタンを押しててください<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Passphrase (optional) と出ますが、無視してくださって構いません。&lt;/p&gt;"><sup>12</sup></a>。すると、View RSA key から、暗号キーも確認できます。（この作業は、Terminal から、<code>ssh-keygen -t rsa</code> として作成することも可能です。この作業で、<code>~/.ssh/</code> 内に、SSH キーが記述されたファイルが作成されます。）</li>
 <li>GitHub アカウントで公開鍵を利用できるようにします。まず、RStudio の方で作成した、RSA key （Tools の、Global Option の Git/SVN）の下にある view を押すと見ることができ、上に、書いてあるように、そこに出てきたものを、コピーします。次に、GitHubにログインし、右上のアイコンの右の三角から、設定（Setting）を選択し、SSH公開鍵（SSH and GPG Keys）を選択します。新しい公開鍵を追加（New SSH Key）を選択すると、SSH キーを貼り付けることができます。（リポジトリの左上にある、アカウント名をクリックし現れるダッシュボードの左上の大きなアイコンをクリックしても「アカウント設定」が現れ、SSH and GPG Keysを見つけることができると思います。）</li>
 </ol>
 <p>（なお、RStudio ではなく、Terminal からコピーするときは、Unix では、<code>pbcopy &lt; ~/.ssh/id_rsa.pub</code> などとします。Windows の場合は、<code>pbcopy</code> が使えない可能性があるので、そのときは、Terminal から、Git Bash を使い、<code>use &lt; ~/.ssh/id_rsa.pub</code> とします。Terminal に慣れておられない方には、上に紹介した、RStudio からコピーする方が簡便かと思います。）
@@ -254,7 +254,7 @@ git push -u origin main</code></pre>
 <span class="header-section-number">B.1.6.1</span> RStudio での設定<a class="anchor" aria-label="anchor" href="#rstudio-%E3%81%A7%E3%81%AE%E8%A8%AD%E5%AE%9A"><i class="fas fa-link"></i></a>
 </h4>
 <ol style="list-style-type: decimal">
-<li>新しい book プロジェクトを始めます、標準設定の <code>book</code> と、<code>bs4_book</code> を選択できます。このディレクトリ（フォルダ。ローカル・リポジトリと呼びます）の名前をリモート・リポジトリの名前と同じにして、作成します<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;異なる名前でも可能ですが、特別な理由がない限り同じにしておいた方が良いでしょう&lt;/p&gt;"><sup>11</sup></a>。</li>
+<li>新しい book プロジェクトを始めます、標準設定の <code>book</code> と、<code>bs4_book</code> を選択できます。このディレクトリ（フォルダ。ローカル・リポジトリと呼びます）の名前をリモート・リポジトリの名前と同じにして、作成します<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;異なる名前でも可能ですが、特別な理由がない限り同じにしておいた方が良いでしょう&lt;/p&gt;"><sup>13</sup></a>。</li>
 <li>Files の、Rename 機能を使って <code>_book</code> ディレクトリ（フォルダ）の名前を、<code>docs</code> に変更します。</li>
 <li>
 <code>_bookdown.yml</code> を編集し次の行を加えます（私は２行目に入れています）。<br><code>output_dir: docs</code><br>
@@ -519,7 +519,7 @@ git push -u origin main</code></pre>
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-03-27.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-03-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
