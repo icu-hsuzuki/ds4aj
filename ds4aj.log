@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  1 APR 2023 17:36
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  1 APR 2023 23:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1115,28 +1115,31 @@ LaTeX Font Warning: Font shape `TU/ipaexm.ttf(0)/b/n' undefined
 [16]
 LaTeX Font Info:    Font shape `TU/ipaexm.ttf(0)/m/n' will be
 (Font)              scaled to size 7.0055pt on input line 559.
+
+Overfull \hbox (30.47957pt too wide) in paragraph at lines 577--579
+[]\TU/lmr/m/n/10 TinyTeX \TU/ipaexm.ttf(0)/m/n/10 を デ ィ レ ク ト リ を 指 定 し て イ ン ス
+ ト ー ル：| \TU/lmtt/m/n/10 tinytex::install_tinytex(dir
+ []
+
 [17]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
-[18]
-Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
-x-text;!
-[19] [20] [21]
-Underfull \hbox (badness 1442) in paragraph at lines 784--785
+[18] [19] [20] [21]
+Underfull \hbox (badness 1442) in paragraph at lines 778--779
 []\TU/lmtt/m/n/10 tidyverse \TU/ipaexm.ttf(0)/m/n/10 な ど は、|  す で に イ ン ス ト ー ル
  さ れ て い ま す が、|  使 い た い
  []
 
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
-[22] [23]
-Overfull \hbox (34.36475pt too wide) in paragraph at lines 933--933
+[22] [23] [24]
+Overfull \hbox (34.36475pt too wide) in paragraph at lines 927--927
 []\TU/lmtt/m/n/10 If you are not sure, you may install TinyTeX in R: tinytex::i
 nstall_tinytex()[] 
  []
 
-[24]
-Overfull \hbox (1924.33392pt too wide) in paragraph at lines 957--957
+
+Overfull \hbox (1924.33392pt too wide) in paragraph at lines 951--951
 [] \TU/ipaexg.ttf(0)/m/n/10 “ \TU/lmtt/m/n/10 C:/Program Files/RStudio/bin/quar
 to/bin/tools/pandoc \TU/ipaexg.ttf(0)/m/n/10 ”  \TU/lmtt/m/n/10 +RTS -K512m -RT
 S RNotebook-J.knit.md  \TU/ipaexg.ttf(0)/m/n/10 – \TU/lmtt/m/n/10 to latex  \TU
@@ -1155,7 +1158,7 @@ ttf(0)/m/n/10 – \TU/lmtt/m/n/10 highlight-style tango  \TU/ipaexg.ttf(0)/m/n/1
  []
 
 
-Overfull \hbox (1000.36475pt too wide) in paragraph at lines 957--957
+Overfull \hbox (1000.36475pt too wide) in paragraph at lines 951--951
 []\TU/lmtt/m/n/10 Error: LaTeX failed to compile RNotebook-J.tex. See https://y
 ihui.org/tinytex/r/#debugging for debugging tips. In addition: Warning message:
  In system2( \TU/ipaexg.ttf(0)/m/n/10 … \TU/lmtt/m/n/10 , stdout = if (use_file
@@ -1165,112 +1168,110 @@ ion halted[]
  []
 
 
-Overfull \hbox (501.61475pt too wide) in paragraph at lines 957--957
+Overfull \hbox (501.61475pt too wide) in paragraph at lines 951--951
 []\TU/lmtt/m/n/10 No LaTeX installation detected (LaTeX is required to create P
 DF output). You should install a LaTeX distribution for your platform: https://
 www.latex-project.org/get/[] 
  []
 
 
-Overfull \hbox (34.36475pt too wide) in paragraph at lines 957--957
+Overfull \hbox (34.36475pt too wide) in paragraph at lines 951--951
 []\TU/lmtt/m/n/10 If you are not sure, you may install TinyTeX in R: tinytex::i
 nstall_tinytex()[] 
  []
 
 
-Overfull \hbox (207.61475pt too wide) in paragraph at lines 957--957
+Overfull \hbox (207.61475pt too wide) in paragraph at lines 951--951
 []\TU/lmtt/m/n/10 MacTeX on macOS - https://tug.org/mactex/ (NOTE: Download wit
 h Safari rather than Chrome strongly recommended)[] 
  []
 
+[25]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
-[25]
-Overfull \hbox (75.3504pt too wide) in paragraph at lines 988--990
+
+Overfull \hbox (75.3504pt too wide) in paragraph at lines 982--984
 []\TU/lmtt/m/n/10 Path=C:\**UserName**\AppData\Local\Microsoft\WindowsApps;C:\T
 TeX\bin\windows 
  []
 
-[26]
+[26] [27]
 Missing character: There is no 、 (U+3001) in font [latinmodern-math.otf]/OT:scr
 ipt=math;language=dflt;!
+[28]
 File: 24-rbasics_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pd
 f)
 <use 24-rbasics_files/figure-latex/unnamed-chunk-4-1.pdf>
-[27] [28] [29]
-Overfull \hbox (5.1496pt too wide) in paragraph at lines 1220--1221
+[29] [30]
+Overfull \hbox (5.1496pt too wide) in paragraph at lines 1264--1265
 []\TU/ipaexm.ttf(0)/m/n/10 実 行 す る に は、|  カ ー ソ ル の 場 所 で \TU/lmr/m/n/10 Ctrl+S
 hift+Enter (Win) \TU/ipaexm.ttf(0)/m/n/10 ま た は \TU/lmr/m/n/10 Cmd+Shift+Enter
  []
 
-[30]
+[31]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1245.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1289.
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1245.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1289.
 
 
-[31]
-Underfull \vbox (badness 10000) detected at line 1464
+[32]
+Overfull \vbox (2.28998pt too high) detected at line 1508
+ []
+
+[33] [34]
+Underfull \vbox (badness 10000) detected at line 1508
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1464
- []
-
-[32] [33]
-Underfull \vbox (badness 10000) detected at line 1464
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1464
- []
-
-[34]
-Underfull \vbox (badness 10000) detected at line 1464
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1464
+Underfull \vbox (badness 10000) detected at line 1508
  []
 
 [35]
-Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
-x-text;!
+Underfull \vbox (badness 10000) detected at line 1508
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1508
+ []
+
 [36]
-Underfull \vbox (badness 10000) detected at line 1550
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1550
- []
-
-[37]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
-[38] [39] [40] [41] [42
+[37]
+Underfull \vbox (badness 10000) detected at line 1594
+ []
 
-] [43] [44]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1761--1761
+
+Underfull \vbox (badness 10000) detected at line 1594
+ []
+
+[38]
+Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
+x-text;!
+[39] [40] [41] [42] [43
+
+] [44]
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1805--1805
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1761--1761
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1805--1805
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [45]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1782--1782
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1826--1826
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1782--1782
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1826--1826
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -1279,13 +1280,13 @@ File: 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type
 pdf)
 <use 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf>
 [46]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1807--1807
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1851--1851
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1807--1807
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1851--1851
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -1314,33 +1315,18 @@ x-text;!
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2162--2162
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2206--2206
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2162--2162
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2206--2206
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [53]
-Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
-x-text;!
-
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2199--2199
-[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
- for this data.[] 
- []
-
-
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2199--2199
-[]\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
-[] to quiet this message.[] 
- []
-
-[54]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 
@@ -1355,7 +1341,7 @@ Overfull \hbox (71.11475pt too wide) in paragraph at lines 2243--2243
 [] to quiet this message.[] 
  []
 
-[55]
+[54]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 
@@ -1370,22 +1356,37 @@ Overfull \hbox (71.11475pt too wide) in paragraph at lines 2287--2287
 [] to quiet this message.[] 
  []
 
+[55]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
-[56]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2341--2341
+
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2331--2331
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2341--2341
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2331--2331
+[]\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
+[] to quiet this message.[] 
+ []
+
+Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
+x-text;!
+[56]
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2385--2385
+[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
+ for this data.[] 
+ []
+
+
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2385--2385
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [57]
-Underfull \vbox (badness 10000) detected at line 2428
+Underfull \vbox (badness 10000) detected at line 2472
  []
 
 [58] [59]
@@ -1414,7 +1415,7 @@ x-text;!
 File: ./data/data-science.png Graphic file (type bmp)
 <./data/data-science.png>
 LaTeX Font Info:    Font shape `TU/ipaexm.ttf(0)/m/n' will be
-(Font)              scaled to size 7.88118pt on input line 2621.
+(Font)              scaled to size 7.88118pt on input line 2665.
 [67]
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
@@ -1443,7 +1444,7 @@ File: 41-eda_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type pdf)
 ] [77] [78]
 
 LaTeX Font Warning: Font shape `TU/ipaexg.ttf(0)/m/it' undefined
-(Font)              using `TU/ipaexg.ttf(0)/m/n' instead on input line 2903.
+(Font)              using `TU/ipaexg.ttf(0)/m/n' instead on input line 2947.
 
 File: 81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type p
 df)
@@ -1468,13 +1469,13 @@ x-text;!
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 [85] [86]
-Overfull \hbox (55.36475pt too wide) in paragraph at lines 3290--3290
+Overfull \hbox (55.36475pt too wide) in paragraph at lines 3334--3334
 []\TU/lmtt/m/n/10 git config --global user.email "your@email.com" # GitHub  \TU
 /ipaexg.ttf(0)/m/n/10 に 登 録 し た メ ー ル ア ド レ ス [] 
  []
 
 [87]
-Overfull \hbox (60.61475pt too wide) in paragraph at lines 3370--3370
+Overfull \hbox (60.61475pt too wide) in paragraph at lines 3414--3414
 []\TU/lmtt/m/n/10 #  \TU/ipaexg.ttf(0)/m/n/10 わ た し の ア カ ウ ン ト の 場 合 に は 、 コ ピ
  ー し た も の を 貼 り 付 け る と 、 上 の よ う に な り ま す 。 [] 
  []
@@ -1500,7 +1501,7 @@ x-text;!
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 [95]
-Overfull \hbox (15.80815pt too wide) in paragraph at lines 3799--3800
+Overfull \hbox (15.80815pt too wide) in paragraph at lines 3843--3844
 []\TU/lmr/m/n/10 Next, reference the labeled heading anywhere in the text using
  \TU/lmtt/m/n/10 \@ref(nice-label)\TU/lmr/m/n/10 ;
  []
@@ -1518,10 +1519,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 26288 strings out of 476683
- 504156 string characters out of 5804047
+ 26287 strings out of 476683
+ 504071 string characters out of 5804047
  1878018 words of memory out of 5000000
- 46143 multiletter control sequences out of 15000+600000
+ 46142 multiletter control sequences out of 15000+600000
  519504 words of font info for 113 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
  86i,10n,121p,1002b,2760s stack positions out of 10000i,1000n,20000p,200000b,200000s

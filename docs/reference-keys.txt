@@ -33,8 +33,6 @@ r-studio-の-インストール
 r-および-rstudio-やパッケージでのインストールの問題
 r-および-rstudio-のアンインストール
 別のアカウントを作成してインストール
-rmarkdown-で-pdf-を作成するときの注意
-プロジェクト---project
 クラウド---posit-cloud
 クラウドサービス-how-to-start-posit-cloud
 追記
@@ -52,9 +50,10 @@ r-notebook
 日本語のテンプレート
 r-markdown-いくつかの-output
 youtube-video---rmarkdown
-rmarkdown-で-pdf-を作成するときの注意-1
+rmarkdown-で-pdf-を作成するときの注意
 tinytex-によるインストール方法
 rbasics
+プロジェクト---project
 コンソールで実行---run-in-console
 最初の四つ
 アサインメントヘルプ
