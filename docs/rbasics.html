@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 R Basice | データサイエンスをはじめましょう - Data Science for All -</title>
+<meta name="author" content="鈴木寛（Hirosi Suzuki）">
+<meta name="description" content="5.1 コンソールで実行 - Run in Console プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console...">
+<meta name="generator" content="bookdown 0.32 with bs4_book()">
+<meta property="og:title" content="Chapter 5 R Basice | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/rbasics.html">
+<meta property="og:description" content="5.1 コンソールで実行 - Run in Console プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 R Basice | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="5.1 コンソールで実行 - Run in Console プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+- Data Science for All -</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">この文書について</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
+<li class="book-part">PART I PUBLIC DATA</li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">2</span> Public Data</a></li>
+<li class="book-part">PART II BASICS</li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">3</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">4</span> R Markdown</a></li>
+<li><a class="active" href="rbasics.html"><span class="header-section-number">5</span> R Basice</a></li>
+<li class="book-part">PART III INSTITUTIONAL DATA</li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">6</span> World Bank</a></li>
+<li class="book-part">PART IV EDA</li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">7</span> 探索的データ解析</a></li>
+<li class="book-part">PART V EXAMPLES</li>
+<li><a class="" href="example1.html"><span class="header-section-number">8</span> Example 1</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
+<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
+<li><a class="" href="bookdown.html"><span class="header-section-number">C</span> Bookdown</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rbasics" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> R Basice<a class="anchor" aria-label="anchor" href="#rbasics"><i class="fas fa-link"></i></a>
+</h1>
+<div id="コンソールで実行---run-in-console" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> コンソールで実行 - Run in Console<a class="anchor" aria-label="anchor" href="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%A7%E5%AE%9F%E8%A1%8C---run-in-console"><i class="fas fa-link"></i></a>
+</h2>
+<p>プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console を選択してください。）</p>
+<div id="最初の四つ" class="section level3" number="5.1.1">
+<h3>
+<span class="header-section-number">5.1.1</span> 最初の四つ<a class="anchor" aria-label="anchor" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E5%9B%9B%E3%81%A4"><i class="fas fa-link"></i></a>
+</h3>
+<p>下の、四つを、一つずつ、一番下の、&gt; マークの次に書き（または、コピー・ペーストして）Return または、Enter キーを押してください。実行結果が、その下に出ます。最後の、<code>plot(cars)</code> は、<code>cars</code> というデータの、散布図が右下の、Plots タブに表示されます。</p>
+<ul>
+<li><code>head(cars)</code></li>
+<li><code>str(cars)</code></li>
+<li><code>summary(cars)</code></li>
+<li><code>plot(cars)</code></li>
+</ul>
+<p>エラーが表示されたら、もう一度、スペルを確認して、入力してみてください。</p>
+<p>次のような、結果が表示されると思います。簡単な説明をつけます。</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   speed dist</span></span>
+<span><span class="co">#&gt; 1     4    2</span></span>
+<span><span class="co">#&gt; 2     4   10</span></span>
+<span><span class="co">#&gt; 3     7    4</span></span>
+<span><span class="co">#&gt; 4     7   22</span></span>
+<span><span class="co">#&gt; 5     8   16</span></span>
+<span><span class="co">#&gt; 6     9   10</span></span></code></pre></div>
+<p><code>head(cars)</code> は、<code>cars</code> という、R に付属している、データの、最初（頭 head）の6行を、表示します。</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    50 obs. of  2 variables:</span></span>
+<span><span class="co">#&gt;  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...</span></span>
+<span><span class="co">#&gt;  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</span></span></code></pre></div>
+<p><code>str(cars)</code> は、<code>cars</code> という、R に付属している、データの構造（structure）を表示します。<code>data.frame</code> とありますが、これは、矩形になったデータ（各列の長さがおなじ）の一番簡単なクラスの名前で、2変数、それぞれが、50 個の数値データ（numerical data） からなっていることがわかります。</p>
+<p>head(cars)<code>では、縦に表示されていたものが、横に表示されています。</code><span class="math inline">\(speed`、`\)</span>dist<code>とありますが、</code>cars<span class="math inline">\(speed`, `cars\)</span>dist<code>は、</code>cars` データの、それぞれの列を意味します。</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      speed           dist       </span></span>
+<span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
+<span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
+<span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
+<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
+<p><code>cars</code> データの概要（summary）が表示されます。各列（変数）について、最小値（Minimum）、小さい方から、4分の1を切り捨てたときの最小の値（1st Quadrant）、中央値（Median）、平均（Mean）、大きい方から、4分の1を切り捨てたときの最大の値（3rd Quadrant）、最大値（Maximum）が表示されます。</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="24-rbasics_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+<p>右下の、窓枠の、Plots に、上のグラフ（散布図）が表示されると思います。Export と書いてある、プルダウンメニューがあり、そこから、画像として保存することも、可能です。</p>
+<p>以前は、このように取り出した画像を、Word などに貼り付けて、使っていました。現在でも、そのような方法を知っていることは有効だと思います。</p>
+</div>
+<div id="アサインメントヘルプ" class="section level3" number="5.1.2">
+<h3>
+<span class="header-section-number">5.1.2</span> アサインメント、ヘルプ<a class="anchor" aria-label="anchor" href="#%E3%82%A2%E3%82%B5%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%83%98%E3%83%AB%E3%83%97"><i class="fas fa-link"></i></a>
+</h3>
+<p>コンソールで次のそれぞれを、試してみてください。</p>
+<ul>
+<li><code>df &lt;- cars</code></li>
+</ul>
+<p><code>df</code> に、<code>cars</code> をアサインします。すなわち、<code>df</code> が、<code>cars</code> の内容に置き換わります。<code>cars</code> はデータですが、データを含む、オブジェクトの名前を設定するためにも使います。オブジェクト名は。英文字から始まれば、かなりの自由度がありますが、わたしは、英文字と数字と <code>_</code>（underscore） 程度しか使わないようにしています。</p>
+<ul>
+<li><code>head(df)</code></li>
+</ul>
+<p><code>head(df)</code> は、<code>head(cars)</code> と同じ出力が得られます。</p>
+<ul>
+<li><code>View(cars)</code></li>
+</ul>
+<p>左上の、窓枠が開き、<code>cars</code> というデータ の内容が表示されます。列名のところには、三角形も表示され、それを用いると、大きい順、小さい順などに、並び替えることも可能です。また、フィルター機能も使えます。</p>
+<ul>
+<li><code><a href="https://rdrr.io/r/datasets/cars.html">?cars</a></code></li>
+</ul>
+<p>右下の、窓枠の　Help タブに、<code>cars</code> の情報が表示されます。Help タブにある、虫眼鏡がついた、検索窓（search window）に、<code>cars</code> といれても、同じ結果が得られます。
+内容を確認してください。</p>
+<p>一番上には <code>cars {datasets}</code> とありますが、これは、<code>datasets</code> というパッケージの、<code>cars</code> だという意味です。そこで、<code>datasets</code> を調べてみましょう。</p>
+<ul>
+<li><code><a href="https://rdrr.io/r/datasets/datasets-package.html">?datasets</a></code></li>
+</ul>
+<p>“The R Datasets Package” だと書かれていて、さらに、</p>
+<p>This package contains a variety of datasets. For a complete list, use library(help = “datasets”).</p>
+<p>さまざまなデータが含まれています。全てのリストをみるには、<code><a href="https://rdrr.io/r/base/library.html">library(help = "datasets")</a></code> を使ってください。</p>
+<p>とありますから、<code><a href="https://rdrr.io/r/base/library.html">library(help = "datasets")</a></code> をコンソールに入力してみてください。</p>
+<ul>
+<li><code><a href="https://rdrr.io/r/base/library.html">library(help = "datasets")</a></code></li>
+</ul>
+<p>左上の窓枠に、リストが表示されます。古いデータばかりですが、例として使うには、十分すぎるぐらいの、数のデータがあります。これらは、Toy Data（おもちゃのデータ）と呼ばれることもあります。</p>
+<p><code>cars</code> も見つかりましたか。</p>
+</div>
+<div id="おすすめ" class="section level3" number="5.1.3">
+<h3>
+<span class="header-section-number">5.1.3</span> おすすめ<a class="anchor" aria-label="anchor" href="#%E3%81%8A%E3%81%99%E3%81%99%E3%82%81"><i class="fas fa-link"></i></a>
+</h3>
+<p>コンピュータのシステムが、日本語であると、R の言語も日本語になっているはずです。そこで、エラーが発生すると、一部、日本語で表示されます。しかし、ネット上などで、そのエラーの対応を検索するときは、英語のエラーメッセージで検索した方が、解決方法が得られる可能性が圧倒的に高いので、わたしは、英語に設定しています。英語にするには、Console で次のようにします。</p>
+<p>言語を英語に設定：<code>Sys.setenv(LANG = "en")</code></p>
+<p>RStudio を終了して、もう一度起動すると、日本語に戻っていると思います。ですから、作業の最初、または、エラーが出たら、変更することをお勧めします。</p>
+<p>日本語に戻したいときは、次のようにします。</p>
+<p>言語を日本語に設定：<code>Sys.setenv(LANG = "ja")</code></p>
+<p>さまざまな Help なども、すべて日本語で表示されれば日本語を使うのは有効かもしれませんが、すくなくとも、現在は、そうではないので、上に説明したことから、英語に設定することをお勧めします。</p>
+</div>
+<div id="練習" class="section level3" number="5.1.4">
+<h3>
+<span class="header-section-number">5.1.4</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>
+<code>head(cars, 10L)</code> は何が出力されますか。<code>head(cars, n=10L)</code> と同じですか。</li>
+<li>
+<code><a href="https://rdrr.io/r/utils/head.html">?head</a></code> または、Help の検索窓に <code>head</code> と入力して、説明を見てみてください。<code>head(cars, n=10L)</code> などについて、書いてありましたか。他には、どのようなことが分かりましたか。</li>
+<li>
+<code>datasets</code> のデータのいくつかについて、そのデータの help や、<code>head</code>, <code>str</code>, <code>summary</code> などを使ってみてください。これらで表示できない場合はありますか。データについては、最初に、これら、三つを試してみることをお勧めします。わかったことをメモしておくと良いでしょう。<code>datasets</code> のリストをみるには、<code><a href="https://rdrr.io/r/base/library.html">library(help = "datasets")</a></code> でしたね。</li>
+</ol>
+</div>
+</div>
+<div id="rstudio-について" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> RStudio について<a class="anchor" aria-label="anchor" href="#rstudio-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
+</h2>
+<p>RStudio は多くの機能を持っています。</p>
+<div id="四つの窓枠とタブ-four-panes-and-tabs" class="section level3" number="5.2.1">
+<h3>
+<span class="header-section-number">5.2.1</span> 四つの窓枠とタブ Four Panes and Tabs<a class="anchor" aria-label="anchor" href="#%E5%9B%9B%E3%81%A4%E3%81%AE%E7%AA%93%E6%9E%A0%E3%81%A8%E3%82%BF%E3%83%96-four-panes-and-tabs"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>左上（Top Left）: スクリプトや文書、データなどの編集（Source Editor）</li>
+<li>右上（Top Right）: 環境変数（Environment）, 履歴（History） など（etc.）</li>
+<li>左下（Bottom Left）: コードの実行・実行結果などを表示するコンソール（Console）, コンピュータシステムの端末（Terminal）, 文書の機械語翻訳（Render）, 背後での作業（Background Jobs）</li>
+<li>右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Viewerへの表示を使っており、Presentationへの表示を使っておらず不明&lt;/p&gt;"><sup>6</sup></a>）</li>
+</ul>
+</div>
+</div>
+<div id="r-script-実行記録" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> R Script 実行記録<a class="anchor" aria-label="anchor" href="#r-script-%E5%AE%9F%E8%A1%8C%E8%A8%98%E9%8C%B2"><i class="fas fa-link"></i></a>
+</h2>
+<p>R Script を使って、コードを実行すると、その記録を残すことができます。</p>
+<div id="r-script-の作成" class="section level3" number="5.3.1">
+<h3>
+<span class="header-section-number">5.3.1</span> R Script の作成<a class="anchor" aria-label="anchor" href="#r-script-%E3%81%AE%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>RStudio の上のメニュー・バーからFile &gt; New File &gt; R Script を選択します。</li>
+<li>File &gt; Save As で、名前をつけて保存します。{file_name}.R が作成されます。
+<ul>
+<li>右下の、Files から、ファイルを確認してください。</li>
+</ul>
+</li>
+<li>
+<code>head(cars)</code>, <code>str(cars)</code>, <code>summary(cars)</code>, <code>plot(cars)</code> などと改行をしながらコードを書きます。</li>
+<li>実行するには、カーソルの場所で Ctrl+Shift+Enter (Win) または Cmd+Shift+Enter (Mac) とすると、カーソルのある行か、その下の行で、最初のコードが実行されます。
+<ul>
+<li>R Script エディターの上にある、Run ボタンを押しても、同様に実行されます。</li>
+<li>Run ボタンの右の、Source ボタンを押すと、そのスクリプトの、最初からすべてが実行されます。</li>
+</ul>
+</li>
+<li>最後には保存しておきましょう。たとえば、<code>myfirstscript</code> などとすると、File のところに、<code>myfirstscript.R</code> というファイルができていることを確認できます。</li>
+</ul>
+</div>
+<div id="r-script-による実行" class="section level3" number="5.3.2">
+<h3>
+<span class="header-section-number">5.3.2</span> R Script による実行<a class="anchor" aria-label="anchor" href="#r-script-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9F%E8%A1%8C"><i class="fas fa-link"></i></a>
+</h3>
+<p>新しく、R Script を作成し、この下の、コード（ハイライトされている部分）をコピー・ペーストして、保存し、実行してみてください。</p>
+<p>それぞれ、どのようなことをしているでしょうか。</p>
+<div id="スクリプト1-basics.r" class="section level4" number="5.3.2.1">
+<h4>
+<span class="header-section-number">5.3.2.1</span> スクリプト1: <code>basics.R</code><a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%881-basics.r"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#################</span></span>
+<span><span class="co">#</span></span>
+<span><span class="co"># basics.R</span></span>
+<span><span class="co">#</span></span>
+<span><span class="co">################</span></span>
+<span><span class="co"># 'Quick R' by DataCamp may be a handy reference: </span></span>
+<span><span class="co">#     https://www.statmethods.net/management/index.html</span></span>
+<span><span class="co"># Cheat Sheet at RStudio: https://www.rstudio.com/resources/cheatsheets/</span></span>
+<span><span class="co"># Base R Cheat Sheet: https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf</span></span>
+<span><span class="co"># To execute the line: Control + Enter (Window and Linux), Command + Enter (Mac)</span></span>
+<span><span class="co">## try your experiments on the console</span></span>
+<span></span>
+<span><span class="co">## calculator</span></span>
+<span></span>
+<span><span class="fl">3</span> <span class="op">+</span> <span class="fl">7</span></span>
+<span></span>
+<span><span class="co">### +, -, *, /, ^ (or **), %%, %/%</span></span>
+<span></span>
+<span><span class="fl">3</span> <span class="op">+</span> <span class="fl">10</span> <span class="op">/</span> <span class="fl">2</span></span>
+<span></span>
+<span><span class="fl">3</span><span class="op">^</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="fl">2</span><span class="op">^</span><span class="fl">3</span></span>
+<span></span>
+<span><span class="fl">2</span><span class="op">*</span><span class="fl">2</span><span class="op">*</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="co">### assignment: &lt;-, (=, -&gt;, assign()) </span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span></span>
+<span><span class="va">x</span> </span>
+<span></span>
+<span><span class="co">#### object_name &lt;- value, '&lt;-' shortcut: Alt (option) + '-' (hyphen or minus) </span></span>
+<span><span class="co">#### Object names must start with a letter and can only contain letter, numbers, _ and .</span></span>
+<span></span>
+<span><span class="va">this_is_a_long_name</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">^</span><span class="fl">3</span></span>
+<span></span>
+<span><span class="va">this_is_a_long_name</span></span>
+<span></span>
+<span><span class="va">char_name</span> <span class="op">&lt;-</span> <span class="st">"What is your name?"</span></span>
+<span></span>
+<span><span class="va">char_name</span></span>
+<span></span>
+<span><span class="co">#### Use 'tab completion' and 'up arrow'</span></span>
+<span></span>
+<span><span class="co">### ls(): list of all assignments</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/ls_str.html">ls.str</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#### check Environment in the upper right pane</span></span>
+<span></span>
+<span><span class="co">### (atomic) vectors</span></span>
+<span></span>
+<span><span class="fl">5</span><span class="op">:</span><span class="fl">10</span></span>
+<span></span>
+<span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">a</span></span>
+<span></span>
+<span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">:</span><span class="fl">10</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># same as seq(from = 5, to = 10, by = 2)</span></span>
+<span></span>
+<span><span class="va">c1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">c2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, length.out <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">c1</span></span>
+<span></span>
+<span><span class="va">c2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">c1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#### ? seq   ? length   ? identical</span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">die</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">zero_one</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span> <span class="co"># same as 0:1</span></span>
+<span></span>
+<span><span class="va">die</span> <span class="op">+</span> <span class="va">zero_one</span> <span class="co"># c(1,2,3,4,5,6) + c(0,1). re-use</span></span>
+<span></span>
+<span><span class="va">d1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># repeat</span></span>
+<span></span>
+<span></span>
+<span><span class="va">d1</span></span>
+<span></span>
+<span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span></span>
+<span></span>
+<span><span class="va">d2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">d2</span></span>
+<span></span>
+<span><span class="va">d3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">d3</span></span>
+<span></span>
+<span><span class="co">### class() for class and typeof() for mode</span></span>
+<span><span class="co">### class of vectors: numeric, charcters, logical</span></span>
+<span><span class="co">### types of vectors: doubles, integers, characters, logicals (complex and raw)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d1</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d2</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d3</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fl">5</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">### Subsetting</span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">A_Z</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">A_F</span> <span class="op">&lt;-</span> <span class="va">A_Z</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">large</span> <span class="op">&lt;-</span> <span class="va">die</span> <span class="op">&gt;</span> <span class="fl">3</span></span>
+<span></span>
+<span><span class="va">large</span></span>
+<span></span>
+<span><span class="va">even</span> <span class="op">&lt;-</span> <span class="va">die</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">even</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">large</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">even</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">die</span> <span class="op">&lt;</span> <span class="fl">4</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co">### Compare df with df1 &lt;- data.frame(number = die, alphabet = A_F)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>number <span class="op">=</span> <span class="va">die</span>, alphabet <span class="op">=</span> <span class="va">A_F</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">number</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">alphabet</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">die</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,<span class="va">die</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">####################</span></span>
+<span><span class="co"># The First Example</span></span>
+<span><span class="co">####################</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Help</span></span>
+<span></span>
+<span><span class="op">?</span> <span class="va">cars</span></span>
+<span></span>
+<span><span class="co"># cars is in the 'datasets' package</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># help(cars) does the same as ? cars</span></span>
+<span><span class="co"># You can use Help tab in the right bottom pane</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span></span>
+<span><span class="op">?</span> <span class="va">par</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">cars</span><span class="op">$</span><span class="va">dist</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span> <span class="op">~</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span> <span class="op">~</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">120</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="スクリプト2-coronavirus.r" class="section level4" number="5.3.2.2">
+<h4>
+<span class="header-section-number">5.3.2.2</span> スクリプト2: <code>coronavirus.R</code><a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%882-coronavirus.r"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># https://coronavirus.jhu.edu/map.html</span></span>
+<span><span class="co"># JHU Covid-19 global time series data</span></span>
+<span><span class="co"># See R package coronavirus at: https://github.com/RamiKrispin/coronavirus</span></span>
+<span><span class="co"># Data taken from: https://github.com/RamiKrispin/coronavirus/tree/master/csv</span></span>
+<span><span class="co"># Last Updated</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Download and read csv (comma separated value) file</span></span>
+<span><span class="va">coronavirus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv"</span><span class="op">)</span></span>
+<span><span class="co"># write.csv(coronavirus, "data/coronavirus.csv")</span></span>
+<span></span>
+<span><span class="co">## Summaries and structures of the data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">type</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Set Country</span></span>
+<span><span class="va">COUNTRY</span> <span class="op">&lt;-</span> <span class="st">"Japan"</span></span>
+<span><span class="va">df0</span> <span class="op">&lt;-</span> <span class="va">coronavirus</span><span class="op">[</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="va">COUNTRY</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df0</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">df0</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">pop</span> <span class="op">&lt;-</span> <span class="va">df0</span><span class="op">$</span><span class="va">population</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df0</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">13</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">### alternatively,</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df0</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"date"</span>, <span class="st">"type"</span>, <span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">###</span></span>
+<span></span>
+<span><span class="co">## Set types</span></span>
+<span><span class="va">df_confirmed</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"confirmed"</span>,<span class="op">]</span></span>
+<span><span class="va">df_death</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"death"</span>,<span class="op">]</span></span>
+<span><span class="va">df_recovery</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">data_type</span> <span class="op">==</span> <span class="st">"recovery"</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_death</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_recovery</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Histogram</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_death</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="co"># plot(df_recovered$date, df_recovered$cases, type = "h") # no data for recovery</span></span>
+<span></span>
+<span><span class="co">## Scatter plot and correlation</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">## In addition set a period</span></span>
+<span><span class="va">start_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2022-07-01"</span><span class="op">)</span></span>
+<span><span class="va">end_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="va">df_date</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">date</span> <span class="op">&gt;=</span><span class="va">start_date</span> <span class="op">&amp;</span> <span class="va">df</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;=</span> <span class="va">end_date</span>,<span class="op">]</span></span>
+<span><span class="co">##</span></span>
+<span></span>
+<span><span class="co">## Set types</span></span>
+<span><span class="va">df_date_confirmed</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"confirmed"</span>,<span class="op">]</span></span>
+<span><span class="va">df_date_death</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"death"</span>,<span class="op">]</span></span>
+<span><span class="va">df_date_recovery</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">data_type</span> <span class="op">==</span> <span class="st">"recovery"</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_death</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_recovery</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Histogram</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_death</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="co"># plot(df_date_recovered$date, df_date_recovered$cases, type = "h") # no data for recovery</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#### Extra</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span>, </span>
+<span>     main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Comfirmed Cases in"</span>,<span class="va">COUNTRY</span><span class="op">)</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"Date"</span>, ylab <span class="op">=</span> <span class="st">"Number of Cases"</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div id="練習-1" class="section level3" number="5.3.3">
+<h3>
+<span class="header-section-number">5.3.3</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>上の、<code>coronavirus.R</code> について</p>
+<ol style="list-style-type: decimal">
+<li>
+<code>COUNTRY &lt;- "Japan"</code> の Japan を他の国に変えてみましょう。</li>
+<li>
+<code>start_date &lt;- as.Date("2022-07-01")</code> の日付を、他の日付に変えてみましょう。</li>
+<li>
+<code>df_confirmed$cases</code> と <code>df_death$cases</code> についてどんなことがわかりますか。</li>
+<li>発見や、問いがあれば、書き出してみましょう。</li>
+</ol>
+</div>
+<div id="tips" class="section level3" number="5.3.4">
+<h3>
+<span class="header-section-number">5.3.4</span> Tips<a class="anchor" aria-label="anchor" href="#tips"><i class="fas fa-link"></i></a>
+</h3>
+<p>キーボード・ショートカットと言われる、さまざまな機能があります。</p>
+<ul>
+<li>上のメニュー・バー： Help &gt; Keyboard Short Cut Help 確認してみてください。</li>
+<li>右下の窓枠: Files タブから、ファイルの確認ができます。</li>
+</ul>
+</div>
+</div>
+<div id="パッケージ---packages" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> パッケージ - Packages<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8---packages"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool &gt; Install Packages in the top menu bar of R Studio. <a href="https://en.wikipedia.org/wiki/R_package" class="uri">https://en.wikipedia.org/wiki/R_package</a></p>
+</blockquote>
+<blockquote>
+<p>Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool &gt; Install Packages からインストールできます。</p>
+</blockquote>
+<div id="パッケージのインストール" class="section level3" number="5.4.1">
+<h3>
+<span class="header-section-number">5.4.1</span> パッケージのインストール<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
+</h3>
+<p>いずれ使いますので、まずは、三つのパッケージをインストールしてみましょう。</p>
+<ul>
+<li><code>tidyverse</code></li>
+<li><code>rmarkdown</code></li>
+<li><code>tinytex</code></li>
+</ul>
+<p>インストール方法はいくつかあります。</p>
+<p>一つ目は、上のメニューバーの Tool から、Install Packages … を選択します。そして、パッケージーズにインストールしたい、パッケージ名を入力します。そのパッケージ名が下にも出れば、Install ボタンを押してください。入力した名前の下にパッケージ名が出ない場合は、スペルが間違っている可能性がありますから、確認して、入れ直してください。</p>
+<p>Console に、<code>install.packages("tidyverse")</code> などと表示され、たくさんメッセージが出ます。終了すると、&gt; のマークがでます。</p>
+<p>二つ目は、<code>install.packages("tidyverse")</code> のような書式で書いて、Console に入れる方法です。</p>
+<p>三つ目は、右下の窓枠の Packages のタブにある、Install というボタンを押す方法です。すると、一番目の方法に、戻り、パッケージ名を入力できるようになります。</p>
+<p>この Packages タブにある、ものが、すでに、インストールされているパッケージです。そのなかで、<code>base</code> や、<code>datasets</code> などいくつかに、チェックがついていると思いますが、それらは、ロードされていて、いつでも、使える状態になっていることを意味しています。ロードは、たとえば、<code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> のようにしますが、それは、いずれもう一度説明します。</p>
+<p>インストールは一回だけ。ときどき、Tools &gt; Check for Package Update をつかって、Update しておくと良いでしょう。</p>
+<div class="rmdnote">
+<p>パッケージのインストールで問題が生じることがあります。特に、Windows の日本語システムの場合です。（4.3.2 R Studio の インストール の下に書いてある部分を参照してください。）</p>
+<p>回避方法もいくつかあるようですが、混乱をさけるため、その場合は、Posit Cloud（旧：RStudio Cloud）を使うと良いでしょう。それを見越して、最初は、Posit Cloud ではじめることを、わたしはお薦めしています。自分のコンピュータで、R が RStudio 上で問題なく動いていても、Cloud 上にアカウントを持っていて、実行できることは有効ですし、全員が、同じ環境で作業できることもたいせつなことです。他にも、すぐ、Cheat Sheets（早見表）や、Posit Primers という練習問題（Tutorial）を利用できたり、プロジェクトを共有したりなど、さまざまなメリットがあります。</p>
+</div>
+</div>
+<div id="備考" class="section level3" number="5.4.2">
+<h3>
+<span class="header-section-number">5.4.2</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83"><i class="fas fa-link"></i></a>
+</h3>
+<p>Package によっては、Source から Compile するかと聞いてくる場合があります。どちらでも、良いのですが、特に、問題が起こっていなければ、No でよいと思います。コンピュータにあった形でインストールすることが必要な場合は、Yes とします。</p>
+<p>同じパッケージをもう一度、インストールしたり、または、関連するパッケージがあるような場合、R をリスタートするかと聞いてくることがあります。特に問題が起こらなければ、No で構いません。ただ、エラーが起こって、それに関連して、特別なパッケージをインストールする必要がある場合がありますが、そのときは、Yes としてください。</p>
+</div>
+</div>
+<div id="練習問題-posit-primers" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> 練習問題 Posit Primers<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C-posit-primers"><i class="fas fa-link"></i></a>
+</h2>
+<p>Posit Primers <a href="https://posit.cloud/learn/primers" class="uri">https://posit.cloud/learn/primers</a></p>
+<p>教科書 <a href="https://r4ds.had.co.nz">“R for Data Science”</a> は、<code>tidyverse</code> パッケージを中心に、データサイエンスについて解説したものですが、Posit Primers は、演習問題をしながら、教科書の内容を理解できるように構成されています。</p>
+<p>Posit Cloud からは、左のメニュー（隠れている場合は左上の3本線をクリックして表示させて）から選ぶことができます。そうでない場合は、直接、上のリンクから、利用してください。</p>
+<div id="最初の演習-the-basics-r4ds-explore-i" class="section level3" number="5.5.1">
+<h3>
+<span class="header-section-number">5.5.1</span> 最初の演習　The Basics – r4ds: Explore, I<a class="anchor" aria-label="anchor" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E6%BC%94%E7%BF%92-the-basics-r4ds-explore-i"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><a href="https://rstudio.cloud/learn/primers/1.1">Visualization Basics</a></li>
+<li><a href="https://rstudio.cloud/learn/primers/1.2">Programming Basics</a></li>
+</ul>
+<p>ぜひこれら二つの演習問題を、トライしてください。解説を読んでいただけでは、データサイエンスは身につきません。</p>
+</div>
+</div>
+<div id="参考文献-references" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> 参考文献 References<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-references"><i class="fas fa-link"></i></a>
+</h2>
+<p>一番目は、すでに紹介した、教科書です。二番目は、この文書を作成している、Bookdown というパッケージのサイトですが、そこに、たくさんの本が、無償で公開されています。素晴らしい本がたくさん含まれています。</p>
+<ul>
+<li>R For Data Science, by H. Wickham: <a href="https://r4ds.had.co.nz" class="uri">https://r4ds.had.co.nz</a>
+<ul>
+<li>Introduction: <a href="https://r4ds.had.co.nz/explore-intro.html#explore-intro" class="uri">https://r4ds.had.co.nz/explore-intro.html#explore-intro</a>
+</li>
+</ul>
+</li>
+<li>Bookdown: <a href="https://bookdown.org" class="uri">https://bookdown.org</a>, <a href="https://bookdown.org/home/archive/">Archive</a>
+</li>
+</ul>
+<p>下の一番目は、R 入門を、２時限の講義でしたときのものです。二番目と三番目は、講義で使ったものを、まとめたものです。教科書のようには、できていませんが、参考になる部分もあるかと思いますので、紹介しておきます。</p>
+<ul>
+<li><a href="https://ds-sl.github.io/intro2r/intro2r.nb.html">Introducton to R</a></li>
+<li><a href="https://icu-hsuzuki.github.io/da4r2022/">Data Analysis for Researchers 2022</a></li>
+<li><a href="https://icu-hsuzuki.github.io/da4r2021/">Data Analysis for Researchers 2021</a></li>
+</ul>
+</div>
+<div id="youtube-video---getstarted" class="section level2" number="5.7">
+<h2>
+<span class="header-section-number">5.7</span> YouTube Video - getstarted<a class="anchor" aria-label="anchor" href="#youtube-video---getstarted"><i class="fas fa-link"></i></a>
+</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9uQmMZoG74g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+</iframe>
+<ul>
+<li>ファイル：<a href="https://ds-sl.github.io/intro2r/getstarted.html" class="uri">https://ds-sl.github.io/intro2r/getstarted.html</a>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="rmarkdown.html"><span class="header-section-number">4</span> R Markdown</a></div>
+<div class="next"><a href="worldbank.html"><span class="header-section-number">6</span> World Bank</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#rbasics"><span class="header-section-number">5</span> R Basice</a></li>
+<li>
+<a class="nav-link" href="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%A7%E5%AE%9F%E8%A1%8C---run-in-console"><span class="header-section-number">5.1</span> コンソールで実行 - Run in Console</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E5%9B%9B%E3%81%A4"><span class="header-section-number">5.1.1</span> 最初の四つ</a></li>
+<li><a class="nav-link" href="#%E3%82%A2%E3%82%B5%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%83%98%E3%83%AB%E3%83%97"><span class="header-section-number">5.1.2</span> アサインメント、ヘルプ</a></li>
+<li><a class="nav-link" href="#%E3%81%8A%E3%81%99%E3%81%99%E3%82%81"><span class="header-section-number">5.1.3</span> おすすめ</a></li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92"><span class="header-section-number">5.1.4</span> 練習</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#rstudio-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">5.2</span> RStudio について</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E5%9B%9B%E3%81%A4%E3%81%AE%E7%AA%93%E6%9E%A0%E3%81%A8%E3%82%BF%E3%83%96-four-panes-and-tabs"><span class="header-section-number">5.2.1</span> 四つの窓枠とタブ Four Panes and Tabs</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#r-script-%E5%AE%9F%E8%A1%8C%E8%A8%98%E9%8C%B2"><span class="header-section-number">5.3</span> R Script 実行記録</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-script-%E3%81%AE%E4%BD%9C%E6%88%90"><span class="header-section-number">5.3.1</span> R Script の作成</a></li>
+<li><a class="nav-link" href="#r-script-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9F%E8%A1%8C"><span class="header-section-number">5.3.2</span> R Script による実行</a></li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-1"><span class="header-section-number">5.3.3</span> 練習</a></li>
+<li><a class="nav-link" href="#tips"><span class="header-section-number">5.3.4</span> Tips</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8---packages"><span class="header-section-number">5.4</span> パッケージ - Packages</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">5.4.1</span> パッケージのインストール</a></li>
+<li><a class="nav-link" href="#%E5%82%99%E8%80%83"><span class="header-section-number">5.4.2</span> 備考</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C-posit-primers"><span class="header-section-number">5.5</span> 練習問題 Posit Primers</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E6%BC%94%E7%BF%92-the-basics-r4ds-explore-i"><span class="header-section-number">5.5.1</span> 最初の演習　The Basics – r4ds: Explore, I</a></li></ul>
+</li>
+<li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-references"><span class="header-section-number">5.6</span> 参考文献 References</a></li>
+<li><a class="nav-link" href="#youtube-video---getstarted"><span class="header-section-number">5.7</span> YouTube Video - getstarted</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/24-rbasics.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/24-rbasics.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>データサイエンスをはじめましょう<br>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-04-01.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
