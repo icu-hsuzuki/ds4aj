@@ -171,13 +171,8 @@
 <li>
 <strong>Mac</strong> は、最初から、Install されていると思います。ユーティリティ（Utility）&gt; ターミナル（Terminal）を開いて<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;RStudio を既にお使いの方は、左下の窓枠から、Terminal タブを選択できますので、それを使うことも可能です。&lt;/p&gt;"><sup>16</sup></a>、<code>git --version</code> とすると、インストールされているバージョンが表示されると思います。バージョンがでない場合には、Install するかと聞かれます。このときに、Git だけをインストールすることも、Xcode という開発環境を同時にインストールすることも可能です。（インストールするように指示が出なければ、App Store からも、インストールできます。もし、そのあとで、git などのコマンドで xcrun: error などとエラーが出たら、<code>xcode-select --install</code> としてください。）インストールが終了したら、もう一度、<code>git --version</code> と Terminal に入力して、結果を確認してください。</li>
 </ul>
-<ol start="2" style="list-style-type: decimal">
-<li>GitHub のアカウント取得</li>
-</ol>
-<ul>
-<li>
-<a href="https://github.com">GitHub サイト</a> に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。</li>
-</ul>
+<p>ぎt2. GitHub のアカウント取得
+- <a href="https://github.com">GitHub サイト</a> に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。</p>
 <ol start="3" style="list-style-type: decimal">
 <li>RStudio の 左下の窓枠のTerminal タブ<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Terminal がない場合は、Tools &amp;gt; Terminal &amp;gt; New Terminal とすると表示されます。&lt;/p&gt;"><sup>17</sup></a>から、GitHub アカウントに連携する設定を行います。
 下の２行を、１行ずつ、コピーして、Terminal に入力してください。</li>
@@ -194,11 +189,13 @@ git config --global user.email "your@email.com" # GitHub に登録したメー�
 <strong>Mac</strong> の場合は、<code>/usr/bin/git</code> になるかと思いますが、Browse ボタンから確認してください。</li>
 </ul>
 <ol start="5" style="list-style-type: decimal">
-<li>その下に、Create RSA key とありますから、それを押し、Create ボタンを押しててください<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Passphrase (optional) と出ますが、無視してくださって構いません。&lt;/p&gt;"><sup>18</sup></a>。すると、View RSA key から、暗号キーも確認できます。（この作業は、Terminal から、<code>ssh-keygen -t rsa</code> として作成することも可能です。この作業で、<code>~/.ssh/</code> 内に、SSH キーが記述されたファイルが作成されます。）</li>
-<li>GitHub アカウントで公開鍵を利用できるようにします。まず、RStudio の方で作成した、RSA key （Tools の、Global Option の Git/SVN）の下にある view を押すと見ることができ、上に、書いてあるように、そこに出てきたものを、コピーします。次に、GitHubにログインし、右上のアイコンの右の三角から、設定（Setting）を選択し、SSH公開鍵（SSH and GPG Keys）を選択します。新しい公開鍵を追加（New SSH Key）を選択すると、SSH キーを貼り付けることができます。（リポジトリの左上にある、アカウント名をクリックし現れるダッシュボードの左上の大きなアイコンをクリックしても「アカウント設定」が現れ、SSH and GPG Keysを見つけることができると思います。）</li>
+<li><p>その下に、Create RSA key とありますから、それを押し、Create ボタンを押しててください<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Passphrase (optional) と出ますが、無視してくださって構いません。&lt;/p&gt;"><sup>18</sup></a>。すると、View RSA key から、暗号キーも確認できます。（この作業は、Terminal から、<code>ssh-keygen -t rsa</code> として作成することも可能です。この作業で、<code>~/.ssh/</code> 内に、SSH キーが記述されたファイルが作成されます。）</p></li>
+<li><p>GitHub アカウントで公開鍵を利用できるようにします。まず、RStudio の方で作成した、RSA key （Tools の、Global Option の Git/SVN）の下にある view を押すと見ることができ、上に、書いてあるように、そこに出てきたものを、コピーします。次に、GitHubにログインし、右上のアイコンの右の三角から、設定（Setting）を選択し、SSH公開鍵（SSH and GPG Keys）を選択します。新しい公開鍵を追加（New SSH Key）を選択すると、SSH キーを貼り付けることができます。（リポジトリの左上にある、アカウント名をクリックし現れるダッシュボードの左上の大きなアイコンをクリックしても「アカウント設定」が現れ、SSH and GPG Keysを見つけることができると思います。）</p></li>
 </ol>
-<p>（なお、RStudio ではなく、Terminal からコピーするときは、Unix では、<code>pbcopy &lt; ~/.ssh/id_rsa.pub</code> などとします。Windows の場合は、<code>pbcopy</code> が使えない可能性があるので、そのときは、Terminal から、Git Bash を使い、<code>use &lt; ~/.ssh/id_rsa.pub</code> とします。Terminal に慣れておられない方には、上に紹介した、RStudio からコピーする方が簡便かと思います。）
-7. これで設定終了ですので、R Studio を再起動させてください。</p>
+<p>（なお、RStudio ではなく、Terminal からコピーするときは、Unix では、<code>pbcopy &lt; ~/.ssh/id_rsa.pub</code> などとします。Windows の場合は、<code>pbcopy</code> が使えない可能性があるので、そのときは、Terminal から、Git Bash を使い、<code>use &lt; ~/.ssh/id_rsa.pub</code> とします。Terminal に慣れておられない方には、上に紹介した、RStudio からコピーする方が簡便かと思います。）</p>
+<ol start="7" style="list-style-type: decimal">
+<li>これで設定終了ですので、R Studio を再起動させてください。</li>
+</ol>
 </div>
 <div id="github-にあるリモートリポジトリremote-repoから始める場合" class="section level3" number="10.1.3">
 <h3>

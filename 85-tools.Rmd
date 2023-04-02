@@ -46,21 +46,27 @@ Git でバージョン管理されているディレクトリ（フォルダ）�
     - Adjusting Your Path Environment: Windows の コマンドライン・ツール（command line prompt) を使っていない方は、Git Bash のインストールを選択してください。さらに、Git and optional Unix tools from the Windows Command Prompt を選択することをお勧めしますが、上で書いたように、Windows の コマンド・プロンプトになれておられる方で、それを使い続けたいかたは、Use Git from Git Bash only を選択されるのが良いかもしれません。
     - 最後に、RStudio の設定（Tools > Global Option）で、Terminal　から、Git Bash を選択^[自動的に選択されているかもしれません]し、Tools から、New Terminal を選択^[すでにタブがあればこの作業は不要です]します。
   - **Mac** は、最初から、Install されていると思います。ユーティリティ（Utility）> ターミナル（Terminal）を開いて^[RStudio を既にお使いの方は、左下の窓枠から、Terminal タブを選択できますので、それを使うことも可能です。]、`git --version` とすると、インストールされているバージョンが表示されると思います。バージョンがでない場合には、Install するかと聞かれます。このときに、Git だけをインストールすることも、Xcode という開発環境を同時にインストールすることも可能です。（インストールするように指示が出なければ、App Store からも、インストールできます。もし、そのあとで、git などのコマンドで xcrun: error などとエラーが出たら、`xcode-select --install` としてください。）インストールが終了したら、もう一度、`git --version` と Terminal に入力して、結果を確認してください。
-2. GitHub のアカウント取得
+
+ぎt2. GitHub のアカウント取得
   - [GitHub サイト](https://github.com) に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。
+
 3. RStudio の 左下の窓枠のTerminal タブ^[Terminal がない場合は、Tools > Terminal > New Terminal とすると表示されます。]から、GitHub アカウントに連携する設定を行います。
 下の２行を、１行ずつ、コピーして、Terminal に入力してください。
 ```
 git config --global user.name "Your Name" # GitHub の User Name
 git config --global user.email "your@email.com" # GitHub に登録したメールアドレス
 ```
+
 4. RStudio の、Tools > Global Opton の、Git/SVN タブを開き、Git Executable とあるところに、Git 実行プログラムのある場所を入れます。
   - **Windows** の場合は、`C:/Program Files/Git/bin/git.exe` だと思いますが、Browse ボタンから確認してください。
   - **Mac** の場合は、`/usr/bin/git` になるかと思いますが、Browse ボタンから確認してください。
+
 5. その下に、Create RSA key とありますから、それを押し、Create ボタンを押しててください^[Passphrase (optional) と出ますが、無視してくださって構いません。]。すると、View RSA key から、暗号キーも確認できます。（この作業は、Terminal から、`ssh-keygen -t rsa` として作成することも可能です。この作業で、`~/.ssh/` 内に、SSH キーが記述されたファイルが作成されます。）
+
 6. GitHub アカウントで公開鍵を利用できるようにします。まず、RStudio の方で作成した、RSA key （Tools の、Global Option の Git/SVN）の下にある view を押すと見ることができ、上に、書いてあるように、そこに出てきたものを、コピーします。次に、GitHubにログインし、右上のアイコンの右の三角から、設定（Setting）を選択し、SSH公開鍵（SSH and GPG Keys）を選択します。新しい公開鍵を追加（New SSH Key）を選択すると、SSH  キーを貼り付けることができます。（リポジトリの左上にある、アカウント名をクリックし現れるダッシュボードの左上の大きなアイコンをクリックしても「アカウント設定」が現れ、SSH and GPG Keysを見つけることができると思います。）
 
 （なお、RStudio ではなく、Terminal からコピーするときは、Unix では、`pbcopy < ~/.ssh/id_rsa.pub` などとします。Windows の場合は、`pbcopy` が使えない可能性があるので、そのときは、Terminal から、Git Bash を使い、`use < ~/.ssh/id_rsa.pub` とします。Terminal に慣れておられない方には、上に紹介した、RStudio からコピーする方が簡便かと思います。）
+
 7. これで設定終了ですので、R Studio を再起動させてください。
 
 

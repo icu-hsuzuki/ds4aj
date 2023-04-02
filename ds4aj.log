@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  2 APR 2023 09:13
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  2 APR 2023 12:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1467,13 +1467,13 @@ x-text;!
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 [87] [88]
-Overfull \hbox (55.36475pt too wide) in paragraph at lines 3426--3426
+Overfull \hbox (55.36475pt too wide) in paragraph at lines 3415--3415
 []\TU/lmtt/m/n/10 git config --global user.email "your@email.com" # GitHub  \TU
 /ipaexg.ttf(0)/m/n/10 に 登 録 し た メ ー ル ア ド レ ス [] 
  []
 
 [89]
-Overfull \hbox (60.61475pt too wide) in paragraph at lines 3506--3506
+Overfull \hbox (60.61475pt too wide) in paragraph at lines 3501--3501
 []\TU/lmtt/m/n/10 #  \TU/ipaexg.ttf(0)/m/n/10 わ た し の ア カ ウ ン ト の 場 合 に は 、 コ ピ
  ー し た も の を 貼 り 付 け る と 、 上 の よ う に な り ま す 。 [] 
  []
@@ -1499,7 +1499,7 @@ x-text;!
 Missing character: There is no ■ (U+25A0) in font [lmsans10-regular]:mapping=te
 x-text;!
 [97]
-Overfull \hbox (15.80815pt too wide) in paragraph at lines 3935--3936
+Overfull \hbox (15.80815pt too wide) in paragraph at lines 3930--3931
 []\TU/lmr/m/n/10 Next, reference the labeled heading anywhere in the text using
  \TU/lmtt/m/n/10 \@ref(nice-label)\TU/lmr/m/n/10 ;
  []
