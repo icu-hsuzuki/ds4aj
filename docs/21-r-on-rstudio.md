@@ -45,6 +45,8 @@ https://cloud.r-project.org
 
 上のリンクから、Windows、macOS または、Linux を選択して、インストールしてください。
 
+Windows の場合は、base - install R for the first time を選択してください。
+
 macOS の場合は、M1, M2 など、最近の Apple Silicon の CPU で動くコンピュータか、以前の、Intel の CPU で動くものか、選択してください。Mac の左上の、りんごマークの、このコンピュータについてから、確認できます。 
 
 不明の場合は、「R のインストール」と検索してみてください。
@@ -69,19 +71,21 @@ R Studio はこれまでも使っていたが、R Notebook は使ったことが
 2. 上のメニューの File から、New Project を選択します。
 3. Project の名前を（test とか、firstproject など）つけて、Create ボタンを押します。
 4. 上のメニューの File から、New File の R Notebook を選択します。
-    * Package が必要なので、Install するかと聞かれますから、インストールを選んでください。
+    * Package が必要なので、Install するかと聞かれますから、インストールを選んでください^[次のステップ5でインストールする場合もあるかもしれません。]。
 5. File から、Save as を選んで、名前を（test0, rnotebook など）とつけ、Preview ボタンを押すと、内容が現れます。
 6. Preview ボタンの右の、三角印を押すと、Knit PDF と現れますから、それを選択
     * すでに、TeX というシステムを使っておられる方は、PDF が作成されますが、それ以外の方は、なにやらメッセージが出て、TeX システムが無いと出ると思います。
     * 左下の、Console タブに、`tinytex::install_tinytex()` をコピーして、入力し、Enter または、Return キーを押し実行します。
     * もう一度、Kit PDF を（今度は、Preview ボタンが、Knit となっていると思います。その右の三角から Knit PDF  を選択し）押し実行します。
 
-この一連の作業で、最後に、PDF が現れれば、動作確認終了です。
-クラウド Posit Cloud の項目に進んでください。
+この一連の作業で、最後に、PDF が現れれば、動作確認終了です。クラウド Posit Cloud の項目に進んでください。
+
+ステップ5まで終了すれば、PDF を作成しない限り、問題はありませんので、あとは、時間のあるときに、対応することも可能です。
+
 
 ### トラブル・シューティング（１）
 
-動作確認のステップ 4 または、6 でエラーが出る場合があると思います。
+動作確認のステップ 4 （またはステップ５で要求されるパッケージのインストール時点）または、6 でエラーが出る場合があります。
 
 * 動作確認の ステップ 4で、パッケージをたくさんインストールしますが、この段階で、エラーが出る場合があります。そのときは、まず、RStudio の上のメニューの、Tools の一番下の、Global Options を開き、左のメニューから、Packages を選び、Primary CRAN Repository を Change として、CRAN mirror から、Japan: The Institute of Statistical Mathematics, Tokyo を選択してください^[理由は不明ですが、特定のミラーサイトが理由ではなく、https を能動的に設定することで解決が図れるのかなと思います。]。
 
@@ -90,7 +94,7 @@ R Studio はこれまでも使っていたが、R Notebook は使ったことが
 * 動作確認のステップ 4では、問題なく、パッケージのインストールが完了したが、6で、エラーが出た場合には、Windows の日本語アカウント名の問題の可能性が高いと思います。OneDrive の問題の可能性もないとは言えませんが、次を試してみてください。
 
   1.  TinyTeX のアンインストール：`tinytex::unstall_tinytex()` を コンソールで実行
-  2.  サインアウトし、サインインしなおす
+  2.  Windowsの自分のアカウントからサインアウトし、サインインしなおす
   3.  TinyTeX をディレクトリを指定してインストール：`tinytex::install_tinytex(dir = "C:/myTinyTeX")` を コンソールで実行
   4.  サインアウトし、サインインしなおす
   5.  上の動作確認のステップ6、R Notebook から knit PDF を利用して、PDF を作成する。
@@ -103,7 +107,7 @@ R Studio はこれまでも使っていたが、R Notebook は使ったことが
   - 問題なく、1から6が完了したら、しばらく、そちらのアカウントを利用してください。それ以降については、また下に書きます。
 
   
-* 別のアカウントでも、問題が解決しない場合は、コンピュータに詳しい方に相談してください。わたしのホームページにある、メールアドレスから、わたしに相談するときは、次の三つの情報を教えてください。
+* 別のアカウントでも、問題が解決しない場合は、コンピュータに詳しい方に相談してください。わたしのホームページにある、メールアドレスから、わたしに相談するときは、次の三つの情報をコピー・ペーストして、教えてください。
   - 上の手順のどこでどのような問題が生じたか、そのときの、エラーメッセージ
   - `Sys.getenv()` の出力
   - Windows の場合、コマンド・プロンプトから、`systeminfo` と入力したときの出力 
@@ -115,7 +119,7 @@ R Studio はこれまでも使っていたが、R Notebook は使ったことが
 
 Windows の日本語システムで、アカウント名に日本語を使っておられる方、または、OneDrive を使っていて、Documents（書類）ディレクトリーのすべてをバックアップしておられる方は、ファイルを作成したり、パッケージをインストールするときに、問題が発生する可能性があります。
 
-カタカナや漢字のユーザネームを使っている場合は、RMarkdown で、文書を作成し、PDF で出力するときには、問題が起こります^[PDF の作成には、内部で TeX というプログラムを使っていますが、この TeX システムは、カタカナや漢字が入っているディレクトリには、インストールすることができません。]。解決方法は上に書いたように、一つの解決方法として、TinyTeX を、Home とは異なるところにインストールしています。
+カタカナや漢字のユーザネームを使っている場合は、RMarkdown で、文書を作成し、PDF で出力するときには、問題が起こります^[PDF の作成には、内部で TeX というプログラムを使っていますが、この TeX システムは、カタカナや漢字が入っているディレクトリには、インストールすることができません。]。解決方法は上に書いたように、一つの解決方法として、TinyTeX を、Home とは異なるところにインストールしています^[別のアカウントを作成して、そこに、TeXLive を インストールする方法もあります。[リンク](https://icu-hsuzuki.github.io/myds/techmemo.html#windows-installation-of-r-rstudio-tex) を参照。]。
 
 OneDrive で、ドキュメントフォルダ全体のバックアップをとっている場合も、問題が起こる可能性がありますが、一般的には書けませんので、困ったときは、下に書く方法を参照してください^[パッケージのインストールや、R Markdown で文書を生成するときには、一時的なファイルを作成して、問題がある場合はレポートする仕組みになっています。そして、問題なくその作業が終了すると、それらのファイルを消去しています。詳細は不明ですが、この作業で、OneDrive でバックアップする作業が入ると、エラーが起きるのではないかと思われます。]。
 :::
@@ -169,11 +173,23 @@ Windows に、もう一つ、アカウントを作成します。
 
 ##### このあとの使い方について
 
-[リンク](https://icu-hsuzuki.github.io/myds/techmemo.html#windows-installation-of-r-rstudio-tex) を参照してください。
-  
-## クラウド - Posit Cloud
+他のアカウントに、R と RStudio をインストールしても、自分のアカウントでも、R と RStudio を利用することが可能です。しかし、漢字やカタカナのアカウント名や、OneDrive の問題は、解決しません。アカウント名を修正することは可能ですが、間違えると、コンピュータ自体が動かなくなりますから、ここでは、説明しませんが、興味のあるかたは、[矢内勇生さんのスライド](https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf) を参照してください。
 
-RStudio Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。2022年11月に、会社名が、RStuio から Posit に変更になったこともあり、Posit Cloud となっていますが、まだ、RStudio Cloud と表示されている箇所もあります。
+OneDrive は、どのように使われているかによって、対応が変わりますので、一般的な対応方法は書けません。OneDrive は、Microsoft が提供するクラウドサービスで、5GB までは、無料で使えることもあり、コンピュータを使い始めるときに^[Microsoft アカウントを設定すると]、利用を促されます。5GB を超える場合は、課金されます。十分な容量を有料で確保していると、すべて、OneDrive にバックアップすることになり、Home も、OneDrive の管理下に置かれて、上に述べたような、ファイルを書いたり消去したりを頻繁に行うプログラムの場合には、問題が起こるようです。
+
+ただし、バックアップを取ること自体は、とても有効なことですので、設定を変える場合は、十分検討してから行ってください。
+
+個人的には、簡単設定で設定される、デスクトップと、ドキュメントと、フォトのうち、ドキュメントについては、OneDrive バックアップを停止し、ドキュメントの中に、バックアップ用のフォリダーを作成し、その中のもののみ、バックアップするのが良いのではないかと思います。それには、ドキュメントのバックアップを外し、OneDrive の中に、フォルダーを作成して、そこに、バックアップするファイルを移動させます。しかし、使い方などによって、状況が異なりますので、コンピュータに詳しいかたに相談することをお勧めします。
+
+その上で、RStudio のプロジェクトを作成するときは、OneDrive でバックアップをとっていないフォルダーに作成します。
+
+詳細は、下のリンクなどを参照してください。
+
+[参照リンク](https://icu-hsuzuki.github.io/myds/techmemo.html#windows-installation-of-r-rstudio-tex) 
+  
+## クラウド - Posit Cloud {#positcloud}
+
+Posit（RStudio）Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。2022年11月に、会社名が、RStuio から Posit に変更になったので、Posit Cloud となっていますが、まだ、RStudio Cloud と表示されている箇所もあります。
 
 ### クラウドサービス　How to Start Posit Cloud
 
@@ -201,11 +217,17 @@ RStudio Cloudは、誰でもオンラインでデータサイエンスを行い�
 Your account exceeded its compute hour limit. You can continue to open projects in your account until _such and such time_, or until you have used at total of 40 compute hours. After that you will be unable to open projects in space owned by your account until your next usage period begins on _such and such day_.
 :::
 
-わたしは、このようなメッセージが出たら、重要度にもよりますが、まずは、プロジェクトをダウンロードし、いつても、自分のコンピュータで使えるようにしてから、他の、アカウントに引っ越して、作業を続けています。その方法を追記しておきます。
+わたしは、このようなメッセージが出たら、重要度にもよりますが、まずは、プロジェクトをダウンロードし、いつでも、自分のコンピュータで使えるようにしてから、他の、アカウントに引っ越して、作業を続けています。その方法を追記しておきます。
 
 :::{.rmdtips}
-0. プロジェクトのダウンロード：自分のコンピュータに R と R Studio が使える場合は、必要なプロジェクトをダンロードします。ダウンロードするには、左上の3本線から、自分の Workspace にもどり、プロジェクトの右についている、ダウンロードボタンを押します。これは、プロジェクトとして、RStudio から開くことができます。（If you have installed R Studio and R on your computer, From the three lines on the top left, go back to your workspace.
-Then there is a download button on the right of your project. You can open it on your computer.）
+**TIPs：**
+
+**プロジェクトをダウンロード：**
+
+プロジェクトのダウンロード：自分のコンピュータに R と R Studio が使える場合は、必要なプロジェクトをダンロードします。ダウンロードするには、左上の3本線から、自分の Workspace にもどり、プロジェクトの右についている、ダウンロードボタンを押します。これは、プロジェクトとして、RStudio から開くことができます。
+
+If you have installed R Studio and R on your computer, From the three lines on the top left, go back to your workspace.
+Then there is a download button on the right of your project. You can open it on your computer.
 
 **他のアカウントとの共有：**
 
@@ -216,7 +238,22 @@ Then there is a download button on the right of your project. You can open it on
 Then you can see the temporary file containing everything in your old account and use it for a permanent project.)
 :::
 
-## 追記
+### PositCloud Shared Project
+
+わたしのプロジェクトを一つ共有してありますので、興味のある方はご覧ください、
+
+1. まず、自分の、PositCloud アカウントにログインする。
+2. [リンク](https://posit.cloud/content/5539763) をクリック
+3. 上に、Temporary Copy と出ています。このままでの、右下の、窓枠から、Files を選び、開いて中身を見たり、Code Chunk を実行したり、Preview や、knit をすることも可能です。Try Again と表示されますが、それをクリックすると、表示されます。R Markdown などの詳細は、R Markdown の章をみてください。
+4. 上に、Save a Permanent Copy とあります。これを、クリックすると、自分の、プロジェクトとすることができ、編集も可能になります。
+
+### Posit Primers and Cheat Sheet
+
+Posit Primers の左の帯（表示されていない場合は、左上の３本線をクリックしてください）をみると、いろいろな機能があることがわかります。特に、Primers は、基本的な練習をするプログラムで、あとからも、紹介しますが、答えを入力している形の練習問題になっています。とても有用です。
+
+Cheat Sheet は、いくつもの、機能の一覧が、早見表の形式で載っています。使い方などをぼえておくことはできないので、わたしも、よく使っています。
+
+## R のその他の利用方法
 
 R Studio または、RStudio Cloud（Posit Cloud） 以外で、R を使われる方のために、少しだけ書いておきます。個人的には、[Google colab](https://colab.research.google.com) と、[Cocalc](https://cocalc.com) を利用しています。
 
@@ -239,7 +276,23 @@ Google アカウントをお持ちの方は多いと思うので、Google colab 
 
 フォルダーを作成して、外部ファイルを読み込んだり、書き出したりすることも可能です。
 
-#### 参考にしたもの
+#### 参考
 
 * [How to use R in Google Colab:](https://towardsdatascience.com/how-to-use-r-in-google-colab-b6e02d736497)
+
+
+### CoCalc で R と RMarkdown
+
+[Cocalc リンク](https://cocalc.com)
+
+無償版は、スピードが遅いですが、個人的には、有用なクラウドサービスとして、活用しています。グループでプロジェクトを共有することも簡単にできます。
+
+1. 最初は、上のリンクの下にある、SinUp から、アカウントを作成します。
+  - Email アドレス、または、Google などのアカウントにリンクさせて、アカウントを作成することが可能です。
+2. Create a New Project から、プロジェクトを作成します。
+3. 使い方
+  * New から、Sage Worksheet を選択して、`%default_mode r` と最初に書けば、そのあと、R のコマンドを実行できます。
+  * New から、RMarkdown を選択すると、RMarkdown 文書を作成することができます。
+  * 他にも、TeX や、Python Notebook (Jupyter Notebook) など、さまざまな道具が提供されています。
+  * Maxima と呼ばれる、Maathematica の Free のバージョンから改良した、SageMath からスタートしたサイトです。
 

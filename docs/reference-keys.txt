@@ -34,11 +34,14 @@ r-studio-の-インストール
 r-および-rstudio-のアンインストール
 別のアカウントを作成してインストール
 このあとの使い方について
-クラウド---posit-cloud
+positcloud
 クラウドサービス-how-to-start-posit-cloud
-追記
+positcloud-shared-project
+posit-primers-and-cheat-sheet
+r-のその他の利用方法
 google-colab-で-r
-参考にしたもの
+参考
+cocalc-で-r-と-rmarkdown
 rmarkdown
 reproducible-and-literate-programming
 目的問いなど
