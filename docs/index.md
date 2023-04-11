@@ -14,6 +14,7 @@ description: |
   set in the _output.yml file.
 biblio-style: apalike
 csl: chicago-fullnote-bibliography.csl
+biblio-title: "参考文献"
 ---
 
 

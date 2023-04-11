@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  11 APR 2023 16:43
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  11 APR 2023 16:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1084,160 +1084,89 @@ Package microtype Info: Loading generic protrusion settings for font family
 LaTeX Font Info:    Font shape `TU/ipaexg.ttf(0)/m/n' will be
 (Font)              scaled to size 23.00687pt on input line 160.
 (./ds4aj.toc
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.00092pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.00064pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00046pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.99893pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.99925pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 2.
 LaTeX Font Info:    Font shape `TU/ipaexg.ttf(0)/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 1.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 10.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 10.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 10.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 10.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 10.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 10.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 10.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 10.
-[3] [4] [5] [6] [7])
+(Font)              scaled to size 11.09656pt on input line 7.
+[3] [4])
 \tf@toc=\write4
 \openout4 = `ds4aj.toc'.
 
-[8] [9
-
-] [10] [11] [12
-
-] [13] [14
-
-] [15] [16
-
-] [17] [18
-
-] [19] [20
+[5] [6
 
 ]
+LaTeX Font Info:    Font shape `TU/ipaexg.ttf(0)/m/n' will be
+(Font)              scaled to size 13.31586pt on input line 173.
+[7] [8]
+第1章
 LaTeX Font Info:    Font shape `TU/ipaexg.ttf(0)/m/n' will be
 (Font)              scaled to size 19.17854pt on input line 215.
-[21] [22] [23] [24
+[9
 
-] [25] [26] [27
+] [10
 
-] [28] [29] [30
-
-]
-第1章
-[31] [32
-
-]
+] [11] [12]
 第2章
-[33] [34
+[13
 
-]
+] [14] [15] [16] [17
+
+] [18]
 第3章
-LaTeX Font Info:    Font shape `TU/ipaexg.ttf(0)/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 296.
-[35] [36] [37] [38
+[19
 
 ]
-第4章
-[39] [40
-
-]
-第5章
-[41] [42
-
-]
-第6章
-[43] [44
-
-]
-第7章
-[45] [46
-
-]
-第8章
-[47] [48
-
-] [49] [50] [51
-
-] [52]
-第9章
-[53
-
-] [54
-
-]
-第10章
-[55] [56
-
-]
-第11章
 
 LaTeX Font Warning: Font shape `TU/ipaexm.ttf(0)/b/n' undefined
-(Font)              using `TU/ipaexm.ttf(0)/m/n' instead on input line 480.
+(Font)              using `TU/ipaexm.ttf(0)/m/n' instead on input line 478.
 
-[57]
+[20]
 LaTeX Font Info:    Font shape `TU/ipaexm.ttf(0)/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 534.
-[58]
-Overfull \hbox (38.22368pt too wide) in paragraph at lines 581--583
+(Font)              scaled to size 7.3977pt on input line 532.
+[21]
+Overfull \hbox (38.22368pt too wide) in paragraph at lines 579--581
 []\TU/lmr/m/n/10 TinyTeX \TU/ipaexm.ttf(0)/m/n/10 を デ ィ レ ク ト リ を 指 定 し て イ ン ス
  ト ー ル：| \TU/lmtt/m/n/10 tinytex::install_tinytex(dir
  []
 
-[59] [60] [61] [62] [63] [64
-
-]
-第12章
-[65] [66] [67] [68
-
-]
-第13章
-
-Underfull \hbox (badness 1107) in paragraph at lines 822--823
+[22] [23] [24] [25] [26] [27]
+Underfull \hbox (badness 1107) in paragraph at lines 820--821
 []\TU/lmtt/m/n/10 tidyverse \TU/ipaexm.ttf(0)/m/n/10 な ど は、|  す で に イ ン ス ト ー ル
  さ れ て い ま す が、|  使 い た い と
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 822--823
+Underfull \hbox (badness 2065) in paragraph at lines 820--821
 \TU/ipaexm.ttf(0)/m/n/10 き は、| \TU/lmtt/m/n/10 library(tidyverse) \TU/ipaexm.tt
 f(0)/m/n/10 と し、|  イ ン ス ト ー ル さ れ て い な い と き は、|
  []
 
-[69] [70] [71
-
-] [72]
-第14章
-[73
-
-] [74]
-第15章
-[75
-
-] [76
+[28] [29] [30
 
 ]
-第16章
-[77] [78
-
-]
-第17章
-[79] [80
-
-]
-第18章
-
-Overfull \hbox (34.36475pt too wide) in paragraph at lines 1013--1013
+第4章
+[31] [32] [33]
+Overfull \hbox (34.36475pt too wide) in paragraph at lines 1011--1011
 []\TU/lmtt/m/n/10 If you are not sure, you may install TinyTeX in R: tinytex::i
 nstall_tinytex()[] 
  []
 
-[81]
-Overfull \hbox (1920.57164pt too wide) in paragraph at lines 1037--1037
+
+Overfull \hbox (1920.57164pt too wide) in paragraph at lines 1035--1035
 [] \TU/ipaexg.ttf(0)/m/n/10 “ \TU/lmtt/m/n/10 C:/Program Files/RStudio/bin/quar
 to/bin/tools/pandoc \TU/ipaexg.ttf(0)/m/n/10 ”  \TU/lmtt/m/n/10 +RTS -K512m -RT
 S RNotebook-J.knit.md  \TU/ipaexg.ttf(0)/m/n/10 – \TU/lmtt/m/n/10 to latex  \TU
@@ -1256,7 +1185,7 @@ ttf(0)/m/n/10 – \TU/lmtt/m/n/10 highlight-style tango  \TU/ipaexg.ttf(0)/m/n/1
  []
 
 
-Overfull \hbox (1000.36475pt too wide) in paragraph at lines 1037--1037
+Overfull \hbox (1000.36475pt too wide) in paragraph at lines 1035--1035
 []\TU/lmtt/m/n/10 Error: LaTeX failed to compile RNotebook-J.tex. See https://y
 ihui.org/tinytex/r/#debugging for debugging tips. In addition: Warning message:
  In system2( \TU/ipaexg.ttf(0)/m/n/10 … \TU/lmtt/m/n/10 , stdout = if (use_file
@@ -1266,156 +1195,96 @@ ion halted[]
  []
 
 
-Overfull \hbox (501.61475pt too wide) in paragraph at lines 1037--1037
+Overfull \hbox (501.61475pt too wide) in paragraph at lines 1035--1035
 []\TU/lmtt/m/n/10 No LaTeX installation detected (LaTeX is required to create P
 DF output). You should install a LaTeX distribution for your platform: https://
 www.latex-project.org/get/[] 
  []
 
 
-Overfull \hbox (34.36475pt too wide) in paragraph at lines 1037--1037
+Overfull \hbox (34.36475pt too wide) in paragraph at lines 1035--1035
 []\TU/lmtt/m/n/10 If you are not sure, you may install TinyTeX in R: tinytex::i
 nstall_tinytex()[] 
  []
 
 
-Overfull \hbox (207.61475pt too wide) in paragraph at lines 1037--1037
+Overfull \hbox (207.61475pt too wide) in paragraph at lines 1035--1035
 []\TU/lmtt/m/n/10 MacTeX on macOS - https://tug.org/mactex/ (NOTE: Download wit
 h Safari rather than Chrome strongly recommended)[] 
  []
 
-[82]
-第19章
-
-Overfull \hbox (75.3504pt too wide) in paragraph at lines 1068--1070
+[34]
+Overfull \hbox (75.3504pt too wide) in paragraph at lines 1066--1068
 []\TU/lmtt/m/n/10 Path=C:\**UserName**\AppData\Local\Microsoft\WindowsApps;C:\T
 TeX\bin\windows 
  []
 
-[83
-
-] [84] [85
-
-] [86]
-第20章
-[87
-
-] [88
+[35] [36
 
 ]
-第21章
-[89]
+第5章
+[37]
 Missing character: There is no 、 (U+3001) in font [latinmodern-math.otf]/OT:scr
 ipt=math;language=dflt;!
+[38]
 File: 24-rbasics_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pd
 f)
 <use 24-rbasics_files/figure-latex/unnamed-chunk-4-1.pdf>
-[90] [91] [92]
-第22章
-[93
-
-] [94
-
-]
-第23章
-
-Underfull \hbox (badness 3333) in paragraph at lines 1349--1350
+[39] [40] [41]
+Underfull \hbox (badness 3333) in paragraph at lines 1347--1348
 []\TU/ipaexm.ttf(0)/m/n/10 実 行 す る に は、|  カ ー ソ ル の 場 所 で \TU/lmr/m/n/10 Ctrl+S
 hift+Enter (Win) \TU/ipaexm.ttf(0)/m/n/10 ま た は
  []
 
-[95]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1374.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1372.
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1374.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1372.
 
 
-
-Underfull \vbox (badness 2913) detected at line 1593
+[42]
+Overfull \vbox (0.79999pt too high) detected at line 1591
  []
 
-[96] [97]
-Underfull \vbox (badness 10000) detected at line 1593
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1593
- []
-
-[98]
-Underfull \vbox (badness 10000) detected at line 1593
+[43] [44]
+Underfull \vbox (badness 10000) detected at line 1591
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1593
+Underfull \vbox (badness 10000) detected at line 1591
  []
 
-[99]
-Underfull \vbox (badness 10000) detected at line 1593
+[45] [46] [47]
+Overfull \vbox (0.43246pt too high) detected at line 1677
  []
 
+[48] [49] [50] [51] [52] [53
 
-Underfull \vbox (badness 10000) detected at line 1593
- []
+] [54]
+第6章
 
-[100]
-Underfull \vbox (badness 10000) detected at line 1679
- []
-
-[101]
-Underfull \vbox (badness 10000) detected at line 1679
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1679
- []
-
-[102] [103] [104
-
-]
-第24章
-[105] [106]
-第25章
-[107
-
-] [108
-
-]
-第26章
-[109] [110
-
-]
-第27章
-[111] [112
-
-] [113] [114] [115
-
-] [116]
-第28章
-
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1891--1891
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1888--1888
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1891--1891
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1888--1888
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
-[117
+[55
 
 ]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1912--1912
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1909--1909
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1912--1912
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1909--1909
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -1423,14 +1292,14 @@ Overfull \hbox (71.11475pt too wide) in paragraph at lines 1912--1912
 File: 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type 
 pdf)
 <use 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf>
-[118]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1937--1937
+[56]
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1934--1934
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1937--1937
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1934--1934
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -1438,235 +1307,161 @@ Overfull \hbox (71.11475pt too wide) in paragraph at lines 1937--1937
 File: 31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type
  pdf)
 <use 31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf>
-[119] [120] [121] [122]
-第29章
-[123
-
-] [124] [125] [126]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2291--2291
+[57] [58] [59] [60] [61] [62] [63]
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2288--2288
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2291--2291
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2288--2288
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
-[127]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2328--2328
+[64]
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2325--2325
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2328--2328
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2325--2325
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
-
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2372--2372
+[65]
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2369--2369
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2372--2372
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2369--2369
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
-[128]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2416--2416
+[66]
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2413--2413
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2416--2416
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2413--2413
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
-[129]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2470--2470
+[67]
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2467--2467
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2470--2470
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2467--2467
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
-[130]
-Overfull \vbox (1.21999pt too high) detected at line 2511
+[68]
+Underfull \vbox (badness 10000) detected at line 2554
  []
 
-[131]
-Underfull \vbox (badness 10000) detected at line 2557
- []
-
-[132] [133] [134
-
-]
-第30章
+[69]
 File: 31-worldbank_files/figure-latex/unnamed-chunk-39-1.pdf Graphic file (type
  pdf)
 <use 31-worldbank_files/figure-latex/unnamed-chunk-39-1.pdf>
-[135]
+[70]
 File: 31-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf Graphic file (type
  pdf)
 <use 31-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf>
-[136] [137]
-Underfull \vbox (badness 10000) detected at line 2730
+[71] [72]
+Underfull \vbox (badness 2846) detected at line 2690
  []
 
-[138] [139] [140
+[73] [74] [75
 
-]
-第31章
-[141] [142
-
-] [143] [144] [145
-
-] [146]
-第32章
+] [76]
+第7章
 File: ./data/data-science.png Graphic file (type bmp)
 <./data/data-science.png>
 LaTeX Font Info:    Font shape `TU/ipaexm.ttf(0)/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 2750.
-[147
+(Font)              scaled to size 8.32242pt on input line 2746.
+[77
 
-] [148
-
-]
-第33章
-[149] [150]
+] [78] [79]
 File: 41-eda_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf)
 <use 41-eda_files/figure-latex/unnamed-chunk-9-1.pdf>
-[151]
 File: 41-eda_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pdf)
 <use 41-eda_files/figure-latex/unnamed-chunk-10-1.pdf>
-[152]
+[80]
 File: 41-eda_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
 <use 41-eda_files/figure-latex/unnamed-chunk-11-1.pdf>
+[81]
 File: 41-eda_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type pdf)
 <use 41-eda_files/figure-latex/unnamed-chunk-12-1.pdf>
-[153]
 File: 41-eda_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (type pdf)
 <use 41-eda_files/figure-latex/unnamed-chunk-13-1.pdf>
+[82]
 File: 41-eda_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (type pdf)
 <use 41-eda_files/figure-latex/unnamed-chunk-14-1.pdf>
-[154]
 File: 41-eda_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type pdf)
 <use 41-eda_files/figure-latex/unnamed-chunk-15-1.pdf>
-[155] [156] [157
+[83] [84] [85] [86
 
-] [158] [159
+] [87] [88]
+第8章
+[89
 
-] [160] [161
-
-] [162] [163
-
-] [164]
-第34章
-
-LaTeX Font Warning: Font shape `TU/ipaexg.ttf(0)/m/it' undefined
-(Font)              using `TU/ipaexg.ttf(0)/m/n' instead on input line 3032.
-
-[165
-
-] [166
+] [90
 
 ]
-第35章
+付録A
+
+LaTeX Font Warning: Font shape `TU/ipaexg.ttf(0)/m/it' undefined
+(Font)              using `TU/ipaexg.ttf(0)/m/n' instead on input line 3027.
+
 File: 81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type p
 df)
 <use 81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf>
-[167] [168
-
-]
-第36章
-[169] [170
-
-]
-第37章
-[171] [172
-
-]
-第38章
+[91] [92]
 File: 81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type p
 df)
 <use 81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf>
-[173] [174
+[93] [94] [95] [96]
+付録B
+[97
 
-]
-第39章
-[175] [176
-
-]
-第40章
-[177] [178] [179] [180
-
-] [181] [182] [183] [184
-
-]
-第41章
-[185] [186]
-Overfull \hbox (55.36475pt too wide) in paragraph at lines 3405--3405
+] [98]
+Overfull \hbox (55.36475pt too wide) in paragraph at lines 3400--3400
 []\TU/lmtt/m/n/10 git config --global user.email "your@email.com" # GitHub  \TU
 /ipaexg.ttf(0)/m/n/10 に 登 録 し た メ ー ル ア ド レ ス [] 
  []
 
-[187] [188]
-Overfull \hbox (60.61475pt too wide) in paragraph at lines 3491--3491
+[99] [100]
+Overfull \hbox (60.61475pt too wide) in paragraph at lines 3486--3486
 []\TU/lmtt/m/n/10 #  \TU/ipaexg.ttf(0)/m/n/10 わ た し の ア カ ウ ン ト の 場 合 に は 、 コ ピ
  ー し た も の を 貼 り 付 け る と 、 上 の よ う に な り ま す 。 [] 
  []
 
-[189] [190] [191] [192] [193] [194] [195] [196] [197
-
-] [198]
-第42章
-[199
-
-] [200]
-第43章
-[201
-
-] [202
+[101] [102] [103] [104] [105] [106] [107] [108]
+付録C
+[109
 
 ]
-第44章
-
-Overfull \hbox (15.80815pt too wide) in paragraph at lines 3976--3977
+Overfull \hbox (15.80815pt too wide) in paragraph at lines 3971--3972
 []\TU/lmr/m/n/10 Next, reference the labeled heading anywhere in the text using
  \TU/lmtt/m/n/10 \@ref(nice-label)\TU/lmr/m/n/10 ;
  []
 
+[110]
 File: 90-bookdown_files/figure-latex/nice-fig-1.pdf Graphic file (type pdf)
 <use 90-bookdown_files/figure-latex/nice-fig-1.pdf>
-[203] [204]
-第45章
-[205
-
-] [206
-
-]
-第46章
-[207] [208
-
-]
-第47章
-[209] [210]
-第48章
-[211
-
-] (./ds4aj.bbl [212]) [213
+[111] [112] [113] (./ds4aj.bbl [114]) [115
 
 ] (./ds4aj.aux)
 
@@ -1674,12 +1469,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 24070 strings out of 476683
- 497666 string characters out of 5804047
- 1875018 words of memory out of 5000000
- 43912 multiletter control sequences out of 15000+600000
- 519552 words of font info for 119 fonts, out of 8000000 for 9000
+ 23929 strings out of 476683
+ 493029 string characters out of 5804047
+ 1879018 words of memory out of 5000000
+ 43772 multiletter control sequences out of 15000+600000
+ 519544 words of font info for 118 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
  105i,11n,140p,1002b,983s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ds4aj.pdf (213 pages).
+Output written on ds4aj.pdf (115 pages).

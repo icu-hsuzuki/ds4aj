@@ -160,8 +160,8 @@
 \tableofcontents
 }
 \hypertarget{ux3053ux306eux6587ux66f8ux306bux3064ux3044ux3066}{%
-\part*{この文書について}\label{ux3053ux306eux6587ux66f8ux306bux3064ux3044ux3066}}
-\addcontentsline{toc}{part}{この文書について}
+\chapter*{この文書について}\label{ux3053ux306eux6587ux66f8ux306bux3064ux3044ux3066}}
+\addcontentsline{toc}{chapter}{この文書について}
 
 データサイエンスを始めてみませんか。
 
@@ -170,24 +170,24 @@
 みなさんも一緒にデータサイエンスを学んでみませんか。
 
 \hypertarget{ux8457ux8005ux306bux3064ux3044ux3066}{%
-\chapter*{著者について}\label{ux8457ux8005ux306bux3064ux3044ux3066}}
-\addcontentsline{toc}{chapter}{著者について}
+\section*{著者について}\label{ux8457ux8005ux306bux3064ux3044ux3066}}
+\addcontentsline{toc}{section}{著者について}
 
 著者は、大学の学生の時以来、数学を学び、大学で教え、2019年春に退職。それ以来、少しずつ、データサイエンスを学んでいます。
 
 幸運にも、2019年9月の日本数学会教育委員会主催教育シンポジウムで、「文理共通して行う数理・データサイエンス教育」という題で、話す機会が与えられ、その後、あることが契機となり、2020年度から、毎年、冬学期（12月から2月）に、大学院一般向け（分野の指定なし）の授業、「研究者のためのデータ分析（Data Analysis for Researchers）」を担当しています。複数の教員で担当しますが、基本的な部分は、わたしが教えています。受講生は20人程度で、殆どが、外国人。それも、多国籍で、多くても一国から三人程度。英語で教えています。
 
 \hypertarget{ux30b3ux30f3ux30d4ux30e5ux30fcux30bfux8a00ux8a9eux306bux3064ux3044ux3066}{%
-\chapter*{コンピュータ言語について}\label{ux30b3ux30f3ux30d4ux30e5ux30fcux30bfux8a00ux8a9eux306bux3064ux3044ux3066}}
-\addcontentsline{toc}{chapter}{コンピュータ言語について}
+\section*{コンピュータ言語について}\label{ux30b3ux30f3ux30d4ux30e5ux30fcux30bfux8a00ux8a9eux306bux3064ux3044ux3066}}
+\addcontentsline{toc}{section}{コンピュータ言語について}
 
 統計解析のために開発された R を使います。いずれは、python についても触れたいと思いますが、プログラミングの経験がない方も含めて、最初にデータサイエンスを学ぶには、R は最適だと考えています。特に、R Studio IDE（integrated development environment, 統合開発環境） で、R を簡単に使うことができます。さらに、簡単なものであれば、Posit Cloud で試したり、共有することも可能です。また、再現性（Reproducibility）や、なにを実行しているのかの説明を同時に記述すること（Literate Programming）は、非常に重要ですが、その記述も、R Markdown によって、可能になっています。この文書も、R Markdown の一つの形式の、bookdown を利用しています。最後に、Bookdown に関連して、膨大な数の、参考書も、無償で提供されており、オンラインで読むことができることも、R をお薦めする理由です。
 
 ただし、日本語のものは、まだ十分とは言えない状況です。この文書を書き始めたのも、すこしでも、お役に立つことができればとの、気持ちが背景にあります。
 
 \hypertarget{ux8a00ux8a9eux306bux3064ux3044ux3066}{%
-\chapter*{言語について}\label{ux8a00ux8a9eux306bux3064ux3044ux3066}}
-\addcontentsline{toc}{chapter}{言語について}
+\section*{言語について}\label{ux8a00ux8a9eux306bux3064ux3044ux3066}}
+\addcontentsline{toc}{section}{言語について}
 
 ご覧の通り、本書は、日本語で書かれています。用語は、英語、あるいは、英語を追記、または、英語をカタカナにしただけのものを使用する可能性が大きいですが、説明は、極力、日本語で書いていく予定です。
 
@@ -198,8 +198,8 @@
 最初は、みなさんも、変数（variable）や、オブジェクト（object）に名前をつけるときは、半角英数を使い、日本語は、使わないようにすることをお勧めします。
 
 \hypertarget{pdfepub-ux7248ux306bux3064ux3044ux3066}{%
-\chapter*{PDF、ePub 版について}\label{pdfepub-ux7248ux306bux3064ux3044ux3066}}
-\addcontentsline{toc}{chapter}{PDF、ePub 版について}
+\section*{PDF、ePub 版について}\label{pdfepub-ux7248ux306bux3064ux3044ux3066}}
+\addcontentsline{toc}{section}{PDF、ePub 版について}
 
 実は、PDF 版と、ePub 版も作成しています。しかし、扱いが異なるので、ある程度完成するまでは、ほとんど更新しない予定です。いずれ、これらも、更新したものを公開できると良いのですが。試験公開版は、下のリンクにあります。
 
@@ -212,26 +212,25 @@
 \end{itemize}
 
 \hypertarget{introduction}{%
-\part{はじめに}\label{introduction}}
+\chapter{はじめに}\label{introduction}}
 
 \begin{quote}
 Data Science: データ (Data) を活用して課題を発見・探求し、適切な解決策を探る意思決定のための科学（Decision Science）で、 エンピリカル（Empirical Study）すなわち、理論ではなく、実証性を特徴とする。 データから得られる特徴を表示するとともに、数理モデルを適用し・機械学習などで評価し・アルゴリズムを策定する数理的思考を通して得られた結果を、可視化などによってコミュニケーションをおこない、共有し、他者の意見を聞き理解する努力をしながら、さらに課題について、あらたにデータを活用して考え、検証し、適切な解決策がもたらす新たな課題も予測しながら、調整をはかる。
 \end{quote}
 
 \hypertarget{part-part-i-public-data}{%
-\part*{(PART) PART I PUBLIC DATA}\label{part-part-i-public-data}}
-\addcontentsline{toc}{part}{(PART) PART I PUBLIC DATA}
+\part{PART I PUBLIC DATA}\label{part-part-i-public-data}}
 
 \hypertarget{publicdata}{%
-\part{Public Data}\label{publicdata}}
+\chapter{Public Data}\label{publicdata}}
 
 まずは、パブリックデータを見てみましょう。大きな機関のパグリックデータには、ダッシュボード（dashboard）と呼ばれている、パラメタを変更して、そのグラフを描くなどの機能が付いているものもあります。
 
 \hypertarget{ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}{%
-\chapter{オープンデータ}\label{ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}}
+\section{オープンデータ}\label{ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}}
 
 \hypertarget{open-government-data-toolkit-open-data-defined}{%
-\section{\texorpdfstring{\href{http://opendatatoolkit.worldbank.org}{Open Government Data Toolkit}: \href{http://opendatatoolkit.worldbank.org/en/essentials.html}{Open Data Defined}}{Open Government Data Toolkit: Open Data Defined}}\label{open-government-data-toolkit-open-data-defined}}
+\subsection{\texorpdfstring{\href{http://opendatatoolkit.worldbank.org}{Open Government Data Toolkit}: \href{http://opendatatoolkit.worldbank.org/en/essentials.html}{Open Data Defined}}{Open Government Data Toolkit: Open Data Defined}}\label{open-government-data-toolkit-open-data-defined}}
 
 The term \textbf{Open Data} has a very precise meaning. Data or content is open if anyone is free to use, re-use or redistribute it, subject at most to measures that preserve provenance and openness.
 
@@ -255,7 +254,7 @@ The term \textbf{Open Data} has a very precise meaning. Data or content is open 
 \end{enumerate}
 
 \hypertarget{ux65e5ux672cux304bux3089ux4e16ux754cux3092ux898bux308b}{%
-\chapter{日本から世界を見る}\label{ux65e5ux672cux304bux3089ux4e16ux754cux3092ux898bux308b}}
+\section{日本から世界を見る}\label{ux65e5ux672cux304bux3089ux4e16ux754cux3092ux898bux308b}}
 
 以下では、世界銀行の、世界開発指標を利用するが、他にも、\href{https://data.un.org}{UNdata}、\href{https://data.oecd.org}{OECD data}、\href{https://wid.world}{WID}、\href{https://ec.europa.eu/eurostat}{Eurostat}、\href{https://ourworldindata.org}{Our World in Data} なども、同様の、ダッシュボードを備えており、データの提供もしている。日本では、\href{https://www.e-stat.go.jp/}{e-Stat}、\href{https://dashboard.e-stat.go.jp}{ダッシュボード}
 
@@ -266,7 +265,7 @@ The term \textbf{Open Data} has a very precise meaning. Data or content is open 
 \end{itemize}
 
 \hypertarget{ux4e16ux754cux9280ux884cworld-bank}{%
-\chapter{世界銀行（World Bank）}\label{ux4e16ux754cux9280ux884cworld-bank}}
+\section{世界銀行（World Bank）}\label{ux4e16ux754cux9280ux884cworld-bank}}
 
 \begin{itemize}
 \tightlist
@@ -293,7 +292,7 @@ The term \textbf{Open Data} has a very precise meaning. Data or content is open 
 \end{itemize}
 
 \hypertarget{ux4e16ux754cux958bux767aux6307ux6570world-development-indicator-wdi}{%
-\section{世界開発指数（World Development Indicator (WDI)）}\label{ux4e16ux754cux958bux767aux6307ux6570world-development-indicator-wdi}}
+\subsection{世界開発指数（World Development Indicator (WDI)）}\label{ux4e16ux754cux958bux767aux6307ux6570world-development-indicator-wdi}}
 
 \begin{itemize}
 \tightlist
@@ -314,7 +313,7 @@ The term \textbf{Open Data} has a very precise meaning. Data or content is open 
 \end{itemize}
 
 \hypertarget{world-bank-wdi---world-development-indicaters}{%
-\section{World Bank: WDI - World Development Indicaters}\label{world-bank-wdi---world-development-indicaters}}
+\subsection{World Bank: WDI - World Development Indicaters}\label{world-bank-wdi---world-development-indicaters}}
 
 \begin{itemize}
 \tightlist
@@ -343,7 +342,7 @@ The term \textbf{Open Data} has a very precise meaning. Data or content is open 
 日本について：\url{https://data.worldbank.org/country/japan?view=chart}
 
 \hypertarget{ux4e16ux754cux958bux767aux6307ux6a19world-development-indicator}{%
-\section{世界開発指標（World Development Indicator）}\label{ux4e16ux754cux958bux767aux6307ux6a19world-development-indicator}}
+\subsection{世界開発指標（World Development Indicator）}\label{ux4e16ux754cux958bux767aux6307ux6a19world-development-indicator}}
 
 \begin{itemize}
 \tightlist
@@ -364,82 +363,81 @@ The term \textbf{Open Data} has a very precise meaning. Data or content is open 
 \end{itemize}
 
 \hypertarget{ux4f8b}{%
-\section{例}\label{ux4f8b}}
+\subsection{例}\label{ux4f8b}}
 
 \hypertarget{gdp-per-capita-constant-2015-us}{%
-\subsection{GDP per capita (constant 2015 US\$)}\label{gdp-per-capita-constant-2015-us}}
+\subsubsection{GDP per capita (constant 2015 US\$)}\label{gdp-per-capita-constant-2015-us}}
 
 実質GDP（2015年を基準にしたもの）を、総人口で割った値。アメリカ合衆国、英国、ドイツ、フランス、日本、中国、日本、ロシア、ウクライナの2021年における比較棒グラフ - \href{https://data.worldbank.org/indicator/NY.GDP.PCAP.KD?locations=JP-GB-RU-FR-CN-US-UA-DE\&start=2021\&end=2021\&view=bar}{リンク}
 
 年次変化を示す折線グラフ -
 
 \hypertarget{central-government-debt-total-of-gdp}{%
-\subsection{Central government debt, total (\% of GDP)}\label{central-government-debt-total-of-gdp}}
+\subsubsection{Central government debt, total (\% of GDP)}\label{central-government-debt-total-of-gdp}}
 
 2020年の政府の負債（GDP の百分率）- \href{https://data.worldbank.org/indicator/GC.DOD.TOTL.GD.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE\&start=2020\&end=2020\&view=bar}{リンク}
 
 政府の負債（GDP の百分率）の年次変化を示す折線グラフ
 
 \hypertarget{co2-emissions-metric-tons-per-capita}{%
-\subsection{CO2 emissions (metric tons per capita)}\label{co2-emissions-metric-tons-per-capita}}
+\subsubsection{CO2 emissions (metric tons per capita)}\label{co2-emissions-metric-tons-per-capita}}
 
 CO2 排出量 (1 人あたりのメートル トン) - \href{https://data.worldbank.org/indicator/EN.ATM.CO2E.PC?locations=JP-GB-RU-FR-CN-US-UA-DE\&start=2019\&end=2019\&view=bar}{リンク}
 
 CO2 排出量 (1 人あたりのメートル トン) の年次変化の折線グラフ
 
 \hypertarget{military-expenditure-of-gdp}{%
-\subsection{Military expenditure (\% of GDP)}\label{military-expenditure-of-gdp}}
+\subsubsection{Military expenditure (\% of GDP)}\label{military-expenditure-of-gdp}}
 
 2021年の軍事費 (GDP の \%) - \href{https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS?locations=JP-GB-RU-FR-CN-UA\&start=2021\&end=2021\&view=bar}{リンク}
 
 軍事費 (GDP の \%) の年次変化
 
 \hypertarget{military-expenditure-current-usd}{%
-\subsection{Military expenditure (current USD)}\label{military-expenditure-current-usd}}
+\subsubsection{Military expenditure (current USD)}\label{military-expenditure-current-usd}}
 
 2021年の軍事費 (現在の米ドル)
 
 軍事費の年次変化
 
 \hypertarget{proportion-of-seats-held-by-women-in-natinal-parliaments}{%
-\subsection{Proportion of seats held by women in natinal parliaments (\%)}\label{proportion-of-seats-held-by-women-in-natinal-parliaments}}
+\subsubsection{Proportion of seats held by women in natinal parliaments (\%)}\label{proportion-of-seats-held-by-women-in-natinal-parliaments}}
 
 2021年、国会で女性が占める議席の割合 (\%) - \href{https://data.worldbank.org/indicator/SG.GEN.PARL.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE\&start=2021\&end=2021\&view=bar}{リンク}
 
 国会で女性が占める議席の割合 (\%) の年次変化
 
 \hypertarget{ux4e16ux754cux306eux3055ux307eux3056ux307eux306aux8ab2ux984cux304bux3089ux898bux308b}{%
-\chapter{世界のさまざまな課題から見る}\label{ux4e16ux754cux306eux3055ux307eux3056ux307eux306aux8ab2ux984cux304bux3089ux898bux308b}}
+\section{世界のさまざまな課題から見る}\label{ux4e16ux754cux306eux3055ux307eux3056ux307eux306aux8ab2ux984cux304bux3089ux898bux308b}}
 
 \hypertarget{oecd}{%
-\chapter{OECD}\label{oecd}}
+\section{OECD}\label{oecd}}
 
 OECD Data: \url{https://data.oecd.org/}
 
 \hypertarget{un-data}{%
-\chapter{UN Data}\label{un-data}}
+\section{UN Data}\label{un-data}}
 
 UNdata: \url{https://data.un.org}
 
 \hypertarget{our-world-in-data}{%
-\chapter{Our World in Data}\label{our-world-in-data}}
+\section{Our World in Data}\label{our-world-in-data}}
 
 owid: \url{https://ourworldindata.org/}
 
 \hypertarget{eurostat}{%
-\chapter{Eurostat}\label{eurostat}}
+\section{Eurostat}\label{eurostat}}
 
 eurostat: \url{https://ec.europa.eu/eurostat}
 
 \hypertarget{part-part-ii-basics}{%
-\part*{(PART) PART II BASICS}\label{part-part-ii-basics}}
-\addcontentsline{toc}{part}{(PART) PART II BASICS}
+\part{PART II BASICS}\label{part-part-ii-basics}}
 
 \hypertarget{ronrstudio}{%
-\part{R Studio で R}\label{ronrstudio}}
+\chapter{R Studio で R}\label{ronrstudio}}
 
 \hypertarget{ux306fux3058ux3081ux306b}{%
-\chapter{はじめに}\label{ux306fux3058ux3081ux306b}}
+\section{はじめに}\label{ux306fux3058ux3081ux306b}}
 
 この章では、R と R Studio をインストールし、正常に動作しているかを、確認することを目標とします。実際の、使い方は、次の章以下で、述べます。
 
@@ -448,7 +446,7 @@ eurostat: \url{https://ec.europa.eu/eurostat}
 確認の段階で、エラーが出てしまった場合の解決方法も、下に書きますが、まずは、Posit Cloud など、他の方法でR を使えるようにして、時間のあるときに、解決を試みてください。
 
 \hypertarget{r-ux3068-r-studio}{%
-\chapter{R と R Studio}\label{r-ux3068-r-studio}}
+\section{R と R Studio}\label{r-ux3068-r-studio}}
 
 \begin{quote}
 R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS. \url{https://www.r-project.org}
@@ -469,7 +467,7 @@ RStudio は、R と Python のための、総合開発環境（IDE）です。RS
 R は、統計解析のためのシステムで、R Studio は、R（および Python）を利用するための、総合開発環境です。そこで、「R Studio で R を利用する」という表現をします。
 
 \hypertarget{r-ux3068-r-studio-ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}{%
-\chapter{R と R Studio のインストール}\label{r-ux3068-r-studio-ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
+\section{R と R Studio のインストール}\label{r-ux3068-r-studio-ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
 
 R と R Studio をインストールします。
 
@@ -486,7 +484,7 @@ R と R Studio をインストールします。
 ある制約がかかるとメッセージが出ますが、管理者権限なしで、インストールすることも可能です。特別の事情があり、管理者権限なしで、インストールする場合は、\href{https://icu-hsuzuki.github.io/myds/techmemo.html\#\%E9\%9D\%9E\%E7\%AE\%A1\%E7\%90\%86\%E8\%80\%85\%E3\%81\%A8\%E3\%81\%97\%E3\%81\%A6-r-\%E3\%81\%A8-rstudio-\%E3\%82\%92\%E3\%82\%A4\%E3\%83\%B3\%E3\%82\%B9\%E3\%83\%88\%E3\%83\%BC\%E3\%83\%AB}{こちら}を参照してください。
 
 \hypertarget{r-ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}{%
-\section{R のインストール}\label{r-ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
+\subsection{R のインストール}\label{r-ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
 
 \url{https://cloud.r-project.org}
 
@@ -499,7 +497,7 @@ macOS の場合は、M1, M2 など、最近の Apple Silicon の CPU で動く�
 不明の場合は、「R のインストール」と検索してみてください。
 
 \hypertarget{r-studio-ux306e-ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}{%
-\section{R Studio の インストール}\label{r-studio-ux306e-ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
+\subsection{R Studio の インストール}\label{r-studio-ux306e-ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
 
 \url{http://www.rstudio.com/download}
 
@@ -510,7 +508,7 @@ macOS の場合は、M1, M2 など、最近の Apple Silicon の CPU で動く�
 不明の場合は、「RStudio のインストール」と検索してみてください。
 
 \hypertarget{ux52d5ux4f5cux78baux8a8d}{%
-\section{動作確認}\label{ux52d5ux4f5cux78baux8a8d}}
+\subsection{動作確認}\label{ux52d5ux4f5cux78baux8a8d}}
 
 動作確認のための、一連の流れを書き、その下に、問題が起こった場合の対処を書きます。
 
@@ -554,7 +552,7 @@ R Studio はこれまでも使っていたが、R Notebook は使ったことが
 ステップ5まで終了すれば、PDF を作成しない限り、問題はありませんので、あとは、時間のあるときに、対応することも可能です。
 
 \hypertarget{ux30c8ux30e9ux30d6ux30ebux30b7ux30e5ux30fcux30c6ux30a3ux30f3ux30b0uxff11}{%
-\section{トラブル・シューティング（１）}\label{ux30c8ux30e9ux30d6ux30ebux30b7ux30e5ux30fcux30c6ux30a3ux30f3ux30b0uxff11}}
+\subsection{トラブル・シューティング（１）}\label{ux30c8ux30e9ux30d6ux30ebux30b7ux30e5ux30fcux30c6ux30a3ux30f3ux30b0uxff11}}
 
 動作確認のステップ 4 （またはステップ５で要求されるパッケージのインストール時点）または、6 でエラーが出る場合があります。
 
@@ -627,14 +625,14 @@ Windows の日本語システムで、アカウント名に日本語を使って
 OneDrive で、ドキュメントフォルダ全体のバックアップをとっている場合も、問題が起こる可能性がありますが、一般的には書けませんので、困ったときは、下に書く方法を参照してください\footnote{パッケージのインストールや、R Markdown で文書を生成するときには、一時的なファイルを作成して、問題がある場合はレポートする仕組みになっています。そして、問題なくその作業が終了すると、それらのファイルを消去しています。詳細は不明ですが、この作業で、OneDrive でバックアップする作業が入ると、エラーが起きるのではないかと思われます。}。
 
 \hypertarget{ux30c8ux30e9ux30d6ux30ebux30b7ux30e5ux30fcux30c6ux30a3ux30f3ux30b0uxff12}{%
-\subsection{トラブル・シューティング（２）}\label{ux30c8ux30e9ux30d6ux30ebux30b7ux30e5ux30fcux30c6ux30a3ux30f3ux30b0uxff12}}
+\subsubsection{トラブル・シューティング（２）}\label{ux30c8ux30e9ux30d6ux30ebux30b7ux30e5ux30fcux30c6ux30a3ux30f3ux30b0uxff12}}
 
 トラブル・シューティング（１）では解決できない場合の対処法を書きます。わたしは、MacOS では、動作確認の１から６で、問題が起こったと聞いたことがないので、以下では主として、Windows に限って書きます。
 
 実際には、さまざまな理由がありますから、以下の方法では対処できないかもしれません。まず、エラーメッセージを丁寧に見ることが大切ですが、簡単には理解できない場合が多いかと思います。そこで、まず、試してみる方法を以下に書きます。
 
 \hypertarget{r-ux304aux3088ux3073-rstudio-ux306eux30a2ux30f3ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}{%
-\subsubsection{R および RStudio のアンインストール}\label{r-ux304aux3088ux3073-rstudio-ux306eux30a2ux30f3ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
+\paragraph{R および RStudio のアンインストール}\label{r-ux304aux3088ux3073-rstudio-ux306eux30a2ux30f3ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
 
 どのようなアプリも、本来はインストールと同時に、アンインストール（アプリを削除）する方法を知っておくことは大切です。
 
@@ -657,7 +655,7 @@ Windows の場合は、対応するものには、コマンド・プロンプト
 Windows の場合、「設定」から、「環境変数の編集」を検索して、選択すると、Path を見ることができます。上の枠が、ユーザの環境変数、下の枠が、システム環境変数です。ユーザの環境変数の中の、Path（他には、TEMP, TMP もあるかと思います。）をコピーしておくと良いでしょう。Path をダブルクリックして、編集することも可能です。ただし、十分理解しないで、Path を変更すると、問題が起こる可能性がありますので、注意してください。
 
 \hypertarget{ux5225ux306eux30a2ux30abux30a6ux30f3ux30c8ux3092ux4f5cux6210ux3057ux3066ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}{%
-\subsubsection{別のアカウントを作成してインストール}\label{ux5225ux306eux30a2ux30abux30a6ux30f3ux30c8ux3092ux4f5cux6210ux3057ux3066ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
+\paragraph{別のアカウントを作成してインストール}\label{ux5225ux306eux30a2ux30abux30a6ux30f3ux30c8ux3092ux4f5cux6210ux3057ux3066ux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
 
 Windows に、もう一つ、アカウントを作成します。
 
@@ -680,7 +678,7 @@ Windows に、もう一つ、アカウントを作成します。
 アカウント名をローマ字にします。このアカウントから、インストールしてください。元の日本語アカウントとファイルを共有したいときは、C ドライブのユーザーにあるパブリック（共有）ディレクトリーにコピーしてください。
 
 \hypertarget{ux3053ux306eux3042ux3068ux306eux4f7fux3044ux65b9ux306bux3064ux3044ux3066}{%
-\subsubsection{このあとの使い方について}\label{ux3053ux306eux3042ux3068ux306eux4f7fux3044ux65b9ux306bux3064ux3044ux3066}}
+\paragraph{このあとの使い方について}\label{ux3053ux306eux3042ux3068ux306eux4f7fux3044ux65b9ux306bux3064ux3044ux3066}}
 
 他のアカウントに、R と RStudio をインストールしても、自分のアカウントでも、R と RStudio を利用することが可能です。しかし、漢字やカタカナのアカウント名や、OneDrive の問題は、解決しません。アカウント名を修正することは可能ですが、間違えると、コンピュータ自体が動かなくなりますから、ここでは、説明しませんが、興味のあるかたは、\href{https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf}{矢内勇生さんのスライド} を参照してください。
 
@@ -697,12 +695,12 @@ OneDrive は、どのように使われているかによって、対応が変�
 \href{https://icu-hsuzuki.github.io/myds/techmemo.html\#windows-installation-of-r-rstudio-tex}{参照リンク}
 
 \hypertarget{positcloud}{%
-\chapter{クラウド - Posit Cloud}\label{positcloud}}
+\section{クラウド - Posit Cloud}\label{positcloud}}
 
 Posit（RStudio）Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。2022年11月に、会社名が、RStuio から Posit に変更になったので、Posit Cloud となっていますが、まだ、RStudio Cloud と表示されている箇所もあります。
 
 \hypertarget{ux30afux30e9ux30a6ux30c9ux30b5ux30fcux30d3ux30b9-how-to-start-posit-cloud}{%
-\section{クラウドサービス　How to Start Posit Cloud}\label{ux30afux30e9ux30a6ux30c9ux30b5ux30fcux30d3ux30b9-how-to-start-posit-cloud}}
+\subsection{クラウドサービス　How to Start Posit Cloud}\label{ux30afux30e9ux30a6ux30c9ux30b5ux30fcux30d3ux30b9-how-to-start-posit-cloud}}
 
 まず、サインアップして、使ってください。一ヶ月の利用時間の限度など、設定されていますが、どこからでも、インターネットにつながっていれば使えるので、わたしは、いつくかアカウントを持って、活用しています。
 
@@ -767,7 +765,7 @@ If you have installed R Studio and R on your computer, From the three lines on t
 \end{enumerate}
 
 \hypertarget{positcloud-shared-project}{%
-\section{PositCloud Shared Project}\label{positcloud-shared-project}}
+\subsection{PositCloud Shared Project}\label{positcloud-shared-project}}
 
 わたしのプロジェクトを一つ共有してありますので、興味のある方はご覧ください、
 
@@ -785,14 +783,14 @@ If you have installed R Studio and R on your computer, From the three lines on t
 \end{enumerate}
 
 \hypertarget{posit-primers-and-cheat-sheet}{%
-\section{Posit Primers and Cheat Sheet}\label{posit-primers-and-cheat-sheet}}
+\subsection{Posit Primers and Cheat Sheet}\label{posit-primers-and-cheat-sheet}}
 
 Posit Primers の左の帯（表示されていない場合は、左上の３本線をクリックしてください）をみると、いろいろな機能があることがわかります。特に、Primers は、基本的な練習をするプログラムで、あとからも、紹介しますが、答えを入力している形の練習問題になっています。とても有用です。
 
 Cheat Sheet は、いくつもの、機能の一覧が、早見表の形式で載っています。使い方などをぼえておくことはできないので、わたしも、よく使っています。
 
 \hypertarget{r-ux306eux305dux306eux4ed6ux306eux5229ux7528ux65b9ux6cd5}{%
-\chapter{R のその他の利用方法}\label{r-ux306eux305dux306eux4ed6ux306eux5229ux7528ux65b9ux6cd5}}
+\section{R のその他の利用方法}\label{r-ux306eux305dux306eux4ed6ux306eux5229ux7528ux65b9ux6cd5}}
 
 R Studio または、RStudio Cloud（Posit Cloud） 以外で、R を使われる方のために、少しだけ書いておきます。個人的には、\href{https://colab.research.google.com}{Google colab} と、\href{https://cocalc.com}{Cocalc} を利用しています。
 
@@ -801,7 +799,7 @@ Google colab は、Google アカウントの作成、Cocalc は、Cocalc アカ�
 Google アカウントをお持ちの方は多いと思うので、Google colab について、最低限のことのみ、書いておきます。
 
 \hypertarget{google-colab-ux3067-r}{%
-\section{Google colab で R}\label{google-colab-ux3067-r}}
+\subsection{Google colab で R}\label{google-colab-ux3067-r}}
 
 基本的に、\texttt{python} 開発環境として構築されているものですが、R でも使うことができます。
 
@@ -827,7 +825,7 @@ Google アカウントをお持ちの方は多いと思うので、Google colab 
 フォルダーを作成して、外部ファイルを読み込んだり、書き出したりすることも可能です。
 
 \hypertarget{ux53c2ux8003}{%
-\subsection{参考}\label{ux53c2ux8003}}
+\subsubsection{参考}\label{ux53c2ux8003}}
 
 \begin{itemize}
 \tightlist
@@ -836,7 +834,7 @@ Google アカウントをお持ちの方は多いと思うので、Google colab 
 \end{itemize}
 
 \hypertarget{cocalc-ux3067-r-ux3068-rmarkdown}{%
-\section{CoCalc で R と RMarkdown}\label{cocalc-ux3067-r-ux3068-rmarkdown}}
+\subsection{CoCalc で R と RMarkdown}\label{cocalc-ux3067-r-ux3068-rmarkdown}}
 
 \href{https://cocalc.com}{Cocalc リンク}
 
@@ -878,42 +876,42 @@ Google アカウントをお持ちの方は多いと思うので、Google colab 
 \end{itemize}
 
 \hypertarget{rmarkdown}{%
-\part{R Markdown}\label{rmarkdown}}
+\chapter{R Markdown}\label{rmarkdown}}
 
 \hypertarget{reproducible-and-literate-programming}{%
-\chapter{Reproducible and Literate Programming}\label{reproducible-and-literate-programming}}
+\section{Reproducible and Literate Programming}\label{reproducible-and-literate-programming}}
 
 データサイエンスは、サイエンス（科学）ということばもついていますが、特に、根拠に基づいた（evidence based）とか、データに基づいた（data based）ということばを使うときには、なおさら、再現可能性（reproducibility）や、コードの内容の説明などのコミュニケーションにも注力する必要があります。このことを心がけて、データサイエンスを学んでいきましょう。
 
 表題にある、``Reproducible and Literate Programming'' は、Reproducible （再現可能）かつ、Literate　な（理解できるように記述した）Program（プログラム・コード）を共有することをたいせつにしましょうということです。
 
 \hypertarget{ux76eeux7684ux554fux3044ux306aux3069}{%
-\section{目的、問いなど}\label{ux76eeux7684ux554fux3044ux306aux3069}}
+\subsection{目的、問いなど}\label{ux76eeux7684ux554fux3044ux306aux3069}}
 
 プロジェクトの目的、問いなどは、途中で変わっていくこともありますが、その都度に、メモをしておくと良いでしょう。
 
 \hypertarget{ux30c7ux30fcux30bfux306bux3064ux3044ux3066}{%
-\section{データについて}\label{ux30c7ux30fcux30bfux306bux3064ux3044ux3066}}
+\subsection{データについて}\label{ux30c7ux30fcux30bfux306bux3064ux3044ux3066}}
 
 どのようなデータをどのように取得してきたかを、記録し、伝えられるようにすることが、必要です。データを取得するときから、取得方法や、それを伝える方法にも常に気をつけましょう。
 
 \hypertarget{ux30b3ux30fcux30c9ux306bux3064ux3044ux3066}{%
-\section{コードについて}\label{ux30b3ux30fcux30c9ux306bux3064ux3044ux3066}}
+\subsection{コードについて}\label{ux30b3ux30fcux30c9ux306bux3064ux3044ux3066}}
 
 どのようなコードでそのグラフ（chart）などが得られたかも、単にコードを記述するだけでなく、それぞれの部分に、説明を付与することも有効です。
 
 \hypertarget{ux30b0ux30e9ux30d5ux306bux3064ux3044ux3066}{%
-\section{グラフについて}\label{ux30b0ux30e9ux30d5ux306bux3064ux3044ux3066}}
+\subsection{グラフについて}\label{ux30b0ux30e9ux30d5ux306bux3064ux3044ux3066}}
 
 視覚化（visualization）は、とても有効です。そこで、見て理解したこと、観察したこと（observations）などは、簡単でも構いませんから、必ず、記録しておきましょう。
 
 \hypertarget{ux307eux3068ux3081r-markdown-ux306eux76eeux7684}{%
-\section{まとめ：R Markdown の目的}\label{ux307eux3068ux3081r-markdown-ux306eux76eeux7684}}
+\subsection{まとめ：R Markdown の目的}\label{ux307eux3068ux3081r-markdown-ux306eux76eeux7684}}
 
 まさに、このようなことを可能にするのが、R Markdown です。少しずつ学んでいきましょう。
 
 \hypertarget{ux6e96ux5099ux30d1ux30c3ux30b1ux30fcux30b8ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}{%
-\chapter{準備：パッケージのインストール}\label{ux6e96ux5099ux30d1ux30c3ux30b1ux30fcux30b8ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
+\section{準備：パッケージのインストール}\label{ux6e96ux5099ux30d1ux30c3ux30b1ux30fcux30b8ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
 
 Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool \textgreater{} Install Packages からインストールできます。
 
@@ -932,7 +930,7 @@ Rパッケージは、Rの拡張機能で、コード、データ、ドキュメ
 インストールは一回だけ。ときどき、Tools \textgreater{} Check for Package Update をつかって、Update しておくと良いでしょう。
 
 \hypertarget{r-notebook}{%
-\chapter{R Notebook}\label{r-notebook}}
+\section{R Notebook}\label{r-notebook}}
 
 R Markdownはデータサイエンスのためのオーサリングフレームワーク。
 
@@ -954,7 +952,7 @@ R Notebook は、独立してインタラクティブに実行できるチャン
 \end{enumerate}
 
 \hypertarget{ux65e5ux672cux8a9eux306eux30c6ux30f3ux30d7ux30ecux30fcux30c8}{%
-\chapter{日本語のテンプレート}\label{ux65e5ux672cux8a9eux306eux30c6ux30f3ux30d7ux30ecux30fcux30c8}}
+\section{日本語のテンプレート}\label{ux65e5ux672cux8a9eux306eux30c6ux30f3ux30d7ux30ecux30fcux30c8}}
 
 下のリンクを開き、右上の Code ボタンから、Download Rmd を選択すると、ダウンロードできますから、ダインロードしたものを、プロジェクト・フォールダーに移動またはコピーしてください。ダウンロードできないときは、Ctrl を押しながら、Download Rmd をクリックすると、Save As で保存できると思います。ブラウザーによって仕様が異なりますから、適切な方法を選んでください。
 
@@ -979,7 +977,7 @@ RNotebook の新しいファイルを作成し、下のサイトを表示させ�
 \end{itemize}
 
 \hypertarget{r-markdown-ux3044ux304fux3064ux304bux306e-output}{%
-\chapter{R Markdown いくつかの Output}\label{r-markdown-ux3044ux304fux3064ux304bux306e-output}}
+\section{R Markdown いくつかの Output}\label{r-markdown-ux3044ux304fux3064ux304bux306e-output}}
 
 \begin{verbatim}
 ---
@@ -1037,10 +1035,10 @@ Linux: Use system package manager
 \end{verbatim}
 
 \hypertarget{youtube-video---rmarkdown}{%
-\chapter{YouTube Video - rmarkdown}\label{youtube-video---rmarkdown}}
+\section{YouTube Video - rmarkdown}\label{youtube-video---rmarkdown}}
 
 \hypertarget{rmarkdown-ux3067-pdf-ux3092ux4f5cux6210ux3059ux308bux3068ux304dux306eux6ce8ux610f}{%
-\section{RMarkdown で PDF を作成するときの注意}\label{rmarkdown-ux3067-pdf-ux3092ux4f5cux6210ux3059ux308bux3068ux304dux306eux6ce8ux610f}}
+\subsection{RMarkdown で PDF を作成するときの注意}\label{rmarkdown-ux3067-pdf-ux3092ux4f5cux6210ux3059ux308bux3068ux304dux306eux6ce8ux610f}}
 
 RMarkdown では、\texttt{tinytex} パッケージというとても素晴らしいものが提供されています。これは、TeXLive というシステムを扱うためのものですが、LiveTeX 全体は、3GB 程度ありますが、非常に小さなファイルで、必要なものだけ、導入できるようになっています。
 
@@ -1053,7 +1051,7 @@ RMarkdown では、\texttt{tinytex} パッケージというとても素晴ら�
 アカウントに漢字やカタカナが入っていると、PDF が作成できません。
 
 \hypertarget{tinytex-ux306bux3088ux308bux30a4ux30f3ux30b9ux30c8ux30fcux30ebux65b9ux6cd5}{%
-\subsection{\texorpdfstring{\texttt{tinytex} によるインストール方法}{tinytex によるインストール方法}}\label{tinytex-ux306bux3088ux308bux30a4ux30f3ux30b9ux30c8ux30fcux30ebux65b9ux6cd5}}
+\subsubsection{\texorpdfstring{\texttt{tinytex} によるインストール方法}{tinytex によるインストール方法}}\label{tinytex-ux306bux3088ux308bux30a4ux30f3ux30b9ux30c8ux30fcux30ebux65b9ux6cd5}}
 
 \begin{itemize}
 \tightlist
@@ -1078,10 +1076,10 @@ RMarkdown では、\texttt{tinytex} パッケージというとても素晴ら�
 注：矢内勇生さんの\href{https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf}{サイト}には、詳細な説明があります。
 
 \hypertarget{rbasics}{%
-\part{R Basice}\label{rbasics}}
+\chapter{R Basice}\label{rbasics}}
 
 \hypertarget{ux30d7ux30edux30b8ux30a7ux30afux30c8---project}{%
-\chapter{プロジェクト - Project}\label{ux30d7ux30edux30b8ux30a7ux30afux30c8---project}}
+\section{プロジェクト - Project}\label{ux30d7ux30edux30b8ux30a7ux30afux30c8---project}}
 
 RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。
 
@@ -1131,12 +1129,12 @@ RStudio で R を利用する場合には、プロジェクトを作成するこ
 \end{enumerate}
 
 \hypertarget{ux30b3ux30f3ux30bdux30fcux30ebux3067ux5b9fux884c---run-in-console}{%
-\chapter{コンソールで実行 - Run in Console}\label{ux30b3ux30f3ux30bdux30fcux30ebux3067ux5b9fux884c---run-in-console}}
+\section{コンソールで実行 - Run in Console}\label{ux30b3ux30f3ux30bdux30fcux30ebux3067ux5b9fux884c---run-in-console}}
 
 プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console を選択してください。）
 
 \hypertarget{ux6700ux521dux306eux56dbux3064}{%
-\section{最初の四つ}\label{ux6700ux521dux306eux56dbux3064}}
+\subsection{最初の四つ}\label{ux6700ux521dux306eux56dbux3064}}
 
 下の、四つを、一つずつ、一番下の、\textgreater{} マークの次に書き（または、コピー・ペーストして）Return または、Enter キーを押してください。実行結果が、その下に出ます。最後の、\texttt{plot(cars)} は、\texttt{cars} というデータの、散布図が右下の、Plots タブに表示されます。
 
@@ -1212,7 +1210,7 @@ head(cars)\texttt{では、縦に表示されていたものが、横に表示�
 以前は、このように取り出した画像を、Word などに貼り付けて、使っていました。現在でも、そのような方法を知っていることは有効だと思います。
 
 \hypertarget{ux30a2ux30b5ux30a4ux30f3ux30e1ux30f3ux30c8ux30d8ux30ebux30d7}{%
-\section{アサインメント、ヘルプ}\label{ux30a2ux30b5ux30a4ux30f3ux30e1ux30f3ux30c8ux30d8ux30ebux30d7}}
+\subsection{アサインメント、ヘルプ}\label{ux30a2ux30b5ux30a4ux30f3ux30e1ux30f3ux30c8ux30d8ux30ebux30d7}}
 
 コンソールで次のそれぞれを、試してみてください。
 
@@ -1275,7 +1273,7 @@ This package contains a variety of datasets. For a complete list, use library(he
 \texttt{cars} も見つかりましたか。
 
 \hypertarget{ux304aux3059ux3059ux3081}{%
-\section{おすすめ}\label{ux304aux3059ux3059ux3081}}
+\subsection{おすすめ}\label{ux304aux3059ux3059ux3081}}
 
 コンピュータのシステムが、日本語であると、R の言語も日本語になっているはずです。そこで、エラーが発生すると、一部、日本語で表示されます。しかし、ネット上などで、そのエラーの対応を検索するときは、英語のエラーメッセージで検索した方が、解決方法が得られる可能性が圧倒的に高いので、わたしは、英語に設定しています。英語にするには、Console で次のようにします。
 
@@ -1290,7 +1288,7 @@ RStudio を終了して、もう一度起動すると、日本語に戻ってい
 さまざまな Help なども、すべて日本語で表示されれば日本語を使うのは有効かもしれませんが、すくなくとも、現在は、そうではないので、上に説明したことから、英語に設定することをお勧めします。
 
 \hypertarget{ux7df4ux7fd2}{%
-\section{練習}\label{ux7df4ux7fd2}}
+\subsection{練習}\label{ux7df4ux7fd2}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1304,12 +1302,12 @@ RStudio を終了して、もう一度起動すると、日本語に戻ってい
 \end{enumerate}
 
 \hypertarget{rstudio-ux306bux3064ux3044ux3066}{%
-\chapter{RStudio について}\label{rstudio-ux306bux3064ux3044ux3066}}
+\section{RStudio について}\label{rstudio-ux306bux3064ux3044ux3066}}
 
 RStudio は多くの機能を持っています。
 
 \hypertarget{ux56dbux3064ux306eux7a93ux67a0ux3068ux30bfux30d6-four-panes-and-tabs}{%
-\section{四つの窓枠とタブ Four Panes and Tabs}\label{ux56dbux3064ux306eux7a93ux67a0ux3068ux30bfux30d6-four-panes-and-tabs}}
+\subsection{四つの窓枠とタブ Four Panes and Tabs}\label{ux56dbux3064ux306eux7a93ux67a0ux3068ux30bfux30d6-four-panes-and-tabs}}
 
 \begin{itemize}
 \tightlist
@@ -1324,12 +1322,12 @@ RStudio は多くの機能を持っています。
 \end{itemize}
 
 \hypertarget{r-script-ux5b9fux884cux8a18ux9332}{%
-\chapter{R Script 実行記録}\label{r-script-ux5b9fux884cux8a18ux9332}}
+\section{R Script 実行記録}\label{r-script-ux5b9fux884cux8a18ux9332}}
 
 R Script を使って、コードを実行すると、その記録を残すことができます。
 
 \hypertarget{r-script-ux306eux4f5cux6210}{%
-\section{R Script の作成}\label{r-script-ux306eux4f5cux6210}}
+\subsection{R Script の作成}\label{r-script-ux306eux4f5cux6210}}
 
 \begin{itemize}
 \tightlist
@@ -1360,14 +1358,14 @@ R Script を使って、コードを実行すると、その記録を残すこ�
 \end{itemize}
 
 \hypertarget{r-script-ux306bux3088ux308bux5b9fux884c}{%
-\section{R Script による実行}\label{r-script-ux306bux3088ux308bux5b9fux884c}}
+\subsection{R Script による実行}\label{r-script-ux306bux3088ux308bux5b9fux884c}}
 
 新しく、R Script を作成し、この下の、コード（ハイライトされている部分）をコピー・ペーストして、保存し、実行してみてください。
 
 それぞれ、どのようなことをしているでしょうか。
 
 \hypertarget{ux30b9ux30afux30eaux30d7ux30c81-basics.r}{%
-\subsection{\texorpdfstring{スクリプト1: \texttt{basics.R}}{スクリプト1: basics.R}}\label{ux30b9ux30afux30eaux30d7ux30c81-basics.r}}
+\subsubsection{\texorpdfstring{スクリプト1: \texttt{basics.R}}{スクリプト1: basics.R}}\label{ux30b9ux30afux30eaux30d7ux30c81-basics.r}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1593,7 +1591,7 @@ R Script を使って、コードを実行すると、その記録を残すこ�
 \end{Shaded}
 
 \hypertarget{ux30b9ux30afux30eaux30d7ux30c82-coronavirus.r}{%
-\subsection{\texorpdfstring{スクリプト2: \texttt{coronavirus.R}}{スクリプト2: coronavirus.R}}\label{ux30b9ux30afux30eaux30d7ux30c82-coronavirus.r}}
+\subsubsection{\texorpdfstring{スクリプト2: \texttt{coronavirus.R}}{スクリプト2: coronavirus.R}}\label{ux30b9ux30afux30eaux30d7ux30c82-coronavirus.r}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1679,7 +1677,7 @@ R Script を使って、コードを実行すると、その記録を残すこ�
 \end{Shaded}
 
 \hypertarget{ux7df4ux7fd2-1}{%
-\section{練習}\label{ux7df4ux7fd2-1}}
+\subsection{練習}\label{ux7df4ux7fd2-1}}
 
 上の、\texttt{coronavirus.R} について
 
@@ -1697,7 +1695,7 @@ R Script を使って、コードを実行すると、その記録を残すこ�
 \end{enumerate}
 
 \hypertarget{tips}{%
-\section{Tips}\label{tips}}
+\subsection{Tips}\label{tips}}
 
 キーボード・ショートカットと言われる、さまざまな機能があります。
 
@@ -1710,7 +1708,7 @@ R Script を使って、コードを実行すると、その記録を残すこ�
 \end{itemize}
 
 \hypertarget{ux30d1ux30c3ux30b1ux30fcux30b8---packages}{%
-\chapter{パッケージ - Packages}\label{ux30d1ux30c3ux30b1ux30fcux30b8---packages}}
+\section{パッケージ - Packages}\label{ux30d1ux30c3ux30b1ux30fcux30b8---packages}}
 
 \begin{quote}
 R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool \textgreater{} Install Packages in the top menu bar of R Studio. \url{https://en.wikipedia.org/wiki/R_package}
@@ -1721,7 +1719,7 @@ Rパッケージは、Rの拡張機能で、コード、データ、ドキュメ
 \end{quote}
 
 \hypertarget{ux30d1ux30c3ux30b1ux30fcux30b8ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}{%
-\section{パッケージのインストール}\label{ux30d1ux30c3ux30b1ux30fcux30b8ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
+\subsection{パッケージのインストール}\label{ux30d1ux30c3ux30b1ux30fcux30b8ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30eb}}
 
 いずれ使いますので、まずは、三つのパッケージをインストールしてみましょう。
 
@@ -1754,14 +1752,14 @@ Console に、\texttt{install.packages("tidyverse")} などと表示され、た
 回避方法もいくつかあるようですが、混乱をさけるため、その場合は、Posit Cloud（旧：RStudio Cloud）を使うと良いでしょう。それを見越して、最初は、Posit Cloud ではじめることを、わたしはお薦めしています。自分のコンピュータで、R が RStudio 上で問題なく動いていても、Cloud 上にアカウントを持っていて、実行できることは有効ですし、全員が、同じ環境で作業できることもたいせつなことです。他にも、すぐ、Cheat Sheets（早見表）や、Posit Primers という練習問題（Tutorial）を利用できたり、プロジェクトを共有したりなど、さまざまなメリットがあります。
 
 \hypertarget{ux5099ux8003}{%
-\section{備考}\label{ux5099ux8003}}
+\subsection{備考}\label{ux5099ux8003}}
 
 Package によっては、Source から Compile するかと聞いてくる場合があります。どちらでも、良いのですが、特に、問題が起こっていなければ、No でよいと思います。コンピュータにあった形でインストールすることが必要な場合は、Yes とします。
 
 同じパッケージをもう一度、インストールしたり、または、関連するパッケージがあるような場合、R をリスタートするかと聞いてくることがあります。特に問題が起こらなければ、No で構いません。ただ、エラーが起こって、それに関連して、特別なパッケージをインストールする必要がある場合がありますが、そのときは、Yes としてください。
 
 \hypertarget{ux7df4ux7fd2ux554fux984c-posit-primers}{%
-\chapter{練習問題 Posit Primers}\label{ux7df4ux7fd2ux554fux984c-posit-primers}}
+\section{練習問題 Posit Primers}\label{ux7df4ux7fd2ux554fux984c-posit-primers}}
 
 Posit Primers \url{https://posit.cloud/learn/primers}
 
@@ -1770,7 +1768,7 @@ Posit Primers \url{https://posit.cloud/learn/primers}
 Posit Cloud からは、左のメニュー（隠れている場合は左上の3本線をクリックして表示させて）から選ぶことができます。そうでない場合は、直接、上のリンクから、利用してください。
 
 \hypertarget{ux6700ux521dux306eux6f14ux7fd2-the-basics-r4ds-explore-i}{%
-\section{最初の演習　The Basics -- r4ds: Explore, I}\label{ux6700ux521dux306eux6f14ux7fd2-the-basics-r4ds-explore-i}}
+\subsection{最初の演習　The Basics -- r4ds: Explore, I}\label{ux6700ux521dux306eux6f14ux7fd2-the-basics-r4ds-explore-i}}
 
 \begin{itemize}
 \tightlist
@@ -1783,7 +1781,7 @@ Posit Cloud からは、左のメニュー（隠れている場合は左上の3�
 ぜひこれら二つの演習問題を、トライしてください。解説を読んでいただけでは、データサイエンスは身につきません。
 
 \hypertarget{ux53c2ux8003ux6587ux732e-references}{%
-\chapter{参考文献 References}\label{ux53c2ux8003ux6587ux732e-references}}
+\section{参考文献 References}\label{ux53c2ux8003ux6587ux732e-references}}
 
 一番目は、すでに紹介した、教科書です。二番目は、この文書を作成している、Bookdown というパッケージのサイトですが、そこに、たくさんの本が、無償で公開されています。素晴らしい本がたくさん含まれています。
 
@@ -1814,7 +1812,7 @@ Posit Cloud からは、左のメニュー（隠れている場合は左上の3�
 \end{itemize}
 
 \hypertarget{youtube-video---getstarted}{%
-\chapter{YouTube Video - getstarted}\label{youtube-video---getstarted}}
+\section{YouTube Video - getstarted}\label{youtube-video---getstarted}}
 
 \begin{itemize}
 \tightlist
@@ -1823,14 +1821,13 @@ Posit Cloud からは、左のメニュー（隠れている場合は左上の3�
 \end{itemize}
 
 \hypertarget{part-part-iii-institutional-data}{%
-\part*{(PART) PART III INSTITUTIONAL DATA}\label{part-part-iii-institutional-data}}
-\addcontentsline{toc}{part}{(PART) PART III INSTITUTIONAL DATA}
+\part{PART III INSTITUTIONAL DATA}\label{part-part-iii-institutional-data}}
 
 \hypertarget{worldbank}{%
-\part{World Bank}\label{worldbank}}
+\chapter{World Bank}\label{worldbank}}
 
 \hypertarget{world-development-indicator-wdi}{%
-\chapter{World Development Indicator (WDI)}\label{world-development-indicator-wdi}}
+\section{World Development Indicator (WDI)}\label{world-development-indicator-wdi}}
 
 パッケージ と \texttt{tidyverse} と \texttt{WDI} を使いますから、下のコードによって、ロードします。
 
@@ -1949,7 +1946,7 @@ Posit Cloud からは、左のメニュー（隠れている場合は左上の3�
 これは、ひとつの例ですが、ここで使われているのが、WDI World Development Indicator というもので、世界銀行が、いくつかの指標を定めて、編纂しているものです。
 
 \hypertarget{ux6307ux6a19-indicators-wdi}{%
-\section{指標 Indicators (WDI)}\label{ux6307ux6a19-indicators-wdi}}
+\subsection{指標 Indicators (WDI)}\label{ux6307ux6a19-indicators-wdi}}
 
 上の例では、次の二つの指標のコード Indicator Code (WDI Code) が使われました。
 
@@ -1962,7 +1959,7 @@ Posit Cloud からは、左のメニュー（隠れている場合は左上の3�
 \end{itemize}
 
 \hypertarget{ux6307ux6a19-wdi-world-development-indicators}{%
-\section{指標 WDI (World Development Indicators)}\label{ux6307ux6a19-wdi-world-development-indicators}}
+\subsection{指標 WDI (World Development Indicators)}\label{ux6307ux6a19-wdi-world-development-indicators}}
 
 \begin{quote}
 The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,400 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.
@@ -1997,7 +1994,7 @@ WDIは、世界の開発状況と、貧困との戦いに関する、適切で�
 \end{itemize}
 
 \hypertarget{ux6307ux6a19-ux306eux30b3ux30fcux30c9wdi-code-ux3092ux63a2ux3057ux3066ux307fux3088ux3046}{%
-\section{指標 のコード、WDI code を探してみよう}\label{ux6307ux6a19-ux306eux30b3ux30fcux30c9wdi-code-ux3092ux63a2ux3057ux3066ux307fux3088ux3046}}
+\subsection{指標 のコード、WDI code を探してみよう}\label{ux6307ux6a19-ux306eux30b3ux30fcux30c9wdi-code-ux3092ux63a2ux3057ux3066ux307fux3088ux3046}}
 
 いくつかの探し方があります。まず、ここでは、World Bank のサイトから探す方法を説明しましょう。
 
@@ -2026,7 +2023,7 @@ Indicator, Code, Time coverage, Region coverage, Get data
 1 の方法の途中に出てきた、検索窓から検索することも可能です。
 
 \hypertarget{ux6307ux6a19-wdiux306eux4f8b}{%
-\section{指標 WDIの例}\label{ux6307ux6a19-wdiux306eux4f8b}}
+\subsection{指標 WDIの例}\label{ux6307ux6a19-wdiux306eux4f8b}}
 
 このあとの、例で使う指標を書いておきます。
 
@@ -2047,24 +2044,24 @@ Indicator, Code, Time coverage, Region coverage, Get data
 \end{itemize}
 
 \hypertarget{ux7df4ux7fd2-1.---ux8abfux3079ux3066ux307fux305fux3044-wdi-ux6307ux6a19ux3068ux305dux306eux30b3ux30fcux30c9}{%
-\section{練習 1. - 調べてみたい WDI 指標とそのコード}\label{ux7df4ux7fd2-1.---ux8abfux3079ux3066ux307fux305fux3044-wdi-ux6307ux6a19ux3068ux305dux306eux30b3ux30fcux30c9}}
+\subsection{練習 1. - 調べてみたい WDI 指標とそのコード}\label{ux7df4ux7fd2-1.---ux8abfux3079ux3066ux307fux305fux3044-wdi-ux6307ux6a19ux3068ux305dux306eux30b3ux30fcux30c9}}
 
 いくつか、リストしてみましょう。
 
 \hypertarget{wdi-ux30d1ux30c3ux30b1ux30fcux30b8}{%
-\chapter{WDI パッケージ}\label{wdi-ux30d1ux30c3ux30b1ux30fcux30b8}}
+\section{WDI パッケージ}\label{wdi-ux30d1ux30c3ux30b1ux30fcux30b8}}
 
 \texttt{WDI} パッケージ の使い方を紹介します。
 
 \texttt{WDI} パッケージで、データをダウンロードしたり、探したり、詳細情報を得たりできます。
 
 \hypertarget{ux6307ux6a19-wdi-ux691cux7d22}{%
-\section{指標 WDI 検索}\label{ux6307ux6a19-wdi-ux691cux7d22}}
+\subsection{指標 WDI 検索}\label{ux6307ux6a19-wdi-ux691cux7d22}}
 
 まず、検索です。上で、サイトから調べる方法を紹介しましたが、\texttt{WDI} パッケージの、\texttt{WDIsearch} でも探すことができます。詳細は、右下の窓枠の Help タブの検索窓に、WDIsearch といれて調べて見てください。ここでは、二種類の検索方法を紹介します。
 
 \hypertarget{ux691cux7d22ux4f8b-1wdiux540d}{%
-\subsection{検索例 1（WDI名）}\label{ux691cux7d22ux4f8b-1wdiux540d}}
+\subsubsection{検索例 1（WDI名）}\label{ux691cux7d22ux4f8b-1wdiux540d}}
 
 WDI 名に、ある文字列が含まれているものを検索します。検索文字列は、大文字・小文字は関係ありません。
 
@@ -2092,7 +2089,7 @@ WDI 名に、ある文字列が含まれているものを検索します。検�
 なんと、500件以上出てきました。Indicator（指標コード）と、Name（指標名）が列挙されます。すべてに、GDP という文字列が入っていることを確認できると思います。
 
 \hypertarget{ux691cux7d22ux4f8b-2wdi}{%
-\subsection{検索例 2（WDI）}\label{ux691cux7d22ux4f8b-2wdi}}
+\subsubsection{検索例 2（WDI）}\label{ux691cux7d22ux4f8b-2wdi}}
 
 Indicator（指標コード）から、Name（指標名）を検索します。
 
@@ -2111,7 +2108,7 @@ Indicator（指標コード）から、Name（指標名）を検索します。
 二件出てきました。
 
 \hypertarget{ux7df4ux7fd2-2.---ux691cux7d22short}{%
-\subsection{練習 2. - 検索（short）}\label{ux7df4ux7fd2-2.---ux691cux7d22short}}
+\subsubsection{練習 2. - 検索（short）}\label{ux7df4ux7fd2-2.---ux691cux7d22short}}
 
 名前で検索（``\,'' の間に、（なるべく簡単な）検索文字列を入れてください。）
 
@@ -2130,7 +2127,7 @@ Indicator で検索（``\,'' の間に、調べたい indicator を入れてく�
 \end{Shaded}
 
 \hypertarget{ux8a73ux3057ux3044ux60c5ux5831ux3092ux5f97ux308bux306bux306f}{%
-\subsection{詳しい情報を得るには}\label{ux8a73ux3057ux3044ux60c5ux5831ux3092ux5f97ux308bux306bux306f}}
+\subsubsection{詳しい情報を得るには}\label{ux8a73ux3057ux3044ux60c5ux5831ux3092ux5f97ux308bux306bux306f}}
 
 上では、Indicator（指標コード）と、Name（指標名）だけでしたが、Description（説明） なども得ることができます。
 
@@ -2155,7 +2152,7 @@ series には、すべての指標がリストされ、その情報が書かれ�
 今後、さまざまに利用していきたいと思います。
 
 \hypertarget{ux691cux7d22ux4f8b-3wdiux540d}{%
-\subsection{検索例 3（WDI名）}\label{ux691cux7d22ux4f8b-3wdiux540d}}
+\subsubsection{検索例 3（WDI名）}\label{ux691cux7d22ux4f8b-3wdiux540d}}
 
 \texttt{short\ =\ FALSE} として、検索してみましょう。文字列が入っている、指標名を検索します。
 
@@ -2203,7 +2200,7 @@ series には、すべての指標がリストされ、その情報が書かれ�
 \end{itemize}
 
 \hypertarget{ux691cux7d22ux4f8b-4wdi}{%
-\subsection{検索例 4（WDI）}\label{ux691cux7d22ux4f8b-4wdi}}
+\subsubsection{検索例 4（WDI）}\label{ux691cux7d22ux4f8b-4wdi}}
 
 指標コードから、詳細情報を得ます。
 
@@ -2222,7 +2219,7 @@ series には、すべての指標がリストされ、その情報が書かれ�
 \end{Shaded}
 
 \hypertarget{ux7df4ux7fd2-2---ux691cux7d22long-w-cache}{%
-\subsection{練習 2 - 検索（long w/ cache）}\label{ux7df4ux7fd2-2---ux691cux7d22long-w-cache}}
+\subsubsection{練習 2 - 検索（long w/ cache）}\label{ux7df4ux7fd2-2---ux691cux7d22long-w-cache}}
 
 \texttt{string} と、\texttt{field} を、ふたつとも入れてください。
 
@@ -2233,7 +2230,7 @@ series には、すべての指標がリストされ、その情報が書かれ�
 \end{Shaded}
 
 \hypertarget{ux6307ux6a19-wdi-ux30c7ux30fcux30bfux306eux30c0ux30a6ux30f3ux30edux30fcux30c9}{%
-\section{指標 WDI データのダウンロード}\label{ux6307ux6a19-wdi-ux30c7ux30fcux30bfux306eux30c0ux30a6ux30f3ux30edux30fcux30c9}}
+\subsection{指標 WDI データのダウンロード}\label{ux6307ux6a19-wdi-ux30c7ux30fcux30bfux306eux30c0ux30a6ux30f3ux30edux30fcux30c9}}
 
 Indicator が決まったら、ダウンロードします。右下の窓枠の Help タブの検索枠に、\texttt{WDI} と入れて確認しましょう。
 
@@ -2253,7 +2250,7 @@ WDI(
 上が基本的な用法ですが、\texttt{start} 以下は、Default（初期値）が書かれていますから、たいせつなのは、最初の二つ、country と、indicator です。
 
 \hypertarget{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-1}{%
-\subsection{ダウンロード例 1-1}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-1}}
+\subsubsection{ダウンロード例 1-1}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-1}}
 
 country は、初期値も、``all'' となっていますから、最も簡単なのは、indicator に、指標コードを入れることです。引用符を忘れずに。
 
@@ -2293,7 +2290,7 @@ country は、初期値も、``all'' となっていますから、最も簡単�
 これでも良いのですが、利用するには、指標コードではわかりにくいので、それを簡単な名前に置き換えて、データを読み込むこができます。
 
 \hypertarget{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-2}{%
-\subsection{ダウンロード例 1-2}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-2}}
+\subsubsection{ダウンロード例 1-2}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-2}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2328,7 +2325,7 @@ country は、初期値も、``all'' となっていますから、最も簡単�
 \end{verbatim}
 
 \hypertarget{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-3}{%
-\subsection{\texorpdfstring{ダウンロード例 1-3\\
+\subsubsection{\texorpdfstring{ダウンロード例 1-3\\
 }{ダウンロード例 1-3 }}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-3}}
 
 今度は、\texttt{extra\ =\ TRUE} として、読み込みましょう。先ほど、読み込んである、\texttt{wdi\_cache} を使います。
@@ -2374,7 +2371,7 @@ country は、初期値も、``all'' となっていますから、最も簡単�
 右上の三角印を使って、どのような詳細情報が付加されたか見て見ましょう。どんなことがわかりますか。
 
 \hypertarget{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-4}{%
-\subsection{ダウンロード例 1-4}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-4}}
+\subsubsection{ダウンロード例 1-4}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-1-4}}
 
 国名を指定します。\texttt{WDI} では、iso2c コードを使って、国名を指定します。上で見たように、Envoronment から、\texttt{wdi\_cache} を選択すると、国名と、iso2c コード両方を見ることができました。iso2c や、iso3c は、よく使われるので、web 検索でも簡単にみつけることができます。最初に紹介した例ですから、どの国かはわかりますね、
 
@@ -2416,7 +2413,7 @@ country は、初期値も、``all'' となっていますから、最も簡単�
 \end{verbatim}
 
 \hypertarget{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-2-1}{%
-\subsection{ダウンロード例 2-1}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-2-1}}
+\subsubsection{ダウンロード例 2-1}\label{ux30c0ux30a6ux30f3ux30edux30fcux30c9ux4f8b-2-1}}
 
 二つの、指標コードを使って、同時に読み込むこともできます。そのときは、\texttt{c()} (combine) を使います。
 
@@ -2561,12 +2558,12 @@ NA (not available) つまり、データがないものが多いことがわか�
 右上の窓枠の、Environment でも \texttt{df\_gdp21} を見てみましょう。
 
 \hypertarget{ux53efux8996ux5316-visualization}{%
-\chapter{可視化 Visualization}\label{ux53efux8996ux5316-visualization}}
+\section{可視化 Visualization}\label{ux53efux8996ux5316-visualization}}
 
 グラフ（Chart）を描いて視覚化します。ここでは、年ごとの変化をみる、折れ線グラフだけを描いて見ます。
 
 \hypertarget{ux30b0ux30e9ux30d5-1}{%
-\section{グラフ 1}\label{ux30b0ux30e9ux30d5-1}}
+\subsection{グラフ 1}\label{ux30b0ux30e9ux30d5-1}}
 
 \texttt{x\ =\ year}, \texttt{y\ =\ gdp} の、\texttt{x=}, \texttt{y=} は省略してあります。\texttt{col=country} は、国ごとに、グループにして、色分けをします。\texttt{col} は、\texttt{color} としても \texttt{colour} としても、問題ありません。 `
 
@@ -2583,7 +2580,7 @@ NA (not available) つまり、データがないものが多いことがわか�
 Warning として、missing values があると出ています。どこかは、分かりませんが、図を書くときですから、\texttt{y} に対応する、\texttt{gdp} の値がないものと思われます。
 
 \hypertarget{ux30b0ux30e9ux30d5-2}{%
-\section{グラフ 2}\label{ux30b0ux30e9ux30d5-2}}
+\subsection{グラフ 2}\label{ux30b0ux30e9ux30d5-2}}
 
 \texttt{drop\_na(gdp)} で、\texttt{gdp} の値が、NA であるものを削除します。また、\texttt{labs} で、図にタイトルをつけます。
 
@@ -2598,12 +2595,12 @@ Warning として、missing values があると出ています。どこかは、
 \includegraphics{31-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf}
 
 \hypertarget{ux30c6ux30f3ux30d7ux30ecux30fcux30c8-templates}{%
-\section{テンプレート Templates}\label{ux30c6ux30f3ux30d7ux30ecux30fcux30c8-templates}}
+\subsection{テンプレート Templates}\label{ux30c6ux30f3ux30d7ux30ecux30fcux30c8-templates}}
 
 下に、テンプレートをつけます。コピーして、指標コードや、略称、国などを、それぞれ置き換えて、試して見てください。少し、複雑な変形をしていますが、少しずつ説明します。
 
 \hypertarget{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
-\subsection{一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
+\subsubsection{一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
 
 Line Plot with one indicator with abbreviation and one country
 
@@ -2621,7 +2618,7 @@ Line Plot with one indicator with abbreviation and one country
 \end{Shaded}
 
 \hypertarget{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
-\subsection{一つの国についての、一つの指標（WDI）から、折線グラフを作成}\label{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
+\subsubsection{一つの国についての、一つの指標（WDI）から、折線グラフを作成}\label{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
 
 Line Plot with one indicator and one country
 
@@ -2639,7 +2636,7 @@ Line Plot with one indicator and one country
 \end{Shaded}
 
 \hypertarget{ux3044ux304fux3064ux304bux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
-\subsection{いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux3044ux304fux3064ux304bux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
+\subsubsection{いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux3044ux304fux3064ux304bux306eux56fdux306bux3064ux3044ux3066ux306eux4e00ux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
 
 Line Plot with one indicator with abbreviation and several countries
 
@@ -2656,7 +2653,7 @@ Line Plot with one indicator with abbreviation and several countries
 \end{Shaded}
 
 \hypertarget{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e8cux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
-\subsection{一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e8cux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
+\subsubsection{一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux4e00ux3064ux306eux56fdux306bux3064ux3044ux3066ux306eux4e8cux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
 
 Line Plot with two indicators with abbreviation and one country
 
@@ -2693,7 +2690,7 @@ Line Plot with two indicators with abbreviation and one country
 \end{Shaded}
 
 \hypertarget{ux3044ux304fux3064ux304bux306eux56fdux306bux3064ux3044ux3066ux306eux4e8cux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
-\subsection{いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux3044ux304fux3064ux304bux306eux56fdux306bux3064ux3044ux3066ux306eux4e8cux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
+\subsubsection{いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成}\label{ux3044ux304fux3064ux304bux306eux56fdux306bux3064ux3044ux3066ux306eux4e8cux3064ux306eux6307ux6a19wdiux3068ux305dux306eux7565ux79f0ux304bux3089ux6298ux7ddaux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
 
 Line Plot with two indicators with abbreviation and several countries
 
@@ -2730,19 +2727,18 @@ Line Plot with two indicators with abbreviation and several countries
 \end{Shaded}
 
 \hypertarget{ux8ab2ux984c-assignment}{%
-\chapter{課題　Assignment}\label{ux8ab2ux984c-assignment}}
+\section{課題　Assignment}\label{ux8ab2ux984c-assignment}}
 
 上のテンプレートをコピーして、下に貼り付け、指標 \texttt{indicator} と、略称 \texttt{short\_name} と、いくつかの国名 \texttt{chosen\_countries} を、入れ替えて、試してみてください。
 
 \hypertarget{part-part-iv-eda}{%
-\part*{(PART) PART IV EDA}\label{part-part-iv-eda}}
-\addcontentsline{toc}{part}{(PART) PART IV EDA}
+\part{PART IV EDA}\label{part-part-iv-eda}}
 
 \hypertarget{intro2eda}{%
-\part{探索的データ解析}\label{intro2eda}}
+\chapter{探索的データ解析}\label{intro2eda}}
 
 \hypertarget{ux63a2ux7d22ux7684ux30c7ux30fcux30bfux89e3ux6790-edaux3068ux306f}{%
-\chapter{探索的データ解析 (EDA)とは}\label{ux63a2ux7d22ux7684ux30c7ux30fcux30bfux89e3ux6790-edaux3068ux306f}}
+\section{探索的データ解析 (EDA)とは}\label{ux63a2ux7d22ux7684ux30c7ux30fcux30bfux89e3ux6790-edaux3068ux306f}}
 
 \begin{figure}
 \centering
@@ -2767,12 +2763,12 @@ Line Plot with two indicators with abbreviation and several countries
 EDAは、あらゆるデータ分析において重要な役割を担います。EDA によって、課題解決のいとぐちを発見することもありますし、他の課題との関係性を発見する場合もあります。EDAを使用してデータの問題や品質を確認したり、データが信頼できるものであるかを見極める問いを作成できる場合もあります。
 
 \hypertarget{ux63a2ux7d22ux7684ux30c7ux30fcux30bfux89e3ux6790-eda-ux306eux4e00ux4f8b}{%
-\chapter{探索的データ解析 (EDA) の一例}\label{ux63a2ux7d22ux7684ux30c7ux30fcux30bfux89e3ux6790-eda-ux306eux4e00ux4f8b}}
+\section{探索的データ解析 (EDA) の一例}\label{ux63a2ux7d22ux7684ux30c7ux30fcux30bfux89e3ux6790-eda-ux306eux4e00ux4f8b}}
 
 WDI の一つの指標を使って、流れを見てみましょう。
 
 \hypertarget{ux30c7ux30fcux30bfux306eux53d6ux5f97ux3068ux8aadux307fux8fbcux307f---data-import}{%
-\section{データの取得と読み込み - Data Import}\label{ux30c7ux30fcux30bfux306eux53d6ux5f97ux3068ux8aadux307fux8fbcux307f---data-import}}
+\subsection{データの取得と読み込み - Data Import}\label{ux30c7ux30fcux30bfux306eux53d6ux5f97ux3068ux8aadux307fux8fbcux307f---data-import}}
 
 NY.GDP.PCAP.CD: GDP per capita (current US\$)
 
@@ -2804,10 +2800,10 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \end{Shaded}
 
 \hypertarget{ux30c7ux30fcux30bfux5909ux5f62ux6574ux5f62---data-transformation}{%
-\section{データ変形・整形 - Data Transformation}\label{ux30c7ux30fcux30bfux5909ux5f62ux6574ux5f62---data-transformation}}
+\subsection{データ変形・整形 - Data Transformation}\label{ux30c7ux30fcux30bfux5909ux5f62ux6574ux5f62---data-transformation}}
 
 \hypertarget{ux5217ux3092-select}{%
-\subsection{\texorpdfstring{列を \texttt{select}}{列を select}}\label{ux5217ux3092-select}}
+\subsubsection{\texorpdfstring{列を \texttt{select}}{列を select}}\label{ux5217ux3092-select}}
 
 どの変数について分析するかを選ぶ。
 
@@ -2834,7 +2830,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \end{Shaded}
 
 \hypertarget{ux884cux3092-filter}{%
-\subsection{\texorpdfstring{行を \texttt{filter}}{行を filter}}\label{ux884cux3092-filter}}
+\subsubsection{\texorpdfstring{行を \texttt{filter}}{行を filter}}\label{ux884cux3092-filter}}
 
 いくつかの国に、フォーカスして調べる。
 
@@ -2885,7 +2881,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \end{Shaded}
 
 \hypertarget{ux53efux8996ux5316-data-visualization}{%
-\section{可視化 Data Visualization}\label{ux53efux8996ux5316-data-visualization}}
+\subsection{可視化 Data Visualization}\label{ux53efux8996ux5316-data-visualization}}
 
 次は、よく生じる、誤りの例で、ノコギリの歯（sawtoothed）のようなギザギザ・グラフと呼ばれます。なぜこのようなことが起きているかわかりますか。
 
@@ -2961,7 +2957,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \includegraphics{41-eda_files/figure-latex/unnamed-chunk-14-1.pdf}
 
 \hypertarget{ux30c7ux30fcux30bfux30e2ux30c7ux30eaux30f3ux30b0-data-modeling}{%
-\section{データモデリング Data Modeling}\label{ux30c7ux30fcux30bfux30e2ux30c7ux30eaux30f3ux30b0-data-modeling}}
+\subsection{データモデリング Data Modeling}\label{ux30c7ux30fcux30bfux30e2ux30c7ux30eaux30f3ux30b0-data-modeling}}
 
 上の例では、曲線ではなく、直線で近似することも考えられる。
 
@@ -3009,21 +3005,20 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \end{Shaded}
 
 \hypertarget{part-part-v-examples}{%
-\part*{(PART) PART V EXAMPLES}\label{part-part-v-examples}}
-\addcontentsline{toc}{part}{(PART) PART V EXAMPLES}
+\part{PART V EXAMPLES}\label{part-part-v-examples}}
 
 \hypertarget{example1}{%
-\part{Example 1}\label{example1}}
+\chapter{Example 1}\label{example1}}
 
 \hypertarget{appendix-appendix}{%
-\part*{(APPENDIX) APPENDIX}\label{appendix-appendix}}
-\addcontentsline{toc}{part}{(APPENDIX) APPENDIX}
+\appendix}
+
 
 \hypertarget{japanese}{%
-\part{日本語の扱いについて}\label{japanese}}
+\chapter{日本語の扱いについて}\label{japanese}}
 
 \hypertarget{ux65e5ux672cux8a9eux4e2dux56fdux8a9eux97d3ux56fdux8a9e}{%
-\chapter{日本語・中国語・韓国語}\label{ux65e5ux672cux8a9eux4e2dux56fdux8a9eux97d3ux56fdux8a9e}}
+\section{日本語・中国語・韓国語}\label{ux65e5ux672cux8a9eux4e2dux56fdux8a9eux97d3ux56fdux8a9e}}
 
 文字化けが、起こることが多く、対応が、一定せず、特に、図の表示において、Windows や、macOS や、Linux などの、OS ごとに、フォントが違ったり、それを、図のタイトルなどに、使ったりが、難しかったのですが、どうやら、現在は、どの場合も、次の設定で、解決しているようです。下の例を確認してください。特に、フォントについては、好みも関係しますから、難しいですが、ここでは、どのプラットフォーム（OS）でも、共通に扱えることを中心に書きます。
 
@@ -3035,7 +3030,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \end{Shaded}
 
 \hypertarget{ux30d1ux30c3ux30b1ux30fcux30b8ux3092ux30edux30fcux30c9}{%
-\section{パッケージをロード}\label{ux30d1ux30c3ux30b1ux30fcux30b8ux3092ux30edux30fcux30c9}}
+\subsection{パッケージをロード}\label{ux30d1ux30c3ux30b1ux30fcux30b8ux3092ux30edux30fcux30c9}}
 
 \texttt{library} によって、Package をロード（いつでも使えるように）します。
 
@@ -3048,7 +3043,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \end{Shaded}
 
 \hypertarget{base-r-ux3067ux30bfux30a4ux30c8ux30ebux306bux65e5ux672cux8a9e}{%
-\chapter{Base R でタイトルに日本語}\label{base-r-ux3067ux30bfux30a4ux30c8ux30ebux306bux65e5ux672cux8a9e}}
+\section{Base R でタイトルに日本語}\label{base-r-ux3067ux30bfux30a4ux30c8ux30ebux306bux65e5ux672cux8a9e}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3059,7 +3054,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \includegraphics{81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf}
 
 \hypertarget{ux5217ux540dux3084ux30c7ux30fcux30bfux306bux65e5ux672cux8a9e}{%
-\chapter{列名や、データに日本語}\label{ux5217ux540dux3084ux30c7ux30fcux30bfux306bux65e5ux672cux8a9e}}
+\section{列名や、データに日本語}\label{ux5217ux540dux3084ux30c7ux30fcux30bfux306bux65e5ux672cux8a9e}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3076,7 +3071,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \end{Shaded}
 
 \hypertarget{kable-ux3067ux8868ux793a}{%
-\chapter{\texorpdfstring{\texttt{kable} で表示}{kable で表示}}\label{kable-ux3067ux8868ux793a}}
+\section{\texorpdfstring{\texttt{kable} で表示}{kable で表示}}\label{kable-ux3067ux8868ux793a}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3103,7 +3098,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \end{tabular}
 
 \hypertarget{ggplot-ux3067ux30b0ux30e9ux30d5ux3092ux4f5cux6210}{%
-\chapter{\texorpdfstring{\texttt{ggplot} でグラフを作成}{ggplot でグラフを作成}}\label{ggplot-ux3067ux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
+\section{\texorpdfstring{\texttt{ggplot} でグラフを作成}{ggplot でグラフを作成}}\label{ggplot-ux3067ux30b0ux30e9ux30d5ux3092ux4f5cux6210}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3115,7 +3110,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \includegraphics{81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf}
 
 \hypertarget{ux5099ux8003-1}{%
-\chapter{備考：}\label{ux5099ux8003-1}}
+\section{備考：}\label{ux5099ux8003-1}}
 
 実は、一番難しいのが、PDF の作成だと思いますが、一応、上のものも、PDF を作成することが可能です。 下のリンクのファイルを、いろいろな、形式で、出力してみてください。R Notebook と、PDF に出力したもののリンクを付けておきます。
 
@@ -3150,7 +3145,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 詳細は、これらのファイルに記載されていますから、参考にしてください。
 
 \hypertarget{ux53c2ux8003ux65e5ux672cux8a9eux306eux8868ux793aux306bux3064ux3044ux3066}{%
-\chapter{参考：日本語の表示について}\label{ux53c2ux8003ux65e5ux672cux8a9eux306eux8868ux793aux306bux3064ux3044ux3066}}
+\section{参考：日本語の表示について}\label{ux53c2ux8003ux65e5ux672cux8a9eux306eux8868ux793aux306bux3064ux3044ux3066}}
 
 \begin{quote}
 日本語が適切に表示されない！？
@@ -3174,7 +3169,7 @@ R を使うという場合に限っても、R Studio IDE を使う場合、RStud
 \end{enumerate}
 
 \hypertarget{ux30c7ux30fcux30bfux30d5ux30a1ux30a4ux30ebux306eux8aadux307fux8fbcux307f}{%
-\section{データファイルの読み込み}\label{ux30c7ux30fcux30bfux30d5ux30a1ux30a4ux30ebux306eux8aadux307fux8fbcux307f}}
+\subsection{データファイルの読み込み}\label{ux30c7ux30fcux30bfux30d5ux30a1ux30a4ux30ebux306eux8aadux307fux8fbcux307f}}
 
 \begin{itemize}
 \tightlist
@@ -3197,7 +3192,7 @@ R を使うという場合に限っても、R Studio IDE を使う場合、RStud
 \end{itemize}
 
 \hypertarget{ux56f3ux306eux4e2dux306eux30c6ux30adux30b9ux30c8}{%
-\section{図の中のテキスト}\label{ux56f3ux306eux4e2dux306eux30c6ux30adux30b9ux30c8}}
+\subsection{図の中のテキスト}\label{ux56f3ux306eux4e2dux306eux30c6ux30adux30b9ux30c8}}
 
 \begin{itemize}
 \tightlist
@@ -3216,7 +3211,7 @@ R を使うという場合に限っても、R Studio IDE を使う場合、RStud
 \end{itemize}
 
 \hypertarget{r-markdown-ux306eux51faux529b}{%
-\section{R Markdown の出力}\label{r-markdown-ux306eux51faux529b}}
+\subsection{R Markdown の出力}\label{r-markdown-ux306eux51faux529b}}
 
 \begin{itemize}
 \tightlist
@@ -3233,17 +3228,17 @@ header-includes:
 \end{verbatim}
 
 \hypertarget{bookdown}{%
-\section{\texorpdfstring{\texttt{bookdown}}{bookdown}}\label{bookdown}}
+\subsection{\texorpdfstring{\texttt{bookdown}}{bookdown}}\label{bookdown}}
 
 \texttt{bookdown} を使って、電子書籍を出版する場合には、\href{https://bookdown.org/yihui/bookdown/}{\texttt{bookdown} （リンク）} を参照してください。
 
 日本語におけるテンプレートは、\href{https://github.com/icu-hsuzuki/bs4_book_template}{こちら} にあります。まずは、ページの下にある、README を読んでください。
 
 \hypertarget{ux53c2ux8003ux3068ux3057ux305fux3082ux306e}{%
-\section{参考としたもの}\label{ux53c2ux8003ux3068ux3057ux305fux3082ux306e}}
+\subsection{参考としたもの}\label{ux53c2ux8003ux3068ux3057ux305fux3082ux306e}}
 
 \hypertarget{showtext-using-fonts-more-easily-in-r-graphs}{%
-\subsection{showtext: Using Fonts More Easily in R Graphs}\label{showtext-using-fonts-more-easily-in-r-graphs}}
+\subsubsection{showtext: Using Fonts More Easily in R Graphs}\label{showtext-using-fonts-more-easily-in-r-graphs}}
 
 \begin{itemize}
 \tightlist
@@ -3268,7 +3263,7 @@ header-includes:
 \end{itemize}
 
 \hypertarget{sysfonts-loading-fonts-into-r}{%
-\subsection{sysfonts: Loading Fonts into R}\label{sysfonts-loading-fonts-into-r}}
+\subsubsection{sysfonts: Loading Fonts into R}\label{sysfonts-loading-fonts-into-r}}
 
 \begin{itemize}
 \tightlist
@@ -3283,7 +3278,7 @@ header-includes:
 \end{itemize}
 
 \hypertarget{foods4all-examples-of-graphs}{%
-\subsection{foods4all: Examples of Graphs}\label{foods4all-examples-of-graphs}}
+\subsubsection{foods4all: Examples of Graphs}\label{foods4all-examples-of-graphs}}
 
 \begin{itemize}
 \tightlist
@@ -3298,24 +3293,24 @@ header-includes:
 \end{itemize}
 
 \hypertarget{tools}{%
-\part{IT ツール}\label{tools}}
+\chapter{IT ツール}\label{tools}}
 
 \begin{quote}
 いくつかの便利なツールについて紹介します。
 \end{quote}
 
 \hypertarget{git-ux3068-github}{%
-\chapter{Git と GitHub}\label{git-ux3068-github}}
+\section{Git と GitHub}\label{git-ux3068-github}}
 
 Git は バージョン管理システムで、GitHub はそれを、活用し、かつ他のメンバーと協力して開発など、さまざまな活動をするためのサイトです。公開が基本となっています。非公開にすることも可能ですが、公開することで、世界中のひとたちと協力していくことが可能になりますので、その利点も学んでいただければと思います。
 
 \hypertarget{ux6982ux8981}{%
-\section{概要}\label{ux6982ux8981}}
+\subsection{概要}\label{ux6982ux8981}}
 
 RStudio で R を使っている場合、Git-GitHub-RStudio の連携で使うことをお勧めします。しかし、これらは、三つとも、まったく異なるものですから、簡単な概要を書いておくことにします。
 
 \hypertarget{git}{%
-\subsection{Git}\label{git}}
+\subsubsection{Git}\label{git}}
 
 これは、ファイルのバージョン（更新履歴）の管理システムで、単独で機能します。他の、プログラムなどに関係しない、他の文書ファイルであっても、バージョンを管理する場合に活用できます。特に、テキスト・ファイルの場合には、どこがどう改訂されているかを確認することもできます。また、基本的には、Unix の Shell プログラムで動作させるのが一般的です。Mac は、Unix システムの上に構築されているため、最初から、ユーティリティ（Utility）\textgreater{} ターミナル（Terminal）で、Shell コマンドが利用可能になっていますが、Windows の場合には、bash と呼ばれる Shell プログラムをインストールすることをお勧めします。Windows システムについてよくご存知の方は、他の方法を使っていただいて構いませんが、Git のインストールの時に、Git bash を選択して、簡単に インストールできますし、Unix システムの基本を理解するチャンスでもあり、Mac とも同じ環境で説明できますから、ここでは、そちらを使います。Shell コマンドは、R Studio の中のターミナルを使って、利用することも可能です。（注：Windows のコマンド・プロンプト、または、パワー・シェルをお使いの方は、利用環境が変化する可能性がありますから、そのまま使われる方が良いかもしれません。）
 
@@ -3346,7 +3341,7 @@ RStudio で R を使っている場合、Git-GitHub-RStudio の連携で使う�
 \end{itemize}
 
 \hypertarget{git-hub}{%
-\subsection{Git Hub}\label{git-hub}}
+\subsubsection{Git Hub}\label{git-hub}}
 
 Git でバージョン管理されているディレクトリ（フォルダ）の状態を示す、クラウドサービスです。更新されている、状態を確認するとともに、変更履歴なども確認できます。また、Git Hub サービスを利用して、ファイルを公開、共有することも可能です。Pages サイトを利用することで、ホームページとして HTML ファイルなどを公開することもできるため、レポートを公開したり、この電子書籍のように、\texttt{bookdown} パッケージを利用して作成したものを、インターネット上に公開することも可能です。
 
@@ -3355,12 +3350,12 @@ Git でバージョン管理されているディレクトリ（フォルダ）�
 最初に、Git で管理されている、ディレクトリ（フォルダ）（これを、ローカル・リポジトリと言います）と、GitHub 内のリポジトリ（リモート・リポジトリまはたアップストリーム・リポジトリと言います。ここでは、リモート・リポジトリと呼ぶことにします）を結びつけるステップが必要です。
 
 \hypertarget{rstudio-ux9023ux643a}{%
-\subsection{RStudio 連携}\label{rstudio-ux9023ux643a}}
+\subsubsection{RStudio 連携}\label{rstudio-ux9023ux643a}}
 
 コマンドライン（シェル）で行う作業や、ローカル・リポジトリを、リモート・リポジトリに結びつける作業を、RStudio の中で行うことが可能です。
 
 \hypertarget{ux306fux3058ux3081ux304bux305f}{%
-\section{はじめかた}\label{ux306fux3058ux3081ux304bux305f}}
+\subsection{はじめかた}\label{ux306fux3058ux3081ux304bux305f}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3440,7 +3435,7 @@ git config --global user.email "your@email.com" # GitHub に登録したメー�
 \end{enumerate}
 
 \hypertarget{github-ux306bux3042ux308bux30eaux30e2ux30fcux30c8ux30eaux30ddux30b8ux30c8ux30earemote-repoux304bux3089ux59cbux3081ux308bux5834ux5408}{%
-\section{GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合}\label{github-ux306bux3042ux308bux30eaux30e2ux30fcux30c8ux30eaux30ddux30b8ux30c8ux30earemote-repoux304bux3089ux59cbux3081ux308bux5834ux5408}}
+\subsection{GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合}\label{github-ux306bux3042ux308bux30eaux30e2ux30fcux30c8ux30eaux30ddux30b8ux30c8ux30earemote-repoux304bux3089ux59cbux3081ux308bux5834ux5408}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3458,7 +3453,7 @@ git config --global user.email "your@email.com" # GitHub に登録したメー�
 実はこの手続きで、公開されている、他のリポジトリも取り込むことができます。ただし、編集して、改訂していくには、自分のリポジトリに、繋ぐことになります。そのときは、次の項目を見てください。
 
 \hypertarget{ux81eaux5206ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux306eux30eaux30ddux30b8ux30c8ux30ealocal-repoux304bux3089ux59cbux3081ux308bux5834ux5408}{%
-\section{自分のコンピュータのリポジトリ（Local Repo）から始める場合}\label{ux81eaux5206ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux306eux30eaux30ddux30b8ux30c8ux30ealocal-repoux304bux3089ux59cbux3081ux308bux5834ux5408}}
+\subsection{自分のコンピュータのリポジトリ（Local Repo）から始める場合}\label{ux81eaux5206ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux306eux30eaux30ddux30b8ux30c8ux30ealocal-repoux304bux3089ux59cbux3081ux308bux5834ux5408}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3493,7 +3488,7 @@ git push -u origin main
 再起動すると、プロジェクトの右上の窓枠に、Git と表示されていると思います。開いて、いくつかファイル名があれば、これを選択し、Commit ボタンを押し、短い message を書いて、Commit とし、そのあとで、Push ボタンを押してください。 \texttt{HEAD\ -\textgreater{}\ main} と表示されれば、OK です。
 
 \hypertarget{github-pages-ux306bux3064ux3044ux3066}{%
-\section{GitHub Pages について}\label{github-pages-ux306bux3064ux3044ux3066}}
+\subsection{GitHub Pages について}\label{github-pages-ux306bux3064ux3044ux3066}}
 
 GitHub は、Web 上のサービスですが、たとえ、リポジトリーの中に、HTML ファイルなどが存在しても、ブラウザーで表示させることはできません。公開する方法として、わたしは、以下のようにしています。
 
@@ -3502,7 +3497,7 @@ GitHub は、Web 上のサービスですが、たとえ、リポジトリーの
 リンクは、まず、リポジトリーの右上の、About の右のギアマークから、Use your GitHub Pages website に、チェックを入れると、URL が表示されますから、その URL に続けて、ファイル名を加えたものが、そのファイルの、リンクとなります。
 
 \hypertarget{bookdown-ux30d1ux30c3ux30b1ux30fcux30b8ux306bux3088ux308bux96fbux5b50ux66f8ux7c4dux306eux57f7ux7b46}{%
-\section{Bookdown パッケージによる、電子書籍の執筆}\label{bookdown-ux30d1ux30c3ux30b1ux30fcux30b8ux306bux3088ux308bux96fbux5b50ux66f8ux7c4dux306eux57f7ux7b46}}
+\subsection{Bookdown パッケージによる、電子書籍の執筆}\label{bookdown-ux30d1ux30c3ux30b1ux30fcux30b8ux306bux3088ux308bux96fbux5b50ux66f8ux7c4dux306eux57f7ux7b46}}
 
 \href{https://github.com/rstudio/bookdown}{bookdown} を利用して、始める方法を簡単に記します。
 
@@ -3511,7 +3506,7 @@ Git-GitHub-RStuio の設定は済んでいると仮定して書きます。ま�
 以下では、R Studio で新しい、プロジェクトとして始める場合と、テンプレート・リポジトリ を使う方法を説明します。
 
 \hypertarget{rstudio-ux3067ux306eux8a2dux5b9a}{%
-\subsection{RStudio での設定}\label{rstudio-ux3067ux306eux8a2dux5b9a}}
+\subsubsection{RStudio での設定}\label{rstudio-ux3067ux306eux8a2dux5b9a}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3557,7 +3552,7 @@ git push -u origin main
 \end{enumerate}
 
 \hypertarget{ux4ed6ux306e-pc-ux3067ux306eux4f5cux696d}{%
-\subsubsection{他の PC での作業}\label{ux4ed6ux306e-pc-ux3067ux306eux4f5cux696d}}
+\paragraph{他の PC での作業}\label{ux4ed6ux306e-pc-ux3067ux306eux4f5cux696d}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3573,10 +3568,10 @@ git push -u origin main
 \end{enumerate}
 
 \hypertarget{ux30c6ux30f3ux30d7ux30ecux30fcux30c8ux3092ux5229ux7528ux3059ux308bux65b9ux6cd5}{%
-\subsection{テンプレートを利用する方法}\label{ux30c6ux30f3ux30d7ux30ecux30fcux30c8ux3092ux5229ux7528ux3059ux308bux65b9ux6cd5}}
+\subsubsection{テンプレートを利用する方法}\label{ux30c6ux30f3ux30d7ux30ecux30fcux30c8ux3092ux5229ux7528ux3059ux308bux65b9ux6cd5}}
 
 \hypertarget{bookdown-demo}{%
-\subsubsection{bookdown-demo}\label{bookdown-demo}}
+\paragraph{bookdown-demo}\label{bookdown-demo}}
 
 \href{https://bookdown.org/yihui/bookdown/}{\texttt{bookdown} の電子書籍（bookdown: Authoring Books and Technical Documents with R Markdown）} の、はじめてみよう（Get started）から、GitHub リポジトリー \href{https://github.com/rstudio/bookdown-demo}{rstudio/bookdown-demo} にリンクがついています。
 
@@ -3596,7 +3591,7 @@ git push -u origin main
 よくできているテンプレートです。しかし、このままでは、公開されません。\href{https://bookdown.org/yihui/bookdown/}{bookdown: Authoring Books and Technical Documents with R Markdown} には、いくつかの公開方法が書かれていますから、参照してください。
 
 \hypertarget{jtr13bookdown-template}{%
-\subsubsection{\texorpdfstring{\texttt{jtr13/bookdown-template}}{jtr13/bookdown-template}}\label{jtr13bookdown-template}}
+\paragraph{\texorpdfstring{\texttt{jtr13/bookdown-template}}{jtr13/bookdown-template}}\label{jtr13bookdown-template}}
 
 YouTube ビデオ \href{https://www.youtube.com/watch?v=m5D-yoH416Y}{5分間で、bookdown の本を作成する方法（How to create a bookdown book in 5 minutes）} で紹介されているものです。
 
@@ -3616,7 +3611,7 @@ YouTube ビデオ \href{https://www.youtube.com/watch?v=m5D-yoH416Y}{5分間で�
 ビデオの中では、簡単に、GitHub Pages（GitHub のホームページサービス）に、公開する方法が説明されています。最も、大切な部分は、テンプレートがコピーされた、自分のリポジトリの Settings から、Pages を選び、Branch を main \textgreater{} docs とする部分です。このようにすることで、公開されます。上の、「GitHub Pages」で説明していることと同じです。
 
 \hypertarget{ux65e5ux672cux8a9eux30c6ux30f3ux30d7ux30ecux30fcux30c8}{%
-\subsubsection{日本語テンプレート}\label{ux65e5ux672cux8a9eux30c6ux30f3ux30d7ux30ecux30fcux30c8}}
+\paragraph{日本語テンプレート}\label{ux65e5ux672cux8a9eux30c6ux30f3ux30d7ux30ecux30fcux30c8}}
 
 \texttt{bs4\_book} スタイルでの、簡単な、日本語テンプレートを作成しました。
 
@@ -3636,7 +3631,7 @@ YouTube ビデオ \href{https://www.youtube.com/watch?v=m5D-yoH416Y}{5分間で�
 まだ、不十分ですが、少しずつ、改訂していきます。 使い方は、リポジトリの README に、注意点などは、最後の章 Bookdown に書いておく予定です。
 
 \hypertarget{ux5927ux304dux306aux30d5ux30a1ux30a4ux30ebux306bux95a2ux3059ux308bux3053ux3068}{%
-\section{大きなファイルに関すること}\label{ux5927ux304dux306aux30d5ux30a1ux30a4ux30ebux306bux95a2ux3059ux308bux3053ux3068}}
+\subsection{大きなファイルに関すること}\label{ux5927ux304dux306aux30d5ux30a1ux30a4ux30ebux306bux95a2ux3059ux308bux3053ux3068}}
 
 100M 未満のファイルだけを利用するのがよいですが、それより大きいものを、GitHub に挙げようとして、問題が起こることがあります。その対処法を書いておきます。
 
@@ -3645,7 +3640,7 @@ YouTube ビデオ \href{https://www.youtube.com/watch?v=m5D-yoH416Y}{5分間で�
 備忘録も含めて、書いておきます。
 
 \hypertarget{ux5927ux304dux306aux30d5ux30a1ux30a4ux30ebux306eux53d6ux308aux9664ux304dux304bux305f}{%
-\subsection{大きなファイルの取り除きかた}\label{ux5927ux304dux306aux30d5ux30a1ux30a4ux30ebux306eux53d6ux308aux9664ux304dux304bux305f}}
+\subsubsection{大きなファイルの取り除きかた}\label{ux5927ux304dux306aux30d5ux30a1ux30a4ux30ebux306eux53d6ux308aux9664ux304dux304bux305f}}
 
 下のサイトからの引用です。非常に分かりやすく書かれています。Terminal で作業を行いますが、いま、Add した場合と、いくつか、前のステップで、Add した場合で、対応の方法が異なります。
 
@@ -3692,7 +3687,7 @@ YouTube ビデオ \href{https://www.youtube.com/watch?v=m5D-yoH416Y}{5分間で�
 \end{itemize}
 
 \hypertarget{ux8907ux6570ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux304bux3089ux5229ux7528ux3059ux308bux65b9ux6cd5}{%
-\section{複数のコンピュータから利用する方法}\label{ux8907ux6570ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux304bux3089ux5229ux7528ux3059ux308bux65b9ux6cd5}}
+\subsection{複数のコンピュータから利用する方法}\label{ux8907ux6570ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux304bux3089ux5229ux7528ux3059ux308bux65b9ux6cd5}}
 
 わたしも、いくつかのコンピュータから、同じGitHub アカウントにアクセスして作業しています。
 
@@ -3713,7 +3708,7 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 この設定をすれば、どちらのマシンからでもSSH経由でGithubリポジトリにアクセスできるようになります。
 
 \hypertarget{ux8907ux6570ux306eux30a2ux30abux30a6ux30f3ux30c8ux3092ux4e00ux3064ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux304bux3089ux5229ux7528ux3059ux308bux65b9ux6cd5}{%
-\section{複数のアカウントを一つのコンピュータから利用する方法}\label{ux8907ux6570ux306eux30a2ux30abux30a6ux30f3ux30c8ux3092ux4e00ux3064ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux304bux3089ux5229ux7528ux3059ux308bux65b9ux6cd5}}
+\subsection{複数のアカウントを一つのコンピュータから利用する方法}\label{ux8907ux6570ux306eux30a2ux30abux30a6ux30f3ux30c8ux3092ux4e00ux3064ux306eux30b3ux30f3ux30d4ux30e5ux30fcux30bfux304bux3089ux5229ux7528ux3059ux308bux65b9ux6cd5}}
 
 わたしも複数のGitHub アカウントを利用しています。
 
@@ -3738,7 +3733,7 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 詳しくは、参考にしたサイトを参照してください。
 
 \hypertarget{ux5171ux540cux4f5cux696dux3092ux3059ux308bux5834ux5408}{%
-\section{共同作業をする場合}\label{ux5171ux540cux4f5cux696dux3092ux3059ux308bux5834ux5408}}
+\subsection{共同作業をする場合}\label{ux5171ux540cux4f5cux696dux3092ux3059ux308bux5834ux5408}}
 
 以下では、本の共同編集を想定して、書きます。
 
@@ -3822,10 +3817,10 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 \end{enumerate}
 
 \hypertarget{ux53c2ux8003ux306bux3057ux305fux30b5ux30a4ux30c8}{%
-\section{参考にしたサイト}\label{ux53c2ux8003ux306bux3057ux305fux30b5ux30a4ux30c8}}
+\subsection{参考にしたサイト}\label{ux53c2ux8003ux306bux3057ux305fux30b5ux30a4ux30c8}}
 
 \hypertarget{git---github---rstudio-ux95a2ux9023}{%
-\subsection{Git - GitHub - RStudio 関連}\label{git---github---rstudio-ux95a2ux9023}}
+\subsubsection{Git - GitHub - RStudio 関連}\label{git---github---rstudio-ux95a2ux9023}}
 
 \begin{itemize}
 \tightlist
@@ -3858,7 +3853,7 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 \end{itemize}
 
 \hypertarget{bookdown-ux95a2ux9023}{%
-\subsection{Bookdown 関連}\label{bookdown-ux95a2ux9023}}
+\subsubsection{Bookdown 関連}\label{bookdown-ux95a2ux9023}}
 
 \begin{itemize}
 \item
@@ -3870,7 +3865,7 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 \end{itemize}
 
 \hypertarget{ux8907ux6570ux30a2ux30abux30a6ux30f3ux30c8ux8907ux6570ux306eux30adux30fcux95a2ux9023}{%
-\subsection{複数アカウント・複数のキー関連}\label{ux8907ux6570ux30a2ux30abux30a6ux30f3ux30c8ux8907ux6570ux306eux30adux30fcux95a2ux9023}}
+\subsubsection{複数アカウント・複数のキー関連}\label{ux8907ux6570ux30a2ux30abux30a6ux30f3ux30c8ux8907ux6570ux306eux30adux30fcux95a2ux9023}}
 
 \begin{itemize}
 \tightlist
@@ -3883,15 +3878,15 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 \end{itemize}
 
 \hypertarget{bookdown-original}{%
-\part{Bookdown}\label{bookdown-original}}
+\chapter{Bookdown}\label{bookdown-original}}
 
 \hypertarget{about}{%
-\chapter{About}\label{about}}
+\section{About}\label{about}}
 
 This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports; for example, a math equation \(a^2 + b^2 = c^2\).
 
 \hypertarget{usage}{%
-\section{Usage}\label{usage}}
+\subsection{Usage}\label{usage}}
 
 Each \textbf{bookdown} chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter \emph{must} start with a first-level heading: \texttt{\#\ A\ good\ chapter}, and can contain one (and only one) first-level heading.
 
@@ -3900,7 +3895,7 @@ Use second-level and higher headings within chapters like: \texttt{\#\#\ A\ shor
 The \texttt{index.Rmd} file is required, and is also your first book chapter. It will be the homepage when you render the book.
 
 \hypertarget{render-book}{%
-\section{Render book}\label{render-book}}
+\subsection{Render book}\label{render-book}}
 
 You can render the HTML version of this example book without changing anything:
 
@@ -3923,7 +3918,7 @@ Or build the book from the R console:
 To render this example to PDF as a \texttt{bookdown::pdf\_book}, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.org/tinytex/}.
 
 \hypertarget{preview-book}{%
-\section{Preview book}\label{preview-book}}
+\subsection{Preview book}\label{preview-book}}
 
 As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in ``Preview book'', or from the R console:
 
@@ -3934,28 +3929,28 @@ As you work, you may start a local server to live preview this HTML book. This p
 \end{Shaded}
 
 \hypertarget{hello-bookdown}{%
-\chapter{Hello bookdown}\label{hello-bookdown}}
+\section{Hello bookdown}\label{hello-bookdown}}
 
 All chapters start with a first-level heading followed by your chapter title, like the line above. There should be only one first-level heading (\texttt{\#}) per .Rmd file.
 
 \hypertarget{a-section}{%
-\section{A section}\label{a-section}}
+\subsection{A section}\label{a-section}}
 
 All chapter sections start with a second-level (\texttt{\#\#}) or higher heading followed by your section title, like the sections above and below here. You can have as many as you want within a chapter.
 
 \hypertarget{an-unnumbered-section}{%
-\subsection*{An unnumbered section}\label{an-unnumbered-section}}
-\addcontentsline{toc}{subsection}{An unnumbered section}
+\subsubsection*{An unnumbered section}\label{an-unnumbered-section}}
+\addcontentsline{toc}{subsubsection}{An unnumbered section}
 
 Chapters and sections are numbered by default. To un-number a heading, add a \texttt{\{.unnumbered\}} or the shorter \texttt{\{-\}} at the end of the heading, like in this section.
 
 \hypertarget{cross}{%
-\chapter{Cross-references}\label{cross}}
+\section{Cross-references}\label{cross}}
 
 Cross-references make it easier for your readers to find and link to elements in your book.
 
 \hypertarget{chapters-and-sub-chapters}{%
-\section{Chapters and sub-chapters}\label{chapters-and-sub-chapters}}
+\subsection{Chapters and sub-chapters}\label{chapters-and-sub-chapters}}
 
 There are two steps to cross-reference any heading:
 
@@ -3983,7 +3978,7 @@ There are two steps to cross-reference any heading:
 \end{enumerate}
 
 \hypertarget{captioned-figures-and-tables}{%
-\section{Captioned figures and tables}\label{captioned-figures-and-tables}}
+\subsection{Captioned figures and tables}\label{captioned-figures-and-tables}}
 
 Figures and tables \emph{with captions} can also be cross-referenced from elsewhere in your book using \texttt{\textbackslash{}@ref(fig:chunk-label)} and \texttt{\textbackslash{}@ref(tab:chunk-label)}, respectively.
 
@@ -4040,7 +4035,7 @@ temperature & pressure\\
 \end{table}
 
 \hypertarget{parts}{%
-\chapter{Parts}\label{parts}}
+\section{Parts}\label{parts}}
 
 You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file.
 
@@ -4051,15 +4046,15 @@ Add an unnumbered part: \texttt{\#\ (PART\textbackslash{}*)\ Act\ one\ \{-\}} (f
 Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ Other\ stuff\ \{-\}} (followed by \texttt{\#\ A\ chapter}). Chapters in an appendix are prepended with letters instead of numbers.
 
 \hypertarget{footnotes-and-citations}{%
-\chapter{Footnotes and citations}\label{footnotes-and-citations}}
+\section{Footnotes and citations}\label{footnotes-and-citations}}
 
 \hypertarget{footnotes}{%
-\section{Footnotes}\label{footnotes}}
+\subsection{Footnotes}\label{footnotes}}
 
 Footnotes are put inside the square brackets after a caret \texttt{\^{}{[}{]}}. Like this one \footnote{This is a footnote.}.
 
 \hypertarget{citations}{%
-\section{Citations}\label{citations}}
+\subsection{Citations}\label{citations}}
 
 Reference items in your bibliography file(s) using \texttt{@key}.
 
@@ -4070,10 +4065,10 @@ The \texttt{bs4\_book} theme makes footnotes appear inline when you click on the
 The RStudio Visual Markdown Editor can also make it easier to insert citations: \url{https://rstudio.github.io/visual-markdown-editing/\#/citations}
 
 \hypertarget{blocks}{%
-\chapter{Blocks}\label{blocks}}
+\section{Blocks}\label{blocks}}
 
 \hypertarget{equations}{%
-\section{Equations}\label{equations}}
+\subsection{Equations}\label{equations}}
 
 Here is an equation.
 
@@ -4085,7 +4080,7 @@ Here is an equation.
 You may refer to using \texttt{\textbackslash{}@ref(eq:binom)}, like see Equation \eqref{eq:binom}.
 
 \hypertarget{theorems-and-proofs}{%
-\section{Theorems and proofs}\label{theorems-and-proofs}}
+\subsection{Theorems and proofs}\label{theorems-and-proofs}}
 
 Labeled theorems can be referenced in text using \texttt{\textbackslash{}@ref(thm:tri)}, for example, check out this smart theorem \ref{thm:tri}.
 
@@ -4096,7 +4091,7 @@ Labeled theorems can be referenced in text using \texttt{\textbackslash{}@ref(th
 Read more here \url{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html}.
 
 \hypertarget{callout-blocks}{%
-\section{Callout blocks}\label{callout-blocks}}
+\subsection{Callout blocks}\label{callout-blocks}}
 
 The \texttt{bs4\_book} theme also includes special callout blocks, like this \texttt{.rmdnote}.
 
@@ -4121,20 +4116,20 @@ You may also use: \texttt{.rmdcaution}, \texttt{.rmdimportant}, \texttt{.rmdtip}
 The R Markdown Cookbook provides more help on how to use custom blocks to design your own callouts: \url{https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html}
 
 \hypertarget{sharing-your-book}{%
-\chapter{Sharing your book}\label{sharing-your-book}}
+\section{Sharing your book}\label{sharing-your-book}}
 
 \hypertarget{publishing}{%
-\section{Publishing}\label{publishing}}
+\subsection{Publishing}\label{publishing}}
 
 HTML books can be published online, see: \url{https://bookdown.org/yihui/bookdown/publishing.html}
 
 \hypertarget{pages}{%
-\section{404 pages}\label{pages}}
+\subsection{404 pages}\label{pages}}
 
 By default, users will be directed to a 404 page if they try to access a webpage that cannot be found. If you'd like to customize your 404 page instead of using the default, you may add either a \texttt{\_404.Rmd} or \texttt{\_404.md} file to your project root and use code and/or Markdown syntax.
 
 \hypertarget{metadata-for-sharing}{%
-\section{Metadata for sharing}\label{metadata-for-sharing}}
+\subsection{Metadata for sharing}\label{metadata-for-sharing}}
 
 Bookdown HTML books will provide HTML metadata for social sharing on platforms like Twitter, Facebook, and LinkedIn, using information you provide in the \texttt{index.Rmd} YAML. To setup, set the \texttt{url} for your book and the path to your \texttt{cover-image} file. Your book's \texttt{title} and \texttt{description} are also used.
 
@@ -4153,6 +4148,7 @@ Or use:
 \end{Shaded}
 
 
+\renewcommand\bibname{参考文献}
   \bibliography{book.bib,packages.bib}
 
 \end{document}
