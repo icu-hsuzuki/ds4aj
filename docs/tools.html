@@ -84,7 +84,7 @@
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="active" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
-<li><a class="" href="bookdown.html"><span class="header-section-number">C</span> Bookdown</a></li>
+<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
 </ul>
 
         <div class="book-extra">
@@ -415,14 +415,40 @@ git push -u origin main</code></pre>
 <p>以下では、本の共同編集を想定して、書きます。</p>
 <ol style="list-style-type: decimal">
 <li><p>編集に関わる全員が、それぞれ、GitHub アカウントを作成します。</p></li>
-<li><p>リポジトリを Fork： 共同編集する本のレポジトリにいき、フォークします。フォークすることで、編集者のリポジトリに、コピーが作成され、大元のリポジトリの変更を依頼することができます。</p></li>
-<li><p>リポジトリをクローン: 編集者のコンピュータにフォークして得られたリポジトリを、クローンします。</p></li>
-<li><p>編集: 編集者のコンピュータで編集を行います。</p></li>
+<li><p>リポジトリを フォーク（Fork）： 共同編集する本のレポジトリ（オリジナル・レポジトリと呼ぶことにします）にいき、フォークします。フォークすることで、編集者のリポジトリに、コピーが作成され、大元のリポジトリの変更を依頼することができます。名前をつけますが、元のものと同じでも、フォークしたことがわかるようにしておいても良いでしょう。</p></li>
+</ol>
+<ul>
+<li>一回フォーク（Fork）したら、２度目以降は、オリジナル・レポジトリから、フォーク（Fork）する必要はありません。ただし、改訂されているかもしれないので、更新（Update）する必要はあります。GitHub 上の、フォーク（Fork） した、自分のレポジトリを見ると、更新されている場合は、オリジナル・レポジトリーを、Pull することができますから、Pull し、最新の状態にしておきます。</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><p>（フォークした）リポジトリをクローン: 編集者のコンピュータにフォークして得られたリポジトリを、クローンし、自分のコンピュータ内に、ローカル・リポジトリを作成ます。</p></li>
+<li><p>RStudio の右上の、Git タブの右にある、New Branch に、新しい、Branch（編集用枝）を作成します。すると、その右に、Branch 名が記載されます。それが、現在の Branch 名です。その右の三角を押すと、main など、すべての Branch が見えるはずです。編集のための Branch が表示されている（アクティブ）になっていることを確認します。</p></li>
+<li><p>編集: 編集者のコンピュータ（RStudio 上）で編集を行います。</p></li>
 <li><p>編集結果をコミット : 編集者のコンピュータで編集した後に、簡単な説明を書いて、コミットします。</p></li>
 <li><p>編集結果をプッシュ : フォークした GitHub の自分のリポジトリに、プッシュします。</p></li>
-<li><p>プル依頼を作成 : 大元のリポジトリで、編集の内容を簡単に記述して、プルリクエストをします。</p></li>
-<li><p>編集結果の確認 : 大元の、リポジトリの所有者は、編集結果を確認し、承認する場合は、main に、統合します。</p></li>
-<li><p>変更の同期: 編集者は、承認された、大元のリポジトリを、フォークした自分のリポジトリに、同期させます。</p></li>
+</ol>
+<ul>
+<li>この時点で、RStudio 上の、Branch を main に戻しておくと良いでしょう。</li>
+</ul>
+<ol start="8" style="list-style-type: decimal">
+<li>プル依頼を作成 : フォークした自分のリポジトリで、編集の内容を簡単に記述して、プルリクエストをします。</li>
+</ol>
+<ul>
+<li>編集して、プッシュした、Branch を選択し、オリジナル・レポジトリーと異なった状態であることを確認します。</li>
+<li>Pull Request を選択します。</li>
+<li>オリジナル・レポジトリーの管理者は、修正をしやすいように、修正の要点を書いておきます。</li>
+<li>ここまでで終了です。管理者にメールが届きます。</li>
+<li>このあと、編集者が何をするか、確認してください。</li>
+</ul>
+<ol start="9" style="list-style-type: decimal">
+<li>
+<strong>編集者</strong>：編集結果の確認 : 大元の、リポジトリの所有者は、編集結果を確認し、承認する場合は、main に、統合（マージ）します。</li>
+</ol>
+<ul>
+<li>統合（マージ）すると、Pull Request をした編集者に、メールが届きます。</li>
+</ul>
+<ol start="10" style="list-style-type: decimal">
+<li>変更の同期: 編集者は、承認された、オリジナル・リポジトリを、フォークした自分のリポジトリに、同期させます。</li>
 </ol>
 </div>
 <div id="参考にしたサイト" class="section level3" number="10.1.11">
@@ -479,7 +505,7 @@ git push -u origin main</code></pre>
 
   <div class="chapter-nav">
 <div class="prev"><a href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></div>
-<div class="next"><a href="bookdown.html"><span class="header-section-number">C</span> Bookdown</a></div>
+<div class="next"><a href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -517,7 +543,7 @@ git push -u origin main</code></pre>
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-04-02.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-04-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

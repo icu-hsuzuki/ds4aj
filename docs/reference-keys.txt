@@ -163,6 +163,7 @@ jtr13bookdown-template
 git---github---rstudio-関連
 bookdown-関連
 複数アカウント複数のキー関連
+bookdown-original
 about
 usage
 render-book

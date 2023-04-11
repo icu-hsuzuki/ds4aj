@@ -134,7 +134,7 @@
 \title{データサイエンスをはじめましょう\\
 - Data Science for All -}
 \author{鈴木寛（Hirosi Suzuki）}
-\date{2023-04-02}
+\date{2023-04-11}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[section]
@@ -3758,21 +3758,78 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 \item
   編集に関わる全員が、それぞれ、GitHub アカウントを作成します。
 \item
-  リポジトリを Fork： 共同編集する本のレポジトリにいき、フォークします。フォークすることで、編集者のリポジトリに、コピーが作成され、大元のリポジトリの変更を依頼することができます。
+  リポジトリを フォーク（Fork）： 共同編集する本のレポジトリ（オリジナル・レポジトリと呼ぶことにします）にいき、フォークします。フォークすることで、編集者のリポジトリに、コピーが作成され、大元のリポジトリの変更を依頼することができます。名前をつけますが、元のものと同じでも、フォークしたことがわかるようにしておいても良いでしょう。
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
 \item
-  リポジトリをクローン: 編集者のコンピュータにフォークして得られたリポジトリを、クローンします。
+  一回フォーク（Fork）したら、２度目以降は、オリジナル・レポジトリから、フォーク（Fork）する必要はありません。ただし、改訂されているかもしれないので、更新（Update）する必要はあります。GitHub 上の、フォーク（Fork） した、自分のレポジトリを見ると、更新されている場合は、オリジナル・レポジトリーを、Pull することができますから、Pull し、最新の状態にしておきます。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
 \item
-  編集: 編集者のコンピュータで編集を行います。
+  （フォークした）リポジトリをクローン: 編集者のコンピュータにフォークして得られたリポジトリを、クローンし、自分のコンピュータ内に、ローカル・リポジトリを作成ます。
+\item
+  RStudio の右上の、Git タブの右にある、New Branch に、新しい、Branch（編集用枝）を作成します。すると、その右に、Branch 名が記載されます。それが、現在の Branch 名です。その右の三角を押すと、main など、すべての Branch が見えるはずです。編集のための Branch が表示されている（アクティブ）になっていることを確認します。
+\item
+  編集: 編集者のコンピュータ（RStudio 上）で編集を行います。
 \item
   編集結果をコミット : 編集者のコンピュータで編集した後に、簡単な説明を書いて、コミットします。
 \item
   編集結果をプッシュ : フォークした GitHub の自分のリポジトリに、プッシュします。
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
 \item
-  プル依頼を作成 : 大元のリポジトリで、編集の内容を簡単に記述して、プルリクエストをします。
+  この時点で、RStudio 上の、Branch を main に戻しておくと良いでしょう。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
 \item
-  編集結果の確認 : 大元の、リポジトリの所有者は、編集結果を確認し、承認する場合は、main に、統合します。
+  プル依頼を作成 : フォークした自分のリポジトリで、編集の内容を簡単に記述して、プルリクエストをします。
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
 \item
-  変更の同期: 編集者は、承認された、大元のリポジトリを、フォークした自分のリポジトリに、同期させます。
+  編集して、プッシュした、Branch を選択し、オリジナル・レポジトリーと異なった状態であることを確認します。
+\item
+  Pull Request を選択します。
+\item
+  オリジナル・レポジトリーの管理者は、修正をしやすいように、修正の要点を書いておきます。
+\item
+  ここまでで終了です。管理者にメールが届きます。
+\item
+  このあと、編集者が何をするか、確認してください。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  \textbf{編集者}：編集結果の確認 : 大元の、リポジトリの所有者は、編集結果を確認し、承認する場合は、main に、統合（マージ）します。
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  統合（マージ）すると、Pull Request をした編集者に、メールが届きます。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  変更の同期: 編集者は、承認された、オリジナル・リポジトリを、フォークした自分のリポジトリに、同期させます。
 \end{enumerate}
 
 \hypertarget{ux53c2ux8003ux306bux3057ux305fux30b5ux30a4ux30c8}{%
@@ -3836,8 +3893,8 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
   \href{https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account}{Adding a new SSH key to your GitHub account}
 \end{itemize}
 
-\hypertarget{bookdown}{%
-\section{Bookdown}\label{bookdown}}
+\hypertarget{bookdown-original}{%
+\section{Bookdown}\label{bookdown-original}}
 
 \hypertarget{about}{%
 \subsection{About}\label{about}}
