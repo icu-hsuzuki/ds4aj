@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  13 APR 2023 18:43
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  13 APR 2023 18:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -636,26 +636,26 @@ Package: amsthm 2020/05/29 v2.20.6
 (./ds4aj.aux)
 \openout1 = `ds4aj.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -692,7 +692,7 @@ LaTeX Font Info:    ... okay on input line 164.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 164.
+(Font)              scaled to size 9.24713pt on input line 169.
 
 Package fontspec Info: HaranoAjiGothic-Medium scale = 0.7937346499485756.
 
@@ -721,21 +721,21 @@ ani;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 164.
+(Font)              scaled to size 9.24713pt on input line 169.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 164.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 169.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 164.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 169.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 164.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 169.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 164.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 169.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 164.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 169.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 164.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 169.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 164.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 169.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -764,7 +764,7 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 164.
+(Font)              scaled to size 10.0pt on input line 169.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -803,18 +803,18 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 164.
+(Font)              scaled to size 10.0pt on input line 169.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 164.
+(Font)              `operators' in the math version `normal' on input line 169.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 164.
+ line 169.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 164.
+(Font)              `operators' in the math version `bold' on input line 169.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 164.
+t line 169.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -901,15 +901,15 @@ t=math;language=dflt;"
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 164.
+(Font)              `symbols' in the math version `normal' on input line 169.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 164.
+t line 169.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 164.
+(Font)              `symbols' in the math version `bold' on input line 169.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 164.
+t line 169.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -979,22 +979,22 @@ pt=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-64.
+69.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 164.
+t line 169.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 164
+(Font)              `largesymbols' in the math version `bold' on input line 169
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 164.
-LaTeX Info: Redefining \microtypecontext on input line 164.
-Package microtype Info: Applying patch `item' on input line 164.
-Package microtype Info: Applying patch `toc' on input line 164.
-Package microtype Info: Applying patch `eqnum' on input line 164.
-Package microtype Info: Applying patch `footnote' on input line 164.
-Package microtype Info: Applying patch `verbatim' on input line 164.
+t line 169.
+LaTeX Info: Redefining \microtypecontext on input line 169.
+Package microtype Info: Applying patch `item' on input line 169.
+Package microtype Info: Applying patch `toc' on input line 169.
+Package microtype Info: Applying patch `eqnum' on input line 169.
+Package microtype Info: Applying patch `footnote' on input line 169.
+Package microtype Info: Applying patch `verbatim' on input line 169.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1005,40 +1005,40 @@ Package microtype Info: No adjustment of kerning.
 File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
 ern Roman (RS)
 )
-Package hyperref Info: Link coloring OFF on input line 164.
+Package hyperref Info: Link coloring OFF on input line 169.
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
-(Font)              scaled to size 15.97903pt on input line 166.
+(Font)              scaled to size 15.97903pt on input line 171.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 166.
+(Font)              scaled to size 12.0pt on input line 171.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 166.
+(Font)              scaled to size 8.0pt on input line 171.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 166.
+(Font)              scaled to size 6.0pt on input line 171.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-66.
+71.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 166.
+(Font)              scaled to size 12.0011pt on input line 171.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 166.
+(Font)              scaled to size 8.00073pt on input line 171.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 166.
+(Font)              scaled to size 6.00055pt on input line 171.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 166.
+(Font)              scaled to size 11.99872pt on input line 171.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 166.
+(Font)              scaled to size 7.99915pt on input line 171.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 166.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 166
+(Font)              scaled to size 5.99936pt on input line 171.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 171
 .
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 166
+LaTeX Font Info:    Trying to load font information for U+msb on input line 171
 .
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1046,7 +1046,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 166.
+(Font)              scaled to size 11.09656pt on input line 171.
 [1
 
 
@@ -1059,7 +1059,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 ]
 LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 23.00687pt on input line 169.
+(Font)              scaled to size 23.00687pt on input line 174.
 (./ds4aj.toc
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 7.0pt on input line 2.
@@ -1094,11 +1094,11 @@ Package xeCJK Warning: Unknown CJK family `\CJKttdefault' is being ignored.
 
 ]
 LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 182.
+(Font)              scaled to size 13.31586pt on input line 187.
 [7] [8]
 第1章
 LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 19.17854pt on input line 224.
+(Font)              scaled to size 19.17854pt on input line 229.
 [9
 
 ] [10
@@ -1115,24 +1115,24 @@ LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/b/n' will be
-(Font)              scaled to size 9.24713pt on input line 487.
+(Font)              scaled to size 9.24713pt on input line 492.
 [20]
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 541.
+(Font)              scaled to size 7.3977pt on input line 546.
 [21]
-Overfull \hbox (38.22368pt too wide) in paragraph at lines 588--590
+Overfull \hbox (38.22368pt too wide) in paragraph at lines 593--595
 []\TU/lmr/m/n/10 TinyTeX \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 を デ ィ レ ク ト 
 リ を 指 定 し て イ ン ス ト ー ル：| \TU/lmtt/m/n/10 tinytex::install_tinytex(dir
  []
 
 [22] [23] [24] [25] [26] [27]
-Underfull \hbox (badness 1107) in paragraph at lines 829--830
+Underfull \hbox (badness 1107) in paragraph at lines 834--835
 []\TU/lmtt/m/n/10 tidyverse \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 な ど は、|  
 す で に イ ン ス ト ー ル さ れ て い ま す が、|  使 い た い と
  []
 
 
-Underfull \hbox (badness 2050) in paragraph at lines 829--830
+Underfull \hbox (badness 2050) in paragraph at lines 834--835
 \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 き は、| \TU/lmtt/m/n/10 library(tidyver
 se) \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 と し、|  イ ン ス ト ー ル さ れ て い な い と 
 き は、|
@@ -1143,13 +1143,13 @@ se) \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 と し、|  イ ン ス ト ー �
 ]
 第4章
 [31] [32] [33]
-Overfull \hbox (34.36475pt too wide) in paragraph at lines 1020--1020
+Overfull \hbox (34.36475pt too wide) in paragraph at lines 1025--1025
 []\TU/lmtt/m/n/10 If you are not sure, you may install TinyTeX in R: tinytex::i
 nstall_tinytex()[] 
  []
 
 
-Overfull \hbox (1879.41399pt too wide) in paragraph at lines 1044--1044
+Overfull \hbox (1879.41399pt too wide) in paragraph at lines 1049--1049
 [] \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 “ \TU/lmtt/m/n/10 C:/Program Files
 /RStudio/bin/quarto/bin/tools/pandoc \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 
 ”  \TU/lmtt/m/n/10 +RTS -K512m -RTS RNotebook-J.knit.md  \TU/HaranoAjiMincho-Re
@@ -1172,7 +1172,7 @@ tput file: RNotebook-J.knit.md[]
  []
 
 
-Overfull \hbox (975.53622pt too wide) in paragraph at lines 1044--1044
+Overfull \hbox (975.53622pt too wide) in paragraph at lines 1049--1049
 []\TU/lmtt/m/n/10 Error: LaTeX failed to compile RNotebook-J.tex. See https://y
 ihui.org/tinytex/r/#debugging for debugging tips. In addition: Warning message:
  In system2( \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 … \TU/lmtt/m/n/10 , stdo
@@ -1182,26 +1182,26 @@ otf(0)/m/n/10 ” ’  \TU/lmtt/m/n/10 not found Execution halted[]
  []
 
 
-Overfull \hbox (501.61475pt too wide) in paragraph at lines 1044--1044
+Overfull \hbox (501.61475pt too wide) in paragraph at lines 1049--1049
 []\TU/lmtt/m/n/10 No LaTeX installation detected (LaTeX is required to create P
 DF output). You should install a LaTeX distribution for your platform: https://
 www.latex-project.org/get/[] 
  []
 
 
-Overfull \hbox (34.36475pt too wide) in paragraph at lines 1044--1044
+Overfull \hbox (34.36475pt too wide) in paragraph at lines 1049--1049
 []\TU/lmtt/m/n/10 If you are not sure, you may install TinyTeX in R: tinytex::i
 nstall_tinytex()[] 
  []
 
 
-Overfull \hbox (207.61475pt too wide) in paragraph at lines 1044--1044
+Overfull \hbox (207.61475pt too wide) in paragraph at lines 1049--1049
 []\TU/lmtt/m/n/10 MacTeX on macOS - https://tug.org/mactex/ (NOTE: Download wit
 h Safari rather than Chrome strongly recommended)[] 
  []
 
 [34]
-Overfull \hbox (75.3504pt too wide) in paragraph at lines 1075--1077
+Overfull \hbox (75.3504pt too wide) in paragraph at lines 1080--1082
 []\TU/lmtt/m/n/10 Path=C:\**UserName**\AppData\Local\Microsoft\WindowsApps;C:\T
 TeX\bin\windows 
  []
@@ -1215,33 +1215,33 @@ File: 24-rbasics_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pd
 f)
 <use 24-rbasics_files/figure-latex/unnamed-chunk-4-1.pdf>
 [39] [40] [41]
-Underfull \hbox (badness 3333) in paragraph at lines 1356--1357
+Underfull \hbox (badness 3333) in paragraph at lines 1361--1362
 []\TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 実 行 す る に は、|  カ ー ソ ル の 場 所 で \TU/
 lmr/m/n/10 Ctrl+Shift+Enter (Win) \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 ま た
  は
  []
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1381.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1386.
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1381.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1386.
 
 
 [42]
-Overfull \vbox (0.79999pt too high) detected at line 1600
+Overfull \vbox (0.79999pt too high) detected at line 1605
  []
 
 [43] [44]
-Underfull \vbox (badness 10000) detected at line 1600
+Underfull \vbox (badness 10000) detected at line 1605
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1600
+Underfull \vbox (badness 10000) detected at line 1605
  []
 
 [45] [46] [47]
-Overfull \vbox (0.43246pt too high) detected at line 1686
+Overfull \vbox (0.43246pt too high) detected at line 1691
  []
 
 [48] [49] [50] [51] [52] [53
@@ -1249,13 +1249,13 @@ Overfull \vbox (0.43246pt too high) detected at line 1686
 ] [54]
 第6章
 
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1897--1897
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1902--1902
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1897--1897
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1902--1902
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -1263,13 +1263,13 @@ Overfull \hbox (71.11475pt too wide) in paragraph at lines 1897--1897
 [55
 
 ]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1918--1918
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1923--1923
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1918--1918
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1923--1923
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -1278,13 +1278,13 @@ File: 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type
 pdf)
 <use 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf>
 [56]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1943--1943
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1948--1948
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1943--1943
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1948--1948
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -1293,67 +1293,67 @@ File: 31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type
  pdf)
 <use 31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf>
 [57] [58] [59] [60] [61] [62] [63]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2297--2297
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2302--2302
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2297--2297
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2302--2302
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [64]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2334--2334
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2339--2339
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2334--2334
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2339--2339
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [65]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2378--2378
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2383--2383
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2378--2378
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2383--2383
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [66]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2422--2422
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2427--2427
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2422--2422
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2427--2427
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [67]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2476--2476
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2481--2481
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2476--2476
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2481--2481
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [68]
-Underfull \vbox (badness 10000) detected at line 2563
+Underfull \vbox (badness 10000) detected at line 2568
  []
 
 [69]
@@ -1365,7 +1365,7 @@ File: 31-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf Graphic file (type
  pdf)
 <use 31-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf>
 [71] [72]
-Underfull \vbox (badness 2846) detected at line 2699
+Underfull \vbox (badness 2846) detected at line 2704
  []
 
 [73] [74] [75
@@ -1375,7 +1375,7 @@ Underfull \vbox (badness 2846) detected at line 2699
 File: ./data/data-science.png Graphic file (type bmp)
 <./data/data-science.png>
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 2755.
+(Font)              scaled to size 8.32242pt on input line 2760.
 [77
 
 ] [78] [79]
@@ -1410,7 +1410,7 @@ File: 41-eda_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type pdf)
 LaTeX Font Warning: Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/it' undefin
 ed
 (Font)              using `TU/HaranoAjiMincho-Regular.otf(0)/m/n' instead on in
-put line 3036.
+put line 3041.
 
 File: 81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type p
 df)
@@ -1424,13 +1424,13 @@ df)
 [97
 
 ] [98]
-Overfull \hbox (55.36475pt too wide) in paragraph at lines 3409--3409
+Overfull \hbox (55.36475pt too wide) in paragraph at lines 3414--3414
 []\TU/lmtt/m/n/10 git config --global user.email "your@email.com" # GitHub  \TU
 /HaranoAjiMincho-Regular.otf(0)/m/n/10 に 登 録 し た メ ー ル ア ド レ ス [] 
  []
 
 [99] [100]
-Overfull \hbox (60.61475pt too wide) in paragraph at lines 3495--3495
+Overfull \hbox (60.61475pt too wide) in paragraph at lines 3500--3500
 []\TU/lmtt/m/n/10 #  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 わ た し の ア カ ウ ン 
 ト の 場 合 に は 、 コ ピ ー し た も の を 貼 り 付 け る と 、 上 の よ う に な り ま す 。 [] 
  []
@@ -1440,7 +1440,7 @@ Overfull \hbox (60.61475pt too wide) in paragraph at lines 3495--3495
 [109
 
 ]
-Overfull \hbox (15.80815pt too wide) in paragraph at lines 4009--4010
+Overfull \hbox (15.80815pt too wide) in paragraph at lines 4014--4015
 []\TU/lmr/m/n/10 Next, reference the labeled heading anywhere in the text using
  \TU/lmtt/m/n/10 \@ref(nice-label)\TU/lmr/m/n/10 ;
  []
