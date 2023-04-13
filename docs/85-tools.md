@@ -302,6 +302,7 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 * Introduction to Data Science, by Rafael A. Irizarry
   - [Git and GitHub](http://rafalab.dfci.harvard.edu/dsbook/git.html#git)
   - edX の、データサイエンスのコースの教科書に入っています。よく、まとまっていると思います。原語は英語ですが、Google などの翻訳機能を使っても、十分理解することができると思います。Git と GitHub の概要から、Bookdown パッケージによる、電子書籍の執筆の前までは、基本的に、この教科書を参考にしていますが、それぞれのステップでの、スクリーンショットもたくさん掲載されており、確認がしやすいようになっています。
+* [Git-GitHub-RStudio](https://icu-hsuzuki.github.io/myds/techmemo.html#git-github-rstudio): 個人的メモ
 
 #### Bookdown 関連
 

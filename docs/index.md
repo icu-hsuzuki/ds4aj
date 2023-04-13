@@ -3,7 +3,7 @@ title: "データサイエンスをはじめましょう   \n- Data Science for 
 author: "鈴木寛（Hirosi Suzuki）"
 date: "2023-04-13"
 site: bookdown::bookdown_site
-documentclass: bxjsbook
+documentclass: bxjsbook #or bxjsreport
 classoption: xelatex, ja=standard
 bibliography: [book.bib, packages.bib]
 url: https://icu-hsuzuki.github.io/ds4aj/

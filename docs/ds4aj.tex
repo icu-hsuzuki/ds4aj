@@ -101,10 +101,19 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
-\usepackage{xeCJK}
-\setCJKmainfont{ipaexm.ttf}
-\setCJKsansfont{ipaexg.ttf}
-\setCJKmonofont{ipaexg.ttf}
+\usepackage{longtable}
+\usepackage{framed,color}
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+
+%\usepackage{xeCJK}
+%\setCJKmainfont{ipaexm.ttf}
+%\setCJKsansfont{ipaexg.ttf}
+%\setCJKmonofont{ipaexg.ttf}
 %\renewcommand{\contentsname}{目次}
 
 %
@@ -1180,7 +1189,7 @@ RStudio で R を利用する場合には、プロジェクトを作成するこ
 
 \texttt{str(cars)} は、\texttt{cars} という、R に付属している、データの構造（structure）を表示します。\texttt{data.frame} とありますが、これは、矩形になったデータ（各列の長さがおなじ）の一番簡単なクラスの名前で、2変数、それぞれが、50 個の数値データ（numerical data） からなっていることがわかります。
 
-head(cars)\texttt{では、縦に表示されていたものが、横に表示されています。}\(speed`、`\)dist\texttt{とありますが、}cars\(speed`, `cars\)dist\texttt{は、}cars` データの、それぞれの列を意味します。
+\texttt{head(cars)} では、縦に表示されていたものが、横に表示されています。\texttt{\$speed}、\texttt{\$dist} とありますが、\texttt{cars\$speed}, \texttt{cars\$dist} は、\texttt{cars} データの、それぞれの列を意味します。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3877,6 +3886,8 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
   \item
     edX の、データサイエンスのコースの教科書に入っています。よく、まとまっていると思います。原語は英語ですが、Google などの翻訳機能を使っても、十分理解することができると思います。Git と GitHub の概要から、Bookdown パッケージによる、電子書籍の執筆の前までは、基本的に、この教科書を参考にしていますが、それぞれのステップでの、スクリーンショットもたくさん掲載されており、確認がしやすいようになっています。
   \end{itemize}
+\item
+  \href{https://icu-hsuzuki.github.io/myds/techmemo.html\#git-github-rstudio}{Git-GitHub-RStudio}: 個人的メモ
 \end{itemize}
 
 \hypertarget{bookdown-ux95a2ux9023}{%

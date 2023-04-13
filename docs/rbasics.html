@@ -157,7 +157,7 @@
 <span><span class="co">#&gt;  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...</span></span>
 <span><span class="co">#&gt;  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</span></span></code></pre></div>
 <p><code>str(cars)</code> は、<code>cars</code> という、R に付属している、データの構造（structure）を表示します。<code>data.frame</code> とありますが、これは、矩形になったデータ（各列の長さがおなじ）の一番簡単なクラスの名前で、2変数、それぞれが、50 個の数値データ（numerical data） からなっていることがわかります。</p>
-<p>head(cars)<code>では、縦に表示されていたものが、横に表示されています。</code><span class="math inline">\(speed`、`\)</span>dist<code>とありますが、</code>cars<span class="math inline">\(speed`, `cars\)</span>dist<code>は、</code>cars` データの、それぞれの列を意味します。</p>
+<p><code>head(cars)</code> では、縦に表示されていたものが、横に表示されています。<code>$speed</code>、<code>$dist</code> とありますが、<code>cars$speed</code>, <code>cars$dist</code> は、<code>cars</code> データの、それぞれの列を意味します。</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      speed           dist       </span></span>
