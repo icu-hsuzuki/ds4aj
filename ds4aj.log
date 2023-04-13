@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  11 APR 2023 16:53
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  13 APR 2023 09:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1453,7 +1453,7 @@ Overfull \hbox (60.61475pt too wide) in paragraph at lines 3486--3486
 [109
 
 ]
-Overfull \hbox (15.80815pt too wide) in paragraph at lines 3971--3972
+Overfull \hbox (15.80815pt too wide) in paragraph at lines 3998--3999
 []\TU/lmr/m/n/10 Next, reference the labeled heading anywhere in the text using
  \TU/lmtt/m/n/10 \@ref(nice-label)\TU/lmr/m/n/10 ;
  []
@@ -1469,10 +1469,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 23929 strings out of 476683
- 493029 string characters out of 5804047
+ 23942 strings out of 476683
+ 493807 string characters out of 5804047
  1879018 words of memory out of 5000000
- 43772 multiletter control sequences out of 15000+600000
+ 43785 multiletter control sequences out of 15000+600000
  519544 words of font info for 118 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
  105i,11n,140p,1002b,983s stack positions out of 10000i,1000n,20000p,200000b,200000s

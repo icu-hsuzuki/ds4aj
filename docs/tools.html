@@ -412,26 +412,27 @@ git push -u origin main</code></pre>
 <h3>
 <span class="header-section-number">B.1.10</span> 共同作業をする場合<a class="anchor" aria-label="anchor" href="#%E5%85%B1%E5%90%8C%E4%BD%9C%E6%A5%AD%E3%82%92%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88"><i class="fas fa-link"></i></a>
 </h3>
-<p>以下では、本の共同編集を想定して、書きます。</p>
+<p>以下では、ひとり管理者（とりまとめ役）がいて、その人がまずは、レポジトリーを作成し、何人かの編集者で、共同編集することを想定して、書きます。内容は本でなくても、プログラムでも、ノートでも構いませんが、イメージしやすくするため、本を編集することを想定して書いていきます。</p>
 <ol style="list-style-type: decimal">
-<li><p>編集に関わる全員が、それぞれ、GitHub アカウントを作成します。</p></li>
-<li><p>リポジトリを フォーク（Fork）： 共同編集する本のレポジトリ（オリジナル・レポジトリと呼ぶことにします）にいき、フォークします。フォークすることで、編集者のリポジトリに、コピーが作成され、大元のリポジトリの変更を依頼することができます。名前をつけますが、元のものと同じでも、フォークしたことがわかるようにしておいても良いでしょう。</p></li>
+<li><p>編集に関わる全員が、それぞれ、個人の、GitHub アカウントを作成します。</p></li>
+<li><p>リポジトリを フォーク（Fork）： 共同編集する（本の）レポジトリ（オリジナル・レポジトリと呼ぶことにします<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;upstream repository と呼ぶこともありますが、自分のリモート・リポジトリを upstream repository と呼ぶこともあるので、ここでは、オリジナル・リポジトリと呼ぶことにします。&lt;/p&gt;"><sup>20</sup></a>）にいき、フォークします。フォークすることで、編集者のリポジトリに、コピーが作成され、大元のリポジトリ（オリジナル・レポジトリ）の変更を依頼することができます。名前をつけますが、元のものと同じでも、フォークしたことがわかるようにしておいても良いでしょう。</p></li>
 </ol>
 <ul>
-<li>一回フォーク（Fork）したら、２度目以降は、オリジナル・レポジトリから、フォーク（Fork）する必要はありません。ただし、改訂されているかもしれないので、更新（Update）する必要はあります。GitHub 上の、フォーク（Fork） した、自分のレポジトリを見ると、更新されている場合は、オリジナル・レポジトリーを、Pull することができますから、Pull し、最新の状態にしておきます。</li>
+<li>一回フォーク（Fork）したら、２度目以降は、オリジナル・レポジトリから、フォーク（Fork）する必要はありません。ただし、改訂されているかもしれないので、更新（Sync fork）する必要はあります。GitHub 上の、フォーク（Fork） した、自分のレポジトリを見ると、更新されている場合は、オリジナル・レポジトリーに、Sync することができますから、Sync し<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Synk fork ボタンを押すと This branch is out-of-date などと表示され、Update branch を選択すると、update されます&lt;/p&gt;"><sup>21</sup></a>、最新の状態にしておきます。よくみると、オリジナル・レポジトリーとの関係が読み取れるかと思います。</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
 <li><p>（フォークした）リポジトリをクローン: 編集者のコンピュータにフォークして得られたリポジトリを、クローンし、自分のコンピュータ内に、ローカル・リポジトリを作成ます。</p></li>
-<li><p>RStudio の右上の、Git タブの右にある、New Branch に、新しい、Branch（編集用枝）を作成します。すると、その右に、Branch 名が記載されます。それが、現在の Branch 名です。その右の三角を押すと、main など、すべての Branch が見えるはずです。編集のための Branch が表示されている（アクティブ）になっていることを確認します。</p></li>
+<li><p>RStudio の右上の、Git タブの右にある、New Branch に、新しい、Branch（編集用枝）を作成します。すると、その右に、Branch 名が記載されます。それが、現在の Branch 名です。その右の三角を押すと、main など、すべての Branch が見えるはずです。編集のための Branch が表示されている（アクティブ）になっていることを確認します<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;New Branch の右に、現在どのBranch がアクティブになっているかが表示されています。そこに現れている Branch に、commit などで、編集を加えていくことになります。&lt;/p&gt;"><sup>22</sup></a>。</p></li>
 <li><p>編集: 編集者のコンピュータ（RStudio 上）で編集を行います。</p></li>
 <li><p>編集結果をコミット : 編集者のコンピュータで編集した後に、簡単な説明を書いて、コミットします。</p></li>
 <li><p>編集結果をプッシュ : フォークした GitHub の自分のリポジトリに、プッシュします。</p></li>
 </ol>
 <ul>
-<li>この時点で、RStudio 上の、Branch を main に戻しておくと良いでしょう。</li>
+<li>実際にどうなるかをみるために、Build をする場合もあるかもしれませんが、すると、たくさんのファイルが書き換えられます。管理者も、一つ一つ丁寧に見るのは大変ですから、実際に、書き換えた、Rmd ファイルなどだけに、チェックを入れて、Commit + Push するのも良いでしょう。</li>
+<li>この時点で、RStudio 上の、Branch を main に戻しておくと良いでしょう<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;New Branch の右のところで、選択します&lt;/p&gt;"><sup>23</sup></a>。</li>
 </ul>
 <ol start="8" style="list-style-type: decimal">
-<li>プル依頼を作成 : フォークした自分のリポジトリで、編集の内容を簡単に記述して、プルリクエストをします。</li>
+<li>プル依頼を作成 : フォークした自分の（リモート）リポジトリで、編集の内容を簡単に記述して、プルリクエスト（Pull Request）をします。</li>
 </ol>
 <ul>
 <li>編集して、プッシュした、Branch を選択し、オリジナル・レポジトリーと異なった状態であることを確認します。</li>
@@ -442,14 +443,30 @@ git push -u origin main</code></pre>
 </ul>
 <ol start="9" style="list-style-type: decimal">
 <li>
-<strong>編集者</strong>：編集結果の確認 : 大元の、リポジトリの所有者は、編集結果を確認し、承認する場合は、main に、統合（マージ）します。</li>
+<strong>管理者</strong>：編集結果の確認 : オリジナル・リポジトリの所有者は、編集結果を確認し、承認する場合は、main に、統合（マージ）します。</li>
 </ol>
 <ul>
 <li>統合（マージ）すると、Pull Request をした編集者に、メールが届きます。</li>
 </ul>
 <ol start="10" style="list-style-type: decimal">
-<li>変更の同期: 編集者は、承認された、オリジナル・リポジトリを、フォークした自分のリポジトリに、同期させます。</li>
+<li>変更の同期: 編集者は、承認された、オリジナル・リポジトリを、フォークした自分のリポジトリに、同期（Sync Fork）させます。</li>
 </ol>
+<ul>
+<li>自分のコンピュータ上の、ローカル・リポジトリの　main branch も（アクティブな、Branch 名を確認して）Pull をして、更新しておくと良いでしょう。</li>
+<li>少し、複雑な、変更の場合には、注意が出ます。詳細は省略しますが、Terminal で、一つの選択肢の、<code>git config pull.rebase true # rebase</code> を入力して、それから、もう一度、Pull をすると良いでしょう。これによって、オリジナル・リポジトリと同じ状態を維持することができます。</li>
+</ul>
+<div id="要点" class="section level4" number="10.1.10.1">
+<h4>
+<span class="header-section-number">B.1.10.1</span> 要点<a class="anchor" aria-label="anchor" href="#%E8%A6%81%E7%82%B9"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>フォークして作成したリポジトリ（リモートも、ローカルも）の、main branch は、オリジナル・レポジトリと同じ状態にしておく。</li>
+<li>編集は、編集用に、branch を作成して、その branch を、リモート・リポジトリにプッシュして、プル・リクエストを行う。</li>
+<li>プル・リクエストの結果が反映されたら、リモートも、ローカルも、同期しておく。</li>
+<li>プル・リクエストが反映される前に、また編集するときは、別の branch を作成して、また、プル・リクエストをするのがよいでしょう。</li>
+<li>管理者は、merge で、編集結果を反映するときに、注意を要しますから、管理者が編集結果を反映しやすいように、丁寧に、プル・リクエストのときの説明をしておくのがよいと思います。</li>
+</ul>
+</div>
 </div>
 <div id="参考にしたサイト" class="section level3" number="10.1.11">
 <h3>
@@ -543,7 +560,7 @@ git push -u origin main</code></pre>
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-04-11.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-04-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

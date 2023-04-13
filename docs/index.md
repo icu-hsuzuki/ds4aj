@@ -1,7 +1,7 @@
 --- 
 title: "データサイエンスをはじめましょう   \n- Data Science for All -"
 author: "鈴木寛（Hirosi Suzuki）"
-date: "2023-04-11"
+date: "2023-04-13"
 site: bookdown::bookdown_site
 documentclass: bxjsbook
 classoption: xelatex, ja=standard

@@ -159,6 +159,7 @@ jtr13bookdown-template
 複数のコンピュータから利用する方法
 複数のアカウントを一つのコンピュータから利用する方法
 共同作業をする場合
+要点
 参考にしたサイト
 git---github---rstudio-関連
 bookdown-関連
