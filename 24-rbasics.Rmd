@@ -1,4 +1,4 @@
-# R Basice {#rbasics}
+# R Basics {#rbasics}
 
 ## プロジェクト - Project
 

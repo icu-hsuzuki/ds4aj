@@ -10,14 +10,16 @@
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ─────────────────── tidyverse 1.3.2 ──
-#> ✔ ggplot2 3.4.1     ✔ purrr   1.0.1
-#> ✔ tibble  3.1.8     ✔ dplyr   1.1.0
-#> ✔ tidyr   1.3.0     ✔ stringr 1.5.0
-#> ✔ readr   2.1.4     ✔ forcats 1.0.0
+#> ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
+#> ✔ dplyr     1.1.2     ✔ readr     2.1.4
+#> ✔ forcats   1.0.0     ✔ stringr   1.5.0
+#> ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+#> ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+#> ✔ purrr     1.0.1     
 #> ── Conflicts ────────────────────── tidyverse_conflicts() ──
 #> ✖ dplyr::filter() masks stats::filter()
 #> ✖ dplyr::lag()    masks stats::lag()
+#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 library(WDI)
 ```
 
@@ -46,22 +48,22 @@ WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"),
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #> # A tibble: 196 × 13
-#>    country       iso2c iso3c  year     gdp status lastupda…¹
-#>    <chr>         <chr> <chr> <dbl>   <dbl> <lgl>  <date>    
-#>  1 United States US    USA    2021 2.33e13 NA     2022-12-22
-#>  2 China         CN    CHN    2021 1.77e13 NA     2022-12-22
-#>  3 Japan         JP    JPN    2021 4.94e12 NA     2022-12-22
-#>  4 Germany       DE    DEU    2021 4.26e12 NA     2022-12-22
-#>  5 India         IN    IND    2021 3.18e12 NA     2022-12-22
-#>  6 United Kingd… GB    GBR    2021 3.13e12 NA     2022-12-22
-#>  7 France        FR    FRA    2021 2.96e12 NA     2022-12-22
-#>  8 Italy         IT    ITA    2021 2.11e12 NA     2022-12-22
-#>  9 Canada        CA    CAN    2021 1.99e12 NA     2022-12-22
-#> 10 Korea, Rep.   KR    KOR    2021 1.81e12 NA     2022-12-22
-#> # … with 186 more rows, 6 more variables: region <chr>,
-#> #   capital <chr>, longitude <dbl>, latitude <dbl>,
-#> #   income <chr>, lending <chr>, and abbreviated variable
-#> #   name ¹​lastupdated
+#>    country      iso2c iso3c  year     gdp status lastupdated
+#>    <chr>        <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
+#>  1 United Stat… US    USA    2021 2.33e13 NA     2022-12-22 
+#>  2 China        CN    CHN    2021 1.77e13 NA     2022-12-22 
+#>  3 Japan        JP    JPN    2021 4.94e12 NA     2022-12-22 
+#>  4 Germany      DE    DEU    2021 4.26e12 NA     2022-12-22 
+#>  5 India        IN    IND    2021 3.18e12 NA     2022-12-22 
+#>  6 United King… GB    GBR    2021 3.13e12 NA     2022-12-22 
+#>  7 France       FR    FRA    2021 2.96e12 NA     2022-12-22 
+#>  8 Italy        IT    ITA    2021 2.11e12 NA     2022-12-22 
+#>  9 Canada       CA    CAN    2021 1.99e12 NA     2022-12-22 
+#> 10 Korea, Rep.  KR    KOR    2021 1.81e12 NA     2022-12-22 
+#> # ℹ 186 more rows
+#> # ℹ 6 more variables: region <chr>, capital <chr>,
+#> #   longitude <dbl>, latitude <dbl>, income <chr>,
+#> #   lending <chr>
 ```
 
 
@@ -389,20 +391,19 @@ df_gdp1
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #> # A tibble: 16,492 × 5
-#>    country                     iso2c iso3c  year NY.GDP.MK…¹
-#>    <chr>                       <chr> <chr> <dbl>       <dbl>
-#>  1 Africa Eastern and Southern ZH    AFE    2021     1.08e12
-#>  2 Africa Eastern and Southern ZH    AFE    2020     9.27e11
-#>  3 Africa Eastern and Southern ZH    AFE    2019     1.00e12
-#>  4 Africa Eastern and Southern ZH    AFE    2018     1.01e12
-#>  5 Africa Eastern and Southern ZH    AFE    2017     1.02e12
-#>  6 Africa Eastern and Southern ZH    AFE    2016     8.83e11
-#>  7 Africa Eastern and Southern ZH    AFE    2015     9.25e11
-#>  8 Africa Eastern and Southern ZH    AFE    2014     1.00e12
-#>  9 Africa Eastern and Southern ZH    AFE    2013     9.83e11
-#> 10 Africa Eastern and Southern ZH    AFE    2012     9.73e11
-#> # … with 16,482 more rows, and abbreviated variable name
-#> #   ¹​NY.GDP.MKTP.CD
+#>    country                  iso2c iso3c  year NY.GDP.MKTP.CD
+#>    <chr>                    <chr> <chr> <dbl>          <dbl>
+#>  1 Africa Eastern and Sout… ZH    AFE    2021        1.08e12
+#>  2 Africa Eastern and Sout… ZH    AFE    2020        9.27e11
+#>  3 Africa Eastern and Sout… ZH    AFE    2019        1.00e12
+#>  4 Africa Eastern and Sout… ZH    AFE    2018        1.01e12
+#>  5 Africa Eastern and Sout… ZH    AFE    2017        1.02e12
+#>  6 Africa Eastern and Sout… ZH    AFE    2016        8.83e11
+#>  7 Africa Eastern and Sout… ZH    AFE    2015        9.25e11
+#>  8 Africa Eastern and Sout… ZH    AFE    2014        1.00e12
+#>  9 Africa Eastern and Sout… ZH    AFE    2013        9.83e11
+#> 10 Africa Eastern and Sout… ZH    AFE    2012        9.73e11
+#> # ℹ 16,482 more rows
 ```
 
 これでも良いのですが、利用するには、指標コードではわかりにくいので、それを簡単な名前に置き換えて、データを読み込むこができます。
@@ -438,7 +439,7 @@ df_gdp2
 #>  8 Africa Eastern and Southern ZH    AFE    2014 1.00e12
 #>  9 Africa Eastern and Southern ZH    AFE    2013 9.83e11
 #> 10 Africa Eastern and Southern ZH    AFE    2012 9.73e11
-#> # … with 16,482 more rows
+#> # ℹ 16,482 more rows
 ```
   
 #### ダウンロード例 1-3\
@@ -465,22 +466,22 @@ df_gdp3
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #> # A tibble: 16,492 × 13
-#>    country     iso2c iso3c  year       gdp status lastupda…¹
-#>    <chr>       <chr> <chr> <dbl>     <dbl> <lgl>  <date>    
-#>  1 Afghanistan AF    AFG    2021   1.48e10 NA     2022-12-22
-#>  2 Afghanistan AF    AFG    2020   2.01e10 NA     2022-12-22
-#>  3 Afghanistan AF    AFG    2019   1.89e10 NA     2022-12-22
-#>  4 Afghanistan AF    AFG    2018   1.84e10 NA     2022-12-22
-#>  5 Afghanistan AF    AFG    2017   1.89e10 NA     2022-12-22
-#>  6 Afghanistan AF    AFG    2016   1.80e10 NA     2022-12-22
-#>  7 Afghanistan AF    AFG    2015   2.00e10 NA     2022-12-22
-#>  8 Afghanistan AF    AFG    2014   2.06e10 NA     2022-12-22
-#>  9 Afghanistan AF    AFG    2013   2.06e10 NA     2022-12-22
-#> 10 Afghanistan AF    AFG    2012   2.02e10 NA     2022-12-22
-#> # … with 16,482 more rows, 6 more variables: region <chr>,
-#> #   capital <chr>, longitude <dbl>, latitude <dbl>,
-#> #   income <chr>, lending <chr>, and abbreviated variable
-#> #   name ¹​lastupdated
+#>    country     iso2c iso3c  year      gdp status lastupdated
+#>    <chr>       <chr> <chr> <dbl>    <dbl> <lgl>  <date>     
+#>  1 Afghanistan AF    AFG    2021  1.48e10 NA     2022-12-22 
+#>  2 Afghanistan AF    AFG    2020  2.01e10 NA     2022-12-22 
+#>  3 Afghanistan AF    AFG    2019  1.89e10 NA     2022-12-22 
+#>  4 Afghanistan AF    AFG    2018  1.84e10 NA     2022-12-22 
+#>  5 Afghanistan AF    AFG    2017  1.89e10 NA     2022-12-22 
+#>  6 Afghanistan AF    AFG    2016  1.80e10 NA     2022-12-22 
+#>  7 Afghanistan AF    AFG    2015  2.00e10 NA     2022-12-22 
+#>  8 Afghanistan AF    AFG    2014  2.06e10 NA     2022-12-22 
+#>  9 Afghanistan AF    AFG    2013  2.06e10 NA     2022-12-22 
+#> 10 Afghanistan AF    AFG    2012  2.02e10 NA     2022-12-22 
+#> # ℹ 16,482 more rows
+#> # ℹ 6 more variables: region <chr>, capital <chr>,
+#> #   longitude <dbl>, latitude <dbl>, income <chr>,
+#> #   lending <chr>
 ```
 右上の三角印を使って、どのような詳細情報が付加されたか見て見ましょう。どんなことがわかりますか。
 
@@ -520,9 +521,10 @@ df_gdp4
 #>  8 China   CN    CHN    2014 1.05e13 NA     2022-12-22 
 #>  9 China   CN    CHN    2013 9.57e12 NA     2022-12-22 
 #> 10 China   CN    CHN    2012 8.53e12 NA     2022-12-22 
-#> # … with 362 more rows, and 6 more variables: region <chr>,
-#> #   capital <chr>, longitude <dbl>, latitude <dbl>,
-#> #   income <chr>, lending <chr>
+#> # ℹ 362 more rows
+#> # ℹ 6 more variables: region <chr>, capital <chr>,
+#> #   longitude <dbl>, latitude <dbl>, income <chr>,
+#> #   lending <chr>
 ```
 
 #### ダウンロード例 2-1
@@ -554,23 +556,22 @@ df_gdp21
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #> # A tibble: 23,972 × 14
-#>    country       iso2c iso3c  year status lastupda…¹ gdp_d…²
-#>    <chr>         <chr> <chr> <dbl> <lgl>  <date>       <dbl>
-#>  1 Advanced Eco… AME   <NA>   1987 NA     2020-07-27      NA
-#>  2 Advanced Eco… AME   <NA>   1988 NA     2020-07-27      NA
-#>  3 Advanced Eco… AME   <NA>   1989 NA     2020-07-27      NA
-#>  4 Advanced Eco… AME   <NA>   1990 NA     2020-07-27      NA
-#>  5 Advanced Eco… AME   <NA>   1991 NA     2020-07-27      NA
-#>  6 Advanced Eco… AME   <NA>   1992 NA     2020-07-27      NA
-#>  7 Advanced Eco… AME   <NA>   1993 NA     2020-07-27      NA
-#>  8 Advanced Eco… AME   <NA>   1994 NA     2020-07-27      NA
-#>  9 Advanced Eco… AME   <NA>   1995 NA     2020-07-27      NA
-#> 10 Advanced Eco… AME   <NA>   1996 NA     2020-07-27      NA
-#> # … with 23,962 more rows, 7 more variables:
-#> #   cpi_price <dbl>, region <chr>, capital <chr>,
-#> #   longitude <dbl>, latitude <dbl>, income <chr>,
-#> #   lending <chr>, and abbreviated variable names
-#> #   ¹​lastupdated, ²​gdp_deflator
+#>    country iso2c iso3c  year status lastupdated gdp_deflator
+#>    <chr>   <chr> <chr> <dbl> <lgl>  <date>             <dbl>
+#>  1 Advanc… AME   <NA>   1987 NA     2020-07-27            NA
+#>  2 Advanc… AME   <NA>   1988 NA     2020-07-27            NA
+#>  3 Advanc… AME   <NA>   1989 NA     2020-07-27            NA
+#>  4 Advanc… AME   <NA>   1990 NA     2020-07-27            NA
+#>  5 Advanc… AME   <NA>   1991 NA     2020-07-27            NA
+#>  6 Advanc… AME   <NA>   1992 NA     2020-07-27            NA
+#>  7 Advanc… AME   <NA>   1993 NA     2020-07-27            NA
+#>  8 Advanc… AME   <NA>   1994 NA     2020-07-27            NA
+#>  9 Advanc… AME   <NA>   1995 NA     2020-07-27            NA
+#> 10 Advanc… AME   <NA>   1996 NA     2020-07-27            NA
+#> # ℹ 23,962 more rows
+#> # ℹ 7 more variables: cpi_price <dbl>, region <chr>,
+#> #   capital <chr>, longitude <dbl>, latitude <dbl>,
+#> #   income <chr>, lending <chr>
 ```
 
 NA (not available) つまり、データがないものが多いことがわかります。もう少し、データをよく見て見ましょう。

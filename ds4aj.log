@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  13 APR 2023 18:47
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  2 MAY 2023 23:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1248,28 +1248,28 @@ Overfull \vbox (0.43246pt too high) detected at line 1691
 
 ] [54]
 第6章
+[55
 
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1902--1902
+]
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1904--1904
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1902--1902
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1904--1904
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
-[55
 
-]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1923--1923
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1925--1925
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1923--1923
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1925--1925
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -1278,13 +1278,13 @@ File: 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type
 pdf)
 <use 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf>
 [56]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 1948--1948
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 1950--1950
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 1948--1948
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 1950--1950
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -1293,67 +1293,71 @@ File: 31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type
  pdf)
 <use 31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf>
 [57] [58] [59] [60] [61] [62] [63]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2302--2302
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2303--2303
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2302--2302
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2303--2303
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [64]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2339--2339
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2340--2340
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2339--2339
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2340--2340
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [65]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2383--2383
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2384--2384
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2383--2383
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2384--2384
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [66]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2427--2427
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2429--2429
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2427--2427
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2429--2429
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
+ []
+
+
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 2482--2482
+[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
+ for this data.[] 
  []
 
 [67]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2481--2481
-[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
- for this data.[] 
- []
-
-
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2481--2481
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 2482--2482
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
+
+Overfull \vbox (0.60999pt too high) detected at line 2523
+ []
+
 [68]
-Underfull \vbox (badness 10000) detected at line 2568
+Underfull \vbox (badness 10000) detected at line 2569
  []
 
 [69]
@@ -1365,7 +1369,7 @@ File: 31-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf Graphic file (type
  pdf)
 <use 31-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf>
 [71] [72]
-Underfull \vbox (badness 2846) detected at line 2704
+Underfull \vbox (badness 2846) detected at line 2705
  []
 
 [73] [74] [75
@@ -1375,7 +1379,7 @@ Underfull \vbox (badness 2846) detected at line 2704
 File: ./data/data-science.png Graphic file (type bmp)
 <./data/data-science.png>
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 2760.
+(Font)              scaled to size 8.32242pt on input line 2761.
 [77
 
 ] [78] [79]
@@ -1410,7 +1414,7 @@ File: 41-eda_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type pdf)
 LaTeX Font Warning: Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/it' undefin
 ed
 (Font)              using `TU/HaranoAjiMincho-Regular.otf(0)/m/n' instead on in
-put line 3041.
+put line 3042.
 
 File: 81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type p
 df)
@@ -1424,13 +1428,13 @@ df)
 [97
 
 ] [98]
-Overfull \hbox (55.36475pt too wide) in paragraph at lines 3414--3414
+Overfull \hbox (55.36475pt too wide) in paragraph at lines 3427--3427
 []\TU/lmtt/m/n/10 git config --global user.email "your@email.com" # GitHub  \TU
 /HaranoAjiMincho-Regular.otf(0)/m/n/10 に 登 録 し た メ ー ル ア ド レ ス [] 
  []
 
 [99] [100]
-Overfull \hbox (60.61475pt too wide) in paragraph at lines 3500--3500
+Overfull \hbox (60.61475pt too wide) in paragraph at lines 3513--3513
 []\TU/lmtt/m/n/10 #  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 わ た し の ア カ ウ ン 
 ト の 場 合 に は 、 コ ピ ー し た も の を 貼 り 付 け る と 、 上 の よ う に な り ま す 。 [] 
  []
@@ -1440,7 +1444,7 @@ Overfull \hbox (60.61475pt too wide) in paragraph at lines 3500--3500
 [109
 
 ]
-Overfull \hbox (15.80815pt too wide) in paragraph at lines 4014--4015
+Overfull \hbox (15.80815pt too wide) in paragraph at lines 4027--4028
 []\TU/lmr/m/n/10 Next, reference the labeled heading anywhere in the text using
  \TU/lmtt/m/n/10 \@ref(nice-label)\TU/lmr/m/n/10 ;
  []

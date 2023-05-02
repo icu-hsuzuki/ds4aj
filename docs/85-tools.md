@@ -47,7 +47,7 @@ Git でバージョン管理されているディレクトリ（フォルダ）�
     - 最後に、RStudio の設定（Tools > Global Option）で、Terminal　から、Git Bash を選択^[自動的に選択されているかもしれません]し、Tools から、New Terminal を選択^[すでにタブがあればこの作業は不要です]します。
   - **Mac** は、最初から、Install されていると思います。ユーティリティ（Utility）> ターミナル（Terminal）を開いて^[RStudio を既にお使いの方は、左下の窓枠から、Terminal タブを選択できますので、それを使うことも可能です。]、`git --version` とすると、インストールされているバージョンが表示されると思います。バージョンがでない場合には、Install するかと聞かれます。このときに、Git だけをインストールすることも、Xcode という開発環境を同時にインストールすることも可能です。（インストールするように指示が出なければ、App Store からも、インストールできます。もし、そのあとで、git などのコマンドで xcrun: error などとエラーが出たら、`xcode-select --install` としてください。）インストールが終了したら、もう一度、`git --version` と Terminal に入力して、結果を確認してください。
 
-ぎt2. GitHub のアカウント取得
+2. GitHub のアカウント取得
   - [GitHub サイト](https://github.com) に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。
 
 3. RStudio の 左下の窓枠のTerminal タブ^[Terminal がない場合は、Tools > Terminal > New Terminal とすると表示されます。]から、GitHub アカウントに連携する設定を行います。

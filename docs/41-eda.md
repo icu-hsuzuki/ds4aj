@@ -54,7 +54,7 @@ df_wdi_gdppcap
 #>  8 Africa Eastern and Southern ZH    AFE    2014    1719.
 #>  9 Africa Eastern and Southern ZH    AFE    2013    1730.
 #> 10 Africa Eastern and Southern ZH    AFE    2012    1759.
-#> # … with 16,482 more rows
+#> # ℹ 16,482 more rows
 ```
 
 ### データ変形・整形 - Data Transformation
@@ -81,7 +81,7 @@ df_wdi_gdppcap_small
 #>  8 Africa Eastern and Southern  2014    1719.
 #>  9 Africa Eastern and Southern  2013    1730.
 #> 10 Africa Eastern and Southern  2012    1759.
-#> # … with 16,482 more rows
+#> # ℹ 16,482 more rows
 ```
 
 #### 行を `filter`
@@ -106,7 +106,7 @@ df_wdi_gdppcap_short
 #>  8 Germany DE    DEU    2014   48024.
 #>  9 Germany DE    DEU    2013   46299.
 #> 10 Germany DE    DEU    2012   43856.
-#> # … with 176 more rows
+#> # ℹ 176 more rows
 ```
 
 列（変数）と、行（国）の選択を続けて、実行すると次のようになる。
@@ -130,7 +130,7 @@ df_wdi_gdppcap_small_short
 #>  8 Germany  2014   48024.
 #>  9 Germany  2013   46299.
 #> 10 Germany  2012   43856.
-#> # … with 176 more rows
+#> # ℹ 176 more rows
 ```
 
 
