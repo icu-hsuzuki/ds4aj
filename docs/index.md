@@ -1,7 +1,7 @@
 --- 
 title: "データサイエンスをはじめましょう   \n- Data Science for All -"
 author: "鈴木寛（Hirosi Suzuki）"
-date: "2023-05-02"
+date: "2023-06-03"
 site: bookdown::bookdown_site
 documentclass: bxjsbook #or bxjsreport
 classoption: xelatex, ja=standard
@@ -56,3 +56,9 @@ biblio-title: "参考文献"
 
 * [PDF 版](https://icu-hsuzuki.github.io/ds4aj/ds4aj.pdf)
 * [ePub 版](https://icu-hsuzuki.github.io/ds4aj/ds4aj.epub)
+
+## 参考 {-}
+
+この電子書籍以外にも、データ・サイエンスについて幾つかの文書をインターネット上に公開しています。わたしのホームページにリストしてありますので、ご興味のあるかたは、参考にしてください。
+
+* [データサイエンスを学びませんか・データサイエンス教育](https://icu-hsuzuki.github.io/science/computer/learning/ds.html)

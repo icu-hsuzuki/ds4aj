@@ -61,3 +61,9 @@ showtext_auto()
 
 * [PDF 版](https://icu-hsuzuki.github.io/ds4aj/ds4aj.pdf)
 * [ePub 版](https://icu-hsuzuki.github.io/ds4aj/ds4aj.epub)
+
+## 参考 {-}
+
+この電子書籍以外にも、データ・サイエンスについて幾つかの文書をインターネット上に公開しています。わたしのホームページにリストしてありますので、ご興味のあるかたは、参考にしてください。
+
+* [データサイエンスを学びませんか・データサイエンス教育](https://icu-hsuzuki.github.io/science/computer/learning/ds.html)

@@ -2,6 +2,16 @@ fig:nice-fig
 tab:nice-tab
 eq:binom
 introduction
+データサイエンスとは
+なぜデータサイエンスが最近注目されているのか
+なぜ一人ひとりがデータサイエンスを学ぶ必要があるのでしょうか
+ai-の活用
+データサイエンスを始めましょうの特徴
+学習者として想定しているのは
+オープンパブリックデータの活用
+世界のデータをみること
+目標としていること
+参考-1
 publicdata
 オープンデータ
 open-government-data-toolkit-open-data-defined
@@ -40,7 +50,7 @@ positcloud-shared-project
 posit-primers-and-cheat-sheet
 r-のその他の利用方法
 google-colab-で-r
-参考
+参考-2
 cocalc-で-r-と-rmarkdown
 rmarkdown
 reproducible-and-literate-programming
