@@ -12,6 +12,14 @@ ai-の活用
 世界のデータをみること
 目標としていること
 参考-1
+what2learn
+データサイエンス入門
+第一部-パブリックデータ
+第二部-基本
+第三部-国際機関のデータの活用
+第四部-探索的データ分析-exploratory-data-analysis
+第五部-分析例
+付録
 publicdata
 オープンデータ
 open-government-data-toolkit-open-data-defined
