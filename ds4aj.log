@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  3 JUN 2023 17:10
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  4 JUN 2023 18:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -633,7 +633,7 @@ Package: amsthm 2020/05/29 v2.20.6
 \c@example=\count342
 \c@exercise=\count343
 \c@hypothesis=\count344
-(./ds4aj.aux)
+No file ds4aj.aux.
 \openout1 = `ds4aj.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 169.
@@ -1006,6 +1006,9 @@ File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
 ern Roman (RS)
 )
 Package hyperref Info: Link coloring OFF on input line 169.
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
 LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
 (Font)              scaled to size 15.97903pt on input line 171.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
@@ -1060,416 +1063,165 @@ Package microtype Info: Loading generic protrusion settings for font family
 ]
 LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 23.00687pt on input line 174.
-(./ds4aj.toc
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 2.
+No file ds4aj.toc.
+\tf@toc=\write4
+\openout4 = `ds4aj.toc'.
+
+[3] [4
+
+]
 LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 11.09656pt on input line 26.
-[3] [4]
+(Font)              scaled to size 13.31586pt on input line 187.
+[5]
+
+LaTeX Warning: Reference `japanese' on page 6 undefined on input line 210.
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 241.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 241.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.00092pt on input line 241.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.00064pt on input line 241.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00046pt on input line 241.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.99893pt on input line 241.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.99925pt on input line 241.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 241.
+[6]
+第1章
+LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
+(Font)              scaled to size 19.17854pt on input line 241.
+[7
+
+]
+LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
+(Font)              scaled to size 11.09656pt on input line 283.
+[8] [9] [10] [11] [12] [13] [14]
+第2章
 
 Package xeCJK Warning: Unknown CJK family `\CJKttdefault' is being ignored.
 (xeCJK)                
 (xeCJK)                Try to use `\setCJKmonofont[<...>]{<...>}' to define
 (xeCJK)                it.
 
-)
-\tf@toc=\write4
-\openout4 = `ds4aj.toc'.
+[15
 
-[5] [6
-
-]
-LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 13.31586pt on input line 187.
-[7] [8]
-第1章
-LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 19.17854pt on input line 241.
-[9
-
-] [10] [11] [12] [13] [14] [15] [16]
-第2章
+] [16]
+第3章
 [17
 
-] [18] [19
-
-] [20]
-第3章
-[21
-
-] [22] [23] [24] [25
-
-] [26]
-第4章
-[27
-
 ]
-LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/b/n' will be
-(Font)              scaled to size 9.24713pt on input line 742.
-[28]
-LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 796.
-[29]
-Overfull \hbox (38.22368pt too wide) in paragraph at lines 843--845
-[]\TU/lmr/m/n/10 TinyTeX \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 を デ ィ レ ク ト 
-リ を 指 定 し て イ ン ス ト ー ル：| \TU/lmtt/m/n/10 tinytex::install_tinytex(dir
+Underfull \vbox (badness 5475) detected at line 602
  []
 
-[30] [31] [32] [33] [34] [35]
-Underfull \hbox (badness 1107) in paragraph at lines 1084--1085
-[]\TU/lmtt/m/n/10 tidyverse \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 な ど は、|  
-す で に イ ン ス ト ー ル さ れ て い ま す が、|  使 い た い と
+[18]
+Underfull \vbox (badness 7832) detected at line 650
  []
 
-
-Underfull \hbox (badness 2050) in paragraph at lines 1084--1085
-\TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 き は、| \TU/lmtt/m/n/10 library(tidyver
-se) \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 と し、|  イ ン ス ト ー ル さ れ て い な い と 
-き は、|
+[19]
+Underfull \vbox (badness 10000) detected at line 924
  []
 
-[36] [37] [38
-
-]
-第5章
-[39] [40] [41]
-Overfull \hbox (34.36475pt too wide) in paragraph at lines 1275--1275
-[]\TU/lmtt/m/n/10 If you are not sure, you may install TinyTeX in R: tinytex::i
-nstall_tinytex()[] 
+[20]
+Underfull \vbox (badness 10000) detected at line 924
  []
 
 
-Overfull \hbox (1879.41399pt too wide) in paragraph at lines 1299--1299
-[] \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 “ \TU/lmtt/m/n/10 C:/Program Files
-/RStudio/bin/quarto/bin/tools/pandoc \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 
-”  \TU/lmtt/m/n/10 +RTS -K512m -RTS RNotebook-J.knit.md  \TU/HaranoAjiMincho-Re
-gular.otf(0)/m/n/10 – \TU/lmtt/m/n/10 to latex  \TU/HaranoAjiMincho-Regular.otf
-(0)/m/n/10 – \TU/lmtt/m/n/10 from markdown+autolink_bare_uris+tex_math_single_b
-ackslash  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 – \TU/lmtt/m/n/10 output RN
-otebook-J.tex  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 – \TU/lmtt/m/n/10 lua-
-filter  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 “ \TU/lmtt/m/n/10 C:000117x-l
-ibrary\4.2.lua \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 ”   – \TU/lmtt/m/n/10 
-lua-filter  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 “ \TU/lmtt/m/n/10 C:00011
-7x-library\4.2-div.lua \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 ”   – \TU/lmtt
-/m/n/10 embed-resources  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 – \TU/lmtt/m
-/n/10 standalone  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 – \TU/lmtt/m/n/10 h
-ighlight-style tango  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 – \TU/lmtt/m/n/
-10 pdf-engine pdflatex  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 – \TU/lmtt/m/
-n/10 variable graphics  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 – \TU/lmtt/m/
-n/10 variable  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 “ \TU/lmtt/m/n/10 geom
-etry:margin=1in \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 ”  \TU/lmtt/m/n/10 ou
-tput file: RNotebook-J.knit.md[] 
+Underfull \vbox (badness 10000) detected at line 924
+ []
+
+[21]
+Underfull \vbox (badness 10000) detected at line 924
  []
 
 
-Overfull \hbox (975.53622pt too wide) in paragraph at lines 1299--1299
-[]\TU/lmtt/m/n/10 Error: LaTeX failed to compile RNotebook-J.tex. See https://y
-ihui.org/tinytex/r/#debugging for debugging tips. In addition: Warning message:
- In system2( \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 … \TU/lmtt/m/n/10 , stdo
-ut = if (use_file_stdout()) f1 else FALSE, stderr = f2) :  \TU/HaranoAjiMincho-
-Regular.otf(0)/m/n/10 ‘ “ \TU/lmtt/m/n/10 pdflatex \TU/HaranoAjiMincho-Regular.
-otf(0)/m/n/10 ” ’  \TU/lmtt/m/n/10 not found Execution halted[] 
+Underfull \vbox (badness 10000) detected at line 924
+ []
+
+[22]
+Underfull \vbox (badness 10000) detected at line 924
  []
 
 
-Overfull \hbox (501.61475pt too wide) in paragraph at lines 1299--1299
-[]\TU/lmtt/m/n/10 No LaTeX installation detected (LaTeX is required to create P
-DF output). You should install a LaTeX distribution for your platform: https://
-www.latex-project.org/get/[] 
+Underfull \vbox (badness 10000) detected at line 924
+ []
+
+[23]
+Underfull \vbox (badness 10000) detected at line 924
  []
 
 
-Overfull \hbox (34.36475pt too wide) in paragraph at lines 1299--1299
-[]\TU/lmtt/m/n/10 If you are not sure, you may install TinyTeX in R: tinytex::i
-nstall_tinytex()[] 
+Underfull \vbox (badness 10000) detected at line 924
+ []
+
+[24]
+Underfull \vbox (badness 10000) detected at line 924
  []
 
 
-Overfull \hbox (207.61475pt too wide) in paragraph at lines 1299--1299
-[]\TU/lmtt/m/n/10 MacTeX on macOS - https://tug.org/mactex/ (NOTE: Download wit
-h Safari rather than Chrome strongly recommended)[] 
+Underfull \vbox (badness 10000) detected at line 924
  []
 
-[42]
-Overfull \hbox (75.3504pt too wide) in paragraph at lines 1330--1332
-[]\TU/lmtt/m/n/10 Path=C:\**UserName**\AppData\Local\Microsoft\WindowsApps;C:\T
-TeX\bin\windows 
- []
-
-[43] [44
-
-]
-第6章
-[45] [46]
-File: 24-rbasics_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pd
-f)
-<use 24-rbasics_files/figure-latex/unnamed-chunk-4-1.pdf>
-[47] [48] [49]
-Underfull \hbox (badness 3333) in paragraph at lines 1611--1612
-[]\TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 実 行 す る に は、|  カ ー ソ ル の 場 所 で \TU/
-lmr/m/n/10 Ctrl+Shift+Enter (Win) \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 ま た
- は
- []
-
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1636.
-
-LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1636.
-
-
-[50]
-Overfull \vbox (0.79999pt too high) detected at line 1855
- []
-
-[51] [52]
-Underfull \vbox (badness 10000) detected at line 1855
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1855
- []
-
-[53] [54] [55]
-Overfull \vbox (0.43246pt too high) detected at line 1941
- []
-
-[56] [57] [58] [59] [60] [61
-
-] [62]
-第7章
-[63
-
-]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2154--2154
-[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
- for this data.[] 
- []
-
-
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2154--2154
-[]\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
-[] to quiet this message.[] 
- []
-
-
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2175--2175
-[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
- for this data.[] 
- []
-
-
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2175--2175
-[]\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
-[] to quiet this message.[] 
- []
-
-File: 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type 
-pdf)
-<use 31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf>
-[64]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2200--2200
-[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
- for this data.[] 
- []
-
-
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2200--2200
-[]\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
-[] to quiet this message.[] 
- []
-
-File: 31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type
- pdf)
-<use 31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf>
-[65] [66] [67] [68] [69] [70] [71]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2553--2553
-[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
- for this data.[] 
- []
-
-
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2553--2553
-[]\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
-[] to quiet this message.[] 
- []
-
-[72]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2590--2590
-[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
- for this data.[] 
- []
-
-
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2590--2590
-[]\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
-[] to quiet this message.[] 
- []
-
-[73]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2634--2634
-[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
- for this data.[] 
- []
-
-
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2634--2634
-[]\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
-[] to quiet this message.[] 
- []
-
-[74]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2679--2679
-[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
- for this data.[] 
- []
-
-
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2679--2679
-[]\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
-[] to quiet this message.[] 
- []
-
-
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 2732--2732
-[]\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
- for this data.[] 
- []
-
-[75]
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 2732--2732
-[]\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
-[] to quiet this message.[] 
- []
-
-
-Overfull \vbox (0.60999pt too high) detected at line 2773
- []
-
-[76]
-Underfull \vbox (badness 10000) detected at line 2819
- []
-
-[77]
-File: 31-worldbank_files/figure-latex/unnamed-chunk-39-1.pdf Graphic file (type
- pdf)
-<use 31-worldbank_files/figure-latex/unnamed-chunk-39-1.pdf>
-[78]
-File: 31-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf Graphic file (type
- pdf)
-<use 31-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf>
-[79] [80]
-Underfull \vbox (badness 2846) detected at line 2955
- []
-
-[81] [82] [83
-
-] [84]
-第8章
-File: ./data/data-science.png Graphic file (type bmp)
-<./data/data-science.png>
-LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 3011.
-[85
-
-] [86] [87]
-File: 41-eda_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf)
-<use 41-eda_files/figure-latex/unnamed-chunk-9-1.pdf>
-File: 41-eda_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pdf)
-<use 41-eda_files/figure-latex/unnamed-chunk-10-1.pdf>
-[88]
-File: 41-eda_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
-<use 41-eda_files/figure-latex/unnamed-chunk-11-1.pdf>
-[89]
-File: 41-eda_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type pdf)
-<use 41-eda_files/figure-latex/unnamed-chunk-12-1.pdf>
-File: 41-eda_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (type pdf)
-<use 41-eda_files/figure-latex/unnamed-chunk-13-1.pdf>
-[90]
-File: 41-eda_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (type pdf)
-<use 41-eda_files/figure-latex/unnamed-chunk-14-1.pdf>
-File: 41-eda_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type pdf)
-<use 41-eda_files/figure-latex/unnamed-chunk-15-1.pdf>
-[91] [92] [93] [94
-
-] [95] [96]
-第9章
-[97
-
-] [98
-
-]
-付録A
-
-LaTeX Font Warning: Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/it' undefin
-ed
-(Font)              using `TU/HaranoAjiMincho-Regular.otf(0)/m/n' instead on in
-put line 3292.
-
-File: 81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type p
-df)
-<use 81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf>
-[99] [100]
-File: 81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type p
-df)
-<use 81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf>
-[101] [102] [103] [104]
-付録B
-[105
-
-] [106]
-Overfull \hbox (55.36475pt too wide) in paragraph at lines 3677--3677
-[]\TU/lmtt/m/n/10 git config --global user.email "your@email.com" # GitHub  \TU
-/HaranoAjiMincho-Regular.otf(0)/m/n/10 に 登 録 し た メ ー ル ア ド レ ス [] 
- []
-
-[107] [108]
-Overfull \hbox (60.61475pt too wide) in paragraph at lines 3763--3763
-[]\TU/lmtt/m/n/10 #  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 わ た し の ア カ ウ ン 
-ト の 場 合 に は 、 コ ピ ー し た も の を 貼 り 付 け る と 、 上 の よ う に な り ま す 。 [] 
- []
-
-[109] [110] [111] [112] [113] [114] [115] [116]
-付録C
-[117
-
-]
-Overfull \hbox (15.80815pt too wide) in paragraph at lines 4277--4278
-[]\TU/lmr/m/n/10 Next, reference the labeled heading anywhere in the text using
- \TU/lmtt/m/n/10 \@ref(nice-label)\TU/lmr/m/n/10 ;
- []
-
-[118]
-File: 90-bookdown_files/figure-latex/nice-fig-1.pdf Graphic file (type pdf)
-<use 90-bookdown_files/figure-latex/nice-fig-1.pdf>
-[119] [120] [121] (./ds4aj.bbl [122]) [123
-
-] (./ds4aj.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
- ) 
+[25] [26]
+File: 03-first-example_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (t
+ype pdf)
+<use 03-first-example_files/figure-latex/unnamed-chunk-9-1.pdf>
+[27]
+File: 03-first-example_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (
+type pdf)
+<use 03-first-example_files/figure-latex/unnamed-chunk-10-1.pdf>
+[28] [29]
+File: 03-first-example_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (
+type pdf)
+<use 03-first-example_files/figure-latex/unnamed-chunk-13-1.pdf>
+[30]
+File: 03-first-example_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (
+type pdf)
+<use 03-first-example_files/figure-latex/unnamed-chunk-14-1.pdf>
+[31]
+File: 03-first-example_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (
+type pdf)
+<use 03-first-example_files/figure-latex/unnamed-chunk-15-1.pdf>
+[32]
+File: 03-first-example_files/figure-latex/unnamed-chunk-16-1.pdf Graphic file (
+type pdf)
+<use 03-first-example_files/figure-latex/unnamed-chunk-16-1.pdf>
+[33]
+File: 03-first-example_files/figure-latex/unnamed-chunk-17-1.pdf Graphic file (
+type pdf)
+<use 03-first-example_files/figure-latex/unnamed-chunk-17-1.pdf>
+[34]
+File: 03-first-example_files/figure-latex/unnamed-chunk-18-1.pdf Graphic file (
+type pdf)
+<use 03-first-example_files/figure-latex/unnamed-chunk-18-1.pdf>
+File: 03-first-example_files/figure-latex/unnamed-chunk-19-1.pdf Graphic file (
+type pdf)
+<use 03-first-example_files/figure-latex/unnamed-chunk-19-1.pdf>
+[35]
+File: 03-first-example_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file (
+type pdf)
+<use 03-first-example_files/figure-latex/unnamed-chunk-20-1.pdf>
+File: 03-first-example_files/figure-latex/unnamed-chunk-21-1.pdf Graphic file (
+type pdf)
+<use 03-first-example_files/figure-latex/unnamed-chunk-21-1.pdf>
+[36]
+! TeX capacity exceeded, sorry [main memory size=5000000].
+\FV@Space ->\ 
+              
+l.14739 ...2                South Asia      Kabul}
+                                                   
 Here is how much of TeX's memory you used:
- 23972 strings out of 476683
- 505749 string characters out of 5804047
- 1880018 words of memory out of 5000000
- 43821 multiletter control sequences out of 15000+600000
- 519512 words of font info for 114 fonts, out of 8000000 for 9000
+ 23193 strings out of 476683
+ 462497 string characters out of 5804047
+ 4999999 words of memory out of 5000000
+ 43087 multiletter control sequences out of 15000+600000
+ 519408 words of font info for 101 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
- 105i,11n,140p,1002b,983s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 105i,11n,140p,1002b,528s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ds4aj.pdf (123 pages).
+Output written on ds4aj.pdf (36 pages).

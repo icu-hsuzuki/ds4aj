@@ -1,6 +1,7 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
+thm:tri
 introduction
 データサイエンスとは
 なぜデータサイエンスが最近注目されているのか
@@ -20,6 +21,15 @@ what2learn
 第四部-探索的データ分析-exploratory-data-analysis
 第五部-分析例
 付録
+first-example
+r-のパッケージを活用
+準備-setup
+データ取得-import-data
+データ構造の確認
+必要なら整形-transform-data
+視覚化-data-visualization
+データを理解-understand-data
+さらなる分析
 publicdata
 オープンデータ
 open-government-data-toolkit-open-data-defined

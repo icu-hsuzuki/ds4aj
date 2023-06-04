@@ -1,0 +1,240 @@
+# 最初のデータ {#first-example}
+
+データを分析するときには、大体次のような手順をとります。
+
+1. 準備 Setup
+2. データを取得 Import data
+3. データ構造の確認 View data
+4. 必要なら整形 Transform data
+5. 視覚化 Visualize data
+6. データを理解 Understand data
+
+いろいろな視覚化を行い、そのデータからさまざまなことを理解する部分が中心だと思います。
+
+## R のパッケージを活用
+
+### 準備 Setup
+
+まず、世界銀行（World Bank）の、世界開発指標（WDI: World Development Indicators）の一つの、GDP について、みてみましょう。GDP にも何種類かの尺度があるのですが、次のものを見てみます。
+
+* NY.GDP.MKTP.CD: GDP (current US$)
+
+NY.GDP.MKTP.CD は、データコードと言われるもので、世界開発指標（WDI）には、一つづつ決まっています。
+
+
+
+WDI のデータを取得する R のツール（パッケージ）`WDI` がありますから、それを使います。また、データを取り扱うために基本的なツール（パッケージ）`tidyverse` を使います。これらの使い方などは、あとから、説明します。
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+### データ取得 Import data
+
+いよいよ、データを取得します。それを、`df_gdp` と名前をつけます。
+
+```{r eval=FALSE}
+df_gdp <- WDI(country = "all", 
+              indicator = c(gdp = "NY.GDP.MKTP.CD"), 
+              extra = TRUE)
+```
+
+```{r eval=TRUE, include=FALSE}
+df_gdp <- read_csv("./data/df_wdi_gdp.csv")
+```
+
+### データ構造の確認
+
+```{r}
+df_gdp
+```
+
+```{r}
+df_gdp %>% glimpse()
+```
+
+概要 (`summary(df_gdp)`) からもある程度わかります。
+
+```{r}
+df_gdp %>% summary()
+```
+
+国のリストをみてみましょう。
+
+```{r}
+df_gdp %>% distinct(country) %>% pull()
+```
+
+### 必要なら整形 Transform data
+
+変数が多いので、日本の部分だけみてみます。
+
+```{r}
+df_gdp %>% filter(country == "Japan")
+```
+
+たとえば、gdp のところに、4.940878e+12	とあるのは、Scientific notation と言われるもので、
+$$4.940878 \time 10^{12} = 4,940,887,800,000$$
+を意味します。最初に current US$ と、書いてあるように、現在の USD に換算した数値です。
+
+
+### 視覚化 data visualization
+
+日本のGDP の経年変化を折線グラフ（line graph）でみてみましょう。
+
+```{r}
+df_gdp %>% filter(country == "Japan") %>%
+  ggplot(aes(x = year, y = gdp)) + geom_line()
+```
+
+### データを理解 Understand data
+
+視覚化によって見えてくることがいくつもありますね。どんなことがわかりますか。気づいたことをあげてみましょう。
+
+### さらなる分析
+
+```{r}
+df_gdp %>% drop_na(gdp) %>% ggplot(aes(x = year)) + geom_bar()
+```
+
+最新の2021年のデータはすべてあるわけではなさそうですが、大きい順に並べてみましょう。
+
+```{r}
+df_gdp %>% filter(year == 2021) %>% drop_na(gdp) %>% arrange(desc(gdp))
+```
+
+国以外のグループでも数値があるようですから、国だけを選んでみます。それには、region のところの Aggregates 以外を選択します。
+
+```{r}
+df_gdp %>% filter(year == 2021, region != "Aggregates") %>% 
+  drop_na(gdp) %>% arrange(desc(gdp))
+```
+
+グラフではありませんが、これも一つの視覚化とも考えられないことはありません。
+
+上位7カ国のGDP の推移を書いてみましょう。
+
+```{r}
+df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
+  ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()
+```
+
+ここからも幾つかのことがわかるかと思います。気づいたことを書いてみましょう。
+
+
+```{r}
+df_gdp %>% 
+  filter(region != "Aggregates") %>% 
+  drop_na(gdp) %>% 
+  group_by(year) %>% 
+  mutate(gdp_ratio = gdp/sum(gdp)) %>%
+  ungroup() %>%
+  filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR"))  %>%
+  ggplot(aes(x = year, y = gdp_ratio, fill = iso2c)) + geom_area() + geom_line(col = "black", position = "stack", linewidth = 0.3) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+```
+
+これは、上から、iso2c の アルファベットの順番になっていますが、少し変更すると下のようになります。
+
+```{r}
+df_gdp %>% 
+  filter(region != "Aggregates") %>% 
+  drop_na(gdp) %>% 
+  group_by(year) %>% 
+  mutate(gdp_ratio = gdp/sum(gdp)) %>%
+  ungroup() %>%
+  filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR"))  %>%
+  mutate(iso2co = factor(iso2c, levels = c("IN", "CN", "FR", "GB", "DE", "JP", "US"))) %>%
+  ggplot(aes(x = year, y = gdp_ratio, fill = iso2co)) + geom_area() + geom_line(col = "black", position = "stack", linewidth = 0.3) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+```
+
+これらは、世界全体の GPT における割合です。主要国で、60%〜70% を占めていることがわかりますが、それぞれの国や、幾つかの国の影響力でしょうかも、ある程度みることができるように見えます。
+
+いろいろなことが見えてくるように思います。
+
+GDP が大きな国と、小さな国があるのはわかりますが、それは、どのように分布しているのでしょうか。
+
+```{r}
+df_gdp %>% drop_na(gdp) %>% 
+  filter(year == 2021) %>%
+  ggplot(aes(gdp)) + geom_histogram()
+```
+
+小さいところに集中していることがわかりますが、対数軸をとってみます。
+
+```{r}
+df_gdp %>% drop_na(gdp) %>% 
+  filter(year == 2021) %>%
+  ggplot(aes(gdp)) + geom_histogram() + scale_x_log10()
+```
+
+これは、2021年のデータですが、変化を見ることもできるでしょうか。
+
+```{r}
+df_gdp %>% drop_na(gdp) %>% 
+  filter(year %in% c(1961, 1971, 1981, 1991, 2001, 2011, 2021)) %>%
+  ggplot(aes(gdp, fill = factor(year))) + geom_density(alpha = 0.4) + scale_x_log10()
+```
+
+```{r}
+df_gdp %>% drop_na(gdp) %>% 
+  filter(year %in% c(1971, 1981, 1991, 2001, 2011, 2021)) %>%
+  ggplot(aes(gdp, fill = factor(year))) + 
+  geom_density() + scale_x_log10() + facet_wrap(~year)
+```
+
+いくつかのグループごとに分布をみてみることも可能です。それには、Boxplot が有効です。
+
+```{r}
+df_gdp %>% drop_na(gdp) %>% 
+  filter(region != "Aggregates") %>%
+  drop_na(region) %>%
+  filter(year %in% c(2021)) %>%
+  ggplot(aes(gdp, region, fill = region)) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + 
+  theme(legend.position = "none")
+```
+
+```{r}
+df_gdp %>% drop_na(gdp) %>% 
+  filter(region != "Aggregates") %>%
+  drop_na(income) %>%
+  filter(year %in% c(2021)) %>%
+  mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
+  ggplot(aes(gdp, level, fill = income)) + 
+  geom_boxplot() + scale_x_log10() + labs(y = "") + 
+  theme(legend.position = "none")
+```
+
+これからも、いろいろなことがわかりますね。
+
+地図で、国の income level をみてみましょう。
+
+```{r cache=TRUE}
+library(maps)
+map_world <- map_data('world')
+map_gdp <- map_world %>% 
+  mutate(iso2c = iso.alpha(region, n=2)) %>% 
+  mutate(map_region = region) %>% select(-region) %>% 
+  left_join(df_gdp, by = "iso2c") 
+map_gdp
+```
+
+```{r cache = TRUE}
+map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
+  ggplot() +
+  geom_map(aes(long, lat, map_id = map_region, fill = income_level), map = map_world, col = "black", size = 0.1) 
+```
+
+```{r cache = TRUE}
+map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
+  filter(year == 2021) %>%
+  ggplot() +
+  geom_map(aes(long, lat, map_id = map_region, fill = gdp), map = map_world, col = "black", size = 0.1) 
+```
+## 練習
+
+それぞれのグラフから、わかったこと、問いなどを書いてください。
+
