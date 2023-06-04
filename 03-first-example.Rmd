@@ -13,6 +13,8 @@
 
 ## R のパッケージを活用
 
+まず、この電子書籍の中心をなす、R を使った分析の一つの例を、見て行きたいと思います。一つ一つのコード（コンピュータ・プログラム）の説明は、後に回すとして、どのようなものなのか、雰囲気を味わっていただきたいと思います。
+
 ### 準備 Setup
 
 まず、世界銀行（World Bank）の、世界開発指標（WDI: World Development Indicators）の一つの、GDP について、みてみましょう。GDP にも何種類かの尺度があるのですが、次のものを見てみます。
@@ -21,9 +23,11 @@
 
 NY.GDP.MKTP.CD は、データコードと言われるもので、世界開発指標（WDI）には、一つづつ決まっています。
 
+これらの、WDI データコードの探し方なども、この書で少しずつ説明していきます。興味のある方は、[World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）からテーマを選択し、下にスクロールすると、Code をみることができます。ちなみに、ここで利用する NY.GDP.MKTP.CD: GDP (current US$) は、テーマの Economy（経済）を選択し、下にスクロールすると、一番上にあるものです。
 
+英語は苦手という方は、ブラウザー（Edge, Google Chrome, Safari など）の翻訳機能を使うのも良いでしょう。ただ、そのページの対話型の機能（interactive function）を利用するときは、翻訳機能をOFF にする必要がある場合もありますので、覚えておいてください。
 
-WDI のデータを取得する R のツール（パッケージ）`WDI` がありますから、それを使います。また、データを取り扱うために基本的なツール（パッケージ）`tidyverse` を使います。これらの使い方などは、あとから、説明します。
+R には、WDI のデータを取得する R のツール（パッケージ）`WDI` がありますから、それを使います。また、データを取り扱うために基本的なツール（パッケージ）`tidyverse` を使います。これらの使い方などは、あとから、説明します。
 
 ```{r}
 library(tidyverse)
@@ -237,4 +241,58 @@ map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Uppe
 ## 練習
 
 それぞれのグラフから、わかったこと、問いなどを書いてください。
+
+# コードの簡単な説明
+
+## コードの取得、折れ線グラフ
+
+いずれ、一つ一つのステップついて学びますが、まずは、データの取得と、７カ国の GDP の経年変化のグラフのコードの説明を、ChatGPT にしてもらいましょう。
+
+> 質問：R のコードで、tidyverse と WDI を使って、GDP の分析をしますが、次のコードを、R の初心者にも理解できるように、ステップごとに説明してください。
+
+```
+df_gdp <- WDI(country = "all",
+indicator = c(gdp = "NY.GDP.MKTP.CD"),
+extra = TRUE)
+
+df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
+ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()
+```
+
+**ChatGPT**
+
+このコードは、世界銀行の経済指標データベースであるワールド・データ・アトラス（WDI）から、GDP（国内総生産）に関するデータを取得し、Tidyverseパッケージを使用して分析するものです。以下に、コードの各ステップを説明します。
+
+以下のように、WDIパッケージをインストールしてロードします。このパッケージには、世界銀行のWDIデータベースにアクセスするために必要な機能が含まれています。
+
+```
+install.packages("WDI")
+library(WDI)
+```
+
+WDI関数を使用して、国別のGDPデータを取得します。この関数の引数には、国、指標（ここではGDP）、および `extra = TRUE`を設定して、年度別のGDPデータも取得します。
+
+```
+df_gdp <- WDI(country = "all", 
+              indicator = c(gdp = "NY.GDP.MKTP.CD"), 
+              extra = TRUE)
+```
+
+取得したデータのうち、アメリカ、中国、日本、ドイツ、インド、イギリス、フランスの7か国のみを抽出します。iso2cは、2文字のISOコードで国を表しています。
+
+```
+df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR"))
+```
+
+ggplot関数を使用して、GDPの年次データをプロットします。x軸には年、y軸にはGDP、色には国を設定し、geom_line関数を使用して折れ線グラフを描画します。
+
+```
+df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
+  ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()
+```
+
+これにより、アメリカ、中国、日本、ドイツ、インド、イギリス、フランスのGDPの年次推移を比較する折れ線グラフが作成されます。
+
+
+
 

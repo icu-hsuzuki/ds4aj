@@ -30,6 +30,8 @@ r-のパッケージを活用
 視覚化-data-visualization
 データを理解-understand-data
 さらなる分析
+コードの簡単な説明
+コードの取得折れ線グラフ
 publicdata
 オープンデータ
 open-government-data-toolkit-open-data-defined

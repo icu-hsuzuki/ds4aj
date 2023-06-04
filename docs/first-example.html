@@ -71,18 +71,19 @@
 <li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
 <li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
 <li><a class="active" href="first-example.html"><span class="header-section-number">3</span> 最初のデータ</a></li>
+<li><a class="" href="%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E8%AA%AC%E6%98%8E.html"><span class="header-section-number">4</span> コードの簡単な説明</a></li>
 <li class="book-part">PART I PUBLIC DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">4</span> Public Data</a></li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">5</span> Public Data</a></li>
 <li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">5</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">6</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">7</span> R Basics</a></li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">6</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">7</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">8</span> R Basics</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">8</span> World Bank</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">9</span> World Bank</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">9</span> 探索的データ解析</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">10</span> 探索的データ解析</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">10</span> Example 1</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">11</span> Example 1</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -112,6 +113,7 @@
 <h2>
 <span class="header-section-number">3.1</span> R のパッケージを活用<a class="anchor" aria-label="anchor" href="#r-%E3%81%AE%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E6%B4%BB%E7%94%A8"><i class="fas fa-link"></i></a>
 </h2>
+<p>まず、この電子書籍の中心をなす、R を使った分析の一つの例を、見て行きたいと思います。一つ一つのコード（コンピュータ・プログラム）の説明は、後に回すとして、どのようなものなのか、雰囲気を味わっていただきたいと思います。</p>
 <div id="準備-setup" class="section level3" number="3.1.1">
 <h3>
 <span class="header-section-number">3.1.1</span> 準備 Setup<a class="anchor" aria-label="anchor" href="#%E6%BA%96%E5%82%99-setup"><i class="fas fa-link"></i></a>
@@ -121,7 +123,9 @@
 <li>NY.GDP.MKTP.CD: GDP (current US$)</li>
 </ul>
 <p>NY.GDP.MKTP.CD は、データコードと言われるもので、世界開発指標（WDI）には、一つづつ決まっています。</p>
-<p>WDI のデータを取得する R のツール（パッケージ）<code>WDI</code> がありますから、それを使います。また、データを取り扱うために基本的なツール（パッケージ）<code>tidyverse</code> を使います。これらの使い方などは、あとから、説明します。</p>
+<p>これらの、WDI データコードの探し方なども、この書で少しずつ説明していきます。興味のある方は、<a href="https://datatopics.worldbank.org/world-development-indicators/">World Development Indicators</a> のサイトの下にある、Data Themes（テーマ）からテーマを選択し、下にスクロールすると、Code をみることができます。ちなみに、ここで利用する NY.GDP.MKTP.CD: GDP (current US$) は、テーマの Economy（経済）を選択し、下にスクロールすると、一番上にあるものです。</p>
+<p>英語は苦手という方は、ブラウザー（Edge, Google Chrome, Safari など）の翻訳機能を使うのも良いでしょう。ただ、そのページの対話型の機能（interactive function）を利用するときは、翻訳機能をOFF にする必要がある場合もありますので、覚えておいてください。</p>
+<p>R には、WDI のデータを取得する R のツール（パッケージ）<code>WDI</code> がありますから、それを使います。また、データを取り扱うために基本的なツール（パッケージ）<code>tidyverse</code> を使います。これらの使い方などは、あとから、説明します。</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
@@ -739,16 +743,12 @@
 <img src="03-first-example_files/figure-html/unnamed-chunk-24-1.png" width="672">
 ## 練習</div>
 <p>それぞれのグラフから、わかったこと、問いなどを書いてください。</p>
-
 </div>
 </div>
 </div>
-
-
-
   <div class="chapter-nav">
 <div class="prev"><a href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></div>
-<div class="next"><a href="publicdata.html"><span class="header-section-number">4</span> Public Data</a></div>
+<div class="next"><a href="%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E8%AA%AC%E6%98%8E.html"><span class="header-section-number">4</span> コードの簡単な説明</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
