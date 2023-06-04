@@ -47,7 +47,7 @@ df_gdp <- read_csv("./data/df_wdi_gdp.csv")
 ### データ構造の確認
 
 ```{r}
-df_gdp
+head(df_gdp)
 ```
 
 ```{r}
@@ -75,7 +75,7 @@ df_gdp %>% filter(country == "Japan")
 ```
 
 たとえば、gdp のところに、4.940878e+12	とあるのは、Scientific notation と言われるもので、
-$$4.940878 \time 10^{12} = 4,940,887,800,000$$
+$$4.940878 \times 10^{12} = 4,940,887,800,000$$
 を意味します。最初に current US$ と、書いてあるように、現在の USD に換算した数値です。
 
 
@@ -219,7 +219,7 @@ map_gdp <- map_world %>%
   mutate(iso2c = iso.alpha(region, n=2)) %>% 
   mutate(map_region = region) %>% select(-region) %>% 
   left_join(df_gdp, by = "iso2c") 
-map_gdp
+head(map_gdp)
 ```
 
 ```{r cache = TRUE}
