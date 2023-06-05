@@ -30,8 +30,10 @@ r-のパッケージを活用
 視覚化-data-visualization
 データを理解-understand-data
 さらなる分析
+練習
 コードの簡単な説明
 コードの取得折れ線グラフ
+まとめ
 publicdata
 オープンデータ
 open-government-data-toolkit-open-data-defined
@@ -92,7 +94,7 @@ rbasics
 最初の四つ
 アサインメントヘルプ
 おすすめ
-練習
+練習-1
 rstudio-について
 四つの窓枠とタブ-four-panes-and-tabs
 r-script-実行記録
@@ -100,7 +102,7 @@ r-script-の作成
 r-script-による実行
 スクリプト1-basics.r
 スクリプト2-coronavirus.r
-練習-1
+練習-2
 tips
 パッケージ---packages
 パッケージのインストール

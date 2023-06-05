@@ -71,19 +71,18 @@
 <li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
 <li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
 <li><a class="active" href="first-example.html"><span class="header-section-number">3</span> 最初のデータ</a></li>
-<li><a class="" href="%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E8%AA%AC%E6%98%8E.html"><span class="header-section-number">4</span> コードの簡単な説明</a></li>
 <li class="book-part">PART I PUBLIC DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">5</span> Public Data</a></li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">4</span> Public Data</a></li>
 <li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">6</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">7</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">8</span> R Basics</a></li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">5</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">6</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">7</span> R Basics</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">9</span> World Bank</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">8</span> World Bank</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">10</span> 探索的データ解析</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">9</span> 探索的データ解析</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">11</span> Example 1</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">10</span> Example 1</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -739,16 +738,73 @@
 <span><span class="co">#&gt; Warning in geom_map(aes(long, lat, map_id = map_region,</span></span>
 <span><span class="co">#&gt; fill = gdp), map = map_world, : Ignoring unknown</span></span>
 <span><span class="co">#&gt; aesthetics: x and y</span></span></code></pre></div>
-<div class="inline-figure">
-<img src="03-first-example_files/figure-html/unnamed-chunk-24-1.png" width="672">
-## 練習</div>
+<div class="inline-figure"><img src="03-first-example_files/figure-html/unnamed-chunk-24-1.png" width="672"></div>
+</div>
+</div>
+<div id="練習" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92"><i class="fas fa-link"></i></a>
+</h2>
 <p>それぞれのグラフから、わかったこと、問いなどを書いてください。</p>
 </div>
+<div id="コードの簡単な説明" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> コードの簡単な説明<a class="anchor" aria-label="anchor" href="#%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E8%AA%AC%E6%98%8E"><i class="fas fa-link"></i></a>
+</h2>
+<div id="コードの取得折れ線グラフ" class="section level3" number="3.3.1">
+<h3>
+<span class="header-section-number">3.3.1</span> コードの取得、折れ線グラフ<a class="anchor" aria-label="anchor" href="#%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E5%8F%96%E5%BE%97%E6%8A%98%E3%82%8C%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95"><i class="fas fa-link"></i></a>
+</h3>
+<p>いずれ、一つ一つのステップついて学びますが、まずは、データの取得と、７カ国の GDP の経年変化のグラフのコードの説明を、ChatGPT にしてもらいましょう。</p>
+<blockquote>
+<p>質問：R のコードで、tidyverse と WDI を使って、GDP の分析をしますが、次のコードを、R の初心者にも理解できるように、ステップごとに説明してください。</p>
+</blockquote>
+<pre><code>df_gdp &lt;- WDI(country = "all",
+indicator = c(gdp = "NY.GDP.MKTP.CD"),
+extra = TRUE)
+
+df_gdp %&gt;% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %&gt;%
+ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()</code></pre>
+<p><strong>ChatGPT</strong></p>
+<p>このコードは、世界銀行の経済指標データベースであるワールド・データ・アトラス（WDI）から、GDP（国内総生産）に関するデータを取得し、Tidyverseパッケージを使用して分析するものです。以下に、コードの各ステップを説明します。</p>
+<p>以下のように、WDIパッケージをインストールしてロードします。このパッケージには、世界銀行のWDIデータベースにアクセスするために必要な機能が含まれています。</p>
+<pre><code>install.packages("WDI")
+library(WDI)</code></pre>
+<p>WDI関数を使用して、国別のGDPデータを取得します。この関数の引数には、国、指標（ここではGDP）、および <code>extra = TRUE</code>を設定して、年度別のGDPデータも取得します。</p>
+<pre><code>df_gdp &lt;- WDI(country = "all", 
+              indicator = c(gdp = "NY.GDP.MKTP.CD"), 
+              extra = TRUE)</code></pre>
+<p>取得したデータのうち、アメリカ、中国、日本、ドイツ、インド、イギリス、フランスの7か国のみを抽出します。iso2cは、2文字のISOコードで国を表しています。</p>
+<pre><code>df_gdp %&gt;% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR"))</code></pre>
+<p>ggplot関数を使用して、GDPの年次データをプロットします。x軸には年、y軸にはGDP、色には国を設定し、geom_line関数を使用して折れ線グラフを描画します。</p>
+<pre><code>df_gdp %&gt;% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %&gt;%
+  ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()</code></pre>
+<p>これにより、アメリカ、中国、日本、ドイツ、インド、イギリス、フランスのGDPの年次推移を比較する折れ線グラフが作成されます。</p>
 </div>
 </div>
+<div id="まとめ" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> まとめ<a class="anchor" aria-label="anchor" href="#%E3%81%BE%E3%81%A8%E3%82%81"><i class="fas fa-link"></i></a>
+</h2>
+<p>今回は、経済指標である、GDP を使いました。データサイエンスについて少しずつ、学んでいきたいと思います。</p>
+<p>コードの説明をほとんどしていませんから、理解するのは難しいと思いますが、いくつかのことは、みてとることができるかなと思います。</p>
+<ul>
+<li><p>それほど、長くはない、コードで、データを見ていく。R は対話型（interactive）のプログラミング言語と言われています。</p></li>
+<li><p>コードに続けて、結果が表示されるので、コードと出力の対応が見やすい。また、コメントや説明も併記することができる。これは、RMarkdown という形式の中で、コードを書いていることによるものです。RMarkdown は、再現性（reproducibility）と、プログラム・コードの内容をコンピュータにわかるようにでなく、人間にもわかるように記述する（Literate Programming）を実現しています。</p></li>
+<li><p>視覚化（Visualization）によって、わかることが色々とある。また、視覚化の方法もたくさんあり、いろいろな見方をすることで、データについての理解が深まっていく。</p></li>
+<li><p>視覚化を通して、データを理解すること、問いを持ち、他の視覚化などを用いて、さらに、理解を深めることがたいせつ。</p></li>
+<li><p>理解したことを元にして、さらに、そのデータ、または、他のデータを使って、新たな発見をしていく。</p></li>
+</ul>
+<p>統計的な指標も用いますが、それらによって、新しい知識を生み出すとも表現しますが、そのような営み全体が、データサイエンスの核をなす部分だと思います。</p>
+
+</div>
+</div>
+
+
+
   <div class="chapter-nav">
 <div class="prev"><a href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></div>
-<div class="next"><a href="%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E8%AA%AC%E6%98%8E.html"><span class="header-section-number">4</span> コードの簡単な説明</a></div>
+<div class="next"><a href="publicdata.html"><span class="header-section-number">4</span> Public Data</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -764,6 +820,11 @@
 <li><a class="nav-link" href="#%E3%81%95%E3%82%89%E3%81%AA%E3%82%8B%E5%88%86%E6%9E%90"><span class="header-section-number">3.1.7</span> さらなる分析</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92"><span class="header-section-number">3.2</span> 練習</a></li>
+<li>
+<a class="nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E8%AA%AC%E6%98%8E"><span class="header-section-number">3.3</span> コードの簡単な説明</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E5%8F%96%E5%BE%97%E6%8A%98%E3%82%8C%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95"><span class="header-section-number">3.3.1</span> コードの取得、折れ線グラフ</a></li></ul>
+</li>
+<li><a class="nav-link" href="#%E3%81%BE%E3%81%A8%E3%82%81"><span class="header-section-number">3.4</span> まとめ</a></li>
 </ul>
 
       <div class="book-extra">
