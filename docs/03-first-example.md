@@ -1,36 +1,46 @@
-# 最初のデータ {#first-example}
+# はじめてのデータサイエンス {#first-example}
 
-データを分析するときには、大体次のような手順をとります。
+## データサイエンス？
+
+データから情報を得るときには、大体次のような手順をとります。
 
 1. 準備 Setup
 2. データを取得 Import data
 3. データ構造の確認 View data
-4. 必要なら整形 Transform data
+4. 必要に応じて整形 Transform data
 5. 視覚化 Visualize data
 6. データを理解 Understand data
+7. レポートなどにまとめる Communicate data
 
-いろいろな視覚化を行い、そのデータからさまざまなことを理解する部分が中心だと思います。
+![](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png)
+
+問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核だと思います。
 
 ## R のパッケージを活用
 
-まず、この電子書籍の中心をなす、R を使った分析の一つの例を、見て行きたいと思います。一つ一つのコード（コンピュータ・プログラム）の説明は、後に回すとして、どのようなものなのか、雰囲気を味わっていただきたいと思います。
+<!-- まず、R を使った分析の一つの例を、見て行きます。一つ一つのコード（コンピュータ・プログラム）の説明は、後に回し、まずは、雰囲気を味わってください。 -->
 
 ### 準備 Setup
 
-まず、世界銀行（World Bank）の、世界開発指標（WDI: World Development Indicators）の一つの、GDP について、みてみましょう。GDP にも何種類かの尺度があるのですが、次のものを見てみます。
+世界銀行（World Bank）の、世界開発指標（WDI: World Development Indicators）の一つの、GDP（Gross Domestic Product 国内総生産）のデータから始めます。GDP にも何種類かの尺度がありますが、次のものを見てみます。
 
 * NY.GDP.MKTP.CD: GDP (current US$)
 
 NY.GDP.MKTP.CD は、データコードと言われるもので、世界開発指標（WDI）には、一つづつ決まっています。
 
-これらの、WDI データコードの探し方なども、この書で少しずつ説明していきます。興味のある方は、[World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）からテーマを選択し、下にスクロールすると、Code をみることができます。ちなみに、ここで利用する NY.GDP.MKTP.CD: GDP (current US$) は、テーマの Economy（経済）を選択し、下にスクロールすると、一番上にあるものです。
+[World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）からテーマを選択し、下にスクロールすると、Code をみることができます。ちなみに、ここで利用する NY.GDP.MKTP.CD: GDP (current US$) は、テーマの Economy（経済）の、一番上にあります。
 
-英語は苦手という方は、ブラウザー（Edge, Google Chrome, Safari など）の翻訳機能を使うのも良いでしょう。ただ、そのページの対話型の機能（interactive function）を利用するときは、翻訳機能をOFF にする必要がある場合もありますので、覚えておいてください。
+経済用語の英語はよく知らないという方は、ブラウザー（Edge, Google Chrome, Safari など）の翻訳機能を使うのも良いでしょう。ただ、そのページの対話型の機能（interactive function）を利用するときは、翻訳機能をOFF にする必要がある場合もありますので、注意してください。
 
-R には、WDI のデータを取得する R のツール（パッケージ）`WDI` がありますから、それを使います。また、データを取り扱うために基本的なツール（パッケージ）`tidyverse` を使います。これらの使い方などは、あとから、説明します。
+
+
+エラーメッセージを調べるときなどに、英語のほうが情報がたくさん得られますから、言語を、英語に変更しておきます。
+
+R には、WDI のデータを取得する R のツール（パッケージ）`WDI` がありますから、それを使います。また、データを取り扱うための基本的なツール（パッケージ）`tidyverse` を使いますので、次のコードで、これらを読み込みます。
 
 
 ```r
+Sys.setenv(LANG = "en")
 library(tidyverse)
 #> ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
 #> ✔ dplyr     1.1.2     ✔ readr     2.1.4
@@ -47,7 +57,7 @@ library(WDI)
 
 ### データ取得 Import data
 
-いよいよ、データを取得します。それを、`df_gdp` と名前をつけます。
+データを取得します。少し時間がかかります。取得したデータに、`df_gdp` などと、わかりやすい名前をつけます。`df` は `data frame` の略で、R で標準的なデータの形式です。
 
 
 ```r
@@ -58,7 +68,13 @@ df_gdp <- WDI(country = "all",
 
 
 
+このコードで、全ての国の GDP を取得できます。GDP の値は、`NY.GDP.MKTP.CD` という名前の列にありますが、覚えやすいように、gdp という名前に変更しておきます。`extra = TRUE` とすることによって、それぞれの国についての情報などが追加されます。
+
+
+
 ### データ構造の確認
+
+最初の数行だけを見るには、`head(df_dgp)` とします。
 
 
 ```r
@@ -78,30 +94,52 @@ head(df_gdp)
 ```
 
 
+
+データの構造を見るときには、`str(df_gdp)` もよく使われます。今度は、列が縦に並んで表示されます。
+
+
 ```r
-df_gdp %>% glimpse()
-#> Rows: 16,492
-#> Columns: 13
-#> $ country     <chr> "Afghanistan", "Afghanistan", "Afghani…
-#> $ iso2c       <chr> "AF", "AF", "AF", "AF", "AF", "AF", "A…
-#> $ iso3c       <chr> "AFG", "AFG", "AFG", "AFG", "AFG", "AF…
-#> $ year        <dbl> 2015, 2011, 2014, 2013, 2012, 2007, 20…
-#> $ gdp         <dbl> 19998156214, 18190410821, 20550582747,…
-#> $ status      <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-#> $ lastupdated <date> 2022-12-22, 2022-12-22, 2022-12-22, 2…
-#> $ region      <chr> "South Asia", "South Asia", "South Asi…
-#> $ capital     <chr> "Kabul", "Kabul", "Kabul", "Kabul", "K…
-#> $ longitude   <dbl> 69.1761, 69.1761, 69.1761, 69.1761, 69…
-#> $ latitude    <dbl> 34.5228, 34.5228, 34.5228, 34.5228, 34…
-#> $ income      <chr> "Low income", "Low income", "Low incom…
-#> $ lending     <chr> "IDA", "IDA", "IDA", "IDA", "IDA", "ID…
+str(df_gdp)
+#> spc_tbl_ [16,492 × 13] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+#>  $ country    : chr [1:16492] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
+#>  $ iso2c      : chr [1:16492] "AF" "AF" "AF" "AF" ...
+#>  $ iso3c      : chr [1:16492] "AFG" "AFG" "AFG" "AFG" ...
+#>  $ year       : num [1:16492] 2015 2011 2014 2013 2012 ...
+#>  $ gdp        : num [1:16492] 2.00e+10 1.82e+10 2.06e+10 2.06e+10 2.02e+10 ...
+#>  $ status     : logi [1:16492] NA NA NA NA NA NA ...
+#>  $ lastupdated: Date[1:16492], format: "2022-12-22" ...
+#>  $ region     : chr [1:16492] "South Asia" "South Asia" "South Asia" "South Asia" ...
+#>  $ capital    : chr [1:16492] "Kabul" "Kabul" "Kabul" "Kabul" ...
+#>  $ longitude  : num [1:16492] 69.2 69.2 69.2 69.2 69.2 ...
+#>  $ latitude   : num [1:16492] 34.5 34.5 34.5 34.5 34.5 ...
+#>  $ income     : chr [1:16492] "Low income" "Low income" "Low income" "Low income" ...
+#>  $ lending    : chr [1:16492] "IDA" "IDA" "IDA" "IDA" ...
+#>  - attr(*, "spec")=
+#>   .. cols(
+#>   ..   country = col_character(),
+#>   ..   iso2c = col_character(),
+#>   ..   iso3c = col_character(),
+#>   ..   year = col_double(),
+#>   ..   gdp = col_double(),
+#>   ..   status = col_logical(),
+#>   ..   lastupdated = col_date(format = ""),
+#>   ..   region = col_character(),
+#>   ..   capital = col_character(),
+#>   ..   longitude = col_double(),
+#>   ..   latitude = col_double(),
+#>   ..   income = col_character(),
+#>   ..   lending = col_character()
+#>   .. )
+#>  - attr(*, "problems")=<externalptr>
 ```
+
+
 
 概要 (`summary(df_gdp)`) からもある程度わかります。
 
 
 ```r
-df_gdp %>% summary()
+summary(df_gdp) 
 #>    country             iso2c              iso3c          
 #>  Length:16492       Length:16492       Length:16492      
 #>  Class :character   Class :character   Class :character  
@@ -144,7 +182,9 @@ df_gdp %>% summary()
 #> 
 ```
 
-国のリストをみてみましょう。
+
+
+国のリストをみてみましょう。とても長いリストの中には、地域名も含まれています。
 
 
 ```r
@@ -417,9 +457,33 @@ df_gdp %>% distinct(country) %>% pull()
 #> [266] "Zimbabwe"
 ```
 
-### 必要なら整形 Transform data
 
-変数が多いので、日本の部分だけみてみます。
+
+今回は下のように、`%>%`（パイプと呼びます） で繋げてコードを書きました。
+
+```
+df_gdp %>% distinct(country) %>% pull()
+```
+
+最初は、データ、その中の、異なる国を選択して、書き出してくださいというものです。
+
+これは、
+```
+pull(distinct(df_gdp, country))
+```
+と同じです。どんどん、かっこの中に入れ子になって複雑になるので、一つ一つのステップを、順に書いたものが、最初のものになります。
+
+```
+df_gdp %>% head()
+df_gdp %>% str()
+```
+なども可能です。かっこの中に最初に入るものが直前のもの、ここでは、データになっています。
+
+
+
+### 必要に応じて整形 Transform data
+
+変数が多いので、日本の部分だけ `filter` を使って選択します。country が Japan と一致する場合のみを選択するときは、`==` を使います。数値ではないので、引用符をつけます。半角を使ってください。
 
 
 ```r
@@ -443,14 +507,29 @@ df_gdp %>% filter(country == "Japan")
 #> #   lending <chr>
 ```
 
-たとえば、gdp のところに、4.940878e+12	とあるのは、Scientific notation と言われるもので、
+
+
+
+```r
+df_gdp %>% filter(country == "Japan") %>% head(2)
+#> # A tibble: 2 × 13
+#>   country iso2c iso3c  year     gdp status lastupdated
+#>   <chr>   <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
+#> 1 Japan   JP    JPN    2021 4.94e12 NA     2022-12-22 
+#> 2 Japan   JP    JPN    2020 5.04e12 NA     2022-12-22 
+#> # ℹ 6 more variables: region <chr>, capital <chr>,
+#> #   longitude <dbl>, latitude <dbl>, income <chr>,
+#> #   lending <chr>
+```
+２行目の、gdp の、4.940878e+12 は、Scientific notation と言われるもので、
 $$4.940878 \times 10^{12} = 4,940,887,800,000$$
-を意味します。最初に current US$ と、書いてあるように、現在の USD に換算した数値です。
+を意味します。`e+3` は千（thousand）、`e+6` は百万（million）、`e+9` は、10億（billion）、`e+12` は、兆（trillion）ですから、日本の、2021 年の GDP は、約5兆ドルとなります。
+
 
 
 ### 視覚化 data visualization
 
-日本のGDP の経年変化を折線グラフ（line graph）でみてみましょう。
+#### Fig 1. 日本のGDP の経年変化を折線グラフ（line graph）
 
 
 ```r
@@ -458,22 +537,59 @@ df_gdp %>% filter(country == "Japan") %>%
   ggplot(aes(x = year, y = gdp)) + geom_line()
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
-### データを理解 Understand data
 
-視覚化によって見えてくることがいくつもありますね。どんなことがわかりますか。気づいたことをあげてみましょう。
 
-### さらなる分析
+```
+df_gdp %>% filter(country == "Japan") %>%
+  ggplot(aes(x = year, y = gdp)) + geom_line()
+```
+
+日本を選択したときに、それに名前をつけておいて、それを使うこともできますが、名前がどんどん増えるので、それに続けて、コードを書いていく方法をとっています。
+
+`ggplot(aes(x = year, y = gdp)) + geom_line()`
+
+の部分が、グラフを描く部分で、「x 軸を、year、y 軸を、gdp として、それを、折線グラフで描いてください」というコードです。
+
+Warning: [38;5;238mRemoved 1 row containing missing values
+
+と表示されています。値がない年があることを言っています。2022年のデータがないことがわかっていますから、最初から削除してこくことも可能です。
+
+
+
+### データの理解 Understand data
+
+視覚化によって見えてくることがいくつもありますね。どんなことがわかりますか。気づいたこと（observation）をあげてみましょう。
+
+コードを描くことではなく、この部分が、データサイエンスの核の部分です。気づいたことを列挙してみましょう。
+
+
+
+### さまざまな視覚化
+
+#### Fig 2. 各年ごとのデータの数
+
+`summary(df_gdp)` で、データ自体は、1960年から2022年までのようですが、日本も、2022年のデータはありませんでしたから、年によって、どの程度データがあるか、調べてみます。
 
 
 ```r
 df_gdp %>% drop_na(gdp) %>% ggplot(aes(x = year)) + geom_bar()
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
-最新の2021年のデータはすべてあるわけではなさそうですが、大きい順に並べてみましょう。
+
+
+```
+df_gdp %>% drop_na(gdp) %>% ggplot(aes(x = year)) + geom_bar()
+```
+
+バー・グラフを使いますが、`gdp` の値が、欠損値（NA: not available）のデータを削除してから、グラフを描きます。
+
+#### 2021年のGDPの降順での表示（１）
+
+最新の2021年のデータはすべてあるわけではなさそうですが、`gdp` の値が大きい順に並べてみましょう。
 
 
 ```r
@@ -497,7 +613,11 @@ df_gdp %>% filter(year == 2021) %>% drop_na(gdp) %>% arrange(desc(gdp))
 #> #   lending <chr>
 ```
 
-国以外のグループでも数値があるようですから、国だけを選んでみます。それには、region のところの Aggregates 以外を選択します。
+
+
+#### 2021年のGDPの降順での表示（２）
+
+最初に、World と表示され、グループや、カテゴリーのデータもあるようですから、それを、まず、削除することが必要です。`region` の列を見ると、World などは、Aggregates となっているので、そのようなものを削除すればよさそうです。数値の大きい順に並べたいので、`desc` 降順（descending order）にします。
 
 
 ```r
@@ -522,9 +642,15 @@ df_gdp %>% filter(year == 2021, region != "Aggregates") %>%
 #> #   lending <chr>
 ```
 
-グラフではありませんが、これも一つの視覚化とも考えられないことはありません。
 
-上位7カ国のGDP の推移を書いてみましょう。
+
+これは、グラフではありませんが、これも一つの視覚化とも考えられないことはありません。
+
+上位７カ国は、United States, China, Japan, Germany, India, United Kingdom, France であることがわかりました。8番目は、Italy でここまでが、GDP が 2兆ドルを越している国となります。
+
+
+
+#### Fig 3. 2021年時のGDP上位7カ国のGDP経年変化
 
 
 ```r
@@ -534,49 +660,88 @@ df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
 #> (`geom_line()`).
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-13-1.png" width="672" />
-
-ここからも幾つかのことがわかるかと思います。気づいたことを書いてみましょう。
-
-
-
-```r
-df_gdp %>% 
-  filter(region != "Aggregates") %>% 
-  drop_na(gdp) %>% 
-  group_by(year) %>% 
-  mutate(gdp_ratio = gdp/sum(gdp)) %>%
-  ungroup() %>%
-  filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR"))  %>%
-  ggplot(aes(x = year, y = gdp_ratio, fill = iso2c)) + geom_area() + geom_line(col = "black", position = "stack", linewidth = 0.3) + 
-  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
-```
-
 <img src="03-first-example_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
-これは、上から、iso2c の アルファベットの順番になっていますが、少し変更すると下のようになります。
+
+
+```
+df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
+  ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()
+```
+
+ここでは、最初に、`filter` を使って、7カ国のデータを選択しています。
+そのときには、`%in%` として、国名を、combine するといういみで、`c()` とひとまとめにします。数字ではなく、文字なので、引用符で囲んでいます。この場合は、single quote でも構いませんが、半角を使ってください。
+
+このグラフからは、どのようなことがわかりますか。気づいたことを書いてみましょう。
+
+もう少し、このようなグラフをみてみたいというような、メモも大切です。
+
+
+
+#### Fig 4. 世界のGDP における割合（１）
 
 
 ```r
 df_gdp %>% 
-  filter(region != "Aggregates") %>% 
-  drop_na(gdp) %>% 
-  group_by(year) %>% 
-  mutate(gdp_ratio = gdp/sum(gdp)) %>%
-  ungroup() %>%
+  filter(region != "Aggregates") %>% drop_na(gdp) %>% 
+  group_by(year) %>% mutate(gdp_ratio = gdp/sum(gdp)) %>% ungroup() %>%
   filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR"))  %>%
-  mutate(iso2co = factor(iso2c, levels = c("IN", "CN", "FR", "GB", "DE", "JP", "US"))) %>%
-  ggplot(aes(x = year, y = gdp_ratio, fill = iso2co)) + geom_area() + geom_line(col = "black", position = "stack", linewidth = 0.3) + 
+  ggplot(aes(x = year, y = gdp_ratio, fill = iso2c)) + geom_area() +
+  geom_line(col = "black", position = "stack", linewidth = 0.3) + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
 <img src="03-first-example_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
-これらは、世界全体の GPT における割合です。主要国で、60%〜70% を占めていることがわかりますが、それぞれの国や、幾つかの国の影響力でしょうかも、ある程度みることができるように見えます。
 
-いろいろなことが見えてくるように思います。
+
+まず、下の部分が新しいですが、ここでは、年毎にグループにして、その上で、新しい `dgp_ratio` という名前の列を追加し、その gdp の値を、gdp 合計で割っています。すなわち、世界の、GDP における割合が計算されています。
+
+```
+  group_by(year) %>% mutate(gdp_ratio = gdp/sum(gdp)) %>% ungroup() %>%
+```
+
+下の部分では、`geom_area` を使って、`fill=iso2c` により、`iso2c` ごとに、違う色を塗って、position = "stack" により、積み上げ型の、グラフを描き、境目がわかりやすいように、0.3  の太さの黒の線を描いてください。また、y 軸は、小数点以下を省いたパーセント表示に変えてください。というコードです。
+
+```
+  ggplot(aes(x = year, y = gdp_ratio, fill = iso2c)) + geom_area() +
+  geom_line(col = "black", position = "stack", linewidth = 0.3) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+```
+
+#### Fig 4. 世界のGDP における割合（２）
+
+これは、上から、iso2c の アルファベットの順番になっていますが、積み上げの順序を変更することもできます。
+
+
+```r
+df_gdp %>% 
+  filter(region != "Aggregates") %>% drop_na(gdp) %>% 
+  group_by(year) %>% mutate(gdp_ratio = gdp/sum(gdp)) %>% ungroup() %>%
+  filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR"))  %>%
+  mutate(iso2co = factor(iso2c, levels = c("IN", "CN", "FR", "GB", "DE", "JP", "US"))) %>%
+  ggplot(aes(x = year, y = gdp_ratio, fill = iso2co)) + geom_area() +
+  geom_line(col = "black", position = "stack", linewidth = 0.3) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+```
+
+<img src="03-first-example_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+
+
+
+これらは、世界全体の GPT における割合です。
+
+どのようなことがわかりますか。
+
+主要国で、60%〜70% を占めていることがわかります。それぞれの国や、幾つかの国の影響力も、ある程度みることができるように見えます。
+
+気づいたこと、疑問に思ったことなどを、書き出してみてください。
 
 GDP が大きな国と、小さな国があるのはわかりますが、それは、どのように分布しているのでしょうか。
+
+
+
+#### Fig 5. 2021年の世界の国のGDPの分布（１）
 
 
 ```r
@@ -587,9 +752,18 @@ df_gdp %>% drop_na(gdp) %>%
 #> `binwidth`.
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
-小さいところに集中していることがわかりますが、対数軸をとってみます。
+
+
+小さいところに集中していることがわかりますが、`scale_x_log10()` を加え、対数軸をとってみます。
+
+$log10(1000) = 3$, $log10(1000000) = 6$, $log10(1000000000) = 9$ などになります。
+
+
+
+
+#### Fig 6. 2021年の世界の国のGDPの分布（２）
 
 
 ```r
@@ -600,9 +774,30 @@ df_gdp %>% drop_na(gdp) %>%
 #> `binwidth`.
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
-これは、2021年のデータですが、変化を見ることもできるでしょうか。
+幅を変更したり、分ける個数を変更するには `binwidth = 0.5` や、`bins = 20` を、`geom_histogram()` のかっこの中に入れます。
+
+
+
+#### Fig 7. 2021年の世界の国のGDPの分布（３）
+
+また、密度曲線に変えるには、`geom_density` を使います。
+
+
+```r
+df_gdp %>% drop_na(gdp) %>% 
+  filter(year == 2021) %>%
+  ggplot(aes(gdp)) + geom_density() + scale_x_log10()
+```
+
+<img src="03-first-example_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+
+
+
+#### Fig 8. 2021年の世界の国のGDPの分布（４）
+
+これは、2021年のデータですが、density の変化を見てみます。alpha の値は透明度です。
 
 
 ```r
@@ -611,7 +806,13 @@ df_gdp %>% drop_na(gdp) %>%
   ggplot(aes(gdp, fill = factor(year))) + geom_density(alpha = 0.4) + scale_x_log10()
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+
+
+
+#### Fig 9. 2021年の世界の国のGDPの分布（５）
+
+少しみにくいので、分けてみます。
 
 
 ```r
@@ -621,38 +822,44 @@ df_gdp %>% drop_na(gdp) %>%
   geom_density() + scale_x_log10() + facet_wrap(~year)
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+
+
+
+#### Fig 10. 地域ごとの GDP の分布
 
 いくつかのグループごとに分布をみてみることも可能です。それには、Boxplot が有効です。
 
 
 ```r
-df_gdp %>% drop_na(gdp) %>% 
-  filter(region != "Aggregates") %>%
-  drop_na(region) %>%
-  filter(year %in% c(2021)) %>%
+df_gdp %>% drop_na(gdp) %>% filter(region != "Aggregates") %>%
+  drop_na(region) %>% filter(year %in% c(2021)) %>%
   ggplot(aes(gdp, region, fill = region)) + 
   geom_boxplot() + scale_x_log10() + labs(y = "") + 
   theme(legend.position = "none")
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+
+
+
+#### Fig 11. 収入の多寡による分類ごとの GDP 分布
 
 
 ```r
-df_gdp %>% drop_na(gdp) %>% 
-  filter(region != "Aggregates") %>%
-  drop_na(income) %>%
-  filter(year %in% c(2021)) %>%
+df_gdp %>% drop_na(gdp) %>% filter(region != "Aggregates") %>%
+  drop_na(income) %>% filter(year %in% c(2021)) %>%
   mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) %>%
   ggplot(aes(gdp, level, fill = income)) + 
   geom_boxplot() + scale_x_log10() + labs(y = "") + 
   theme(legend.position = "none")
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 これからも、いろいろなことがわかりますね。
+
+#### 世界地図の準備
 
 地図で、国の income level をみてみましょう。
 
@@ -701,6 +908,8 @@ head(map_gdp)
 #> 6 High income Not classified
 ```
 
+#### Fig 12. Income Level による色分け地図
+
 
 ```r
 map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
@@ -717,81 +926,53 @@ map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Uppe
 #> y
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+
+#### Fig 13. GDP による色分け地図
 
 
 ```r
 map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
   filter(year == 2021) %>%
   ggplot() +
-  geom_map(aes(long, lat, map_id = map_region, fill = gdp), map = map_world, col = "black", size = 0.1) 
-#> Warning in geom_map(aes(long, lat, map_id = map_region,
-#> fill = gdp), map = map_world, : Ignoring unknown
-#> aesthetics: x and y
+  geom_map(aes(x=long, y=lat, map_id = map_region, fill = gdp), map = map_world, col = "black", size = 0.1) 
+#> Warning in geom_map(aes(x = long, y = lat, map_id =
+#> map_region, fill = gdp), : Ignoring unknown aesthetics: x
+#> and y
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
 ## 練習
 
-それぞれのグラフから、わかったこと、問いなどを書いてください。
+1. それぞれのグラフから、わかったこと、問いなどを列挙してみましょう。
+2. Fig 1 の　Japan の部分を他の国や、グループ（World など）に変えてみてください。何がわかりますか。
+3. Fig 3 の iso2c で選択する、国を変更してください。何がわかりますか。
+4. Fig 4 または Fig 5 の iso2c の部分を他の国に変更してください。何がわかりますか。
+5. Fig 5 または Fig 6 の、区間の幅や、数を 変更してみてください。何がわかりますか。
+6. Fig 7, Fig 8, Fig 9 の年を変更してみてください。何がわかりますか。
+7. Fig 12, Fig 13 の年を変更してみてください。何がわかりますか。
 
-## コードの簡単な説明
+## プロジェクト
 
-### コードの取得、折れ線グラフ
+他のデータで、同様のことをしてみましょう。
 
-いずれ、一つ一つのステップついて学びますが、まずは、データの取得と、７カ国の GDP の経年変化のグラフのコードの説明を、ChatGPT にしてもらいましょう。
+1. 最初に、`gdp = "NY.GDP.MKTP.CD"` としましたが、GNI per capita, Atlas method (current US$): NY.GNP.PCAP.CD に変えてみましょう。
 
-> 質問：R のコードで、tidyverse と WDI を使って、GDP の分析をしますが、次のコードを、R の初心者にも理解できるように、ステップごとに説明してください。
 
-```
-df_gdp <- WDI(country = "all",
-indicator = c(gdp = "NY.GDP.MKTP.CD"),
-extra = TRUE)
-
-df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
-ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()
-```
-
-**ChatGPT**
-
-このコードは、世界銀行の経済指標データベースであるワールド・データ・アトラス（WDI）から、GDP（国内総生産）に関するデータを取得し、Tidyverseパッケージを使用して分析するものです。以下に、コードの各ステップを説明します。
-
-以下のように、WDIパッケージをインストールしてロードします。このパッケージには、世界銀行のWDIデータベースにアクセスするために必要な機能が含まれています。
-
-```
-install.packages("WDI")
-library(WDI)
-```
-
-WDI関数を使用して、国別のGDPデータを取得します。この関数の引数には、国、指標（ここではGDP）、および `extra = TRUE`を設定して、年度別のGDPデータも取得します。
-
-```
-df_gdp <- WDI(country = "all", 
-              indicator = c(gdp = "NY.GDP.MKTP.CD"), 
+```r
+df_gnppcap <- WDI(country = "all", 
+              indicator = c(gnppcap = "NY.GNP.PCAP.CD"), 
               extra = TRUE)
 ```
 
-取得したデータのうち、アメリカ、中国、日本、ドイツ、インド、イギリス、フランスの7か国のみを抽出します。iso2cは、2文字のISOコードで国を表しています。
-
-```
-df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR"))
-```
-
-ggplot関数を使用して、GDPの年次データをプロットします。x軸には年、y軸にはGDP、色には国を設定し、geom_line関数を使用して折れ線グラフを描画します。
-
-```
-df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
-  ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()
-```
-
-これにより、アメリカ、中国、日本、ドイツ、インド、イギリス、フランスのGDPの年次推移を比較する折れ線グラフが作成されます。
+2. [World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）から自分が調べたいテーマを選び、そのテーマから、データコードを取得して、同様の分析をしてみてください。データがあまりない場合もありますので、ある程度データが多いものを選択することをお勧めします。
 
 ## まとめ
 
-今回は、経済指標である、GDP を使いました。データサイエンスについて少しずつ、学んでいきたいと思います。
+今回は、経済指標である、GDP を使いました。データサイエンスについて少しずつ、学んでいきます。
 
-コードの説明をほとんどしていませんから、理解するのは難しいと思いますが、いくつかのことは、みてとることができるかなと思います。
+コードの説明は、簡単にしかしていませんから、理解するのは難しいと思いますが、いくつかのことは、ご理解いただけると思います。
 
 * それほど、長くはない、コードで、データを見ていく。R は対話型（interactive）のプログラミング言語と言われています。
 
@@ -804,5 +985,3 @@ df_gdp %>% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %>%
 * 理解したことを元にして、さらに、そのデータ、または、他のデータを使って、新たな発見をしていく。
 
 統計的な指標も用いますが、それらによって、新しい知識を生み出すとも表現しますが、そのような営み全体が、データサイエンスの核をなす部分だと思います。
-
-
