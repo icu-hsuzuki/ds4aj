@@ -1,5 +1,4 @@
 # はじめてのデータサイエンス {#first-example}
-
 ## データサイエンス？
 
 データから情報を得るときには、大体次のような手順をとります。
@@ -16,9 +15,9 @@
 
 問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核だと思います。
 
-## R のパッケージを活用
+> R を使った分析の一つの例を、見て行きます。一つ一つのコード（コンピュータ・プログラム）の簡単な説明は、加えますが、あまりそれに捉われず、データサイエンスとは何かを考えながら、雰囲気を味わってください。
 
-<!-- まず、R を使った分析の一つの例を、見て行きます。一つ一つのコード（コンピュータ・プログラム）の説明は、後に回し、まずは、雰囲気を味わってください。 -->
+## R のパッケージを活用
 
 ### 準備 Setup
 
@@ -44,18 +43,20 @@ library(tidyverse)
 library(WDI)
 ```
 
+データを保存する場所を作成しておくことをお勧めします。保存しておくときは、このディレクトリを使います。
+
+```{r eval=FALSE}
+dir.create("./data")
+```
+
 ### データ取得 Import data
 
 データを取得します。少し時間がかかります。取得したデータに、`df_gdp` などと、わかりやすい名前をつけます。`df` は `data frame` の略で、R で標準的なデータの形式です。
 
-```{r eval=FALSE}
+```{r cache=TRUE}
 df_gdp <- WDI(country = "all", 
               indicator = c(gdp = "NY.GDP.MKTP.CD"), 
               extra = TRUE)
-```
-
-```{r eval=TRUE, include=FALSE}
-df_gdp <- read_csv("./data/df_wdi_gdp.csv")
 ```
 
 このコードで、全ての国の GDP を取得できます。GDP の値は、`NY.GDP.MKTP.CD` という名前の列にありますが、覚えやすいように、gdp という名前に変更しておきます。`extra = TRUE` とすることによって、それぞれの国についての情報などが追加されます。
@@ -159,7 +160,7 @@ df_gdp %>% filter(country == "Japan") %>%
 
 の部分が、グラフを描く部分で、「x 軸を、year、y 軸を、gdp として、それを、折線グラフで描いてください」というコードです。
 
-Warning: [38;5;238mRemoved 1 row containing missing values
+Warning: [38;5;238mRemoved 1 row containing missing values
 
 と表示されています。値がない年があることを言っています。2022年のデータがないことがわかっていますから、最初から削除してこくことも可能です。
 
@@ -302,7 +303,7 @@ GDP が大きな国と、小さな国があるのはわかりますが、それ�
 
 ```{r}
 df_gdp %>% drop_na(gdp) %>% 
-  filter(year == 2021) %>%
+  filter(year == 2021) %>% filter(region != "Aggregates") %>%
   ggplot(aes(gdp)) + geom_histogram()
 ```
 
@@ -319,7 +320,7 @@ $log10(1000) = 3$, $log10(1000000) = 6$, $log10(1000000000) = 9$ などになり
 
 ```{r}
 df_gdp %>% drop_na(gdp) %>% 
-  filter(year == 2021) %>%
+  filter(year == 2021) %>% filter(region != "Aggregates") %>%
   ggplot(aes(gdp)) + geom_histogram() + scale_x_log10()
 ```
 
@@ -333,7 +334,7 @@ df_gdp %>% drop_na(gdp) %>%
 
 ```{r}
 df_gdp %>% drop_na(gdp) %>% 
-  filter(year == 2021) %>%
+  filter(year == 2021) %>% filter(region != "Aggregates") %>%
   ggplot(aes(gdp)) + geom_density() + scale_x_log10()
 ```
 
@@ -397,11 +398,12 @@ df_gdp %>% drop_na(gdp) %>% filter(region != "Aggregates") %>%
 
 ```{r cache=TRUE}
 library(maps)
+gdp_short <- df_gdp %>% filter(year == 2021, region != "Aggregates") %>%
+  select(iso2c, gdp, income)
 map_world <- map_data('world')
 map_gdp <- map_world %>% 
   mutate(iso2c = iso.alpha(region, n=2)) %>% 
-  mutate(map_region = region) %>% select(-region) %>% 
-  left_join(df_gdp, by = "iso2c") 
+  left_join(gdp_short, by = "iso2c") 
 head(map_gdp)
 ```
 
@@ -410,16 +412,15 @@ head(map_gdp)
 ```{r cache = TRUE}
 map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
   ggplot() +
-  geom_map(aes(long, lat, map_id = map_region, fill = income_level), map = map_world, col = "black", size = 0.1) 
+  geom_map(aes(long, lat, map_id = region, fill = income_level), map = map_world, col = "black", size = 0.1) 
 ```
 
 #### Fig 13. GDP による色分け地図
 
 ```{r cache = TRUE}
 map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
-  filter(year == 2021) %>%
   ggplot() +
-  geom_map(aes(x=long, y=lat, map_id = map_region, fill = gdp), map = map_world, col = "black", size = 0.1) 
+  geom_map(aes(x=long, y=lat, map_id = region, fill = gdp), map = map_world, col = "black", size = 0.1) 
 ```
 
 ## 練習
