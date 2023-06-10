@@ -3268,9 +3268,15 @@ map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Uppe
 
 
 ```r
-map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
+map_gdp %>%
   ggplot() +
   geom_map(aes(x=long, y=lat, map_id = region, fill = gdp), map = map_world, col = "black", size = 0.1) 
+#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2
+#> 3.4.0.
+#> ℹ Please use `linewidth` instead.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where
+#> this warning was generated.
 #> Warning in geom_map(aes(x = long, y = lat, map_id = region,
 #> fill = gdp), : Ignoring unknown aesthetics: x and y
 ```

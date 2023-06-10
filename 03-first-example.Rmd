@@ -418,7 +418,7 @@ map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Uppe
 #### Fig 13. GDP による色分け地図
 
 ```{r cache = TRUE}
-map_gdp %>% mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) %>%
+map_gdp %>%
   ggplot() +
   geom_map(aes(x=long, y=lat, map_id = region, fill = gdp), map = map_world, col = "black", size = 0.1) 
 ```
