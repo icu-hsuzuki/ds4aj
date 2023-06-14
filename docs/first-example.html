@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 3 はじめてのデータサイエンス | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="3.1 データサイエンス？ データから情報を得るときには、大体次のような手順をとります。 準備 Setup データを取得 Import data データ構造の確認 View data 必要に応じて整形 Transform data 視覚化 Visualize data データを理解 Understand data レポートなどにまとめる Communicate data...">
+<meta name="description" content="3.1 データサイエンスの実際 データから情報を得るときには、大体次のような手順をとります。 準備 Setup データを取得 Import data データ構造の確認 View data 必要に応じて整形 Transform data 視覚化 Visualize data データを理解 Understand data レポートなどにまとめる Communicate data...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 3 はじめてのデータサイエンス | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/first-example.html">
-<meta property="og:description" content="3.1 データサイエンス？ データから情報を得るときには、大体次のような手順をとります。 準備 Setup データを取得 Import data データ構造の確認 View data 必要に応じて整形 Transform data 視覚化 Visualize data データを理解 Understand data レポートなどにまとめる Communicate data...">
+<meta property="og:description" content="3.1 データサイエンスの実際 データから情報を得るときには、大体次のような手順をとります。 準備 Setup データを取得 Import data データ構造の確認 View data 必要に応じて整形 Transform data 視覚化 Visualize data データを理解 Understand data レポートなどにまとめる Communicate data...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 3 はじめてのデータサイエンス | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="3.1 データサイエンス？ データから情報を得るときには、大体次のような手順をとります。 準備 Setup データを取得 Import data データ構造の確認 View data 必要に応じて整形 Transform data 視覚化 Visualize data データを理解 Understand data レポートなどにまとめる Communicate data...">
+<meta name="twitter:description" content="3.1 データサイエンスの実際 データから情報を得るときには、大体次のような手順をとります。 準備 Setup データを取得 Import data データ構造の確認 View data 必要に応じて整形 Transform data 視覚化 Visualize data データを理解 Understand data レポートなどにまとめる Communicate data...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -71,18 +71,19 @@
 <li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
 <li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
 <li><a class="active" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
+<li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標</a></li>
 <li class="book-part">PART I PUBLIC DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">4</span> Public Data</a></li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">5</span> Public Data</a></li>
 <li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">5</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">6</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">7</span> R Basics</a></li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">6</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">7</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">8</span> R Basics</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">8</span> World Bank</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">9</span> World Bank</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">9</span> 探索的データ解析</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">10</span> 探索的データ解析</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">10</span> Example 1</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">11</span> Example 1</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -98,9 +99,9 @@
 <h1>
 <span class="header-section-number">3</span> はじめてのデータサイエンス<a class="anchor" aria-label="anchor" href="#first-example"><i class="fas fa-link"></i></a>
 </h1>
-<div id="データサイエンス" class="section level2" number="3.1">
+<div id="データサイエンスの実際" class="section level2" number="3.1">
 <h2>
-<span class="header-section-number">3.1</span> データサイエンス？<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1</span> データサイエンスの実際<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E5%AE%9F%E9%9A%9B"><i class="fas fa-link"></i></a>
 </h2>
 <p>データから情報を得るときには、大体次のような手順をとります。</p>
 <ol style="list-style-type: decimal">
@@ -113,7 +114,7 @@
 <li>レポートなどにまとめる Communicate data</li>
 </ol>
 <div class="inline-figure"><img src="https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png"></div>
-<p>問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核だと思います。</p>
+<p><a href="https://icu-hsuzuki.github.io/ds4aj/introduction.html#introduction">はじめに</a>に書きましたが、基本的には、問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核だと思います。</p>
 <blockquote>
 <p>R を使った分析の一つの例を、見て行きます。一つ一つのコード（コンピュータ・プログラム）の簡単な説明は、加えますが、あまりそれに捉われず、データサイエンスとは何かを考えながら、雰囲気を味わってください。</p>
 </blockquote>
@@ -128,7 +129,8 @@
 </h3>
 <p>世界銀行（World Bank）の、世界開発指標（WDI: World Development Indicators）の一つの、GDP（Gross Domestic Product 国内総生産）のデータから始めます。GDP にも何種類かの尺度がありますが、次のものを見てみます。</p>
 <ul>
-<li>NY.GDP.MKTP.CD: GDP (current US$)</li>
+<li>NY.GDP.MKTP.CD: GDP (current US$)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;GDP（Gross Domestic Product）とは、ある国のある期間（通常は1年）における、その国で生産されたすべての最終財・サービスの市場価値の総額を指します。これは国内総生産とも呼ばれます。GDPは、その国の経済力や活力を測る指標の1つとして広く用いられています。WDIのGDP (Current USD)は、各国のGDPを米ドルで表したものであり、通貨の価値が異なっても比較可能な形で国際比較ができます。ただし、GDPはあくまで市場価格を基準としているため、非市場活動や自然災害などの影響を受ける場合がある点に注意が必要です。&lt;/p&gt;"><sup>1</sup></a>
+</li>
 </ul>
 <p>NY.GDP.MKTP.CD は、データコードと言われるもので、世界開発指標（WDI）には、一つづつ決まっています。</p>
 <p><a href="https://datatopics.worldbank.org/world-development-indicators/">World Development Indicators</a> のサイトの下にある、Data Themes（テーマ）からテーマを選択し、下にスクロールすると、Code をみることができます。ちなみに、ここで利用する NY.GDP.MKTP.CD: GDP (current US$) は、テーマの Economy（経済）の、一番上にあります。</p>
@@ -742,9 +744,7 @@ df_gdp %&gt;% str()</code></pre>
 <span><span class="co">#&gt;        income        lending</span></span>
 <span><span class="co">#&gt; 1 High income Not classified</span></span>
 <span><span class="co">#&gt; 2 High income Not classified</span></span></code></pre></div>
-<p>２行目の、gdp の、4.940878e+12 は、Scientific notation と言われるもので、
-<span class="math display">\[4.940878 \times 10^{12} = 4,940,887,800,000\]</span>
-を意味します。<code>e+3</code> は千（thousand）、<code>e+6</code> は百万（million）、<code>e+9</code> は、10億（billion）、<code>e+12</code> は、兆（trillion）ですから、日本の、2021 年の GDP は、約5兆ドルとなります。</p>
+<p>２行目の、gdp の、4.940878e+12 は、Scientific notation と言われるもので、 <span class="math display">\[4.940878 \times 10^{12} = 4,940,887,800,000\]</span> を意味します。<code>e+3</code> は千（thousand）、<code>e+6</code> は百万（million）、<code>e+9</code> は、10億（billion）、<code>e+12</code> は、兆（trillion）ですから、日本の、2021 年の GDP は、約5兆ドルとなります。</p>
 </div>
 <div id="視覚化-data-visualization" class="section level3" number="3.2.5">
 <h3>
@@ -3037,8 +3037,7 @@ df_gdp %&gt;% str()</code></pre>
 <div class="inline-figure"><img src="03-first-example_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <pre><code>df_gdp %&gt;% filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) %&gt;%
   ggplot(aes(x = year, y = gdp, col = iso2c)) + geom_line()</code></pre>
-<p>ここでは、最初に、<code>filter</code> を使って、7カ国のデータを選択しています。
-そのときには、<code>%in%</code> として、国名を、combine するといういみで、<code><a href="https://rdrr.io/r/base/c.html">c()</a></code> とひとまとめにします。数字ではなく、文字なので、引用符で囲んでいます。この場合は、single quote でも構いませんが、半角を使ってください。</p>
+<p>ここでは、最初に、<code>filter</code> を使って、7カ国のデータを選択しています。 そのときには、<code>%in%</code> として、国名を、combine するといういみで、<code><a href="https://rdrr.io/r/base/c.html">c()</a></code> とひとまとめにします。数字ではなく、文字なので、引用符で囲んでいます。この場合は、single quote でも構いませんが、半角を使ってください。</p>
 <p>このグラフからは、どのようなことがわかりますか。気づいたことを書いてみましょう。</p>
 <p>もう少し、このようなグラフをみてみたいというような、メモも大切です。</p>
 </div>
@@ -3287,16 +3286,14 @@ df_gdp %&gt;% str()</code></pre>
 </div>
 </div>
 
-
-
   <div class="chapter-nav">
 <div class="prev"><a href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></div>
-<div class="next"><a href="publicdata.html"><span class="header-section-number">4</span> Public Data</a></div>
+<div class="next"><a href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#first-example"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
-<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9"><span class="header-section-number">3.1</span> データサイエンス？</a></li>
+<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E5%AE%9F%E9%9A%9B"><span class="header-section-number">3.1</span> データサイエンスの実際</a></li>
 <li>
 <a class="nav-link" href="#r-%E3%81%AE%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E6%B4%BB%E7%94%A8"><span class="header-section-number">3.2</span> R のパッケージを活用</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#%E6%BA%96%E5%82%99-setup"><span class="header-section-number">3.2.1</span> 準備 Setup</a></li>
