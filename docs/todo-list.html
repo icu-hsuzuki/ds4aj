@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>D To Do リスト | データサイエンスをはじめましょう - Data Science for All -</title>
+<meta name="author" content="鈴木寛（Hirosi Suzuki）">
+<meta name="description" content="この文書について はじめに 1.1 データサイエンスとは 1.1.1 なぜ、データサイエンスが最近注目されているのか 1.1.2 なぜ、一人ひとりが、データサイエンスを、学ぶ必要があるのでしょうか 1.1.3 AI の活用 1.2 「データサイエンスを始めましょう」の特徴 1.2.1 学習者として想定しているのは 1.2.2 オープン・パブリックデータの活用 1.2.3...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="D To Do リスト | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/todo-list.html">
+<meta property="og:description" content="この文書について はじめに 1.1 データサイエンスとは 1.1.1 なぜ、データサイエンスが最近注目されているのか 1.1.2 なぜ、一人ひとりが、データサイエンスを、学ぶ必要があるのでしょうか 1.1.3 AI の活用 1.2 「データサイエンスを始めましょう」の特徴 1.2.1 学習者として想定しているのは 1.2.2 オープン・パブリックデータの活用 1.2.3...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="D To Do リスト | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="この文書について はじめに 1.1 データサイエンスとは 1.1.1 なぜ、データサイエンスが最近注目されているのか 1.1.2 なぜ、一人ひとりが、データサイエンスを、学ぶ必要があるのでしょうか 1.1.3 AI の活用 1.2 「データサイエンスを始めましょう」の特徴 1.2.1 学習者として想定しているのは 1.2.2 オープン・パブリックデータの活用 1.2.3...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+- Data Science for All -</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">この文書について</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
+<li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
+<li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
+<li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標</a></li>
+<li class="book-part">PART I PUBLIC DATA</li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">5</span> Public Data</a></li>
+<li class="book-part">PART II BASICS</li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">6</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">7</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">8</span> R Basics</a></li>
+<li class="book-part">PART III INSTITUTIONAL DATA</li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">9</span> World Bank</a></li>
+<li class="book-part">PART IV EDA</li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">10</span> 探索的データ解析</a></li>
+<li class="book-part">PART V EXAMPLES</li>
+<li><a class="" href="example1.html"><span class="header-section-number">11</span> Example 1</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
+<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
+<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
+<li><a class="active" href="todo-list.html"><span class="header-section-number">D</span> To Do リスト</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="todo-list" class="section level1" number="15">
+<h1>
+<span class="header-section-number">D</span> To Do リスト<a class="anchor" aria-label="anchor" href="#todo-list"><i class="fas fa-link"></i></a>
+</h1>
+<p>この文書について</p>
+<ol style="list-style-type: decimal">
+<li>はじめに</li>
+</ol>
+<ul>
+<li>1.1 データサイエンスとは
+<ul>
+<li>1.1.1 なぜ、データサイエンスが最近注目されているのか</li>
+<li>1.1.2 なぜ、一人ひとりが、データサイエンスを、学ぶ必要があるのでしょうか</li>
+<li>1.1.3 AI の活用</li>
+</ul>
+</li>
+<li>1.2 「データサイエンスを始めましょう」の特徴
+<ul>
+<li>1.2.1 学習者として想定しているのは</li>
+<li>1.2.2 オープン・パブリックデータの活用</li>
+<li>1.2.3 世界のデータをみること</li>
+<li>1.2.4 目標としていること</li>
+</ul>
+</li>
+<li>1.3 学習方法について</li>
+<li>1.4 参考</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>学ぶ内容　</li>
+</ol>
+<ul>
+<li>2.1 データサイエンス入門</li>
+<li>2.2 第一部　パブリックデータ</li>
+<li>2.3 第二部　基本</li>
+<li>2.4 第三部　国際機関などのデータの活用</li>
+<li>2.5 第四部　探索的データ分析 Exploratory Data Analysis</li>
+<li>2.6 第五部　分析例</li>
+<li>2.7 付録</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>はじめてのデータサイエンス</li>
+</ol>
+<ul>
+<li>3.1 データサイエンスの実際</li>
+<li>3.2 R のパッケージを活用
+<ul>
+<li>3.2.1 準備 Setup</li>
+<li>3.2.2 データ取得 Import data</li>
+<li>3.2.3 データ構造の確認</li>
+<li>3.2.4 必要に応じて整形 Transform data</li>
+<li>3.2.5 視覚化 data visualization</li>
+<li>3.2.6 データの理解 Understand data</li>
+<li>3.2.7 さまざまな視覚化</li>
+</ul>
+</li>
+<li>3.3 練習</li>
+<li>3.4 プロジェクト</li>
+<li>3.5 まとめ</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>世界開発指標</li>
+</ol>
+<ul>
+<li>4.1 世界銀行（World Bank）
+<ul>
+<li>4.1.1 世界銀行オープンデータ</li>
+<li>4.1.2 データカタログ</li>
+<li>4.1.3 世界開発指標（WDI）</li>
+<li>4.1.4 オープンデータの定義（Open Data Defined）</li>
+</ul>
+</li>
+<li>4.2 世界開発指標（WDI）
+<ul>
+<li>4.2.1 世界のさまざまな課題</li>
+<li>4.2.2 ダッシュボード・データの取得・データコード</li>
+</ul>
+</li>
+<li>4.3 世界銀行以外の国際機関のパブリックデータ</li>
+<li>4.4 持続的開発目標（SDGs） データ</li>
+<li>4.5 課題</li>
+</ul>
+<p>PART I PUBLIC DATA</p>
+<ol start="11" style="list-style-type: decimal">
+<li>Public Data</li>
+</ol>
+<ul>
+<li>5.1 オープンデータ
+<ul>
+<li>5.1.1 Open Government Data Toolkit: Open Data Defined</li>
+</ul>
+</li>
+<li>5.2 日本から世界を見る</li>
+<li>5.3 世界銀行（World Bank）
+<ul>
+<li>5.3.1 世界開発指数（World Development Indicator (WDI)）</li>
+<li>5.3.2 World Bank: WDI - World Development Indicaters</li>
+<li>5.3.3 世界開発指標（World Development Indicator）</li>
+<li>5.3.4 例</li>
+</ul>
+</li>
+<li>5.4 世界のさまざまな課題から見る</li>
+<li>5.5 OECD</li>
+<li>5.6 UN Data</li>
+<li>5.7 Our World in Data</li>
+<li>5.8 Eurostat</li>
+</ul>
+<p>PART II BASICS</p>
+<ol start="21" style="list-style-type: decimal">
+<li>R Studio で R</li>
+</ol>
+<ul>
+<li>6.1 はじめに</li>
+<li>6.2 R と R Studio</li>
+<li>6.3 R と R Studio のインストール
+<ul>
+<li>6.3.1 R のインストール</li>
+<li>6.3.2 R Studio の インストール</li>
+<li>6.3.3 動作確認</li>
+<li>6.3.4 トラブル・シューティング（１）</li>
+</ul>
+</li>
+<li>6.4 クラウド - Posit Cloud
+<ul>
+<li>6.4.1 クラウドサービス　How to Start Posit Cloud</li>
+<li>6.4.2 PositCloud Shared Project</li>
+<li>6.4.3 Posit Primers and Cheat Sheet</li>
+</ul>
+</li>
+<li>6.5 R のその他の利用方法</li>
+<li>6.5.1 Google colab で R</li>
+<li>6.5.2 CoCalc で R と RMarkdown</li>
+</ul>
+<ol start="22" style="list-style-type: decimal">
+<li>R Markdown</li>
+</ol>
+<ul>
+<li>7.1 Reproducible and Literate Programming
+<ul>
+<li>7.1.1 目的、問いなど</li>
+<li>7.1.2 データについて</li>
+<li>7.1.3 コードについて</li>
+<li>7.1.4 グラフについて</li>
+<li>7.1.5 まとめ：R Markdown の目的</li>
+</ul>
+</li>
+<li>7.2 準備：パッケージのインストール</li>
+<li>7.3 R Notebook</li>
+<li>7.4 日本語のテンプレート</li>
+<li>7.5 R Markdown いくつかの Output</li>
+<li>7.6 YouTube Video - rmarkdown
+-7.6.1 RMarkdown で PDF を作成するときの注意</li>
+</ul>
+<ol start="23" style="list-style-type: decimal">
+<li>R Basics</li>
+</ol>
+<ul>
+<li>8.1 プロジェクト - Project</li>
+<li>8.2 コンソールで実行 - Run in Console
+<ul>
+<li>8.2.1 最初の四つ</li>
+<li>8.2.2 アサインメント、ヘルプ</li>
+<li>8.2.3 おすすめ</li>
+<li>8.2.4 練習</li>
+</ul>
+</li>
+<li>8.3 RStudio について
+<ul>
+<li>8.3.1 四つの窓枠とタブ Four Panes and Tabs</li>
+</ul>
+</li>
+<li>8.4 R Script 実行記録
+<ul>
+<li>8.4.1 R Script の作成</li>
+<li>8.4.2 R Script による実行</li>
+<li>8.4.3 練習</li>
+<li>8.4.4 Tips</li>
+</ul>
+</li>
+<li>8.5 パッケージ - Packages
+<ul>
+<li>8.5.1 パッケージのインストール</li>
+<li>8.5.2 備考</li>
+</ul>
+</li>
+<li>8.6 練習問題 Posit Primers
+<ul>
+<li>8.6.1 最初の演習　The Basics – r4ds: Explore, I</li>
+</ul>
+</li>
+<li>8.7 参考文献 References</li>
+<li>8.8 YouTube Video - getstarted</li>
+</ul>
+<p>PART III INSTITUTIONAL DATA</p>
+<ol start="31" style="list-style-type: decimal">
+<li>World Bank</li>
+</ol>
+<ul>
+<li>9.1 World Development Indicator (WDI)
+<ul>
+<li>9.1.1 指標 Indicators (WDI)</li>
+<li>9.1.2 指標 WDI (World Development Indicators)</li>
+<li>9.1.3 指標 のコード、WDI code を探してみよう</li>
+<li>9.1.4 指標 WDIの例</li>
+<li>9.1.5 練習 1. - 調べてみたい WDI 指標とそのコード</li>
+</ul>
+</li>
+<li>9.2 WDI パッケージ
+<ul>
+<li>9.2.1 指標 WDI 検索</li>
+<li>9.2.2 指標 WDI データのダウンロード</li>
+</ul>
+</li>
+<li>9.3 可視化 Visualization
+<ul>
+<li>9.3.1 グラフ 1</li>
+<li>9.3.2 グラフ 2</li>
+<li>9.3.3 テンプレート Templates
+-9.4 課題　Assignment</li>
+</ul>
+</li>
+</ul>
+<p>PART IV EDA</p>
+<ol start="41" style="list-style-type: decimal">
+<li>探索的データ解析</li>
+</ol>
+<ul>
+<li>10.1 探索的データ解析 (EDA)とは</li>
+<li>10.2 探索的データ解析 (EDA) の一例
+<ul>
+<li>10.2.1 データの取得と読み込み - Data Import</li>
+<li>10.2.2 データ変形・整形 - Data Transformation</li>
+<li>10.2.3 可視化 Data Visualization</li>
+<li>10.2.4 データモデリング Data Modeling</li>
+</ul>
+</li>
+</ul>
+<p>PART V EXAMPLES</p>
+<ol start="51" style="list-style-type: decimal">
+<li>Example 1</li>
+</ol>
+<p>APPENDIX</p>
+<ol start="81" style="list-style-type: decimal">
+<li>日本語の扱いについて</li>
+</ol>
+<ul>
+<li>A.1 日本語・中国語・韓国語
+<ul>
+<li>A.1.1 パッケージをロード</li>
+</ul>
+</li>
+<li>A.2 Base R でタイトルに日本語</li>
+<li>A.3 列名や、データに日本語</li>
+<li>A.4 kable で表示</li>
+<li>A.5 ggplot でグラフを作成</li>
+<li>A.6 備考：</li>
+<li>A.7 参考：日本語の表示について
+<ul>
+<li>A.7.1 データファイルの読み込み</li>
+<li>A.7.2 図の中のテキスト</li>
+<li>A.7.3 R Markdown の出力</li>
+<li>A.7.4 bookdown</li>
+<li>A.7.5 参考としたもの</li>
+</ul>
+</li>
+</ul>
+<ol start="85" style="list-style-type: decimal">
+<li>IT ツール</li>
+</ol>
+<ul>
+<li>B.1 Git と GitHub
+<ul>
+<li>B.1.1 概要</li>
+<li>B.1.2 はじめかた</li>
+<li>B.1.3 GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合</li>
+<li>B.1.4 自分のコンピュータのリポジトリ（Local Repo）から始める場合</li>
+<li>B.1.5 GitHub Pages について</li>
+<li>B.1.6 Bookdown パッケージによる、電子書籍の執筆</li>
+<li>B.1.7 大きなファイルに関すること</li>
+<li>B.1.8 複数のコンピュータから利用する方法</li>
+<li>B.1.9 複数のアカウントを一つのコンピュータから利用する方法</li>
+<li>B.1.10 共同作業をする場合</li>
+<li>B.1.11 参考にしたサイト</li>
+</ul>
+</li>
+</ul>
+<ol start="90" style="list-style-type: decimal">
+<li>Bookdown</li>
+<li>To do list</li>
+</ol>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-bookdown" class="csl-entry">
+Xie, Yihui. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>, 2023. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
+</div>
+<div id="ref-xie2015" class="csl-entry">
+———. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC, 2015. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#todo-list"><span class="header-section-number">D</span> To Do リスト</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/95-todo-list.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/95-todo-list.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>データサイエンスをはじめましょう<br>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-07.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
