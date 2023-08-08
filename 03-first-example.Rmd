@@ -12,7 +12,7 @@
 6.  データを理解 Understand data
 7.  レポートなどにまとめる Communicate data
 
-![](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png)
+![R4DS掲載の画像](https://r4ds.hadley.nz/diagrams/data-science/base.png)
 
 [はじめに](https://icu-hsuzuki.github.io/ds4aj/introduction.html#introduction)に書きましたが、基本的には、問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核だと思います。
 

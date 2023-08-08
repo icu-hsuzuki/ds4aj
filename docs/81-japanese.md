@@ -31,7 +31,7 @@ showtext_auto()
 plot(cars, main="散布図")
 ```
 
-![](81-japanese_files/figure-latex/unnamed-chunk-3-1.pdf)<!-- --> 
+<img src="81-japanese_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 
 ## 列名や、データに日本語
@@ -58,23 +58,15 @@ knitr::kable(df_iris[1:6, ])
 ```
 
 
-\begin{tabular}{r|r|r|r|l}
-\hline
-萼長 & 萼幅 & 葉長 & 葉幅 & 種別\\
-\hline
-5.1 & 3.5 & 1.4 & 0.2 & ヒオウギアヤメ\\
-\hline
-4.9 & 3.0 & 1.4 & 0.2 & ヒオウギアヤメ\\
-\hline
-4.7 & 3.2 & 1.3 & 0.2 & ヒオウギアヤメ\\
-\hline
-4.6 & 3.1 & 1.5 & 0.2 & ヒオウギアヤメ\\
-\hline
-5.0 & 3.6 & 1.4 & 0.2 & ヒオウギアヤメ\\
-\hline
-5.4 & 3.9 & 1.7 & 0.4 & ヒオウギアヤメ\\
-\hline
-\end{tabular}
+
+| 萼長| 萼幅| 葉長| 葉幅|種別           |
+|----:|----:|----:|----:|:--------------|
+|  5.1|  3.5|  1.4|  0.2|ヒオウギアヤメ |
+|  4.9|  3.0|  1.4|  0.2|ヒオウギアヤメ |
+|  4.7|  3.2|  1.3|  0.2|ヒオウギアヤメ |
+|  4.6|  3.1|  1.5|  0.2|ヒオウギアヤメ |
+|  5.0|  3.6|  1.4|  0.2|ヒオウギアヤメ |
+|  5.4|  3.9|  1.7|  0.4|ヒオウギアヤメ |
 
 
 
@@ -87,7 +79,7 @@ ggplot(df_iris, aes(x = `葉長`, y = `葉幅`, col = `種別`)) +
   geom_point() + labs(title = "散布図", x = "葉長", y = "葉幅")
 ```
 
-![](81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf)<!-- --> 
+<img src="81-japanese_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 
 ## 備考：
