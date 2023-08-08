@@ -41,7 +41,7 @@ write_csv(df_wdi_gdppcap, "./data/df_wdi_gdppcap.csv")
 
 ```r
 df_wdi_gdppcap
-#> # A tibble: 16,492 × 5
+#> # A tibble: 16,492 x 5
 #>    country                     iso2c iso3c  year gdp_pcap
 #>    <chr>                       <chr> <chr> <dbl>    <dbl>
 #>  1 Africa Eastern and Southern ZH    AFE    2021    1550.
@@ -54,7 +54,7 @@ df_wdi_gdppcap
 #>  8 Africa Eastern and Southern ZH    AFE    2014    1719.
 #>  9 Africa Eastern and Southern ZH    AFE    2013    1730.
 #> 10 Africa Eastern and Southern ZH    AFE    2012    1759.
-#> # ℹ 16,482 more rows
+#> # i 16,482 more rows
 ```
 
 ### データ変形・整形 - Data Transformation
@@ -68,7 +68,7 @@ df_wdi_gdppcap
 df_wdi_gdppcap_small <- df_wdi_gdppcap %>% 
   select(country, year, gdp_pcap)
 df_wdi_gdppcap_small
-#> # A tibble: 16,492 × 3
+#> # A tibble: 16,492 x 3
 #>    country                      year gdp_pcap
 #>    <chr>                       <dbl>    <dbl>
 #>  1 Africa Eastern and Southern  2021    1550.
@@ -81,7 +81,7 @@ df_wdi_gdppcap_small
 #>  8 Africa Eastern and Southern  2014    1719.
 #>  9 Africa Eastern and Southern  2013    1730.
 #> 10 Africa Eastern and Southern  2012    1759.
-#> # ℹ 16,482 more rows
+#> # i 16,482 more rows
 ```
 
 #### 行を `filter`
@@ -93,7 +93,7 @@ df_wdi_gdppcap_small
 df_wdi_gdppcap_short <- df_wdi_gdppcap %>% 
   filter(country %in% c("Japan", "Germany", "United States"))
 df_wdi_gdppcap_short
-#> # A tibble: 186 × 5
+#> # A tibble: 186 x 5
 #>    country iso2c iso3c  year gdp_pcap
 #>    <chr>   <chr> <chr> <dbl>    <dbl>
 #>  1 Germany DE    DEU    2021   51204.
@@ -106,7 +106,7 @@ df_wdi_gdppcap_short
 #>  8 Germany DE    DEU    2014   48024.
 #>  9 Germany DE    DEU    2013   46299.
 #> 10 Germany DE    DEU    2012   43856.
-#> # ℹ 176 more rows
+#> # i 176 more rows
 ```
 
 列（変数）と、行（国）の選択を続けて、実行すると次のようになる。
@@ -117,7 +117,7 @@ df_wdi_gdppcap_short
 df_wdi_gdppcap_small_short <- df_wdi_gdppcap %>% select(country, year, gdp_pcap) %>%
   filter(country %in% c("Japan", "Germany", "United States"))
 df_wdi_gdppcap_small_short
-#> # A tibble: 186 × 3
+#> # A tibble: 186 x 3
 #>    country  year gdp_pcap
 #>    <chr>   <dbl>    <dbl>
 #>  1 Germany  2021   51204.
@@ -130,7 +130,7 @@ df_wdi_gdppcap_small_short
 #>  8 Germany  2014   48024.
 #>  9 Germany  2013   46299.
 #> 10 Germany  2012   43856.
-#> # ℹ 176 more rows
+#> # i 176 more rows
 ```
 
 
@@ -146,7 +146,7 @@ df_wdi_gdppcap_small_short %>%
 #> (`geom_line()`).
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+![](41-eda_files/figure-latex/unnamed-chunk-9-1.pdf)<!-- --> 
 
 同じ年に、多くのデータがあるので、折れ線グラフを適切に書くことができませんでした。
 
@@ -156,7 +156,7 @@ df_wdi_gdppcap_small_short %>% filter(country %in% c("Japan")) %>%
   ggplot(aes(x = year, y = gdp_pcap)) + geom_line()
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+![](41-eda_files/figure-latex/unnamed-chunk-10-1.pdf)<!-- --> 
 
 一般的には、散布図をまず、書いてみるのも一つです。
 
@@ -168,7 +168,7 @@ df_wdi_gdppcap_small_short %>%
 #> (`geom_point()`).
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+![](41-eda_files/figure-latex/unnamed-chunk-11-1.pdf)<!-- --> 
 
 国別に、異なる色を使うことで、折れ線グラフを書くことも可能です。
 
@@ -178,7 +178,7 @@ df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
   ggplot(aes(x = year, y = gdp_pcap, col = country)) + geom_line()
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+![](41-eda_files/figure-latex/unnamed-chunk-12-1.pdf)<!-- --> 
 
 折線グラフと、散布図を同時に描くこともかのうです。
 
@@ -189,7 +189,7 @@ df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
   geom_point()
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+![](41-eda_files/figure-latex/unnamed-chunk-13-1.pdf)<!-- --> 
 
 点を、曲線で近似する方法はいくつも知られているが、ある幅で、近似していく、LOESS が初期値となっている。`method='loess'` を省略しても、同じ近似がなされる。`span` という値を調節することで、ことなる幅での近似曲線を書くことも可能である。初期値は、0.75。
 
@@ -201,7 +201,7 @@ df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
   geom_smooth(method = 'loess', formula = 'y ~ x')
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+![](41-eda_files/figure-latex/unnamed-chunk-14-1.pdf)<!-- --> 
 
 ### データモデリング Data Modeling
 
@@ -215,7 +215,7 @@ df_wdi_gdppcap_small_short %>% drop_na(gdp_pcap) %>%
   geom_smooth(method = 'lm', formula = 'y ~ x')
 ```
 
-<img src="41-eda_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+![](41-eda_files/figure-latex/unnamed-chunk-15-1.pdf)<!-- --> 
 
 簡単な線形回帰モデルでの、回帰直線の y-切片や、傾きは、次のコードで与えられ、p-value や、R squared の値も求められる。
 

@@ -10,16 +10,16 @@
 
 ```r
 library(tidyverse)
-#> ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
-#> ✔ dplyr     1.1.2     ✔ readr     2.1.4
-#> ✔ forcats   1.0.0     ✔ stringr   1.5.0
-#> ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-#> ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-#> ✔ purrr     1.0.1     
-#> ── Conflicts ────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
-#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+#> -- Attaching core tidyverse packages ---- tidyverse 2.0.0 --
+#> v dplyr     1.1.2     v readr     2.1.4
+#> v forcats   1.0.0     v stringr   1.5.0
+#> v ggplot2   3.4.2     v tibble    3.2.1
+#> v lubridate 1.9.2     v tidyr     1.3.0
+#> v purrr     1.0.1     
+#> -- Conflicts ---------------------- tidyverse_conflicts() --
+#> x dplyr::filter() masks stats::filter()
+#> x dplyr::lag()    masks stats::lag()
+#> i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 library(WDI)
 ```
 
@@ -38,30 +38,30 @@ WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"),
 
 ```
 #> Rows: 16492 Columns: 13
-#> ── Column specification ────────────────────────────────────
+#> -- Column specification ------------------------------------
 #> Delimiter: ","
 #> chr  (7): country, iso2c, iso3c, region, capital, income...
 #> dbl  (4): year, gdp, longitude, latitude
 #> lgl  (1): status
 #> date (1): lastupdated
 #> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-#> # A tibble: 196 × 13
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 196 x 13
 #>    country      iso2c iso3c  year     gdp status lastupdated
 #>    <chr>        <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
-#>  1 United Stat… US    USA    2021 2.33e13 NA     2022-12-22 
+#>  1 United Stat~ US    USA    2021 2.33e13 NA     2022-12-22 
 #>  2 China        CN    CHN    2021 1.77e13 NA     2022-12-22 
 #>  3 Japan        JP    JPN    2021 4.94e12 NA     2022-12-22 
 #>  4 Germany      DE    DEU    2021 4.26e12 NA     2022-12-22 
 #>  5 India        IN    IND    2021 3.18e12 NA     2022-12-22 
-#>  6 United King… GB    GBR    2021 3.13e12 NA     2022-12-22 
+#>  6 United King~ GB    GBR    2021 3.13e12 NA     2022-12-22 
 #>  7 France       FR    FRA    2021 2.96e12 NA     2022-12-22 
 #>  8 Italy        IT    ITA    2021 2.11e12 NA     2022-12-22 
 #>  9 Canada       CA    CAN    2021 1.99e12 NA     2022-12-22 
 #> 10 Korea, Rep.  KR    KOR    2021 1.81e12 NA     2022-12-22 
-#> # ℹ 186 more rows
-#> # ℹ 6 more variables: region <chr>, capital <chr>,
+#> # i 186 more rows
+#> # i 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>
 ```
@@ -79,18 +79,18 @@ WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP
 
 ```
 #> Rows: 372 Columns: 13
-#> ── Column specification ────────────────────────────────────
+#> -- Column specification ------------------------------------
 #> Delimiter: ","
 #> chr  (7): country, iso2c, iso3c, region, capital, income...
 #> dbl  (4): year, gdp, longitude, latitude
 #> lgl  (1): status
 #> date (1): lastupdated
 #> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
-<img src="31-worldbank_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+![](31-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf)<!-- --> 
 
 
 ```r
@@ -106,18 +106,18 @@ WDI(country = c("CN","IN","JP","US"),
 
 ```
 #> Rows: 248 Columns: 13
-#> ── Column specification ────────────────────────────────────
+#> -- Column specification ------------------------------------
 #> Delimiter: ","
 #> chr  (7): country, iso2c, iso3c, region, capital, income...
 #> dbl  (4): year, gdp_growth_rate, longitude, latitude
 #> lgl  (1): status
 #> date (1): lastupdated
 #> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
-<img src="31-worldbank_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+![](31-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf)<!-- --> 
 
 まず、世界の国々の、GDP（gross domestic product 国内総生産）のデータを、取得して、2021年の GDP を大きな順に並べています。
 
@@ -207,20 +207,20 @@ WDI 名に、ある文字列が含まれているものを検索します。検�
 ```r
 WDIsearch(string = "gdp", field = "name", short = TRUE, cache = NULL) %>%
   as_tibble()
-#> # A tibble: 540 × 2
+#> # A tibble: 540 x 2
 #>    indicator            name                                
 #>    <chr>                <chr>                               
 #>  1 5.51.01.10.gdp       "Per capita GDP growth"             
 #>  2 6.0.GDP_current      "GDP (current $)"                   
 #>  3 6.0.GDP_growth       "GDP growth (annual %)"             
 #>  4 6.0.GDP_usd          "GDP (constant 2005 $)"             
-#>  5 6.0.GDPpc_constant   "GDP per capita, PPP (constant 2011…
+#>  5 6.0.GDPpc_constant   "GDP per capita, PPP (constant 2011~
 #>  6 BG.GSR.NFSV.GD.ZS    "Trade in services (% of GDP)"      
-#>  7 BG.KAC.FNEI.GD.PP.ZS "Gross private capital flows (% of …
-#>  8 BG.KAC.FNEI.GD.ZS    "Gross private capital flows (% of …
-#>  9 BG.KLT.DINV.GD.PP.ZS "Gross foreign direct investment (%…
-#> 10 BG.KLT.DINV.GD.ZS    "Gross foreign direct investment (%…
-#> # ℹ 530 more rows
+#>  7 BG.KAC.FNEI.GD.PP.ZS "Gross private capital flows (% of ~
+#>  8 BG.KAC.FNEI.GD.ZS    "Gross private capital flows (% of ~
+#>  9 BG.KLT.DINV.GD.PP.ZS "Gross foreign direct investment (%~
+#> 10 BG.KLT.DINV.GD.ZS    "Gross foreign direct investment (%~
+#> # ... with 530 more rows
 ```
 
 なんと、500件以上出てきました。Indicator（指標コード）と、Name（指標名）が列挙されます。すべてに、GDP という文字列が入っていることを確認できると思います。
@@ -383,27 +383,27 @@ df_gdp1
 
 ```
 #> Rows: 16492 Columns: 5
-#> ── Column specification ────────────────────────────────────
+#> -- Column specification ------------------------------------
 #> Delimiter: ","
 #> chr (3): country, iso2c, iso3c
 #> dbl (2): year, NY.GDP.MKTP.CD
 #> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-#> # A tibble: 16,492 × 5
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 16,492 x 5
 #>    country                  iso2c iso3c  year NY.GDP.MKTP.CD
 #>    <chr>                    <chr> <chr> <dbl>          <dbl>
-#>  1 Africa Eastern and Sout… ZH    AFE    2021        1.08e12
-#>  2 Africa Eastern and Sout… ZH    AFE    2020        9.27e11
-#>  3 Africa Eastern and Sout… ZH    AFE    2019        1.00e12
-#>  4 Africa Eastern and Sout… ZH    AFE    2018        1.01e12
-#>  5 Africa Eastern and Sout… ZH    AFE    2017        1.02e12
-#>  6 Africa Eastern and Sout… ZH    AFE    2016        8.83e11
-#>  7 Africa Eastern and Sout… ZH    AFE    2015        9.25e11
-#>  8 Africa Eastern and Sout… ZH    AFE    2014        1.00e12
-#>  9 Africa Eastern and Sout… ZH    AFE    2013        9.83e11
-#> 10 Africa Eastern and Sout… ZH    AFE    2012        9.73e11
-#> # ℹ 16,482 more rows
+#>  1 Africa Eastern and Sout~ ZH    AFE    2021        1.08e12
+#>  2 Africa Eastern and Sout~ ZH    AFE    2020        9.27e11
+#>  3 Africa Eastern and Sout~ ZH    AFE    2019        1.00e12
+#>  4 Africa Eastern and Sout~ ZH    AFE    2018        1.01e12
+#>  5 Africa Eastern and Sout~ ZH    AFE    2017        1.02e12
+#>  6 Africa Eastern and Sout~ ZH    AFE    2016        8.83e11
+#>  7 Africa Eastern and Sout~ ZH    AFE    2015        9.25e11
+#>  8 Africa Eastern and Sout~ ZH    AFE    2014        1.00e12
+#>  9 Africa Eastern and Sout~ ZH    AFE    2013        9.83e11
+#> 10 Africa Eastern and Sout~ ZH    AFE    2012        9.73e11
+#> # i 16,482 more rows
 ```
 
 これでも良いのですが、利用するには、指標コードではわかりにくいので、それを簡単な名前に置き換えて、データを読み込むこができます。
@@ -419,14 +419,14 @@ df_gdp2
 
 ```
 #> Rows: 16492 Columns: 5
-#> ── Column specification ────────────────────────────────────
+#> -- Column specification ------------------------------------
 #> Delimiter: ","
 #> chr (3): country, iso2c, iso3c
 #> dbl (2): year, gdp
 #> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-#> # A tibble: 16,492 × 5
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 16,492 x 5
 #>    country                     iso2c iso3c  year     gdp
 #>    <chr>                       <chr> <chr> <dbl>   <dbl>
 #>  1 Africa Eastern and Southern ZH    AFE    2021 1.08e12
@@ -439,7 +439,7 @@ df_gdp2
 #>  8 Africa Eastern and Southern ZH    AFE    2014 1.00e12
 #>  9 Africa Eastern and Southern ZH    AFE    2013 9.83e11
 #> 10 Africa Eastern and Southern ZH    AFE    2012 9.73e11
-#> # ℹ 16,482 more rows
+#> # i 16,482 more rows
 ```
   
 #### ダウンロード例 1-3\
@@ -456,16 +456,16 @@ df_gdp3
 
 ```
 #> Rows: 16492 Columns: 13
-#> ── Column specification ────────────────────────────────────
+#> -- Column specification ------------------------------------
 #> Delimiter: ","
 #> chr  (7): country, iso2c, iso3c, region, capital, income...
 #> dbl  (4): year, gdp, longitude, latitude
 #> lgl  (1): status
 #> date (1): lastupdated
 #> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-#> # A tibble: 16,492 × 13
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 16,492 x 13
 #>    country     iso2c iso3c  year      gdp status lastupdated
 #>    <chr>       <chr> <chr> <dbl>    <dbl> <lgl>  <date>     
 #>  1 Afghanistan AF    AFG    2021  1.48e10 NA     2022-12-22 
@@ -478,8 +478,8 @@ df_gdp3
 #>  8 Afghanistan AF    AFG    2014  2.06e10 NA     2022-12-22 
 #>  9 Afghanistan AF    AFG    2013  2.06e10 NA     2022-12-22 
 #> 10 Afghanistan AF    AFG    2012  2.02e10 NA     2022-12-22 
-#> # ℹ 16,482 more rows
-#> # ℹ 6 more variables: region <chr>, capital <chr>,
+#> # i 16,482 more rows
+#> # i 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>
 ```
@@ -499,16 +499,16 @@ df_gdp4
 
 ```
 #> Rows: 372 Columns: 13
-#> ── Column specification ────────────────────────────────────
+#> -- Column specification ------------------------------------
 #> Delimiter: ","
 #> chr  (7): country, iso2c, iso3c, region, capital, income...
 #> dbl  (4): year, gdp, longitude, latitude
 #> lgl  (1): status
 #> date (1): lastupdated
 #> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-#> # A tibble: 372 × 13
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 372 x 13
 #>    country iso2c iso3c  year     gdp status lastupdated
 #>    <chr>   <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
 #>  1 China   CN    CHN    2021 1.77e13 NA     2022-12-22 
@@ -521,8 +521,8 @@ df_gdp4
 #>  8 China   CN    CHN    2014 1.05e13 NA     2022-12-22 
 #>  9 China   CN    CHN    2013 9.57e12 NA     2022-12-22 
 #> 10 China   CN    CHN    2012 8.53e12 NA     2022-12-22 
-#> # ℹ 362 more rows
-#> # ℹ 6 more variables: region <chr>, capital <chr>,
+#> # i 362 more rows
+#> # i 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>
 ```
@@ -546,30 +546,30 @@ df_gdp21
 
 ```
 #> Rows: 23972 Columns: 14
-#> ── Column specification ────────────────────────────────────
+#> -- Column specification ------------------------------------
 #> Delimiter: ","
 #> chr  (7): country, iso2c, iso3c, region, capital, income...
 #> dbl  (5): year, gdp_deflator, cpi_price, longitude, lati...
 #> lgl  (1): status
 #> date (1): lastupdated
 #> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-#> # A tibble: 23,972 × 14
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 23,972 x 14
 #>    country iso2c iso3c  year status lastupdated gdp_deflator
 #>    <chr>   <chr> <chr> <dbl> <lgl>  <date>             <dbl>
-#>  1 Advanc… AME   <NA>   1987 NA     2020-07-27            NA
-#>  2 Advanc… AME   <NA>   1988 NA     2020-07-27            NA
-#>  3 Advanc… AME   <NA>   1989 NA     2020-07-27            NA
-#>  4 Advanc… AME   <NA>   1990 NA     2020-07-27            NA
-#>  5 Advanc… AME   <NA>   1991 NA     2020-07-27            NA
-#>  6 Advanc… AME   <NA>   1992 NA     2020-07-27            NA
-#>  7 Advanc… AME   <NA>   1993 NA     2020-07-27            NA
-#>  8 Advanc… AME   <NA>   1994 NA     2020-07-27            NA
-#>  9 Advanc… AME   <NA>   1995 NA     2020-07-27            NA
-#> 10 Advanc… AME   <NA>   1996 NA     2020-07-27            NA
-#> # ℹ 23,962 more rows
-#> # ℹ 7 more variables: cpi_price <dbl>, region <chr>,
+#>  1 Advanc~ AME   <NA>   1987 NA     2020-07-27            NA
+#>  2 Advanc~ AME   <NA>   1988 NA     2020-07-27            NA
+#>  3 Advanc~ AME   <NA>   1989 NA     2020-07-27            NA
+#>  4 Advanc~ AME   <NA>   1990 NA     2020-07-27            NA
+#>  5 Advanc~ AME   <NA>   1991 NA     2020-07-27            NA
+#>  6 Advanc~ AME   <NA>   1992 NA     2020-07-27            NA
+#>  7 Advanc~ AME   <NA>   1993 NA     2020-07-27            NA
+#>  8 Advanc~ AME   <NA>   1994 NA     2020-07-27            NA
+#>  9 Advanc~ AME   <NA>   1995 NA     2020-07-27            NA
+#> 10 Advanc~ AME   <NA>   1996 NA     2020-07-27            NA
+#> # i 23,962 more rows
+#> # i 7 more variables: cpi_price <dbl>, region <chr>,
 #> #   capital <chr>, longitude <dbl>, latitude <dbl>,
 #> #   income <chr>, lending <chr>
 ```
@@ -580,7 +580,7 @@ NA (not available) つまり、データがないものが多いことがわか�
 
 ```r
 str(df_gdp21)
-#> spc_tbl_ [23,972 × 14] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+#> spc_tbl_ [23,972 x 14] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 #>  $ country     : chr [1:23972] "Advanced Economies" "Advanced Economies" "Advanced Economies" "Advanced Economies" ...
 #>  $ iso2c       : chr [1:23972] "AME" "AME" "AME" "AME" ...
 #>  $ iso3c       : chr [1:23972] NA NA NA NA ...
@@ -679,7 +679,7 @@ df_gdp4 %>% ggplot(aes(year, gdp, col=country)) + geom_line()
 #> (`geom_line()`).
 ```
 
-<img src="31-worldbank_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+![](31-worldbank_files/figure-latex/unnamed-chunk-39-1.pdf)<!-- --> 
 
 Warning として、missing values があると出ています。どこかは、分かりませんが、図を書くときですから、`y` に対応する、`gdp` の値がないものと思われます。
 
@@ -694,7 +694,7 @@ df_gdp4 %>% drop_na(gdp) %>%
   labs(title = "WDI - NY.GDP.MKTP.CD: gdp")
 ```
 
-<img src="31-worldbank_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+![](31-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf)<!-- --> 
 
 ### テンプレート Templates
 
