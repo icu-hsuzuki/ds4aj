@@ -170,7 +170,7 @@
 <li>Project の名前を（test とか、firstproject など）つけて、Create ボタンを押します。</li>
 <li>上のメニューの File から、New File の R Notebook を選択します。
 <ul>
-<li>Package が必要なので、Install するかと聞かれますから、インストールを選んでください<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;次のステップ5でインストールする場合もあるかもしれません。&lt;/p&gt;"><sup>4</sup></a>。</li>
+<li>Package が必要なので、Install するかと聞かれますから、インストールを選んでください<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;次のステップ5でインストールする場合もあるかもしれません。&lt;/p&gt;"><sup>6</sup></a>。</li>
 </ul>
 </li>
 <li>File から、Save as を選んで、名前を（test0, rnotebook など）とつけ、Preview ボタンを押すと、内容が現れます。</li>
@@ -192,7 +192,7 @@
 <p>動作確認のステップ 4 （またはステップ５で要求されるパッケージのインストール時点）または、6 でエラーが出る場合があります。</p>
 <ul>
 <li>
-<p>動作確認の ステップ 4で、パッケージをたくさんインストールしますが、この段階で、エラーが出る場合があります。そのときは、まず、RStudio の上のメニューの、Tools の一番下の、Global Options を開き、左のメニューから、Packages を選び、Primary CRAN Repository を Change として、CRAN mirror から、Japan: The Institute of Statistical Mathematics, Tokyo を選択してください<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;理由は不明ですが、特定のミラーサイトが理由ではなく、https を能動的に設定することで解決が図れるのかなと思います。&lt;/p&gt;"><sup>5</sup></a>。</p>
+<p>動作確認の ステップ 4で、パッケージをたくさんインストールしますが、この段階で、エラーが出る場合があります。そのときは、まず、RStudio の上のメニューの、Tools の一番下の、Global Options を開き、左のメニューから、Packages を選び、Primary CRAN Repository を Change として、CRAN mirror から、Japan: The Institute of Statistical Mathematics, Tokyo を選択してください<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;理由は不明ですが、特定のミラーサイトが理由ではなく、https を能動的に設定することで解決が図れるのかなと思います。&lt;/p&gt;"><sup>7</sup></a>。</p>
 <ul>
 <li>解決しない場合は、下の、<strong>解決しない場合</strong>はに進んでください。</li>
 </ul>
@@ -230,10 +230,10 @@
 </ul>
 <div class="rmdcaution">
 <p><strong>注意</strong>：Windows における既知の不具合について</p>
-<p><code>Sys.getenv('HOME')</code> と、<code>Sys.getenv('R_LIBS_USER')</code> をそれぞれ、コピーして、RStudio 左下の窓枠の Console タブに、ペーストして、エンターして、???? や、カタカナ、漢字や、OneDrive という文字列が現れるか確認してください。<code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv()</a></code> とすれば、すべての環境変数を確認することもできます<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;エクスプローラからユーザ（&lt;code&gt;C:\Users&lt;/code&gt;）を見ると漢字になっているかどうかの確認ができます。&lt;/p&gt;"><sup>6</sup></a>。</p>
+<p><code>Sys.getenv('HOME')</code> と、<code>Sys.getenv('R_LIBS_USER')</code> をそれぞれ、コピーして、RStudio 左下の窓枠の Console タブに、ペーストして、エンターして、???? や、カタカナ、漢字や、OneDrive という文字列が現れるか確認してください。<code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv()</a></code> とすれば、すべての環境変数を確認することもできます<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;エクスプローラからユーザ（&lt;code&gt;C:\Users&lt;/code&gt;）を見ると漢字になっているかどうかの確認ができます。&lt;/p&gt;"><sup>8</sup></a>。</p>
 <p>Windows の日本語システムで、アカウント名に日本語を使っておられる方、または、OneDrive を使っていて、Documents（書類）ディレクトリーのすべてをバックアップしておられる方は、ファイルを作成したり、パッケージをインストールするときに、問題が発生する可能性があります。</p>
-<p>カタカナや漢字のユーザネームを使っている場合は、RMarkdown で、文書を作成し、PDF で出力するときには、問題が起こります<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;PDF の作成には、内部で TeX というプログラムを使っていますが、この TeX システムは、カタカナや漢字が入っているディレクトリには、インストールすることができません。&lt;/p&gt;"><sup>7</sup></a>。解決方法は上に書いたように、一つの解決方法として、TinyTeX を、Home とは異なるところにインストールしています<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;別のアカウントを作成して、そこに、TeXLive を インストールする方法もあります。&lt;a href="https://icu-hsuzuki.github.io/myds/techmemo.html#windows-installation-of-r-rstudio-tex"&gt;リンク&lt;/a&gt; を参照。&lt;/p&gt;'><sup>8</sup></a>。</p>
-<p>OneDrive で、ドキュメントフォルダ全体のバックアップをとっている場合も、問題が起こる可能性がありますが、一般的には書けませんので、困ったときは、下に書く方法を参照してください<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;パッケージのインストールや、R Markdown で文書を生成するときには、一時的なファイルを作成して、問題がある場合はレポートする仕組みになっています。そして、問題なくその作業が終了すると、それらのファイルを消去しています。詳細は不明ですが、この作業で、OneDrive でバックアップする作業が入ると、エラーが起きるのではないかと思われます。&lt;/p&gt;"><sup>9</sup></a>。</p>
+<p>カタカナや漢字のユーザネームを使っている場合は、RMarkdown で、文書を作成し、PDF で出力するときには、問題が起こります<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;PDF の作成には、内部で TeX というプログラムを使っていますが、この TeX システムは、カタカナや漢字が入っているディレクトリには、インストールすることができません。&lt;/p&gt;"><sup>9</sup></a>。解決方法は上に書いたように、一つの解決方法として、TinyTeX を、Home とは異なるところにインストールしています<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;別のアカウントを作成して、そこに、TeXLive を インストールする方法もあります。&lt;a href="https://icu-hsuzuki.github.io/myds/techmemo.html#windows-installation-of-r-rstudio-tex"&gt;リンク&lt;/a&gt; を参照。&lt;/p&gt;'><sup>10</sup></a>。</p>
+<p>OneDrive で、ドキュメントフォルダ全体のバックアップをとっている場合も、問題が起こる可能性がありますが、一般的には書けませんので、困ったときは、下に書く方法を参照してください<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;パッケージのインストールや、R Markdown で文書を生成するときには、一時的なファイルを作成して、問題がある場合はレポートする仕組みになっています。そして、問題なくその作業が終了すると、それらのファイルを消去しています。詳細は不明ですが、この作業で、OneDrive でバックアップする作業が入ると、エラーが起きるのではないかと思われます。&lt;/p&gt;"><sup>11</sup></a>。</p>
 </div>
 <div id="トラブルシューティング２" class="section level4" number="6.3.4.1">
 <h4>
@@ -258,7 +258,7 @@
 アンインストールなどをしたときは、一旦、サインアウトをして、もう一度、サインインしてから確認してください。</p>
 <p>Mac は、システムのベースにあるのは、Linux などと同じ、Unix なので、アプリケーションの、ユーティリティ（Utilities）から、Terminal を立ち上げ、
 <code>echo $PATH</code> とすると、確認できます。RStudio の左下の窓枠にも Terminal があり、そこからでも、同じように確認できます。</p>
-<p>Windows の場合は、対応するものには、コマンド・プロンプト（Command Prompt）と、パワーシェル（PowerShell）があります。初期設定<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Tools から Global Option を選択して変更することも可能です。&lt;/p&gt;"><sup>10</sup></a>では、RStudio の左下の窓枠には、コマンド・プロンプトが出ていると思います。そこで、<code>echo %PATH%</code> とします。PowerShell の場合は <code>echo $Env:Path</code> とすれば、表示できます。</p>
+<p>Windows の場合は、対応するものには、コマンド・プロンプト（Command Prompt）と、パワーシェル（PowerShell）があります。初期設定<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Tools から Global Option を選択して変更することも可能です。&lt;/p&gt;"><sup>12</sup></a>では、RStudio の左下の窓枠には、コマンド・プロンプトが出ていると思います。そこで、<code>echo %PATH%</code> とします。PowerShell の場合は <code>echo $Env:Path</code> とすれば、表示できます。</p>
 <p>Windows の場合、「設定」から、「環境変数の編集」を検索して、選択すると、Path を見ることができます。上の枠が、ユーザの環境変数、下の枠が、システム環境変数です。ユーザの環境変数の中の、Path（他には、TEMP, TMP もあるかと思います。）をコピーしておくと良いでしょう。Path をダブルクリックして、編集することも可能です。ただし、十分理解しないで、Path を変更すると、問題が起こる可能性がありますので、注意してください。</p>
 </div>
 </div>
@@ -284,7 +284,7 @@
 <span class="header-section-number">6.3.4.1.3</span> このあとの使い方について<a class="anchor" aria-label="anchor" href="#%E3%81%93%E3%81%AE%E3%81%82%E3%81%A8%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
 </h5>
 <p>他のアカウントに、R と RStudio をインストールしても、自分のアカウントでも、R と RStudio を利用することが可能です。しかし、漢字やカタカナのアカウント名や、OneDrive の問題は、解決しません。アカウント名を修正することは可能ですが、間違えると、コンピュータ自体が動かなくなりますから、ここでは、説明しませんが、興味のあるかたは、<a href="https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf">矢内勇生さんのスライド</a> を参照してください。</p>
-<p>OneDrive は、どのように使われているかによって、対応が変わりますので、一般的な対応方法は書けません。OneDrive は、Microsoft が提供するクラウドサービスで、5GB までは、無料で使えることもあり、コンピュータを使い始めるときに<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Microsoft アカウントを設定すると&lt;/p&gt;"><sup>11</sup></a>、利用を促されます。5GB を超える場合は、課金されます。十分な容量を有料で確保していると、すべて、OneDrive にバックアップすることになり、Home も、OneDrive の管理下に置かれて、上に述べたような、ファイルを書いたり消去したりを頻繁に行うプログラムの場合には、問題が起こるようです。</p>
+<p>OneDrive は、どのように使われているかによって、対応が変わりますので、一般的な対応方法は書けません。OneDrive は、Microsoft が提供するクラウドサービスで、5GB までは、無料で使えることもあり、コンピュータを使い始めるときに<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Microsoft アカウントを設定すると&lt;/p&gt;"><sup>13</sup></a>、利用を促されます。5GB を超える場合は、課金されます。十分な容量を有料で確保していると、すべて、OneDrive にバックアップすることになり、Home も、OneDrive の管理下に置かれて、上に述べたような、ファイルを書いたり消去したりを頻繁に行うプログラムの場合には、問題が起こるようです。</p>
 <p>ただし、バックアップを取ること自体は、とても有効なことですので、設定を変える場合は、十分検討してから行ってください。</p>
 <p>個人的には、簡単設定で設定される、デスクトップと、ドキュメントと、フォトのうち、ドキュメントについては、OneDrive バックアップを停止し、ドキュメントの中に、バックアップ用のフォリダーを作成し、その中のもののみ、バックアップするのが良いのではないかと思います。それには、ドキュメントのバックアップを外し、OneDrive の中に、フォルダーを作成して、そこに、バックアップするファイルを移動させます。しかし、使い方などによって、状況が異なりますので、コンピュータに詳しいかたに相談することをお勧めします。</p>
 <p>その上で、RStudio のプロジェクトを作成するときは、OneDrive でバックアップをとっていないフォルダーに作成します。</p>
@@ -317,7 +317,7 @@
 <ul>
 <li>プロジェクト数の上限は50。Up to 50 projects total</li>
 <li>共有スペースは一つのみ（5人までのメンバーが10個のプロジェクトまで共有できます） 1 shared space (5 members and 10 projects max)</li>
-<li>コンピュータ時間としては月間最大25時間<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;右の&lt;code&gt;i&lt;/code&gt;マークを押すと詳細な条件を確認できます。&lt;/p&gt;"><sup>12</sup></a>。25 compute hours per month</li>
+<li>コンピュータ時間としては月間最大25時間<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;右の&lt;code&gt;i&lt;/code&gt;マークを押すと詳細な条件を確認できます。&lt;/p&gt;"><sup>14</sup></a>。25 compute hours per month</li>
 <li>各プロジェクトについて最大 1GB のRAM（Read Access Memory）。Up to 1 GB RAM per project</li>
 <li>各プロジェクトについて 1 CPU。Up to 1 CPU per project</li>
 <li>背後で実行する作業は1時間が上限。Up to 1 hour background execution time</li>
