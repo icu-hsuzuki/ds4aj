@@ -131,8 +131,8 @@ https://datatopics.worldbank.org/world-development-indicators/
 <p>
 日本では、
 
-* [e-Stat](https://www.e-stat.go.jp/)、
-* [ダッシュボード](https://dashboard.e-stat.go.jp)
+* [e-Stat](https://www.e-stat.go.jp/)：政府統計の総合窓口 - 統計で見る日本
+* [ダッシュボード](https://dashboard.e-stat.go.jp)：対話型形式でのデータの視覚化
 
 ## 持続的開発目標（SDGs） データ
 
