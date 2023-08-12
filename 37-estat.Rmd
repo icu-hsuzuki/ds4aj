@@ -1,1 +1,174 @@
 # e-Stat {#estat}
+
+## API の使い方
+
+### はじめての e-Stat with API
+
+はじめて、R の `etatapi` を使って、e-Stat のデータを取得する方法を簡単に説明します。
+
+### 初期設定 {-}
+
+パッケージの、`estatapi` が、e-Stat のデータを取得するためのものです。`tidyverse` は基本的な解析をおこなうため、`showtext` と `showtext_auto()` は、グラフなどに、日本語が含まれる場合の文字化けを防ぐためのものです。
+
+インストールされていないパッケージがありましたら、上のメニューの Tools > Install Packages から、インストールしてください。
+
+```{r}
+library(tidyverse)
+library(showtext)
+library(estatapi)
+showtext_auto()
+```
+
+### e-Stat 登録と、アプリケーションIDの取得
+
+e-Stat API を利用するには、appId が必要です。
+
+1. e-stat: https://www.e-stat.go.jp/ のページへ行く。
+2. 右上の新規登録から、アカウント登録をします。
+    - メールアドレスを入力し、そこに届いてリンクを開き、パスワードを設定。
+    - パスワード設定は、Google などのアカウント連携ですることも可能です。
+3. アカウントにログイン。上の帯に、メールアドレスが表示されます。
+4. その右のマイページに行き、API機能（アプリケーションID発行）へ。まず、必要事項の入力が必要ですが、説明をみてください。
+    - 名称：API機能を利用するアプリケーション名（システム名等）- R または、RStudio
+    - URL：アプリケーションのURL（トップページ等のURL）
+* If you do not use it on the public site, please enter "http: // test.localhost /" etc. - localhost でよいでしょう。
+    - 概要：アプリケーション（システム）の概要 - estatapi とでも書いておけば良いでしょう。
+    - 右の発行を押すと、appId が表示されます。これを記録。
+    
+    
+## `estatapi` 利用概要
+
+CRAN `estatspi` URL: https://CRAN.R-project.org/package=estatapi
+
+### アプリケーションIDの設定
+
+```
+appId <- " " # 私のものは、英数40文字
+```
+
+```{r include=FALSE}
+appId <- read_lines("./../_data/key/estatkey.txt")
+```
+
+### 統計表情報取得（estat_getStatsList()）
+
+提供されている統計表を検索します。この関数は、結果をtbl_df（dplyrのdata.frame。data.frameとほぼ同じように扱える）として返します。
+
+STAT_NAMEやGOV_ORGは人間が読みやすい形式のラベルになっていますが、 プログラム中で扱う場合はコードのままの方が都合がいいこともあります。そのときは.use_label = FALSEを指定してください。
+
+```
+estat_getStatsList(appId = appId, searchWord = "")
+```
+
+```{r}
+estat_getStatsList(appId = appId, searchWord = "人口推計")
+```
+
+```{r}
+estat_getStatsList(appId = appId, searchWord = "外国人人口")
+```
+
+statsDataAPI=0003448219
+statsDataAPI=0004001640
+
+```{r}
+estat_getStatsList(appId = appId, searchWord = "国勢調査 時系列データ 男女，年齢，配偶関係")
+```
+
+statsDataID=0003410379
+
+### メタ情報取得（estat_getMetaInfo()）
+
+統計データのメタ情報を取得します。この関数は、結果をlistとして返します。listの各要素が、それぞれのデータ項目についてのメタ情報を含んだtbl_dfになっています。
+
+```
+meta_info <- estat_getMetaInfo(appId = appId, statsDataId = "")
+```
+
+```{r}
+meta_info <- estat_getMetaInfo(appId = appId, statsDataId = "0003410379")
+glimpse(meta_info)
+```
+
+```{r}
+meta_info$cat01
+```
+
+### 統計データ取得（estat_getStatsData()）
+
+統計データを取得します。この関数は、結果をメタ情報と紐づけてtbl_dfとして返します。
+
+必ず指定しなくてはいけないのはappIdとstatsDataIdだけですが、それだけだとデータがかなり大きくなって取得に時間がかかります。cdCat01（分類事項01）などを指定して必要な項目だけに絞ることをおすすめします。他に絞り込みに指定できるパラメータについては公式ドキュメントを参照してください。
+
+```
+estat_getStatsData(
+  appId = appId,
+  statsDataId = "",
+  cdCat01 = c("",""))
+```
+
+```{r}
+estat_pop <- estat_getStatsData(appId = appId, statsDataId = "0003410379")
+```
+
+```{r}
+estat_pop
+```
+
+```{r}
+estat_pop_alien <- estat_getStatsData(appId = appId, statsDataId = "0003448219")
+estat_pop_alien
+```
+
+```{r}
+estat_pop_alien2 <- estat_getStatsData(appId = appId, statsDataId = "0004001640")
+estat_pop_alien2
+```
+0003445244
+
+```{r}
+estat_pop_alien0 <- estat_getStatsData(appId = appId, lang = "E", statsDataId = "0003445244")
+estat_pop_alien0
+```
+ 
+```{r}
+estat_pop_alien0 |> distinct(Nationality) |> pull()
+```
+
+```{r}
+estat_pop_alien2020 <- estat_getStatsData(appId = appId, statsDataId = "0003445244")
+estat_pop_alien2020
+```
+
+```{r}
+estat_pop_alien2020 |> distinct(国籍) |> pull()
+```
+```{r}
+estat_pop_alien2020 |> distinct(男女) |> pull()
+```
+
+```{r}
+colnames(estat_pop_alien2020)
+```
+```{r}
+estat_pop_alien2020 |> 
+  filter(`全国，都道府県，市区町村` == "全国") |>
+  filter(男女 == "総数") |>
+  filter(国籍 != "総数") |>
+  select(国籍, value) |>
+  arrange(desc(value))
+```
+
+```{r}
+estat_pop_alien2020 |> 
+  filter(`全国，都道府県，市区町村` == "全国") |>
+  filter(男女 != "総数") |>
+  filter(!(国籍 %in% c("総数", "日本人", "外国人", "日本人・外国人の別「不詳」"))) |>
+  select(国籍, 男女, value) |>
+  arrange(desc(value)) |> 
+  mutate(国籍別 = factor(fct_inorder(国籍))) |>
+  mutate(`人数（千人）`= value/1000) |>
+  ggplot(aes(国籍別, `人数（千人）`, fill = 男女)) + geom_col() +
+  labs(title = "国籍別日本在住外国人数", caption = "令和2（2020）年 国勢調査 統計表表示ID=0003445244")
+```
+

@@ -4,6 +4,9 @@
 
 ## データベース
 
+owid: https://ourworldindata.org/
+
+
 ## ダッシュボード
 
 ## API
