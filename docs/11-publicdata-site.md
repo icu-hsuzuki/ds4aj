@@ -1,4 +1,5 @@
-# (PART) PART I PUBLIC DATA {-}
+# (PART) PART I PUBLIC DATA {.unnumbered}
+
 # Public Data {#publicdata-site}
 
 
@@ -11,19 +12,19 @@
 
 The term **Open Data** has a very precise meaning. Data or content is open if anyone is free to use, re-use or redistribute it, subject at most to measures that preserve provenance and openness.
 
-1. The data must be _legally open_, which means they must be placed in the public domain or under liberal terms of use with minimal restrictions.
-2. The data must be _technically open_, which means they must be published in electronic formats that are machine readable and non-proprietary, so that anyone can access and use the data using common, freely available software tools. Data must also be publicly available and accessible on a public server, without password or firewall restrictions. To make Open Data easier to find, most organizations create and manage Open Data catalogs.
+1.  The data must be *legally open*, which means they must be placed in the public domain or under liberal terms of use with minimal restrictions.
+2.  The data must be *technically open*, which means they must be published in electronic formats that are machine readable and non-proprietary, so that anyone can access and use the data using common, freely available software tools. Data must also be publicly available and accessible on a public server, without password or firewall restrictions. To make Open Data easier to find, most organizations create and manage Open Data catalogs.
 
 オープンデータの定義
 
-1. オープンデータという言葉は、非常に正確な意味を持っています。データまたはコンテンツは、誰でも自由に使用、再利用、再配布でき、せいぜい出所とオープン性を維持するための措置に従うだけであればオープンです。
+1.  オープンデータという言葉は、非常に正確な意味を持っています。データまたはコンテンツは、誰でも自由に使用、再利用、再配布でき、せいぜい出所とオープン性を維持するための措置に従うだけであればオープンです。
 
-2. データは法的にオープンでなければなりません。つまり、パブリックドメインに置かれるか、最小限の制限で自由な使用条件のもとに置かれなければなりません。
-データは技術的にオープンでなければならない。つまり、誰でも自由に使える一般的なソフトウェアツールを使ってデータにアクセスし利用できるように、機械可読で非専有の電子フォーマットで公開されていなければならない。また、データは一般に公開され、パスワードやファイアウォールによる制限を受けずに、公共のサーバーでアクセスできなければなりません。オープンデータを見つけやすくするために、ほとんどの組織がオープンデータカタログを作成し管理しています。
+2.  データは法的にオープンでなければなりません。つまり、パブリックドメインに置かれるか、最小限の制限で自由な使用条件のもとに置かれなければなりません。 データは技術的にオープンでなければならない。つまり、誰でも自由に使える一般的なソフトウェアツールを使ってデータにアクセスし利用できるように、機械可読で非専有の電子フォーマットで公開されていなければならない。また、データは一般に公開され、パスワードやファイアウォールによる制限を受けずに、公共のサーバーでアクセスできなければなりません。オープンデータを見つけやすくするために、ほとんどの組織がオープンデータカタログを作成し管理しています。
+
+オープンデータは、だれのものでしょうか。それは、わたしたちのデータではないでしょうか。
 
 ## 日本から世界を見る
 
 以下では、世界銀行の、世界開発指標を利用するが、他にも、[UNdata](https://data.un.org)、[OECD data](https://data.oecd.org)、[WID](https://wid.world)、[Eurostat](https://ec.europa.eu/eurostat)、[Our World in Data](https://ourworldindata.org) なども、同様の、ダッシュボードを備えており、データの提供もしている。日本では、[e-Stat](https://www.e-stat.go.jp/)、[ダッシュボード](https://dashboard.e-stat.go.jp)
 
-* 日本のデータはどうでしょうか。
-
+-   日本のデータはどうでしょうか。
