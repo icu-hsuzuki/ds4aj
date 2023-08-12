@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 11 探索的データ解析 | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 25 探索的データ解析 | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="11.1 探索的データ解析 (EDA)とは  image from r4ds 以下は、Posit Primers: Visualise Data から 探索的データ解析 (EDA) は、データを理解するための反復的なサイクルです。EDAでは、以下のことを行います。 データに関する問いを作成する データの可視化、変形・整形、モデリングによって、問いの答えを探索する。...">
+<meta name="description" content="25.1 探索的データ解析 (EDA)とは  image from r4ds 以下は、Posit Primers: Visualise Data から 探索的データ解析 (EDA) は、データを理解するための反復的なサイクルです。EDAでは、以下のことを行います。 データに関する問いを作成する データの可視化、変形・整形、モデリングによって、問いの答えを探索する。...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 11 探索的データ解析 | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 25 探索的データ解析 | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/intro2eda.html">
-<meta property="og:description" content="11.1 探索的データ解析 (EDA)とは  image from r4ds 以下は、Posit Primers: Visualise Data から 探索的データ解析 (EDA) は、データを理解するための反復的なサイクルです。EDAでは、以下のことを行います。 データに関する問いを作成する データの可視化、変形・整形、モデリングによって、問いの答えを探索する。...">
+<meta property="og:description" content="25.1 探索的データ解析 (EDA)とは  image from r4ds 以下は、Posit Primers: Visualise Data から 探索的データ解析 (EDA) は、データを理解するための反復的なサイクルです。EDAでは、以下のことを行います。 データに関する問いを作成する データの可視化、変形・整形、モデリングによって、問いの答えを探索する。...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 11 探索的データ解析 | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="11.1 探索的データ解析 (EDA)とは  image from r4ds 以下は、Posit Primers: Visualise Data から 探索的データ解析 (EDA) は、データを理解するための反復的なサイクルです。EDAでは、以下のことを行います。 データに関する問いを作成する データの可視化、変形・整形、モデリングによって、問いの答えを探索する。...">
+<meta name="twitter:title" content="Chapter 25 探索的データ解析 | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="25.1 探索的データ解析 (EDA)とは  image from r4ds 以下は、Posit Primers: Visualise Data から 探索的データ解析 (EDA) は、データを理解するための反復的なサイクルです。EDAでは、以下のことを行います。 データに関する問いを作成する データの可視化、変形・整形、モデリングによって、問いの答えを探索する。...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -72,19 +72,33 @@
 <li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
 <li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
 <li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標</a></li>
-<li><a class="" href="estat-site.html"><span class="header-section-number">5</span> e-Stat 日本の政府統計</a></li>
 <li class="book-part">PART I PUBLIC DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">6</span> Public Data</a></li>
+<li><a class="" href="publicdata-site.html"><span class="header-section-number">5</span> Public Data</a></li>
+<li><a class="" href="worldbank-site.html"><span class="header-section-number">6</span> 世界銀行</a></li>
+<li><a class="" href="oecd-site.html"><span class="header-section-number">7</span> OECD（経済協力開発機構）</a></li>
+<li><a class="" href="un-site.html"><span class="header-section-number">8</span> United Nations（国際連合）</a></li>
+<li><a class="" href="owid-site.html"><span class="header-section-number">9</span> Our World in Data</a></li>
+<li><a class="" href="estat-site.html"><span class="header-section-number">10</span> e-Stat 日本の政府統計</a></li>
+<li><a class="" href="other-site.html"><span class="header-section-number">11</span> その他のサイト</a></li>
 <li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">7</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">8</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">9</span> R Basics</a></li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">12</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">13</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">14</span> R Basics</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">15</span> Visualize</a></li>
+<li><a class="" href="transform.html"><span class="header-section-number">16</span> Transform</a></li>
+<li><a class="" href="import.html"><span class="header-section-number">17</span> Import</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">18</span> Modeling</a></li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">19</span> Public Data の分析</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">10</span> World Bank</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">20</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">21</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">22</span> Our World in Data</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">23</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">24</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="active" href="intro2eda.html"><span class="header-section-number">11</span> 探索的データ解析</a></li>
+<li><a class="active" href="intro2eda.html"><span class="header-section-number">25</span> 探索的データ解析</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">12</span> Example 1</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">26</span> Example 1</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -97,13 +111,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro2eda" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro2eda" class="section level1" number="25">
 <h1>
-<span class="header-section-number">11</span> 探索的データ解析<a class="anchor" aria-label="anchor" href="#intro2eda"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25</span> 探索的データ解析<a class="anchor" aria-label="anchor" href="#intro2eda"><i class="fas fa-link"></i></a>
 </h1>
-<div id="探索的データ解析-edaとは" class="section level2" number="11.1">
+<div id="探索的データ解析-edaとは" class="section level2" number="25.1">
 <h2>
-<span class="header-section-number">11.1</span> 探索的データ解析 (EDA)とは<a class="anchor" aria-label="anchor" href="#%E6%8E%A2%E7%B4%A2%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E8%A7%A3%E6%9E%90-eda%E3%81%A8%E3%81%AF"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.1</span> 探索的データ解析 (EDA)とは<a class="anchor" aria-label="anchor" href="#%E6%8E%A2%E7%B4%A2%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E8%A7%A3%E6%9E%90-eda%E3%81%A8%E3%81%AF"><i class="fas fa-link"></i></a>
 </h2>
 <div class="float">
 <img src="data/data-science.png" alt="image from r4ds"><div class="figcaption">image from r4ds</div>
@@ -117,14 +131,14 @@
 </ol>
 <p>EDAは、あらゆるデータ分析において重要な役割を担います。EDA によって、課題解決のいとぐちを発見することもありますし、他の課題との関係性を発見する場合もあります。EDAを使用してデータの問題や品質を確認したり、データが信頼できるものであるかを見極める問いを作成できる場合もあります。</p>
 </div>
-<div id="探索的データ解析-eda-の一例" class="section level2" number="11.2">
+<div id="探索的データ解析-eda-の一例" class="section level2" number="25.2">
 <h2>
-<span class="header-section-number">11.2</span> 探索的データ解析 (EDA) の一例<a class="anchor" aria-label="anchor" href="#%E6%8E%A2%E7%B4%A2%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E8%A7%A3%E6%9E%90-eda-%E3%81%AE%E4%B8%80%E4%BE%8B"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2</span> 探索的データ解析 (EDA) の一例<a class="anchor" aria-label="anchor" href="#%E6%8E%A2%E7%B4%A2%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E8%A7%A3%E6%9E%90-eda-%E3%81%AE%E4%B8%80%E4%BE%8B"><i class="fas fa-link"></i></a>
 </h2>
 <p>WDI の一つの指標を使って、流れを見てみましょう。</p>
-<div id="データの取得と読み込み---data-import" class="section level3" number="11.2.1">
+<div id="データの取得と読み込み---data-import" class="section level3" number="25.2.1">
 <h3>
-<span class="header-section-number">11.2.1</span> データの取得と読み込み - Data Import<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF---data-import"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.1</span> データの取得と読み込み - Data Import<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF---data-import"><i class="fas fa-link"></i></a>
 </h3>
 <p>NY.GDP.PCAP.CD: GDP per capita (current US$)</p>
 <div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
@@ -147,13 +161,13 @@
 <span><span class="co">#&gt; 10 Africa Eastern and Southern ZH    AFE    2012    1759.</span></span>
 <span><span class="co">#&gt; # ℹ 16,482 more rows</span></span></code></pre></div>
 </div>
-<div id="データ変形整形---data-transformation" class="section level3" number="11.2.2">
+<div id="データ変形整形---data-transformation" class="section level3" number="25.2.2">
 <h3>
-<span class="header-section-number">11.2.2</span> データ変形・整形 - Data Transformation<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E5%A4%89%E5%BD%A2%E6%95%B4%E5%BD%A2---data-transformation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.2</span> データ変形・整形 - Data Transformation<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E5%A4%89%E5%BD%A2%E6%95%B4%E5%BD%A2---data-transformation"><i class="fas fa-link"></i></a>
 </h3>
-<div id="列を-select" class="section level4" number="11.2.2.1">
+<div id="列を-select" class="section level4" number="25.2.2.1">
 <h4>
-<span class="header-section-number">11.2.2.1</span> 列を <code>select</code><a class="anchor" aria-label="anchor" href="#%E5%88%97%E3%82%92-select"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.2.1</span> 列を <code>select</code><a class="anchor" aria-label="anchor" href="#%E5%88%97%E3%82%92-select"><i class="fas fa-link"></i></a>
 </h4>
 <p>どの変数について分析するかを選ぶ。</p>
 <div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
@@ -175,9 +189,9 @@
 <span><span class="co">#&gt; 10 Africa Eastern and Southern  2012    1759.</span></span>
 <span><span class="co">#&gt; # ℹ 16,482 more rows</span></span></code></pre></div>
 </div>
-<div id="行を-filter" class="section level4" number="11.2.2.2">
+<div id="行を-filter" class="section level4" number="25.2.2.2">
 <h4>
-<span class="header-section-number">11.2.2.2</span> 行を <code>filter</code><a class="anchor" aria-label="anchor" href="#%E8%A1%8C%E3%82%92-filter"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.2.2</span> 行を <code>filter</code><a class="anchor" aria-label="anchor" href="#%E8%A1%8C%E3%82%92-filter"><i class="fas fa-link"></i></a>
 </h4>
 <p>いくつかの国に、フォーカスして調べる。</p>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
@@ -220,9 +234,9 @@
 <span><span class="co">#&gt; # ℹ 176 more rows</span></span></code></pre></div>
 </div>
 </div>
-<div id="可視化-data-visualization" class="section level3" number="11.2.3">
+<div id="可視化-data-visualization" class="section level3" number="25.2.3">
 <h3>
-<span class="header-section-number">11.2.3</span> 可視化 Data Visualization<a class="anchor" aria-label="anchor" href="#%E5%8F%AF%E8%A6%96%E5%8C%96-data-visualization"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.3</span> 可視化 Data Visualization<a class="anchor" aria-label="anchor" href="#%E5%8F%AF%E8%A6%96%E5%8C%96-data-visualization"><i class="fas fa-link"></i></a>
 </h3>
 <p>次は、よく生じる、誤りの例で、ノコギリの歯（sawtoothed）のようなギザギザ・グラフと呼ばれます。なぜこのようなことが起きているかわかりますか。</p>
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
@@ -262,9 +276,9 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">'loess'</span>, formula <span class="op">=</span> <span class="st">'y ~ x'</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="41-eda_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 </div>
-<div id="データモデリング-data-modeling" class="section level3" number="11.2.4">
+<div id="データモデリング-data-modeling" class="section level3" number="25.2.4">
 <h3>
-<span class="header-section-number">11.2.4</span> データモデリング Data Modeling<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0-data-modeling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.4</span> データモデリング Data Modeling<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0-data-modeling"><i class="fas fa-link"></i></a>
 </h3>
 <p>上の例では、曲線ではなく、直線で近似することも考えられる。</p>
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
@@ -306,19 +320,19 @@
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="worldbank.html"><span class="header-section-number">10</span> World Bank</a></div>
-<div class="next"><a href="example1.html"><span class="header-section-number">12</span> Example 1</a></div>
+<div class="prev"><a href="others.html"><span class="header-section-number">24</span> その他のデータベース</a></div>
+<div class="next"><a href="example1.html"><span class="header-section-number">26</span> Example 1</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#intro2eda"><span class="header-section-number">11</span> 探索的データ解析</a></li>
-<li><a class="nav-link" href="#%E6%8E%A2%E7%B4%A2%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E8%A7%A3%E6%9E%90-eda%E3%81%A8%E3%81%AF"><span class="header-section-number">11.1</span> 探索的データ解析 (EDA)とは</a></li>
+<li><a class="nav-link" href="#intro2eda"><span class="header-section-number">25</span> 探索的データ解析</a></li>
+<li><a class="nav-link" href="#%E6%8E%A2%E7%B4%A2%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E8%A7%A3%E6%9E%90-eda%E3%81%A8%E3%81%AF"><span class="header-section-number">25.1</span> 探索的データ解析 (EDA)とは</a></li>
 <li>
-<a class="nav-link" href="#%E6%8E%A2%E7%B4%A2%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E8%A7%A3%E6%9E%90-eda-%E3%81%AE%E4%B8%80%E4%BE%8B"><span class="header-section-number">11.2</span> 探索的データ解析 (EDA) の一例</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF---data-import"><span class="header-section-number">11.2.1</span> データの取得と読み込み - Data Import</a></li>
-<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E5%A4%89%E5%BD%A2%E6%95%B4%E5%BD%A2---data-transformation"><span class="header-section-number">11.2.2</span> データ変形・整形 - Data Transformation</a></li>
-<li><a class="nav-link" href="#%E5%8F%AF%E8%A6%96%E5%8C%96-data-visualization"><span class="header-section-number">11.2.3</span> 可視化 Data Visualization</a></li>
-<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0-data-modeling"><span class="header-section-number">11.2.4</span> データモデリング Data Modeling</a></li>
+<a class="nav-link" href="#%E6%8E%A2%E7%B4%A2%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF%E8%A7%A3%E6%9E%90-eda-%E3%81%AE%E4%B8%80%E4%BE%8B"><span class="header-section-number">25.2</span> 探索的データ解析 (EDA) の一例</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF---data-import"><span class="header-section-number">25.2.1</span> データの取得と読み込み - Data Import</a></li>
+<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E5%A4%89%E5%BD%A2%E6%95%B4%E5%BD%A2---data-transformation"><span class="header-section-number">25.2.2</span> データ変形・整形 - Data Transformation</a></li>
+<li><a class="nav-link" href="#%E5%8F%AF%E8%A6%96%E5%8C%96-data-visualization"><span class="header-section-number">25.2.3</span> 可視化 Data Visualization</a></li>
+<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0-data-modeling"><span class="header-section-number">25.2.4</span> データモデリング Data Modeling</a></li>
 </ul>
 </li>
 </ul>
@@ -339,7 +353,7 @@
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-11.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -1,12 +1,7 @@
 # (PART) PART I PUBLIC DATA {-}
-# Public Data {#publicdata}
+# Public Data {#publicdata-site}
 
-```{r include=FALSE}
-library(tidyverse)
-library(showtext) 
-font_add_google('Noto Sans')
-showtext_auto()
-```
+
 
 まずは、パブリックデータを見てみましょう。大きな機関のパグリックデータには、ダッシュボード（dashboard）と呼ばれている、パラメタを変更して、そのグラフを描くなどの機能が付いているものもあります。
 

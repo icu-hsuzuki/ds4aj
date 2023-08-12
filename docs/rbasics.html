@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 9 R Basics | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 14 R Basics | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="9.1 プロジェクト - Project RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。 まず、R Studio を起動します。 上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory...">
+<meta name="description" content="14.1 プロジェクト - Project RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。 まず、R Studio を起動します。 上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 9 R Basics | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 14 R Basics | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/rbasics.html">
-<meta property="og:description" content="9.1 プロジェクト - Project RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。 まず、R Studio を起動します。 上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory...">
+<meta property="og:description" content="14.1 プロジェクト - Project RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。 まず、R Studio を起動します。 上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 9 R Basics | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="9.1 プロジェクト - Project RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。 まず、R Studio を起動します。 上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory...">
+<meta name="twitter:title" content="Chapter 14 R Basics | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="14.1 プロジェクト - Project RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。 まず、R Studio を起動します。 上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -72,19 +72,33 @@
 <li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
 <li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
 <li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標</a></li>
-<li><a class="" href="estat-site.html"><span class="header-section-number">5</span> e-Stat 日本の政府統計</a></li>
 <li class="book-part">PART I PUBLIC DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">6</span> Public Data</a></li>
+<li><a class="" href="publicdata-site.html"><span class="header-section-number">5</span> Public Data</a></li>
+<li><a class="" href="worldbank-site.html"><span class="header-section-number">6</span> 世界銀行</a></li>
+<li><a class="" href="oecd-site.html"><span class="header-section-number">7</span> OECD（経済協力開発機構）</a></li>
+<li><a class="" href="un-site.html"><span class="header-section-number">8</span> United Nations（国際連合）</a></li>
+<li><a class="" href="owid-site.html"><span class="header-section-number">9</span> Our World in Data</a></li>
+<li><a class="" href="estat-site.html"><span class="header-section-number">10</span> e-Stat 日本の政府統計</a></li>
+<li><a class="" href="other-site.html"><span class="header-section-number">11</span> その他のサイト</a></li>
 <li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">7</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">8</span> R Markdown</a></li>
-<li><a class="active" href="rbasics.html"><span class="header-section-number">9</span> R Basics</a></li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">12</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">13</span> R Markdown</a></li>
+<li><a class="active" href="rbasics.html"><span class="header-section-number">14</span> R Basics</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">15</span> Visualize</a></li>
+<li><a class="" href="transform.html"><span class="header-section-number">16</span> Transform</a></li>
+<li><a class="" href="import.html"><span class="header-section-number">17</span> Import</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">18</span> Modeling</a></li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">19</span> Public Data の分析</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">10</span> World Bank</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">20</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">21</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">22</span> Our World in Data</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">23</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">24</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">11</span> 探索的データ解析</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">25</span> 探索的データ解析</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">12</span> Example 1</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">26</span> Example 1</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -97,13 +111,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rbasics" class="section level1" number="9">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rbasics" class="section level1" number="14">
 <h1>
-<span class="header-section-number">9</span> R Basics<a class="anchor" aria-label="anchor" href="#rbasics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14</span> R Basics<a class="anchor" aria-label="anchor" href="#rbasics"><i class="fas fa-link"></i></a>
 </h1>
-<div id="プロジェクト---project" class="section level2" number="9.1">
+<div id="プロジェクト---project" class="section level2" number="14.1">
 <h2>
-<span class="header-section-number">9.1</span> プロジェクト - Project<a class="anchor" aria-label="anchor" href="#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88---project"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.1</span> プロジェクト - Project<a class="anchor" aria-label="anchor" href="#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88---project"><i class="fas fa-link"></i></a>
 </h2>
 <p>RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。</p>
 <ol style="list-style-type: decimal">
@@ -128,14 +142,14 @@
 <li>作業後は、保存しますかと聞かれますから、保存して終了してください。</li>
 </ol>
 </div>
-<div id="コンソールで実行---run-in-console" class="section level2" number="9.2">
+<div id="コンソールで実行---run-in-console" class="section level2" number="14.2">
 <h2>
-<span class="header-section-number">9.2</span> コンソールで実行 - Run in Console<a class="anchor" aria-label="anchor" href="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%A7%E5%AE%9F%E8%A1%8C---run-in-console"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2</span> コンソールで実行 - Run in Console<a class="anchor" aria-label="anchor" href="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%A7%E5%AE%9F%E8%A1%8C---run-in-console"><i class="fas fa-link"></i></a>
 </h2>
 <p>プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console を選択してください。）</p>
-<div id="最初の四つ" class="section level3" number="9.2.1">
+<div id="最初の四つ" class="section level3" number="14.2.1">
 <h3>
-<span class="header-section-number">9.2.1</span> 最初の四つ<a class="anchor" aria-label="anchor" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E5%9B%9B%E3%81%A4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2.1</span> 最初の四つ<a class="anchor" aria-label="anchor" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E5%9B%9B%E3%81%A4"><i class="fas fa-link"></i></a>
 </h3>
 <p>下の、四つを、一つずつ、一番下の、&gt; マークの次に書き（または、コピー・ペーストして）Return または、Enter キーを押してください。実行結果が、その下に出ます。最後の、<code>plot(cars)</code> は、<code>cars</code> というデータの、散布図が右下の、Plots タブに表示されます。</p>
 <ul>
@@ -179,9 +193,9 @@
 <p>右下の、窓枠の、Plots に、上のグラフ（散布図）が表示されると思います。Export と書いてある、プルダウンメニューがあり、そこから、画像として保存することも、可能です。</p>
 <p>以前は、このように取り出した画像を、Word などに貼り付けて、使っていました。現在でも、そのような方法を知っていることは有効だと思います。</p>
 </div>
-<div id="アサインメントヘルプ" class="section level3" number="9.2.2">
+<div id="アサインメントヘルプ" class="section level3" number="14.2.2">
 <h3>
-<span class="header-section-number">9.2.2</span> アサインメント、ヘルプ<a class="anchor" aria-label="anchor" href="#%E3%82%A2%E3%82%B5%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%83%98%E3%83%AB%E3%83%97"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2.2</span> アサインメント、ヘルプ<a class="anchor" aria-label="anchor" href="#%E3%82%A2%E3%82%B5%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%83%98%E3%83%AB%E3%83%97"><i class="fas fa-link"></i></a>
 </h3>
 <p>コンソールで次のそれぞれを、試してみてください。</p>
 <ul>
@@ -215,9 +229,9 @@
 <p>左上の窓枠に、リストが表示されます。古いデータばかりですが、例として使うには、十分すぎるぐらいの、数のデータがあります。これらは、Toy Data（おもちゃのデータ）と呼ばれることもあります。</p>
 <p><code>cars</code> も見つかりましたか。</p>
 </div>
-<div id="おすすめ" class="section level3" number="9.2.3">
+<div id="おすすめ" class="section level3" number="14.2.3">
 <h3>
-<span class="header-section-number">9.2.3</span> おすすめ<a class="anchor" aria-label="anchor" href="#%E3%81%8A%E3%81%99%E3%81%99%E3%82%81"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2.3</span> おすすめ<a class="anchor" aria-label="anchor" href="#%E3%81%8A%E3%81%99%E3%81%99%E3%82%81"><i class="fas fa-link"></i></a>
 </h3>
 <p>コンピュータのシステムが、日本語であると、R の言語も日本語になっているはずです。そこで、エラーが発生すると、一部、日本語で表示されます。しかし、ネット上などで、そのエラーの対応を検索するときは、英語のエラーメッセージで検索した方が、解決方法が得られる可能性が圧倒的に高いので、わたしは、英語に設定しています。英語にするには、Console で次のようにします。</p>
 <p>言語を英語に設定：<code>Sys.setenv(LANG = "en")</code></p>
@@ -226,9 +240,9 @@
 <p>言語を日本語に設定：<code>Sys.setenv(LANG = "ja")</code></p>
 <p>さまざまな Help なども、すべて日本語で表示されれば日本語を使うのは有効かもしれませんが、すくなくとも、現在は、そうではないので、上に説明したことから、英語に設定することをお勧めします。</p>
 </div>
-<div id="練習-1" class="section level3" number="9.2.4">
+<div id="練習-1" class="section level3" number="14.2.4">
 <h3>
-<span class="header-section-number">9.2.4</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2.4</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-1"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li>
@@ -240,14 +254,14 @@
 </ol>
 </div>
 </div>
-<div id="rstudio-について" class="section level2" number="9.3">
+<div id="rstudio-について" class="section level2" number="14.3">
 <h2>
-<span class="header-section-number">9.3</span> RStudio について<a class="anchor" aria-label="anchor" href="#rstudio-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3</span> RStudio について<a class="anchor" aria-label="anchor" href="#rstudio-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
 </h2>
 <p>RStudio は多くの機能を持っています。</p>
-<div id="四つの窓枠とタブ-four-panes-and-tabs" class="section level3" number="9.3.1">
+<div id="四つの窓枠とタブ-four-panes-and-tabs" class="section level3" number="14.3.1">
 <h3>
-<span class="header-section-number">9.3.1</span> 四つの窓枠とタブ Four Panes and Tabs<a class="anchor" aria-label="anchor" href="#%E5%9B%9B%E3%81%A4%E3%81%AE%E7%AA%93%E6%9E%A0%E3%81%A8%E3%82%BF%E3%83%96-four-panes-and-tabs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3.1</span> 四つの窓枠とタブ Four Panes and Tabs<a class="anchor" aria-label="anchor" href="#%E5%9B%9B%E3%81%A4%E3%81%AE%E7%AA%93%E6%9E%A0%E3%81%A8%E3%82%BF%E3%83%96-four-panes-and-tabs"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>左上（Top Left）: スクリプトや文書、データなどの編集（Source Editor）</li>
@@ -257,14 +271,14 @@
 </ul>
 </div>
 </div>
-<div id="r-script-実行記録" class="section level2" number="9.4">
+<div id="r-script-実行記録" class="section level2" number="14.4">
 <h2>
-<span class="header-section-number">9.4</span> R Script 実行記録<a class="anchor" aria-label="anchor" href="#r-script-%E5%AE%9F%E8%A1%8C%E8%A8%98%E9%8C%B2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4</span> R Script 実行記録<a class="anchor" aria-label="anchor" href="#r-script-%E5%AE%9F%E8%A1%8C%E8%A8%98%E9%8C%B2"><i class="fas fa-link"></i></a>
 </h2>
 <p>R Script を使って、コードを実行すると、その記録を残すことができます。</p>
-<div id="r-script-の作成" class="section level3" number="9.4.1">
+<div id="r-script-の作成" class="section level3" number="14.4.1">
 <h3>
-<span class="header-section-number">9.4.1</span> R Script の作成<a class="anchor" aria-label="anchor" href="#r-script-%E3%81%AE%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.1</span> R Script の作成<a class="anchor" aria-label="anchor" href="#r-script-%E3%81%AE%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>RStudio の上のメニュー・バーからFile &gt; New File &gt; R Script を選択します。</li>
@@ -284,15 +298,15 @@
 <li>最後には保存しておきましょう。たとえば、<code>myfirstscript</code> などとすると、File のところに、<code>myfirstscript.R</code> というファイルができていることを確認できます。</li>
 </ul>
 </div>
-<div id="r-script-による実行" class="section level3" number="9.4.2">
+<div id="r-script-による実行" class="section level3" number="14.4.2">
 <h3>
-<span class="header-section-number">9.4.2</span> R Script による実行<a class="anchor" aria-label="anchor" href="#r-script-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9F%E8%A1%8C"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.2</span> R Script による実行<a class="anchor" aria-label="anchor" href="#r-script-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9F%E8%A1%8C"><i class="fas fa-link"></i></a>
 </h3>
 <p>新しく、R Script を作成し、この下の、コード（ハイライトされている部分）をコピー・ペーストして、保存し、実行してみてください。</p>
 <p>それぞれ、どのようなことをしているでしょうか。</p>
-<div id="スクリプト1-basics.r" class="section level4" number="9.4.2.1">
+<div id="スクリプト1-basics.r" class="section level4" number="14.4.2.1">
 <h4>
-<span class="header-section-number">9.4.2.1</span> スクリプト1: <code>basics.R</code><a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%881-basics.r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.2.1</span> スクリプト1: <code>basics.R</code><a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%881-basics.r"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#################</span></span>
@@ -514,9 +528,9 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">120</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="スクリプト2-coronavirus.r" class="section level4" number="9.4.2.2">
+<div id="スクリプト2-coronavirus.r" class="section level4" number="14.4.2.2">
 <h4>
-<span class="header-section-number">9.4.2.2</span> スクリプト2: <code>coronavirus.R</code><a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%882-coronavirus.r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.2.2</span> スクリプト2: <code>coronavirus.R</code><a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%882-coronavirus.r"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># https://coronavirus.jhu.edu/map.html</span></span>
@@ -599,9 +613,9 @@
 <span>     xlab <span class="op">=</span> <span class="st">"Date"</span>, ylab <span class="op">=</span> <span class="st">"Number of Cases"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="練習-2" class="section level3" number="9.4.3">
+<div id="練習-2" class="section level3" number="14.4.3">
 <h3>
-<span class="header-section-number">9.4.3</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.3</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-2"><i class="fas fa-link"></i></a>
 </h3>
 <p>上の、<code>coronavirus.R</code> について</p>
 <ol style="list-style-type: decimal">
@@ -614,9 +628,9 @@
 <li>発見や、問いがあれば、書き出してみましょう。</li>
 </ol>
 </div>
-<div id="tips" class="section level3" number="9.4.4">
+<div id="tips" class="section level3" number="14.4.4">
 <h3>
-<span class="header-section-number">9.4.4</span> Tips<a class="anchor" aria-label="anchor" href="#tips"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.4</span> Tips<a class="anchor" aria-label="anchor" href="#tips"><i class="fas fa-link"></i></a>
 </h3>
 <p>キーボード・ショートカットと言われる、さまざまな機能があります。</p>
 <ul>
@@ -625,9 +639,9 @@
 </ul>
 </div>
 </div>
-<div id="パッケージ---packages" class="section level2" number="9.5">
+<div id="パッケージ---packages" class="section level2" number="14.5">
 <h2>
-<span class="header-section-number">9.5</span> パッケージ - Packages<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8---packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.5</span> パッケージ - Packages<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8---packages"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool &gt; Install Packages in the top menu bar of R Studio. <a href="https://en.wikipedia.org/wiki/R_package" class="uri">https://en.wikipedia.org/wiki/R_package</a></p>
@@ -635,9 +649,9 @@
 <blockquote>
 <p>Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool &gt; Install Packages からインストールできます。</p>
 </blockquote>
-<div id="パッケージのインストール" class="section level3" number="9.5.1">
+<div id="パッケージのインストール" class="section level3" number="14.5.1">
 <h3>
-<span class="header-section-number">9.5.1</span> パッケージのインストール<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.5.1</span> パッケージのインストール<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
 </h3>
 <p>いずれ使いますので、まずは、三つのパッケージをインストールしてみましょう。</p>
 <ul>
@@ -657,24 +671,24 @@
 <p>回避方法もいくつかあるようですが、混乱をさけるため、その場合は、Posit Cloud（旧：RStudio Cloud）を使うと良いでしょう。それを見越して、最初は、Posit Cloud ではじめることを、わたしはお薦めしています。自分のコンピュータで、R が RStudio 上で問題なく動いていても、Cloud 上にアカウントを持っていて、実行できることは有効ですし、全員が、同じ環境で作業できることもたいせつなことです。他にも、すぐ、Cheat Sheets（早見表）や、Posit Primers という練習問題（Tutorial）を利用できたり、プロジェクトを共有したりなど、さまざまなメリットがあります。</p>
 </div>
 </div>
-<div id="備考" class="section level3" number="9.5.2">
+<div id="備考" class="section level3" number="14.5.2">
 <h3>
-<span class="header-section-number">9.5.2</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.5.2</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83"><i class="fas fa-link"></i></a>
 </h3>
 <p>Package によっては、Source から Compile するかと聞いてくる場合があります。どちらでも、良いのですが、特に、問題が起こっていなければ、No でよいと思います。コンピュータにあった形でインストールすることが必要な場合は、Yes とします。</p>
 <p>同じパッケージをもう一度、インストールしたり、または、関連するパッケージがあるような場合、R をリスタートするかと聞いてくることがあります。特に問題が起こらなければ、No で構いません。ただ、エラーが起こって、それに関連して、特別なパッケージをインストールする必要がある場合がありますが、そのときは、Yes としてください。</p>
 </div>
 </div>
-<div id="練習問題-posit-primers" class="section level2" number="9.6">
+<div id="練習問題-posit-primers" class="section level2" number="14.6">
 <h2>
-<span class="header-section-number">9.6</span> 練習問題 Posit Primers<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C-posit-primers"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.6</span> 練習問題 Posit Primers<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C-posit-primers"><i class="fas fa-link"></i></a>
 </h2>
 <p>Posit Primers <a href="https://posit.cloud/learn/primers" class="uri">https://posit.cloud/learn/primers</a></p>
 <p>教科書 <a href="https://r4ds.had.co.nz">“R for Data Science”</a> は、<code>tidyverse</code> パッケージを中心に、データサイエンスについて解説したものですが、Posit Primers は、演習問題をしながら、教科書の内容を理解できるように構成されています。</p>
 <p>Posit Cloud からは、左のメニュー（隠れている場合は左上の3本線をクリックして表示させて）から選ぶことができます。そうでない場合は、直接、上のリンクから、利用してください。</p>
-<div id="最初の演習-the-basics-r4ds-explore-i" class="section level3" number="9.6.1">
+<div id="最初の演習-the-basics-r4ds-explore-i" class="section level3" number="14.6.1">
 <h3>
-<span class="header-section-number">9.6.1</span> 最初の演習　The Basics – r4ds: Explore, I<a class="anchor" aria-label="anchor" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E6%BC%94%E7%BF%92-the-basics-r4ds-explore-i"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.6.1</span> 最初の演習　The Basics – r4ds: Explore, I<a class="anchor" aria-label="anchor" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E6%BC%94%E7%BF%92-the-basics-r4ds-explore-i"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li><a href="https://rstudio.cloud/learn/primers/1.1">Visualization Basics</a></li>
@@ -683,9 +697,9 @@
 <p>ぜひこれら二つの演習問題を、トライしてください。解説を読んでいただけでは、データサイエンスは身につきません。</p>
 </div>
 </div>
-<div id="参考文献-references" class="section level2" number="9.7">
+<div id="参考文献-references" class="section level2" number="14.7">
 <h2>
-<span class="header-section-number">9.7</span> 参考文献 References<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-references"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.7</span> 参考文献 References<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-references"><i class="fas fa-link"></i></a>
 </h2>
 <p>一番目は、すでに紹介した、教科書です。二番目は、この文書を作成している、Bookdown というパッケージのサイトですが、そこに、たくさんの本が、無償で公開されています。素晴らしい本がたくさん含まれています。</p>
 <ul>
@@ -705,9 +719,9 @@
 <li><a href="https://icu-hsuzuki.github.io/da4r2021/">Data Analysis for Researchers 2021</a></li>
 </ul>
 </div>
-<div id="youtube-video---getstarted" class="section level2" number="9.8">
+<div id="youtube-video---getstarted" class="section level2" number="14.8">
 <h2>
-<span class="header-section-number">9.8</span> YouTube Video - getstarted<a class="anchor" aria-label="anchor" href="#youtube-video---getstarted"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.8</span> YouTube Video - getstarted<a class="anchor" aria-label="anchor" href="#youtube-video---getstarted"><i class="fas fa-link"></i></a>
 </h2>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9uQmMZoG74g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 </iframe>
@@ -718,47 +732,44 @@
 </div>
 </div>
 
-
-
-
   <div class="chapter-nav">
-<div class="prev"><a href="rmarkdown.html"><span class="header-section-number">8</span> R Markdown</a></div>
-<div class="next"><a href="worldbank.html"><span class="header-section-number">10</span> World Bank</a></div>
+<div class="prev"><a href="rmarkdown.html"><span class="header-section-number">13</span> R Markdown</a></div>
+<div class="next"><a href="visualize.html"><span class="header-section-number">15</span> Visualize</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#rbasics"><span class="header-section-number">9</span> R Basics</a></li>
-<li><a class="nav-link" href="#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88---project"><span class="header-section-number">9.1</span> プロジェクト - Project</a></li>
+<li><a class="nav-link" href="#rbasics"><span class="header-section-number">14</span> R Basics</a></li>
+<li><a class="nav-link" href="#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88---project"><span class="header-section-number">14.1</span> プロジェクト - Project</a></li>
 <li>
-<a class="nav-link" href="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%A7%E5%AE%9F%E8%A1%8C---run-in-console"><span class="header-section-number">9.2</span> コンソールで実行 - Run in Console</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E5%9B%9B%E3%81%A4"><span class="header-section-number">9.2.1</span> 最初の四つ</a></li>
-<li><a class="nav-link" href="#%E3%82%A2%E3%82%B5%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%83%98%E3%83%AB%E3%83%97"><span class="header-section-number">9.2.2</span> アサインメント、ヘルプ</a></li>
-<li><a class="nav-link" href="#%E3%81%8A%E3%81%99%E3%81%99%E3%82%81"><span class="header-section-number">9.2.3</span> おすすめ</a></li>
-<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-1"><span class="header-section-number">9.2.4</span> 練習</a></li>
+<a class="nav-link" href="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%A7%E5%AE%9F%E8%A1%8C---run-in-console"><span class="header-section-number">14.2</span> コンソールで実行 - Run in Console</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E5%9B%9B%E3%81%A4"><span class="header-section-number">14.2.1</span> 最初の四つ</a></li>
+<li><a class="nav-link" href="#%E3%82%A2%E3%82%B5%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%83%98%E3%83%AB%E3%83%97"><span class="header-section-number">14.2.2</span> アサインメント、ヘルプ</a></li>
+<li><a class="nav-link" href="#%E3%81%8A%E3%81%99%E3%81%99%E3%82%81"><span class="header-section-number">14.2.3</span> おすすめ</a></li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-1"><span class="header-section-number">14.2.4</span> 練習</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#rstudio-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">9.3</span> RStudio について</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E5%9B%9B%E3%81%A4%E3%81%AE%E7%AA%93%E6%9E%A0%E3%81%A8%E3%82%BF%E3%83%96-four-panes-and-tabs"><span class="header-section-number">9.3.1</span> 四つの窓枠とタブ Four Panes and Tabs</a></li></ul>
+<a class="nav-link" href="#rstudio-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">14.3</span> RStudio について</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E5%9B%9B%E3%81%A4%E3%81%AE%E7%AA%93%E6%9E%A0%E3%81%A8%E3%82%BF%E3%83%96-four-panes-and-tabs"><span class="header-section-number">14.3.1</span> 四つの窓枠とタブ Four Panes and Tabs</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#r-script-%E5%AE%9F%E8%A1%8C%E8%A8%98%E9%8C%B2"><span class="header-section-number">9.4</span> R Script 実行記録</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#r-script-%E3%81%AE%E4%BD%9C%E6%88%90"><span class="header-section-number">9.4.1</span> R Script の作成</a></li>
-<li><a class="nav-link" href="#r-script-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9F%E8%A1%8C"><span class="header-section-number">9.4.2</span> R Script による実行</a></li>
-<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-2"><span class="header-section-number">9.4.3</span> 練習</a></li>
-<li><a class="nav-link" href="#tips"><span class="header-section-number">9.4.4</span> Tips</a></li>
+<a class="nav-link" href="#r-script-%E5%AE%9F%E8%A1%8C%E8%A8%98%E9%8C%B2"><span class="header-section-number">14.4</span> R Script 実行記録</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-script-%E3%81%AE%E4%BD%9C%E6%88%90"><span class="header-section-number">14.4.1</span> R Script の作成</a></li>
+<li><a class="nav-link" href="#r-script-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9F%E8%A1%8C"><span class="header-section-number">14.4.2</span> R Script による実行</a></li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-2"><span class="header-section-number">14.4.3</span> 練習</a></li>
+<li><a class="nav-link" href="#tips"><span class="header-section-number">14.4.4</span> Tips</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8---packages"><span class="header-section-number">9.5</span> パッケージ - Packages</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">9.5.1</span> パッケージのインストール</a></li>
-<li><a class="nav-link" href="#%E5%82%99%E8%80%83"><span class="header-section-number">9.5.2</span> 備考</a></li>
+<a class="nav-link" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8---packages"><span class="header-section-number">14.5</span> パッケージ - Packages</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">14.5.1</span> パッケージのインストール</a></li>
+<li><a class="nav-link" href="#%E5%82%99%E8%80%83"><span class="header-section-number">14.5.2</span> 備考</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C-posit-primers"><span class="header-section-number">9.6</span> 練習問題 Posit Primers</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E6%BC%94%E7%BF%92-the-basics-r4ds-explore-i"><span class="header-section-number">9.6.1</span> 最初の演習　The Basics – r4ds: Explore, I</a></li></ul>
+<a class="nav-link" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C-posit-primers"><span class="header-section-number">14.6</span> 練習問題 Posit Primers</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E6%BC%94%E7%BF%92-the-basics-r4ds-explore-i"><span class="header-section-number">14.6.1</span> 最初の演習　The Basics – r4ds: Explore, I</a></li></ul>
 </li>
-<li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-references"><span class="header-section-number">9.7</span> 参考文献 References</a></li>
-<li><a class="nav-link" href="#youtube-video---getstarted"><span class="header-section-number">9.8</span> YouTube Video - getstarted</a></li>
+<li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-references"><span class="header-section-number">14.7</span> 参考文献 References</a></li>
+<li><a class="nav-link" href="#youtube-video---getstarted"><span class="header-section-number">14.8</span> YouTube Video - getstarted</a></li>
 </ul>
 
       <div class="book-extra">
@@ -777,7 +788,7 @@
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-11.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
