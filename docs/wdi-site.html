@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 4 世界開発指標 | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 4 世界開発指標とオープンデータ | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
 <meta name="description" content="最初の例として紹介した、はじめてのデータサイエンスでは、世界銀行（World Bank）の 世界開発指標（WDI）のひとつである、GDP（Gross Domestic Product 国内総生産）のデータを使いました。「データサイエンスをはじめましょう」では、世界開発指標をこれからも、頻繁に活用しますので、世界開発指標が、どのようなものか確認しておきましょう。...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 4 世界開発指標 | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 4 世界開発指標とオープンデータ | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/wdi-site.html">
 <meta property="og:description" content="最初の例として紹介した、はじめてのデータサイエンスでは、世界銀行（World Bank）の 世界開発指標（WDI）のひとつである、GDP（Gross Domestic Product 国内総生産）のデータを使いました。「データサイエンスをはじめましょう」では、世界開発指標をこれからも、頻繁に活用しますので、世界開発指標が、どのようなものか確認しておきましょう。...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 4 世界開発指標 | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:title" content="Chapter 4 世界開発指標とオープンデータ | データサイエンスをはじめましょう - Data Science for All -">
 <meta name="twitter:description" content="最初の例として紹介した、はじめてのデータサイエンスでは、世界銀行（World Bank）の 世界開発指標（WDI）のひとつである、GDP（Gross Domestic Product 国内総生産）のデータを使いました。「データサイエンスをはじめましょう」では、世界開発指標をこれからも、頻繁に活用しますので、世界開発指標が、どのようなものか確認しておきましょう。...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -71,7 +71,7 @@
 <li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
 <li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
 <li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
-<li><a class="active" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標</a></li>
+<li><a class="active" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
 <li class="book-part">PART I PUBLIC DATA</li>
 <li><a class="" href="publicdata-site.html"><span class="header-section-number">5</span> Public Data</a></li>
 <li><a class="" href="worldbank-site.html"><span class="header-section-number">6</span> 世界銀行（World Bank）</a></li>
@@ -113,42 +113,140 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="wdi-site" class="section level1" number="4">
 <h1>
-<span class="header-section-number">4</span> 世界開発指標<a class="anchor" aria-label="anchor" href="#wdi-site"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4</span> 世界開発指標とオープンデータ<a class="anchor" aria-label="anchor" href="#wdi-site"><i class="fas fa-link"></i></a>
 </h1>
 <p>最初の例として紹介した、<a href="https://icu-hsuzuki.github.io/ds4aj/first-example.html#first-example">はじめてのデータサイエンス</a>では、世界銀行（World Bank）の 世界開発指標（WDI）のひとつである、GDP（Gross Domestic Product 国内総生産）のデータを使いました。「データサイエンスをはじめましょう」では、世界開発指標をこれからも、頻繁に活用しますので、世界開発指標が、どのようなものか確認しておきましょう。</p>
-<p>世界開発指標は、貧困撲滅と開発援助とに取り組んでいる金融機関である世界銀行が提供している、オープンデータの一つで、世界銀行は、他にも、たくさんのデータを提供しています。世界銀行の<a href="https://www.worldbank.org/en/home">サイト</a>を見てみると、下の方にはグラフも出ており、さまざまな統計データを提供することに力を入れていることがわかります。</p>
-<p>世界開発指標は、英語では、World Development Indicators（WDI）と呼びますので、以下、省略形の WDI を使いいます。</p>
-<div id="三つのサイト" class="section level2" number="4.1">
+<p>また、世界開発指標に代表されるオープンデータによって誰でも世界の課題を知り、向き合うことができるようになっています。そのオープンデータには、どのようなものなのかも、見ていきたいと思います。</p>
+<div id="世界開発指標wdi" class="section level2" number="4.1">
 <h2>
-<span class="header-section-number">4.1</span> 三つのサイト<a class="anchor" aria-label="anchor" href="#%E4%B8%89%E3%81%A4%E3%81%AE%E3%82%B5%E3%82%A4%E3%83%88"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1</span> 世界開発指標（WDI）<a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi"><i class="fas fa-link"></i></a>
 </h2>
+<p>世界開発指標は、貧困撲滅と開発援助とに取り組んでいる金融機関である世界銀行が提供している、オープンデータの一つで、世界銀行は、他にも、たくさんのデータを提供しています。</p>
+<p>世界開発指標は、英語では、World Development Indicators（WDI）と呼びますので、以下、省略形の WDI を使います。</p>
+<div id="概要" class="section level3" number="4.1.1">
+<h3>
+<span class="header-section-number">4.1.1</span> 概要<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
+</h3>
+<p>まず、簡単に概要を述べておきましょう。</p>
+<p><a href="https://datatopics.worldbank.org/world-development-indicators/">World Development Indicators (WDI)</a> は、世界銀行が開発に関する各国間比較可能なデータの集大成である1400の時系列指標（the World Bank’s premier compilation of cross-country comparable data on development; 1400 time series indicators）からなっており、それらは、テーマ別にも分類されています。</p>
+<p>また、さまざまな形式（CSV, Excel など）で、データを検索し、ダウンロードできるように整理されており、さらに、API （Application Program Interface：アプリケーションのプログラムを使ってデータを利用するための仕様）も整備されており、「データサイエンスをはじめましょう」で利用する コンピュータ言語 R でも、簡単に、検索やデータのダウンロードが可能なパッケージが提供されています。</p>
+</div>
+<div id="三つの入り口" class="section level3" number="4.1.2">
+<h3>
+<span class="header-section-number">4.1.2</span> 三つの入り口<a class="anchor" aria-label="anchor" href="#%E4%B8%89%E3%81%A4%E3%81%AE%E5%85%A5%E3%82%8A%E5%8F%A3"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li><a href="https://data.worldbank.org">世界銀行オープンデータ</a></li>
-<li><a href="https://datacatalog.worldbank.org/home">データカタログ</a></li>
-<li><a href="https://datatopics.worldbank.org/world-development-indicators/">世界開発指標（WDI）</a></li>
+<li>
+<a href="https://datatopics.worldbank.org/world-development-indicators/">世界開発指標（WDI）</a> （World Development Indicators）</li>
+<li>
+<a href="https://data.worldbank.org">世界銀行オープンデータ</a> （World Bank Open Data）</li>
+<li>
+<a href="http://wdi.worldbank.org/tables">世界開発指標（WDI）の統計表</a> （World Development Indicators Statistical Tables）</li>
 </ul>
 <p>三つのサイトのリンクを書きました。一つ一つみていきましょう。</p>
-<p>まず、英語を読むことが苦手な場合は、ブラウザー（Google Chrome, Edge, Safari などのホームページ閲覧ソフト）の自動翻訳機能を使うのも良いでしょう。しかし、自動翻訳機能を利用していると、リンク先に飛べなかったり、いくつかの機能が使えないこともありますので、ボタンを押しても、反応しないときは、自動翻訳機能を OFF にして利用してください。</p>
-<div id="世界銀行オープンデータ" class="section level3" number="4.1.1">
+<p>まず、英語を読むことが苦手な場合は、ブラウザー（Google Chrome, Edge, Safari などのホームページ閲覧ソフト）の自動翻訳機能を使うのも良いでしょう。しかし、自動翻訳機能を利用していると、リンク先に飛べなかったり、いくつかの機能が使えないこともありますので、正常に機能しないときは、自動翻訳機能を一旦 OFF にして利用してください。</p>
+</div>
+<div id="世界開発指標wdi-1" class="section level3" number="4.1.3">
 <h3>
-<span class="header-section-number">4.1.1</span> <a href="https://data.worldbank.org">世界銀行オープンデータ</a><a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%8A%80%E8%A1%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.3</span> <a href="https://datatopics.worldbank.org/world-development-indicators/">世界開発指標（WDI）</a><a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>まずは、この<a href="https://datatopics.worldbank.org/world-development-indicators/">サイト</a>がお薦めです。上の方に以下のように書かれています。</p>
+<blockquote>
+<p>The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,400 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.</p>
+<p>世界開発指標は、世界的な開発と、貧困との闘いに関連する、高品質で、国際的に比較可能な統計をまとめたものです。データベースには、217の経済と40以上の国グループの1,400の時系列指標が含まれており、多くの指標のデータは50年以上前にさかのぼることができます。</p>
+</blockquote>
+<p>この文章の下には、テーマ別のアイコンがあり、そこから、それぞれのテーマについてみていくことができるようになっています。さらにその下には、最近のニュースやお薦めの記事などが掲載されています。</p>
+<div id="テーマさまざまなトピック課題" class="section level4" number="4.1.3.1">
+<h4>
+<span class="header-section-number">4.1.3.1</span> <a href="https://datatopics.worldbank.org/world-development-indicators/">テーマ</a>（さまざまなトピック・課題）<a class="anchor" aria-label="anchor" href="#%E3%83%86%E3%83%BC%E3%83%9E%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E3%83%88%E3%83%94%E3%83%83%E3%82%AF%E8%AA%B2%E9%A1%8C"><i class="fas fa-link"></i></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li>貧困と不平等（Poverty and Inequality）：貧困、繁栄、消費、所得分配</li>
+<li>人々（People）：人口動態、教育、労働、健康、ジェンダー</li>
+<li>環境（Environment）：農業、気候変動、エネルギー、生物多様性、水、衛生</li>
+<li>経済（Economy）：成長、経済構造、所得と貯蓄、貿易、労働生産性</li>
+<li>国家と市場（States and Markets）：ビジネス、株式市場、軍事、通信、輸送、テクノロジー</li>
+<li>グローバルリンク（Global Links）：債務、貿易、援助への依存、難民、観光、移住</li>
+</ol>
+</div>
+<div id="それぞれのテーマについて" class="section level4" number="4.1.3.2">
+<h4>
+<span class="header-section-number">4.1.3.2</span> それぞれのテーマについて<a class="anchor" aria-label="anchor" href="#%E3%81%9D%E3%82%8C%E3%81%9E%E3%82%8C%E3%81%AE%E3%83%86%E3%83%BC%E3%83%9E%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
+</h4>
+<p>一つテーマを選んで中身をみてみましょう。テーマを選んで、中身をみてみると、一番上に、最近のトピックなどが書かれ、次に、そのテーマについての概要や課題が書かれています。データの集め方や、どのように標準化するかなどについての説明もあります。</p>
+<p>その下に、注目の指標（Featured Indicators）として、主要な WDI の指標のリストがあり、さらにその下には、データについての説明などが書かれています。</p>
+</div>
+<div id="注目の指標featured-indicators" class="section level4" number="4.1.3.3">
+<h4>
+<span class="header-section-number">4.1.3.3</span> 注目の指標（Featured Indicators）<a class="anchor" aria-label="anchor" href="#%E6%B3%A8%E7%9B%AE%E3%81%AE%E6%8C%87%E6%A8%99featured-indicators"><i class="fas fa-link"></i></a>
+</h4>
+<p>この指標も、いくつかのグループに分けられていますが、それぞれの指標には、以下のような情報があります。</p>
+<ul>
+<li>
+<p>Indicator 指標の名称</p>
+<ul>
+<li>マウスを当てると、より詳しい概要をみることができます。</li>
+</ul>
+</li>
+<li>
+<p>Code 指標コード</p>
+<ul>
+<li><p>R の WDI パッケージなど、API を利用して、データを取得するときに必要なコードです。</p></li>
+<li><p>このコードをクリックすると、World（世界）に関する、この指標のデータをグラフが表示されます。世界に対応するデーががない場合もあります。</p></li>
+</ul>
+</li>
+<li>
+<p>Time coverage どの程度の期間のデータがあるかの概要</p>
+<ul>
+<li>1960年から10年刻みでデータがどの程度あるかを確認することができます。</li>
+</ul>
+</li>
+<li>
+<p>Region coverage 地域ごとのデータの収集状況の概要</p>
+<ul>
+<li>ラテンアメリカ、南アジア、サハラ砂漠以南のアフリカ、ヨーロッパと中央アジア、中東と北アフリカ、東アジアと太平洋諸国、北アメリカごとに、データがどの程度揃っているかを確認することができます。</li>
+</ul>
+</li>
+<li>
+<p>Get data データの取得</p>
+<ul>
+<li>API、XLS、CSV、DataBank とあり、データを、取得するための情報や、Excel、コンマで区切られてテキストデータが取得可能で、また、DataBank では、World Bank のデータの、表や、グラフ、地図、各データの情報などを調べることができます。この DataBank の利用については、別の項で説明します。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="備考" class="section level4" number="4.1.3.4">
+<h4>
+<span class="header-section-number">4.1.3.4</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83"><i class="fas fa-link"></i></a>
+</h4>
+<p>はじめてのデータサイエンスで利用した、GDP の指標は、テーマから経済（Economy）を選択すると、Featured Indicator （注目の指標）の一番上にあります。まずは、GDP について、上に書いた、Indicator、Code、Time Coverage、Region Coverage、GetData を確認してみることをお勧めします。</p>
+<p>このサイトにあるのは、基本的な指標だけです。すべての指標についての情報を得るときには、この次とその次の項目を見てください。しかし、全体では、1400も指標があり、何をみたらよいか、かえって混乱してしまうかもしれません。まずは、このような基本的なデータで、使い方を把握してから、興味のあるデータを調べるのが良いのではないかと思います。</p>
+<p>WDI は、すべての年、すべての国についてデータがあるわけではありません。前もって、期間や、地域ごとにどの程度データがあるかを見ておくことはとても有効です。</p>
+<p>それぞれの指標についての概要や特定の国についての情報は、次の項目から見ることも可能ですこのページに掲載されている指標で興味をもったものについて、指標の名称や指標コードをコピー・ペーストなどで、記録しておくことをお勧めします。</p>
+</div>
+</div>
+<div id="世界銀行オープンデータ" class="section level3" number="4.1.4">
+<h3>
+<span class="header-section-number">4.1.4</span> <a href="https://data.worldbank.org">世界銀行オープンデータ</a><a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%8A%80%E8%A1%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
 </h3>
 <p>世界銀行のオープンデータ全体にアクセスできるサイトです。上の検索窓の下に、Country（国）と Indicators（指標）と書いてあります。</p>
-<div id="国別サイト" class="section level4" number="4.1.1.1">
+<p>その下には、いくつかのグラフや、最近のニュースやトピックが書かれており、さらにその下には、More Resources（さらに…）といくつかの項目があります。Open Data Catalog、Data Bank、などと共に、World Development Indicators もあります。このWorld Development Indicators (WDI) を選択すると、上の三つのサイトの三番目に飛びます。また、Data Bank を選択すると、三つのサイトの二番目に飛びます。</p>
+<p>最初に書いた、Country（国）と Indicators（指標）から説明しましょう。</p>
+<div id="国別サイト" class="section level4" number="4.1.4.1">
 <h4>
-<span class="header-section-number">4.1.1.1</span> <a href="https://data.worldbank.org/country">国別サイト</a><a class="anchor" aria-label="anchor" href="#%E5%9B%BD%E5%88%A5%E3%82%B5%E3%82%A4%E3%83%88"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.4.1</span> <a href="https://data.worldbank.org/country">国別サイト</a><a class="anchor" aria-label="anchor" href="#%E5%9B%BD%E5%88%A5%E3%82%B5%E3%82%A4%E3%83%88"><i class="fas fa-link"></i></a>
 </h4>
 <p>Country（国別）のサイトを選択すると、国のリストが出てきます。</p>
 <p>J のところに、Japan（日本）がありますから、選択してみてください。日本のさまざまな指標とグラフが出てきます。</p>
-<p>Indicator（指標）、Most Recent Values（直近の値）、Trend（傾向）が表示されます。指標をクリックすると、大きなグラフが出てきます。その指標のサイトですから、そこで、その指標についての他の国の状況などを確認することができます。そこでは、選択した指標と似た指標が選択できたり、もっと詳しいことをしらべるデータバンクへのリンクもあります。このサイトから、データをダウンロードすることもできるようになっています。</p>
-<p>また、国別サイトの右の方には、地域など、グループに分けてある箇所もあります。その一番下には、World （世界）もありますから、世界全体について見てみたり、収入の階級に分けたサイトの指標を見ることもできるようになっています。</p>
+<p>Indicator（指標）、Most Recent Values（直近の値）、Trend（傾向）が表示されます。指標をクリックすると、大きなグラフが出てきます。その指標のサイトですから、そこで、その指標についての他の国の状況などを確認することができます。そこでは、選択した指標と似た指標が選択できたり、もっと詳しいことをしらべるデータバンク（Data Bank）へのリンクもあります。このサイトから、データをダウンロードすることもできるようになっています。</p>
+<p>また、国別サイトの右の方には、地域など、グループに分けてある帯もあります。その一番下には、World （世界）もありますから、世界全体について見てみたり、収入の階級に分けたサイトの指標を見ることもできるようになっています。</p>
 </div>
-<div id="指標別サイト" class="section level4" number="4.1.1.2">
+<div id="指標別サイト" class="section level4" number="4.1.4.2">
 <h4>
-<span class="header-section-number">4.1.1.2</span> <a href="https://data.worldbank.org/indicator">指標別サイト</a><a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99%E5%88%A5%E3%82%B5%E3%82%A4%E3%83%88"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.4.2</span> <a href="https://data.worldbank.org/indicator">指標別サイト</a><a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99%E5%88%A5%E3%82%B5%E3%82%A4%E3%83%88"><i class="fas fa-link"></i></a>
 </h4>
 <p>Indicators（指標）を選択すると、トピックに分けて、指標が並んでいます。</p>
-<p>よく見ると、一番上に、Featured Indicators（特徴的な指標） と、All Indicators（すべての指標） となっていて、最初の開いているのは、特徴的な指標の方であることがわかります。すべての指標の方を開けると、たくさんの指標を見ることができます。</p>
+<p>よく見ると、一番上に、Featured Indicators（特徴的な指標） と、All Indicators（すべての指標） とあり、最初に開いているのは、特徴的な指標の方であることがわかります。すべての指標の方を開けると、よりたくさんの指標を見ることができます。</p>
 <p>トピックは、以下のものに分かれています。</p>
 <ul>
 <li>Agriculture &amp; Rural Development 農業と農村開発</li>
@@ -174,22 +272,34 @@
 </ul>
 <p>それぞれの指標を選択すると、グラフが表示される画面が出てきます。それは、上で国別のところから選択したものと同じです。</p>
 <p>GDP を調べるときには、NY.GDP.MKTP.CD という、コードを指定して、データを取得しました。この、Indicator Code （WDI コード）は、Details (詳細) を見ると、その指標の概要とともに、書いてあります。 そのデータコードは、そのページの上の URL にも表示されています。</p>
+<p>はじめてのデータサイエンスでは、WDI という R のパッケージを使って、データを読み込みました。そのときに必要だったのが、この Indicator Code でした。あとで、詳しく調べてみたい指標がありましたら、その、WDIコード（Indicator Code）を、あとで、使えるように、メモなどに貼り付けて（Copy-Paste）おくことを、お勧めします。</p>
 </div>
 </div>
-<div id="データカタログ" class="section level3" number="4.1.2">
+<div id="ダッシュボードデータの取得データコード" class="section level3" number="4.1.5">
 <h3>
-<span class="header-section-number">4.1.2</span> <a href="https://datacatalog.worldbank.org/home">データカタログ</a><a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%AB%E3%82%BF%E3%83%AD%E3%82%B0"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.5</span> ダッシュボード・データの取得・データコード<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B3%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
 </h3>
+<p>さまざまな国際機関では、データを、Excel 形式や、CSV (Comma Separated Values）形式などで、提供する以外に、ダッシュボード形式で、グラフを生成するなどして、データを視覚化をある程度できるようにしています。さらに、コンピュータのアプリケーションでデータを直接取得できるように、API (Application Program Interface) を提供しています。</p>
+<p>世界開発指標（WDI）は、これらを、すべて統一した形で提供しているために、非常に使いやすいデータベースになっています。また、上にリストしているように、1400余のさまざまなデータを提供しているために、最初に調べてみることをお勧めするデータベースです。</p>
+<p>分析を考えると、Excel や、CSV でダウンロードして、それから、データを読み込むよりも、R で直接データを取得する方が、便利ですので、このコースでは、その方法を、説明しています。</p>
+<p>データを探すことも、R の中ですることが可能ですが、データベースに慣れるためにも、WDI のホームページから、トピックを選択して、データを探し、説明も調べて、取得したいデータ・コードを調べることも非常に有効です。</p>
+<p>いろいろなトピックに、どのような指標があるか調べて、興味のある、データ・コードをリストしてください。データの名前も同時に、記録しておくと良いでしょう。</p>
 </div>
-<div id="世界開発指標wdi" class="section level3" number="4.1.3">
-<h3>
-<span class="header-section-number">4.1.3</span> <a href="https://datatopics.worldbank.org/world-development-indicators/">世界開発指標（WDI）</a><a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi"><i class="fas fa-link"></i></a>
-</h3>
+</div>
+<div id="課題" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> 課題<a class="anchor" aria-label="anchor" href="#%E8%AA%B2%E9%A1%8C"><i class="fas fa-link"></i></a>
+</h2>
+<p>世界開発指標（WDI）の、データで、調べてみたい データコードをいくつか見つけて、書き出してください。</p>
+</div>
+<div id="オープンデータopen-data" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> オープンデータ（Open Data）<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BFopen-data"><i class="fas fa-link"></i></a>
+</h2>
 <p>また、オープンデータについて、世界銀行は、厳密な定義をしています。</p>
-</div>
-<div id="オープンデータの定義open-data-defined" class="section level3" number="4.1.4">
+<div id="オープンデータの定義open-data-defined" class="section level3" number="4.3.1">
 <h3>
-<span class="header-section-number">4.1.4</span> オープンデータの定義（<a href="http://opendatatoolkit.worldbank.org/en/essentials.html">Open Data Defined</a>）<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%AE%9A%E7%BE%A9open-data-defined"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3.1</span> オープンデータの定義（<a href="http://opendatatoolkit.worldbank.org/en/essentials.html">Open Data Defined</a>）<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%AE%9A%E7%BE%A9open-data-defined"><i class="fas fa-link"></i></a>
 </h3>
 <p>オープンデータという言葉は、厳密な意味を持っています。データまたはコンテンツは、出所が明示されオープンという性質が維持されれば、誰でも自由に利用、再利用、再配布できるものを言います。</p>
 <ol style="list-style-type: decimal">
@@ -199,54 +309,8 @@
 <center>
 <font size="3">データはだれのものでしょうか? パブリックデータのパブリックとは？</font>
 </center>
-</div>
-</div>
-<div id="世界開発指標wdi-1" class="section level2" number="4.2">
-<h2>
-<span class="header-section-number">4.2</span> 世界開発指標（WDI）<a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi-1"><i class="fas fa-link"></i></a>
-</h2>
-<ul>
-<li>
-<a href="https://datatopics.worldbank.org/world-development-indicators/">World Development Indicators (WDI)</a> : 世界銀行が開発に関する各国間比較可能なデータの集大成である1400の時系列指標（the World Bank’s premier compilation of cross-country comparable data on development; 1400 time series indicators）
-<ul>
-<li>テーマ別（Themes）: 貧困と格差、人間、環境、経済、国家と市場、グローバルリンク集（Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links）</li>
-<li>オープンデータとデータバンク（Open Data &amp; DataBank）: Explore data, Query database</li>
-<li>Bulk Download: Excel, CSV</li>
-<li>API Documentation</li>
-</ul>
-</li>
-</ul>
-<div id="世界のさまざまな課題" class="section level3" number="4.2.1">
-<h3>
-<span class="header-section-number">4.2.1</span> 世界のさまざまな課題<a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E3%81%AE%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E8%AA%B2%E9%A1%8C"><i class="fas fa-link"></i></a>
-</h3>
-<p><a href="https://datatopics.worldbank.org/world-development-indicators/" class="uri">https://datatopics.worldbank.org/world-development-indicators/</a></p>
-<ol style="list-style-type: decimal">
-<li>貧困と不平等（Poverty and Inequality）：貧困、繁栄、消費、所得分配</li>
-<li>人々（People）：人口動態、教育、労働、健康、ジェンダー</li>
-<li>環境（Environment）：農業、気候変動、エネルギー、生物多様性、水、衛生</li>
-<li>経済（Economy）：成長、経済構造、所得と貯蓄、貿易、労働生産性</li>
-<li>国家と市場（States and Markets）：ビジネス、株式市場、軍事、通信、輸送、テクノロジー</li>
-<li>グローバルリンク（Global Links）：債務、貿易、援助への依存、難民、観光、移住</li>
-</ol>
-</div>
-<div id="ダッシュボードデータの取得データコード" class="section level3" number="4.2.2">
-<h3>
-<span class="header-section-number">4.2.2</span> ダッシュボード・データの取得・データコード<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B3%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
-</h3>
-<p>さまざまな国際機関では、データを、Excel 形式や、CSV (Comma Separated Values）形式などで、提供する以外に、ダッシュボード形式で、グラフを生成するなどして、データを視覚化をある程度できるようにしています。さらに、コンピュータのアプリケーションでデータを直接取得できるように、API (Application Program Interface) を提供しています。</p>
-<p>世界開発指標（WDI）は、これらを、すべて統一した形で提供しているために、非常に使いやすいデータベースになっています。また、上にリストしているように、1400余のさまざまなデータを提供しているために、最初に調べてみることをお勧めするデータベースです。</p>
-<p>分析を考えると、Excel や、CSV でダウンロードして、それから、データを読み込むよりも、R で直接データを取得する方が、便利ですので、このコースでは、その方法を、説明しています。</p>
-<p>データを探すことも、R の中ですることが可能ですが、データベースに慣れるためにも、WDI のホームページから、トピックを選択して、データを探し、説明も調べて、取得したいデータ・コードを調べることも非常に有効です。</p>
-<p>いろいろなトピックに、どのような指標があるか調べて、興味のある、データ・コードをリストしてください。データの名前も同時に、記録しておくと良いでしょう。</p>
-</div>
-</div>
-<div id="課題" class="section level2" number="4.3">
-<h2>
-<span class="header-section-number">4.3</span> 課題<a class="anchor" aria-label="anchor" href="#%E8%AA%B2%E9%A1%8C"><i class="fas fa-link"></i></a>
-</h2>
-<p>世界開発指標（WDI）の、データで、調べてみたい データコードをいくつか見つけて、書き出してください。</p>
 
+</div>
 </div>
 </div>
 
@@ -258,22 +322,20 @@
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#wdi-site"><span class="header-section-number">4</span> 世界開発指標</a></li>
+<li><a class="nav-link" href="#wdi-site"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
 <li>
-<a class="nav-link" href="#%E4%B8%89%E3%81%A4%E3%81%AE%E3%82%B5%E3%82%A4%E3%83%88"><span class="header-section-number">4.1</span> 三つのサイト</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%8A%80%E8%A1%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">4.1.1</span> 世界銀行オープンデータ</a></li>
-<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%AB%E3%82%BF%E3%83%AD%E3%82%B0"><span class="header-section-number">4.1.2</span> データカタログ</a></li>
-<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi"><span class="header-section-number">4.1.3</span> 世界開発指標（WDI）</a></li>
-<li><a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%AE%9A%E7%BE%A9open-data-defined"><span class="header-section-number">4.1.4</span> オープンデータの定義（Open Data Defined）</a></li>
+<a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi"><span class="header-section-number">4.1</span> 世界開発指標（WDI）</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E6%A6%82%E8%A6%81"><span class="header-section-number">4.1.1</span> 概要</a></li>
+<li><a class="nav-link" href="#%E4%B8%89%E3%81%A4%E3%81%AE%E5%85%A5%E3%82%8A%E5%8F%A3"><span class="header-section-number">4.1.2</span> 三つの入り口</a></li>
+<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi-1"><span class="header-section-number">4.1.3</span> 世界開発指標（WDI）</a></li>
+<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%8A%80%E8%A1%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">4.1.4</span> 世界銀行オープンデータ</a></li>
+<li><a class="nav-link" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B3%E3%83%BC%E3%83%89"><span class="header-section-number">4.1.5</span> ダッシュボード・データの取得・データコード</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#%E8%AA%B2%E9%A1%8C"><span class="header-section-number">4.2</span> 課題</a></li>
 <li>
-<a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi-1"><span class="header-section-number">4.2</span> 世界開発指標（WDI）</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E3%81%AE%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E8%AA%B2%E9%A1%8C"><span class="header-section-number">4.2.1</span> 世界のさまざまな課題</a></li>
-<li><a class="nav-link" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B3%E3%83%BC%E3%83%89"><span class="header-section-number">4.2.2</span> ダッシュボード・データの取得・データコード</a></li>
-</ul>
+<a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BFopen-data"><span class="header-section-number">4.3</span> オープンデータ（Open Data）</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%AE%9A%E7%BE%A9open-data-defined"><span class="header-section-number">4.3.1</span> オープンデータの定義（Open Data Defined）</a></li></ul>
 </li>
-<li><a class="nav-link" href="#%E8%AA%B2%E9%A1%8C"><span class="header-section-number">4.3</span> 課題</a></li>
 </ul>
 
       <div class="book-extra">
