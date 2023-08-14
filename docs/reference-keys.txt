@@ -64,10 +64,12 @@ wdi-site
 世界銀行オープンデータ
 国別サイト
 指標別サイト
-ダッシュボードデータの取得データコード
+世界開発指標wdiの統計表
 課題
 オープンデータopen-data
 オープンデータの定義open-data-defined
+オープンデータの意義
+オープンデータの利活用
 publicdata-site
 オープンデータ
 open-government-data-toolkit-open-data-defined
