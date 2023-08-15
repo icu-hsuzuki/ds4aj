@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  8 AUG 2023 10:14
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.21)  15 AUG 2023 09:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1097,12 +1097,13 @@ LaTeX Warning: Reference `japanese' on page 7 undefined on input line 235.
 第1章
 LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 19.17854pt on input line 266.
+LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
+(Font)              scaled to size 5.54828pt on input line 275.
+LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
+(Font)              scaled to size 7.3977pt on input line 275.
 [9
 
-]
-LaTeX Font Info:    Font shape `TU/HaranoAjiMincho-Regular.otf(0)/m/n' will be
-(Font)              scaled to size 7.3977pt on input line 285.
-[10]
+] [10]
 LaTeX Font Info:    Font shape `TU/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 11.09656pt on input line 318.
 [11] [12] [13] [14] [15]
@@ -1123,23 +1124,22 @@ Package xeCJK Warning: Unknown CJK family `\CJKttdefault' is being ignored.
 ]
 第3章
 
-LaTeX Warning: File `https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833
-b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png' not found on inpu
-t line 626.
+LaTeX Warning: File `https://r4ds.hadley.nz/diagrams/data-science/base.png' not
+ found on input line 630.
 
-! Unable to load picture or PDF file 'https://d33wubrfki0l68.cloudfront.net/795
-c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png'.
+! Unable to load picture or PDF file 'https://r4ds.hadley.nz/diagrams/data-scie
+nce/base.png'.
 <to be read again> 
                    }
-l.626 .../558a5/diagrams/data-science-explore.png}
+l.630 ...hadley.nz/diagrams/data-science/base.png}
                                                    
 Here is how much of TeX's memory you used:
- 23250 strings out of 476683
- 468968 string characters out of 5804047
+ 23289 strings out of 476683
+ 468805 string characters out of 5804047
  1875018 words of memory out of 5000000
- 43127 multiletter control sequences out of 15000+600000
- 519432 words of font info for 104 fonts, out of 8000000 for 9000
+ 43165 multiletter control sequences out of 15000+600000
+ 519440 words of font info for 105 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
- 105i,11n,140p,1002b,470s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 105i,11n,140p,1002b,522s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on ds4aj.pdf (22 pages).
