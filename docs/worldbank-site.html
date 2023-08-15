@@ -240,9 +240,9 @@
 </ul>
 </div>
 </div>
-<div id="ダッシュボード-1" class="section level2" number="6.3">
+<div id="ダッシュボードdashboard" class="section level2" number="6.3">
 <h2>
-<span class="header-section-number">6.3</span> ダッシュボード<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3</span> ダッシュボード（Dashboard）<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89dashboard"><i class="fas fa-link"></i></a>
 </h2>
 <p>世界銀行のダッシュボードには二種類あります。一つは、それぞれの指標についてのダッシュボード、もう一つは、データバンク（DataBank）です。</p>
 <div id="指標毎のダッシュボード" class="section level3" number="6.3.1">
@@ -258,26 +258,97 @@
 <a href="https://data.worldbank.org">世界銀行オープンデータ</a> から、国（Country）を選択し、例えば、J から、Japan を選択し、Economics（経済）の指標の <a href="#id_0">GDP (current US$)</a> を選択すると、ダッシュボードが現れ、日本の GDP の推移のグラフが表示されます。指標によっては、上の、Theme（テーマ）や、Topic（トピック）から選ぶ必要がある場合もあります。</li>
 <li>
 <a href="https://datatopics.worldbank.org/world-development-indicators/">世界開発指標（WDI）</a>の Data Theme（テーマ）の中の、ECONOMY（経済） の中から、<a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?view=chart">GDP (current US$)</a> を選択すると、ダッシュボードが現れ、世界の GPD の推移のグラフが表示されます。</li>
-<li>もし、WDI コード（この場合は、NY.GDP.MKTP.CD）を知っていれば、このコードを、Google など、検索エンジンの検索窓に入れて検索すると、上のダッシュボードのページを教えてくれると思います。</li>
+<li>もし、WDI コード（この場合は、NY.GDP.MKTP.CD）を知っていれば、このコードを、<a href="https://data.worldbank.org">世界銀行オープンデータ</a> の検索窓に入れて検索すると、上のダッシュボードのページが表示されます。</li>
 </ol>
+<p>最初は、選択した指標について、世界か、日本など選択した国の、折れ線グラフ（Line Graph）が表示されていると思います。そして、下の方に、国のリストがあり、その一番下には、地域のリストが続いています<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;アルファベットの昇順になっていますが、そのリストの Country（国）の右にある ⌃型のマークを押すと⌵に変わり、降順になります。&lt;/p&gt;"><sup>6</sup></a>。また、Line （折れ線グラフ）と書いた右には、Bar（棒グラフ）と、Map（地図）とあります。</p>
+<p>その右には、Also Show （追加）とあり、Aggregates（総合）、Same Region（同じ地域）、Similar Values（近い値）、Highest Values（最高値）、Lowest Values（最小値）を表示することもできます。表示しないときは、None を選択します。</p>
+<p>その右には、Share（共有）と、Details（詳細）があります。詳細には、その指標についての、詳しい説明があります。すべてを理解することはできないかもしれませんが、翻訳機能も使って、確認しておくことをお勧めします。詳細には、データコードも書かれています。記録しておくと、次に同じ指標のデータを探すときに便利です。共有からは、Web Page や、SNS に埋め込む、iframe link を取得することができます。</p>
+<p>右の方の帯には、関連する指標がリストされ、さらに、Download（ダウンロード）、Data Bank（データバンク）、WDI Tables （統計表）へのリンクがあります。</p>
 <div id="使い方" class="section level4" number="6.3.1.1">
 <h4>
 <span class="header-section-number">6.3.1.1</span> 使い方<a class="anchor" aria-label="anchor" href="#%E4%BD%BF%E3%81%84%E6%96%B9"><i class="fas fa-link"></i></a>
 </h4>
+<p>具体例としては、GDP（Current US$）の世界（World）のグラフが表示されているとします。上の検索窓に GDP（Current US$）と入っていると思います。</p>
+<ul>
+<li>
+<p>国や地域の追加</p>
+<ul>
+<li><p>英語で入力しますから、グラフの下の、国や地域名のところから、追加したい、国や地域名を選んで、書き出しておいてください。一つずつ追加するときは、コピーするのも良いかもしれません。</p></li>
+<li><p>日本をグラフに追加するときは、Japan ですから、検索窓に、Japan と入れて<strong>少し待ちます</strong>。すると、窓の下に、Japan が表示されますから、それを選択（クリック）します。すると、日本のグラフに変わります。India も加えてください。次に、検索窓に、United と入力すると、United Kingdom, United States, United Arab Emirates が表示されますから、United Kingdom を選択してください。Japan, India, United Kingdom の三つの国のグラフが同時に表示されます。これによって、いくつかの国のその指標における経年変化を比較することができます。</p></li>
+<li><p>いろいろな国や地域を加えてみてください。たとえば、GDP を指標として、United States を加えると、United States の GDP の値が大きいため、他の国のグラフは下の方に重なり合うようになります。Afghanistan を加えると、ある年以前のデータがなかったり、値がとても小さいために、X 軸に張り付くようになってしまったりします。みやすいグラフを表示するには、どのようなものの比較をするかも重要になってくることがわかると思います。</p></li>
+<li><p>追加した国や地域を消すのは、単にその国名の、右に表示される x マークを選択すれば良いですし、Delete キーでも消去できます。</p></li>
+<li><p>実は、Japan など一つの国を加えてからあとは、下の国名などのリストから、追加したい国を選択すると、追加されていきます。検索窓に入れるよりも簡単だと思います。</p></li>
+</ul>
+</li>
+<li>
+<p>Also Show の活用</p>
+<ul>
+<li><p>上に書いたように、Aggregates（総合）、Same Region（同じ地域）、Similar Values（近い値）、Highest Values（最高値）、Lowest Values（最小値）を追加できます。たとえば、Japan（日本）だけを残しておいて、Same Region を選択すると、いくつかの国の値が、薄く表示されます。地域名をみると、これは、East Asia &amp; Pacific（東アジアと太平洋地域）であることが推測されます。</p></li>
+<li><p>そこで、East Asia &amp; Pasific を選択すると、その地域の総計の値が追加されます。</p></li>
+</ul>
+</li>
+</ul>
 </div>
-</div>
-<div id="データバンク" class="section level3" number="6.3.2">
-<h3>
-<span class="header-section-number">6.3.2</span> データバンク<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%90%E3%83%B3%E3%82%AF"><i class="fas fa-link"></i></a>
-</h3>
-</div>
-<div id="使い方-1" class="section level3" number="6.3.3">
-<h3>
-<span class="header-section-number">6.3.3</span> 使い方<a class="anchor" aria-label="anchor" href="#%E4%BD%BF%E3%81%84%E6%96%B9-1"><i class="fas fa-link"></i></a>
-</h3>
-<div id="gdp-per-capita-constant-2015-us" class="section level4" number="6.3.3.1">
+<div id="データダウンロード" class="section level4" number="6.3.1.2">
 <h4>
-<span class="header-section-number">6.3.3.1</span> GDP per capita (constant 2015 US$)<a class="anchor" aria-label="anchor" href="#gdp-per-capita-constant-2015-us"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3.1.2</span> データダウンロード<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
+</h4>
+<p>R のパッケージを用いたデータのダウンロードについてはあとから述べますが、指標毎のダッシュボードの右の帯のダウンロードからも、データをダウンロードすることができます。</p>
+<p>CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（Micosoft Excel Spreadsheet） と三つの形式でデータを取得できます。それぞれ、R などで読み込むことができます。ただし、CSV と、XML は、Zip 形式の圧縮ファイルになっています。EXCEL は、三つのシート（Data, Metadata - Countries, Metadata - Indicators）が一つの、ブックになっています。Metadata（メタデータ）は、データのデータで、データについての情報が収められています。</p>
+</div>
+</div>
+<div id="データバンクdatabank" class="section level3" number="6.3.2">
+<h3>
+<span class="header-section-number">6.3.2</span> データバンク（DataBank）<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%90%E3%83%B3%E3%82%AFdatabank"><i class="fas fa-link"></i></a>
+</h3>
+<p>上で説明した指標毎のダッシュボードの右の帯からも、データバンクのダッシュボードが開きますが、<a href="https://data.worldbank.org">世界銀行オープンデータ</a> の下にある、データバンクを選択すると、リストが表示されます。ここで、ある程度選択してから、ダッシュボードを表示させることもできます。一番上に、World Development Indicators（世界開発指標）がありますから、選択してください。あとから、他のものに変更することも可能です。</p>
+<p>表が表示され、左の方に、Variables（変数）、Layout（レイアウト）、Styles（形式）、Save（保存）、Share（共有）、Embed（埋め込み） とあり、右上には、Table（表）、Chart（グラフ）、Map（地図）、Metadata（メタデータ） とあり、その下には、Preview（表示）などとなっていると思います。</p>
+<p>膨大なデータを選択し、形式を整えて、ダウンロードしたり、グラフを表示したりすることができます。</p>
+<div id="例1" class="section level4" number="6.3.2.1">
+<h4>
+<span class="header-section-number">6.3.2.1</span> 例1<a class="anchor" aria-label="anchor" href="#%E4%BE%8B1"><i class="fas fa-link"></i></a>
+</h4>
+<p>まずは、一つ目の例として、GDP (Current US$) の値を大きい方から国順に並べてみましょう。</p>
+<ol style="list-style-type: decimal">
+<li><p>Variable の Database で、World Development Indicators を選択します。</p></li>
+<li><p>Countries では、上に、All、Countries、Aggregates とありますから、Countries を選択します。</p></li>
+<li><p>一番左のチェックボックス Select All（すべて選択）を選びます。これで国が全部選択されました。現在ですと、Selected 217 と出ています。</p></li>
+<li><p>Series は、いくつか選択されている可能性がありますから、X マークを選択して、まずは、全部選択を解除し、次に、GDP (current US$) にチェックを入れます。Selected 1 となっていることを確認してください。</p></li>
+<li><p>Time の一番左のチェックボックスから、Select All にしてください。現在では、Selected 63 と表示されました。</p></li>
+<li><p>右の方に、Selections have been modified … （選択が変更されました …）と出ますので、Apply Changes（変更を適用）を選びます。</p></li>
+<li><p>上の Layout タブを選択し、Time を Column（列）、Country を Row（行）、Series を Page（ページに指定します）</p></li>
+</ol>
+<p>ここまでで、Table に、GDP (current US$) についての表が表示されていることを確認してください。</p>
+<p>これを書いている時点では、2022年が最も新しいデータで、2022 の年のところをクリックすると、最初は、国名のアルファベット順になっていると思いますが、それが、その指標の値の、昇順、降順に変更できます。ここでは、GDP が大きな値の順に並べたいので、降順にします。</p>
+<p>10位までの国は、United States, China, Japan, Germany, India, United Kingdom, France, Russian Federation, Canada, Italy となっているかと思います。</p>
+</div>
+<div id="例2" class="section level4" number="6.3.2.2">
+<h4>
+<span class="header-section-number">6.3.2.2</span> 例2<a class="anchor" aria-label="anchor" href="#%E4%BE%8B2"><i class="fas fa-link"></i></a>
+</h4>
+<p>2022年の値で、10位までの国を選択して、折れ線グラフや、棒グラフなどを書いてみましょう。</p>
+<ol style="list-style-type: decimal">
+<li>Variables の Countries の X で選択を解除し、上の10カ国を選んでください。</li>
+<li>右の方に、Selections have been modified … （選択が変更されました …）と出ますので、Apply Changes（変更を適用）を選びます。すると表が10カ国のものに変わります。</li>
+<li>上の、Styles を選択し、Chat Type &amp; Style で、Line（折れ線グラフ）を選択すると、しばらくして、10カ国の、折れ線グラフを表示させることができます。色も変更することも可能です。</li>
+<li>Chat Type &amp; Style で Horizontal Bar を選択し、Layout で、</li>
+</ol>
+<p>以下では、変数（Variables）の選び方と、グラフ（Chart）について簡単に説明します。</p>
+</div>
+<div id="変数variables" class="section level4" number="6.3.2.3">
+<h4>
+<span class="header-section-number">6.3.2.3</span> 変数（Variables）<a class="anchor" aria-label="anchor" href="#%E5%A4%89%E6%95%B0variables"><i class="fas fa-link"></i></a>
+</h4>
+<p>Database、Country、Series、Time とあり、それぞれの右に、Available と Selected とあります。</p>
+<p>どのデータベースについて、国を選択し、系列を選び、期間を選択するという形式になっています。</p>
+<p>Database の左の三角印を選択すると、データベース名が確認できます。現在は、World Development Indicators が選択されています。ここで、他のデータベースに変更することも可能ですが、まずは、そのままにしましょう。</p>
+<p>次は、Countries（国）です。All、Countries、Aggregates と一番上にあります。国だけを表示するか、地域やグループを表示するか、すべてを表示するかを選択できます。</p>
+<p>簡単のために、まずは、Countries（国）を選択しましょう。</p>
+<p>国がいくつか選択されている場合もありますから、X マークをクリックして、すべて選択を消去し、国を選んでみましょう。GDP のところで経験したように、GDP の多い方から、United States、China、Japan、Germany、India、United Kingdom、France を選択してみましょう。</p>
+</div>
+<div id="gdp-per-capita-constant-2015-us" class="section level4" number="6.3.2.4">
+<h4>
+<span class="header-section-number">6.3.2.4</span> GDP per capita (constant 2015 US$)<a class="anchor" aria-label="anchor" href="#gdp-per-capita-constant-2015-us"><i class="fas fa-link"></i></a>
 </h4>
 <p>実質GDP（2015年を基準にしたもの）を、総人口で割った値。アメリカ合衆国、英国、ドイツ、フランス、日本、中国、日本、ロシア、ウクライナの2021年における比較棒グラフ - <a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.KD?locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;end=2021&amp;view=bar">リンク</a></p>
 <iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
@@ -286,18 +357,18 @@
 <iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1960&amp;view=chart" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 </div>
-<div id="central-government-debt-total-of-gdp" class="section level4" number="6.3.3.2">
+<div id="central-government-debt-total-of-gdp" class="section level4" number="6.3.2.5">
 <h4>
-<span class="header-section-number">6.3.3.2</span> Central government debt, total (% of GDP)<a class="anchor" aria-label="anchor" href="#central-government-debt-total-of-gdp"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3.2.5</span> Central government debt, total (% of GDP)<a class="anchor" aria-label="anchor" href="#central-government-debt-total-of-gdp"><i class="fas fa-link"></i></a>
 </h4>
 <p>2020年の政府の負債（GDP の百分率）- <a href="https://data.worldbank.org/indicator/GC.DOD.TOTL.GD.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2020&amp;end=2020&amp;view=bar">リンク</a></p>
 <iframe src="https://data.worldbank.org/share/widget?end=2020&amp;indicators=GC.DOD.TOTL.GD.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2020&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 <p>政府の負債（GDP の百分率）の年次変化を示す折線グラフ <iframe src="https://data.worldbank.org/share/widget?indicators=GC.DOD.TOTL.GD.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE" width="450" height="300" frameborder="0" scrolling="no"></iframe></p>
 </div>
-<div id="co2-emissions-metric-tons-per-capita" class="section level4" number="6.3.3.3">
+<div id="co2-emissions-metric-tons-per-capita" class="section level4" number="6.3.2.6">
 <h4>
-<span class="header-section-number">6.3.3.3</span> CO2 emissions (metric tons per capita)<a class="anchor" aria-label="anchor" href="#co2-emissions-metric-tons-per-capita"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3.2.6</span> CO2 emissions (metric tons per capita)<a class="anchor" aria-label="anchor" href="#co2-emissions-metric-tons-per-capita"><i class="fas fa-link"></i></a>
 </h4>
 <p>CO2 排出量 (1 人あたりのメートル トン) - <a href="https://data.worldbank.org/indicator/EN.ATM.CO2E.PC?locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2019&amp;end=2019&amp;view=bar">リンク</a></p>
 <iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2019&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
@@ -306,9 +377,9 @@
 <iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1990&amp;view=chart" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 </div>
-<div id="military-expenditure-of-gdp" class="section level4" number="6.3.3.4">
+<div id="military-expenditure-of-gdp" class="section level4" number="6.3.2.7">
 <h4>
-<span class="header-section-number">6.3.3.4</span> Military expenditure (% of GDP)<a class="anchor" aria-label="anchor" href="#military-expenditure-of-gdp"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3.2.7</span> Military expenditure (% of GDP)<a class="anchor" aria-label="anchor" href="#military-expenditure-of-gdp"><i class="fas fa-link"></i></a>
 </h4>
 <p>2021年の軍事費 (GDP の %) - <a href="https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS?locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;end=2021&amp;view=bar">リンク</a></p>
 <iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
@@ -317,9 +388,9 @@
 <iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 </div>
-<div id="military-expenditure-current-usd" class="section level4" number="6.3.3.5">
+<div id="military-expenditure-current-usd" class="section level4" number="6.3.2.8">
 <h4>
-<span class="header-section-number">6.3.3.5</span> Military expenditure (current USD)<a class="anchor" aria-label="anchor" href="#military-expenditure-current-usd"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3.2.8</span> Military expenditure (current USD)<a class="anchor" aria-label="anchor" href="#military-expenditure-current-usd"><i class="fas fa-link"></i></a>
 </h4>
 <p>2021年の軍事費 (現在の米ドル)</p>
 <iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
@@ -328,9 +399,9 @@
 <iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 </div>
-<div id="proportion-of-seats-held-by-women-in-natinal-parliaments" class="section level4" number="6.3.3.6">
+<div id="proportion-of-seats-held-by-women-in-natinal-parliaments" class="section level4" number="6.3.2.9">
 <h4>
-<span class="header-section-number">6.3.3.6</span> Proportion of seats held by women in natinal parliaments (%)<a class="anchor" aria-label="anchor" href="#proportion-of-seats-held-by-women-in-natinal-parliaments"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3.2.9</span> Proportion of seats held by women in natinal parliaments (%)<a class="anchor" aria-label="anchor" href="#proportion-of-seats-held-by-women-in-natinal-parliaments"><i class="fas fa-link"></i></a>
 </h4>
 <p>2021年、国会で女性が占める議席の割合 (%) - <a href="https://data.worldbank.org/indicator/SG.GEN.PARL.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;end=2021&amp;view=bar">リンク</a></p>
 <iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
@@ -420,6 +491,7 @@
 </div>
 </div>
 </div>
+
   <div class="chapter-nav">
 <div class="prev"><a href="publicdata-site.html"><span class="header-section-number">5</span> オープンデータ</a></div>
 <div class="next"><a href="oecd-site.html"><span class="header-section-number">7</span> OECD（経済協力開発機構）</a></div>
@@ -438,10 +510,9 @@
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-1"><span class="header-section-number">6.3</span> ダッシュボード</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89dashboard"><span class="header-section-number">6.3</span> ダッシュボード（Dashboard）</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#%E6%8C%87%E6%A8%99%E6%AF%8E%E3%81%AE%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89"><span class="header-section-number">6.3.1</span> 指標毎のダッシュボード</a></li>
-<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%90%E3%83%B3%E3%82%AF"><span class="header-section-number">6.3.2</span> データバンク</a></li>
-<li><a class="nav-link" href="#%E4%BD%BF%E3%81%84%E6%96%B9-1"><span class="header-section-number">6.3.3</span> 使い方</a></li>
+<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%90%E3%83%B3%E3%82%AFdatabank"><span class="header-section-number">6.3.2</span> データバンク（DataBank）</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E5%9B%BD%E9%9A%9B%E6%A9%9F%E9%96%A2%E3%81%AE%E3%83%91%E3%83%96%E3%83%AA%E3%83%83%E3%82%AF%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">6.4</span> さまざまな国際機関のパブリックデータ</a></li>

@@ -104,7 +104,7 @@ GDP を調べるときには、NY.GDP.MKTP.CD という、コードを指定し�
     -   Bulk Download: Excel, CSV
     -   API Documentation
 
-## ダッシュボード
+## ダッシュボード（Dashboard）
 
 世界銀行のダッシュボードには二種類あります。一つは、それぞれの指標についてのダッシュボード、もう一つは、データバンク（DataBank）です。
 
@@ -117,13 +117,102 @@ GDP を調べるときには、NY.GDP.MKTP.CD という、コードを指定し�
 1.  [世界銀行オープンデータ](https://data.worldbank.org) から、指標（Indicator）を選択し、その中の Economy & Growth（経済と成長）の中から、[GDP (current US\$)](https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?view=chart) を選択すると、ダッシュボードが現れ、世界の GPD の推移のグラフが表示されます。
 2.  [世界銀行オープンデータ](https://data.worldbank.org) から、国（Country）を選択し、例えば、J から、Japan を選択し、Economics（経済）の指標の [GDP (current US\$)](#0) を選択すると、ダッシュボードが現れ、日本の GDP の推移のグラフが表示されます。指標によっては、上の、Theme（テーマ）や、Topic（トピック）から選ぶ必要がある場合もあります。
 3.  [世界開発指標（WDI）](https://datatopics.worldbank.org/world-development-indicators/)の Data Theme（テーマ）の中の、ECONOMY（経済） の中から、[GDP (current US\$)](https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?view=chart) を選択すると、ダッシュボードが現れ、世界の GPD の推移のグラフが表示されます。
-4.  もし、WDI コード（この場合は、NY.GDP.MKTP.CD）を知っていれば、このコードを、Google など、検索エンジンの検索窓に入れて検索すると、上のダッシュボードのページを教えてくれると思います。
+4.  もし、WDI コード（この場合は、NY.GDP.MKTP.CD）を知っていれば、このコードを、[世界銀行オープンデータ](https://data.worldbank.org) の検索窓に入れて検索すると、上のダッシュボードのページが表示されます。
+
+最初は、選択した指標について、世界か、日本など選択した国の、折れ線グラフ（Line Graph）が表示されていると思います。そして、下の方に、国のリストがあり、その一番下には、地域のリストが続いています[^12-worldbank-site-1]。また、Line （折れ線グラフ）と書いた右には、Bar（棒グラフ）と、Map（地図）とあります。
+
+[^12-worldbank-site-1]: アルファベットの昇順になっていますが、そのリストの Country（国）の右にある ⌃型のマークを押すと⌵に変わり、降順になります。
+
+その右には、Also Show （追加）とあり、Aggregates（総合）、Same Region（同じ地域）、Similar Values（近い値）、Highest Values（最高値）、Lowest Values（最小値）を表示することもできます。表示しないときは、None を選択します。
+
+その右には、Share（共有）と、Details（詳細）があります。詳細には、その指標についての、詳しい説明があります。すべてを理解することはできないかもしれませんが、翻訳機能も使って、確認しておくことをお勧めします。詳細には、データコードも書かれています。記録しておくと、次に同じ指標のデータを探すときに便利です。共有からは、Web Page や、SNS に埋め込む、iframe link を取得することができます。
+
+右の方の帯には、関連する指標がリストされ、さらに、Download（ダウンロード）、Data Bank（データバンク）、WDI Tables （統計表）へのリンクがあります。
 
 #### 使い方
 
-### データバンク
+具体例としては、GDP（Current US\$）の世界（World）のグラフが表示されているとします。上の検索窓に GDP（Current US\$）と入っていると思います。
 
-### 使い方
+-   国や地域の追加
+
+    -   英語で入力しますから、グラフの下の、国や地域名のところから、追加したい、国や地域名を選んで、書き出しておいてください。一つずつ追加するときは、コピーするのも良いかもしれません。
+
+    -   日本をグラフに追加するときは、Japan ですから、検索窓に、Japan と入れて**少し待ちます**。すると、窓の下に、Japan が表示されますから、それを選択（クリック）します。すると、日本のグラフに変わります。India も加えてください。次に、検索窓に、United と入力すると、United Kingdom, United States, United Arab Emirates が表示されますから、United Kingdom を選択してください。Japan, India, United Kingdom の三つの国のグラフが同時に表示されます。これによって、いくつかの国のその指標における経年変化を比較することができます。
+
+    -   いろいろな国や地域を加えてみてください。たとえば、GDP を指標として、United States を加えると、United States の GDP の値が大きいため、他の国のグラフは下の方に重なり合うようになります。Afghanistan を加えると、ある年以前のデータがなかったり、値がとても小さいために、X 軸に張り付くようになってしまったりします。みやすいグラフを表示するには、どのようなものの比較をするかも重要になってくることがわかると思います。
+
+    -   追加した国や地域を消すのは、単にその国名の、右に表示される x マークを選択すれば良いですし、Delete キーでも消去できます。
+
+    -   実は、Japan など一つの国を加えてからあとは、下の国名などのリストから、追加したい国を選択すると、追加されていきます。検索窓に入れるよりも簡単だと思います。
+
+-   Also Show の活用
+
+    -   上に書いたように、Aggregates（総合）、Same Region（同じ地域）、Similar Values（近い値）、Highest Values（最高値）、Lowest Values（最小値）を追加できます。たとえば、Japan（日本）だけを残しておいて、Same Region を選択すると、いくつかの国の値が、薄く表示されます。地域名をみると、これは、East Asia & Pacific（東アジアと太平洋地域）であることが推測されます。
+
+    -   そこで、East Asia & Pasific を選択すると、その地域の総計の値が追加されます。
+
+#### データダウンロード
+
+R のパッケージを用いたデータのダウンロードについてはあとから述べますが、指標毎のダッシュボードの右の帯のダウンロードからも、データをダウンロードすることができます。
+
+CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（Micosoft Excel Spreadsheet） と三つの形式でデータを取得できます。それぞれ、R などで読み込むことができます。ただし、CSV と、XML は、Zip 形式の圧縮ファイルになっています。EXCEL は、三つのシート（Data, Metadata - Countries, Metadata - Indicators）が一つの、ブックになっています。Metadata（メタデータ）は、データのデータで、データについての情報が収められています。
+
+### データバンク（DataBank）
+
+上で説明した指標毎のダッシュボードの右の帯からも、データバンクのダッシュボードが開きますが、[世界銀行オープンデータ](https://data.worldbank.org) の下にある、データバンクを選択すると、リストが表示されます。ここで、ある程度選択してから、ダッシュボードを表示させることもできます。一番上に、World Development Indicators（世界開発指標）がありますから、選択してください。あとから、他のものに変更することも可能です。
+
+表が表示され、左の方に、Variables（変数）、Layout（レイアウト）、Styles（形式）、Save（保存）、Share（共有）、Embed（埋め込み） とあり、右上には、Table（表）、Chart（グラフ）、Map（地図）、Metadata（メタデータ） とあり、その下には、Preview（表示）などとなっていると思います。
+
+膨大なデータを選択し、形式を整えて、ダウンロードしたり、グラフを表示したりすることができます。
+
+#### 例1
+
+まずは、一つ目の例として、GDP (Current US\$) の値を大きい方から国順に並べてみましょう。
+
+1.  Variable の Database で、World Development Indicators を選択します。
+
+2.  Countries では、上に、All、Countries、Aggregates とありますから、Countries を選択します。
+
+3.  一番左のチェックボックス Select All（すべて選択）を選びます。これで国が全部選択されました。現在ですと、Selected 217 と出ています。
+
+4.  Series は、いくつか選択されている可能性がありますから、X マークを選択して、まずは、全部選択を解除し、次に、GDP (current US\$) にチェックを入れます。Selected 1 となっていることを確認してください。
+
+5.  Time の一番左のチェックボックスから、Select All にしてください。現在では、Selected 63 と表示されました。
+
+6.  右の方に、Selections have been modified ... （選択が変更されました ...）と出ますので、Apply Changes（変更を適用）を選びます。
+
+7.  上の Layout タブを選択し、Time を Column（列）、Country を Row（行）、Series を Page（ページに指定します）
+
+ここまでで、Table に、GDP (current US\$) についての表が表示されていることを確認してください。
+
+これを書いている時点では、2022年が最も新しいデータで、2022 の年のところをクリックすると、最初は、国名のアルファベット順になっていると思いますが、それが、その指標の値の、昇順、降順に変更できます。ここでは、GDP が大きな値の順に並べたいので、降順にします。
+
+10位までの国は、United States, China, Japan, Germany, India, United Kingdom, France, Russian Federation, Canada, Italy となっているかと思います。
+
+#### 例2
+
+2022年の値で、10位までの国を選択して、折れ線グラフや、棒グラフなどを書いてみましょう。
+
+1.  Variables の Countries の X で選択を解除し、上の10カ国を選んでください。
+2.  右の方に、Selections have been modified ... （選択が変更されました ...）と出ますので、Apply Changes（変更を適用）を選びます。すると表が10カ国のものに変わります。
+3.  上の、Styles を選択し、Chat Type & Style で、Line（折れ線グラフ）を選択すると、しばらくして、10カ国の、折れ線グラフを表示させることができます。色も変更することも可能です。
+4.  Chat Type & Style で Horizontal Bar を選択し、Layout で、
+
+以下では、変数（Variables）の選び方と、グラフ（Chart）について簡単に説明します。
+
+#### 変数（Variables）
+
+Database、Country、Series、Time とあり、それぞれの右に、Available と Selected とあります。
+
+どのデータベースについて、国を選択し、系列を選び、期間を選択するという形式になっています。
+
+Database の左の三角印を選択すると、データベース名が確認できます。現在は、World Development Indicators が選択されています。ここで、他のデータベースに変更することも可能ですが、まずは、そのままにしましょう。
+
+次は、Countries（国）です。All、Countries、Aggregates と一番上にあります。国だけを表示するか、地域やグループを表示するか、すべてを表示するかを選択できます。
+
+簡単のために、まずは、Countries（国）を選択しましょう。
+
+国がいくつか選択されている場合もありますから、X マークをクリックして、すべて選択を消去し、国を選んでみましょう。GDP のところで経験したように、GDP の多い方から、United States、China、Japan、Germany、India、United Kingdom、France を選択してみましょう。
 
 #### GDP per capita (constant 2015 US\$)
 
