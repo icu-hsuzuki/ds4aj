@@ -106,6 +106,23 @@ GDP を調べるときには、NY.GDP.MKTP.CD という、コードを指定し�
 
 ## ダッシュボード
 
+世界銀行のダッシュボードには二種類あります。一つは、それぞれの指標についてのダッシュボード、もう一つは、データバンク（DataBank）です。
+
+### 指標毎のダッシュボード
+
+はじめてのデータサイエンスで使った、GDP (Current US\$)、データコード NY.GDP.MKTP.CD についてみてみましょう。
+
+いくつかの方法があります。
+
+1.  [世界銀行オープンデータ](https://data.worldbank.org) から、指標（Indicator）を選択し、その中の Economy & Growth（経済と成長）の中から、[GDP (current US\$)](https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?view=chart) を選択すると、ダッシュボードが現れ、世界の GPD の推移のグラフが表示されます。
+2.  [世界銀行オープンデータ](https://data.worldbank.org) から、国（Country）を選択し、例えば、J から、Japan を選択し、Economics（経済）の指標の [GDP (current US\$)](#0) を選択すると、ダッシュボードが現れ、日本の GDP の推移のグラフが表示されます。指標によっては、上の、Theme（テーマ）や、Topic（トピック）から選ぶ必要がある場合もあります。
+3.  [世界開発指標（WDI）](https://datatopics.worldbank.org/world-development-indicators/)の Data Theme（テーマ）の中の、ECONOMY（経済） の中から、[GDP (current US\$)](https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?view=chart) を選択すると、ダッシュボードが現れ、世界の GPD の推移のグラフが表示されます。
+4.  もし、WDI コード（この場合は、NY.GDP.MKTP.CD）を知っていれば、このコードを、Google など、検索エンジンの検索窓に入れて検索すると、上のダッシュボードのページを教えてくれると思います。
+
+#### 使い方
+
+### データバンク
+
 ### 使い方
 
 #### GDP per capita (constant 2015 US\$)
