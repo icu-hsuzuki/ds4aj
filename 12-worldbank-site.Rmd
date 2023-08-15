@@ -6,32 +6,19 @@
 
 世界銀行の[サイト](https://www.worldbank.org/en/home)を見てみると、下の方にはグラフも出ており、さまざまな統計データを提供することに力を入れていることがわかります。
 
--   World Bank: <https://www.worldbank.org>
--   [Who we are](https://www.worldbank.org/en/who-we-are):
-    -   To end extreme poverty: By reducing the share of the global population that lives in extreme poverty to 3 percent by 2030.
-    -   To promote shared prosperity: By increasing the incomes of the poorest 40 percent of people in every country.
--   World Bank Open Data: <https://data.worldbank.org>
-    -   Data Bank, World Development Indicators, etc.
-
-### 世界開発指数（World Development Indicator (WDI)）
-
--   [World Development Indicators (WDI)](https://datatopics.worldbank.org/world-development-indicators/) : the World Bank's premier compilation of cross-country comparable data on development; 1400 time series indicators
-    -   Themes: Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links
-    -   Open Data & DataBank: Explore data, Query database
-    -   Bulk Download: Excel, CSV
-    -   API Documentation
+すでに、世界開発指標については、簡単に説明しました。ここでは、世界銀行のサイトの中のデータについて、見ていくとともに、ダッシュボード（dashboard）の活用、データの取得方法や、API （Application Program Interface）を用いて、R でデータを検索したり、取得するパッケージの紹介を簡単にします。
 
 ## データベース
 
-## 三つのサイト
+### 三つのサイト
 
 -   [世界銀行オープンデータ](https://data.worldbank.org)
 -   [データカタログ](https://datacatalog.worldbank.org/home)
 -   [世界開発指標（WDI）](https://datatopics.worldbank.org/world-development-indicators/)
 
-三つのサイトのリンクを書きました。一つ一つみていきましょう。
+一つ一つみていきましょう。
 
-まず、英語を読むことが苦手な場合は、ブラウザー（Google Chrome, Edge, Safari などのホームページ閲覧ソフト）の自動翻訳機能を使うのも良いでしょう。しかし、自動翻訳機能を利用していると、リンク先に飛べなかったり、いくつかの機能が使えないこともありますので、正常に機能しないときは、自動翻訳機能を一旦 OFF にして利用してください。
+英語を読むことが苦手な場合は、ブラウザー（Google Chrome, Edge, Safari などのホームページ閲覧ソフト）の自動翻訳機能を使うのも良いでしょう。しかし、自動翻訳機能を利用していると、リンク先に飛べなかったり、いくつかの機能が使えないこともありますので、正常に機能しないときは、自動翻訳機能を一旦 OFF にして利用してください。
 
 ### [世界銀行オープンデータ](https://data.worldbank.org)
 
@@ -97,10 +84,6 @@ GDP を調べるときには、NY.GDP.MKTP.CD という、コードを指定し�
 一番上には、Search Box（検索窓）があり、その下には、Featured （特徴的な、またはお薦め）とあり、いくつものトピックが並んでいます。右に、スクロールするとさらにいくつものトピックを見ることができます。その中にも、上で述べた 世界開発指標（WDI）もありますし、Covid-19 （コロナウイルス感染症）関連のデータもあります。
 
 それぞれの、トピックに、関連のデータがリストされています。
-
-### [世界開発指標（WDI）](https://datatopics.worldbank.org/world-development-indicators/)
-
-また、オープンデータについて、世界銀行は、厳密な定義をしています。
 
 ### World Bank: WDI - World Development Indicaters
 
@@ -236,3 +219,33 @@ CO2 排出量 (1 人あたりのメートル トン) の年次変化の折線グ
 ### 世界のさまざまな課題から見る
 
 ## API
+
+世界銀行（World Bank）の API を利用した R のパッケージを二つ紹介します。
+
+### WDI
+
+Search and download data from over 40 databases hosted by the World Bank, including the World Development Indicators ('WDI'), International Debt Statistics, Doing Business, Human Capital Index, and Sub-national Poverty indicators.
+
+世界開発指標(「WDI」)、国際債務統計、Doing Business、人的資本指数、準国家貧困指標など、世界銀行が主催する40以上のデータベースからデータを検索してダウンロードします。
+
+-   R のパッケージサイト：[https://CRAN.R-project.org/package=WDI](https://cran.r-project.org/package=WDI)
+
+-   資料（Materials）：<https://cran.r-project.org/web/packages/WDI/readme/README.html>
+
+-   マニュアル（Manual）：<https://cran.r-project.org/web/packages/WDI/WDI.pdf>
+
+-   使い方の例：<https://vincentarelbundock.github.io/WDI/>
+
+### wbstats
+
+Programmatic Access to Data and Statistics from the World Bank API
+
+世界銀行APIからのデータと統計へのプログラムによるアクセス
+
+-   R のパッケージサイト：[https://CRAN.R-project.org/package=wbstats](https://cran.r-project.org/package=wbstats)
+
+-   資料（Materials）：	[README](https://cran.r-project.org/web/packages/wbstats/readme/README.html)
+
+-   マニュアル（Manual）：<https://cran.r-project.org/web/packages/wbstats/wbstats.pdf>
+
+-   使い方の例（Vignette）：<https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html>

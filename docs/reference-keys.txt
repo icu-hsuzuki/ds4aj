@@ -74,16 +74,15 @@ publicdata-site
 概要-1
 オープンデータについて
 オープンデータの未来
+api-を利用したパッケージ
 worldbank-site
 概要-2
-世界開発指数world-development-indicator-wdi
 データベース
 三つのサイト
 世界銀行オープンデータ-1
 国別サイト-1
 指標別サイト-1
 オープンデータカタログopen-data-catalog
-世界開発指標wdi-2
 world-bank-wdi---world-development-indicaters
 世界開発指標world-development-indicator
 ダッシュボード
@@ -98,6 +97,8 @@ proportion-of-seats-held-by-women-in-natinal-parliaments
 持続的開発目標sdgs-データ
 世界のさまざまな課題から見る
 api
+wdi
+wbstats
 oecd-site
 概要-3
 データベース-1

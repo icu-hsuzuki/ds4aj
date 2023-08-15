@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 5 オープンデータ | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="5.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスでは、どのようなことを見ていくのかを見てきました。...">
+<meta name="description" content="5.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 5 オープンデータ | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/publicdata-site.html">
-<meta property="og:description" content="5.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスでは、どのようなことを見ていくのかを見てきました。...">
+<meta property="og:description" content="5.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 5 オープンデータ | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="5.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスでは、どのようなことを見ていくのかを見てきました。...">
+<meta name="twitter:description" content="5.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -119,7 +119,7 @@
 <h2>
 <span class="header-section-number">5.1</span> 概要<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E8%A6%81-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスでは、どのようなことを見ていくのかを見てきました。</p>
+<p>すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。</p>
 <p>第一部では、世界銀行や、経済協力開発機構（OECD）、国際連合（United Nations）などの、国際機関のオープンデータや、日本のデータとして、政府機関統計（e-Stat）の紹介をします。</p>
 <p>さらに、実際に、それぞれのサイトのオープンデータを、対話型（Interactive）の、ダッシュボード（dashboard）呼ばれている機能の使い方を紹介しながら、データ自身を見ていきます。</p>
 <p>さらに、実際のデータの取得（ダウンロード）にも触れ、それぞれの期間が提供する API（アプリケーションプログラムインターフェース）の活用についても、簡単に触れていきます。</p>
@@ -159,8 +159,20 @@
 <span class="header-section-number">5.2.1</span> オープンデータの未来<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%9C%AA%E6%9D%A5"><i class="fas fa-link"></i></a>
 </h3>
 <p>みなさんは、どのように考えますか。まだ、発展途上で、特に、パブリックデータについては、国によって、考え方も一定ではないように見受けられますが、これから、どのような世界を目指していくのか、データサイエンスは、どのような目的のために必要なのか。みなさんは、なんのために勉強しているのか、上の一つ一つの項目をもとに、周囲のみなさん、友人などと、ディスカッションをしながら、考えていただければと思います。</p>
-
 </div>
+</div>
+<div id="api-を利用したパッケージ" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> API を利用したパッケージ<a class="anchor" aria-label="anchor" href="#api-%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"><i class="fas fa-link"></i></a>
+</h2>
+<p>それぞれのオープンデータを検索したり、読み込んだりするための R のパッケージの紹介をします。上に書いたように、第二部で利用するためです。詳しい使い方は、第三部で紹介します。</p>
+<p>基本的には、以下の項目について紹介します。</p>
+<ul>
+<li><p>R の（公式）パッケージサイト：パッケージも含め、R の管理をしている CRAN の公式サイトの情報です。この下の情報も、ほとんどの場合、このリンク先に掲載されています。</p></li>
+<li><p>資料（Materials）： README（はじめにお読みください）などで、基本情報が書かれています。</p></li>
+<li><p>マニュアル（Manual）：利用者用説明書です。パッケージで利用可能な関数（命令、データ）などの情報がすべて書かれてあります。それぞれの関数（命令）に関しては、R Studio 内の Help（ヘルプ検索窓）からも利用可能です。</p></li>
+<li><p>使い方の例（Vignette）：開発者のサイト（GitHub（バージョン管理システムの支援サイト）など）にある場合もありますが、最近は、公式パッケージサイトに、Vignette として使い方の例が掲載されている場合が増えてきています。すべて理解しようとせず、使い方の例からまずはみてみることが有効です</p></li>
+</ul>
 </div>
 </div>
   <div class="chapter-nav">
@@ -174,6 +186,7 @@
 <li>
 <a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">5.2</span> オープンデータについて</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%9C%AA%E6%9D%A5"><span class="header-section-number">5.2.1</span> オープンデータの未来</a></li></ul>
 </li>
+<li><a class="nav-link" href="#api-%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"><span class="header-section-number">5.3</span> API を利用したパッケージ</a></li>
 </ul>
 
       <div class="book-extra">
