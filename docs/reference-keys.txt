@@ -70,6 +70,13 @@ wdi-site
 オープンデータの定義open-data-defined
 オープンデータの意義
 オープンデータの利活用
+notebook
+再現性
+技術的なこと
+ブラウザーの言語と翻訳機能
+画像
+html-要素
+データファイル
 publicdata-site
 概要-1
 さまざまな機関のオープンデータ

@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 12 R Studio で R | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 13 R Studio で R | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="12.1 はじめに この章では、R と R Studio をインストールし、正常に動作しているかを、確認することを目標とします。実際の、使い方は、次の章以下で、述べます。 また、Posit Cloud など、R Studio 以外で、R を使う方法も、最後に述べます。特に、Posit Cloud は、一定の制限はあるものの、基本的には、R Studio で R...">
+<meta name="description" content="13.1 はじめに この章では、R と R Studio をインストールし、正常に動作しているかを、確認することを目標とします。実際の、使い方は、次の章以下で、述べます。 また、Posit Cloud など、R Studio 以外で、R を使う方法も、最後に述べます。特に、Posit Cloud は、一定の制限はあるものの、基本的には、R Studio で R...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 12 R Studio で R | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 13 R Studio で R | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/ronrstudio.html">
-<meta property="og:description" content="12.1 はじめに この章では、R と R Studio をインストールし、正常に動作しているかを、確認することを目標とします。実際の、使い方は、次の章以下で、述べます。 また、Posit Cloud など、R Studio 以外で、R を使う方法も、最後に述べます。特に、Posit Cloud は、一定の制限はあるものの、基本的には、R Studio で R...">
+<meta property="og:description" content="13.1 はじめに この章では、R と R Studio をインストールし、正常に動作しているかを、確認することを目標とします。実際の、使い方は、次の章以下で、述べます。 また、Posit Cloud など、R Studio 以外で、R を使う方法も、最後に述べます。特に、Posit Cloud は、一定の制限はあるものの、基本的には、R Studio で R...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 12 R Studio で R | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="12.1 はじめに この章では、R と R Studio をインストールし、正常に動作しているかを、確認することを目標とします。実際の、使い方は、次の章以下で、述べます。 また、Posit Cloud など、R Studio 以外で、R を使う方法も、最後に述べます。特に、Posit Cloud は、一定の制限はあるものの、基本的には、R Studio で R...">
+<meta name="twitter:title" content="Chapter 13 R Studio で R | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="13.1 はじめに この章では、R と R Studio をインストールし、正常に動作しているかを、確認することを目標とします。実際の、使い方は、次の章以下で、述べます。 また、Posit Cloud など、R Studio 以外で、R を使う方法も、最後に述べます。特に、Posit Cloud は、一定の制限はあるものの、基本的には、R Studio で R...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -72,33 +72,34 @@
 <li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
 <li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
 <li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
+<li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
 <li class="book-part">PART I オープンデータ</li>
-<li><a class="" href="publicdata-site.html"><span class="header-section-number">5</span> オープンデータ</a></li>
-<li><a class="" href="worldbank-site.html"><span class="header-section-number">6</span> 世界銀行（World Bank）</a></li>
-<li><a class="" href="oecd-site.html"><span class="header-section-number">7</span> OECD（経済協力開発機構）</a></li>
-<li><a class="" href="un-site.html"><span class="header-section-number">8</span> United Nations（国際連合）</a></li>
-<li><a class="" href="owid-site.html"><span class="header-section-number">9</span> Our World in Data</a></li>
-<li><a class="" href="estat-site.html"><span class="header-section-number">10</span> e-Stat 日本の政府統計</a></li>
-<li><a class="" href="other-site.html"><span class="header-section-number">11</span> その他のサイト</a></li>
+<li><a class="" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
+<li><a class="" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
+<li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
+<li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
+<li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
+<li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
+<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
 <li class="book-part">PART II BASICS</li>
-<li><a class="active" href="ronrstudio.html"><span class="header-section-number">12</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">13</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">14</span> R Basics</a></li>
-<li><a class="" href="visualize.html"><span class="header-section-number">15</span> Visualize</a></li>
-<li><a class="" href="transform.html"><span class="header-section-number">16</span> Transform</a></li>
-<li><a class="" href="import.html"><span class="header-section-number">17</span> Import</a></li>
-<li><a class="" href="modeling.html"><span class="header-section-number">18</span> Modeling</a></li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">19</span> Public Data の分析</a></li>
+<li><a class="active" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R Basics</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">16</span> Visualize</a></li>
+<li><a class="" href="transform.html"><span class="header-section-number">17</span> Transform</a></li>
+<li><a class="" href="import.html"><span class="header-section-number">18</span> Import</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">19</span> Modeling</a></li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">20</span> Public Data の分析</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">20</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">21</span> UN Data（国際連合データ）</a></li>
-<li><a class="" href="owid.html"><span class="header-section-number">22</span> Our World in Data</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">23</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">24</span> その他のデータベース</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">21</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">22</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">23</span> Our World in Data</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">24</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">25</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">25</span> 探索的データ解析</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">26</span> 探索的データ解析</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">26</span> Example 1</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">27</span> Example 1</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -111,21 +112,21 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ronrstudio" class="section level1" number="12">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ronrstudio" class="section level1" number="13">
 <h1>
-<span class="header-section-number">12</span> R Studio で R<a class="anchor" aria-label="anchor" href="#ronrstudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13</span> R Studio で R<a class="anchor" aria-label="anchor" href="#ronrstudio"><i class="fas fa-link"></i></a>
 </h1>
-<div id="はじめに" class="section level2" number="12.1">
+<div id="はじめに" class="section level2" number="13.1">
 <h2>
-<span class="header-section-number">12.1</span> はじめに<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.1</span> はじめに<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><i class="fas fa-link"></i></a>
 </h2>
 <p>この章では、R と R Studio をインストールし、正常に動作しているかを、確認することを目標とします。実際の、使い方は、次の章以下で、述べます。</p>
 <p>また、Posit Cloud など、R Studio 以外で、R を使う方法も、最後に述べます。特に、Posit Cloud は、一定の制限はあるものの、基本的には、R Studio で R を使うのと、同様のことが可能な、Cloud 環境ですので、R と R Studio のインストールに成功した場合も、利用方法を確認してください。</p>
 <p>確認の段階で、エラーが出てしまった場合の解決方法も、下に書きますが、まずは、Posit Cloud など、他の方法でR を使えるようにして、時間のあるときに、解決を試みてください。</p>
 </div>
-<div id="r-と-r-studio" class="section level2" number="12.2">
+<div id="r-と-r-studio" class="section level2" number="13.2">
 <h2>
-<span class="header-section-number">12.2</span> R と R Studio<a class="anchor" aria-label="anchor" href="#r-%E3%81%A8-r-studio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2</span> R と R Studio<a class="anchor" aria-label="anchor" href="#r-%E3%81%A8-r-studio"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS. <a href="https://www.r-project.org" class="uri">https://www.r-project.org</a></p>
@@ -141,9 +142,9 @@
 </blockquote>
 <p>R は、統計解析のためのシステムで、R Studio は、R（および Python）を利用するための、総合開発環境です。そこで、「R Studio で R を利用する」という表現をします。</p>
 </div>
-<div id="r-と-r-studio-のインストール" class="section level2" number="12.3">
+<div id="r-と-r-studio-のインストール" class="section level2" number="13.3">
 <h2>
-<span class="header-section-number">12.3</span> R と R Studio のインストール<a class="anchor" aria-label="anchor" href="#r-%E3%81%A8-r-studio-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3</span> R と R Studio のインストール<a class="anchor" aria-label="anchor" href="#r-%E3%81%A8-r-studio-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
 </h2>
 <p>R と R Studio をインストールします。</p>
 <p>両方とも、インストールすることが必要です。</p>
@@ -154,9 +155,9 @@
 <p>家族で、コンピュータを共有していて、管理者権限がない場合は、管理者権限のあるかたに、R と RStudio をインストールしてもらってください。そうすれば、そのコンピュータの他のアカウントでも利用することができます。</p>
 <p>ある制約がかかるとメッセージが出ますが、管理者権限なしで、インストールすることも可能です。特別の事情があり、管理者権限なしで、インストールする場合は、<a href="https://icu-hsuzuki.github.io/myds/techmemo.html#%E9%9D%9E%E7%AE%A1%E7%90%86%E8%80%85%E3%81%A8%E3%81%97%E3%81%A6-r-%E3%81%A8-rstudio-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">こちら</a>を参照してください。</p>
 </div>
-<div id="r-のインストール" class="section level3" number="12.3.1">
+<div id="r-のインストール" class="section level3" number="13.3.1">
 <h3>
-<span class="header-section-number">12.3.1</span> R のインストール<a class="anchor" aria-label="anchor" href="#r-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.1</span> R のインストール<a class="anchor" aria-label="anchor" href="#r-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
 </h3>
 <p><a href="https://cloud.r-project.org" class="uri">https://cloud.r-project.org</a></p>
 <p>上のリンクから、Windows、macOS または、Linux を選択して、インストールしてください。</p>
@@ -164,18 +165,18 @@
 <p>macOS の場合は、M1, M2 など、最近の Apple Silicon の CPU で動くコンピュータか、以前の、Intel の CPU で動くものか、選択してください。Mac の左上の、りんごマークの、このコンピュータについてから、確認できます。</p>
 <p>不明の場合は、「R のインストール」と検索してみてください。</p>
 </div>
-<div id="r-studio-の-インストール" class="section level3" number="12.3.2">
+<div id="r-studio-の-インストール" class="section level3" number="13.3.2">
 <h3>
-<span class="header-section-number">12.3.2</span> R Studio の インストール<a class="anchor" aria-label="anchor" href="#r-studio-%E3%81%AE-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.2</span> R Studio の インストール<a class="anchor" aria-label="anchor" href="#r-studio-%E3%81%AE-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
 </h3>
 <p><a href="http://www.rstudio.com/download" class="uri">http://www.rstudio.com/download</a></p>
 <p>上のリンクから、Windows 10/11 または、macOS 11+ を 選択してください。これら以外の、古いシステムのコンピュータの場合は、 下のサイトから、探してください。</p>
 <p><a href="https://docs.posit.co/previous-versions/" class="uri">https://docs.posit.co/previous-versions/</a></p>
 <p>不明の場合は、「RStudio のインストール」と検索してみてください。</p>
 </div>
-<div id="動作確認" class="section level3" number="12.3.3">
+<div id="動作確認" class="section level3" number="13.3.3">
 <h3>
-<span class="header-section-number">12.3.3</span> 動作確認<a class="anchor" aria-label="anchor" href="#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.3</span> 動作確認<a class="anchor" aria-label="anchor" href="#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D"><i class="fas fa-link"></i></a>
 </h3>
 <p>動作確認のための、一連の流れを書き、その下に、問題が起こった場合の対処を書きます。</p>
 <p>R Studio はこれまでも使っていたが、R Notebook は使ったことがないという方も、同様の確認をしてください。</p>
@@ -200,9 +201,9 @@
 <p>この一連の作業で、最後に、PDF が現れれば、動作確認終了です。クラウド Posit Cloud の項目に進んでください。</p>
 <p>ステップ5まで終了すれば、PDF を作成しない限り、問題はありませんので、あとは、時間のあるときに、対応することも可能です。</p>
 </div>
-<div id="トラブルシューティング１" class="section level3" number="12.3.4">
+<div id="トラブルシューティング１" class="section level3" number="13.3.4">
 <h3>
-<span class="header-section-number">12.3.4</span> トラブル・シューティング（１）<a class="anchor" aria-label="anchor" href="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%91"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.4</span> トラブル・シューティング（１）<a class="anchor" aria-label="anchor" href="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%91"><i class="fas fa-link"></i></a>
 </h3>
 <p>動作確認のステップ 4 （またはステップ５で要求されるパッケージのインストール時点）または、6 でエラーが出る場合があります。</p>
 <ul>
@@ -250,15 +251,15 @@
 <p>カタカナや漢字のユーザネームを使っている場合は、RMarkdown で、文書を作成し、PDF で出力するときには、問題が起こります<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;PDF の作成には、内部で TeX というプログラムを使っていますが、この TeX システムは、カタカナや漢字が入っているディレクトリには、インストールすることができません。&lt;/p&gt;"><sup>10</sup></a>。解決方法は上に書いたように、一つの解決方法として、TinyTeX を、Home とは異なるところにインストールしています<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;別のアカウントを作成して、そこに、TeXLive を インストールする方法もあります。&lt;a href="https://icu-hsuzuki.github.io/myds/techmemo.html#windows-installation-of-r-rstudio-tex"&gt;リンク&lt;/a&gt; を参照。&lt;/p&gt;'><sup>11</sup></a>。</p>
 <p>OneDrive で、ドキュメントフォルダ全体のバックアップをとっている場合も、問題が起こる可能性がありますが、一般的には書けませんので、困ったときは、下に書く方法を参照してください<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;パッケージのインストールや、R Markdown で文書を生成するときには、一時的なファイルを作成して、問題がある場合はレポートする仕組みになっています。そして、問題なくその作業が終了すると、それらのファイルを消去しています。詳細は不明ですが、この作業で、OneDrive でバックアップする作業が入ると、エラーが起きるのではないかと思われます。&lt;/p&gt;"><sup>12</sup></a>。</p>
 </div>
-<div id="トラブルシューティング２" class="section level4" number="12.3.4.1">
+<div id="トラブルシューティング２" class="section level4" number="13.3.4.1">
 <h4>
-<span class="header-section-number">12.3.4.1</span> トラブル・シューティング（２）<a class="anchor" aria-label="anchor" href="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%92"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.4.1</span> トラブル・シューティング（２）<a class="anchor" aria-label="anchor" href="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%92"><i class="fas fa-link"></i></a>
 </h4>
 <p>トラブル・シューティング（１）では解決できない場合の対処法を書きます。わたしは、MacOS では、動作確認の１から６で、問題が起こったと聞いたことがないので、以下では主として、Windows に限って書きます。</p>
 <p>実際には、さまざまな理由がありますから、以下の方法では対処できないかもしれません。まず、エラーメッセージを丁寧に見ることが大切ですが、簡単には理解できない場合が多いかと思います。そこで、まず、試してみる方法を以下に書きます。</p>
-<div id="r-および-rstudio-のアンインストール" class="section level5" number="12.3.4.1.1">
+<div id="r-および-rstudio-のアンインストール" class="section level5" number="13.3.4.1.1">
 <h5>
-<span class="header-section-number">12.3.4.1.1</span> R および RStudio のアンインストール<a class="anchor" aria-label="anchor" href="#r-%E3%81%8A%E3%82%88%E3%81%B3-rstudio-%E3%81%AE%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.4.1.1</span> R および RStudio のアンインストール<a class="anchor" aria-label="anchor" href="#r-%E3%81%8A%E3%82%88%E3%81%B3-rstudio-%E3%81%AE%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
 </h5>
 <p>どのようなアプリも、本来はインストールと同時に、アンインストール（アプリを削除）する方法を知っておくことは大切です。</p>
 <ul>
@@ -277,9 +278,9 @@
 <p>Windows の場合、「設定」から、「環境変数の編集」を検索して、選択すると、Path を見ることができます。上の枠が、ユーザの環境変数、下の枠が、システム環境変数です。ユーザの環境変数の中の、Path（他には、TEMP, TMP もあるかと思います。）をコピーしておくと良いでしょう。Path をダブルクリックして、編集することも可能です。ただし、十分理解しないで、Path を変更すると、問題が起こる可能性がありますので、注意してください。</p>
 </div>
 </div>
-<div id="別のアカウントを作成してインストール" class="section level5" number="12.3.4.1.2">
+<div id="別のアカウントを作成してインストール" class="section level5" number="13.3.4.1.2">
 <h5>
-<span class="header-section-number">12.3.4.1.2</span> 別のアカウントを作成してインストール<a class="anchor" aria-label="anchor" href="#%E5%88%A5%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.4.1.2</span> 別のアカウントを作成してインストール<a class="anchor" aria-label="anchor" href="#%E5%88%A5%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
 </h5>
 <p>Windows に、もう一つ、アカウントを作成します。</p>
 <ol style="list-style-type: decimal">
@@ -294,9 +295,9 @@
 </ol>
 <p>アカウント名をローマ字にします。このアカウントから、インストールしてください。元の日本語アカウントとファイルを共有したいときは、C ドライブのユーザーにあるパブリック（共有）ディレクトリーにコピーしてください。</p>
 </div>
-<div id="このあとの使い方について" class="section level5" number="12.3.4.1.3">
+<div id="このあとの使い方について" class="section level5" number="13.3.4.1.3">
 <h5>
-<span class="header-section-number">12.3.4.1.3</span> このあとの使い方について<a class="anchor" aria-label="anchor" href="#%E3%81%93%E3%81%AE%E3%81%82%E3%81%A8%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.4.1.3</span> このあとの使い方について<a class="anchor" aria-label="anchor" href="#%E3%81%93%E3%81%AE%E3%81%82%E3%81%A8%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
 </h5>
 <p>他のアカウントに、R と RStudio をインストールしても、自分のアカウントでも、R と RStudio を利用することが可能です。しかし、漢字やカタカナのアカウント名や、OneDrive の問題は、解決しません。アカウント名を修正することは可能ですが、間違えると、コンピュータ自体が動かなくなりますから、ここでは、説明しませんが、興味のあるかたは、<a href="https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf">矢内勇生さんのスライド</a> を参照してください。</p>
 <p>OneDrive は、どのように使われているかによって、対応が変わりますので、一般的な対応方法は書けません。OneDrive は、Microsoft が提供するクラウドサービスで、5GB までは、無料で使えることもあり、コンピュータを使い始めるときに<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Microsoft アカウントを設定すると&lt;/p&gt;"><sup>14</sup></a>、利用を促されます。5GB を超える場合は、課金されます。十分な容量を有料で確保していると、すべて、OneDrive にバックアップすることになり、Home も、OneDrive の管理下に置かれて、上に述べたような、ファイルを書いたり消去したりを頻繁に行うプログラムの場合には、問題が起こるようです。</p>
@@ -309,14 +310,14 @@
 </div>
 </div>
 </div>
-<div id="positcloud" class="section level2" number="12.4">
+<div id="positcloud" class="section level2" number="13.4">
 <h2>
-<span class="header-section-number">12.4</span> クラウド - Posit Cloud<a class="anchor" aria-label="anchor" href="#positcloud"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4</span> クラウド - Posit Cloud<a class="anchor" aria-label="anchor" href="#positcloud"><i class="fas fa-link"></i></a>
 </h2>
 <p>Posit（RStudio）Cloudは、誰でもオンラインでデータサイエンスを行い、共有し、教え、学ぶことができる、軽量でクラウドベースのソリューションです。2022年11月に、会社名が、RStuio から Posit に変更になったので、Posit Cloud となっていますが、まだ、RStudio Cloud と表示されている箇所もあります。</p>
-<div id="クラウドサービス-how-to-start-posit-cloud" class="section level3" number="12.4.1">
+<div id="クラウドサービス-how-to-start-posit-cloud" class="section level3" number="13.4.1">
 <h3>
-<span class="header-section-number">12.4.1</span> クラウドサービス　How to Start Posit Cloud<a class="anchor" aria-label="anchor" href="#%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9-how-to-start-posit-cloud"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.1</span> クラウドサービス　How to Start Posit Cloud<a class="anchor" aria-label="anchor" href="#%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9-how-to-start-posit-cloud"><i class="fas fa-link"></i></a>
 </h3>
 <p>まず、サインアップして、使ってください。一ヶ月の利用時間の限度など、設定されていますが、どこからでも、インターネットにつながっていれば使えるので、わたしは、いつくかアカウントを持って、活用しています。</p>
 <ol style="list-style-type: decimal">
@@ -359,9 +360,9 @@ Then you can see the temporary file containing everything in your old account an
 </ol>
 </div>
 </div>
-<div id="positcloud-shared-project" class="section level3" number="12.4.2">
+<div id="positcloud-shared-project" class="section level3" number="13.4.2">
 <h3>
-<span class="header-section-number">12.4.2</span> PositCloud Shared Project<a class="anchor" aria-label="anchor" href="#positcloud-shared-project"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.2</span> PositCloud Shared Project<a class="anchor" aria-label="anchor" href="#positcloud-shared-project"><i class="fas fa-link"></i></a>
 </h3>
 <p>わたしのプロジェクトを一つ共有してありますので、興味のある方はご覧ください、</p>
 <ol style="list-style-type: decimal">
@@ -372,24 +373,24 @@ Then you can see the temporary file containing everything in your old account an
 <li>上に、Save a Permanent Copy とあります。これを、クリックすると、自分の、プロジェクトとすることができ、編集も可能になります。</li>
 </ol>
 </div>
-<div id="posit-primers-and-cheat-sheet" class="section level3" number="12.4.3">
+<div id="posit-primers-and-cheat-sheet" class="section level3" number="13.4.3">
 <h3>
-<span class="header-section-number">12.4.3</span> Posit Primers and Cheat Sheet<a class="anchor" aria-label="anchor" href="#posit-primers-and-cheat-sheet"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.3</span> Posit Primers and Cheat Sheet<a class="anchor" aria-label="anchor" href="#posit-primers-and-cheat-sheet"><i class="fas fa-link"></i></a>
 </h3>
 <p>Posit Primers の左の帯（表示されていない場合は、左上の３本線をクリックしてください）をみると、いろいろな機能があることがわかります。特に、Primers は、基本的な練習をするプログラムで、あとからも、紹介しますが、答えを入力している形の練習問題になっています。とても有用です。</p>
 <p>Cheat Sheet は、いくつもの、機能の一覧が、早見表の形式で載っています。使い方などをぼえておくことはできないので、わたしも、よく使っています。</p>
 </div>
 </div>
-<div id="r-のその他の利用方法" class="section level2" number="12.5">
+<div id="r-のその他の利用方法" class="section level2" number="13.5">
 <h2>
-<span class="header-section-number">12.5</span> R のその他の利用方法<a class="anchor" aria-label="anchor" href="#r-%E3%81%AE%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5</span> R のその他の利用方法<a class="anchor" aria-label="anchor" href="#r-%E3%81%AE%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><i class="fas fa-link"></i></a>
 </h2>
 <p>R Studio または、RStudio Cloud（Posit Cloud） 以外で、R を使われる方のために、少しだけ書いておきます。個人的には、<a href="https://colab.research.google.com">Google colab</a> と、<a href="https://cocalc.com">Cocalc</a> を利用しています。</p>
 <p>Google colab は、Google アカウントの作成、Cocalc は、Cocalc アカウントの作成、または、Google アカウントか、GitHub アカウントのリンクが必要です。</p>
 <p>Google アカウントをお持ちの方は多いと思うので、Google colab について、最低限のことのみ、書いておきます。</p>
-<div id="google-colab-で-r" class="section level3" number="12.5.1">
+<div id="google-colab-で-r" class="section level3" number="13.5.1">
 <h3>
-<span class="header-section-number">12.5.1</span> Google colab で R<a class="anchor" aria-label="anchor" href="#google-colab-%E3%81%A7-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.1</span> Google colab で R<a class="anchor" aria-label="anchor" href="#google-colab-%E3%81%A7-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>基本的に、<code>python</code> 開発環境として構築されているものですが、R でも使うことができます。</p>
 <ol style="list-style-type: decimal">
@@ -404,18 +405,18 @@ Then you can see the temporary file containing everything in your old account an
 </ol>
 <p>ノートを、保存、印刷、ダウンロードなど可能です。</p>
 <p>フォルダーを作成して、外部ファイルを読み込んだり、書き出したりすることも可能です。</p>
-<div id="参考-2" class="section level4" number="12.5.1.1">
+<div id="参考-2" class="section level4" number="13.5.1.1">
 <h4>
-<span class="header-section-number">12.5.1.1</span> 参考<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.1.1</span> 参考<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83-2"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li><a href="https://towardsdatascience.com/how-to-use-r-in-google-colab-b6e02d736497">How to use R in Google Colab:</a></li>
 </ul>
 </div>
 </div>
-<div id="cocalc-で-r-と-rmarkdown" class="section level3" number="12.5.2">
+<div id="cocalc-で-r-と-rmarkdown" class="section level3" number="13.5.2">
 <h3>
-<span class="header-section-number">12.5.2</span> CoCalc で R と RMarkdown<a class="anchor" aria-label="anchor" href="#cocalc-%E3%81%A7-r-%E3%81%A8-rmarkdown"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.2</span> CoCalc で R と RMarkdown<a class="anchor" aria-label="anchor" href="#cocalc-%E3%81%A7-r-%E3%81%A8-rmarkdown"><i class="fas fa-link"></i></a>
 </h3>
 <p><a href="https://cocalc.com">Cocalc リンク</a></p>
 <p>無償版は、スピードが遅いですが、個人的には、有用なクラウドサービスとして、活用しています。グループでプロジェクトを共有することも簡単にできます。</p>
@@ -440,33 +441,33 @@ Then you can see the temporary file containing everything in your old account an
 </div>
 
   <div class="chapter-nav">
-<div class="prev"><a href="other-site.html"><span class="header-section-number">11</span> その他のサイト</a></div>
-<div class="next"><a href="rmarkdown.html"><span class="header-section-number">13</span> R Markdown</a></div>
+<div class="prev"><a href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></div>
+<div class="next"><a href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#ronrstudio"><span class="header-section-number">12</span> R Studio で R</a></li>
-<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><span class="header-section-number">12.1</span> はじめに</a></li>
-<li><a class="nav-link" href="#r-%E3%81%A8-r-studio"><span class="header-section-number">12.2</span> R と R Studio</a></li>
+<li><a class="nav-link" href="#ronrstudio"><span class="header-section-number">13</span> R Studio で R</a></li>
+<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><span class="header-section-number">13.1</span> はじめに</a></li>
+<li><a class="nav-link" href="#r-%E3%81%A8-r-studio"><span class="header-section-number">13.2</span> R と R Studio</a></li>
 <li>
-<a class="nav-link" href="#r-%E3%81%A8-r-studio-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">12.3</span> R と R Studio のインストール</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#r-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">12.3.1</span> R のインストール</a></li>
-<li><a class="nav-link" href="#r-studio-%E3%81%AE-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">12.3.2</span> R Studio の インストール</a></li>
-<li><a class="nav-link" href="#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D"><span class="header-section-number">12.3.3</span> 動作確認</a></li>
-<li><a class="nav-link" href="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%91"><span class="header-section-number">12.3.4</span> トラブル・シューティング（１）</a></li>
+<a class="nav-link" href="#r-%E3%81%A8-r-studio-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">13.3</span> R と R Studio のインストール</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">13.3.1</span> R のインストール</a></li>
+<li><a class="nav-link" href="#r-studio-%E3%81%AE-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">13.3.2</span> R Studio の インストール</a></li>
+<li><a class="nav-link" href="#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D"><span class="header-section-number">13.3.3</span> 動作確認</a></li>
+<li><a class="nav-link" href="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%91"><span class="header-section-number">13.3.4</span> トラブル・シューティング（１）</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#positcloud"><span class="header-section-number">12.4</span> クラウド - Posit Cloud</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9-how-to-start-posit-cloud"><span class="header-section-number">12.4.1</span> クラウドサービス　How to Start Posit Cloud</a></li>
-<li><a class="nav-link" href="#positcloud-shared-project"><span class="header-section-number">12.4.2</span> PositCloud Shared Project</a></li>
-<li><a class="nav-link" href="#posit-primers-and-cheat-sheet"><span class="header-section-number">12.4.3</span> Posit Primers and Cheat Sheet</a></li>
+<a class="nav-link" href="#positcloud"><span class="header-section-number">13.4</span> クラウド - Posit Cloud</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9-how-to-start-posit-cloud"><span class="header-section-number">13.4.1</span> クラウドサービス　How to Start Posit Cloud</a></li>
+<li><a class="nav-link" href="#positcloud-shared-project"><span class="header-section-number">13.4.2</span> PositCloud Shared Project</a></li>
+<li><a class="nav-link" href="#posit-primers-and-cheat-sheet"><span class="header-section-number">13.4.3</span> Posit Primers and Cheat Sheet</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#r-%E3%81%AE%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><span class="header-section-number">12.5</span> R のその他の利用方法</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#google-colab-%E3%81%A7-r"><span class="header-section-number">12.5.1</span> Google colab で R</a></li>
-<li><a class="nav-link" href="#cocalc-%E3%81%A7-r-%E3%81%A8-rmarkdown"><span class="header-section-number">12.5.2</span> CoCalc で R と RMarkdown</a></li>
+<a class="nav-link" href="#r-%E3%81%AE%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><span class="header-section-number">13.5</span> R のその他の利用方法</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#google-colab-%E3%81%A7-r"><span class="header-section-number">13.5.1</span> Google colab で R</a></li>
+<li><a class="nav-link" href="#cocalc-%E3%81%A7-r-%E3%81%A8-rmarkdown"><span class="header-section-number">13.5.2</span> CoCalc で R と RMarkdown</a></li>
 </ul>
 </li>
 </ul>
