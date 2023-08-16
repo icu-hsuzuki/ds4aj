@@ -193,6 +193,8 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 
 10位までの国は、United States, China, Japan, Germany, India, United Kingdom, France, Russian Federation, Canada, Italy となっているかと思います。
 
+\<iframe frameBorder='no' src="[https://databank.worldbank.org/embed/GDP---current-US\$/id/66aaa928?ti=y&ds=n&dd=y&tb=y&sh=y&dw=y&pr=y&inf=y&zm=y&md=y&navigator=n&theme=darkGrey&bdrClr=rgb(68,68,68)&bdrStyle=solid&bdrWidth=0px&title=Arial;14px;true;false;rgb(68,68,68);justify&exptypes=Excel,CSV,TabbedTxt"](https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&ds=n&dd=y&tb=y&sh=y&dw=y&pr=y&inf=y&zm=y&md=y&navigator=n&theme=darkGrey&bdrClr=rgb(68,68,68)&bdrStyle=solid&bdrWidth=0px&title=Arial;14px;true;false;rgb(68,68,68);justify&exptypes=Excel,CSV,TabbedTxt") width= "500" height="425"\>\</iframe\>
+
 #### 例2
 
 2022年の値で、10位までの国を選択して、折れ線グラフや、棒グラフなどを書いてみましょう。

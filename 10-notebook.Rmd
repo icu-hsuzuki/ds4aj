@@ -26,4 +26,6 @@ R で、R Markdown などを使って、データサイエンスをしていく�
 
 -   形式
 
+-   圧縮ファイル
+
 -   Excel と Google Spread Sheet
