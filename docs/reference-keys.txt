@@ -118,6 +118,8 @@ oecd-site
 概要-3
 データベース-1
 oecd
+テーマ別
+例
 ダッシュボード-1
 api-1
 un-site
@@ -331,3 +333,4 @@ publishing
 pages
 metadata-for-sharing
 todo-list
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg

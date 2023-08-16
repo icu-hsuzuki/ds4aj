@@ -193,7 +193,7 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 
 10位までの国は、United States, China, Japan, Germany, India, United Kingdom, France, Russian Federation, Canada, Italy となっているかと思います。
 
-\<iframe frameBorder='no' src="[https://databank.worldbank.org/embed/GDP---current-US\$/id/66aaa928?ti=y&ds=n&dd=y&tb=y&sh=y&dw=y&pr=y&inf=y&zm=y&md=y&navigator=n&theme=darkGrey&bdrClr=rgb(68,68,68)&bdrStyle=solid&bdrWidth=0px&title=Arial;14px;true;false;rgb(68,68,68);justify&exptypes=Excel,CSV,TabbedTxt"](https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&ds=n&dd=y&tb=y&sh=y&dw=y&pr=y&inf=y&zm=y&md=y&navigator=n&theme=darkGrey&bdrClr=rgb(68,68,68)&bdrStyle=solid&bdrWidth=0px&title=Arial;14px;true;false;rgb(68,68,68);justify&exptypes=Excel,CSV,TabbedTxt") width= "500" height="425"\>\</iframe\>
+<iframe frameBorder='no' src="https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&ds=n&dd=y&tb=y&sh=y&dw=y&pr=y&inf=y&zm=y&md=y&navigator=n&theme=darkGrey&bdrClr=rgb(68,68,68)&bdrStyle=solid&bdrWidth=0px&title=Arial;14px;true;false;rgb(68,68,68);justify&exptypes=Excel,CSV,TabbedTxt" width= "500"  height="425"></iframe>
 
 #### 例2
 
@@ -203,6 +203,8 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 2.  右の方に、Selections have been modified ... （選択が変更されました ...）と出ますので、Apply Changes（変更を適用）を選びます。すると表が10カ国のものに変わります。
 3.  上の、Styles を選択し、Chat Type & Style で、Line（折れ線グラフ）を選択すると、しばらくして、10カ国の、折れ線グラフを表示させることができます。色も変更することも可能です。
 4.  Chat Type & Style で Horizontal Bar を選択し、Layout で、
+
+<iframe frameBorder='no' src="https://databank.worldbank.org/embed/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74?ti=y&ds=n&dd=y&tb=y&sh=y&dw=y&pr=y&inf=y&zm=y&md=y&navigator=n&theme=darkGrey&bdrClr=rgb(68,68,68)&bdrStyle=solid&bdrWidth=0px&title=Arial;14px;true;false;rgb(68,68,68);justify&exptypes=Excel,CSV,TabbedTxt" width= "500"  height="425"></iframe>
 
 以下では、変数（Variables）の選び方と、グラフ（Chart）について簡単に説明します。
 
