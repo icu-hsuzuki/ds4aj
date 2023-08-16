@@ -22,6 +22,34 @@ R を使ったデータサイエンスを、早く学びたい方は、この第
 
 こんなふうに、データがたくさん、公開されているのか、と、そんな感触を持っていただければと思います。
 
+## さまざまな機関のオープンデータ
+
+すでに少しだけ紹介した世界銀行以外にも、それぞれの機関がデータを提供しています。どれも、少しずつ使いやすくなってきています。少しずつ、いくつかのデータベースに、アクセスして、できれば、API の利用の仕方も、習得して、データを調べることに少しずつ慣れていっていただければと思います。
+
+下のリストは、私が個人的に、何度か使ったことのある、データベースです。「データサイエンスをはじめましょう」でも、少しずつ消化していきます。他にも、たくさんのデータベースがありますので、ぜひ、調べてみてください。
+
+-   国際連合　[UNdata](https://data.un.org)
+-   経済協力開発機構　[OECD data](https://data.oecd.org)、
+-   世界格差データベース（World Inequality Database）[WID](https://wid.world)、
+-   欧州連合の統計局　[Eurostat](https://ec.europa.eu/eurostat)、
+-   データで見る私たちの世界　[Our World in Data](https://ourworldindata.org)
+
+なども、同様の、ダッシュボードを備えており、データの提供もしている。
+
+<p>
+
+日本では、
+
+-   [e-Stat](https://www.e-stat.go.jp/)：政府統計の総合窓口 - 統計で見る日本
+-   [ダッシュボード](https://dashboard.e-stat.go.jp)：対話型形式でのデータの視覚化
+
+### 持続的開発目標（SDGs） データ
+
+-   世界銀行：[https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)](https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)){.uri}
+-   国連：<https://unstats.un.org/sdgs/dataportal/database>
+-   データで見る私たちの世界：Our World in Data SGD Tracker: <https://sdg-tracker.org/>
+-   SDG Index: <https://dashboards.sdgindex.org/map>
+
 ## オープンデータについて
 
 オープンデータについては、すでに、世界銀行の定義をご紹介しました。パブリックデータをいう言葉も使われます。それらの違いなども含めて、AI に聞いてみましょう。

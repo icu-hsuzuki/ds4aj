@@ -108,6 +108,10 @@ GDP を調べるときには、NY.GDP.MKTP.CD という、コードを指定し�
 
 世界銀行のダッシュボードには二種類あります。一つは、それぞれの指標についてのダッシュボード、もう一つは、データバンク（DataBank）です。
 
+### World Bank アカウント
+
+ダッシュボードは、リンクにアクセスすれば、アカウントなどを作成せず、すぐに使えます。しかし、ダッシュボードを使って、グラフを作成したり、自分用の、データを作成したりした場合には、その結果を、保存をしたり、リンク（iframe 形式）を、文書に埋め込んだりする必要を感じる場合があります。その場合には、一般用アカウントを作成する必要があります。この[サイト](https://login.worldbankgroup.org/worldbankgroupb2c.onmicrosoft.com/b2c_1_wbg-solexternal_sisu/oauth2/v2.0/authorize?client_id=7077d845-b099-4fca-9f1b-8fcaade1524c&scope=openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Fpip.worldbank.org%2Fsol%2F&client-request-id=a3010f0e-81e7-45c4-b519-d8e044d3a89b&response_mode=fragment&response_type=code&x-client-SKU=msal.js.browser&x-client-VER=2.34.0&client_info=1&code_challenge=Ome3V78SVvRRXZvJ3DjMvKDuE5CE-N59RHOY09WJ_LY&code_challenge_method=S256&nonce=0a59c36f-97dd-4369-a233-544b6a6393eb&state=eyJpZCI6Ijc3M2MxM2MzLTg5OTItNDEwMS05MmJkLWYyZThmZDQwNjdlZiIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D)の Sign Up から、アカウントを作成してください。
+
 ### 指標毎のダッシュボード
 
 はじめてのデータサイエンスで使った、GDP (Current US\$)、データコード NY.GDP.MKTP.CD についてみてみましょう。
@@ -293,34 +297,6 @@ CO2 排出量 (1 人あたりのメートル トン) の年次変化の折線グ
 <iframe src="https://data.worldbank.org/share/widget?indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE" width="450" height="300" frameBorder="0" scrolling="no">
 
 </iframe>
-
-## さまざまな国際機関のパブリックデータ
-
-世界銀行以外にも、それぞれの機関がデータを提供しています。どれも、少しずつ使いやすくなってきています。少しずつ、いくつかのデータベースに、アクセスして、できれば、API の利用の仕方も、習得して、データを調べることに少しずつ慣れていっていただければと思います。
-
-下のリストは、私が個人的に、何度か使ったことのある、データベースです。他にも、たくさんのデータベースがありますので、ぜひ、調べてみてください。
-
--   国際連合　[UNdata](https://data.un.org)
--   経済協力開発機構　[OECD data](https://data.oecd.org)、
--   世界格差データベース（World Inequality Database）[WID](https://wid.world)、
--   欧州連合の統計局　[Eurostat](https://ec.europa.eu/eurostat)、
--   データで見る私たちの世界　[Our World in Data](https://ourworldindata.org)
-
-なども、同様の、ダッシュボードを備えており、データの提供もしている。
-
-<p>
-
-日本では、
-
--   [e-Stat](https://www.e-stat.go.jp/)：政府統計の総合窓口 - 統計で見る日本
--   [ダッシュボード](https://dashboard.e-stat.go.jp)：対話型形式でのデータの視覚化
-
-## 持続的開発目標（SDGs） データ
-
--   世界銀行：[https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)](https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)){.uri}
--   国連：<https://unstats.un.org/sdgs/dataportal/database>
--   データで見る私たちの世界：Our World in Data SGD Tracker: <https://sdg-tracker.org/>
--   SDG Index: <https://dashboards.sdgindex.org/map>
 
 ### 世界のさまざまな課題から見る
 

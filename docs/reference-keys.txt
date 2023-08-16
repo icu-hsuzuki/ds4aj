@@ -72,6 +72,8 @@ wdi-site
 オープンデータの利活用
 publicdata-site
 概要-1
+さまざまな機関のオープンデータ
+持続的開発目標sdgs-データ
 オープンデータについて
 オープンデータの未来
 ダッシュボード
@@ -87,6 +89,7 @@ worldbank-site
 world-bank-wdi---world-development-indicaters
 世界開発指標world-development-indicator
 ダッシュボードdashboard
+world-bank-アカウント
 指標毎のダッシュボード
 使い方
 データダウンロード
@@ -100,8 +103,6 @@ co2-emissions-metric-tons-per-capita
 military-expenditure-of-gdp
 military-expenditure-current-usd
 proportion-of-seats-held-by-women-in-natinal-parliaments
-さまざまな国際機関のパブリックデータ
-持続的開発目標sdgs-データ
 世界のさまざまな課題から見る
 api
 wdi
