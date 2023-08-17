@@ -1,1 +1,241 @@
-# Visualize {#visualize}
+# 視覚化（Visualize） {#visualize}
+
+## 準備
+
+```{r}
+library(tidyverse)
+```
+
+## 基本的なこと
+
+### Importing data
+
+Let us assign the `iris` data in the pre-installed package `datasets` to `df_iris`. You can give any name starting from an alphabet, though there are some rules. 
+
+```{r}
+df_iris <- datasets::iris
+class(df_iris)
+```
+
+The class of data `iris` is `data.frame`, the basic data class of R. You can assign the same data as a `tibble`, the data class of `tidyverse` as follows.
+
+```{r}
+tbl_iris <- as_tibble(datasets::iris)
+class(tbl_iris)
+```
+
+* `df_iris <- iris` can replace  `df_iris <- datasets::iris` because the package `datasets` is installed and attached as default. Since you may have other data called `iris` included in a different package or you may have changed `iris` before, it is safer to specify the package's name with the data's name.
+* Within R Notebook or in Console, you may get different output, and `tf_iris` and `tbl_iris` behave differently. It is because of the default settings of R Markdown. 
+
+
+
+### Look at the data
+
+#### Several ways to view the data.
+
+The `View` command opens up a window to show the contents of the data, and you can also use the filter.
+
+```{r viewiris, eval = FALSE}
+View(df_iris)
+```
+
+
+The following simple command also shows the data. 
+
+```{r dfiris, eval=FALSE}
+df_iris
+```
+```{r echo=FALSE, eval=TRUE}
+df_iris %>% slice(1:10)
+```
+
+`%>%` is called a pipe command, and we use it often. 
+
+The output within R Notebook is a tibble style. Try the same command in Console.
+
+```{r slice10iris}
+slice(df_iris, 1:10)
+```
+
+```{r one2ten}
+1:10
+```
+
+
+
+
+#### Data Structure
+
+Let us look at the structure of the data. You can try `str(df_iris)` on Console or by adding a code chunk in R Notebook introducing later.
+
+```{r glimpse:eiris}
+glimpse(df_iris)
+```
+
+There are six types of data in R; Double, Integer, Character, Logical, Raw, and Complex. In this course, we use only the first four.
+
+The names after $ are column names. If you call `df_iris$Species`, you have the Species column. Species is in the 5th column, `typeof(df_iris[[5]])` does the same as the next. 
+
+`df_iris[2,4] = ``r df_iris[2,4]` is the fourth entry of Sepal.Width.
+
+
+
+```{r}
+typeof(df_iris$Species)
+```
+
+```{r}
+class(df_iris$Species)
+```
+
+For `factors = fct` see [the R Document](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor) or an explanation in [Factor in R: Categorical Variable & Continuous Variables](https://www.guru99.com/r-factor-categorical-continuous.html).
+
+
+
+```{r}
+typeof(df_iris$Sepal.Length)
+class(df_iris$Sepal.Length)
+```
+
+
+**Q1.** What are the differences of `df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` above?
+
+**Q2.** What are the differences of`df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` in the console?
+
+
+
+#### Summary of the Data
+
+The following is very convenient to get the summary information of a data.
+
+```{r}
+summary(df_iris)
+```
+
+Minimum, 1st Quadrant (25%),  Median, Mean, 3rd Quadrant (75%), Maximum, and the count of each factor.
+
+
+
+## 散布図（Scatter Plot）
+
+We use `ggplot` to draw graphs. The scatter plot is a projection of data with two variables $x$ and $y$. 
+
+```
+ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
+  geom_point()
+```
+```
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point()
+```
+
+
+
+
+```{r message=FALSE, warning=FALSE, comment=FALSE}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point()
+```
+
+
+
+### ラベル [Labels](https://ggplot2.tidyverse.org/reference/labs.html)
+
+Add title and labels adding `labs()`. 
+
+```
+ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
+  geom_point() +
+  labs(title = "Title", x = "Label for x", y = "Label for y")
+```
+
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() + 
+  labs(title = "Scatter Plot of Sepal Data of Iris", x = "Sepal Length", y = "Sepal Width")
+```
+
+
+
+### 色付き [Colors](https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html)
+
+Add different colors automatically to each species. Can you see each group?
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point()
+```
+
+
+
+### 形状
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, shape = Species)) +
+  geom_point()
+```
+
+
+
+## 箱ひげ図 [Boxplot](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)
+
+The boxplot compactly displays the distribution of a continuous variable. 
+
+```{r}
+ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
+  geom_boxplot()
+```
+
+
+
+##　ヒストグラム [Histogram](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
+
+Visualize the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin. Histograms (geom_histogram()) display the counts with bars. 
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = df_iris, aes(x = Sepal.Length)) +
+  geom_histogram()
+```
+
+
+
+Change the number of bins by `bins =` `<number>`.
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length)) +
+  geom_histogram(bins = 10)
+```
+
+
+
+## 線形モデル Data Modeling 
+
+Professor Kaizoji will cover the mathematical models and hypothesis testings. 
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+## コメント
+
+### 参考文献
+
+* Cheat Sheet in RStudio: https://www.rstudio.com/resources/cheatsheets/  
+  - [RStudio IED](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf)
+  - [Base R Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf)
+* 'Quick R' by DataCamp: https://www.statmethods.net/management
+
+* [An Introduction to R](https://cran.rstudio.com)
+
+
+
+## 練習
+
+### Posit Primers https://posit.cloud/learn/primers
+
+1. The Basics -- [r4ds: Explore, I](https://r4ds.had.co.nz/explore-intro.html#explore-intro)
+  - [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+  - [Programming Basics](https://rstudio.cloud/learn/primers/1.2)

@@ -135,6 +135,8 @@ api-3
 estat-site
 概要-6
 データベース-4
+家計調査
+補足
 ダッシュボード-4
 api-4
 estatapi-利用概要
@@ -208,6 +210,23 @@ tips
 参考文献-references
 youtube-video---getstarted
 visualize
+準備
+基本的なこと
+importing-data
+look-at-the-data
+several-ways-to-view-the-data.
+data-structure
+summary-of-the-data
+散布図scatter-plot
+ラベル-labels
+色付き-colors
+形状
+箱ひげ図-boxplot
+線形モデル-data-modeling
+コメント
+参考文献
+練習-3
+posit-primers-httpsposit.cloudlearnprimers
 transform
 import
 modeling
@@ -333,4 +352,3 @@ publishing
 pages
 metadata-for-sharing
 todo-list
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg

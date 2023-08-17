@@ -85,7 +85,7 @@
 <li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
 <li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
 <li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R Basics</a></li>
-<li><a class="" href="visualize.html"><span class="header-section-number">16</span> Visualize</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">16</span> 視覚化（Visualize）</a></li>
 <li><a class="" href="transform.html"><span class="header-section-number">17</span> Transform</a></li>
 <li><a class="" href="import.html"><span class="header-section-number">18</span> Import</a></li>
 <li><a class="" href="modeling.html"><span class="header-section-number">19</span> Modeling</a></li>
@@ -132,11 +132,43 @@
 <li>
 <a href="https://dashboard.e-stat.go.jp">ダッシュボード</a>：対話型形式でのデータの視覚化</li>
 </ul>
+<p>たくさんの統計が掲載されています。ダッシュボードは、そのうちのいくつかを見やすいように、グラフによって視覚化されています。</p>
+<p>まず、<a href="https://www.e-stat.go.jp/">e-Stat</a> 政府統計の総合窓口に行くと、右上の若葉マークに使い方が書かれていますから、それを読むのがお勧めです。ここには、詳細は書きません。</p>
+<p>まず「<a href="https://www.e-stat.go.jp/stat-search?page=1">すべて</a>」（政府統計一覧）では、すべての統計情報を見ることができ、検索もできます。左の帯に、データベースと、ファイルとありますが。基本的に、API を使って、データを読み込むことができるようになっているのが、データベースです。</p>
+<p>その下には、統計分類（大分類）として、トピックごとに分類されたものを調べるものがあります。これは、トップページの「分野」と大体対応しています。その下には、組織で調べる、統計の種類で絞り込み、政府統計名で絞り込み、提供周期で絞り込み、調査年で絞り込み、調査月で絞り込み、50音で絞り込み、統計表フォーマットで絞り込み、集計地域区分で絞り込みと続きます。</p>
+<p>まずは、統計の種類から、基幹統計を見てみましょう。<a href="https://www.e-stat.go.jp/stat-search?page=1&amp;toukei_kind=6&amp;metadata=1&amp;data=1">ここ</a>からも見ることができます。全部で61のデータベース、64のファイルと書かれて、国勢調査や、人口推計、労働力調査、家計調査、学校基本調査などが並んでいます。</p>
+<div id="家計調査" class="section level3" number="11.2.1">
+<h3>
+<span class="header-section-number">11.2.1</span> 家計調査<a class="anchor" aria-label="anchor" href="#%E5%AE%B6%E8%A8%88%E8%AA%BF%E6%9F%BB"><i class="fas fa-link"></i></a>
+</h3>
+<p><a href="https://www.e-stat.go.jp/stat-search/database?page=1&amp;toukei=00200561&amp;tstat=000000330001&amp;toukei_kind=6&amp;metadata=1&amp;data=1">家計調査</a>をみてみましょう。家計調査についての説明がありますが、その下の、二人以上の世帯、年次を見てみます。費目分類010 品目分類（2020年改定）（総数：金額）のDB（データベース）をみてみましょう。</p>
+<p>表が現れます。</p>
+<p>左の方にある、表示項目選択を開きます。</p>
+<p>時間軸：すべて解除して、最新の2022のものだけ選択します。</p>
+<p>左の方にある、レイアウト設定を開きます。</p>
+<p>ページ上部：表章項目、世帯区分、時間軸（年次）</p>
+<p>列：費目分類</p>
+<p>行：地域分類</p>
+<p>確定させてもとに戻ると、それぞれの項目のそれぞれの地域の平均消費額がわかります。一番上には全国平均が載っています。</p>
+<p>たとえば、二人以上の世帯の、この調査における平均世帯人数は、2.91人、消費支出3,490,383円、牛乳の支出15,001円などと出ています。</p>
+<div id="補足" class="section level4" number="11.2.1.1">
+<h4>
+<span class="header-section-number">11.2.1.1</span> 補足<a class="anchor" aria-label="anchor" href="#%E8%A3%9C%E8%B6%B3"><i class="fas fa-link"></i></a>
+</h4>
+<p>統計表としてではありませんが、家計調査からのランキングのようなものも、公開されています。ご興味のあるかたはみてください。</p>
+<p><a href="https://www.stat.go.jp/data/kakei/5.html">家計調査（二人以上の世帯）　品目別都道府県庁所在市及び政令指定都市（※）ランキング（2020年（令和２年）～2022年（令和４年）平均）</a></p>
+<p>ただし、このランキングの下になっているデータを探そうとすると、なかなか大変です。</p>
+</div>
+</div>
 </div>
 <div id="ダッシュボード-4" class="section level2" number="11.3">
 <h2>
-<span class="header-section-number">11.3</span> ダッシュボード<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.3</span> <a href="https://dashboard.e-stat.go.jp">ダッシュボード</a><a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-4"><i class="fas fa-link"></i></a>
 </h2>
+<p>何種類かのグラフを見ることができると同時に、右の方に、時系列表とあり、これから、データをダウンロードできるようにもなっています。</p>
+<p><a href="https://dashboard.e-stat.go.jp/pyramidGraph?screenCode=00570&amp;regionCode=00000&amp;pyramidAreaType=2">人口ピラミッド</a></p>
+<p>人口ピラミッドを見てみましょう。1920年からの人口ピラミッドを見ることができます。また、日本の全体だけではなく、都道府県、市町村、世界の国々についても見ることができます。ピラミッドの形が変わっていく様子、戦争などで、急激に変化する様子なども、見ることができます。</p>
+<p>また、それぞれの個々のグラフのデータをダウンロードすることができます。全体のデータを一括ダウンロードできると良いと思うのですが。</p>
 </div>
 <div id="api-4" class="section level2" number="11.4">
 <h2>
@@ -168,7 +200,9 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#estat-site"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
 <li><a class="nav-link" href="#%E6%A6%82%E8%A6%81-6"><span class="header-section-number">11.1</span> 概要</a></li>
-<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9-4"><span class="header-section-number">11.2</span> データベース</a></li>
+<li>
+<a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9-4"><span class="header-section-number">11.2</span> データベース</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E5%AE%B6%E8%A8%88%E8%AA%BF%E6%9F%BB"><span class="header-section-number">11.2.1</span> 家計調査</a></li></ul>
+</li>
 <li><a class="nav-link" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-4"><span class="header-section-number">11.3</span> ダッシュボード</a></li>
 <li><a class="nav-link" href="#api-4"><span class="header-section-number">11.4</span> API</a></li>
 <li>
@@ -192,7 +226,7 @@
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-16.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

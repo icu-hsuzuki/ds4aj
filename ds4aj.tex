@@ -150,7 +150,7 @@
 \title{データサイエンスをはじめましょう\\
 - Data Science for All -}
 \author{鈴木寛（Hirosi Suzuki）}
-\date{2023-08-15}
+\date{2023-08-17}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -180,7 +180,7 @@
 \chapter*{この文書について}\label{ux3053ux306eux6587ux66f8ux306bux3064ux3044ux3066}}
 \addcontentsline{toc}{chapter}{この文書について}
 
-データサイエンスを始めてみませんか。
+データサイエンスを始めましょう。
 
 データサイエンスは、広い意味をもったことばで、一口に、学び始めると言っても、さまざまな始め方があると思います。本書では、そのひとつを提案するとともに、共に学んでいきたいと願って、書き始めました。
 
@@ -1923,6 +1923,51 @@ WDI のテーマとほぼ一致しています。それぞれのテーマを選�
 
 プログラミング言語 Rを使い始める前に、データに慣れることも大切だと思いますから、次には、さまざまな、オープンデータについて、簡単な説明と共に、付随している、ダッシュボードの利用の仕方も説明しながら、みていきたいと思います。
 
+\hypertarget{notebook}{%
+\chapter{データサイエンス ノートブック}\label{notebook}}
+
+データサイエンスの記録について書きます。 また、そのために、必要なツールについても、少しだけ説明します。
+
+R で、R Markdown などを使って、データサイエンスをしていくことがお勧めですが、まず、データサイエンスに慣れるために、ダッシュボードを使ってデータを見ていくことを、第一部で紹介します。
+
+そのときにも、ノートを作成し、記録をとっていくことは、とても大切です。その説明を書きます。
+
+\hypertarget{ux518dux73feux6027}{%
+\section{再現性}\label{ux518dux73feux6027}}
+
+\hypertarget{ux6280ux8853ux7684ux306aux3053ux3068}{%
+\section{技術的なこと}\label{ux6280ux8853ux7684ux306aux3053ux3068}}
+
+\hypertarget{ux30d6ux30e9ux30a6ux30b6ux30fcux306eux8a00ux8a9eux3068ux7ffbux8a33ux6a5fux80fd}{%
+\subsection{ブラウザーの言語と翻訳機能}\label{ux30d6ux30e9ux30a6ux30b6ux30fcux306eux8a00ux8a9eux3068ux7ffbux8a33ux6a5fux80fd}}
+
+\hypertarget{ux753bux50cf}{%
+\subsection{画像}\label{ux753bux50cf}}
+
+\hypertarget{html-ux8981ux7d20}{%
+\subsection{HTML 要素}\label{html-ux8981ux7d20}}
+
+\begin{itemize}
+\item
+  リンク
+\item
+  iframe リンク
+\end{itemize}
+
+\hypertarget{ux30c7ux30fcux30bfux30d5ux30a1ux30a4ux30eb}{%
+\subsection{データファイル}\label{ux30c7ux30fcux30bfux30d5ux30a1ux30a4ux30eb}}
+
+\begin{itemize}
+\item
+  文字化け
+\item
+  形式
+\item
+  圧縮ファイル
+\item
+  Excel と Google Spread Sheet
+\end{itemize}
+
 \hypertarget{part-part-i-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}{%
 \part{PART I オープンデータ}\label{part-part-i-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}}
 
@@ -1932,7 +1977,7 @@ WDI のテーマとほぼ一致しています。それぞれのテーマを選�
 \hypertarget{ux6982ux8981-1}{%
 \section{概要}\label{ux6982ux8981-1}}
 
-すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスでは、どのようなことを見ていくのかを見てきました。
+すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。
 
 第一部では、世界銀行や、経済協力開発機構（OECD）、国際連合（United Nations）などの、国際機関のオープンデータや、日本のデータとして、政府機関統計（e-Stat）の紹介をします。
 
@@ -1947,6 +1992,54 @@ R を使ったデータサイエンスを、早く学びたい方は、この第
 同時に、実際に、オープンデータを活用して、ある課題について調べるときには、基本的なオープンデータについての知識は有用です。どこに、そのようなデータがあるかを見つけることがたいせつであるとともに、データサイエンスはなんと言っても、理論ではなく、実証的なものですから、実際のデータに触れながら、学んでいくのがたいせつだと考えているからです。
 
 こんなふうに、データがたくさん、公開されているのか、と、そんな感触を持っていただければと思います。
+
+\hypertarget{ux3055ux307eux3056ux307eux306aux6a5fux95a2ux306eux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}{%
+\section{さまざまな機関のオープンデータ}\label{ux3055ux307eux3056ux307eux306aux6a5fux95a2ux306eux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}}
+
+すでに少しだけ紹介した世界銀行以外にも、それぞれの機関がデータを提供しています。どれも、少しずつ使いやすくなってきています。少しずつ、いくつかのデータベースに、アクセスして、できれば、API の利用の仕方も、習得して、データを調べることに少しずつ慣れていっていただければと思います。
+
+下のリストは、私が個人的に、何度か使ったことのある、データベースです。「データサイエンスをはじめましょう」でも、少しずつ消化していきます。他にも、たくさんのデータベースがありますので、ぜひ、調べてみてください。
+
+\begin{itemize}
+\tightlist
+\item
+  国際連合　\href{https://data.un.org}{UNdata}
+\item
+  経済協力開発機構　\href{https://data.oecd.org}{OECD data}、
+\item
+  世界格差データベース（World Inequality Database）\href{https://wid.world}{WID}、
+\item
+  欧州連合の統計局　\href{https://ec.europa.eu/eurostat}{Eurostat}、
+\item
+  データで見る私たちの世界　\href{https://ourworldindata.org}{Our World in Data}
+\end{itemize}
+
+なども、同様の、ダッシュボードを備えており、データの提供もしている。
+
+日本では、
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.e-stat.go.jp/}{e-Stat}：政府統計の総合窓口 - 統計で見る日本
+\item
+  \href{https://dashboard.e-stat.go.jp}{ダッシュボード}：対話型形式でのデータの視覚化
+\end{itemize}
+
+\hypertarget{ux6301ux7d9aux7684ux958bux767aux76eeux6a19sdgs-ux30c7ux30fcux30bf}{%
+\subsection{持続的開発目標（SDGs） データ}\label{ux6301ux7d9aux7684ux958bux767aux76eeux6a19sdgs-ux30c7ux30fcux30bf}}
+
+\begin{itemize}
+\tightlist
+\item
+  世界銀行：\url{https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)}
+\item
+  国連：\url{https://unstats.un.org/sdgs/dataportal/database}
+\item
+  データで見る私たちの世界：Our World in Data SGD Tracker: \url{https://sdg-tracker.org/}
+\item
+  SDG Index: \url{https://dashboards.sdgindex.org/map}
+\end{itemize}
 
 \hypertarget{ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bfux306bux3064ux3044ux3066}{%
 \section{オープンデータについて}\label{ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bfux306bux3064ux3044ux3066}}
@@ -2000,6 +2093,81 @@ R を使ったデータサイエンスを、早く学びたい方は、この第
 
 みなさんは、どのように考えますか。まだ、発展途上で、特に、パブリックデータについては、国によって、考え方も一定ではないように見受けられますが、これから、どのような世界を目指していくのか、データサイエンスは、どのような目的のために必要なのか。みなさんは、なんのために勉強しているのか、上の一つ一つの項目をもとに、周囲のみなさん、友人などと、ディスカッションをしながら、考えていただければと思います。
 
+\hypertarget{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9}{%
+\section{ダッシュボード}\label{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9}}
+
+はじめて、オープンデータを利用するときには、対話型のダッシュボードは、助けとなります。ダッシュボードとはどのようなものか、AI に説明してもらいましょう。
+
+\textbf{Q. データを対話的にみたり視覚化したりする、ダッシュボード（dashboard）について説明してください。}
+
+\textbf{ChatGPT} (2023.08.15)
+
+ダッシュボード（dashboard）は、情報やデータを一元化し、対話的に表示・分析・視覚化できるインタラクティブなユーザーインターフェースです。主にビジネスや組織内で使用され、重要な指標や情報をリアルタイムに監視・分析するために利用されます。
+
+ダッシュボードは、さまざまなデータソースからの情報を収集し、それを一つの場所にまとめて表示します。これにより、膨大なデータを迅速に把握し、傾向やパターンを特定することが可能になります。例えば、売上データ、顧客の統計情報、ウェブ解析データ、ソーシャルメディアの指標など、さまざまなデータソースからの情報を一つのダッシュボードに表示することができます。
+
+ダッシュボードは、視覚化ツールを使用してデータをグラフやチャート、表などの形式で表示します。これにより、データを直感的に理解しやすくし、視覚的なパターンや相関関係を把握することができます。例えば、売上の推移を折れ線グラフで表示したり、地域別の売上を地図上に表示したりすることができます。
+
+ダッシュボードは、利用者が必要な情報に素早くアクセスできるように設計されています。ユーザーは、ダッシュボード上の要素をクリックしたり、フィルタを適用したり、グラフをズームしたりすることで、詳細な情報を取得したり特定の視点でデータを分析したりすることができます。
+
+また、ダッシュボードはリアルタイムな情報の監視にも利用されます。データソースが更新されるたびに、ダッシュボード上の情報も自動的に更新されます。これにより、組織内の関係者が最新の情報にアクセスし、迅速な意思決定を行うことができます。
+
+ダッシュボードは、情報の可視化と分析によって、効率的なデータ駆動型の意思決定を支援する役割を果たします。組織内のさまざまなレベルの利用者が、ビジネスのパフォーマンスを把握し、問題や機会を特定し、戦略やアクションプランを立案するために活用します。
+
+\textbf{Q. 例や、ダッシュボードのサイトを教えてください。}
+
+\textbf{ChatGPT} (2023.8.15)
+
+もちろんです！以下にいくつかのダッシュボードの例と、一般的に使用されるいくつかのダッシュボードサイトをご紹介します。
+
+ダッシュボードの例:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Google Analytics: ウェブサイトのトラフィックやユーザー行動などの情報をリアルタイムに監視・視覚化するためのダッシュボードです。
+\item
+  Salesforce: セールスや顧客関連のデータを統合し、ビジネスのパフォーマンスを追跡するためのダッシュボードです。
+\item
+  Tableau: データの視覚化と分析に特化したダッシュボード作成ツールであり、さまざまな業界で利用されています。
+\end{enumerate}
+
+ダッシュボードのサイト:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Klipfolio (\url{https://www.klipfolio.com/})
+\item
+  Geckoboard (\url{https://www.geckoboard.com/})
+\item
+  DashThis (\url{https://dashthis.com/})
+\item
+  Databox (\url{https://databox.com/})
+\item
+  Microsoft Power BI (\url{https://powerbi.microsoft.com/})
+\end{enumerate}
+
+これらのサイトでは、ダッシュボード作成ツールやサービスを利用して、カスタムのダッシュボードを作成することができます。それぞれのサイトには、詳細な情報やデモが提供されている場合もありますので、ぜひご覧ください。
+
+\hypertarget{api-ux3092ux5229ux7528ux3057ux305fux30d1ux30c3ux30b1ux30fcux30b8}{%
+\section{API を利用したパッケージ}\label{api-ux3092ux5229ux7528ux3057ux305fux30d1ux30c3ux30b1ux30fcux30b8}}
+
+それぞれのオープンデータを検索したり、読み込んだりするための R のパッケージの紹介をします。上に書いたように、第二部で利用するためです。詳しい使い方は、第三部で紹介します。
+
+基本的には、以下の項目について紹介します。
+
+\begin{itemize}
+\item
+  R の（公式）パッケージサイト：パッケージも含め、R の管理をしている CRAN の公式サイトの情報です。この下の情報も、ほとんどの場合、このリンク先に掲載されています。
+\item
+  資料（Materials）： README（はじめにお読みください）などで、基本情報が書かれています。
+\item
+  マニュアル（Manual）：利用者用説明書です。パッケージで利用可能な関数（命令、データ）などの情報がすべて書かれてあります。それぞれの関数（命令）に関しては、R Studio 内の Help（ヘルプ検索窓）からも利用可能です。
+\item
+  使い方の例（Vignette）：開発者のサイト（GitHub（バージョン管理システムの支援サイト）など）にある場合もありますが、最近は、公式パッケージサイトに、Vignette として使い方の例が掲載されている場合が増えてきています。すべて理解しようとせず、使い方の例からまずはみてみることが有効です
+\end{itemize}
+
 \hypertarget{worldbank-site}{%
 \chapter{世界銀行（World Bank）}\label{worldbank-site}}
 
@@ -2010,56 +2178,13 @@ R を使ったデータサイエンスを、早く学びたい方は、この第
 
 世界銀行の\href{https://www.worldbank.org/en/home}{サイト}を見てみると、下の方にはグラフも出ており、さまざまな統計データを提供することに力を入れていることがわかります。
 
-\begin{itemize}
-\tightlist
-\item
-  World Bank: \url{https://www.worldbank.org}
-\item
-  \href{https://www.worldbank.org/en/who-we-are}{Who we are}:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    To end extreme poverty: By reducing the share of the global population that lives in extreme poverty to 3 percent by 2030.
-  \item
-    To promote shared prosperity: By increasing the incomes of the poorest 40 percent of people in every country.
-  \end{itemize}
-\item
-  World Bank Open Data: \url{https://data.worldbank.org}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Data Bank, World Development Indicators, etc.
-  \end{itemize}
-\end{itemize}
-
-\hypertarget{ux4e16ux754cux958bux767aux6307ux6570world-development-indicator-wdi}{%
-\subsection{世界開発指数（World Development Indicator (WDI)）}\label{ux4e16ux754cux958bux767aux6307ux6570world-development-indicator-wdi}}
-
-\begin{itemize}
-\tightlist
-\item
-  \href{https://datatopics.worldbank.org/world-development-indicators/}{World Development Indicators (WDI)} : the World Bank's premier compilation of cross-country comparable data on development; 1400 time series indicators
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Themes: Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links
-  \item
-    Open Data \& DataBank: Explore data, Query database
-  \item
-    Bulk Download: Excel, CSV
-  \item
-    API Documentation
-  \end{itemize}
-\end{itemize}
+すでに、世界開発指標については、簡単に説明しました。ここでは、世界銀行のサイトの中のデータについて、見ていくとともに、ダッシュボード（dashboard）の活用、データの取得方法や、API （Application Program Interface）を用いて、R でデータを検索したり、取得するパッケージの紹介を簡単にします。
 
 \hypertarget{ux30c7ux30fcux30bfux30d9ux30fcux30b9}{%
 \section{データベース}\label{ux30c7ux30fcux30bfux30d9ux30fcux30b9}}
 
 \hypertarget{ux4e09ux3064ux306eux30b5ux30a4ux30c8}{%
-\section{三つのサイト}\label{ux4e09ux3064ux306eux30b5ux30a4ux30c8}}
+\subsection{三つのサイト}\label{ux4e09ux3064ux306eux30b5ux30a4ux30c8}}
 
 \begin{itemize}
 \tightlist
@@ -2071,9 +2196,9 @@ R を使ったデータサイエンスを、早く学びたい方は、この第
   \href{https://datatopics.worldbank.org/world-development-indicators/}{世界開発指標（WDI）}
 \end{itemize}
 
-三つのサイトのリンクを書きました。一つ一つみていきましょう。
+一つ一つみていきましょう。
 
-まず、英語を読むことが苦手な場合は、ブラウザー（Google Chrome, Edge, Safari などのホームページ閲覧ソフト）の自動翻訳機能を使うのも良いでしょう。しかし、自動翻訳機能を利用していると、リンク先に飛べなかったり、いくつかの機能が使えないこともありますので、正常に機能しないときは、自動翻訳機能を一旦 OFF にして利用してください。
+英語を読むことが苦手な場合は、ブラウザー（Google Chrome, Edge, Safari などのホームページ閲覧ソフト）の自動翻訳機能を使うのも良いでしょう。しかし、自動翻訳機能を利用していると、リンク先に飛べなかったり、いくつかの機能が使えないこともありますので、正常に機能しないときは、自動翻訳機能を一旦 OFF にして利用してください。
 
 \hypertarget{ux4e16ux754cux9280ux884cux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf-1}{%
 \subsection{\texorpdfstring{\href{https://data.worldbank.org}{世界銀行オープンデータ}}{世界銀行オープンデータ}}\label{ux4e16ux754cux9280ux884cux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf-1}}
@@ -2169,11 +2294,6 @@ The Data Catalog is designed to make World Bank's development data easy to find,
 
 それぞれの、トピックに、関連のデータがリストされています。
 
-\hypertarget{ux4e16ux754cux958bux767aux6307ux6a19wdi-2}{%
-\subsection{\texorpdfstring{\href{https://datatopics.worldbank.org/world-development-indicators/}{世界開発指標（WDI）}}{世界開発指標（WDI）}}\label{ux4e16ux754cux958bux767aux6307ux6a19wdi-2}}
-
-また、オープンデータについて、世界銀行は、厳密な定義をしています。
-
 \hypertarget{world-bank-wdi---world-development-indicaters}{%
 \subsection{World Bank: WDI - World Development Indicaters}\label{world-bank-wdi---world-development-indicaters}}
 
@@ -2224,11 +2344,155 @@ The Data Catalog is designed to make World Bank's development data easy to find,
   \end{itemize}
 \end{itemize}
 
-\hypertarget{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9}{%
-\section{ダッシュボード}\label{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9}}
+\hypertarget{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9dashboard}{%
+\section{ダッシュボード（Dashboard）}\label{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9dashboard}}
+
+世界銀行のダッシュボードには二種類あります。一つは、それぞれの指標についてのダッシュボード、もう一つは、データバンク（DataBank）です。
+
+\hypertarget{world-bank-ux30a2ux30abux30a6ux30f3ux30c8}{%
+\subsection{World Bank アカウント}\label{world-bank-ux30a2ux30abux30a6ux30f3ux30c8}}
+
+ダッシュボードは、リンクにアクセスすれば、アカウントなどを作成せず、すぐに使えます。しかし、ダッシュボードを使って、グラフを作成したり、自分用の、データを作成したりした場合には、その結果を、保存をしたり、リンク（iframe 形式）を、文書に埋め込んだりする必要を感じる場合があります。その場合には、一般用アカウントを作成する必要があります。この\href{https://login.worldbankgroup.org/worldbankgroupb2c.onmicrosoft.com/b2c_1_wbg-solexternal_sisu/oauth2/v2.0/authorize?client_id=7077d845-b099-4fca-9f1b-8fcaade1524c\&scope=openid\%20profile\%20offline_access\&redirect_uri=https\%3A\%2F\%2Fpip.worldbank.org\%2Fsol\%2F\&client-request-id=a3010f0e-81e7-45c4-b519-d8e044d3a89b\&response_mode=fragment\&response_type=code\&x-client-SKU=msal.js.browser\&x-client-VER=2.34.0\&client_info=1\&code_challenge=Ome3V78SVvRRXZvJ3DjMvKDuE5CE-N59RHOY09WJ_LY\&code_challenge_method=S256\&nonce=0a59c36f-97dd-4369-a233-544b6a6393eb\&state=eyJpZCI6Ijc3M2MxM2MzLTg5OTItNDEwMS05MmJkLWYyZThmZDQwNjdlZiIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0\%3D}{サイト}の Sign Up から、アカウントを作成してください。
+
+\hypertarget{ux6307ux6a19ux6bceux306eux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9}{%
+\subsection{指標毎のダッシュボード}\label{ux6307ux6a19ux6bceux306eux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9}}
+
+はじめてのデータサイエンスで使った、GDP (Current US\$)、データコード NY.GDP.MKTP.CD についてみてみましょう。
+
+いくつかの方法があります。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://data.worldbank.org}{世界銀行オープンデータ} から、指標（Indicator）を選択し、その中の Economy \& Growth（経済と成長）の中から、\href{https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?view=chart}{GDP (current US\$)} を選択すると、ダッシュボードが現れ、世界の GPD の推移のグラフが表示されます。
+\item
+  \href{https://data.worldbank.org}{世界銀行オープンデータ} から、国（Country）を選択し、例えば、J から、Japan を選択し、Economics（経済）の指標の \protect\hyperlink{0}{GDP (current US\$)} を選択すると、ダッシュボードが現れ、日本の GDP の推移のグラフが表示されます。指標によっては、上の、Theme（テーマ）や、Topic（トピック）から選ぶ必要がある場合もあります。
+\item
+  \href{https://datatopics.worldbank.org/world-development-indicators/}{世界開発指標（WDI）}の Data Theme（テーマ）の中の、ECONOMY（経済） の中から、\href{https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?view=chart}{GDP (current US\$)} を選択すると、ダッシュボードが現れ、世界の GPD の推移のグラフが表示されます。
+\item
+  もし、WDI コード（この場合は、NY.GDP.MKTP.CD）を知っていれば、このコードを、\href{https://data.worldbank.org}{世界銀行オープンデータ} の検索窓に入れて検索すると、上のダッシュボードのページが表示されます。
+\end{enumerate}
+
+最初は、選択した指標について、世界か、日本など選択した国の、折れ線グラフ（Line Graph）が表示されていると思います。そして、下の方に、国のリストがあり、その一番下には、地域のリストが続いています\footnote{アルファベットの昇順になっていますが、そのリストの Country（国）の右にある ⌃型のマークを押すと⌵に変わり、降順になります。}。また、Line （折れ線グラフ）と書いた右には、Bar（棒グラフ）と、Map（地図）とあります。
+
+その右には、Also Show （追加）とあり、Aggregates（総合）、Same Region（同じ地域）、Similar Values（近い値）、Highest Values（最高値）、Lowest Values（最小値）を表示することもできます。表示しないときは、None を選択します。
+
+その右には、Share（共有）と、Details（詳細）があります。詳細には、その指標についての、詳しい説明があります。すべてを理解することはできないかもしれませんが、翻訳機能も使って、確認しておくことをお勧めします。詳細には、データコードも書かれています。記録しておくと、次に同じ指標のデータを探すときに便利です。共有からは、Web Page や、SNS に埋め込む、iframe link を取得することができます。
+
+右の方の帯には、関連する指標がリストされ、さらに、Download（ダウンロード）、Data Bank（データバンク）、WDI Tables （統計表）へのリンクがあります。
 
 \hypertarget{ux4f7fux3044ux65b9}{%
-\subsection{使い方}\label{ux4f7fux3044ux65b9}}
+\subsubsection{使い方}\label{ux4f7fux3044ux65b9}}
+
+具体例としては、GDP（Current US\$）の世界（World）のグラフが表示されているとします。上の検索窓に GDP（Current US\$）と入っていると思います。
+
+\begin{itemize}
+\item
+  国や地域の追加
+
+  \begin{itemize}
+  \item
+    英語で入力しますから、グラフの下の、国や地域名のところから、追加したい、国や地域名を選んで、書き出しておいてください。一つずつ追加するときは、コピーするのも良いかもしれません。
+  \item
+    日本をグラフに追加するときは、Japan ですから、検索窓に、Japan と入れて\textbf{少し待ちます}。すると、窓の下に、Japan が表示されますから、それを選択（クリック）します。すると、日本のグラフに変わります。India も加えてください。次に、検索窓に、United と入力すると、United Kingdom, United States, United Arab Emirates が表示されますから、United Kingdom を選択してください。Japan, India, United Kingdom の三つの国のグラフが同時に表示されます。これによって、いくつかの国のその指標における経年変化を比較することができます。
+  \item
+    いろいろな国や地域を加えてみてください。たとえば、GDP を指標として、United States を加えると、United States の GDP の値が大きいため、他の国のグラフは下の方に重なり合うようになります。Afghanistan を加えると、ある年以前のデータがなかったり、値がとても小さいために、X 軸に張り付くようになってしまったりします。みやすいグラフを表示するには、どのようなものの比較をするかも重要になってくることがわかると思います。
+  \item
+    追加した国や地域を消すのは、単にその国名の、右に表示される x マークを選択すれば良いですし、Delete キーでも消去できます。
+  \item
+    実は、Japan など一つの国を加えてからあとは、下の国名などのリストから、追加したい国を選択すると、追加されていきます。検索窓に入れるよりも簡単だと思います。
+  \end{itemize}
+\item
+  Also Show の活用
+
+  \begin{itemize}
+  \item
+    上に書いたように、Aggregates（総合）、Same Region（同じ地域）、Similar Values（近い値）、Highest Values（最高値）、Lowest Values（最小値）を追加できます。たとえば、Japan（日本）だけを残しておいて、Same Region を選択すると、いくつかの国の値が、薄く表示されます。地域名をみると、これは、East Asia \& Pacific（東アジアと太平洋地域）であることが推測されます。
+  \item
+    そこで、East Asia \& Pasific を選択すると、その地域の総計の値が追加されます。
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux30c7ux30fcux30bfux30c0ux30a6ux30f3ux30edux30fcux30c9}{%
+\subsubsection{データダウンロード}\label{ux30c7ux30fcux30bfux30c0ux30a6ux30f3ux30edux30fcux30c9}}
+
+R のパッケージを用いたデータのダウンロードについてはあとから述べますが、指標毎のダッシュボードの右の帯のダウンロードからも、データをダウンロードすることができます。
+
+CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（Micosoft Excel Spreadsheet） と三つの形式でデータを取得できます。それぞれ、R などで読み込むことができます。ただし、CSV と、XML は、Zip 形式の圧縮ファイルになっています。EXCEL は、三つのシート（Data, Metadata - Countries, Metadata - Indicators）が一つの、ブックになっています。Metadata（メタデータ）は、データのデータで、データについての情報が収められています。
+
+\hypertarget{ux30c7ux30fcux30bfux30d0ux30f3ux30afdatabank}{%
+\subsection{データバンク（DataBank）}\label{ux30c7ux30fcux30bfux30d0ux30f3ux30afdatabank}}
+
+上で説明した指標毎のダッシュボードの右の帯からも、データバンクのダッシュボードが開きますが、\href{https://data.worldbank.org}{世界銀行オープンデータ} の下にある、データバンクを選択すると、リストが表示されます。ここで、ある程度選択してから、ダッシュボードを表示させることもできます。一番上に、World Development Indicators（世界開発指標）がありますから、選択してください。あとから、他のものに変更することも可能です。
+
+表が表示され、左の方に、Variables（変数）、Layout（レイアウト）、Styles（形式）、Save（保存）、Share（共有）、Embed（埋め込み） とあり、右上には、Table（表）、Chart（グラフ）、Map（地図）、Metadata（メタデータ） とあり、その下には、Preview（表示）などとなっていると思います。
+
+膨大なデータを選択し、形式を整えて、ダウンロードしたり、グラフを表示したりすることができます。
+
+\hypertarget{ux4f8b1}{%
+\subsubsection{例1}\label{ux4f8b1}}
+
+まずは、一つ目の例として、GDP (Current US\$) の値を大きい方から国順に並べてみましょう。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Variable の Database で、World Development Indicators を選択します。
+\item
+  Countries では、上に、All、Countries、Aggregates とありますから、Countries を選択します。
+\item
+  一番左のチェックボックス Select All（すべて選択）を選びます。これで国が全部選択されました。現在ですと、Selected 217 と出ています。
+\item
+  Series は、いくつか選択されている可能性がありますから、X マークを選択して、まずは、全部選択を解除し、次に、GDP (current US\$) にチェックを入れます。Selected 1 となっていることを確認してください。
+\item
+  Time の一番左のチェックボックスから、Select All にしてください。現在では、Selected 63 と表示されました。
+\item
+  右の方に、Selections have been modified \ldots{} （選択が変更されました \ldots）と出ますので、Apply Changes（変更を適用）を選びます。
+\item
+  上の Layout タブを選択し、Time を Column（列）、Country を Row（行）、Series を Page（ページに指定します）
+\end{enumerate}
+
+ここまでで、Table に、GDP (current US\$) についての表が表示されていることを確認してください。
+
+これを書いている時点では、2022年が最も新しいデータで、2022 の年のところをクリックすると、最初は、国名のアルファベット順になっていると思いますが、それが、その指標の値の、昇順、降順に変更できます。ここでは、GDP が大きな値の順に並べたいので、降順にします。
+
+10位までの国は、United States, China, Japan, Germany, India, United Kingdom, France, Russian Federation, Canada, Italy となっているかと思います。
+
+\hypertarget{ux4f8b2}{%
+\subsubsection{例2}\label{ux4f8b2}}
+
+2022年の値で、10位までの国を選択して、折れ線グラフや、棒グラフなどを書いてみましょう。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Variables の Countries の X で選択を解除し、上の10カ国を選んでください。
+\item
+  右の方に、Selections have been modified \ldots{} （選択が変更されました \ldots）と出ますので、Apply Changes（変更を適用）を選びます。すると表が10カ国のものに変わります。
+\item
+  上の、Styles を選択し、Chat Type \& Style で、Line（折れ線グラフ）を選択すると、しばらくして、10カ国の、折れ線グラフを表示させることができます。色も変更することも可能です。
+\item
+  Chat Type \& Style で Horizontal Bar を選択し、Layout で、
+\end{enumerate}
+
+以下では、変数（Variables）の選び方と、グラフ（Chart）について簡単に説明します。
+
+\hypertarget{ux5909ux6570variables}{%
+\subsubsection{変数（Variables）}\label{ux5909ux6570variables}}
+
+Database、Country、Series、Time とあり、それぞれの右に、Available と Selected とあります。
+
+どのデータベースについて、国を選択し、系列を選び、期間を選択するという形式になっています。
+
+Database の左の三角印を選択すると、データベース名が確認できます。現在は、World Development Indicators が選択されています。ここで、他のデータベースに変更することも可能ですが、まずは、そのままにしましょう。
+
+次は、Countries（国）です。All、Countries、Aggregates と一番上にあります。国だけを表示するか、地域やグループを表示するか、すべてを表示するかを選択できます。
+
+簡単のために、まずは、Countries（国）を選択しましょう。
+
+国がいくつか選択されている場合もありますから、X マークをクリックして、すべて選択を消去し、国を選んでみましょう。GDP のところで経験したように、GDP の多い方から、United States、China、Japan、Germany、India、United Kingdom、France を選択してみましょう。
 
 \hypertarget{gdp-per-capita-constant-2015-us}{%
 \subsubsection{GDP per capita (constant 2015 US\$)}\label{gdp-per-capita-constant-2015-us}}
@@ -2272,59 +2536,49 @@ CO2 排出量 (1 人あたりのメートル トン) の年次変化の折線グ
 
 国会で女性が占める議席の割合 (\%) の年次変化
 
-\hypertarget{ux3055ux307eux3056ux307eux306aux56fdux969bux6a5fux95a2ux306eux30d1ux30d6ux30eaux30c3ux30afux30c7ux30fcux30bf}{%
-\section{さまざまな国際機関のパブリックデータ}\label{ux3055ux307eux3056ux307eux306aux56fdux969bux6a5fux95a2ux306eux30d1ux30d6ux30eaux30c3ux30afux30c7ux30fcux30bf}}
-
-世界銀行以外にも、それぞれの機関がデータを提供しています。どれも、少しずつ使いやすくなってきています。少しずつ、いくつかのデータベースに、アクセスして、できれば、API の利用の仕方も、習得して、データを調べることに少しずつ慣れていっていただければと思います。
-
-下のリストは、私が個人的に、何度か使ったことのある、データベースです。他にも、たくさんのデータベースがありますので、ぜひ、調べてみてください。
-
-\begin{itemize}
-\tightlist
-\item
-  国際連合　\href{https://data.un.org}{UNdata}
-\item
-  経済協力開発機構　\href{https://data.oecd.org}{OECD data}、
-\item
-  世界格差データベース（World Inequality Database）\href{https://wid.world}{WID}、
-\item
-  欧州連合の統計局　\href{https://ec.europa.eu/eurostat}{Eurostat}、
-\item
-  データで見る私たちの世界　\href{https://ourworldindata.org}{Our World in Data}
-\end{itemize}
-
-なども、同様の、ダッシュボードを備えており、データの提供もしている。
-
-日本では、
-
-\begin{itemize}
-\tightlist
-\item
-  \href{https://www.e-stat.go.jp/}{e-Stat}：政府統計の総合窓口 - 統計で見る日本
-\item
-  \href{https://dashboard.e-stat.go.jp}{ダッシュボード}：対話型形式でのデータの視覚化
-\end{itemize}
-
-\hypertarget{ux6301ux7d9aux7684ux958bux767aux76eeux6a19sdgs-ux30c7ux30fcux30bf}{%
-\section{持続的開発目標（SDGs） データ}\label{ux6301ux7d9aux7684ux958bux767aux76eeux6a19sdgs-ux30c7ux30fcux30bf}}
-
-\begin{itemize}
-\tightlist
-\item
-  世界銀行：\url{https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)}
-\item
-  国連：\url{https://unstats.un.org/sdgs/dataportal/database}
-\item
-  データで見る私たちの世界：Our World in Data SGD Tracker: \url{https://sdg-tracker.org/}
-\item
-  SDG Index: \url{https://dashboards.sdgindex.org/map}
-\end{itemize}
-
 \hypertarget{ux4e16ux754cux306eux3055ux307eux3056ux307eux306aux8ab2ux984cux304bux3089ux898bux308b}{%
 \subsection{世界のさまざまな課題から見る}\label{ux4e16ux754cux306eux3055ux307eux3056ux307eux306aux8ab2ux984cux304bux3089ux898bux308b}}
 
 \hypertarget{api}{%
 \section{API}\label{api}}
+
+世界銀行（World Bank）の API を利用した R のパッケージを二つ紹介します。
+
+\hypertarget{wdi}{%
+\subsection{WDI}\label{wdi}}
+
+Search and download data from over 40 databases hosted by the World Bank, including the World Development Indicators (`WDI'), International Debt Statistics, Doing Business, Human Capital Index, and Sub-national Poverty indicators.
+
+世界開発指標(「WDI」)、国際債務統計、Doing Business、人的資本指数、準国家貧困指標など、世界銀行が主催する40以上のデータベースからデータを検索してダウンロードします。
+
+\begin{itemize}
+\item
+  R のパッケージサイト：\href{https://cran.r-project.org/package=WDI}{https://CRAN.R-project.org/package=WDI}
+\item
+  資料（Materials）：\url{https://cran.r-project.org/web/packages/WDI/readme/README.html}
+\item
+  マニュアル（Manual）：\url{https://cran.r-project.org/web/packages/WDI/WDI.pdf}
+\item
+  使い方の例：\url{https://vincentarelbundock.github.io/WDI/}
+\end{itemize}
+
+\hypertarget{wbstats}{%
+\subsection{wbstats}\label{wbstats}}
+
+Programmatic Access to Data and Statistics from the World Bank API
+
+世界銀行APIからのデータと統計へのプログラムによるアクセス
+
+\begin{itemize}
+\item
+  R のパッケージサイト：\href{https://cran.r-project.org/package=wbstats}{https://CRAN.R-project.org/package=wbstats}
+\item
+  資料（Materials）： \href{https://cran.r-project.org/web/packages/wbstats/readme/README.html}{README}
+\item
+  マニュアル（Manual）：\url{https://cran.r-project.org/web/packages/wbstats/wbstats.pdf}
+\item
+  使い方の例（Vignette）：\url{https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html}
+\end{itemize}
 
 \hypertarget{oecd-site}{%
 \chapter{OECD（経済協力開発機構）}\label{oecd-site}}
@@ -2344,8 +2598,67 @@ OECD（経済協力開発機構）はヨーロッパ諸国を中心に日・米�
 
 OECD Data: \url{https://data.oecd.org/}
 
+Topic と　Country に分かれて、調べられ、検索も可能です。
+
+\hypertarget{ux30c6ux30fcux30deux5225}{%
+\subsection{テーマ別}\label{ux30c6ux30fcux30deux5225}}
+
+\begin{itemize}
+\item
+  Agriculture
+
+  \begin{itemize}
+  \item
+    \href{https://data.oecd.org/agriculture.htm\#profile-Agricultural\%20output}{~Agricultural output}
+  \item
+    \href{https://data.oecd.org/agriculture.htm\#profile-Agricultural\%20policy}{~Agricultural policy}
+  \item
+    \href{https://data.oecd.org/agriculture.htm\#profile-Fisheries}{~Fisheries}
+  \item
+    \href{https://data.oecd.org/agriculture.htm\#profile-Sustainable\%20agriculture}{~Sustainable agriculture}
+  \end{itemize}
+\item
+  Development
+
+  \begin{itemize}
+  \item
+    \href{https://data.oecd.org/drf/total-official-and-private-flows.htm}{Development resource flows}
+  \item
+    \href{https://data.oecd.org/oda/net-oda.htm}{Official development assistance (ODA)}
+  \end{itemize}
+\item
+  Economy
+\item
+  Education
+\item
+  Energy
+\item
+  Environment
+\item
+  Finance
+\item
+  Government
+\item
+  Health
+\item
+  Innovation and Technology
+\item
+  Jobs
+\item
+  Society
+\end{itemize}
+
+\hypertarget{ux4f8b}{%
+\subsection{例}\label{ux4f8b}}
+
+OECD Chart: Inflation (CPI), Total / Food / Total less food, less energy, Annual growth rate (\%), Monthly, Jul 2023
+
+OECD Chart: Quarterly GDP, Total, Percentage change, previous period, Quarterly, Q1 2023
+
 \hypertarget{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9-1}{%
 \section{ダッシュボード}\label{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9-1}}
+
+OECD.Stat \url{https://stats.oecd.org/Index.aspx}
 
 \hypertarget{api-1}{%
 \section{API}\label{api-1}}
@@ -2361,11 +2674,17 @@ OECD Data: \url{https://data.oecd.org/}
 
 UNdata: \url{https://data.un.org}
 
+膨大なリストがあります。さまざまな機関からデータが提供されていることもあり、WDI のように、規格が統一されてはいません。
+
 \hypertarget{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9-2}{%
 \section{ダッシュボード}\label{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9-2}}
 
+いくつかのトピックについては、ダッシュボードがあります。
+
 \hypertarget{api-2}{%
 \section{API}\label{api-2}}
+
+一部のデータのための API はあります。
 
 \hypertarget{owid-site}{%
 \chapter{Our World in Data}\label{owid-site}}
@@ -2381,8 +2700,33 @@ owid: \url{https://ourworldindata.org/}
 \hypertarget{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9-3}{%
 \section{ダッシュボード}\label{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9-3}}
 
+SDGs
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  No Poverty
+\end{enumerate}
+
 \hypertarget{api-3}{%
 \section{API}\label{api-3}}
+
+\begin{itemize}
+\item
+  パッケージの公式サイト:~\href{https://cran.r-project.org/package=owidR}{https://CRAN.R-project.org/package=owidR}
+
+  \begin{itemize}
+  \item
+    はじめにお読みください（ReadMe）:~\url{https://cran.r-project.org/web/packages/owidR/readme/README.html}
+  \item
+    マニュアル（Manual）:~\url{https://cran.r-project.org/web/packages/owidR/owidR.pdf}
+  \item
+    使い方の例（Vignette）:~\href{https://cran.r-project.org/web/packages/owidR/vignettes/example-analysis.html}{Create and Analyse a Dataset}
+  \end{itemize}
+\item
+  \href{https://rdrr.io/cran/owidR/}{owidR: Import Data from Our World in Data}
+\end{itemize}
 
 \hypertarget{estat-site}{%
 \chapter{e-Stat 日本の政府統計}\label{estat-site}}
@@ -2403,8 +2747,58 @@ owid: \url{https://ourworldindata.org/}
   \href{https://dashboard.e-stat.go.jp}{ダッシュボード}：対話型形式でのデータの視覚化
 \end{itemize}
 
+たくさんの統計が掲載されています。ダッシュボードは、そのうちのいくつかを見やすいように、グラフによって視覚化されています。
+
+まず、\href{https://www.e-stat.go.jp/}{e-Stat} 政府統計の総合窓口に行くと、右上の若葉マークに使い方が書かれていますから、それを読むのがお勧めです。ここには、詳細は書きません。
+
+まず「\href{https://www.e-stat.go.jp/stat-search?page=1}{すべて}」（政府統計一覧）では、すべての統計情報を見ることができ、検索もできます。左の帯に、データベースと、ファイルとありますが。基本的に、API を使って、データを読み込むことができるようになっているのが、データベースです。
+
+その下には、統計分類（大分類）として、トピックごとに分類されたものを調べるものがあります。これは、トップページの「分野」と大体対応しています。その下には、組織で調べる、統計の種類で絞り込み、政府統計名で絞り込み、提供周期で絞り込み、調査年で絞り込み、調査月で絞り込み、50音で絞り込み、統計表フォーマットで絞り込み、集計地域区分で絞り込みと続きます。
+
+まずは、統計の種類から、基幹統計を見てみましょう。\href{https://www.e-stat.go.jp/stat-search?page=1\&toukei_kind=6\&metadata=1\&data=1}{ここ}からも見ることができます。全部で61のデータベース、64のファイルと書かれて、国勢調査や、人口推計、労働力調査、家計調査、学校基本調査などが並んでいます。
+
+\hypertarget{ux5bb6ux8a08ux8abfux67fb}{%
+\subsection{家計調査}\label{ux5bb6ux8a08ux8abfux67fb}}
+
+\href{https://www.e-stat.go.jp/stat-search/database?page=1\&toukei=00200561\&tstat=000000330001\&toukei_kind=6\&metadata=1\&data=1}{家計調査}をみてみましょう。家計調査についての説明がありますが、その下の、二人以上の世帯、年次を見てみます。費目分類010 品目分類（2020年改定）（総数：金額）のDB（データベース）をみてみましょう。
+
+表が現れます。
+
+左の方にある、表示項目選択を開きます。
+
+時間軸：すべて解除して、最新の2022のものだけ選択します。
+
+左の方にある、レイアウト設定を開きます。
+
+ページ上部：表章項目、世帯区分、時間軸（年次）
+
+列：費目分類
+
+行：地域分類
+
+確定させてもとに戻ると、それぞれの項目のそれぞれの地域の平均消費額がわかります。一番上には全国平均が載っています。
+
+たとえば、二人以上の世帯の、この調査における平均世帯人数は、2.91人、消費支出3,490,383円、牛乳の支出15,001円などと出ています。
+
+\hypertarget{ux88dcux8db3}{%
+\subsubsection{補足}\label{ux88dcux8db3}}
+
+統計表としてではありませんが、家計調査からのランキングのようなものも、公開されています。ご興味のあるかたはみてください。
+
+\href{https://www.stat.go.jp/data/kakei/5.html}{家計調査（二人以上の世帯）　品目別都道府県庁所在市及び政令指定都市（※）ランキング（2020年（令和２年）～2022年（令和４年）平均）}
+
+ただし、このランキングの下になっているデータを探そうとすると、なかなか大変です。
+
 \hypertarget{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9-4}{%
-\section{ダッシュボード}\label{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9-4}}
+\section{\texorpdfstring{\href{https://dashboard.e-stat.go.jp}{ダッシュボード}}{ダッシュボード}}\label{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9-4}}
+
+何種類かのグラフを見ることができると同時に、右の方に、時系列表とあり、これから、データをダウンロードできるようにもなっています。
+
+\href{https://dashboard.e-stat.go.jp/pyramidGraph?screenCode=00570\&regionCode=00000\&pyramidAreaType=2}{人口ピラミッド}
+
+人口ピラミッドを見てみましょう。1920年からの人口ピラミッドを見ることができます。また、日本の全体だけではなく、都道府県、市町村、世界の国々についても見ることができます。ピラミッドの形が変わっていく様子、戦争などで、急激に変化する様子なども、見ることができます。
+
+また、それぞれの個々のグラフのデータをダウンロードすることができます。全体のデータを一括ダウンロードできると良いと思うのですが。
 
 \hypertarget{api-4}{%
 \section{API}\label{api-4}}
@@ -3847,7 +4241,394 @@ Posit Cloud からは、左のメニュー（隠れている場合は左上の3�
 \end{itemize}
 
 \hypertarget{visualize}{%
-\chapter{Visualize}\label{visualize}}
+\chapter{視覚化（Visualize）}\label{visualize}}
+
+\hypertarget{ux6e96ux5099}{%
+\section{準備}\label{ux6e96ux5099}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
+\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
+\CommentTok{\#\textgreater{} v ggplot2   3.4.2     v tibble    3.2.1}
+\CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
+\CommentTok{\#\textgreater{} v purrr     1.0.1     }
+\CommentTok{\#\textgreater{} {-}{-} Conflicts {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-} tidyverse\_conflicts() {-}{-}}
+\CommentTok{\#\textgreater{} x dplyr::filter() masks stats::filter()}
+\CommentTok{\#\textgreater{} x dplyr::lag()    masks stats::lag()}
+\CommentTok{\#\textgreater{} i Use the conflicted package (\textless{}http://conflicted.r{-}lib.org/\textgreater{}) to force all conflicts to become errors}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux57faux672cux7684ux306aux3053ux3068}{%
+\section{基本的なこと}\label{ux57faux672cux7684ux306aux3053ux3068}}
+
+\hypertarget{importing-data}{%
+\subsection{Importing data}\label{importing-data}}
+
+Let us assign the \texttt{iris} data in the pre-installed package \texttt{datasets} to \texttt{df\_iris}. You can give any name starting from an alphabet, though there are some rules.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris }\OtherTok{\textless{}{-}}\NormalTok{ datasets}\SpecialCharTok{::}\NormalTok{iris}
+\FunctionTok{class}\NormalTok{(df\_iris)}
+\CommentTok{\#\textgreater{} [1] "data.frame"}
+\end{Highlighting}
+\end{Shaded}
+
+The class of data \texttt{iris} is \texttt{data.frame}, the basic data class of R. You can assign the same data as a \texttt{tibble}, the data class of \texttt{tidyverse} as follows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tbl\_iris }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(datasets}\SpecialCharTok{::}\NormalTok{iris)}
+\FunctionTok{class}\NormalTok{(tbl\_iris)}
+\CommentTok{\#\textgreater{} [1] "tbl\_df"     "tbl"        "data.frame"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{df\_iris\ \textless{}-\ iris} can replace \texttt{df\_iris\ \textless{}-\ datasets::iris} because the package \texttt{datasets} is installed and attached as default. Since you may have other data called \texttt{iris} included in a different package or you may have changed \texttt{iris} before, it is safer to specify the package's name with the data's name.
+\item
+  Within R Notebook or in Console, you may get different output, and \texttt{tf\_iris} and \texttt{tbl\_iris} behave differently. It is because of the default settings of R Markdown.
+\end{itemize}
+
+\hypertarget{look-at-the-data}{%
+\subsection{Look at the data}\label{look-at-the-data}}
+
+\hypertarget{several-ways-to-view-the-data.}{%
+\subsubsection{Several ways to view the data.}\label{several-ways-to-view-the-data.}}
+
+The \texttt{View} command opens up a window to show the contents of the data, and you can also use the filter.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{View}\NormalTok{(df\_iris)}
+\end{Highlighting}
+\end{Shaded}
+
+The following simple command also shows the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#>    Sepal.Length Sepal.Width Petal.Length Petal.Width
+#> 1           5.1         3.5          1.4         0.2
+#> 2           4.9         3.0          1.4         0.2
+#> 3           4.7         3.2          1.3         0.2
+#> 4           4.6         3.1          1.5         0.2
+#> 5           5.0         3.6          1.4         0.2
+#> 6           5.4         3.9          1.7         0.4
+#> 7           4.6         3.4          1.4         0.3
+#> 8           5.0         3.4          1.5         0.2
+#> 9           4.4         2.9          1.4         0.2
+#> 10          4.9         3.1          1.5         0.1
+#>    Species
+#> 1   setosa
+#> 2   setosa
+#> 3   setosa
+#> 4   setosa
+#> 5   setosa
+#> 6   setosa
+#> 7   setosa
+#> 8   setosa
+#> 9   setosa
+#> 10  setosa
+\end{verbatim}
+
+\texttt{\%\textgreater{}\%} is called a pipe command, and we use it often.
+
+The output within R Notebook is a tibble style. Try the same command in Console.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{slice}\NormalTok{(df\_iris, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{}    Sepal.Length Sepal.Width Petal.Length Petal.Width}
+\CommentTok{\#\textgreater{} 1           5.1         3.5          1.4         0.2}
+\CommentTok{\#\textgreater{} 2           4.9         3.0          1.4         0.2}
+\CommentTok{\#\textgreater{} 3           4.7         3.2          1.3         0.2}
+\CommentTok{\#\textgreater{} 4           4.6         3.1          1.5         0.2}
+\CommentTok{\#\textgreater{} 5           5.0         3.6          1.4         0.2}
+\CommentTok{\#\textgreater{} 6           5.4         3.9          1.7         0.4}
+\CommentTok{\#\textgreater{} 7           4.6         3.4          1.4         0.3}
+\CommentTok{\#\textgreater{} 8           5.0         3.4          1.5         0.2}
+\CommentTok{\#\textgreater{} 9           4.4         2.9          1.4         0.2}
+\CommentTok{\#\textgreater{} 10          4.9         3.1          1.5         0.1}
+\CommentTok{\#\textgreater{}    Species}
+\CommentTok{\#\textgreater{} 1   setosa}
+\CommentTok{\#\textgreater{} 2   setosa}
+\CommentTok{\#\textgreater{} 3   setosa}
+\CommentTok{\#\textgreater{} 4   setosa}
+\CommentTok{\#\textgreater{} 5   setosa}
+\CommentTok{\#\textgreater{} 6   setosa}
+\CommentTok{\#\textgreater{} 7   setosa}
+\CommentTok{\#\textgreater{} 8   setosa}
+\CommentTok{\#\textgreater{} 9   setosa}
+\CommentTok{\#\textgreater{} 10  setosa}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-structure}{%
+\subsubsection{Data Structure}\label{data-structure}}
+
+Let us look at the structure of the data. You can try \texttt{str(df\_iris)} on Console or by adding a code chunk in R Notebook introducing later.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(df\_iris)}
+\CommentTok{\#\textgreater{} Rows: 150}
+\CommentTok{\#\textgreater{} Columns: 5}
+\CommentTok{\#\textgreater{} $ Sepal.Length \textless{}dbl\textgreater{} 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ Sepal.Width  \textless{}dbl\textgreater{} 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ Petal.Length \textless{}dbl\textgreater{} 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ Petal.Width  \textless{}dbl\textgreater{} 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ Species      \textless{}fct\textgreater{} setosa, setosa, setosa, setosa, setos\textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+There are six types of data in R; Double, Integer, Character, Logical, Raw, and Complex. In this course, we use only the first four.
+
+The names after \$ are column names. If you call \texttt{df\_iris\$Species}, you have the Species column. Species is in the 5th column, \texttt{typeof(df\_iris{[}{[}5{]}{]})} does the same as the next.
+
+\texttt{df\_iris{[}2,4{]}\ =}0.2 is the fourth entry of Sepal.Width.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(df\_iris}\SpecialCharTok{$}\NormalTok{Species)}
+\CommentTok{\#\textgreater{} [1] "integer"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(df\_iris}\SpecialCharTok{$}\NormalTok{Species)}
+\CommentTok{\#\textgreater{} [1] "factor"}
+\end{Highlighting}
+\end{Shaded}
+
+For \texttt{factors\ =\ fct} see \href{https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor}{the R Document} or an explanation in \href{https://www.guru99.com/r-factor-categorical-continuous.html}{Factor in R: Categorical Variable \& Continuous Variables}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(df\_iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
+\CommentTok{\#\textgreater{} [1] "double"}
+\FunctionTok{class}\NormalTok{(df\_iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
+\CommentTok{\#\textgreater{} [1] "numeric"}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Q1.} What are the differences of \texttt{df\_iris}, \texttt{slice(df\_iris,\ 1:10)} and \texttt{glimpse(df\_iris)} above?
+
+\textbf{Q2.} What are the differences of\texttt{df\_iris}, \texttt{slice(df\_iris,\ 1:10)} and \texttt{glimpse(df\_iris)} in the console?
+
+\hypertarget{summary-of-the-data}{%
+\subsubsection{Summary of the Data}\label{summary-of-the-data}}
+
+The following is very convenient to get the summary information of a data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(df\_iris)}
+\CommentTok{\#\textgreater{}   Sepal.Length    Sepal.Width     Petal.Length  }
+\CommentTok{\#\textgreater{}  Min.   :4.300   Min.   :2.000   Min.   :1.000  }
+\CommentTok{\#\textgreater{}  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  }
+\CommentTok{\#\textgreater{}  Median :5.800   Median :3.000   Median :4.350  }
+\CommentTok{\#\textgreater{}  Mean   :5.843   Mean   :3.057   Mean   :3.758  }
+\CommentTok{\#\textgreater{}  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  }
+\CommentTok{\#\textgreater{}  Max.   :7.900   Max.   :4.400   Max.   :6.900  }
+\CommentTok{\#\textgreater{}   Petal.Width          Species  }
+\CommentTok{\#\textgreater{}  Min.   :0.100   setosa    :50  }
+\CommentTok{\#\textgreater{}  1st Qu.:0.300   versicolor:50  }
+\CommentTok{\#\textgreater{}  Median :1.300   virginica :50  }
+\CommentTok{\#\textgreater{}  Mean   :1.199                  }
+\CommentTok{\#\textgreater{}  3rd Qu.:1.800                  }
+\CommentTok{\#\textgreater{}  Max.   :2.500}
+\end{Highlighting}
+\end{Shaded}
+
+Minimum, 1st Quadrant (25\%), Median, Mean, 3rd Quadrant (75\%), Maximum, and the count of each factor.
+
+\hypertarget{ux6563ux5e03ux56f3scatter-plot}{%
+\section{散布図（Scatter Plot）}\label{ux6563ux5e03ux56f3scatter-plot}}
+
+We use \texttt{ggplot} to draw graphs. The scatter plot is a projection of data with two variables \(x\) and \(y\).
+
+\begin{verbatim}
+ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
+  geom_point()
+\end{verbatim}
+
+\begin{verbatim}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{25-visualize_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\hypertarget{ux30e9ux30d9ux30eb-labels}{%
+\subsection{\texorpdfstring{ラベル \href{https://ggplot2.tidyverse.org/reference/labs.html}{Labels}}{ラベル Labels}}\label{ux30e9ux30d9ux30eb-labels}}
+
+Add title and labels adding \texttt{labs()}.
+
+\begin{verbatim}
+ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
+  geom_point() +
+  labs(title = "Title", x = "Label for x", y = "Label for y")
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Scatter Plot of Sepal Data of Iris"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Sepal Length"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Sepal Width"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{25-visualize_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\hypertarget{ux8272ux4ed8ux304d-colors}{%
+\subsection{\texorpdfstring{色付き \href{https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html}{Colors}}{色付き Colors}}\label{ux8272ux4ed8ux304d-colors}}
+
+Add different colors automatically to each species. Can you see each group?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width, }\AttributeTok{color =}\NormalTok{ Species)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{25-visualize_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\hypertarget{ux5f62ux72b6}{%
+\subsection{形状}\label{ux5f62ux72b6}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width, }\AttributeTok{shape =}\NormalTok{ Species)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{25-visualize_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\hypertarget{ux7bb1ux3072ux3052ux56f3-boxplot}{%
+\section{\texorpdfstring{箱ひげ図 \href{https://ggplot2.tidyverse.org/reference/geom_boxplot.html}{Boxplot}}{箱ひげ図 Boxplot}}\label{ux7bb1ux3072ux3052ux56f3-boxplot}}
+
+The boxplot compactly displays the distribution of a continuous variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Species, }\AttributeTok{y =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{25-visualize_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\#\#　ヒストグラム \href{https://ggplot2.tidyverse.org/reference/geom_histogram.html}{Histogram}
+
+Visualize the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin. Histograms (geom\_histogram()) display the counts with bars.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{25-visualize_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+Change the number of bins by \texttt{bins\ =} \texttt{\textless{}number\textgreater{}}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{25-visualize_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+\hypertarget{ux7ddaux5f62ux30e2ux30c7ux30eb-data-modeling}{%
+\section{線形モデル Data Modeling}\label{ux7ddaux5f62ux30e2ux30c7ux30eb-data-modeling}}
+
+Professor Kaizoji will cover the mathematical models and hypothesis testings.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{25-visualize_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\hypertarget{ux30b3ux30e1ux30f3ux30c8}{%
+\section{コメント}\label{ux30b3ux30e1ux30f3ux30c8}}
+
+\hypertarget{ux53c2ux8003ux6587ux732e}{%
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}}
+
+\begin{itemize}
+\item
+  Cheat Sheet in RStudio: \url{https://www.rstudio.com/resources/cheatsheets/}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf}{RStudio IED}
+  \item
+    \href{https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf}{Base R Cheat Sheet}
+  \end{itemize}
+\item
+  `Quick R' by DataCamp: \url{https://www.statmethods.net/management}
+\item
+  \href{https://cran.rstudio.com}{An Introduction to R}
+\end{itemize}
+
+\hypertarget{ux7df4ux7fd2-3}{%
+\section{練習}\label{ux7df4ux7fd2-3}}
+
+\hypertarget{posit-primers-httpsposit.cloudlearnprimers}{%
+\subsection{\texorpdfstring{Posit Primers \url{https://posit.cloud/learn/primers}}{Posit Primers https://posit.cloud/learn/primers}}\label{posit-primers-httpsposit.cloudlearnprimers}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The Basics -- \href{https://r4ds.had.co.nz/explore-intro.html\#explore-intro}{r4ds: Explore, I}
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://rstudio.cloud/learn/primers/1.1}{Visualization Basics}
+\item
+  \href{https://rstudio.cloud/learn/primers/1.2}{Programming Basics}
+\end{itemize}
 
 \hypertarget{transform}{%
 \chapter{Transform}\label{transform}}
