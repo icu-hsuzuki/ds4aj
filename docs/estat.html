@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 24 e-Stat | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 26 e-Stat | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="24.1 API の使い方  24.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
+<meta name="description" content="26.1 API の使い方  26.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 24 e-Stat | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 26 e-Stat | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/estat.html">
-<meta property="og:description" content="24.1 API の使い方  24.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
+<meta property="og:description" content="26.1 API の使い方  26.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 24 e-Stat | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="24.1 API の使い方  24.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
+<meta name="twitter:title" content="Chapter 26 e-Stat | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="26.1 API の使い方  26.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -89,17 +89,19 @@
 <li><a class="" href="visualize.html"><span class="header-section-number">17</span> 視覚化（Visualize）</a></li>
 <li><a class="" href="import.html"><span class="header-section-number">18</span> Import</a></li>
 <li><a class="" href="modeling.html"><span class="header-section-number">19</span> Modeling</a></li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">20</span> Public Data の分析</a></li>
+<li><a class="" href="communicate.html"><span class="header-section-number">20</span> Communicate</a></li>
+<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">21</span> About First Example</a></li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">22</span> Public Data の分析</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">21</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">22</span> UN Data（国際連合データ）</a></li>
-<li><a class="" href="owid.html"><span class="header-section-number">23</span> Our World in Data</a></li>
-<li><a class="active" href="estat.html"><span class="header-section-number">24</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">25</span> その他のデータベース</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">23</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">24</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">25</span> Our World in Data</a></li>
+<li><a class="active" href="estat.html"><span class="header-section-number">26</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">27</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">26</span> 探索的データ解析</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">28</span> 探索的データ解析</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">27</span> Example 1</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">29</span> Example 1</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -112,17 +114,17 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estat" class="section level1" number="24">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estat" class="section level1" number="26">
 <h1>
-<span class="header-section-number">24</span> e-Stat<a class="anchor" aria-label="anchor" href="#estat"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26</span> e-Stat<a class="anchor" aria-label="anchor" href="#estat"><i class="fas fa-link"></i></a>
 </h1>
-<div id="api-の使い方" class="section level2" number="24.1">
+<div id="api-の使い方" class="section level2" number="26.1">
 <h2>
-<span class="header-section-number">24.1</span> API の使い方<a class="anchor" aria-label="anchor" href="#api-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.1</span> API の使い方<a class="anchor" aria-label="anchor" href="#api-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9"><i class="fas fa-link"></i></a>
 </h2>
-<div id="はじめての-e-stat-with-api" class="section level3" number="24.1.1">
+<div id="はじめての-e-stat-with-api" class="section level3" number="26.1.1">
 <h3>
-<span class="header-section-number">24.1.1</span> はじめての e-Stat with API<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE-e-stat-with-api"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.1.1</span> はじめての e-Stat with API<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE-e-stat-with-api"><i class="fas fa-link"></i></a>
 </h3>
 <p>はじめて、R の <code>etatapi</code> を使って、e-Stat のデータを取得する方法を簡単に説明します。</p>
 </div>
@@ -131,7 +133,7 @@
 </h3>
 <p>パッケージの、<code>estatapi</code> が、e-Stat のデータを取得するためのものです。<code>tidyverse</code> は基本的な解析をおこなうため、<code>showtext</code> と <code><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto()</a></code> は、グラフなどに、日本語が含まれる場合の文字化けを防ぐためのものです。</p>
 <p>インストールされていないパッケージがありましたら、上のメニューの Tools &gt; Install Packages から、インストールしてください。</p>
-<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
 <span><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
@@ -150,9 +152,9 @@
 <span><span class="co">#&gt; このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません。</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="e-stat-登録とアプリケーションidの取得" class="section level3" number="24.1.2">
+<div id="e-stat-登録とアプリケーションidの取得" class="section level3" number="26.1.2">
 <h3>
-<span class="header-section-number">24.1.2</span> e-Stat 登録と、アプリケーションIDの取得<a class="anchor" aria-label="anchor" href="#e-stat-%E7%99%BB%E9%8C%B2%E3%81%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E5%8F%96%E5%BE%97"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.1.2</span> e-Stat 登録と、アプリケーションIDの取得<a class="anchor" aria-label="anchor" href="#e-stat-%E7%99%BB%E9%8C%B2%E3%81%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E5%8F%96%E5%BE%97"><i class="fas fa-link"></i></a>
 </h3>
 <p>e-Stat API を利用するには、appId が必要です。</p>
 <ol style="list-style-type: decimal">
@@ -181,25 +183,25 @@
 </ul>
 </div>
 </div>
-<div id="estatapi-利用概要-1" class="section level2" number="24.2">
+<div id="estatapi-利用概要-1" class="section level2" number="26.2">
 <h2>
-<span class="header-section-number">24.2</span> <code>estatapi</code> 利用概要<a class="anchor" aria-label="anchor" href="#estatapi-%E5%88%A9%E7%94%A8%E6%A6%82%E8%A6%81-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.2</span> <code>estatapi</code> 利用概要<a class="anchor" aria-label="anchor" href="#estatapi-%E5%88%A9%E7%94%A8%E6%A6%82%E8%A6%81-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>CRAN <code>estatspi</code> URL: <a href="https://CRAN.R-project.org/package=estatapi" class="uri">https://CRAN.R-project.org/package=estatapi</a></p>
-<div id="アプリケーションidの設定-1" class="section level3" number="24.2.1">
+<div id="アプリケーションidの設定-1" class="section level3" number="26.2.1">
 <h3>
-<span class="header-section-number">24.2.1</span> アプリケーションIDの設定<a class="anchor" aria-label="anchor" href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E8%A8%AD%E5%AE%9A-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.2.1</span> アプリケーションIDの設定<a class="anchor" aria-label="anchor" href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E8%A8%AD%E5%AE%9A-1"><i class="fas fa-link"></i></a>
 </h3>
 <pre><code>appId &lt;- " " # 私のものは、英数40文字</code></pre>
 </div>
-<div id="統計表情報取得estat_getstatslist" class="section level3" number="24.2.2">
+<div id="統計表情報取得estat_getstatslist" class="section level3" number="26.2.2">
 <h3>
-<span class="header-section-number">24.2.2</span> 統計表情報取得（estat_getStatsList()）<a class="anchor" aria-label="anchor" href="#%E7%B5%B1%E8%A8%88%E8%A1%A8%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getstatslist"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.2.2</span> 統計表情報取得（estat_getStatsList()）<a class="anchor" aria-label="anchor" href="#%E7%B5%B1%E8%A8%88%E8%A1%A8%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getstatslist"><i class="fas fa-link"></i></a>
 </h3>
 <p>提供されている統計表を検索します。この関数は、結果をtbl_df（dplyrのdata.frame。data.frameとほぼ同じように扱える）として返します。</p>
 <p>STAT_NAMEやGOV_ORGは人間が読みやすい形式のラベルになっていますが、 プログラム中で扱う場合はコードのままの方が都合がいいこともあります。そのときは.use_label = FALSEを指定してください。</p>
 <pre><code>estat_getStatsList(appId = appId, searchWord = "")</code></pre>
-<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsList.html">estat_getStatsList</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, searchWord <span class="op">=</span> <span class="st">"人口推計"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 478 × 21</span></span>
 <span><span class="co">#&gt;    `@id`      STAT_NAME GOV_ORG STATISTICS_NAME TITLE CYCLE</span></span>
@@ -221,7 +223,7 @@
 <span><span class="co">#&gt; #   OVERALL_TOTAL_NUMBER &lt;chr&gt;, UPDATED_DATE &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   TABULATION_CATEGORY &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   TABULATION_SUB_CATEGORY1 &lt;chr&gt;, DESCRIPTION &lt;chr&gt;, …</span></span></code></pre></div>
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsList.html">estat_getStatsList</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, searchWord <span class="op">=</span> <span class="st">"外国人人口"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 38 × 22</span></span>
 <span><span class="co">#&gt;    `@id`      STAT_NAME GOV_ORG STATISTICS_NAME  TITLE CYCLE</span></span>
@@ -245,7 +247,7 @@
 <span><span class="co">#&gt; #   TABULATION_SUB_CATEGORY1 &lt;chr&gt;, DESCRIPTION &lt;chr&gt;, …</span></span></code></pre></div>
 <p>statsDataAPI=0003448219
 statsDataAPI=0004001640</p>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsList.html">estat_getStatsList</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, searchWord <span class="op">=</span> <span class="st">"国勢調査 時系列データ 男女，年齢，配偶関係"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 16 × 19</span></span>
 <span><span class="co">#&gt;    `@id`      STAT_NAME GOV_ORG STATISTICS_NAME  TITLE CYCLE</span></span>
@@ -275,13 +277,13 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; #   TABLE_NAME &lt;chr&gt;, TABLE_EXPLANATION &lt;chr&gt;</span></span></code></pre></div>
 <p>statsDataID=0003410379</p>
 </div>
-<div id="メタ情報取得estat_getmetainfo" class="section level3" number="24.2.3">
+<div id="メタ情報取得estat_getmetainfo" class="section level3" number="26.2.3">
 <h3>
-<span class="header-section-number">24.2.3</span> メタ情報取得（estat_getMetaInfo()）<a class="anchor" aria-label="anchor" href="#%E3%83%A1%E3%82%BF%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getmetainfo"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.2.3</span> メタ情報取得（estat_getMetaInfo()）<a class="anchor" aria-label="anchor" href="#%E3%83%A1%E3%82%BF%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getmetainfo"><i class="fas fa-link"></i></a>
 </h3>
 <p>統計データのメタ情報を取得します。この関数は、結果をlistとして返します。listの各要素が、それぞれのデータ項目についてのメタ情報を含んだtbl_dfになっています。</p>
 <pre><code>meta_info &lt;- estat_getMetaInfo(appId = appId, statsDataId = "")</code></pre>
-<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">meta_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getMetaInfo.html">estat_getMetaInfo</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, statsDataId <span class="op">=</span> <span class="st">"0003410379"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">meta_info</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 5</span></span>
@@ -306,7 +308,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt;  $ .names: tibble [4 × 2] (S3: tbl_df/tbl/data.frame)</span></span>
 <span><span class="co">#&gt;   ..$ id  : chr [1:4] "tab" "cat01" "area" "time"</span></span>
 <span><span class="co">#&gt;   ..$ name: chr [1:4] "表章項目" "男女_時系列" "地域_時系列" "時間軸（調査年）"</span></span></code></pre></div>
-<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">meta_info</span><span class="op">$</span><span class="va">cat01</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
 <span><span class="co">#&gt;   `@code` `@name` `@level`</span></span>
@@ -315,9 +317,9 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; 2 110     男      1       </span></span>
 <span><span class="co">#&gt; 3 120     女      1</span></span></code></pre></div>
 </div>
-<div id="統計データ取得estat_getstatsdata" class="section level3" number="24.2.4">
+<div id="統計データ取得estat_getstatsdata" class="section level3" number="26.2.4">
 <h3>
-<span class="header-section-number">24.2.4</span> 統計データ取得（estat_getStatsData()）<a class="anchor" aria-label="anchor" href="#%E7%B5%B1%E8%A8%88%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97estat_getstatsdata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.2.4</span> 統計データ取得（estat_getStatsData()）<a class="anchor" aria-label="anchor" href="#%E7%B5%B1%E8%A8%88%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97estat_getstatsdata"><i class="fas fa-link"></i></a>
 </h3>
 <p>統計データを取得します。この関数は、結果をメタ情報と紐づけてtbl_dfとして返します。</p>
 <p>必ず指定しなくてはいけないのはappIdとstatsDataIdだけですが、それだけだとデータがかなり大きくなって取得に時間がかかります。cdCat01（分類事項01）などを指定して必要な項目だけに絞ることをおすすめします。他に絞り込みに指定できるパラメータについては公式ドキュメントを参照してください。</p>
@@ -325,10 +327,10 @@ statsDataAPI=0004001640</p>
   appId = appId,
   statsDataId = "",
   cdCat01 = c("",""))</code></pre>
-<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsData.html">estat_getStatsData</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, statsDataId <span class="op">=</span> <span class="st">"0003410379"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Fetching record 1-4200... (total: 4200 records)</span></span></code></pre></div>
-<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop</span></span>
 <span><span class="co">#&gt; # A tibble: 4,200 × 11</span></span>
 <span><span class="co">#&gt;    tab_code 表章項目 cat01_code 男女_時系列 area_code</span></span>
@@ -347,7 +349,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; # ℹ 6 more variables: 地域_時系列 &lt;chr&gt;, time_code &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   `時間軸（調査年）` &lt;chr&gt;, unit &lt;chr&gt;, value &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   annotation &lt;chr&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsData.html">estat_getStatsData</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, statsDataId <span class="op">=</span> <span class="st">"0003448219"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Fetching record 1-87... (total: 87 records)</span></span>
 <span><span class="va">estat_pop_alien</span></span>
@@ -369,7 +371,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; #   人口 &lt;chr&gt;, area_code &lt;chr&gt;, 全国 &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   time_code &lt;chr&gt;, `時間軸（年間）` &lt;chr&gt;, unit &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   value &lt;dbl&gt;, annotation &lt;chr&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsData.html">estat_getStatsData</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, statsDataId <span class="op">=</span> <span class="st">"0004001640"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Fetching record 1-87... (total: 87 records)</span></span>
 <span><span class="va">estat_pop_alien2</span></span>
@@ -392,7 +394,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; #   time_code &lt;chr&gt;, `時間軸（年間）` &lt;chr&gt;, unit &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   value &lt;dbl&gt;, annotation &lt;chr&gt;</span></span></code></pre></div>
 <p>0003445244</p>
-<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsData.html">estat_getStatsData</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, lang <span class="op">=</span> <span class="st">"E"</span>, statsDataId <span class="op">=</span> <span class="st">"0003445244"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Fetching record 1-100000... (total: 100215 records)</span></span>
 <span><span class="co">#&gt; Fetching record 100001-100215... (total: 100215 records)</span></span>
@@ -415,7 +417,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; #   `Japan, Prefectures, Municipalities` &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   time_code &lt;chr&gt;, Time &lt;chr&gt;, unit &lt;chr&gt;, value &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   annotation &lt;chr&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien0</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">Nationality</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "Total"                                               </span></span>
 <span><span class="co">#&gt;  [2] "Foreigner"                                           </span></span>
@@ -434,7 +436,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; [15] "Others"                                              </span></span>
 <span><span class="co">#&gt; [16] "Japanese"                                            </span></span>
 <span><span class="co">#&gt; [17] "Nationality not reported"</span></span></code></pre></div>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2020</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsData.html">estat_getStatsData</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, statsDataId <span class="op">=</span> <span class="st">"0003445244"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Fetching record 1-100000... (total: 100215 records)</span></span>
 <span><span class="co">#&gt; Fetching record 100001-100215... (total: 100215 records)</span></span>
@@ -457,7 +459,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; #   `全国，都道府県，市区町村` &lt;chr&gt;, time_code &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   `時間軸（年次）` &lt;chr&gt;, unit &lt;chr&gt;, value &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   annotation &lt;chr&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2020</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">国籍</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "総数"                      </span></span>
 <span><span class="co">#&gt;  [2] "外国人"                    </span></span>
@@ -476,10 +478,10 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; [15] "その他"                    </span></span>
 <span><span class="co">#&gt; [16] "日本人"                    </span></span>
 <span><span class="co">#&gt; [17] "日本人・外国人の別「不詳」"</span></span></code></pre></div>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2020</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">男女</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "総数" "男"   "女"</span></span></code></pre></div>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">estat_pop_alien2020</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "tab_code"                 "表章事項"                </span></span>
 <span><span class="co">#&gt;  [3] "cat01_code"               "男女"                    </span></span>
@@ -488,7 +490,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt;  [9] "time_code"                "時間軸（年次）"          </span></span>
 <span><span class="co">#&gt; [11] "unit"                     "value"                   </span></span>
 <span><span class="co">#&gt; [13] "annotation"</span></span></code></pre></div>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2020</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">`全国，都道府県，市区町村`</span> <span class="op">==</span> <span class="st">"全国"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">男女</span> <span class="op">==</span> <span class="st">"総数"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -514,7 +516,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; 14 ペルー                         41034</span></span>
 <span><span class="co">#&gt; 15 インド                         27915</span></span>
 <span><span class="co">#&gt; 16 イギリス                       13590</span></span></code></pre></div>
-<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2020</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">`全国，都道府県，市区町村`</span> <span class="op">==</span> <span class="st">"全国"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">男女</span> <span class="op">!=</span> <span class="st">"総数"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -531,25 +533,25 @@ statsDataAPI=0004001640</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="owid.html"><span class="header-section-number">23</span> Our World in Data</a></div>
-<div class="next"><a href="others.html"><span class="header-section-number">25</span> その他のデータベース</a></div>
+<div class="prev"><a href="owid.html"><span class="header-section-number">25</span> Our World in Data</a></div>
+<div class="next"><a href="others.html"><span class="header-section-number">27</span> その他のデータベース</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#estat"><span class="header-section-number">24</span> e-Stat</a></li>
+<li><a class="nav-link" href="#estat"><span class="header-section-number">26</span> e-Stat</a></li>
 <li>
-<a class="nav-link" href="#api-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9"><span class="header-section-number">24.1</span> API の使い方</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE-e-stat-with-api"><span class="header-section-number">24.1.1</span> はじめての e-Stat with API</a></li>
+<a class="nav-link" href="#api-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9"><span class="header-section-number">26.1</span> API の使い方</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE-e-stat-with-api"><span class="header-section-number">26.1.1</span> はじめての e-Stat with API</a></li>
 <li><a class="nav-link" href="#%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A">初期設定</a></li>
-<li><a class="nav-link" href="#e-stat-%E7%99%BB%E9%8C%B2%E3%81%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E5%8F%96%E5%BE%97"><span class="header-section-number">24.1.2</span> e-Stat 登録と、アプリケーションIDの取得</a></li>
+<li><a class="nav-link" href="#e-stat-%E7%99%BB%E9%8C%B2%E3%81%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E5%8F%96%E5%BE%97"><span class="header-section-number">26.1.2</span> e-Stat 登録と、アプリケーションIDの取得</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#estatapi-%E5%88%A9%E7%94%A8%E6%A6%82%E8%A6%81-1"><span class="header-section-number">24.2</span> estatapi 利用概要</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E8%A8%AD%E5%AE%9A-1"><span class="header-section-number">24.2.1</span> アプリケーションIDの設定</a></li>
-<li><a class="nav-link" href="#%E7%B5%B1%E8%A8%88%E8%A1%A8%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getstatslist"><span class="header-section-number">24.2.2</span> 統計表情報取得（estat_getStatsList()）</a></li>
-<li><a class="nav-link" href="#%E3%83%A1%E3%82%BF%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getmetainfo"><span class="header-section-number">24.2.3</span> メタ情報取得（estat_getMetaInfo()）</a></li>
-<li><a class="nav-link" href="#%E7%B5%B1%E8%A8%88%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97estat_getstatsdata"><span class="header-section-number">24.2.4</span> 統計データ取得（estat_getStatsData()）</a></li>
+<a class="nav-link" href="#estatapi-%E5%88%A9%E7%94%A8%E6%A6%82%E8%A6%81-1"><span class="header-section-number">26.2</span> estatapi 利用概要</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E8%A8%AD%E5%AE%9A-1"><span class="header-section-number">26.2.1</span> アプリケーションIDの設定</a></li>
+<li><a class="nav-link" href="#%E7%B5%B1%E8%A8%88%E8%A1%A8%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getstatslist"><span class="header-section-number">26.2.2</span> 統計表情報取得（estat_getStatsList()）</a></li>
+<li><a class="nav-link" href="#%E3%83%A1%E3%82%BF%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getmetainfo"><span class="header-section-number">26.2.3</span> メタ情報取得（estat_getMetaInfo()）</a></li>
+<li><a class="nav-link" href="#%E7%B5%B1%E8%A8%88%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97estat_getstatsdata"><span class="header-section-number">26.2.4</span> 統計データ取得（estat_getStatsData()）</a></li>
 </ul>
 </li>
 </ul>
