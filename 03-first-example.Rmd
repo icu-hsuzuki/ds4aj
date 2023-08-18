@@ -16,6 +16,10 @@
 
 ![R4DS掲載の画像](https://r4ds.hadley.nz/diagrams/data-science/base.png){width="593"}
 
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("./data/base.png")
+```
+
 [はじめに](https://icu-hsuzuki.github.io/ds4aj/introduction.html#introduction)に書きましたが、基本的には、問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核だと思います。
 
 > R を使った分析の一つの例を、見て行きます。一つ一つのコード（コンピュータ・プログラム）の簡単な説明は、加えますが、あまりそれに捉われず、「データサイエンスとは何か？」を考えながら、雰囲気を味わってください。

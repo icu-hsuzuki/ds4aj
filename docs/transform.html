@@ -4,23 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 17 Transform | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 16 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="&lt;p&gt;This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.&lt;/p&gt;">
+<meta name="description" content="ここでは、tidyverse パッケージを構成する dplyr パッケージを用いて、データを変形することを学びます。dplyr パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、tidyverse パッケージを構成する tidyr パッケージ による変形も、後ほど扱います。 dplyr パッケージは、tidyverse...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 17 Transform | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 16 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/transform.html">
-<meta property="og:description" content="&lt;p&gt;This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.&lt;/p&gt;">
+<meta property="og:description" content="ここでは、tidyverse パッケージを構成する dplyr パッケージを用いて、データを変形することを学びます。dplyr パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、tidyverse パッケージを構成する tidyr パッケージ による変形も、後ほど扱います。 dplyr パッケージは、tidyverse...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 17 Transform | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="&lt;p&gt;This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.&lt;/p&gt;">
+<meta name="twitter:title" content="Chapter 16 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="ここでは、tidyverse パッケージを構成する dplyr パッケージを用いて、データを変形することを学びます。dplyr パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、tidyverse パッケージを構成する tidyr パッケージ による変形も、後ほど扱います。 dplyr パッケージは、tidyverse...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -91,8 +85,8 @@ set in the _output.yml file.&lt;/p&gt;">
 <li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
 <li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
 <li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R Basics</a></li>
-<li><a class="" href="visualize.html"><span class="header-section-number">16</span> 視覚化（Visualize）</a></li>
-<li><a class="active" href="transform.html"><span class="header-section-number">17</span> Transform</a></li>
+<li><a class="active" href="transform.html"><span class="header-section-number">16</span> 変形（Transform）</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">17</span> 視覚化（Visualize）</a></li>
 <li><a class="" href="import.html"><span class="header-section-number">18</span> Import</a></li>
 <li><a class="" href="modeling.html"><span class="header-section-number">19</span> Modeling</a></li>
 <li><a class="" href="publicdata.html"><span class="header-section-number">20</span> Public Data の分析</a></li>
@@ -118,23 +112,972 @@ set in the _output.yml file.&lt;/p&gt;">
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="transform" class="section level1" number="17">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="transform" class="section level1" number="16">
 <h1>
-<span class="header-section-number">17</span> Transform<a class="anchor" aria-label="anchor" href="#transform"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16</span> 変形（Transform）<a class="anchor" aria-label="anchor" href="#transform"><i class="fas fa-link"></i></a>
 </h1>
+<blockquote>
+<p>ここでは、<code>tidyverse</code> パッケージを構成する <code>dplyr</code> パッケージを用いて、データを変形することを学びます。<code>dplyr</code> パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、<code>tidyverse</code> パッケージを構成する <code>tidyr</code> パッケージ による変形も、後ほど扱います。</p>
+</blockquote>
+<p><code>dplyr</code> パッケージは、<code>tidyverse</code> パッケージをインストールしたり、使えるように <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> で読み込んだりするときに、一緒に読み込まれますから、あらためて、<code>dplyr</code> を指定する必要はありません。</p>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
+<span><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
+<span><span class="co">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0</span></span>
+<span><span class="co">#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1</span></span>
+<span><span class="co">#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0</span></span>
+<span><span class="co">#&gt; ✔ purrr     1.0.1     </span></span>
+<span><span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span></span>
+<span><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
+<span><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
+<span><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code></pre></div>
+<div id="dplyr-overview" class="section level2" number="16.1">
+<h2>
+<span class="header-section-number">16.1</span> <code>dplyr</code> <a href="https://dplyr.tidyverse.org">Overview</a><a class="anchor" aria-label="anchor" href="#dplyr-overview"><i class="fas fa-link"></i></a>
+</h2>
+<p>dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:</p>
+<ul>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> picks variables based on their names.</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> picks cases based on their values.</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> adds new variables that are functions of existing variables</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> reduces multiple values down to a single summary.</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> changes the ordering of the rows.</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> takes an existing tbl and converts it into a grouped tbl.</li>
+</ul>
+<p>You can learn more about them in vignette(“dplyr”). As well as these single-table verbs, dplyr also provides a variety of two-table verbs, which you can learn about in vignette(“two-table”).</p>
+<p>If you are new to dplyr, the best place to start is <a href="http://r4ds.had.co.nz/transform.html">the data transformation chapter in R for data science</a>.</p>
+</div>
+<div id="select-subset-columns-using-their-names-and-types" class="section level2" number="16.2">
+<h2>
+<span class="header-section-number">16.2</span> <a href="https://dplyr.tidyverse.org/reference/select.html"><code>select</code></a>: Subset columns using their names and types<a class="anchor" aria-label="anchor" href="#select-subset-columns-using-their-names-and-types"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="16%">
+<col width="38%">
+<col width="44%">
+</colgroup>
+<thead><tr class="header">
+<th>Helper Function</th>
+<th>Use</th>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>-</td>
+<td>Columns except</td>
+<td>select(babynames, -prop)</td>
+</tr>
+<tr class="even">
+<td>:</td>
+<td>Columns between (inclusive)</td>
+<td>select(babynames, year:n)</td>
+</tr>
+<tr class="odd">
+<td>contains()</td>
+<td>Columns that contains a string</td>
+<td>select(babynames, contains(“n”))</td>
+</tr>
+<tr class="even">
+<td>ends_with()</td>
+<td>Columns that ends with a string</td>
+<td>select(babynames, ends_with(“n”))</td>
+</tr>
+<tr class="odd">
+<td>matches()</td>
+<td>Columns that matches a regex</td>
+<td>select(babynames, matches(“n”))</td>
+</tr>
+<tr class="even">
+<td>num_range()</td>
+<td>Columns with a numerical suffix in the range</td>
+<td>Not applicable with babynames</td>
+</tr>
+<tr class="odd">
+<td>one_of()</td>
+<td>Columns whose name appear in the given set</td>
+<td>select(babynames, one_of(c(“sex”, “gender”)))</td>
+</tr>
+<tr class="even">
+<td>starts_with()</td>
+<td>Columns that starts with a string</td>
+<td>select(babynames, starts_with(“n”))</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="filter-subset-rows-using-column-values" class="section level2" number="16.3">
+<h2>
+<span class="header-section-number">16.3</span> <a href="https://dplyr.tidyverse.org/reference/filter.html"><code>filter</code></a>: Subset rows using column values<a class="anchor" aria-label="anchor" href="#filter-subset-rows-using-column-values"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Logical operator</th>
+<th>tests</th>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>&gt;</td>
+<td>Is x greater than y?</td>
+<td>x &gt; y</td>
+</tr>
+<tr class="even">
+<td>&gt;=</td>
+<td>Is x greater than or equal to y?</td>
+<td>x &gt;= y</td>
+</tr>
+<tr class="odd">
+<td>&lt;</td>
+<td>Is x less than y?</td>
+<td>x &lt; y</td>
+</tr>
+<tr class="even">
+<td>&lt;=</td>
+<td>Is x less than or equal to y?</td>
+<td>x &lt;= y</td>
+</tr>
+<tr class="odd">
+<td>==</td>
+<td>Is x equal to y?</td>
+<td>x == y</td>
+</tr>
+<tr class="even">
+<td>!=</td>
+<td>Is x not equal to y?</td>
+<td>x != y</td>
+</tr>
+<tr class="odd">
+<td>is.na()</td>
+<td>Is x an NA?</td>
+<td>is.na(x)</td>
+</tr>
+<tr class="even">
+<td>!is.na()</td>
+<td>Is x not an NA?</td>
+<td>!is.na(x)</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="arrange-and-pipe" class="section level2" number="16.4">
+<h2>
+<span class="header-section-number">16.4</span> <a href="https://dplyr.tidyverse.org/reference/arrange.html"><code>arrange</code></a> and <code>Pipe %&gt;%</code><a class="anchor" aria-label="anchor" href="#arrange-and-pipe"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> orders the rows of a data frame by the values of selected columns.</li>
+</ul>
+<p>Unlike other <code>dplyr</code> verbs, <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> largely ignores grouping; you need to explicitly mention grouping variables (`or use .by_group = TRUE) in order to group by them, and functions of variables are evaluated once per data frame, not once per group.</p>
+<ul>
+<li>
+<a href="https://r4ds.had.co.nz/pipes.html"><code>pipes</code></a> in R for Data Science.</li>
+</ul>
+</div>
+<div id="mutate" class="section level2" number="16.5">
+<h2>
+<span class="header-section-number">16.5</span> <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutate</code></a><a class="anchor" aria-label="anchor" href="#mutate"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><p>Create, modify, and delete columns</p></li>
+<li>
+<p>Useful mutate functions</p>
+<ul>
+<li><p>+, -, log(), etc., for their usual mathematical meanings</p></li>
+<li><p>lead(), lag()</p></li>
+<li><p>dense_rank(), min_rank(), percent_rank(), row_number(), cume_dist(), ntile()</p></li>
+<li><p>cumsum(), cummean(), cummin(), cummax(), cumany(), cumall()</p></li>
+<li><p>na_if(), coalesce()### <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="group_by" class="section level2" number="16.6">
+<h2>
+<span class="header-section-number">16.6</span> <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by</code></a><a class="anchor" aria-label="anchor" href="#group_by"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="summarise-or-summarize" class="section level2" number="16.7">
+<h2>
+<span class="header-section-number">16.7</span> <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise</code> or <code>summarize</code></a><a class="anchor" aria-label="anchor" href="#summarise-or-summarize"><i class="fas fa-link"></i></a>
+</h2>
+<div id="summary-functions" class="section level4" number="16.7.0.1">
+<h4>
+<span class="header-section-number">16.7.0.1</span> Summary functions<a class="anchor" aria-label="anchor" href="#summary-functions"><i class="fas fa-link"></i></a>
+</h4>
+<p>So far our summarise() examples have relied on sum(), max(), and mean(). But you can use any function in summarise() so long as it meets one criteria: the function must take a vector of values as input and return a single value as output. Functions that do this are known as summary functions and they are common in the field of descriptive statistics. Some of the most useful summary functions include:</p>
+<ol style="list-style-type: decimal">
+<li>Measures of location - mean(x), median(x), quantile(x, 0.25), min(x), and max(x)</li>
+<li>Measures of spread - sd(x), var(x), IQR(x), and mad(x)</li>
+<li>Measures of position - first(x), nth(x, 2), and last(x)</li>
+<li>Counts - n_distinct(x) and n(), which takes no arguments, and returns the size of the current group or data frame.</li>
+<li>Counts and proportions of logical values - sum(!is.na(x)), which counts the number of TRUEs returned by a logical test; mean(y == 0), which returns the proportion of TRUEs returned by a logical test.</li>
+</ol>
+<ul>
+<li>if_else(), recode(), case_when()</li>
+</ul>
+</div>
+</div>
+<div id="learn-dplyr-by-examples" class="section level2" number="16.8">
+<h2>
+<span class="header-section-number">16.8</span> Learn <code>dplyr</code> by Examples<a class="anchor" aria-label="anchor" href="#learn-dplyr-by-examples"><i class="fas fa-link"></i></a>
+</h2>
+<div id="data-iris" class="section level3" number="16.8.1">
+<h3>
+<span class="header-section-number">16.8.1</span> Data <code>iris</code><a class="anchor" aria-label="anchor" href="#data-iris"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span></span>
+<span><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
+<span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length    Sepal.Width     Petal.Length  </span></span>
+<span><span class="co">#&gt;  Min.   :4.300   Min.   :2.000   Min.   :1.000  </span></span>
+<span><span class="co">#&gt;  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  </span></span>
+<span><span class="co">#&gt;  Median :5.800   Median :3.000   Median :4.350  </span></span>
+<span><span class="co">#&gt;  Mean   :5.843   Mean   :3.057   Mean   :3.758  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  </span></span>
+<span><span class="co">#&gt;  Max.   :7.900   Max.   :4.400   Max.   :6.900  </span></span>
+<span><span class="co">#&gt;   Petal.Width          Species  </span></span>
+<span><span class="co">#&gt;  Min.   :0.100   setosa    :50  </span></span>
+<span><span class="co">#&gt;  1st Qu.:0.300   versicolor:50  </span></span>
+<span><span class="co">#&gt;  Median :1.300   virginica :50  </span></span>
+<span><span class="co">#&gt;  Mean   :1.199                  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:1.800                  </span></span>
+<span><span class="co">#&gt;  Max.   :2.500</span></span></code></pre></div>
+</div>
+<div id="select-1---columns-1-2-5" class="section level3" number="16.8.2">
+<h3>
+<span class="header-section-number">16.8.2</span> <code>select</code> 1 - columns 1, 2, 5<a class="anchor" aria-label="anchor" href="#select-1---columns-1-2-5"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
+<span><span class="co">#&gt; 1          5.1         3.5  setosa</span></span>
+<span><span class="co">#&gt; 2          4.9         3.0  setosa</span></span>
+<span><span class="co">#&gt; 3          4.7         3.2  setosa</span></span>
+<span><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
+<span><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
+<span><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
+<p>You can select the first, the second and the fifth columns. If you want to use it, then assign a new name.</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span></span>
+<span><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
+<span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_iris125</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_iris125</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
+<span><span class="co">#&gt; 1          5.1         3.5  setosa</span></span>
+<span><span class="co">#&gt; 2          4.9         3.0  setosa</span></span>
+<span><span class="co">#&gt; 3          4.7         3.2  setosa</span></span>
+<span><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
+<span><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
+<span><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
+</div>
+<div id="select-1-using-pipe" class="section level3" number="16.8.3">
+<h3>
+<span class="header-section-number">16.8.3</span> <code>select</code> 1 using pipe<a class="anchor" aria-label="anchor" href="#select-1-using-pipe"><i class="fas fa-link"></i></a>
+</h3>
+<p>In the previous example, we used <code>head(select(iris, c(1,2,5)))</code>, <code>head</code> comes first because we apply <code>head</code> to the result of <code>select(iris, c(1,2,5))</code>. In order to apply functions in a sequencial order, we can use pipe command. You can get the same result by the following.</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
+<span><span class="co">#&gt; 1          5.1         3.5  setosa</span></span>
+<span><span class="co">#&gt; 2          4.9         3.0  setosa</span></span>
+<span><span class="co">#&gt; 3          4.7         3.2  setosa</span></span>
+<span><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
+<span><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
+<span><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
+<p>All <code>tidyverse</code> functions are designed so that the first argument, i.e., the entry, is the data. So using pipe, <code>iris</code> is assumed to be the first entry of the <code>select</code> function, and <code>select(iris, c(1,2,5))</code> is the first entry of the head function.</p>
+<p>In the following, we use pipes.</p>
+</div>
+<div id="select-2---except-species" class="section level3" number="16.8.4">
+<h3>
+<span class="header-section-number">16.8.4</span> <code>select</code> 2 - except Species<a class="anchor" aria-label="anchor" href="#select-2---except-species"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="op">-</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
+<span><span class="co">#&gt; 1          5.1         3.5          1.4         0.2</span></span>
+<span><span class="co">#&gt; 2          4.9         3.0          1.4         0.2</span></span>
+<span><span class="co">#&gt; 3          4.7         3.2          1.3         0.2</span></span>
+<span><span class="co">#&gt; 4          4.6         3.1          1.5         0.2</span></span>
+<span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2</span></span>
+<span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4</span></span></code></pre></div>
+</div>
+<div id="select-3---select-and-change-column-names-at-the-same-time" class="section level3" number="16.8.5">
+<h3>
+<span class="header-section-number">16.8.5</span> <code>select</code> 3 - select and change column names at the same time<a class="anchor" aria-label="anchor" href="#select-3---select-and-change-column-names-at-the-same-time"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, sl <span class="op">=</span> <span class="va">Sepal.Length</span>, sw <span class="op">=</span> <span class="va">Sepal.Width</span>, sp <span class="op">=</span> <span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    sl  sw     sp</span></span>
+<span><span class="co">#&gt; 1 5.1 3.5 setosa</span></span>
+<span><span class="co">#&gt; 2 4.9 3.0 setosa</span></span>
+<span><span class="co">#&gt; 3 4.7 3.2 setosa</span></span>
+<span><span class="co">#&gt; 4 4.6 3.1 setosa</span></span>
+<span><span class="co">#&gt; 5 5.0 3.6 setosa</span></span>
+<span><span class="co">#&gt; 6 5.4 3.9 setosa</span></span></code></pre></div>
+</div>
+<div id="select-4---change-the-order-of-columns" class="section level3" number="16.8.6">
+<h3>
+<span class="header-section-number">16.8.6</span> <code>select</code> 4 - change the order of columns<a class="anchor" aria-label="anchor" href="#select-4---change-the-order-of-columns"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Species Petal.Length Petal.Width Sepal.Length Sepal.Width</span></span>
+<span><span class="co">#&gt; 1  setosa          1.4         0.2          5.1         3.5</span></span>
+<span><span class="co">#&gt; 2  setosa          1.4         0.2          4.9         3.0</span></span>
+<span><span class="co">#&gt; 3  setosa          1.3         0.2          4.7         3.2</span></span>
+<span><span class="co">#&gt; 4  setosa          1.5         0.2          4.6         3.1</span></span>
+<span><span class="co">#&gt; 5  setosa          1.4         0.2          5.0         3.6</span></span>
+<span><span class="co">#&gt; 6  setosa          1.7         0.4          5.4         3.9</span></span></code></pre></div>
+</div>
+<div id="filter---by-names" class="section level3" number="16.8.7">
+<h3>
+<span class="header-section-number">16.8.7</span> <code>filter</code> - by names<a class="anchor" aria-label="anchor" href="#filter---by-names"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span> <span class="op">==</span> <span class="st">"virginica"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
+<span><span class="co">#&gt; 1          6.3         3.3          6.0         2.5</span></span>
+<span><span class="co">#&gt; 2          5.8         2.7          5.1         1.9</span></span>
+<span><span class="co">#&gt; 3          7.1         3.0          5.9         2.1</span></span>
+<span><span class="co">#&gt; 4          6.3         2.9          5.6         1.8</span></span>
+<span><span class="co">#&gt; 5          6.5         3.0          5.8         2.2</span></span>
+<span><span class="co">#&gt; 6          7.6         3.0          6.6         2.1</span></span>
+<span><span class="co">#&gt;     Species</span></span>
+<span><span class="co">#&gt; 1 virginica</span></span>
+<span><span class="co">#&gt; 2 virginica</span></span>
+<span><span class="co">#&gt; 3 virginica</span></span>
+<span><span class="co">#&gt; 4 virginica</span></span>
+<span><span class="co">#&gt; 5 virginica</span></span>
+<span><span class="co">#&gt; 6 virginica</span></span></code></pre></div>
+</div>
+<div id="arrange---ascending-and-descending-order" class="section level3" number="16.8.8">
+<h3>
+<span class="header-section-number">16.8.8</span> <code>arrange</code> - ascending and descending order<a class="anchor" aria-label="anchor" href="#arrange---ascending-and-descending-order"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Sepal.Length</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">Sepal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span><span class="co">#&gt; 1          4.3         3.0          1.1         0.1  setosa</span></span>
+<span><span class="co">#&gt; 2          4.4         3.2          1.3         0.2  setosa</span></span>
+<span><span class="co">#&gt; 3          4.4         3.0          1.3         0.2  setosa</span></span>
+<span><span class="co">#&gt; 4          4.4         2.9          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 5          4.5         2.3          1.3         0.3  setosa</span></span>
+<span><span class="co">#&gt; 6          4.6         3.6          1.0         0.2  setosa</span></span></code></pre></div>
+</div>
+<div id="mutate---rank" class="section level3" number="16.8.9">
+<h3>
+<span class="header-section-number">16.8.9</span> <code>mutate</code> - rank<a class="anchor" aria-label="anchor" href="#mutate---rank"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sl_rank <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sl_rank</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span><span class="co">#&gt; 1          4.3         3.0          1.1         0.1  setosa</span></span>
+<span><span class="co">#&gt; 2          4.4         2.9          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 3          4.4         3.0          1.3         0.2  setosa</span></span>
+<span><span class="co">#&gt; 4          4.4         3.2          1.3         0.2  setosa</span></span>
+<span><span class="co">#&gt; 5          4.5         2.3          1.3         0.3  setosa</span></span>
+<span><span class="co">#&gt; 6          4.6         3.1          1.5         0.2  setosa</span></span>
+<span><span class="co">#&gt;   sl_rank</span></span>
+<span><span class="co">#&gt; 1       1</span></span>
+<span><span class="co">#&gt; 2       2</span></span>
+<span><span class="co">#&gt; 3       2</span></span>
+<span><span class="co">#&gt; 4       2</span></span>
+<span><span class="co">#&gt; 5       5</span></span>
+<span><span class="co">#&gt; 6       6</span></span></code></pre></div>
+<p>Insert a line break after the pipe command, not before.</p>
+</div>
+<div id="group_by-and-summarize" class="section level3" number="16.8.10">
+<h3>
+<span class="header-section-number">16.8.10</span> <code>group_by</code> and <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-and-summarize"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>sl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Sepal.Length</span><span class="op">)</span>, sw <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Sepal.Width</span><span class="op">)</span>, </span>
+<span>  pl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Petal.Length</span><span class="op">)</span>, pw <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Petal.Width</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 5</span></span>
+<span><span class="co">#&gt;   Species       sl    sw    pl    pw</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 setosa      5.01  3.43  1.46 0.246</span></span>
+<span><span class="co">#&gt; 2 versicolor  5.94  2.77  4.26 1.33 </span></span>
+<span><span class="co">#&gt; 3 virginica   6.59  2.97  5.55 2.03</span></span></code></pre></div>
+<ul>
+<li>mean: <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> or <code>mean(x, na.rm = TRUE)</code> - arithmetic mean (average)</li>
+<li>median: <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> or <code>median(x, na.rm = TRUE)</code> - mid value</li>
+</ul>
+<p>For more examples see</p>
+<p><a href="https://icu-hsuzuki.github.io/da4r2022_note/dplyr-iris.nb.html">dplr_iris</a></p>
+</div>
+</div>
+<div id="references-of-dplyr" class="section level2" number="16.9">
+<h2>
+<span class="header-section-number">16.9</span> References of <code>dplyr</code><a class="anchor" aria-label="anchor" href="#references-of-dplyr"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Textbook: <a href="https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro">R for Data Science, Part II Explore</a>
+</li>
+</ul>
+<div id="rstudio-primers-see-references-in-moodle-at-the-bottom" class="section level3" number="16.9.1">
+<h3>
+<span class="header-section-number">16.9.1</span> RStudio Primers: See References in Moodle at the bottom<a class="anchor" aria-label="anchor" href="#rstudio-primers-see-references-in-moodle-at-the-bottom"><i class="fas fa-link"></i></a>
+</h3>
+<ol start="2" style="list-style-type: decimal">
+<li>Work with Data – <a href="https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro">r4ds: Wrangle, I</a>
+</li>
+</ol>
+<ul>
+<li><a href="https://rstudio.cloud/learn/primers/2.1">Working with Tibbles</a></li>
+<li><a href="https://rstudio.cloud/learn/primers/2.2">Isolating Data with dplyr</a></li>
+<li><a href="https://rstudio.cloud/learn/primers/2.3">Deriving Information with dplyr</a></li>
+</ul>
+</div>
+</div>
+<div id="learn-dplyr-by-examples-ii---gapminder" class="section level2" number="16.10">
+<h2>
+<span class="header-section-number">16.10</span> Learn <code>dplyr</code> by Examples II - <code>gapminder</code><a class="anchor" aria-label="anchor" href="#learn-dplyr-by-examples-ii---gapminder"><i class="fas fa-link"></i></a>
+</h2>
+<div id="ggplot2-overview" class="section level3" number="16.10.1">
+<h3>
+<span class="header-section-number">16.10.1</span> <code>ggplot2</code> <a href="https://ggplot2.tidyverse.org">Overview</a><a class="anchor" aria-label="anchor" href="#ggplot2-overview"><i class="fas fa-link"></i></a>
+</h3>
+<p><code>ggplot2</code> is a system for declaratively creating graphics, based on <a href="https://amzn.to/2ef1eWp">The Grammar of Graphics</a>. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.</p>
+<p><strong>Examples</strong></p>
+<pre><code>ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))</code></pre>
+<pre><code>ggplot(data = mpg) + 
+  geom_boxplot(mapping = aes(x = class, y = hwy))</code></pre>
+<p><strong>Template</strong></p>
+<pre><code>ggplot(data = &lt;DATA&gt;) + 
+  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))</code></pre>
+<div id="gapminder-and-r-package-gapminder" class="section level4" number="16.10.1.1">
+<h4>
+<span class="header-section-number">16.10.1.1</span> Gapminder and R Package <code>gapminder</code><a class="anchor" aria-label="anchor" href="#gapminder-and-r-package-gapminder"><i class="fas fa-link"></i></a>
+</h4>
+<blockquote>
+<p>Gapminder was founded by Ola Rosling, Anna Rosling Rönnlund, and Hans Rosling</p>
+</blockquote>
+<ul>
+<li>
+<p>Gapminder: <a href="https://www.gapminder.org" class="uri">https://www.gapminder.org</a></p>
+<ul>
+<li>Test on Top: You are probably wrong about - upgrade your worldview</li>
+<li>Bubble Chart: <a href="https://www.gapminder.org/tools/#%24chart-type=bubbles&amp;url=v1" class="uri">https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1</a>
+</li>
+<li>Dallar Street: <a href="https://www.gapminder.org/tools/#%24chart-type=bubbles&amp;url=v1" class="uri">https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1</a>
+</li>
+<li>Data: <a href="https://www.gapminder.org/data/" class="uri">https://www.gapminder.org/data/</a>
+</li>
+</ul>
+</li>
+<li>
+<p>R Package gapminder by Jennifer Bryan</p>
+<ul>
+<li>Package site: <a href="https://CRAN.R-project.org/package=gapminder" class="uri">https://CRAN.R-project.org/package=gapminder</a>
+</li>
+<li>Site: <a href="https://github.com/jennybc/gapminder" class="uri">https://github.com/jennybc/gapminder</a>
+</li>
+<li>Documents: <a href="https://www.rdocumentation.org/packages/gapminder/versions/0.3.0" class="uri">https://www.rdocumentation.org/packages/gapminder/versions/0.3.0</a>
+</li>
+</ul>
+</li>
+<li>
+<p>Package Help <code><a href="https://jennybc.github.io/gapminder/reference/gapminder.html">?gapminder</a></code> or <code>gapminder</code> in the search window of Help</p>
+<ul>
+<li>The main data frame gapminder has 1704 rows and 6 variables:
+<ul>
+<li>country: factor with 142 levels</li>
+<li>continent: factor with 5 levels</li>
+<li>year: ranges from 1952 to 2007 in increments of 5 years</li>
+<li>lifeExp: life expectancy at birth, in years</li>
+<li>pop: population</li>
+<li>gdpPercap: GDP per capita (US$, inflation-adjusted)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/WDI/">WDI</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="r-package-gapminder-data" class="section level4" number="16.10.1.2">
+<h4>
+<span class="header-section-number">16.10.1.2</span> R Package <code>gapminder</code> data<a class="anchor" aria-label="anchor" href="#r-package-gapminder-data"><i class="fas fa-link"></i></a>
+</h4>
+<p>We will use a <code>tidyverse</code> function <code>slice</code> replacing <code>head</code>. Check <code>slice</code> in the search window under the Help tab on the bottom right pane.</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">gapminder</span></span>
+<span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 6</span></span>
+<span><span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span><span class="co">#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span><span class="co">#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
+<span><span class="co">#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
+<span><span class="co">#&gt;  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
+<span><span class="co">#&gt;  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
+<span><span class="co">#&gt;  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
+<span><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
+<span><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
+<span><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 1,704</span></span>
+<span><span class="co">#&gt; Columns: 6</span></span>
+<span><span class="co">#&gt; $ country   &lt;fct&gt; "Afghanistan", "Afghanistan", "Afghanist…</span></span>
+<span><span class="co">#&gt; $ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia…</span></span>
+<span><span class="co">#&gt; $ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982…</span></span>
+<span><span class="co">#&gt; $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, …</span></span>
+<span><span class="co">#&gt; $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13…</span></span>
+<span><span class="co">#&gt; $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         country        continent        year     </span></span>
+<span><span class="co">#&gt;  Afghanistan:  12   Africa  :624   Min.   :1952  </span></span>
+<span><span class="co">#&gt;  Albania    :  12   Americas:300   1st Qu.:1966  </span></span>
+<span><span class="co">#&gt;  Algeria    :  12   Asia    :396   Median :1980  </span></span>
+<span><span class="co">#&gt;  Angola     :  12   Europe  :360   Mean   :1980  </span></span>
+<span><span class="co">#&gt;  Argentina  :  12   Oceania : 24   3rd Qu.:1993  </span></span>
+<span><span class="co">#&gt;  Australia  :  12                  Max.   :2007  </span></span>
+<span><span class="co">#&gt;  (Other)    :1632                                </span></span>
+<span><span class="co">#&gt;     lifeExp           pop              gdpPercap       </span></span>
+<span><span class="co">#&gt;  Min.   :23.60   Min.   :6.001e+04   Min.   :   241.2  </span></span>
+<span><span class="co">#&gt;  1st Qu.:48.20   1st Qu.:2.794e+06   1st Qu.:  1202.1  </span></span>
+<span><span class="co">#&gt;  Median :60.71   Median :7.024e+06   Median :  3531.8  </span></span>
+<span><span class="co">#&gt;  Mean   :59.47   Mean   :2.960e+07   Mean   :  7215.3  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:70.85   3rd Qu.:1.959e+07   3rd Qu.:  9325.5  </span></span>
+<span><span class="co">#&gt;  Max.   :82.60   Max.   :1.319e+09   Max.   :113523.1  </span></span>
+<span><span class="co">#&gt; </span></span></code></pre></div>
+</div>
+<div id="tidyverseggplot" class="section level4" number="16.10.1.3">
+<h4>
+<span class="header-section-number">16.10.1.3</span> Tidyverse::ggplot<a class="anchor" aria-label="anchor" href="#tidyverseggplot"><i class="fas fa-link"></i></a>
+</h4>
+<div id="first-try---with-failures" class="section level5" number="16.10.1.3.1">
+<h5>
+<span class="header-section-number">16.10.1.3.1</span> First Try - with failures<a class="anchor" aria-label="anchor" href="#first-try---with-failures"><i class="fas fa-link"></i></a>
+</h5>
+<p>You will encounter similar failures. We list three of them.</p>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
+<p>There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …. Can you tell how many years are in the data? The following command shows different years in the data.</p>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">year</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002</span></span>
+<span><span class="co">#&gt; [12] 2007</span></span></code></pre></div>
+<p>You can guess it from the data summary above. Can you imagine how many countries are in the data? 142? Anyhow, too many points are on each year.</p>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
+<p>Now, you can guess the reason why you had this output. This is often called a saw-tooth.</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Continuous x aesthetic</span></span>
+<span><span class="co">#&gt; ℹ did you forget `aes(group = ...)`?</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-21-1.png" width="672"></div>
+<p>Can you see what the problem is? The <code>year</code> is a numerical variable in integer.</p>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="co"># same as typeof(df$year)</span></span>
+<span><span class="co">#&gt; [1] "integer"</span></span></code></pre></div>
+<p>The following looks better.</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, group <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-23-1.png" width="672"></div>
+</div>
+<div id="box-plot" class="section level5" number="16.10.1.3.2">
+<h5>
+<span class="header-section-number">16.10.1.3.2</span> Box Plot<a class="anchor" aria-label="anchor" href="#box-plot"><i class="fas fa-link"></i></a>
+</h5>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-24-1.png" width="672"></div>
+<p>We will study data visualization in Chapter <a href="#ggplot2"><strong>??</strong></a>.</p>
+</div>
+</div>
+<div id="applications-of-dplyr" class="section level4" number="16.10.1.4">
+<h4>
+<span class="header-section-number">16.10.1.4</span> Applications of <code>dplyr</code><a class="anchor" aria-label="anchor" href="#applications-of-dplyr"><i class="fas fa-link"></i></a>
+</h4>
+<p>Let us apply <code>dplyr</code> to manipulate data to visualize the data.</p>
+<div id="filter" class="section level5" number="16.10.1.4.1">
+<h5>
+<span class="header-section-number">16.10.1.4.1</span> <code>filter</code><a class="anchor" aria-label="anchor" href="#filter"><i class="fas fa-link"></i></a>
+</h5>
+<p>By <code>filter</code> you can obtain the the data of one country.</p>
+<p><code>filter(country == "Afghanistan")</code></p>
+<p>Note that we need two equal symbols, and quotation marks must surround the country name.</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Afghanistan"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
+<p>Looks good. From the data you observe, the life expectancy at birth in 1952 was below 30, and it was still below 44 in 2007.</p>
+<p>Let us compare Afghanistan with Japan. When you choose more than one country, we use the following format: <code>country %in% c("Afghanistan", "Japan")</code>.</p>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Japan"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-26-1.png" width="672"></div>
+<p>What do you observe from this chart?</p>
+<p>The code <code>unique(df$country)</code> does the same as the one below. First, choose distinct elements in the column <code>country</code> by <code>distinct(country)</code> and get the column as a vector by <code>pull</code>.</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   [1] Afghanistan              Albania                 </span></span>
+<span><span class="co">#&gt;   [3] Algeria                  Angola                  </span></span>
+<span><span class="co">#&gt;   [5] Argentina                Australia               </span></span>
+<span><span class="co">#&gt;   [7] Austria                  Bahrain                 </span></span>
+<span><span class="co">#&gt;   [9] Bangladesh               Belgium                 </span></span>
+<span><span class="co">#&gt;  [11] Benin                    Bolivia                 </span></span>
+<span><span class="co">#&gt;  [13] Bosnia and Herzegovina   Botswana                </span></span>
+<span><span class="co">#&gt;  [15] Brazil                   Bulgaria                </span></span>
+<span><span class="co">#&gt;  [17] Burkina Faso             Burundi                 </span></span>
+<span><span class="co">#&gt;  [19] Cambodia                 Cameroon                </span></span>
+<span><span class="co">#&gt;  [21] Canada                   Central African Republic</span></span>
+<span><span class="co">#&gt;  [23] Chad                     Chile                   </span></span>
+<span><span class="co">#&gt;  [25] China                    Colombia                </span></span>
+<span><span class="co">#&gt;  [27] Comoros                  Congo, Dem. Rep.        </span></span>
+<span><span class="co">#&gt;  [29] Congo, Rep.              Costa Rica              </span></span>
+<span><span class="co">#&gt;  [31] Cote d'Ivoire            Croatia                 </span></span>
+<span><span class="co">#&gt;  [33] Cuba                     Czech Republic          </span></span>
+<span><span class="co">#&gt;  [35] Denmark                  Djibouti                </span></span>
+<span><span class="co">#&gt;  [37] Dominican Republic       Ecuador                 </span></span>
+<span><span class="co">#&gt;  [39] Egypt                    El Salvador             </span></span>
+<span><span class="co">#&gt;  [41] Equatorial Guinea        Eritrea                 </span></span>
+<span><span class="co">#&gt;  [43] Ethiopia                 Finland                 </span></span>
+<span><span class="co">#&gt;  [45] France                   Gabon                   </span></span>
+<span><span class="co">#&gt;  [47] Gambia                   Germany                 </span></span>
+<span><span class="co">#&gt;  [49] Ghana                    Greece                  </span></span>
+<span><span class="co">#&gt;  [51] Guatemala                Guinea                  </span></span>
+<span><span class="co">#&gt;  [53] Guinea-Bissau            Haiti                   </span></span>
+<span><span class="co">#&gt;  [55] Honduras                 Hong Kong, China        </span></span>
+<span><span class="co">#&gt;  [57] Hungary                  Iceland                 </span></span>
+<span><span class="co">#&gt;  [59] India                    Indonesia               </span></span>
+<span><span class="co">#&gt;  [61] Iran                     Iraq                    </span></span>
+<span><span class="co">#&gt;  [63] Ireland                  Israel                  </span></span>
+<span><span class="co">#&gt;  [65] Italy                    Jamaica                 </span></span>
+<span><span class="co">#&gt;  [67] Japan                    Jordan                  </span></span>
+<span><span class="co">#&gt;  [69] Kenya                    Korea, Dem. Rep.        </span></span>
+<span><span class="co">#&gt;  [71] Korea, Rep.              Kuwait                  </span></span>
+<span><span class="co">#&gt;  [73] Lebanon                  Lesotho                 </span></span>
+<span><span class="co">#&gt;  [75] Liberia                  Libya                   </span></span>
+<span><span class="co">#&gt;  [77] Madagascar               Malawi                  </span></span>
+<span><span class="co">#&gt;  [79] Malaysia                 Mali                    </span></span>
+<span><span class="co">#&gt;  [81] Mauritania               Mauritius               </span></span>
+<span><span class="co">#&gt;  [83] Mexico                   Mongolia                </span></span>
+<span><span class="co">#&gt;  [85] Montenegro               Morocco                 </span></span>
+<span><span class="co">#&gt;  [87] Mozambique               Myanmar                 </span></span>
+<span><span class="co">#&gt;  [89] Namibia                  Nepal                   </span></span>
+<span><span class="co">#&gt;  [91] Netherlands              New Zealand             </span></span>
+<span><span class="co">#&gt;  [93] Nicaragua                Niger                   </span></span>
+<span><span class="co">#&gt;  [95] Nigeria                  Norway                  </span></span>
+<span><span class="co">#&gt;  [97] Oman                     Pakistan                </span></span>
+<span><span class="co">#&gt;  [99] Panama                   Paraguay                </span></span>
+<span><span class="co">#&gt; [101] Peru                     Philippines             </span></span>
+<span><span class="co">#&gt; [103] Poland                   Portugal                </span></span>
+<span><span class="co">#&gt; [105] Puerto Rico              Reunion                 </span></span>
+<span><span class="co">#&gt; [107] Romania                  Rwanda                  </span></span>
+<span><span class="co">#&gt; [109] Sao Tome and Principe    Saudi Arabia            </span></span>
+<span><span class="co">#&gt; [111] Senegal                  Serbia                  </span></span>
+<span><span class="co">#&gt; [113] Sierra Leone             Singapore               </span></span>
+<span><span class="co">#&gt; [115] Slovak Republic          Slovenia                </span></span>
+<span><span class="co">#&gt; [117] Somalia                  South Africa            </span></span>
+<span><span class="co">#&gt; [119] Spain                    Sri Lanka               </span></span>
+<span><span class="co">#&gt; [121] Sudan                    Swaziland               </span></span>
+<span><span class="co">#&gt; [123] Sweden                   Switzerland             </span></span>
+<span><span class="co">#&gt; [125] Syria                    Taiwan                  </span></span>
+<span><span class="co">#&gt; [127] Tanzania                 Thailand                </span></span>
+<span><span class="co">#&gt; [129] Togo                     Trinidad and Tobago     </span></span>
+<span><span class="co">#&gt; [131] Tunisia                  Turkey                  </span></span>
+<span><span class="co">#&gt; [133] Uganda                   United Kingdom          </span></span>
+<span><span class="co">#&gt; [135] United States            Uruguay                 </span></span>
+<span><span class="co">#&gt; [137] Venezuela                Vietnam                 </span></span>
+<span><span class="co">#&gt; [139] West Bank and Gaza       Yemen, Rep.             </span></span>
+<span><span class="co">#&gt; [141] Zambia                   Zimbabwe                </span></span>
+<span><span class="co">#&gt; 142 Levels: Afghanistan Albania Algeria Angola ... Zimbabwe</span></span></code></pre></div>
+<p>As we have guessed, there are 142 countries in this data.</p>
+<p>Let us choose BRICs countries in the data.</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Brazil"</span>, <span class="st">"Russia"</span>, <span class="st">"India"</span>, <span class="st">"China"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-28-1.png" width="672"></div>
+<p>Russia data is missing. Can you find it in the list of countries? It can be a problem of <code>gapminder</code> data. Can you think of the reason why Russia is not in?</p>
+</div>
+</div>
+</div>
+<div id="exercises" class="section level3" number="16.10.2">
+<h3>
+<span class="header-section-number">16.10.2</span> Exercises<a class="anchor" aria-label="anchor" href="#exercises"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Change <code>lifeExp</code> to <code>pop</code> and <code>gdpPercap</code> and do the same.</li>
+<li>Choose ASEAN countries and do the similar investigations.</li>
+</ol>
+<ul>
+<li><p>Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore.</p></li>
+<li><p>How many of these countries are on the list?</p></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Choose several countries by yourself and do the similar investigations.</li>
+</ol>
+</div>
+<div id="group_by-and-summarize-1" class="section level3" number="16.10.3">
+<h3>
+<span class="header-section-number">16.10.3</span> <code>group_by</code> and <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-and-summarize-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Let us use the variable <code>continent</code> and summarize the data. Can you tell how many continents are listed in the data? Yes, there are five. Can you tell how many countries are in each continent on the data?</p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, median_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, max_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, min_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"keep"</span><span class="op">)</span></span></code></pre></div>
+<p>Don’t get scared. We will learn little by little.</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 60 × 6</span></span>
+<span><span class="co">#&gt; # Groups:   continent, year [60]</span></span>
+<span><span class="co">#&gt;    continent  year mean_lifeExp median_lifeExp max_lifeExp</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;     &lt;int&gt;        &lt;dbl&gt;          &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 Africa     1952         39.1           38.8        52.7</span></span>
+<span><span class="co">#&gt;  2 Africa     1957         41.3           40.6        58.1</span></span>
+<span><span class="co">#&gt;  3 Africa     1962         43.3           42.6        60.2</span></span>
+<span><span class="co">#&gt;  4 Africa     1967         45.3           44.7        61.6</span></span>
+<span><span class="co">#&gt;  5 Africa     1972         47.5           47.0        64.3</span></span>
+<span><span class="co">#&gt;  6 Africa     1977         49.6           49.3        67.1</span></span>
+<span><span class="co">#&gt;  7 Africa     1982         51.6           50.8        69.9</span></span>
+<span><span class="co">#&gt;  8 Africa     1987         53.3           51.6        71.9</span></span>
+<span><span class="co">#&gt;  9 Africa     1992         53.6           52.4        73.6</span></span>
+<span><span class="co">#&gt; 10 Africa     1997         53.6           52.8        74.8</span></span>
+<span><span class="co">#&gt; # ℹ 50 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 1 more variable: min_lifeExp &lt;dbl&gt;</span></span></code></pre></div>
+<p>You can use <code>fill</code> and <code>color</code> for the box plot. Try and check the difference.</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1952</span>, <span class="fl">1987</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, fill <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
+<p>The following are examples of line graphs. Please see the differences.</p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-32-1.png" width="672"></div>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span>, linetype <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-33-1.png" width="672"></div>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">median_lifeExp</span>, linetype <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
+</div>
+</div>
+<div id="the-week-two-assignment-in-moodle" class="section level2" number="16.11">
+<h2>
+<span class="header-section-number">16.11</span> The Week Two Assignment (in Moodle)<a class="anchor" aria-label="anchor" href="#the-week-two-assignment-in-moodle"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>R Markdown and <code>dplyr</code></strong></p>
+<ul>
+<li>Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. <code>a2_123456.nb.html</code>)
+<ol style="list-style-type: decimal">
+<li>create an R Notebook using the R Notebook Template in Moodle, save as <code>a2_123456.Rmd</code>,</li>
+<li>write your name and ID and the contents,</li>
+<li>run each code block,</li>
+<li>preview to create <code>a2_123456.nb.html</code>,</li>
+<li>submit <code>a2_123456.nb.html</code> to Moodle.</li>
+</ol>
+</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>
+<p>Pick data from the built-in datasets besides <code>cars</code>. (<code><a href="https://rdrr.io/r/base/library.html">library(help = "datasets")</a></code> or go to the site <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html">The R Datasets Package</a>)</p>
+<ul>
+<li>Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)</li>
+<li>Use <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code>, …, and create at least one chart using <code>ggplot2</code> - Code Chunk.
+<ul>
+<li>Don’t forget to add <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> in the first code chunk.</li>
+</ul>
+</li>
+<li>An observation of the chart - in your own words.</li>
+</ul>
+</li>
+<li>
+<p>Load <code>gapminder</code> by <code><a href="https://github.com/jennybc/gapminder">library(gapminder)</a></code>.</p>
+<ul>
+<li>Choose <code>pop</code> or <code>gdpPercap</code>, or both, one country in the data, a group of countries in the data.</li>
+<li>Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for <code>lifeExp</code>.)</li>
+<li>Study the data as you like.</li>
+<li>Observations and difficulties encountered.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Due:</strong> 2023-01-09 23:59:00. Submit your R Notebook file in Moodle (The Second Assignment). Due on Monday!</p>
+<div id="original-data-wdi" class="section level3" number="16.11.1">
+<h3>
+<span class="header-section-number">16.11.1</span> Original Data? WDI?<a class="anchor" aria-label="anchor" href="#original-data-wdi"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 6</span></span>
+<span><span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span><span class="co">#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span><span class="co">#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
+<span><span class="co">#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
+<span><span class="co">#&gt;  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
+<span><span class="co">#&gt;  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
+<span><span class="co">#&gt;  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
+<span><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
+<span><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
+<span><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span></code></pre></div>
+<div id="wdi-1" class="section level4" number="16.11.1.1">
+<h4>
+<span class="header-section-number">16.11.1.1</span> WDI<a class="anchor" aria-label="anchor" href="#wdi-1"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>SP.DYN.LE00.IN: Life expectancy at birth, total (years)</li>
+<li>NY.GDP.PCAP.KD: GDP per capita (constant 2015 US$)</li>
+<li>SP.POP.TOTL: Population, total</li>
+</ul>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span></span>
+<span>  country <span class="op">=</span> <span class="st">"all"</span>, </span>
+<span>  indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>lifeExp <span class="op">=</span> <span class="st">"SP.DYN.LE00.IN"</span>, pop <span class="op">=</span> <span class="st">"SP.POP.TOTL"</span>, gdpPercap <span class="op">=</span> <span class="st">"NY.GDP.PCAP.KD"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; Rows: 16758 Columns: 7
+#&gt; ── Column specification ────────────────────────────────────
+#&gt; Delimiter: ","
+#&gt; chr (3): country, iso2c, iso3c
+#&gt; dbl (4): year, lifeExp, pop, gdpPercap
+#&gt; 
+#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
+#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 7</span></span>
+<span><span class="co">#&gt;    country     iso2c iso3c  year lifeExp      pop gdpPercap</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 Afghanistan AF    AFG    1960    32.5  8622466        NA</span></span>
+<span><span class="co">#&gt;  2 Afghanistan AF    AFG    1961    33.1  8790140        NA</span></span>
+<span><span class="co">#&gt;  3 Afghanistan AF    AFG    1962    33.5  8969047        NA</span></span>
+<span><span class="co">#&gt;  4 Afghanistan AF    AFG    1963    34.0  9157465        NA</span></span>
+<span><span class="co">#&gt;  5 Afghanistan AF    AFG    1964    34.5  9355514        NA</span></span>
+<span><span class="co">#&gt;  6 Afghanistan AF    AFG    1965    35.0  9565147        NA</span></span>
+<span><span class="co">#&gt;  7 Afghanistan AF    AFG    1966    35.5  9783147        NA</span></span>
+<span><span class="co">#&gt;  8 Afghanistan AF    AFG    1967    35.9 10010030        NA</span></span>
+<span><span class="co">#&gt;  9 Afghanistan AF    AFG    1968    36.4 10247780        NA</span></span>
+<span><span class="co">#&gt; 10 Afghanistan AF    AFG    1969    36.9 10494489        NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi_extra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span></span>
+<span>  country <span class="op">=</span> <span class="st">"all"</span>, </span>
+<span>  indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>lifeExp <span class="op">=</span> <span class="st">"SP.DYN.LE00.IN"</span>, pop <span class="op">=</span> <span class="st">"SP.POP.TOTL"</span>, gdpPercap <span class="op">=</span> <span class="st">"NY.GDP.PCAP.KD"</span><span class="op">)</span>, </span>
+<span>  extra <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; Rows: 16758 Columns: 15
+#&gt; ── Column specification ────────────────────────────────────
+#&gt; Delimiter: ","
+#&gt; chr  (7): country, iso2c, iso3c, region, capital, income...
+#&gt; dbl  (6): year, lifeExp, pop, gdpPercap, longitude, lati...
+#&gt; lgl  (1): status
+#&gt; date (1): lastupdated
+#&gt; 
+#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
+#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi_extra</span></span>
+<span><span class="co">#&gt; # A tibble: 16,758 × 15</span></span>
+<span><span class="co">#&gt;    country     iso2c iso3c  year status lastupdated lifeExp</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;lgl&gt;  &lt;date&gt;        &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 Afghanistan AF    AFG    2014 NA     2023-07-25     62.5</span></span>
+<span><span class="co">#&gt;  2 Afghanistan AF    AFG    2012 NA     2023-07-25     61.9</span></span>
+<span><span class="co">#&gt;  3 Afghanistan AF    AFG    2009 NA     2023-07-25     60.4</span></span>
+<span><span class="co">#&gt;  4 Afghanistan AF    AFG    2013 NA     2023-07-25     62.4</span></span>
+<span><span class="co">#&gt;  5 Afghanistan AF    AFG    1971 NA     2023-07-25     37.9</span></span>
+<span><span class="co">#&gt;  6 Afghanistan AF    AFG    2015 NA     2023-07-25     62.7</span></span>
+<span><span class="co">#&gt;  7 Afghanistan AF    AFG    1969 NA     2023-07-25     36.9</span></span>
+<span><span class="co">#&gt;  8 Afghanistan AF    AFG    2010 NA     2023-07-25     60.9</span></span>
+<span><span class="co">#&gt;  9 Afghanistan AF    AFG    2011 NA     2023-07-25     61.4</span></span>
+<span><span class="co">#&gt; 10 Afghanistan AF    AFG    2008 NA     2023-07-25     59.9</span></span>
+<span><span class="co">#&gt; # ℹ 16,748 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 8 more variables: pop &lt;dbl&gt;, gdpPercap &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   region &lt;chr&gt;, capital &lt;chr&gt;, longitude &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   latitude &lt;dbl&gt;, income &lt;chr&gt;, lending &lt;chr&gt;</span></span></code></pre></div>
+<p>Can you see the differences? List them out. We will study the World Development Indicators in Chapter <a href="worldbank-site.html#wdi">7.4.1</a>.</p>
 
 </div>
+</div>
+</div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="visualize.html"><span class="header-section-number">16</span> 視覚化（Visualize）</a></div>
-<div class="next"><a href="import.html"><span class="header-section-number">18</span> Import</a></div>
+<div class="prev"><a href="rbasics.html"><span class="header-section-number">15</span> R Basics</a></div>
+<div class="next"><a href="visualize.html"><span class="header-section-number">17</span> 視覚化（Visualize）</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#transform"><span class="header-section-number">17</span> Transform</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#transform"><span class="header-section-number">16</span> 変形（Transform）</a></li>
+<li><a class="nav-link" href="#dplyr-overview"><span class="header-section-number">16.1</span> dplyr Overview</a></li>
+<li><a class="nav-link" href="#select-subset-columns-using-their-names-and-types"><span class="header-section-number">16.2</span> select: Subset columns using their names and types</a></li>
+<li><a class="nav-link" href="#filter-subset-rows-using-column-values"><span class="header-section-number">16.3</span> filter: Subset rows using column values</a></li>
+<li><a class="nav-link" href="#arrange-and-pipe"><span class="header-section-number">16.4</span> arrange and Pipe %&gt;%</a></li>
+<li><a class="nav-link" href="#mutate"><span class="header-section-number">16.5</span> mutate</a></li>
+<li><a class="nav-link" href="#group_by"><span class="header-section-number">16.6</span> group_by</a></li>
+<li><a class="nav-link" href="#summarise-or-summarize"><span class="header-section-number">16.7</span> summarise or summarize</a></li>
+<li>
+<a class="nav-link" href="#learn-dplyr-by-examples"><span class="header-section-number">16.8</span> Learn dplyr by Examples</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-iris"><span class="header-section-number">16.8.1</span> Data iris</a></li>
+<li><a class="nav-link" href="#select-1---columns-1-2-5"><span class="header-section-number">16.8.2</span> select 1 - columns 1, 2, 5</a></li>
+<li><a class="nav-link" href="#select-1-using-pipe"><span class="header-section-number">16.8.3</span> select 1 using pipe</a></li>
+<li><a class="nav-link" href="#select-2---except-species"><span class="header-section-number">16.8.4</span> select 2 - except Species</a></li>
+<li><a class="nav-link" href="#select-3---select-and-change-column-names-at-the-same-time"><span class="header-section-number">16.8.5</span> select 3 - select and change column names at the same time</a></li>
+<li><a class="nav-link" href="#select-4---change-the-order-of-columns"><span class="header-section-number">16.8.6</span> select 4 - change the order of columns</a></li>
+<li><a class="nav-link" href="#filter---by-names"><span class="header-section-number">16.8.7</span> filter - by names</a></li>
+<li><a class="nav-link" href="#arrange---ascending-and-descending-order"><span class="header-section-number">16.8.8</span> arrange - ascending and descending order</a></li>
+<li><a class="nav-link" href="#mutate---rank"><span class="header-section-number">16.8.9</span> mutate - rank</a></li>
+<li><a class="nav-link" href="#group_by-and-summarize"><span class="header-section-number">16.8.10</span> group_by and summarize</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#references-of-dplyr"><span class="header-section-number">16.9</span> References of dplyr</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#rstudio-primers-see-references-in-moodle-at-the-bottom"><span class="header-section-number">16.9.1</span> RStudio Primers: See References in Moodle at the bottom</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#learn-dplyr-by-examples-ii---gapminder"><span class="header-section-number">16.10</span> Learn dplyr by Examples II - gapminder</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ggplot2-overview"><span class="header-section-number">16.10.1</span> ggplot2 Overview</a></li>
+<li><a class="nav-link" href="#exercises"><span class="header-section-number">16.10.2</span> Exercises</a></li>
+<li><a class="nav-link" href="#group_by-and-summarize-1"><span class="header-section-number">16.10.3</span> group_by and summarize</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#the-week-two-assignment-in-moodle"><span class="header-section-number">16.11</span> The Week Two Assignment (in Moodle)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#original-data-wdi"><span class="header-section-number">16.11.1</span> Original Data? WDI?</a></li></ul>
+</li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/26-transform.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/26-transform.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/25-transform.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/25-transform.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -147,7 +1090,7 @@ set in the _output.yml file.&lt;/p&gt;">
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-17.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
