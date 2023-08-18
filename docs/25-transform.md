@@ -19,101 +19,100 @@ library(tidyverse)
 #> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
+## `dplyr` [概要](https://dplyr.tidyverse.org)
 
-## `dplyr` [Overview](https://dplyr.tidyverse.org)
+`dplyr` はデータ操作の文法のようなもので、最も一般的なデータ操作に役立つ一貫したいくつかの「動詞」の役割を果たすものを提供しています。
 
-dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:
+-   `select()` 変数をその名前によって選択 - 列の選択に対応します。
+-   `filter()` ケースをその値によって選択 - 行の選択に対応します。
+-   `mutate()` 新しい変数を既存の値を使って定義します - 新しい列を作成することに対応しています。
+-   `summarise()` たくさんの値を一つの値に集約します - 代表値（平均、メディアンなど）を求めることに対応します。
+-   `arrange()` 行の順序を変更します。
+-   `group_by()` グループを指定した表に変換します。
 
-* `select()` picks variables based on their names.
-* `filter()` picks cases based on their values.
-* `mutate()` adds new variables that are functions of existing variables
-* `summarise()` reduces multiple values down to a single summary.
-* `arrange()` changes the ordering of the rows.
-* `group_by()` takes an existing tbl and converts it into a grouped tbl.
+さらに詳しく知りたい場合は Console（コンソールに）vignette("dplyr") と入れるか、[こちら](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) を参照してください。上では、一つの表について述べていますが、二つの表の扱い方は、Console（コンソール）に vignette("two-table") と入れるか、[こちら](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html) を参照してください。二つの表の扱いについては、後から説明します。
 
-You can learn more about them in vignette("dplyr"). As well as these single-table verbs, dplyr also provides a variety of two-table verbs, which you can learn about in vignette("two-table").
+`dplyr` を初めて使われる場合には、まず [R for data science (2e) Transform](https://r4ds.hadley.nz/transform) を学ばれることをお勧めします。以下も、このサイトに沿った説明をします。
 
-If you are new to dplyr, the best place to start is [the data transformation chapter in R for data science](http://r4ds.had.co.nz/transform.html).
+### [`select`](https://dplyr.tidyverse.org/reference/select.html): 名前とタイプによって、列（変数）を選択
 
+| 補助関数      | 条件                   | 例                                            |
+|-----------------|--------------------------|------------------------------|
+| \-            | 列の排除               | select(babynames, -prop)                      |
+| :             | 列の範囲               | select(babynames, year:n)                     |
+| contains()    | 指定文字列を含         | select(babynames, contains("n"))              |
+| ends_with()   | 指定文字列で終わる     | select(babynames, ends_with("n"))             |
+| matches()     | 正規表現に適合         | select(babynames, matches("n"))               |
+| num_range()   | 末尾の指定数値範囲     | Not applicable with babynames                 |
+| one_of()      | 指定した名前に含まれる | select(babynames, one_of(c("sex", "gender"))) |
+| starts_with() | 指定文字列で始まる     | select(babynames, starts_with("n"))           |
 
-## [`select`](https://dplyr.tidyverse.org/reference/select.html): Subset columns using their names and types
+## [`filter`](https://dplyr.tidyverse.org/reference/filter.html): 列の値の条件に適合した行の選択
 
-Helper Function	| Use	| Example
----|-------|--------
--	| Columns except	| select(babynames, -prop)
-:	| Columns between (inclusive)	| select(babynames, year:n)
-contains() |	Columns that contains a string |	select(babynames, contains("n"))
-ends_with()	| Columns that ends with a string	| select(babynames, ends_with("n"))
-matches()	| Columns that matches a regex |	select(babynames, matches("n"))
-num_range()	| Columns with a numerical suffix in the range | Not applicable with babynames
-one_of() |	Columns whose name appear in the given set |	select(babynames, one_of(c("sex", "gender")))
-starts_with()	| Columns that starts with a string	| select(babynames, starts_with("n"))
+| 論理作用素 | 条件             | 例        |
+|------------|------------------|-----------|
+| \>         | y より大きい x   | x \> y    |
+| \>=        | y 以上の x       | x \>= y   |
+| \<         | y より小さい x   | x \< y    |
+| \<=        | y 以下の x       | x \<= y   |
+| ==         | y と等しい x     | x == y    |
+| !=         | y と等しくない x | x != y    |
+| is.na()    | 値が NA である x | is.na(x)  |
+| !is.na()   | 値が NA でない x | !is.na(x) |
 
+## [`arrange`](https://dplyr.tidyverse.org/reference/arrange.html)
 
+`arrange()` では、選択した列の値によって、行を並び替えます。
 
-## [`filter`](https://dplyr.tidyverse.org/reference/filter.html): Subset rows using column values
+注意点すべきは、他の、`dplyr` の動詞とは異なり、基本的に、グループ化は、無視し、その表全体に適用します。グループ内で並び替えをしたい場合には、グループ化した変数を指定するか、`.by_group = TRUE` とします。
 
-Logical operator	| tests	| Example
---|-----|---
->	| Is x greater than y? |	x > y
->=	| Is x greater than or equal to y? |	x >= y
-<	| Is x less than y?	| x < y
-<=	| Is x less than or equal to y? | 	x <= y
-==	| Is x equal to y? |	x == y
-!=	| Is x not equal to y? |	x != y
-is.na()	| Is x an NA?	| is.na(x)
-!is.na() |	Is x not an NA? |	!is.na(x)
+## [`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)
 
+新しい列を作成または、既存の列を修正、削除します。
 
+以下は便利な補助関数の例です。
 
-## [`arrange`](https://dplyr.tidyverse.org/reference/arrange.html) and `Pipe %>%`
+-   +, -, log(), etc., for their usual mathematical meanings
 
-* `arrange()` orders the rows of a data frame by the values of selected columns.
+-   lead(), lag()
 
-Unlike other `dplyr` verbs, `arrange()` largely ignores grouping; you need to explicitly mention grouping variables (`or use .by_group = TRUE) in order to group by them, and functions of variables are evaluated once per data frame, not once per group.
+-   dense_rank(), min_rank(), percent_rank(), row_number(), cume_dist(), ntile()
 
-* [`pipes`](https://r4ds.had.co.nz/pipes.html) in R for Data Science.
+-   cumsum(), cummean(), cummin(), cummax(), cumany(), cumall()
 
-
-
-## [`mutate`](https://dplyr.tidyverse.org/reference/mutate.html) 
-
-* Create, modify, and delete columns
-
-* Useful mutate functions
-
-  - +, -, log(), etc., for their usual mathematical meanings
-
-  - lead(), lag()
-
-  - dense_rank(), min_rank(), percent_rank(), row_number(), cume_dist(), ntile()
-
-  - cumsum(), cummean(), cummin(), cummax(), cumany(), cumall()
-
-  - na_if(), coalesce()### `group_by()` and `summarise()`
-
-
+-   na_if(), coalesce()\### `group_by()` and `summarise()`
 
 ## [`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)
 
-
+指定した列の値によって表全体をグループ化した表を作成します。表自体が変形されるわけではありませんから、注意してください。次の、`summarize` と合わせて利用すると便利です。
 
 ## [`summarise` or `summarize`](https://dplyr.tidyverse.org/reference/summarise.html)
 
-#### Summary functions
+値の集約 (summarize) に利用します。グループ化された表の場合には、そのグループごとに、値を集約します。
 
-So far our summarise() examples have relied on sum(), max(), and mean(). But you can use any function in summarise() so long as it meets one criteria: the function must take a vector of values as input and return a single value as output. Functions that do this are known as summary functions and they are common in the field of descriptive statistics. Some of the most useful summary functions include:
+#### 集約のための関数
 
-1. Measures of location - mean(x), median(x), quantile(x, 0.25), min(x), and max(x)
-2. Measures of spread - sd(x), var(x), IQR(x), and mad(x)
-3. Measures of position - first(x), nth(x, 2), and last(x)
-4. Counts - n_distinct(x) and n(), which takes no arguments, and returns the size of the current group or data frame.
-5. Counts and proportions of logical values - sum(!is.na(x)), which counts the number of TRUEs returned by a logical test; mean(y == 0), which returns the proportion of TRUEs returned by a logical test.
+`summarize` には、 `sum()`, `max()`, や `mean()` が使われますが、ベクトルに対して定義され、一つの値だけを出力する関数でであれば、なんでも使うことができます。以下は、その例です。それぞれの関数については、Help で調べてください。
 
+1.  特定の値 - `mean(x)`, `median(x)`, `quantile(x, 0.25)`, `min(x)`, `max(x)`
 
-  - if_else(), recode(), case_when()
+2.  分布の値 - `sd(x)`, `var(x)`, `IQR(x)`, `mad(x)`
 
+3.  値の位置 - `first(x)`, `nth(x, 2)`, `last(x)`
 
+4.  個数 - `n_distinct(x),` `n()` （引数なし：表またはグループのサイズ）
+
+5.  論理値の数または割合 - sum(!is.na(x)), mean(y == 0)
+
+条件文で値を指定することも可能です。
+
+-   if_else(), recode(), case_when()
+
+## パイプ（Pipe）`%>%` `|>`
+
+[`pipes`](https://r4ds.hadley.nz/workflow-style.html#sec-pipes) in R for Data Science.
+
+`%>%` は、`tidyverse` パッケージで、関数のチェーン化を行うために使用されるパイプ演算子ですが、R 4.1 以降は、`|>` が、R に組み込まれた、ネイティブなパイプライン演算子になっています。`tidyverse` を使っているときは、どちらを使うことも可能ですが、`|>` を使うことをお勧めします。R の versoin を確認するには、コンソール（Console）で、`R.Version()` または、`R.version$version.string` とします。
 
 ## Learn `dplyr` by Examples
 
@@ -130,9 +129,6 @@ head(iris)
 #> 5          5.0         3.6          1.4         0.2  setosa
 #> 6          5.4         3.9          1.7         0.4  setosa
 ```
-
-
-
 
 
 ```r
@@ -152,8 +148,6 @@ summary(iris)
 #>  3rd Qu.:1.800                  
 #>  Max.   :2.500
 ```
-
-
 
 ### `select` 1 - columns 1, 2, 5
 
@@ -182,7 +176,6 @@ head(iris)
 #> 5          5.0         3.6          1.4         0.2  setosa
 #> 6          5.4         3.9          1.7         0.4  setosa
 ```
-
 
 
 ```r
@@ -215,7 +208,7 @@ iris %>% select(c(1,2,5)) %>% head()
 
 All `tidyverse` functions are designed so that the first argument, i.e., the entry, is the data. So using pipe, `iris` is assumed to be the first entry of the `select` function, and `select(iris, c(1,2,5))` is the first entry of the head function.
 
-In the following, we use pipes.  
+In the following, we use pipes.
 
 ### `select` 2 - except Species
 
@@ -230,8 +223,6 @@ select(iris, -Species) %>% head()
 #> 5          5.0         3.6          1.4         0.2
 #> 6          5.4         3.9          1.7         0.4
 ```
-
-
 
 ### `select` 3 - select and change column names at the same time
 
@@ -261,7 +252,6 @@ select(iris, c(5,3,4,1,2)) %>% head()
 #> 6  setosa          1.7         0.4          5.4         3.9
 ```
 
-
 ### `filter` - by names
 
 
@@ -283,10 +273,7 @@ filter(iris, Species == "virginica") %>% head()
 #> 6 virginica
 ```
 
-
-
-
-### `arrange`  - ascending and descending order
+### `arrange` - ascending and descending order
 
 
 ```r
@@ -299,8 +286,6 @@ arrange(iris, Sepal.Length, desc(Sepal.Width)) %>% head()
 #> 5          4.5         2.3          1.3         0.3  setosa
 #> 6          4.6         3.6          1.0         0.2  setosa
 ```
-
-
 
 ### `mutate` - rank
 
@@ -324,7 +309,7 @@ iris %>% mutate(sl_rank = min_rank(Sepal.Length)) %>%
 #> 6       6
 ```
 
-Insert a line break after the pipe command, not before. 
+Insert a line break after the pipe command, not before.
 
 ### `group_by` and `summarize`
 
@@ -342,55 +327,49 @@ iris %>%
 #> 3 virginica   6.59  2.97  5.55 2.03
 ```
 
-* mean: `mean()` or `mean(x, na.rm = TRUE)` - arithmetic mean (average)
-* median: `median()` or `median(x, na.rm = TRUE)` - mid value
+-   mean: `mean()` or `mean(x, na.rm = TRUE)` - arithmetic mean (average)
+-   median: `median()` or `median(x, na.rm = TRUE)` - mid value
 
-
-
-For more examples see 
+For more examples see
 
 [dplr_iris](https://icu-hsuzuki.github.io/da4r2022_note/dplyr-iris.nb.html)
 
-
 ## References of `dplyr`
 
-* Textbook: [R for Data Science, Part II Explore](https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro)
-
+-   Textbook: [R for Data Science, Part II Explore](https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro)
 
 ### RStudio Primers: See References in Moodle at the bottom
 
-2. Work with Data -- [r4ds: Wrangle, I](https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro)
-  - [Working with Tibbles](https://rstudio.cloud/learn/primers/2.1)
-  - [Isolating Data with dplyr](https://rstudio.cloud/learn/primers/2.2)
-  - [Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3)
+2.  Work with Data -- [r4ds: Wrangle, I](https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro)
 
-
+-   [Working with Tibbles](https://rstudio.cloud/learn/primers/2.1)
+-   [Isolating Data with dplyr](https://rstudio.cloud/learn/primers/2.2)
+-   [Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3)
 
 ## Learn `dplyr` by Examples II - `gapminder`
-
-
 
 ### `ggplot2` [Overview](https://ggplot2.tidyverse.org)
 
 `ggplot2` is a system for declaratively creating graphics, based on [The Grammar of Graphics](https://amzn.to/2ef1eWp). You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
 
 **Examples**
-```
+
+```         
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
-```
+
+```         
 ggplot(data = mpg) + 
   geom_boxplot(mapping = aes(x = class, y = hwy))
 ```
 
 **Template**
-```
+
+```         
 ggplot(data = <DATA>) + 
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
-
-
 
 #### Gapminder and R Package `gapminder`
 
@@ -420,15 +399,11 @@ ggplot(data = <DATA>) +
         -   gdpPercap: GDP per capita (US\$, inflation-adjusted)
 
 
-
-
 ```r
 library(tidyverse)
 library(gapminder)
 library(WDI)
 ```
-
-
 
 #### R Package `gapminder` data
 
@@ -454,8 +429,6 @@ df %>% slice(1:10)
 ```
 
 
-
-
 ```r
 glimpse(df)
 #> Rows: 1,704
@@ -467,8 +440,6 @@ glimpse(df)
 #> $ pop       <int> 8425333, 9240934, 10267083, 11537966, 13…
 #> $ gdpPercap <dbl> 779.4453, 820.8530, 853.1007, 836.1971, …
 ```
-
-
 
 
 ```r
@@ -491,8 +462,6 @@ summary(df)
 #> 
 ```
 
-
-
 #### Tidyverse::ggplot
 
 ##### First Try - with failures
@@ -506,8 +475,7 @@ ggplot(df, aes(x = year, y = lifeExp)) + geom_point()
 
 <img src="25-transform_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
-
-There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …. Can you tell how many years are in the data? The following command shows different years in the data.
+There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, .... Can you tell how many years are in the data? The following command shows different years in the data.
 
 
 ```r
@@ -553,8 +521,6 @@ ggplot(df, aes(y = lifeExp, group = year)) + geom_boxplot()
 
 <img src="25-transform_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
-
-
 ##### Box Plot
 
 
@@ -564,7 +530,7 @@ ggplot(df, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
 
 <img src="25-transform_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
-We will study data visualization in Chapter \@ref(ggplot2). 
+We will study data visualization in Chapter \@ref(ggplot2).
 
 #### Applications of `dplyr`
 
@@ -588,7 +554,7 @@ df %>% filter(country == "Afghanistan") %>%
 
 Looks good. From the data you observe, the life expectancy at birth in 1952 was below 30, and it was still below 44 in 2007.
 
-Let us compare Afghanistan with Japan. When you choose more than one country, we use the following format: `country %in% c("Afghanistan", "Japan")`. 
+Let us compare Afghanistan with Japan. When you choose more than one country, we use the following format: `country %in% c("Afghanistan", "Japan")`.
 
 
 ```r
@@ -598,7 +564,7 @@ df %>% filter(country %in% c("Afghanistan", "Japan")) %>%
 
 <img src="25-transform_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
-What do you observe from this chart? 
+What do you observe from this chart?
 
 The code `unique(df$country)` does the same as the one below. First, choose distinct elements in the column `country` by `distinct(country)` and get the column as a vector by `pull`.
 
@@ -684,7 +650,6 @@ As we have guessed, there are 142 countries in this data.
 Let us choose BRICs countries in the data.
 
 
-
 ```r
 df %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
   ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
@@ -694,8 +659,6 @@ df %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
 
 Russia data is missing. Can you find it in the list of countries? It can be a problem of `gapminder` data. Can you think of the reason why Russia is not in?
 
-
-
 ### Exercises
 
 1.  Change `lifeExp` to `pop` and `gdpPercap` and do the same.
@@ -703,11 +666,9 @@ Russia data is missing. Can you find it in the list of countries? It can be a pr
 
 -   Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore.
 
-- How many of these countries are on the list?
+-   How many of these countries are on the list?
 
 3.  Choose several countries by yourself and do the similar investigations.
-
-
 
 ### `group_by` and `summarize`
 
@@ -719,8 +680,7 @@ df_lifeExp <- df %>% group_by(continent, year) %>%
   summarize(mean_lifeExp = mean(lifeExp), median_lifeExp = median(lifeExp), max_lifeExp = max(lifeExp), min_lifeExp = min(lifeExp), .groups = "keep")
 ```
 
-Don't get scared. We will learn little by little. 
-
+Don't get scared. We will learn little by little.
 
 
 ```r
@@ -765,16 +725,12 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent)) +
 <img src="25-transform_files/figure-html/unnamed-chunk-32-1.png" width="672" />
 
 
-
-
 ```r
 df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent, linetype = continent)) +
   geom_line()
 ```
 
 <img src="25-transform_files/figure-html/unnamed-chunk-33-1.png" width="672" />
-
-
 
 
 ```r
@@ -785,37 +741,32 @@ df_lifeExp %>% ggplot() +
 
 <img src="25-transform_files/figure-html/unnamed-chunk-34-1.png" width="672" />
 
-
 ## The Week Two Assignment (in Moodle)
 
 **R Markdown and `dplyr`**
 
-* Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. `a2_123456.nb.html`)
-  1. create an R Notebook using the R Notebook Template in Moodle,  save as `a2_123456.Rmd`, 
-  2. write your name and ID and the contents, 
-  3. run each code block, 
-  4. preview to create `a2_123456.nb.html`,
-  5. submit  `a2_123456.nb.html` to Moodle.
+-   Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. `a2_123456.nb.html`)
+    1.  create an R Notebook using the R Notebook Template in Moodle, save as `a2_123456.Rmd`,
+    2.  write your name and ID and the contents,
+    3.  run each code block,
+    4.  preview to create `a2_123456.nb.html`,
+    5.  submit `a2_123456.nb.html` to Moodle.
 
-1. Pick data from the built-in datasets besides `cars`. (`library(help = "datasets")` or go to the site [The R Datasets Package](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html))
+1.  Pick data from the built-in datasets besides `cars`. (`library(help = "datasets")` or go to the site [The R Datasets Package](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html))
 
-    - Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)
-    - Use `head()`, `str()`, ..., and create at least one chart using `ggplot2` - Code Chunk.
-      + Don't forget to add `library(tidyverse)` in the first code chunk.
-    - An observation of the chart - in your own words.
+    -   Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)
+    -   Use `head()`, `str()`, ..., and create at least one chart using `ggplot2` - Code Chunk.
+        -   Don't forget to add `library(tidyverse)` in the first code chunk.
+    -   An observation of the chart - in your own words.
 
+2.  Load `gapminder` by `library(gapminder)`.
 
-
-2. Load `gapminder` by `library(gapminder)`.
-
-    - Choose `pop` or `gdpPercap`, or both, one country in the data, a group of countries in the data.
-    - Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
-    - Study the data as you like.
-    - Observations and difficulties encountered.
+    -   Choose `pop` or `gdpPercap`, or both, one country in the data, a group of countries in the data.
+    -   Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
+    -   Study the data as you like.
+    -   Observations and difficulties encountered.
 
 **Due:** 2023-01-09 23:59:00. Submit your R Notebook file in Moodle (The Second Assignment). Due on Monday!
-
-
 
 ### Original Data? WDI?
 
@@ -837,13 +788,11 @@ gapminder %>% slice(1:10)
 #> 10 Afghanistan Asia       1997    41.8 22227415      635.
 ```
 
-
-
 #### WDI
 
-* SP.DYN.LE00.IN: Life expectancy at birth, total (years)
-* NY.GDP.PCAP.KD: GDP per capita (constant 2015 US$)
-* SP.POP.TOTL: Population, total
+-   SP.DYN.LE00.IN: Life expectancy at birth, total (years)
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$)
+-   SP.POP.TOTL: Population, total
 
 
 ```r
@@ -852,6 +801,8 @@ df_wdi <- WDI(
   indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
 )
 ```
+
+
 
 
 ```
@@ -864,8 +815,6 @@ df_wdi <- WDI(
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
-
-
 
 
 ```r
@@ -886,8 +835,6 @@ df_wdi %>% slice(1:10)
 ```
 
 
-
-
 ```r
 df_wdi_extra <- WDI(
   country = "all", 
@@ -895,6 +842,8 @@ df_wdi_extra <- WDI(
   extra = TRUE
 )
 ```
+
+
 
 
 ```
@@ -909,8 +858,6 @@ df_wdi_extra <- WDI(
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
-
-
 
 
 ```r
@@ -934,4 +881,4 @@ df_wdi_extra
 #> #   latitude <dbl>, income <chr>, lending <chr>
 ```
 
-Can you see the differences? List them out. We will study the World Development Indicators in Chapter \@ref(wdi). 
+Can you see the differences? List them out. We will study the World Development Indicators in Chapter \@ref(wdi).

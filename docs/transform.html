@@ -134,163 +134,154 @@
 <span><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
 <span><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
 <span><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code></pre></div>
-<div id="dplyr-overview" class="section level2" number="16.1">
+<div id="dplyr-概要" class="section level2" number="16.1">
 <h2>
-<span class="header-section-number">16.1</span> <code>dplyr</code> <a href="https://dplyr.tidyverse.org">Overview</a><a class="anchor" aria-label="anchor" href="#dplyr-overview"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1</span> <code>dplyr</code> <a href="https://dplyr.tidyverse.org">概要</a><a class="anchor" aria-label="anchor" href="#dplyr-%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
 </h2>
-<p>dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:</p>
+<p><code>dplyr</code> はデータ操作の文法のようなもので、最も一般的なデータ操作に役立つ一貫したいくつかの「動詞」の役割を果たすものを提供しています。</p>
 <ul>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> picks variables based on their names.</li>
+<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> 変数をその名前によって選択 - 列の選択に対応します。</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> picks cases based on their values.</li>
+<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> ケースをその値によって選択 - 行の選択に対応します。</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> adds new variables that are functions of existing variables</li>
+<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 新しい変数を既存の値を使って定義します - 新しい列を作成することに対応しています。</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> reduces multiple values down to a single summary.</li>
+<code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> たくさんの値を一つの値に集約します - 代表値（平均、メディアンなど）を求めることに対応します。</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> changes the ordering of the rows.</li>
+<code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> 行の順序を変更します。</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> takes an existing tbl and converts it into a grouped tbl.</li>
+<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> グループを指定した表に変換します。</li>
 </ul>
-<p>You can learn more about them in vignette(“dplyr”). As well as these single-table verbs, dplyr also provides a variety of two-table verbs, which you can learn about in vignette(“two-table”).</p>
-<p>If you are new to dplyr, the best place to start is <a href="http://r4ds.had.co.nz/transform.html">the data transformation chapter in R for data science</a>.</p>
-</div>
-<div id="select-subset-columns-using-their-names-and-types" class="section level2" number="16.2">
-<h2>
-<span class="header-section-number">16.2</span> <a href="https://dplyr.tidyverse.org/reference/select.html"><code>select</code></a>: Subset columns using their names and types<a class="anchor" aria-label="anchor" href="#select-subset-columns-using-their-names-and-types"><i class="fas fa-link"></i></a>
-</h2>
-<div class="inline-table"><table class="table table-sm">
+<p>さらに詳しく知りたい場合は Console（コンソールに）vignette(“dplyr”) と入れるか、<a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">こちら</a> を参照してください。上では、一つの表について述べていますが、二つの表の扱い方は、Console（コンソール）に vignette(“two-table”) と入れるか、<a href="https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html">こちら</a> を参照してください。二つの表の扱いについては、後から説明します。</p>
+<p><code>dplyr</code> を初めて使われる場合には、まず <a href="https://r4ds.hadley.nz/transform">R for data science (2e) Transform</a> を学ばれることをお勧めします。以下も、このサイトに沿った説明をします。</p>
+<div id="select-名前とタイプによって列変数を選択" class="section level3" number="16.1.1">
+<h3>
+<span class="header-section-number">16.1.1</span> <a href="https://dplyr.tidyverse.org/reference/select.html"><code>select</code></a>: 名前とタイプによって、列（変数）を選択<a class="anchor" aria-label="anchor" href="#select-%E5%90%8D%E5%89%8D%E3%81%A8%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E9%81%B8%E6%8A%9E"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
 <colgroup>
-<col width="16%">
-<col width="38%">
-<col width="44%">
+<col width="23%">
+<col width="35%">
+<col width="41%">
 </colgroup>
 <thead><tr class="header">
-<th>Helper Function</th>
-<th>Use</th>
-<th>Example</th>
+<th>補助関数</th>
+<th>条件</th>
+<th>例</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>-</td>
-<td>Columns except</td>
+<td>列の排除</td>
 <td>select(babynames, -prop)</td>
 </tr>
 <tr class="even">
 <td>:</td>
-<td>Columns between (inclusive)</td>
+<td>列の範囲</td>
 <td>select(babynames, year:n)</td>
 </tr>
 <tr class="odd">
 <td>contains()</td>
-<td>Columns that contains a string</td>
+<td>指定文字列を含</td>
 <td>select(babynames, contains(“n”))</td>
 </tr>
 <tr class="even">
 <td>ends_with()</td>
-<td>Columns that ends with a string</td>
+<td>指定文字列で終わる</td>
 <td>select(babynames, ends_with(“n”))</td>
 </tr>
 <tr class="odd">
 <td>matches()</td>
-<td>Columns that matches a regex</td>
+<td>正規表現に適合</td>
 <td>select(babynames, matches(“n”))</td>
 </tr>
 <tr class="even">
 <td>num_range()</td>
-<td>Columns with a numerical suffix in the range</td>
+<td>末尾の指定数値範囲</td>
 <td>Not applicable with babynames</td>
 </tr>
 <tr class="odd">
 <td>one_of()</td>
-<td>Columns whose name appear in the given set</td>
+<td>指定した名前に含まれる</td>
 <td>select(babynames, one_of(c(“sex”, “gender”)))</td>
 </tr>
 <tr class="even">
 <td>starts_with()</td>
-<td>Columns that starts with a string</td>
+<td>指定文字列で始まる</td>
 <td>select(babynames, starts_with(“n”))</td>
 </tr>
 </tbody>
 </table></div>
 </div>
-<div id="filter-subset-rows-using-column-values" class="section level2" number="16.3">
+</div>
+<div id="filter-列の値の条件に適合した行の選択" class="section level2" number="16.2">
 <h2>
-<span class="header-section-number">16.3</span> <a href="https://dplyr.tidyverse.org/reference/filter.html"><code>filter</code></a>: Subset rows using column values<a class="anchor" aria-label="anchor" href="#filter-subset-rows-using-column-values"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2</span> <a href="https://dplyr.tidyverse.org/reference/filter.html"><code>filter</code></a>: 列の値の条件に適合した行の選択<a class="anchor" aria-label="anchor" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><i class="fas fa-link"></i></a>
 </h2>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
-<th>Logical operator</th>
-<th>tests</th>
-<th>Example</th>
+<th>論理作用素</th>
+<th>条件</th>
+<th>例</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>&gt;</td>
-<td>Is x greater than y?</td>
+<td>y より大きい x</td>
 <td>x &gt; y</td>
 </tr>
 <tr class="even">
 <td>&gt;=</td>
-<td>Is x greater than or equal to y?</td>
+<td>y 以上の x</td>
 <td>x &gt;= y</td>
 </tr>
 <tr class="odd">
 <td>&lt;</td>
-<td>Is x less than y?</td>
+<td>y より小さい x</td>
 <td>x &lt; y</td>
 </tr>
 <tr class="even">
 <td>&lt;=</td>
-<td>Is x less than or equal to y?</td>
+<td>y 以下の x</td>
 <td>x &lt;= y</td>
 </tr>
 <tr class="odd">
 <td>==</td>
-<td>Is x equal to y?</td>
+<td>y と等しい x</td>
 <td>x == y</td>
 </tr>
 <tr class="even">
 <td>!=</td>
-<td>Is x not equal to y?</td>
+<td>y と等しくない x</td>
 <td>x != y</td>
 </tr>
 <tr class="odd">
 <td>is.na()</td>
-<td>Is x an NA?</td>
+<td>値が NA である x</td>
 <td>is.na(x)</td>
 </tr>
 <tr class="even">
 <td>!is.na()</td>
-<td>Is x not an NA?</td>
+<td>値が NA でない x</td>
 <td>!is.na(x)</td>
 </tr>
 </tbody>
 </table></div>
 </div>
-<div id="arrange-and-pipe" class="section level2" number="16.4">
+<div id="arrange" class="section level2" number="16.3">
 <h2>
-<span class="header-section-number">16.4</span> <a href="https://dplyr.tidyverse.org/reference/arrange.html"><code>arrange</code></a> and <code>Pipe %&gt;%</code><a class="anchor" aria-label="anchor" href="#arrange-and-pipe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.3</span> <a href="https://dplyr.tidyverse.org/reference/arrange.html"><code>arrange</code></a><a class="anchor" aria-label="anchor" href="#arrange"><i class="fas fa-link"></i></a>
 </h2>
-<ul>
-<li>
-<code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> orders the rows of a data frame by the values of selected columns.</li>
-</ul>
-<p>Unlike other <code>dplyr</code> verbs, <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> largely ignores grouping; you need to explicitly mention grouping variables (`or use .by_group = TRUE) in order to group by them, and functions of variables are evaluated once per data frame, not once per group.</p>
-<ul>
-<li>
-<a href="https://r4ds.had.co.nz/pipes.html"><code>pipes</code></a> in R for Data Science.</li>
-</ul>
+<p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> では、選択した列の値によって、行を並び替えます。</p>
+<p>注意点すべきは、他の、<code>dplyr</code> の動詞とは異なり、基本的に、グループ化は、無視し、その表全体に適用します。グループ内で並び替えをしたい場合には、グループ化した変数を指定するか、<code>.by_group = TRUE</code> とします。</p>
 </div>
-<div id="mutate" class="section level2" number="16.5">
+<div id="mutate" class="section level2" number="16.4">
 <h2>
-<span class="header-section-number">16.5</span> <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutate</code></a><a class="anchor" aria-label="anchor" href="#mutate"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4</span> <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutate</code></a><a class="anchor" aria-label="anchor" href="#mutate"><i class="fas fa-link"></i></a>
 </h2>
-<ul>
-<li><p>Create, modify, and delete columns</p></li>
-<li>
-<p>Useful mutate functions</p>
+<p>新しい列を作成または、既存の列を修正、削除します。</p>
+<p>以下は便利な補助関数の例です。</p>
 <ul>
 <li><p>+, -, log(), etc., for their usual mathematical meanings</p></li>
 <li><p>lead(), lag()</p></li>
@@ -298,34 +289,42 @@
 <li><p>cumsum(), cummean(), cummin(), cummax(), cumany(), cumall()</p></li>
 <li><p>na_if(), coalesce()### <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></p></li>
 </ul>
-</li>
-</ul>
 </div>
-<div id="group_by" class="section level2" number="16.6">
+<div id="group_by" class="section level2" number="16.5">
 <h2>
-<span class="header-section-number">16.6</span> <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by</code></a><a class="anchor" aria-label="anchor" href="#group_by"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.5</span> <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by</code></a><a class="anchor" aria-label="anchor" href="#group_by"><i class="fas fa-link"></i></a>
 </h2>
+<p>指定した列の値によって表全体をグループ化した表を作成します。表自体が変形されるわけではありませんから、注意してください。次の、<code>summarize</code> と合わせて利用すると便利です。</p>
 </div>
-<div id="summarise-or-summarize" class="section level2" number="16.7">
+<div id="summarise-or-summarize" class="section level2" number="16.6">
 <h2>
-<span class="header-section-number">16.7</span> <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise</code> or <code>summarize</code></a><a class="anchor" aria-label="anchor" href="#summarise-or-summarize"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.6</span> <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise</code> or <code>summarize</code></a><a class="anchor" aria-label="anchor" href="#summarise-or-summarize"><i class="fas fa-link"></i></a>
 </h2>
-<div id="summary-functions" class="section level4" number="16.7.0.1">
+<p>値の集約 (summarize) に利用します。グループ化された表の場合には、そのグループごとに、値を集約します。</p>
+<div id="集約のための関数" class="section level4" number="16.6.0.1">
 <h4>
-<span class="header-section-number">16.7.0.1</span> Summary functions<a class="anchor" aria-label="anchor" href="#summary-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.6.0.1</span> 集約のための関数<a class="anchor" aria-label="anchor" href="#%E9%9B%86%E7%B4%84%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E9%96%A2%E6%95%B0"><i class="fas fa-link"></i></a>
 </h4>
-<p>So far our summarise() examples have relied on sum(), max(), and mean(). But you can use any function in summarise() so long as it meets one criteria: the function must take a vector of values as input and return a single value as output. Functions that do this are known as summary functions and they are common in the field of descriptive statistics. Some of the most useful summary functions include:</p>
+<p><code>summarize</code> には、 <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>, <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code>, や <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> が使われますが、ベクトルに対して定義され、一つの値だけを出力する関数でであれば、なんでも使うことができます。以下は、その例です。それぞれの関数については、Help で調べてください。</p>
 <ol style="list-style-type: decimal">
-<li>Measures of location - mean(x), median(x), quantile(x, 0.25), min(x), and max(x)</li>
-<li>Measures of spread - sd(x), var(x), IQR(x), and mad(x)</li>
-<li>Measures of position - first(x), nth(x, 2), and last(x)</li>
-<li>Counts - n_distinct(x) and n(), which takes no arguments, and returns the size of the current group or data frame.</li>
-<li>Counts and proportions of logical values - sum(!is.na(x)), which counts the number of TRUEs returned by a logical test; mean(y == 0), which returns the proportion of TRUEs returned by a logical test.</li>
+<li><p>特定の値 - <code>mean(x)</code>, <code>median(x)</code>, <code>quantile(x, 0.25)</code>, <code>min(x)</code>, <code>max(x)</code></p></li>
+<li><p>分布の値 - <code>sd(x)</code>, <code>var(x)</code>, <code>IQR(x)</code>, <code>mad(x)</code></p></li>
+<li><p>値の位置 - <code>first(x)</code>, <code>nth(x, 2)</code>, <code>last(x)</code></p></li>
+<li><p>個数 - <code>n_distinct(x),</code> <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> （引数なし：表またはグループのサイズ）</p></li>
+<li><p>論理値の数または割合 - sum(!is.na(x)), mean(y == 0)</p></li>
 </ol>
+<p>条件文で値を指定することも可能です。</p>
 <ul>
 <li>if_else(), recode(), case_when()</li>
 </ul>
 </div>
+</div>
+<div id="パイプpipe" class="section level2" number="16.7">
+<h2>
+<span class="header-section-number">16.7</span> パイプ（Pipe）<code>%&gt;%</code> <code>|&gt;</code><a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><i class="fas fa-link"></i></a>
+</h2>
+<p><a href="https://r4ds.hadley.nz/workflow-style.html#sec-pipes"><code>pipes</code></a> in R for Data Science.</p>
+<p><code>%&gt;%</code> は、<code>tidyverse</code> パッケージで、関数のチェーン化を行うために使用されるパイプ演算子ですが、R 4.1 以降は、<code>|&gt;</code> が、R に組み込まれた、ネイティブなパイプライン演算子になっています。<code>tidyverse</code> を使っているときは、どちらを使うことも可能ですが、<code>|&gt;</code> を使うことをお勧めします。R の versoin を確認するには、コンソール（Console）で、<code><a href="https://rdrr.io/r/base/Version.html">R.Version()</a></code> または、<code>R.version$version.string</code> とします。</p>
 </div>
 <div id="learn-dplyr-by-examples" class="section level2" number="16.8">
 <h2>
@@ -1040,13 +1039,15 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#transform"><span class="header-section-number">16</span> 変形（Transform）</a></li>
-<li><a class="nav-link" href="#dplyr-overview"><span class="header-section-number">16.1</span> dplyr Overview</a></li>
-<li><a class="nav-link" href="#select-subset-columns-using-their-names-and-types"><span class="header-section-number">16.2</span> select: Subset columns using their names and types</a></li>
-<li><a class="nav-link" href="#filter-subset-rows-using-column-values"><span class="header-section-number">16.3</span> filter: Subset rows using column values</a></li>
-<li><a class="nav-link" href="#arrange-and-pipe"><span class="header-section-number">16.4</span> arrange and Pipe %&gt;%</a></li>
-<li><a class="nav-link" href="#mutate"><span class="header-section-number">16.5</span> mutate</a></li>
-<li><a class="nav-link" href="#group_by"><span class="header-section-number">16.6</span> group_by</a></li>
-<li><a class="nav-link" href="#summarise-or-summarize"><span class="header-section-number">16.7</span> summarise or summarize</a></li>
+<li>
+<a class="nav-link" href="#dplyr-%E6%A6%82%E8%A6%81"><span class="header-section-number">16.1</span> dplyr 概要</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#select-%E5%90%8D%E5%89%8D%E3%81%A8%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E9%81%B8%E6%8A%9E"><span class="header-section-number">16.1.1</span> select: 名前とタイプによって、列（変数）を選択</a></li></ul>
+</li>
+<li><a class="nav-link" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><span class="header-section-number">16.2</span> filter: 列の値の条件に適合した行の選択</a></li>
+<li><a class="nav-link" href="#arrange"><span class="header-section-number">16.3</span> arrange</a></li>
+<li><a class="nav-link" href="#mutate"><span class="header-section-number">16.4</span> mutate</a></li>
+<li><a class="nav-link" href="#group_by"><span class="header-section-number">16.5</span> group_by</a></li>
+<li><a class="nav-link" href="#summarise-or-summarize"><span class="header-section-number">16.6</span> summarise or summarize</a></li>
+<li><a class="nav-link" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><span class="header-section-number">16.7</span> パイプ（Pipe）%&gt;% |&gt;</a></li>
 <li>
 <a class="nav-link" href="#learn-dplyr-by-examples"><span class="header-section-number">16.8</span> Learn dplyr by Examples</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#data-iris"><span class="header-section-number">16.8.1</span> Data iris</a></li>
