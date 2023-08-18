@@ -122,7 +122,7 @@
 <h2>
 <span class="header-section-number">17.1</span> 準備<a class="anchor" aria-label="anchor" href="#%E6%BA%96%E5%82%99"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
 <span><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
@@ -139,17 +139,44 @@
 <h2>
 <span class="header-section-number">17.2</span> 基本的なこと<a class="anchor" aria-label="anchor" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8"><i class="fas fa-link"></i></a>
 </h2>
-<div id="importing-data" class="section level3" number="17.2.1">
+<div id="ggplot2-概要-1" class="section level3" number="17.2.1">
 <h3>
-<span class="header-section-number">17.2.1</span> Importing data<a class="anchor" aria-label="anchor" href="#importing-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.1</span> ggplot2 概要<a class="anchor" aria-label="anchor" href="#ggplot2-%E6%A6%82%E8%A6%81-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>ggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.</p>
+</div>
+<div id="examples" class="section level3" number="17.2.2">
+<h3>
+<span class="header-section-number">17.2.2</span> Examples<a class="anchor" aria-label="anchor" href="#examples"><i class="fas fa-link"></i></a>
+</h3>
+<p>ggplot(data = mpg) +
+geom_point(mapping = aes(x = displ, y = hwy))</p>
+<p>ggplot(data = mpg) +
+geom_boxplot(mapping = aes(x = class, y = hwy))</p>
+</div>
+<div id="template" class="section level3" number="17.2.3">
+<h3>
+<span class="header-section-number">17.2.3</span> Template<a class="anchor" aria-label="anchor" href="#template"><i class="fas fa-link"></i></a>
+</h3>
+<p>ggplot(data = <data>) +
+<geom_function>(mapping = aes(<mappings>))</mappings></geom_function></data></p>
+</div>
+</div>
+<div id="準備-1" class="section level2" number="17.3">
+<h2>
+<span class="header-section-number">17.3</span> 準備<a class="anchor" aria-label="anchor" href="#%E6%BA%96%E5%82%99-1"><i class="fas fa-link"></i></a>
+</h2>
+<div id="importing-data" class="section level3" number="17.3.1">
+<h3>
+<span class="header-section-number">17.3.1</span> Importing data<a class="anchor" aria-label="anchor" href="#importing-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let us assign the <code>iris</code> data in the pre-installed package <code>datasets</code> to <code>df_iris</code>. You can give any name starting from an alphabet, though there are some rules.</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">&lt;-</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "data.frame"</span></span></code></pre></div>
 <p>The class of data <code>iris</code> is <code>data.frame</code>, the basic data class of R. You can assign the same data as a <code>tibble</code>, the data class of <code>tidyverse</code> as follows.</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tbl_iris</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">tbl_iris</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></span></code></pre></div>
@@ -159,19 +186,19 @@
 <li>Within R Notebook or in Console, you may get different output, and <code>tf_iris</code> and <code>tbl_iris</code> behave differently. It is because of the default settings of R Markdown.</li>
 </ul>
 </div>
-<div id="look-at-the-data" class="section level3" number="17.2.2">
+<div id="look-at-the-data" class="section level3" number="17.3.2">
 <h3>
-<span class="header-section-number">17.2.2</span> Look at the data<a class="anchor" aria-label="anchor" href="#look-at-the-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.3.2</span> Look at the data<a class="anchor" aria-label="anchor" href="#look-at-the-data"><i class="fas fa-link"></i></a>
 </h3>
-<div id="several-ways-to-view-the-data." class="section level4" number="17.2.2.1">
+<div id="several-ways-to-view-the-data." class="section level4" number="17.3.2.1">
 <h4>
-<span class="header-section-number">17.2.2.1</span> Several ways to view the data.<a class="anchor" aria-label="anchor" href="#several-ways-to-view-the-data."><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.3.2.1</span> Several ways to view the data.<a class="anchor" aria-label="anchor" href="#several-ways-to-view-the-data."><i class="fas fa-link"></i></a>
 </h4>
 <p>The <code>View</code> command opens up a window to show the contents of the data, and you can also use the filter.</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span></code></pre></div>
 <p>The following simple command also shows the data.</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_iris</span></span></code></pre></div>
 <pre><code>#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width
 #&gt; 1           5.1         3.5          1.4         0.2
@@ -197,7 +224,7 @@
 #&gt; 10  setosa</code></pre>
 <p><code>%&gt;%</code> is called a pipe command, and we use it often.</p>
 <p>The output within R Notebook is a tibble style. Try the same command in Console.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="va">df_iris</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
 <span><span class="co">#&gt; 1           5.1         3.5          1.4         0.2</span></span>
@@ -221,16 +248,16 @@
 <span><span class="co">#&gt; 8   setosa</span></span>
 <span><span class="co">#&gt; 9   setosa</span></span>
 <span><span class="co">#&gt; 10  setosa</span></span></code></pre></div>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
 </div>
-<div id="data-structure" class="section level4" number="17.2.2.2">
+<div id="data-structure" class="section level4" number="17.3.2.2">
 <h4>
-<span class="header-section-number">17.2.2.2</span> Data Structure<a class="anchor" aria-label="anchor" href="#data-structure"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.3.2.2</span> Data Structure<a class="anchor" aria-label="anchor" href="#data-structure"><i class="fas fa-link"></i></a>
 </h4>
 <p>Let us look at the structure of the data. You can try <code>str(df_iris)</code> on Console or by adding a code chunk in R Notebook introducing later.</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 150</span></span>
 <span><span class="co">#&gt; Columns: 5</span></span>
@@ -242,14 +269,14 @@
 <p>There are six types of data in R; Double, Integer, Character, Logical, Raw, and Complex. In this course, we use only the first four.</p>
 <p>The names after $ are column names. If you call <code>df_iris$Species</code>, you have the Species column. Species is in the 5th column, <code>typeof(df_iris[[5]])</code> does the same as the next.</p>
 <p><code>df_iris[2,4] =</code>0.2 is the fourth entry of Sepal.Width.</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "integer"</span></span></code></pre></div>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "factor"</span></span></code></pre></div>
 <p>For <code>factors = fct</code> see <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor">the R Document</a> or an explanation in <a href="https://www.guru99.com/r-factor-categorical-continuous.html">Factor in R: Categorical Variable &amp; Continuous Variables</a>.</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Sepal.Length</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "double"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Sepal.Length</span><span class="op">)</span></span>
@@ -257,12 +284,12 @@
 <p><strong>Q1.</strong> What are the differences of <code>df_iris</code>, <code>slice(df_iris, 1:10)</code> and <code>glimpse(df_iris)</code> above?</p>
 <p><strong>Q2.</strong> What are the differences of<code>df_iris</code>, <code>slice(df_iris, 1:10)</code> and <code>glimpse(df_iris)</code> in the console?</p>
 </div>
-<div id="summary-of-the-data" class="section level4" number="17.2.2.3">
+<div id="summary-of-the-data" class="section level4" number="17.3.2.3">
 <h4>
-<span class="header-section-number">17.2.2.3</span> Summary of the Data<a class="anchor" aria-label="anchor" href="#summary-of-the-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.3.2.3</span> Summary of the Data<a class="anchor" aria-label="anchor" href="#summary-of-the-data"><i class="fas fa-link"></i></a>
 </h4>
 <p>The following is very convenient to get the summary information of a data.</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Sepal.Length    Sepal.Width     Petal.Length  </span></span>
 <span><span class="co">#&gt;  Min.   :4.300   Min.   :2.000   Min.   :1.000  </span></span>
@@ -282,92 +309,92 @@
 </div>
 </div>
 </div>
-<div id="散布図scatter-plot" class="section level2" number="17.3">
+<div id="散布図scatter-plot" class="section level2" number="17.4">
 <h2>
-<span class="header-section-number">17.3</span> 散布図（Scatter Plot）<a class="anchor" aria-label="anchor" href="#%E6%95%A3%E5%B8%83%E5%9B%B3scatter-plot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.4</span> 散布図（Scatter Plot）<a class="anchor" aria-label="anchor" href="#%E6%95%A3%E5%B8%83%E5%9B%B3scatter-plot"><i class="fas fa-link"></i></a>
 </h2>
 <p>We use <code>ggplot</code> to draw graphs. The scatter plot is a projection of data with two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
 <pre><code>ggplot(data = &lt;data&gt;, aes(x = &lt;column name for x&gt;, y = &lt;column name for y&gt;)) +
   geom_point()</code></pre>
 <pre><code>ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()</code></pre>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Sepal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
-<div id="ラベル-labels" class="section level3" number="17.3.1">
+<div id="ラベル-labels" class="section level3" number="17.4.1">
 <h3>
-<span class="header-section-number">17.3.1</span> ラベル <a href="https://ggplot2.tidyverse.org/reference/labs.html">Labels</a><a class="anchor" aria-label="anchor" href="#%E3%83%A9%E3%83%99%E3%83%AB-labels"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.4.1</span> ラベル <a href="https://ggplot2.tidyverse.org/reference/labs.html">Labels</a><a class="anchor" aria-label="anchor" href="#%E3%83%A9%E3%83%99%E3%83%AB-labels"><i class="fas fa-link"></i></a>
 </h3>
 <p>Add title and labels adding <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code>.</p>
 <pre><code>ggplot(data = &lt;data&gt;, aes(x = &lt;column name for x&gt;, y = &lt;column name for y&gt;)) +
   geom_point() +
   labs(title = "Title", x = "Label for x", y = "Label for y")</code></pre>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Sepal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Scatter Plot of Sepal Data of Iris"</span>, x <span class="op">=</span> <span class="st">"Sepal Length"</span>, y <span class="op">=</span> <span class="st">"Sepal Width"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
 </div>
-<div id="色付き-colors" class="section level3" number="17.3.2">
+<div id="色付き-colors" class="section level3" number="17.4.2">
 <h3>
-<span class="header-section-number">17.3.2</span> 色付き <a href="https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html">Colors</a><a class="anchor" aria-label="anchor" href="#%E8%89%B2%E4%BB%98%E3%81%8D-colors"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.4.2</span> 色付き <a href="https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html">Colors</a><a class="anchor" aria-label="anchor" href="#%E8%89%B2%E4%BB%98%E3%81%8D-colors"><i class="fas fa-link"></i></a>
 </h3>
 <p>Add different colors automatically to each species. Can you see each group?</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Sepal.Width</span>, color <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
 </div>
-<div id="形状" class="section level3" number="17.3.3">
+<div id="形状" class="section level3" number="17.4.3">
 <h3>
-<span class="header-section-number">17.3.3</span> 形状<a class="anchor" aria-label="anchor" href="#%E5%BD%A2%E7%8A%B6"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.4.3</span> 形状<a class="anchor" aria-label="anchor" href="#%E5%BD%A2%E7%8A%B6"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Sepal.Width</span>, shape <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
 </div>
 </div>
-<div id="箱ひげ図-boxplot" class="section level2" number="17.4">
+<div id="箱ひげ図-boxplot" class="section level2" number="17.5">
 <h2>
-<span class="header-section-number">17.4</span> 箱ひげ図 <a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">Boxplot</a><a class="anchor" aria-label="anchor" href="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3-boxplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.5</span> 箱ひげ図 <a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">Boxplot</a><a class="anchor" aria-label="anchor" href="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3-boxplot"><i class="fas fa-link"></i></a>
 </h2>
 <p>The boxplot compactly displays the distribution of a continuous variable.</p>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Species</span>, y <span class="op">=</span> <span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>##　ヒストグラム <a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">Histogram</a></p>
 <p>Visualize the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin. Histograms (geom_histogram()) display the counts with bars.</p>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <p>Change the number of bins by <code>bins =</code> <code>&lt;number&gt;</code>.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 </div>
-<div id="線形モデル-data-modeling" class="section level2" number="17.5">
+<div id="線形モデル-data-modeling" class="section level2" number="17.6">
 <h2>
-<span class="header-section-number">17.5</span> 線形モデル Data Modeling<a class="anchor" aria-label="anchor" href="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB-data-modeling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.6</span> 線形モデル Data Modeling<a class="anchor" aria-label="anchor" href="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB-data-modeling"><i class="fas fa-link"></i></a>
 </h2>
 <p>Professor Kaizoji will cover the mathematical models and hypothesis testings.</p>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Sepal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
 </div>
-<div id="コメント" class="section level2" number="17.6">
+<div id="コメント" class="section level2" number="17.7">
 <h2>
-<span class="header-section-number">17.6</span> コメント<a class="anchor" aria-label="anchor" href="#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.7</span> コメント<a class="anchor" aria-label="anchor" href="#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88"><i class="fas fa-link"></i></a>
 </h2>
-<div id="参考文献" class="section level3" number="17.6.1">
+<div id="参考文献" class="section level3" number="17.7.1">
 <h3>
-<span class="header-section-number">17.6.1</span> 参考文献<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.7.1</span> 参考文献<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
@@ -382,13 +409,13 @@
 </ul>
 </div>
 </div>
-<div id="練習-3" class="section level2" number="17.7">
+<div id="練習-4" class="section level2" number="17.8">
 <h2>
-<span class="header-section-number">17.7</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.8</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-4"><i class="fas fa-link"></i></a>
 </h2>
-<div id="posit-primers-httpsposit.cloudlearnprimers" class="section level3" number="17.7.1">
+<div id="posit-primers-httpsposit.cloudlearnprimers" class="section level3" number="17.8.1">
 <h3>
-<span class="header-section-number">17.7.1</span> Posit Primers <a href="https://posit.cloud/learn/primers" class="uri">https://posit.cloud/learn/primers</a><a class="anchor" aria-label="anchor" href="#posit-primers-httpsposit.cloudlearnprimers"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.8.1</span> Posit Primers <a href="https://posit.cloud/learn/primers" class="uri">https://posit.cloud/learn/primers</a><a class="anchor" aria-label="anchor" href="#posit-primers-httpsposit.cloudlearnprimers"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li>The Basics – <a href="https://r4ds.had.co.nz/explore-intro.html#explore-intro">r4ds: Explore, I</a>
@@ -411,24 +438,31 @@
 <li><a class="nav-link" href="#%E6%BA%96%E5%82%99"><span class="header-section-number">17.1</span> 準備</a></li>
 <li>
 <a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8"><span class="header-section-number">17.2</span> 基本的なこと</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#importing-data"><span class="header-section-number">17.2.1</span> Importing data</a></li>
-<li><a class="nav-link" href="#look-at-the-data"><span class="header-section-number">17.2.2</span> Look at the data</a></li>
+<li><a class="nav-link" href="#ggplot2-%E6%A6%82%E8%A6%81-1"><span class="header-section-number">17.2.1</span> ggplot2 概要</a></li>
+<li><a class="nav-link" href="#examples"><span class="header-section-number">17.2.2</span> Examples</a></li>
+<li><a class="nav-link" href="#template"><span class="header-section-number">17.2.3</span> Template</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#%E6%95%A3%E5%B8%83%E5%9B%B3scatter-plot"><span class="header-section-number">17.3</span> 散布図（Scatter Plot）</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%83%A9%E3%83%99%E3%83%AB-labels"><span class="header-section-number">17.3.1</span> ラベル Labels</a></li>
-<li><a class="nav-link" href="#%E8%89%B2%E4%BB%98%E3%81%8D-colors"><span class="header-section-number">17.3.2</span> 色付き Colors</a></li>
-<li><a class="nav-link" href="#%E5%BD%A2%E7%8A%B6"><span class="header-section-number">17.3.3</span> 形状</a></li>
+<a class="nav-link" href="#%E6%BA%96%E5%82%99-1"><span class="header-section-number">17.3</span> 準備</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#importing-data"><span class="header-section-number">17.3.1</span> Importing data</a></li>
+<li><a class="nav-link" href="#look-at-the-data"><span class="header-section-number">17.3.2</span> Look at the data</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3-boxplot"><span class="header-section-number">17.4</span> 箱ひげ図 Boxplot</a></li>
-<li><a class="nav-link" href="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB-data-modeling"><span class="header-section-number">17.5</span> 線形モデル Data Modeling</a></li>
 <li>
-<a class="nav-link" href="#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88"><span class="header-section-number">17.6</span> コメント</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="header-section-number">17.6.1</span> 参考文献</a></li></ul>
+<a class="nav-link" href="#%E6%95%A3%E5%B8%83%E5%9B%B3scatter-plot"><span class="header-section-number">17.4</span> 散布図（Scatter Plot）</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%83%A9%E3%83%99%E3%83%AB-labels"><span class="header-section-number">17.4.1</span> ラベル Labels</a></li>
+<li><a class="nav-link" href="#%E8%89%B2%E4%BB%98%E3%81%8D-colors"><span class="header-section-number">17.4.2</span> 色付き Colors</a></li>
+<li><a class="nav-link" href="#%E5%BD%A2%E7%8A%B6"><span class="header-section-number">17.4.3</span> 形状</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3-boxplot"><span class="header-section-number">17.5</span> 箱ひげ図 Boxplot</a></li>
+<li><a class="nav-link" href="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB-data-modeling"><span class="header-section-number">17.6</span> 線形モデル Data Modeling</a></li>
+<li>
+<a class="nav-link" href="#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88"><span class="header-section-number">17.7</span> コメント</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="header-section-number">17.7.1</span> 参考文献</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#%E7%B7%B4%E7%BF%92-3"><span class="header-section-number">17.7</span> 練習</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#posit-primers-httpsposit.cloudlearnprimers"><span class="header-section-number">17.7.1</span> Posit Primers https://posit.cloud/learn/primers</a></li></ul>
+<a class="nav-link" href="#%E7%B7%B4%E7%BF%92-4"><span class="header-section-number">17.8</span> 練習</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#posit-primers-httpsposit.cloudlearnprimers"><span class="header-section-number">17.8.1</span> Posit Primers https://posit.cloud/learn/primers</a></li></ul>
 </li>
 </ul>
 

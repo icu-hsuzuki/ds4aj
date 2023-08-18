@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 16 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="ここでは、tidyverse パッケージを構成する dplyr パッケージを用いて、データを変形することを学びます。dplyr パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、tidyverse パッケージを構成する tidyr パッケージ による変形も、後ほど扱います。 dplyr パッケージは、tidyverse...">
+<meta name="description" content="ここでは、tidyverse パッケージを構成する dplyr...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 16 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/transform.html">
-<meta property="og:description" content="ここでは、tidyverse パッケージを構成する dplyr パッケージを用いて、データを変形することを学びます。dplyr パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、tidyverse パッケージを構成する tidyr パッケージ による変形も、後ほど扱います。 dplyr パッケージは、tidyverse...">
+<meta property="og:description" content="ここでは、tidyverse パッケージを構成する dplyr...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 16 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="ここでは、tidyverse パッケージを構成する dplyr パッケージを用いて、データを変形することを学びます。dplyr パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、tidyverse パッケージを構成する tidyr パッケージ による変形も、後ほど扱います。 dplyr パッケージは、tidyverse...">
+<meta name="twitter:description" content="ここでは、tidyverse パッケージを構成する dplyr...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -119,7 +119,8 @@
 <span class="header-section-number">16</span> 変形（Transform）<a class="anchor" aria-label="anchor" href="#transform"><i class="fas fa-link"></i></a>
 </h1>
 <blockquote>
-<p>ここでは、<code>tidyverse</code> パッケージを構成する <code>dplyr</code> パッケージを用いて、データを変形することを学びます。<code>dplyr</code> パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、<code>tidyverse</code> パッケージを構成する <code>tidyr</code> パッケージ による変形も、後ほど扱います。</p>
+<p>ここでは、<code>tidyverse</code> パッケージを構成する <code>dplyr</code> パッケージを用いて、データを変形することを学びます。変形とは、例えば、データのなかのある条件を満たす行や列を抽出したり、特定の列を修正したり、データの中のいくつかの列に含まれる情報をもとに計算して、新たな列を作ったり、グループに分けたり、順番を入れ替えたりといったことです。データを集約したり、グラフを作成するときにも、必要不可欠な作業です。</p>
+<p><code>dplyr</code> パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、<code>tidyverse</code> パッケージを構成する <code>tidyr</code> パッケージ による変形も、後ほど扱います。</p>
 </blockquote>
 <p><code>dplyr</code> パッケージは、<code>tidyverse</code> パッケージをインストールしたり、使えるように <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> で読み込んだりするときに、一緒に読み込まれますから、あらためて、<code>dplyr</code> を指定する必要はありません。</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
@@ -214,11 +215,10 @@
 </tbody>
 </table></div>
 </div>
-</div>
-<div id="filter-列の値の条件に適合した行の選択" class="section level2" number="16.2">
-<h2>
-<span class="header-section-number">16.2</span> <a href="https://dplyr.tidyverse.org/reference/filter.html"><code>filter</code></a>: 列の値の条件に適合した行の選択<a class="anchor" aria-label="anchor" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><i class="fas fa-link"></i></a>
-</h2>
+<div id="filter-列の値の条件に適合した行の選択" class="section level3" number="16.1.2">
+<h3>
+<span class="header-section-number">16.1.2</span> <a href="https://dplyr.tidyverse.org/reference/filter.html"><code>filter</code></a>: 列の値の条件に適合した行の選択<a class="anchor" aria-label="anchor" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><i class="fas fa-link"></i></a>
+</h3>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
 <th>論理作用素</th>
@@ -269,17 +269,17 @@
 </tbody>
 </table></div>
 </div>
-<div id="arrange" class="section level2" number="16.3">
-<h2>
-<span class="header-section-number">16.3</span> <a href="https://dplyr.tidyverse.org/reference/arrange.html"><code>arrange</code></a><a class="anchor" aria-label="anchor" href="#arrange"><i class="fas fa-link"></i></a>
-</h2>
+<div id="arrange" class="section level3" number="16.1.3">
+<h3>
+<span class="header-section-number">16.1.3</span> <a href="https://dplyr.tidyverse.org/reference/arrange.html"><code>arrange</code></a><a class="anchor" aria-label="anchor" href="#arrange"><i class="fas fa-link"></i></a>
+</h3>
 <p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> では、選択した列の値によって、行を並び替えます。</p>
 <p>注意点すべきは、他の、<code>dplyr</code> の動詞とは異なり、基本的に、グループ化は、無視し、その表全体に適用します。グループ内で並び替えをしたい場合には、グループ化した変数を指定するか、<code>.by_group = TRUE</code> とします。</p>
 </div>
-<div id="mutate" class="section level2" number="16.4">
-<h2>
-<span class="header-section-number">16.4</span> <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutate</code></a><a class="anchor" aria-label="anchor" href="#mutate"><i class="fas fa-link"></i></a>
-</h2>
+<div id="mutate" class="section level3" number="16.1.4">
+<h3>
+<span class="header-section-number">16.1.4</span> <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutate</code></a><a class="anchor" aria-label="anchor" href="#mutate"><i class="fas fa-link"></i></a>
+</h3>
 <p>新しい列を作成または、既存の列を修正、削除します。</p>
 <p>以下は便利な補助関数の例です。</p>
 <ul>
@@ -290,20 +290,20 @@
 <li><p>na_if(), coalesce()### <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></p></li>
 </ul>
 </div>
-<div id="group_by" class="section level2" number="16.5">
-<h2>
-<span class="header-section-number">16.5</span> <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by</code></a><a class="anchor" aria-label="anchor" href="#group_by"><i class="fas fa-link"></i></a>
-</h2>
+<div id="group_by" class="section level3" number="16.1.5">
+<h3>
+<span class="header-section-number">16.1.5</span> <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by</code></a><a class="anchor" aria-label="anchor" href="#group_by"><i class="fas fa-link"></i></a>
+</h3>
 <p>指定した列の値によって表全体をグループ化した表を作成します。表自体が変形されるわけではありませんから、注意してください。次の、<code>summarize</code> と合わせて利用すると便利です。</p>
 </div>
-<div id="summarise-or-summarize" class="section level2" number="16.6">
-<h2>
-<span class="header-section-number">16.6</span> <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise</code> or <code>summarize</code></a><a class="anchor" aria-label="anchor" href="#summarise-or-summarize"><i class="fas fa-link"></i></a>
-</h2>
+<div id="summarise-or-summarize" class="section level3" number="16.1.6">
+<h3>
+<span class="header-section-number">16.1.6</span> <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise</code> or <code>summarize</code></a><a class="anchor" aria-label="anchor" href="#summarise-or-summarize"><i class="fas fa-link"></i></a>
+</h3>
 <p>値の集約 (summarize) に利用します。グループ化された表の場合には、そのグループごとに、値を集約します。</p>
-<div id="集約のための関数" class="section level4" number="16.6.0.1">
+<div id="集約のための関数" class="section level4" number="16.1.6.1">
 <h4>
-<span class="header-section-number">16.6.0.1</span> 集約のための関数<a class="anchor" aria-label="anchor" href="#%E9%9B%86%E7%B4%84%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E9%96%A2%E6%95%B0"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1.6.1</span> 集約のための関数<a class="anchor" aria-label="anchor" href="#%E9%9B%86%E7%B4%84%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E9%96%A2%E6%95%B0"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>summarize</code> には、 <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>, <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code>, や <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> が使われますが、ベクトルに対して定義され、一つの値だけを出力する関数でであれば、なんでも使うことができます。以下は、その例です。それぞれの関数については、Help で調べてください。</p>
 <ol style="list-style-type: decimal">
@@ -319,22 +319,36 @@
 </ul>
 </div>
 </div>
-<div id="パイプpipe" class="section level2" number="16.7">
-<h2>
-<span class="header-section-number">16.7</span> パイプ（Pipe）<code>%&gt;%</code> <code>|&gt;</code><a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><i class="fas fa-link"></i></a>
-</h2>
+<div id="パイプpipe" class="section level3" number="16.1.7">
+<h3>
+<span class="header-section-number">16.1.7</span> パイプ（Pipe）<code>%&gt;%</code> <code>|&gt;</code><a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><i class="fas fa-link"></i></a>
+</h3>
 <p><a href="https://r4ds.hadley.nz/workflow-style.html#sec-pipes"><code>pipes</code></a> in R for Data Science.</p>
 <p><code>%&gt;%</code> は、<code>tidyverse</code> パッケージで、関数のチェーン化を行うために使用されるパイプ演算子ですが、R 4.1 以降は、<code>|&gt;</code> が、R に組み込まれた、ネイティブなパイプライン演算子になっています。<code>tidyverse</code> を使っているときは、どちらを使うことも可能ですが、<code>|&gt;</code> を使うことをお勧めします。R の versoin を確認するには、コンソール（Console）で、<code><a href="https://rdrr.io/r/base/Version.html">R.Version()</a></code> または、<code>R.version$version.string</code> とします。</p>
+<div id="備考-2" class="section level4" number="16.1.7.1">
+<h4>
+<span class="header-section-number">16.1.7.1</span> <strong>備考</strong><a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-2"><i class="fas fa-link"></i></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li><p>パイプを使うコードで、複数行にまたがるときは、<code>|&gt;</code> の後で、改行してください。次の行に続くことがわかります。</p></li>
+<li><p>実際には、<code>tidyverse</code> の <code>%&gt;%</code> と、R に組み込まれた <code>|&gt;</code> とは多少異なるようです。こちらの<a href="https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/">記事</a>をご覧ください。本書では、<code>|&gt;</code> を使いますが、注意が必要な場合は、コメントします。</p></li>
+</ol>
 </div>
-<div id="learn-dplyr-by-examples" class="section level2" number="16.8">
+</div>
+</div>
+<div id="例から学ぶ-dplyr-i" class="section level2" number="16.2">
 <h2>
-<span class="header-section-number">16.8</span> Learn <code>dplyr</code> by Examples<a class="anchor" aria-label="anchor" href="#learn-dplyr-by-examples"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2</span> 例から学ぶ <code>dplyr</code> I<a class="anchor" aria-label="anchor" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-i"><i class="fas fa-link"></i></a>
 </h2>
-<div id="data-iris" class="section level3" number="16.8.1">
+<div id="data-iris" class="section level3" number="16.2.1">
 <h3>
-<span class="header-section-number">16.8.1</span> Data <code>iris</code><a class="anchor" aria-label="anchor" href="#data-iris"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2.1</span> Data <code>iris</code><a class="anchor" aria-label="anchor" href="#data-iris"><i class="fas fa-link"></i></a>
 </h3>
+<p>R 起動時に読み込まれる、<code>datasets</code> の中の、<code>iris</code> （あやめのデータ）を使い、いくつかの例を示します。<code>iris</code> は、何もしなくてもそのまま使えますが、もし、下の結果と違う場合には、すでに、<code>iris</code> を使い、変形などをしている可能性がありますから、そのときは、下のコードを実行してください。</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">&lt;-</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span></span></code></pre></div>
+<p>確認します。</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
 <span><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
@@ -343,28 +357,30 @@
 <span><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
 <span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
 <span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Sepal.Length    Sepal.Width     Petal.Length  </span></span>
-<span><span class="co">#&gt;  Min.   :4.300   Min.   :2.000   Min.   :1.000  </span></span>
-<span><span class="co">#&gt;  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  </span></span>
-<span><span class="co">#&gt;  Median :5.800   Median :3.000   Median :4.350  </span></span>
-<span><span class="co">#&gt;  Mean   :5.843   Mean   :3.057   Mean   :3.758  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  </span></span>
-<span><span class="co">#&gt;  Max.   :7.900   Max.   :4.400   Max.   :6.900  </span></span>
-<span><span class="co">#&gt;   Petal.Width          Species  </span></span>
-<span><span class="co">#&gt;  Min.   :0.100   setosa    :50  </span></span>
-<span><span class="co">#&gt;  1st Qu.:0.300   versicolor:50  </span></span>
-<span><span class="co">#&gt;  Median :1.300   virginica :50  </span></span>
-<span><span class="co">#&gt;  Mean   :1.199                  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:1.800                  </span></span>
-<span><span class="co">#&gt;  Max.   :2.500</span></span></code></pre></div>
-</div>
-<div id="select-1---columns-1-2-5" class="section level3" number="16.8.2">
-<h3>
-<span class="header-section-number">16.8.2</span> <code>select</code> 1 - columns 1, 2, 5<a class="anchor" aria-label="anchor" href="#select-1---columns-1-2-5"><i class="fas fa-link"></i></a>
-</h3>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    150 obs. of  5 variables:</span></span>
+<span><span class="co">#&gt;  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...</span></span>
+<span><span class="co">#&gt;  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...</span></span>
+<span><span class="co">#&gt;  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...</span></span>
+<span><span class="co">#&gt;  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...</span></span>
+<span><span class="co">#&gt;  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
+<p><code>iris</code> データは、名前のついた5個の変数（列）Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, Species があり、それぞれ、150の値（observations (obs.) 観察値）からなっています。5番目の Species は、三つのレベルのファクター（factor）setosa, versicolor ともう一つ virginica からなっていることがわかります。<code>unique</code> は、ベクトル型の変数（今の場合は、<code>iris</code> の <code>Species</code> という列）の中の異なる値を抽出します。ファクター（factor）は、ある分け方がされているという意味です。いずれ説明します。</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] setosa     versicolor virginica </span></span>
+<span><span class="co">#&gt; Levels: setosa versicolor virginica</span></span></code></pre></div>
+</div>
+<div id="select-列の抽出" class="section level3" number="16.2.2">
+<h3>
+<span class="header-section-number">16.2.2</span> <code>select</code> 列の抽出<a class="anchor" aria-label="anchor" href="#select-%E5%88%97%E3%81%AE%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="select-1---第-1-2-5-列を抽出" class="section level3" number="16.2.3">
+<h3>
+<span class="header-section-number">16.2.3</span> <code>select</code> 1 - 第 1, 2, 5 列を抽出<a class="anchor" aria-label="anchor" href="#select-1---%E7%AC%AC-1-2-5-%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
 <span><span class="co">#&gt; 1          5.1         3.5  setosa</span></span>
@@ -373,8 +389,9 @@
 <span><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
 <span><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
 <span><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
-<p>You can select the first, the second and the fifth columns. If you want to use it, then assign a new name.</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<p>第1列、第2列、第5列を、<code>c(1,2,5)</code> で表しています。列名で指定することもできます。</p>
+<p><code>head(select(iris, c(1,2,5)))</code> としてありますから、その最初の6行を表示していますが、新しい変数を割り当ててはいませんから、<code>iris</code> 自体は変更されていません。</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
 <span><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
@@ -383,7 +400,8 @@
 <span><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
 <span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
 <span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<p>第1列、第2列、第5列を選んだものを、あとから使いたいときは、新しい名前をつける必要があります。以下同様ですが、この場合だけ、df_<code>iris125</code> という名前（object name）をつけておきましょう。</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_iris125</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_iris125</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
@@ -393,14 +411,13 @@
 <span><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
 <span><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
 <span><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
-</div>
-<div id="select-1-using-pipe" class="section level3" number="16.8.3">
-<h3>
-<span class="header-section-number">16.8.3</span> <code>select</code> 1 using pipe<a class="anchor" aria-label="anchor" href="#select-1-using-pipe"><i class="fas fa-link"></i></a>
-</h3>
-<p>In the previous example, we used <code>head(select(iris, c(1,2,5)))</code>, <code>head</code> comes first because we apply <code>head</code> to the result of <code>select(iris, c(1,2,5))</code>. In order to apply functions in a sequencial order, we can use pipe command. You can get the same result by the following.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<div id="パイプpipe-を使ったコード" class="section level4" number="16.2.3.1">
+<h4>
+<span class="header-section-number">16.2.3.1</span> パイプ（Pipe） <code>|&gt;</code> を使ったコード<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97pipe-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
+</h4>
+<p>最初の例では <code>head(select(iris, c(1,2,5)))</code> としました。<code>head</code> の引数として、 <code>select(iris, c(1,2,5))</code> を使ったからです。しかし、慣れてくると、順番に関数を適用することを表現するには、 パイプを使うのも便利です。パイプでは、直前の出力が次の関数の第一引数として引き継がれるというルールになっています。以下のようになります。</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
 <span><span class="co">#&gt; 1          5.1         3.5  setosa</span></span>
 <span><span class="co">#&gt; 2          4.9         3.0  setosa</span></span>
@@ -408,15 +425,17 @@
 <span><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
 <span><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
 <span><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
-<p>All <code>tidyverse</code> functions are designed so that the first argument, i.e., the entry, is the data. So using pipe, <code>iris</code> is assumed to be the first entry of the <code>select</code> function, and <code>select(iris, c(1,2,5))</code> is the first entry of the head function.</p>
+<p>より、詳しく知りたい場合には、Help に <code>|&gt;</code> と入れて説明を読んでください。</p>
 <p>In the following, we use pipes.</p>
 </div>
-<div id="select-2---except-species" class="section level3" number="16.8.4">
+</div>
+<div id="select-2---species-列以外" class="section level3" number="16.2.4">
 <h3>
-<span class="header-section-number">16.8.4</span> <code>select</code> 2 - except Species<a class="anchor" aria-label="anchor" href="#select-2---except-species"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2.4</span> <code>select</code> 2 - Species 列以外<a class="anchor" aria-label="anchor" href="#select-2---species-%E5%88%97%E4%BB%A5%E5%A4%96"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="op">-</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<p>列名の前に、<code>-</code> ハイフン（半角）をつけると、その列以外を抽出します。</p>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="op">-</span><span class="va">Species</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
 <span><span class="co">#&gt; 1          5.1         3.5          1.4         0.2</span></span>
 <span><span class="co">#&gt; 2          4.9         3.0          1.4         0.2</span></span>
@@ -425,12 +444,14 @@
 <span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2</span></span>
 <span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4</span></span></code></pre></div>
 </div>
-<div id="select-3---select-and-change-column-names-at-the-same-time" class="section level3" number="16.8.5">
+<div id="select-3---列を抽出するとともに列名も変更" class="section level3" number="16.2.5">
 <h3>
-<span class="header-section-number">16.8.5</span> <code>select</code> 3 - select and change column names at the same time<a class="anchor" aria-label="anchor" href="#select-3---select-and-change-column-names-at-the-same-time"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2.5</span> <code>select</code> 3 - 列を抽出するとともに列名も変更<a class="anchor" aria-label="anchor" href="#select-3---%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA%E3%81%99%E3%82%8B%E3%81%A8%E3%81%A8%E3%82%82%E3%81%AB%E5%88%97%E5%90%8D%E3%82%82%E5%A4%89%E6%9B%B4"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, sl <span class="op">=</span> <span class="va">Sepal.Length</span>, sw <span class="op">=</span> <span class="va">Sepal.Width</span>, sp <span class="op">=</span> <span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<p>新しい列名 = 現在の列名 という形式で、列名を変更することも可能です。</p>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, sl <span class="op">=</span> <span class="va">Sepal.Length</span>, sw <span class="op">=</span> <span class="va">Sepal.Width</span>, sp <span class="op">=</span> <span class="va">Species</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    sl  sw     sp</span></span>
 <span><span class="co">#&gt; 1 5.1 3.5 setosa</span></span>
 <span><span class="co">#&gt; 2 4.9 3.0 setosa</span></span>
@@ -439,11 +460,11 @@
 <span><span class="co">#&gt; 5 5.0 3.6 setosa</span></span>
 <span><span class="co">#&gt; 6 5.4 3.9 setosa</span></span></code></pre></div>
 </div>
-<div id="select-4---change-the-order-of-columns" class="section level3" number="16.8.6">
+<div id="select-4---列順の変更" class="section level3" number="16.2.6">
 <h3>
-<span class="header-section-number">16.8.6</span> <code>select</code> 4 - change the order of columns<a class="anchor" aria-label="anchor" href="#select-4---change-the-order-of-columns"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2.6</span> <code>select</code> 4 - 列順の変更<a class="anchor" aria-label="anchor" href="#select-4---%E5%88%97%E9%A0%86%E3%81%AE%E5%A4%89%E6%9B%B4"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Species Petal.Length Petal.Width Sepal.Length Sepal.Width</span></span>
 <span><span class="co">#&gt; 1  setosa          1.4         0.2          5.1         3.5</span></span>
@@ -452,12 +473,21 @@
 <span><span class="co">#&gt; 4  setosa          1.5         0.2          4.6         3.1</span></span>
 <span><span class="co">#&gt; 5  setosa          1.4         0.2          5.0         3.6</span></span>
 <span><span class="co">#&gt; 6  setosa          1.7         0.4          5.4         3.9</span></span></code></pre></div>
+<div id="備考-3" class="section level4" number="16.2.6.1">
+<h4>
+<span class="header-section-number">16.2.6.1</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-3"><i class="fas fa-link"></i></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li>上の、<code>select</code>` の 補助関数（helper functions）にも書きましたように、他にも様々な方法で、列を抽出することが可能です。たくさんの列がある、表に出会ったら、ぜひ使ってください。</li>
+</ol>
 </div>
-<div id="filter---by-names" class="section level3" number="16.8.7">
+</div>
+<div id="filter---値による抽出" class="section level3" number="16.2.7">
 <h3>
-<span class="header-section-number">16.8.7</span> <code>filter</code> - by names<a class="anchor" aria-label="anchor" href="#filter---by-names"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2.7</span> <code>filter</code> - 値による抽出<a class="anchor" aria-label="anchor" href="#filter---%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<p>Species の列の値が、virginica であるものだけを抽出します。<code>==</code> とイコールが二つであることと、文字列の場合には、半角の引用符（double quote）でくくります。‘verginica’ でも同じです。（列名に空白や、特殊記号が含まれているときには、back tick と呼ばれる、反対向きの引用符で括ります。あとからその必要が生じたときに説明します。）</p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span> <span class="op">==</span> <span class="st">"virginica"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
 <span><span class="co">#&gt; 1          6.3         3.3          6.0         2.5</span></span>
@@ -474,11 +504,12 @@
 <span><span class="co">#&gt; 5 virginica</span></span>
 <span><span class="co">#&gt; 6 virginica</span></span></code></pre></div>
 </div>
-<div id="arrange---ascending-and-descending-order" class="section level3" number="16.8.8">
+<div id="arrange---昇順降順" class="section level3" number="16.2.8">
 <h3>
-<span class="header-section-number">16.8.8</span> <code>arrange</code> - ascending and descending order<a class="anchor" aria-label="anchor" href="#arrange---ascending-and-descending-order"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2.8</span> <code>arrange</code> - 昇順、降順<a class="anchor" aria-label="anchor" href="#arrange---%E6%98%87%E9%A0%86%E9%99%8D%E9%A0%86"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<p>次の例では、Sepal.Length の値の、昇順（小さい順）にし、同じ値の中では、Spepal.Width の降順（大きい順 （desc は descending order からとったもの）にします。Sepal.Length の値が、4.4 の部分の、Sepal.Width の値をみてください。</p>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Sepal.Length</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">Sepal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
 <span><span class="co">#&gt; 1          4.3         3.0          1.1         0.1  setosa</span></span>
@@ -488,13 +519,14 @@
 <span><span class="co">#&gt; 5          4.5         2.3          1.3         0.3  setosa</span></span>
 <span><span class="co">#&gt; 6          4.6         3.6          1.0         0.2  setosa</span></span></code></pre></div>
 </div>
-<div id="mutate---rank" class="section level3" number="16.8.9">
+<div id="mutate---rank階級" class="section level3" number="16.2.9">
 <h3>
-<span class="header-section-number">16.8.9</span> <code>mutate</code> - rank<a class="anchor" aria-label="anchor" href="#mutate---rank"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2.9</span> <code>mutate</code> - rank（階級）<a class="anchor" aria-label="anchor" href="#mutate---rank%E9%9A%8E%E7%B4%9A"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sl_rank <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sl_rank</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<p>小さい順に順序付けて新しい列を作成し、その順序で表示します。順序付も様々な種類があります。ここでは、同じ値のときには、同じ階級にしています。下の出力を右の方を見てください。1, 2, 2, 2, 5, … となっています。</p>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sl_rank <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sl_rank</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
 <span><span class="co">#&gt; 1          4.3         3.0          1.1         0.1  setosa</span></span>
 <span><span class="co">#&gt; 2          4.4         2.9          1.4         0.2  setosa</span></span>
@@ -509,15 +541,23 @@
 <span><span class="co">#&gt; 4       2</span></span>
 <span><span class="co">#&gt; 5       5</span></span>
 <span><span class="co">#&gt; 6       6</span></span></code></pre></div>
-<p>Insert a line break after the pipe command, not before.</p>
+<div id="備考-4" class="section level4" number="16.2.9.1">
+<h4>
+<span class="header-section-number">16.2.9.1</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-4"><i class="fas fa-link"></i></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li>パイプを紹介したときにも書きましたが、改行は、<code>|&gt;</code> のあとでしてください。</li>
+</ol>
 </div>
-<div id="group_by-and-summarize" class="section level3" number="16.8.10">
+</div>
+<div id="group_by-and-summarize" class="section level3" number="16.2.10">
 <h3>
-<span class="header-section-number">16.8.10</span> <code>group_by</code> and <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-and-summarize"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2.10</span> <code>group_by</code> and <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-and-summarize"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<p>グループにわけて、グループごとに、平均を求めています。</p>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>sl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Sepal.Length</span><span class="op">)</span>, sw <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Sepal.Width</span><span class="op">)</span>, </span>
 <span>  pl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Petal.Length</span><span class="op">)</span>, pw <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Petal.Width</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 5</span></span>
@@ -527,24 +567,25 @@
 <span><span class="co">#&gt; 2 versicolor  5.94  2.77  4.26 1.33 </span></span>
 <span><span class="co">#&gt; 3 virginica   6.59  2.97  5.55 2.03</span></span></code></pre></div>
 <ul>
-<li>mean: <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> or <code>mean(x, na.rm = TRUE)</code> - arithmetic mean (average)</li>
-<li>median: <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> or <code>median(x, na.rm = TRUE)</code> - mid value</li>
+<li>mean: <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> or <code>mean(x, na.rm = TRUE)</code> - 相加平均 (average)</li>
+<li>median: <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> , <code>median(x, na.rm = TRUE)</code> - 中央値（mid value）</li>
 </ul>
-<p>For more examples see</p>
+<p>以下のリンクには、もう少し例が書かれています。</p>
 <p><a href="https://icu-hsuzuki.github.io/da4r2022_note/dplyr-iris.nb.html">dplr_iris</a></p>
 </div>
 </div>
-<div id="references-of-dplyr" class="section level2" number="16.9">
+<div id="dplyr-の参考文献" class="section level2" number="16.3">
 <h2>
-<span class="header-section-number">16.9</span> References of <code>dplyr</code><a class="anchor" aria-label="anchor" href="#references-of-dplyr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.3</span> <code>dplyr</code> の参考文献<a class="anchor" aria-label="anchor" href="#dplyr-%E3%81%AE%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><i class="fas fa-link"></i></a>
 </h2>
+<p>より詳しい説明は、教科書の該当箇所を見てください。</p>
 <ul>
-<li>Textbook: <a href="https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro">R for Data Science, Part II Explore</a>
-</li>
+<li><a href="https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro">R for Data Science, Part II Explore</a></li>
+<li><a href="https://r4ds.hadley.nz/transform">R for Data Science (2e), Transform</a></li>
 </ul>
-<div id="rstudio-primers-see-references-in-moodle-at-the-bottom" class="section level3" number="16.9.1">
+<div id="rstudio-primers-対話型の演習問題" class="section level3" number="16.3.1">
 <h3>
-<span class="header-section-number">16.9.1</span> RStudio Primers: See References in Moodle at the bottom<a class="anchor" aria-label="anchor" href="#rstudio-primers-see-references-in-moodle-at-the-bottom"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.3.1</span> RStudio Primers: 対話型の演習問題<a class="anchor" aria-label="anchor" href="#rstudio-primers-%E5%AF%BE%E8%A9%B1%E5%9E%8B%E3%81%AE%E6%BC%94%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fas fa-link"></i></a>
 </h3>
 <ol start="2" style="list-style-type: decimal">
 <li>Work with Data – <a href="https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro">r4ds: Wrangle, I</a>
@@ -557,29 +598,33 @@
 </ul>
 </div>
 </div>
-<div id="learn-dplyr-by-examples-ii---gapminder" class="section level2" number="16.10">
+<div id="例から学ぶ-dplyr-ii---gapminder" class="section level2" number="16.4">
 <h2>
-<span class="header-section-number">16.10</span> Learn <code>dplyr</code> by Examples II - <code>gapminder</code><a class="anchor" aria-label="anchor" href="#learn-dplyr-by-examples-ii---gapminder"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4</span> 例から学ぶ <code>dplyr</code> II - <code>gapminder</code><a class="anchor" aria-label="anchor" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-ii---gapminder"><i class="fas fa-link"></i></a>
 </h2>
-<div id="ggplot2-overview" class="section level3" number="16.10.1">
+<p><code>gapminder</code> というパッケージのデータを使って、<code>dplyr</code> を学びます。この次の章で、<code>ggplot2</code> を使った視覚化について学びますが、この章で学んでいる変形は、<code>ggplot2</code> で、視覚化する準備のために、する場合も多いので、ここでも、<code>ggplot2</code> を使います。</p>
+<div id="ggplot2-概要" class="section level3" number="16.4.1">
 <h3>
-<span class="header-section-number">16.10.1</span> <code>ggplot2</code> <a href="https://ggplot2.tidyverse.org">Overview</a><a class="anchor" aria-label="anchor" href="#ggplot2-overview"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.1</span> <code>ggplot2</code> <a href="https://ggplot2.tidyverse.org">概要</a><a class="anchor" aria-label="anchor" href="#ggplot2-%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
 </h3>
-<p><code>ggplot2</code> is a system for declaratively creating graphics, based on <a href="https://amzn.to/2ef1eWp">The Grammar of Graphics</a>. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.</p>
-<p><strong>Examples</strong></p>
+<p>次のような形式で使います。</p>
+<p><strong>例1 散布図</strong></p>
 <pre><code>ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy))</code></pre>
+<p><strong>例2 箱ひげ図</strong></p>
 <pre><code>ggplot(data = mpg) + 
   geom_boxplot(mapping = aes(x = class, y = hwy))</code></pre>
-<p><strong>Template</strong></p>
+<p><strong>テンプレート</strong></p>
 <pre><code>ggplot(data = &lt;DATA&gt;) + 
   &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))</code></pre>
-<div id="gapminder-and-r-package-gapminder" class="section level4" number="16.10.1.1">
+<div id="gapminder-と-r-package-gapminder" class="section level4" number="16.4.1.1">
 <h4>
-<span class="header-section-number">16.10.1.1</span> Gapminder and R Package <code>gapminder</code><a class="anchor" aria-label="anchor" href="#gapminder-and-r-package-gapminder"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.1.1</span> Gapminder と R Package <code>gapminder</code><a class="anchor" aria-label="anchor" href="#gapminder-%E3%81%A8-r-package-gapminder"><i class="fas fa-link"></i></a>
 </h4>
 <blockquote>
-<p>Gapminder was founded by Ola Rosling, Anna Rosling Rönnlund, and Hans Rosling</p>
+<p>Gapminder は オラ ロスリング（Ola Rosling） と アンナ ロスリング（Anna Rosling Rönnlund）と ハンス ロスリング（Hans Rosling）が設立した組織です。</p>
+<p>ハンス・ロスリング は、<strong>FACTFULNESS（ファクトフルネス）10の思い込みを乗り越え、データを基に世界を正しく見る習慣</strong> の著者です。</p>
+<p>また、R の gapminder パッケージには、ファクトフルネス にも登場するデータで、Gapminder サイトでも使っているデータの一部を、使いやすい、練習用のデータとして提供しているものです。</p>
 </blockquote>
 <ul>
 <li>
@@ -621,17 +666,17 @@
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/WDI/">WDI</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="r-package-gapminder-data" class="section level4" number="16.10.1.2">
+<div id="r-package-gapminder-data" class="section level4" number="16.4.1.2">
 <h4>
-<span class="header-section-number">16.10.1.2</span> R Package <code>gapminder</code> data<a class="anchor" aria-label="anchor" href="#r-package-gapminder-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.1.2</span> R Package <code>gapminder</code> data<a class="anchor" aria-label="anchor" href="#r-package-gapminder-data"><i class="fas fa-link"></i></a>
 </h4>
 <p>We will use a <code>tidyverse</code> function <code>slice</code> replacing <code>head</code>. Check <code>slice</code> in the search window under the Help tab on the bottom right pane.</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">gapminder</span></span>
 <span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 10 × 6</span></span>
@@ -647,7 +692,7 @@
 <span><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
 <span><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
 <span><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span></code></pre></div>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 1,704</span></span>
 <span><span class="co">#&gt; Columns: 6</span></span>
@@ -657,7 +702,7 @@
 <span><span class="co">#&gt; $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, …</span></span>
 <span><span class="co">#&gt; $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13…</span></span>
 <span><span class="co">#&gt; $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, …</span></span></code></pre></div>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         country        continent        year     </span></span>
 <span><span class="co">#&gt;  Afghanistan:  12   Africa  :624   Min.   :1952  </span></span>
@@ -676,77 +721,77 @@
 <span><span class="co">#&gt;  Max.   :82.60   Max.   :1.319e+09   Max.   :113523.1  </span></span>
 <span><span class="co">#&gt; </span></span></code></pre></div>
 </div>
-<div id="tidyverseggplot" class="section level4" number="16.10.1.3">
+<div id="tidyverseggplot" class="section level4" number="16.4.1.3">
 <h4>
-<span class="header-section-number">16.10.1.3</span> Tidyverse::ggplot<a class="anchor" aria-label="anchor" href="#tidyverseggplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.1.3</span> Tidyverse::ggplot<a class="anchor" aria-label="anchor" href="#tidyverseggplot"><i class="fas fa-link"></i></a>
 </h4>
-<div id="first-try---with-failures" class="section level5" number="16.10.1.3.1">
+<div id="first-try---with-failures" class="section level5" number="16.4.1.3.1">
 <h5>
-<span class="header-section-number">16.10.1.3.1</span> First Try - with failures<a class="anchor" aria-label="anchor" href="#first-try---with-failures"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.1.3.1</span> First Try - with failures<a class="anchor" aria-label="anchor" href="#first-try---with-failures"><i class="fas fa-link"></i></a>
 </h5>
 <p>You will encounter similar failures. We list three of them.</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
 <p>There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …. Can you tell how many years are in the data? The following command shows different years in the data.</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">year</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002</span></span>
 <span><span class="co">#&gt; [12] 2007</span></span></code></pre></div>
 <p>You can guess it from the data summary above. Can you imagine how many countries are in the data? 142? Anyhow, too many points are on each year.</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
 <p>Now, you can guess the reason why you had this output. This is often called a saw-tooth.</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Continuous x aesthetic</span></span>
 <span><span class="co">#&gt; ℹ did you forget `aes(group = ...)`?</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-21-1.png" width="672"></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-23-1.png" width="672"></div>
 <p>Can you see what the problem is? The <code>year</code> is a numerical variable in integer.</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="co"># same as typeof(df$year)</span></span>
 <span><span class="co">#&gt; [1] "integer"</span></span></code></pre></div>
 <p>The following looks better.</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, group <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-23-1.png" width="672"></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
 </div>
-<div id="box-plot" class="section level5" number="16.10.1.3.2">
+<div id="box-plot" class="section level5" number="16.4.1.3.2">
 <h5>
-<span class="header-section-number">16.10.1.3.2</span> Box Plot<a class="anchor" aria-label="anchor" href="#box-plot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.1.3.2</span> Box Plot<a class="anchor" aria-label="anchor" href="#box-plot"><i class="fas fa-link"></i></a>
 </h5>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-24-1.png" width="672"></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-26-1.png" width="672"></div>
 <p>We will study data visualization in Chapter <a href="#ggplot2"><strong>??</strong></a>.</p>
 </div>
 </div>
-<div id="applications-of-dplyr" class="section level4" number="16.10.1.4">
+<div id="applications-of-dplyr" class="section level4" number="16.4.1.4">
 <h4>
-<span class="header-section-number">16.10.1.4</span> Applications of <code>dplyr</code><a class="anchor" aria-label="anchor" href="#applications-of-dplyr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.1.4</span> Applications of <code>dplyr</code><a class="anchor" aria-label="anchor" href="#applications-of-dplyr"><i class="fas fa-link"></i></a>
 </h4>
 <p>Let us apply <code>dplyr</code> to manipulate data to visualize the data.</p>
-<div id="filter" class="section level5" number="16.10.1.4.1">
+<div id="filter" class="section level5" number="16.4.1.4.1">
 <h5>
-<span class="header-section-number">16.10.1.4.1</span> <code>filter</code><a class="anchor" aria-label="anchor" href="#filter"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.1.4.1</span> <code>filter</code><a class="anchor" aria-label="anchor" href="#filter"><i class="fas fa-link"></i></a>
 </h5>
 <p>By <code>filter</code> you can obtain the the data of one country.</p>
 <p><code>filter(country == "Afghanistan")</code></p>
 <p>Note that we need two equal symbols, and quotation marks must surround the country name.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Afghanistan"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-27-1.png" width="672"></div>
 <p>Looks good. From the data you observe, the life expectancy at birth in 1952 was below 30, and it was still below 44 in 2007.</p>
 <p>Let us compare Afghanistan with Japan. When you choose more than one country, we use the following format: <code>country %in% c("Afghanistan", "Japan")</code>.</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Japan"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-26-1.png" width="672"></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-28-1.png" width="672"></div>
 <p>What do you observe from this chart?</p>
 <p>The code <code>unique(df$country)</code> does the same as the one below. First, choose distinct elements in the column <code>country</code> by <code>distinct(country)</code> and get the column as a vector by <code>pull</code>.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   [1] Afghanistan              Albania                 </span></span>
 <span><span class="co">#&gt;   [3] Algeria                  Angola                  </span></span>
@@ -822,17 +867,17 @@
 <span><span class="co">#&gt; 142 Levels: Afghanistan Albania Algeria Angola ... Zimbabwe</span></span></code></pre></div>
 <p>As we have guessed, there are 142 countries in this data.</p>
 <p>Let us choose BRICs countries in the data.</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Brazil"</span>, <span class="st">"Russia"</span>, <span class="st">"India"</span>, <span class="st">"China"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-28-1.png" width="672"></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-30-1.png" width="672"></div>
 <p>Russia data is missing. Can you find it in the list of countries? It can be a problem of <code>gapminder</code> data. Can you think of the reason why Russia is not in?</p>
 </div>
 </div>
 </div>
-<div id="exercises" class="section level3" number="16.10.2">
+<div id="練習-3" class="section level3" number="16.4.2">
 <h3>
-<span class="header-section-number">16.10.2</span> Exercises<a class="anchor" aria-label="anchor" href="#exercises"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.2</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-3"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li>Change <code>lifeExp</code> to <code>pop</code> and <code>gdpPercap</code> and do the same.</li>
@@ -846,16 +891,16 @@
 <li>Choose several countries by yourself and do the similar investigations.</li>
 </ol>
 </div>
-<div id="group_by-and-summarize-1" class="section level3" number="16.10.3">
+<div id="group_by-and-summarize-1" class="section level3" number="16.4.3">
 <h3>
-<span class="header-section-number">16.10.3</span> <code>group_by</code> and <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-and-summarize-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.3</span> <code>group_by</code> and <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-and-summarize-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let us use the variable <code>continent</code> and summarize the data. Can you tell how many continents are listed in the data? Yes, there are five. Can you tell how many countries are in each continent on the data?</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, median_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, max_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, min_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"keep"</span><span class="op">)</span></span></code></pre></div>
 <p>Don’t get scared. We will learn little by little.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 60 × 6</span></span>
 <span><span class="co">#&gt; # Groups:   continent, year [60]</span></span>
@@ -874,30 +919,30 @@
 <span><span class="co">#&gt; # ℹ 50 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 1 more variable: min_lifeExp &lt;dbl&gt;</span></span></code></pre></div>
 <p>You can use <code>fill</code> and <code>color</code> for the box plot. Try and check the difference.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1952</span>, <span class="fl">1987</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, fill <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-33-1.png" width="672"></div>
 <p>The following are examples of line graphs. Please see the differences.</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-32-1.png" width="672"></div>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span>, linetype <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-33-1.png" width="672"></div>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-35-1.png" width="672"></div>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">median_lifeExp</span>, linetype <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
+<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-36-1.png" width="672"></div>
 </div>
 </div>
-<div id="the-week-two-assignment-in-moodle" class="section level2" number="16.11">
+<div id="練習問題" class="section level2" number="16.5">
 <h2>
-<span class="header-section-number">16.11</span> The Week Two Assignment (in Moodle)<a class="anchor" aria-label="anchor" href="#the-week-two-assignment-in-moodle"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.5</span> 練習問題<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong>R Markdown and <code>dplyr</code></strong></p>
 <ul>
@@ -934,12 +979,11 @@
 </ul>
 </li>
 </ol>
-<p><strong>Due:</strong> 2023-01-09 23:59:00. Submit your R Notebook file in Moodle (The Second Assignment). Due on Monday!</p>
-<div id="original-data-wdi" class="section level3" number="16.11.1">
+<div id="original-data-wdi" class="section level3" number="16.5.1">
 <h3>
-<span class="header-section-number">16.11.1</span> Original Data? WDI?<a class="anchor" aria-label="anchor" href="#original-data-wdi"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.5.1</span> Original Data? WDI?<a class="anchor" aria-label="anchor" href="#original-data-wdi"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 10 × 6</span></span>
 <span><span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span></span>
@@ -954,16 +998,16 @@
 <span><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
 <span><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
 <span><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span></code></pre></div>
-<div id="wdi-1" class="section level4" number="16.11.1.1">
+<div id="wdi-1" class="section level4" number="16.5.1.1">
 <h4>
-<span class="header-section-number">16.11.1.1</span> WDI<a class="anchor" aria-label="anchor" href="#wdi-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.5.1.1</span> WDI<a class="anchor" aria-label="anchor" href="#wdi-1"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>SP.DYN.LE00.IN: Life expectancy at birth, total (years)</li>
 <li>NY.GDP.PCAP.KD: GDP per capita (constant 2015 US$)</li>
 <li>SP.POP.TOTL: Population, total</li>
 </ul>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span></span>
 <span>  country <span class="op">=</span> <span class="st">"all"</span>, </span>
 <span>  indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>lifeExp <span class="op">=</span> <span class="st">"SP.DYN.LE00.IN"</span>, pop <span class="op">=</span> <span class="st">"SP.POP.TOTL"</span>, gdpPercap <span class="op">=</span> <span class="st">"NY.GDP.PCAP.KD"</span><span class="op">)</span></span>
@@ -976,7 +1020,7 @@
 #&gt; 
 #&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
 #&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 10 × 7</span></span>
 <span><span class="co">#&gt;    country     iso2c iso3c  year lifeExp      pop gdpPercap</span></span>
@@ -991,7 +1035,7 @@
 <span><span class="co">#&gt;  8 Afghanistan AF    AFG    1967    35.9 10010030        NA</span></span>
 <span><span class="co">#&gt;  9 Afghanistan AF    AFG    1968    36.4 10247780        NA</span></span>
 <span><span class="co">#&gt; 10 Afghanistan AF    AFG    1969    36.9 10494489        NA</span></span></code></pre></div>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_extra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span></span>
 <span>  country <span class="op">=</span> <span class="st">"all"</span>, </span>
 <span>  indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>lifeExp <span class="op">=</span> <span class="st">"SP.DYN.LE00.IN"</span>, pop <span class="op">=</span> <span class="st">"SP.POP.TOTL"</span>, gdpPercap <span class="op">=</span> <span class="st">"NY.GDP.PCAP.KD"</span><span class="op">)</span>, </span>
@@ -1007,7 +1051,7 @@
 #&gt; 
 #&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
 #&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_extra</span></span>
 <span><span class="co">#&gt; # A tibble: 16,758 × 15</span></span>
 <span><span class="co">#&gt;    country     iso2c iso3c  year status lastupdated lifeExp</span></span>
@@ -1026,7 +1070,7 @@
 <span><span class="co">#&gt; # ℹ 8 more variables: pop &lt;dbl&gt;, gdpPercap &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   region &lt;chr&gt;, capital &lt;chr&gt;, longitude &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   latitude &lt;dbl&gt;, income &lt;chr&gt;, lending &lt;chr&gt;</span></span></code></pre></div>
-<p>Can you see the differences? List them out. We will study the World Development Indicators in Chapter <a href="worldbank-site.html#wdi">7.4.1</a>.</p>
+<p>違いはわかりましたか。同じような変数についてのデータですが、WDI からダウンロードした実際のデータの場合には、練習用のデータとは、違った困難がいくつもあります。それを、少しず見ていきながら、現実世界のデータを扱えるようにしていきましょう。</p>
 
 </div>
 </div>
@@ -1040,40 +1084,42 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#transform"><span class="header-section-number">16</span> 変形（Transform）</a></li>
 <li>
-<a class="nav-link" href="#dplyr-%E6%A6%82%E8%A6%81"><span class="header-section-number">16.1</span> dplyr 概要</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#select-%E5%90%8D%E5%89%8D%E3%81%A8%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E9%81%B8%E6%8A%9E"><span class="header-section-number">16.1.1</span> select: 名前とタイプによって、列（変数）を選択</a></li></ul>
-</li>
-<li><a class="nav-link" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><span class="header-section-number">16.2</span> filter: 列の値の条件に適合した行の選択</a></li>
-<li><a class="nav-link" href="#arrange"><span class="header-section-number">16.3</span> arrange</a></li>
-<li><a class="nav-link" href="#mutate"><span class="header-section-number">16.4</span> mutate</a></li>
-<li><a class="nav-link" href="#group_by"><span class="header-section-number">16.5</span> group_by</a></li>
-<li><a class="nav-link" href="#summarise-or-summarize"><span class="header-section-number">16.6</span> summarise or summarize</a></li>
-<li><a class="nav-link" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><span class="header-section-number">16.7</span> パイプ（Pipe）%&gt;% |&gt;</a></li>
-<li>
-<a class="nav-link" href="#learn-dplyr-by-examples"><span class="header-section-number">16.8</span> Learn dplyr by Examples</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-iris"><span class="header-section-number">16.8.1</span> Data iris</a></li>
-<li><a class="nav-link" href="#select-1---columns-1-2-5"><span class="header-section-number">16.8.2</span> select 1 - columns 1, 2, 5</a></li>
-<li><a class="nav-link" href="#select-1-using-pipe"><span class="header-section-number">16.8.3</span> select 1 using pipe</a></li>
-<li><a class="nav-link" href="#select-2---except-species"><span class="header-section-number">16.8.4</span> select 2 - except Species</a></li>
-<li><a class="nav-link" href="#select-3---select-and-change-column-names-at-the-same-time"><span class="header-section-number">16.8.5</span> select 3 - select and change column names at the same time</a></li>
-<li><a class="nav-link" href="#select-4---change-the-order-of-columns"><span class="header-section-number">16.8.6</span> select 4 - change the order of columns</a></li>
-<li><a class="nav-link" href="#filter---by-names"><span class="header-section-number">16.8.7</span> filter - by names</a></li>
-<li><a class="nav-link" href="#arrange---ascending-and-descending-order"><span class="header-section-number">16.8.8</span> arrange - ascending and descending order</a></li>
-<li><a class="nav-link" href="#mutate---rank"><span class="header-section-number">16.8.9</span> mutate - rank</a></li>
-<li><a class="nav-link" href="#group_by-and-summarize"><span class="header-section-number">16.8.10</span> group_by and summarize</a></li>
+<a class="nav-link" href="#dplyr-%E6%A6%82%E8%A6%81"><span class="header-section-number">16.1</span> dplyr 概要</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#select-%E5%90%8D%E5%89%8D%E3%81%A8%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E9%81%B8%E6%8A%9E"><span class="header-section-number">16.1.1</span> select: 名前とタイプによって、列（変数）を選択</a></li>
+<li><a class="nav-link" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><span class="header-section-number">16.1.2</span> filter: 列の値の条件に適合した行の選択</a></li>
+<li><a class="nav-link" href="#arrange"><span class="header-section-number">16.1.3</span> arrange</a></li>
+<li><a class="nav-link" href="#mutate"><span class="header-section-number">16.1.4</span> mutate</a></li>
+<li><a class="nav-link" href="#group_by"><span class="header-section-number">16.1.5</span> group_by</a></li>
+<li><a class="nav-link" href="#summarise-or-summarize"><span class="header-section-number">16.1.6</span> summarise or summarize</a></li>
+<li><a class="nav-link" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><span class="header-section-number">16.1.7</span> パイプ（Pipe）%&gt;% |&gt;</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#references-of-dplyr"><span class="header-section-number">16.9</span> References of dplyr</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#rstudio-primers-see-references-in-moodle-at-the-bottom"><span class="header-section-number">16.9.1</span> RStudio Primers: See References in Moodle at the bottom</a></li></ul>
-</li>
-<li>
-<a class="nav-link" href="#learn-dplyr-by-examples-ii---gapminder"><span class="header-section-number">16.10</span> Learn dplyr by Examples II - gapminder</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#ggplot2-overview"><span class="header-section-number">16.10.1</span> ggplot2 Overview</a></li>
-<li><a class="nav-link" href="#exercises"><span class="header-section-number">16.10.2</span> Exercises</a></li>
-<li><a class="nav-link" href="#group_by-and-summarize-1"><span class="header-section-number">16.10.3</span> group_by and summarize</a></li>
+<a class="nav-link" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-i"><span class="header-section-number">16.2</span> 例から学ぶ dplyr I</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-iris"><span class="header-section-number">16.2.1</span> Data iris</a></li>
+<li><a class="nav-link" href="#select-%E5%88%97%E3%81%AE%E6%8A%BD%E5%87%BA"><span class="header-section-number">16.2.2</span> select 列の抽出</a></li>
+<li><a class="nav-link" href="#select-1---%E7%AC%AC-1-2-5-%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA"><span class="header-section-number">16.2.3</span> select 1 - 第 1, 2, 5 列を抽出</a></li>
+<li><a class="nav-link" href="#select-2---species-%E5%88%97%E4%BB%A5%E5%A4%96"><span class="header-section-number">16.2.4</span> select 2 - Species 列以外</a></li>
+<li><a class="nav-link" href="#select-3---%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA%E3%81%99%E3%82%8B%E3%81%A8%E3%81%A8%E3%82%82%E3%81%AB%E5%88%97%E5%90%8D%E3%82%82%E5%A4%89%E6%9B%B4"><span class="header-section-number">16.2.5</span> select 3 - 列を抽出するとともに列名も変更</a></li>
+<li><a class="nav-link" href="#select-4---%E5%88%97%E9%A0%86%E3%81%AE%E5%A4%89%E6%9B%B4"><span class="header-section-number">16.2.6</span> select 4 - 列順の変更</a></li>
+<li><a class="nav-link" href="#filter---%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E6%8A%BD%E5%87%BA"><span class="header-section-number">16.2.7</span> filter - 値による抽出</a></li>
+<li><a class="nav-link" href="#arrange---%E6%98%87%E9%A0%86%E9%99%8D%E9%A0%86"><span class="header-section-number">16.2.8</span> arrange - 昇順、降順</a></li>
+<li><a class="nav-link" href="#mutate---rank%E9%9A%8E%E7%B4%9A"><span class="header-section-number">16.2.9</span> mutate - rank（階級）</a></li>
+<li><a class="nav-link" href="#group_by-and-summarize"><span class="header-section-number">16.2.10</span> group_by and summarize</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#the-week-two-assignment-in-moodle"><span class="header-section-number">16.11</span> The Week Two Assignment (in Moodle)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#original-data-wdi"><span class="header-section-number">16.11.1</span> Original Data? WDI?</a></li></ul>
+<a class="nav-link" href="#dplyr-%E3%81%AE%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="header-section-number">16.3</span> dplyr の参考文献</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#rstudio-primers-%E5%AF%BE%E8%A9%B1%E5%9E%8B%E3%81%AE%E6%BC%94%E7%BF%92%E5%95%8F%E9%A1%8C"><span class="header-section-number">16.3.1</span> RStudio Primers: 対話型の演習問題</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-ii---gapminder"><span class="header-section-number">16.4</span> 例から学ぶ dplyr II - gapminder</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ggplot2-%E6%A6%82%E8%A6%81"><span class="header-section-number">16.4.1</span> ggplot2 概要</a></li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-3"><span class="header-section-number">16.4.2</span> 練習</a></li>
+<li><a class="nav-link" href="#group_by-and-summarize-1"><span class="header-section-number">16.4.3</span> group_by and summarize</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><span class="header-section-number">16.5</span> 練習問題</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#original-data-wdi"><span class="header-section-number">16.5.1</span> Original Data? WDI?</a></li></ul>
 </li>
 </ul>
 

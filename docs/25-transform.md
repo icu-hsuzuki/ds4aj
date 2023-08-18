@@ -1,6 +1,8 @@
 # 変形（Transform） {#transform}
 
-> ここでは、`tidyverse` パッケージを構成する `dplyr` パッケージを用いて、データを変形することを学びます。`dplyr` パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、`tidyverse` パッケージを構成する `tidyr` パッケージ による変形も、後ほど扱います。
+> ここでは、`tidyverse` パッケージを構成する `dplyr` パッケージを用いて、データを変形することを学びます。変形とは、例えば、データのなかのある条件を満たす行や列を抽出したり、特定の列を修正したり、データの中のいくつかの列に含まれる情報をもとに計算して、新たな列を作ったり、グループに分けたり、順番を入れ替えたりといったことです。データを集約したり、グラフを作成するときにも、必要不可欠な作業です。
+>
+> `dplyr` パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、`tidyverse` パッケージを構成する `tidyr` パッケージ による変形も、後ほど扱います。
 
 `dplyr` パッケージは、`tidyverse` パッケージをインストールしたり、使えるように `library(tidyverse)` で読み込んだりするときに、一緒に読み込まれますから、あらためて、`dplyr` を指定する必要はありません。
 
@@ -47,7 +49,7 @@ library(tidyverse)
 | one_of()      | 指定した名前に含まれる | select(babynames, one_of(c("sex", "gender"))) |
 | starts_with() | 指定文字列で始まる     | select(babynames, starts_with("n"))           |
 
-## [`filter`](https://dplyr.tidyverse.org/reference/filter.html): 列の値の条件に適合した行の選択
+### [`filter`](https://dplyr.tidyverse.org/reference/filter.html): 列の値の条件に適合した行の選択
 
 | 論理作用素 | 条件             | 例        |
 |------------|------------------|-----------|
@@ -60,13 +62,13 @@ library(tidyverse)
 | is.na()    | 値が NA である x | is.na(x)  |
 | !is.na()   | 値が NA でない x | !is.na(x) |
 
-## [`arrange`](https://dplyr.tidyverse.org/reference/arrange.html)
+### [`arrange`](https://dplyr.tidyverse.org/reference/arrange.html)
 
 `arrange()` では、選択した列の値によって、行を並び替えます。
 
 注意点すべきは、他の、`dplyr` の動詞とは異なり、基本的に、グループ化は、無視し、その表全体に適用します。グループ内で並び替えをしたい場合には、グループ化した変数を指定するか、`.by_group = TRUE` とします。
 
-## [`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)
+### [`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)
 
 新しい列を作成または、既存の列を修正、削除します。
 
@@ -82,11 +84,11 @@ library(tidyverse)
 
 -   na_if(), coalesce()\### `group_by()` and `summarise()`
 
-## [`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)
+### [`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)
 
 指定した列の値によって表全体をグループ化した表を作成します。表自体が変形されるわけではありませんから、注意してください。次の、`summarize` と合わせて利用すると便利です。
 
-## [`summarise` or `summarize`](https://dplyr.tidyverse.org/reference/summarise.html)
+### [`summarise` or `summarize`](https://dplyr.tidyverse.org/reference/summarise.html)
 
 値の集約 (summarize) に利用します。グループ化された表の場合には、そのグループごとに、値を集約します。
 
@@ -108,15 +110,30 @@ library(tidyverse)
 
 -   if_else(), recode(), case_when()
 
-## パイプ（Pipe）`%>%` `|>`
+### パイプ（Pipe）`%>%` `|>`
 
 [`pipes`](https://r4ds.hadley.nz/workflow-style.html#sec-pipes) in R for Data Science.
 
 `%>%` は、`tidyverse` パッケージで、関数のチェーン化を行うために使用されるパイプ演算子ですが、R 4.1 以降は、`|>` が、R に組み込まれた、ネイティブなパイプライン演算子になっています。`tidyverse` を使っているときは、どちらを使うことも可能ですが、`|>` を使うことをお勧めします。R の versoin を確認するには、コンソール（Console）で、`R.Version()` または、`R.version$version.string` とします。
 
-## Learn `dplyr` by Examples
+#### **備考**
+
+1.  パイプを使うコードで、複数行にまたがるときは、`|>` の後で、改行してください。次の行に続くことがわかります。
+
+2.  実際には、`tidyverse` の `%>%` と、R に組み込まれた `|>` とは多少異なるようです。こちらの[記事](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/)をご覧ください。本書では、`|>` を使いますが、注意が必要な場合は、コメントします。
+
+## 例から学ぶ `dplyr`  I
 
 ### Data `iris`
+
+R 起動時に読み込まれる、`datasets` の中の、`iris` （あやめのデータ）を使い、いくつかの例を示します。`iris` は、何もしなくてもそのまま使えますが、もし、下の結果と違う場合には、すでに、`iris` を使い、変形などをしている可能性がありますから、そのときは、下のコードを実行してください。
+
+
+```r
+iris <- datasets::iris
+```
+
+確認します。
 
 
 ```r
@@ -132,24 +149,27 @@ head(iris)
 
 
 ```r
-summary(iris)
-#>   Sepal.Length    Sepal.Width     Petal.Length  
-#>  Min.   :4.300   Min.   :2.000   Min.   :1.000  
-#>  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  
-#>  Median :5.800   Median :3.000   Median :4.350  
-#>  Mean   :5.843   Mean   :3.057   Mean   :3.758  
-#>  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  
-#>  Max.   :7.900   Max.   :4.400   Max.   :6.900  
-#>   Petal.Width          Species  
-#>  Min.   :0.100   setosa    :50  
-#>  1st Qu.:0.300   versicolor:50  
-#>  Median :1.300   virginica :50  
-#>  Mean   :1.199                  
-#>  3rd Qu.:1.800                  
-#>  Max.   :2.500
+str(iris)
+#> 'data.frame':	150 obs. of  5 variables:
+#>  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+#>  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+#>  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+#>  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+#>  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
-### `select` 1 - columns 1, 2, 5
+`iris` データは、名前のついた5個の変数（列）Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, Species があり、それぞれ、150の値（observations (obs.) 観察値）からなっています。5番目の Species は、三つのレベルのファクター（factor）setosa, versicolor ともう一つ virginica からなっていることがわかります。`unique` は、ベクトル型の変数（今の場合は、`iris` の `Species` という列）の中の異なる値を抽出します。ファクター（factor）は、ある分け方がされているという意味です。いずれ説明します。
+
+
+```r
+unique(iris$Species)
+#> [1] setosa     versicolor virginica 
+#> Levels: setosa versicolor virginica
+```
+
+### `select` 列の抽出
+
+### `select` 1 - 第 1, 2, 5 列を抽出
 
 
 ```r
@@ -163,7 +183,9 @@ head(select(iris, c(1,2,5)))
 #> 6          5.4         3.9  setosa
 ```
 
-You can select the first, the second and the fifth columns. If you want to use it, then assign a new name.
+第1列、第2列、第5列を、`c(1,2,5)` で表しています。列名で指定することもできます。
+
+`head(select(iris, c(1,2,5)))` としてありますから、その最初の6行を表示していますが、新しい変数を割り当ててはいませんから、`iris` 自体は変更されていません。
 
 
 ```r
@@ -176,6 +198,8 @@ head(iris)
 #> 5          5.0         3.6          1.4         0.2  setosa
 #> 6          5.4         3.9          1.7         0.4  setosa
 ```
+
+第1列、第2列、第5列を選んだものを、あとから使いたいときは、新しい名前をつける必要があります。以下同様ですが、この場合だけ、df\_`iris125` という名前（object name）をつけておきましょう。
 
 
 ```r
@@ -190,13 +214,13 @@ head(df_iris125)
 #> 6          5.4         3.9  setosa
 ```
 
-### `select` 1 using pipe
+#### パイプ（Pipe） `|>` を使ったコード
 
-In the previous example, we used `head(select(iris, c(1,2,5)))`, `head` comes first because we apply `head` to the result of `select(iris, c(1,2,5))`. In order to apply functions in a sequencial order, we can use pipe command. You can get the same result by the following.
+最初の例では `head(select(iris, c(1,2,5)))` としました。`head` の引数として、 `select(iris, c(1,2,5))` を使ったからです。しかし、慣れてくると、順番に関数を適用することを表現するには、 パイプを使うのも便利です。パイプでは、直前の出力が次の関数の第一引数として引き継がれるというルールになっています。以下のようになります。
 
 
 ```r
-iris %>% select(c(1,2,5)) %>% head()
+iris |> select(c(1,2,5)) |> head()
 #>   Sepal.Length Sepal.Width Species
 #> 1          5.1         3.5  setosa
 #> 2          4.9         3.0  setosa
@@ -206,15 +230,17 @@ iris %>% select(c(1,2,5)) %>% head()
 #> 6          5.4         3.9  setosa
 ```
 
-All `tidyverse` functions are designed so that the first argument, i.e., the entry, is the data. So using pipe, `iris` is assumed to be the first entry of the `select` function, and `select(iris, c(1,2,5))` is the first entry of the head function.
+より、詳しく知りたい場合には、Help に `|>` と入れて説明を読んでください。
 
 In the following, we use pipes.
 
-### `select` 2 - except Species
+### `select` 2 - Species 列以外
+
+列名の前に、`-` ハイフン（半角）をつけると、その列以外を抽出します。
 
 
 ```r
-select(iris, -Species) %>% head()
+select(iris, -Species) |> head()
 #>   Sepal.Length Sepal.Width Petal.Length Petal.Width
 #> 1          5.1         3.5          1.4         0.2
 #> 2          4.9         3.0          1.4         0.2
@@ -224,11 +250,14 @@ select(iris, -Species) %>% head()
 #> 6          5.4         3.9          1.7         0.4
 ```
 
-### `select` 3 - select and change column names at the same time
+### `select` 3 - 列を抽出するとともに列名も変更
+
+新しい列名 = 現在の列名 という形式で、列名を変更することも可能です。
 
 
 ```r
-select(iris, sl = Sepal.Length, sw = Sepal.Width, sp = Species) %>% head()
+select(iris, sl = Sepal.Length, sw = Sepal.Width, sp = Species) |> 
+  head()
 #>    sl  sw     sp
 #> 1 5.1 3.5 setosa
 #> 2 4.9 3.0 setosa
@@ -238,7 +267,7 @@ select(iris, sl = Sepal.Length, sw = Sepal.Width, sp = Species) %>% head()
 #> 6 5.4 3.9 setosa
 ```
 
-### `select` 4 - change the order of columns
+### `select` 4 - 列順の変更
 
 
 ```r
@@ -252,7 +281,13 @@ select(iris, c(5,3,4,1,2)) %>% head()
 #> 6  setosa          1.7         0.4          5.4         3.9
 ```
 
-### `filter` - by names
+#### 備考
+
+1.  上の、`select`\` の 補助関数（helper functions）にも書きましたように、他にも様々な方法で、列を抽出することが可能です。たくさんの列がある、表に出会ったら、ぜひ使ってください。
+
+### `filter` - 値による抽出
+
+Species の列の値が、virginica であるものだけを抽出します。`==` とイコールが二つであることと、文字列の場合には、半角の引用符（double quote）でくくります。'verginica' でも同じです。（列名に空白や、特殊記号が含まれているときには、back tick と呼ばれる、反対向きの引用符で括ります。あとからその必要が生じたときに説明します。）
 
 
 ```r
@@ -273,7 +308,9 @@ filter(iris, Species == "virginica") %>% head()
 #> 6 virginica
 ```
 
-### `arrange` - ascending and descending order
+### `arrange` - 昇順、降順
+
+次の例では、Sepal.Length の値の、昇順（小さい順）にし、同じ値の中では、Spepal.Width の降順（大きい順 （desc は descending order からとったもの）にします。Sepal.Length の値が、4.4 の部分の、Sepal.Width の値をみてください。
 
 
 ```r
@@ -287,12 +324,14 @@ arrange(iris, Sepal.Length, desc(Sepal.Width)) %>% head()
 #> 6          4.6         3.6          1.0         0.2  setosa
 ```
 
-### `mutate` - rank
+### `mutate` - rank（階級）
+
+小さい順に順序付けて新しい列を作成し、その順序で表示します。順序付も様々な種類があります。ここでは、同じ値のときには、同じ階級にしています。下の出力を右の方を見てください。1, 2, 2, 2, 5, ... となっています。
 
 
 ```r
-iris %>% mutate(sl_rank = min_rank(Sepal.Length)) %>% 
-  arrange(sl_rank) %>% head()
+iris |> mutate(sl_rank = min_rank(Sepal.Length)) |> 
+  arrange(sl_rank) |> head()
 #>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 #> 1          4.3         3.0          1.1         0.1  setosa
 #> 2          4.4         2.9          1.4         0.2  setosa
@@ -309,14 +348,18 @@ iris %>% mutate(sl_rank = min_rank(Sepal.Length)) %>%
 #> 6       6
 ```
 
-Insert a line break after the pipe command, not before.
+#### 備考
+
+1.  パイプを紹介したときにも書きましたが、改行は、`|>` のあとでしてください。
 
 ### `group_by` and `summarize`
 
+グループにわけて、グループごとに、平均を求めています。
+
 
 ```r
-iris %>% 
-  group_by(Species) %>% 
+iris |> 
+  group_by(Species) |>
   summarize(sl = mean(Sepal.Length), sw = mean(Sepal.Width), 
   pl = mean(Petal.Length), pw = mean(Petal.Width))
 #> # A tibble: 3 × 5
@@ -327,18 +370,21 @@ iris %>%
 #> 3 virginica   6.59  2.97  5.55 2.03
 ```
 
--   mean: `mean()` or `mean(x, na.rm = TRUE)` - arithmetic mean (average)
--   median: `median()` or `median(x, na.rm = TRUE)` - mid value
+-   mean: `mean()` or `mean(x, na.rm = TRUE)` - 相加平均 (average)
+-   median: `median()` , `median(x, na.rm = TRUE)` - 中央値（mid value）
 
-For more examples see
+以下のリンクには、もう少し例が書かれています。
 
 [dplr_iris](https://icu-hsuzuki.github.io/da4r2022_note/dplyr-iris.nb.html)
 
-## References of `dplyr`
+## `dplyr` の参考文献
 
--   Textbook: [R for Data Science, Part II Explore](https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro)
+より詳しい説明は、教科書の該当箇所を見てください。
 
-### RStudio Primers: See References in Moodle at the bottom
+-   [R for Data Science, Part II Explore](https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro)
+-   [R for Data Science (2e), Transform](https://r4ds.hadley.nz/transform)
+
+### RStudio Primers: 対話型の演習問題
 
 2.  Work with Data -- [r4ds: Wrangle, I](https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro)
 
@@ -346,34 +392,42 @@ For more examples see
 -   [Isolating Data with dplyr](https://rstudio.cloud/learn/primers/2.2)
 -   [Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3)
 
-## Learn `dplyr` by Examples II - `gapminder`
+## 例から学ぶ `dplyr` II - `gapminder`
 
-### `ggplot2` [Overview](https://ggplot2.tidyverse.org)
+`gapminder` というパッケージのデータを使って、`dplyr` を学びます。この次の章で、`ggplot2` を使った視覚化について学びますが、この章で学んでいる変形は、`ggplot2` で、視覚化する準備のために、する場合も多いので、ここでも、`ggplot2` を使います。
 
-`ggplot2` is a system for declaratively creating graphics, based on [The Grammar of Graphics](https://amzn.to/2ef1eWp). You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+### `ggplot2` [概要](https://ggplot2.tidyverse.org)
 
-**Examples**
+次のような形式で使います。
+
+**例1 散布図**
 
 ```         
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
+**例2 箱ひげ図**
+
 ```         
 ggplot(data = mpg) + 
   geom_boxplot(mapping = aes(x = class, y = hwy))
 ```
 
-**Template**
+**テンプレート**
 
 ```         
 ggplot(data = <DATA>) + 
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
 
-#### Gapminder and R Package `gapminder`
+#### Gapminder と R Package `gapminder`
 
-> Gapminder was founded by Ola Rosling, Anna Rosling Rönnlund, and Hans Rosling
+> Gapminder は オラ ロスリング（Ola Rosling） と アンナ ロスリング（Anna Rosling Rönnlund）と ハンス ロスリング（Hans Rosling）が設立した組織です。
+>
+> ハンス・ロスリング は、**FACTFULNESS（ファクトフルネス）10の思い込みを乗り越え、データを基に世界を正しく見る習慣** の著者です。
+>
+> また、R の gapminder パッケージには、ファクトフルネス にも登場するデータで、Gapminder サイトでも使っているデータの一部を、使いやすい、練習用のデータとして提供しているものです。
 
 -   Gapminder: <https://www.gapminder.org>
 
@@ -473,7 +527,7 @@ You will encounter similar failures. We list three of them.
 ggplot(df, aes(x = year, y = lifeExp)) + geom_point()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, .... Can you tell how many years are in the data? The following command shows different years in the data.
 
@@ -491,7 +545,7 @@ You can guess it from the data summary above. Can you imagine how many countries
 ggplot(df, aes(x = year, y = lifeExp)) + geom_line()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 Now, you can guess the reason why you had this output. This is often called a saw-tooth.
 
@@ -502,7 +556,7 @@ ggplot(df, aes(x = year, y = lifeExp)) + geom_boxplot()
 #> ℹ did you forget `aes(group = ...)`?
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 Can you see what the problem is? The `year` is a numerical variable in integer.
 
@@ -519,7 +573,7 @@ The following looks better.
 ggplot(df, aes(y = lifeExp, group = year)) + geom_boxplot()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 ##### Box Plot
 
@@ -528,7 +582,7 @@ ggplot(df, aes(y = lifeExp, group = year)) + geom_boxplot()
 ggplot(df, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
 We will study data visualization in Chapter \@ref(ggplot2).
 
@@ -550,7 +604,7 @@ df %>% filter(country == "Afghanistan") %>%
   ggplot(aes(x = year, y = lifeExp)) + geom_line()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-27-1.png" width="672" />
 
 Looks good. From the data you observe, the life expectancy at birth in 1952 was below 30, and it was still below 44 in 2007.
 
@@ -562,7 +616,7 @@ df %>% filter(country %in% c("Afghanistan", "Japan")) %>%
   ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 What do you observe from this chart?
 
@@ -655,11 +709,11 @@ df %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
   ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-30-1.png" width="672" />
 
 Russia data is missing. Can you find it in the list of countries? It can be a problem of `gapminder` data. Can you think of the reason why Russia is not in?
 
-### Exercises
+### 練習
 
 1.  Change `lifeExp` to `pop` and `gdpPercap` and do the same.
 2.  Choose ASEAN countries and do the similar investigations.
@@ -712,7 +766,7 @@ df %>% filter(year %in% c(1952, 1987, 2007)) %>%
   geom_boxplot()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-33-1.png" width="672" />
 
 The following are examples of line graphs. Please see the differences.
 
@@ -722,7 +776,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent)) +
   geom_line()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-34-1.png" width="672" />
 
 
 ```r
@@ -730,7 +784,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent, linetyp
   geom_line()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-35-1.png" width="672" />
 
 
 ```r
@@ -739,9 +793,9 @@ df_lifeExp %>% ggplot() +
   geom_line(aes(x = year, y = median_lifeExp, linetype = continent))
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-36-1.png" width="672" />
 
-## The Week Two Assignment (in Moodle)
+## 練習問題
 
 **R Markdown and `dplyr`**
 
@@ -765,8 +819,6 @@ df_lifeExp %>% ggplot() +
     -   Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
     -   Study the data as you like.
     -   Observations and difficulties encountered.
-
-**Due:** 2023-01-09 23:59:00. Submit your R Notebook file in Moodle (The Second Assignment). Due on Monday!
 
 ### Original Data? WDI?
 
@@ -881,4 +933,4 @@ df_wdi_extra
 #> #   latitude <dbl>, income <chr>, lending <chr>
 ```
 
-Can you see the differences? List them out. We will study the World Development Indicators in Chapter \@ref(wdi).
+違いはわかりましたか。同じような変数についてのデータですが、WDI からダウンロードした実際のデータの場合には、練習用のデータとは、違った困難がいくつもあります。それを、少しず見ていきながら、現実世界のデータを扱えるようにしていきましょう。
