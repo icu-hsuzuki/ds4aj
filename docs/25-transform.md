@@ -465,9 +465,9 @@ We will use a `tidyverse` function `slice` replacing `head`. Check `slice` in th
 
 
 ```r
-df <- gapminder
-df %>% slice(1:10)
-#> # A tibble: 10 × 6
+df_gm <- gapminder
+df_gm
+#> # A tibble: 1,704 × 6
 #>    country     continent  year lifeExp      pop gdpPercap
 #>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
 #>  1 Afghanistan Asia       1952    28.8  8425333      779.
@@ -480,11 +480,12 @@ df %>% slice(1:10)
 #>  8 Afghanistan Asia       1987    40.8 13867957      852.
 #>  9 Afghanistan Asia       1992    41.7 16317921      649.
 #> 10 Afghanistan Asia       1997    41.8 22227415      635.
+#> # ℹ 1,694 more rows
 ```
 
 
 ```r
-glimpse(df)
+glimpse(df_gm)
 #> Rows: 1,704
 #> Columns: 6
 #> $ country   <fct> "Afghanistan", "Afghanistan", "Afghanist…
@@ -497,7 +498,7 @@ glimpse(df)
 
 
 ```r
-summary(df)
+summary(df_gm)
 #>         country        continent        year     
 #>  Afghanistan:  12   Africa  :624   Min.   :1952  
 #>  Albania    :  12   Americas:300   1st Qu.:1966  
@@ -516,115 +517,88 @@ summary(df)
 #> 
 ```
 
-#### Tidyverse::ggplot
+#### `dplyr` の応用
 
-##### First Try - with failures
+##### `filter`
 
-You will encounter similar failures. We list three of them.
+一番上に、国名（country）に、アフガニスタン（Afghanistan） がありましたから、aアフガニスタンのデータを選び、平均寿命（lifeExp: Life Expectancy）の折線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。
+
+`filter(country == "Afghanistan")`
+
+特定の値のデータを抽出するには、`==` を使うのでした。二つの `=` ですから、間違わないでください。
 
 
 ```r
-ggplot(df, aes(x = year, y = lifeExp)) + geom_point()
+df_gm %>% filter(country == "Afghanistan")
+#> # A tibble: 12 × 6
+#>    country     continent  year lifeExp      pop gdpPercap
+#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+#>  1 Afghanistan Asia       1952    28.8  8425333      779.
+#>  2 Afghanistan Asia       1957    30.3  9240934      821.
+#>  3 Afghanistan Asia       1962    32.0 10267083      853.
+#>  4 Afghanistan Asia       1967    34.0 11537966      836.
+#>  5 Afghanistan Asia       1972    36.1 13079460      740.
+#>  6 Afghanistan Asia       1977    38.4 14880372      786.
+#>  7 Afghanistan Asia       1982    39.9 12881816      978.
+#>  8 Afghanistan Asia       1987    40.8 13867957      852.
+#>  9 Afghanistan Asia       1992    41.7 16317921      649.
+#> 10 Afghanistan Asia       1997    41.8 22227415      635.
+#> 11 Afghanistan Asia       2002    42.1 25268405      727.
+#> 12 Afghanistan Asia       2007    43.8 31889923      975.
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+確認できましたか。
 
-There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, .... Can you tell how many years are in the data? The following command shows different years in the data.
+折線グラフを書きます。この場合は、GEOM は、`geom_line` です。
 
 
 ```r
-unique(df$year)
-#>  [1] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002
-#> [12] 2007
+df_gm %>% filter(country == "Afghanistan") %>%
+  ggplot(aes(x = year, y = lifeExp)) + geom_line()
 ```
 
-You can guess it from the data summary above. Can you imagine how many countries are in the data? 142? Anyhow, too many points are on each year.
+<img src="25-transform_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+
+アフガニスタンでは 1952年 の誕生時の平均寿命（life expectancy at birth）は　30歳以下 （28.8歳）でした。2007年でも50歳以下（48.8 歳）のようですね。改善されていることも確かです。
+
+アフガニスタンと日本両方を抽出してみましょう。そのときは、 `country %in% c("Afghanistan", "Japan")`　とします。
 
 
 ```r
-ggplot(df, aes(x = year, y = lifeExp)) + geom_line()
+df_gm %>% filter(country %in% c("Afghanistan", "Japan"))
+#> # A tibble: 24 × 6
+#>    country     continent  year lifeExp      pop gdpPercap
+#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+#>  1 Afghanistan Asia       1952    28.8  8425333      779.
+#>  2 Afghanistan Asia       1957    30.3  9240934      821.
+#>  3 Afghanistan Asia       1962    32.0 10267083      853.
+#>  4 Afghanistan Asia       1967    34.0 11537966      836.
+#>  5 Afghanistan Asia       1972    36.1 13079460      740.
+#>  6 Afghanistan Asia       1977    38.4 14880372      786.
+#>  7 Afghanistan Asia       1982    39.9 12881816      978.
+#>  8 Afghanistan Asia       1987    40.8 13867957      852.
+#>  9 Afghanistan Asia       1992    41.7 16317921      649.
+#> 10 Afghanistan Asia       1997    41.8 22227415      635.
+#> # ℹ 14 more rows
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-22-1.png" width="672" />
-
-Now, you can guess the reason why you had this output. This is often called a saw-tooth.
+グラフにしてみましょう。今度は、区別のため、`color = country` を追加します。すると、線が違う色で表示されます。詳しくは、視覚化を参照してください。
 
 
 ```r
-ggplot(df, aes(x = year, y = lifeExp)) + geom_boxplot()
-#> Warning: Continuous x aesthetic
-#> ℹ did you forget `aes(group = ...)`?
+df_gm %>% filter(country %in% c("Afghanistan", "Japan")) %>%
+  ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
 ```
 
 <img src="25-transform_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
-Can you see what the problem is? The `year` is a numerical variable in integer.
+どのような発見がありますか。かならず書き留めておいてください。
+
+他の国についても調べるときは、国のリストがあるとよいので、 `unique(df_gm$country)` とすると、リストが得られます。`distinct(country)` で、異なる国を選択してから、その部分をベクトルとして出力することもできます。
 
 
 ```r
-typeof(pull(df, year)) # same as typeof(df$year)
-#> [1] "integer"
-```
-
-The following looks better.
-
-
-```r
-ggplot(df, aes(y = lifeExp, group = year)) + geom_boxplot()
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672" />
-
-##### Box Plot
-
-
-```r
-ggplot(df, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-26-1.png" width="672" />
-
-We will study data visualization in Chapter \@ref(ggplot2).
-
-#### Applications of `dplyr`
-
-Let us apply `dplyr` to manipulate data to visualize the data.
-
-##### `filter`
-
-By `filter` you can obtain the the data of one country.
-
-`filter(country == "Afghanistan")`
-
-Note that we need two equal symbols, and quotation marks must surround the country name.
-
-
-```r
-df %>% filter(country == "Afghanistan") %>%
-  ggplot(aes(x = year, y = lifeExp)) + geom_line()
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-27-1.png" width="672" />
-
-Looks good. From the data you observe, the life expectancy at birth in 1952 was below 30, and it was still below 44 in 2007.
-
-Let us compare Afghanistan with Japan. When you choose more than one country, we use the following format: `country %in% c("Afghanistan", "Japan")`.
-
-
-```r
-df %>% filter(country %in% c("Afghanistan", "Japan")) %>%
-  ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-28-1.png" width="672" />
-
-What do you observe from this chart?
-
-The code `unique(df$country)` does the same as the one below. First, choose distinct elements in the column `country` by `distinct(country)` and get the column as a vector by `pull`.
-
-
-```r
-df %>% distinct(country) %>% pull()
+df_gm %>% distinct(country) %>% pull()
 #>   [1] Afghanistan              Albania                 
 #>   [3] Algeria                  Angola                  
 #>   [5] Argentina                Australia               
@@ -699,101 +673,53 @@ df %>% distinct(country) %>% pull()
 #> 142 Levels: Afghanistan Albania Algeria Angola ... Zimbabwe
 ```
 
-As we have guessed, there are 142 countries in this data.
+このデータには 142 の国のデータがあることがわかりました。
 
-Let us choose BRICs countries in the data.
+BRICs を選んでみるとどうなるでしょうか。最近は、BRICS として、South Africa を加えることが増えてきているようです。
 
 
 ```r
-df %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
+df_gm %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
   ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
-Russia data is missing. Can you find it in the list of countries? It can be a problem of `gapminder` data. Can you think of the reason why Russia is not in?
+ロシアが含まれていないことがわかります。ロシアは、以前は、ソビエト社会主義連邦でしたから、国が変化したものは含まれていないのかもしれません。上の国のリストで見てもありませんね。2007年より新しいデータ、ロシアなども含むデータなど、実際のデータでも見てみたいですね。それは、また後ほど。
 
 ### 練習
 
-1.  Change `lifeExp` to `pop` and `gdpPercap` and do the same.
-2.  Choose ASEAN countries and do the similar investigations.
+1.  平均寿命 `lifeExp` を人口 `pop` や、一人当たりの GDP `gdpPercap` に変えて、試してみてください。
+2.  ASEAN （東南アジア諸国連合）ではどうでしょうか。
 
 -   Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore.
 
--   How many of these countries are on the list?
+-   このうち幾つの国がこのデータに含まれていますか。
 
-3.  Choose several countries by yourself and do the similar investigations.
+3.  興味のある国をいくつか選んで、三つの指標について調べてみてください。
 
-### `group_by` and `summarize`
+### `group_by` と `summarize`
 
-Let us use the variable `continent` and summarize the data. Can you tell how many continents are listed in the data? Yes, there are five. Can you tell how many countries are in each continent on the data?
+データには大陸（`continent` ）という変数があります。幾つの大陸があり、それぞれの大陸のいくつ国のデータがこのデータには入っているでしょうか。
+
+それぞれの大陸ごとの2007年の平均寿命の平均と中央値と最大、最小を求めてみましょう。
 
 
 ```r
-df_lifeExp <- df %>% group_by(continent, year) %>% 
+df_gm %>% filter(year == 2007) %>% 
+  group_by(continent) %>% 
   summarize(mean_lifeExp = mean(lifeExp), median_lifeExp = median(lifeExp), max_lifeExp = max(lifeExp), min_lifeExp = min(lifeExp), .groups = "keep")
-```
-
-Don't get scared. We will learn little by little.
-
-
-```r
-df_lifeExp %>% slice(1:10)
-#> # A tibble: 60 × 6
-#> # Groups:   continent, year [60]
-#>    continent  year mean_lifeExp median_lifeExp max_lifeExp
-#>    <fct>     <int>        <dbl>          <dbl>       <dbl>
-#>  1 Africa     1952         39.1           38.8        52.7
-#>  2 Africa     1957         41.3           40.6        58.1
-#>  3 Africa     1962         43.3           42.6        60.2
-#>  4 Africa     1967         45.3           44.7        61.6
-#>  5 Africa     1972         47.5           47.0        64.3
-#>  6 Africa     1977         49.6           49.3        67.1
-#>  7 Africa     1982         51.6           50.8        69.9
-#>  8 Africa     1987         53.3           51.6        71.9
-#>  9 Africa     1992         53.6           52.4        73.6
-#> 10 Africa     1997         53.6           52.8        74.8
-#> # ℹ 50 more rows
+#> # A tibble: 5 × 5
+#> # Groups:   continent [5]
+#>   continent mean_lifeExp median_lifeExp max_lifeExp
+#>   <fct>            <dbl>          <dbl>       <dbl>
+#> 1 Africa            54.8           52.9        76.4
+#> 2 Americas          73.6           72.9        80.7
+#> 3 Asia              70.7           72.4        82.6
+#> 4 Europe            77.6           78.6        81.8
+#> 5 Oceania           80.7           80.7        81.2
 #> # ℹ 1 more variable: min_lifeExp <dbl>
 ```
-
-You can use `fill` and `color` for the box plot. Try and check the difference.
-
-
-```r
-df %>% filter(year %in% c(1952, 1987, 2007)) %>%
-  ggplot(aes(x=as_factor(year), y = lifeExp, fill = continent)) +
-  geom_boxplot()
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-33-1.png" width="672" />
-
-The following are examples of line graphs. Please see the differences.
-
-
-```r
-df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent)) +
-  geom_line()
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-34-1.png" width="672" />
-
-
-```r
-df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent, linetype = continent)) +
-  geom_line()
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-35-1.png" width="672" />
-
-
-```r
-df_lifeExp %>% ggplot() +
-  geom_line(aes(x = year, y = mean_lifeExp, color = continent)) + 
-  geom_line(aes(x = year, y = median_lifeExp, linetype = continent))
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-36-1.png" width="672" />
 
 ## 練習問題
 
@@ -819,118 +745,3 @@ df_lifeExp %>% ggplot() +
     -   Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
     -   Study the data as you like.
     -   Observations and difficulties encountered.
-
-### Original Data? WDI?
-
-
-```r
-gapminder %>% slice(1:10)
-#> # A tibble: 10 × 6
-#>    country     continent  year lifeExp      pop gdpPercap
-#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-#>  1 Afghanistan Asia       1952    28.8  8425333      779.
-#>  2 Afghanistan Asia       1957    30.3  9240934      821.
-#>  3 Afghanistan Asia       1962    32.0 10267083      853.
-#>  4 Afghanistan Asia       1967    34.0 11537966      836.
-#>  5 Afghanistan Asia       1972    36.1 13079460      740.
-#>  6 Afghanistan Asia       1977    38.4 14880372      786.
-#>  7 Afghanistan Asia       1982    39.9 12881816      978.
-#>  8 Afghanistan Asia       1987    40.8 13867957      852.
-#>  9 Afghanistan Asia       1992    41.7 16317921      649.
-#> 10 Afghanistan Asia       1997    41.8 22227415      635.
-```
-
-#### WDI
-
--   SP.DYN.LE00.IN: Life expectancy at birth, total (years)
--   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$)
--   SP.POP.TOTL: Population, total
-
-
-```r
-df_wdi <- WDI(
-  country = "all", 
-  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
-)
-```
-
-
-
-
-```
-#> Rows: 16758 Columns: 7
-#> ── Column specification ────────────────────────────────────
-#> Delimiter: ","
-#> chr (3): country, iso2c, iso3c
-#> dbl (4): year, lifeExp, pop, gdpPercap
-#> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-
-```r
-df_wdi %>% slice(1:10)
-#> # A tibble: 10 × 7
-#>    country     iso2c iso3c  year lifeExp      pop gdpPercap
-#>    <chr>       <chr> <chr> <dbl>   <dbl>    <dbl>     <dbl>
-#>  1 Afghanistan AF    AFG    1960    32.5  8622466        NA
-#>  2 Afghanistan AF    AFG    1961    33.1  8790140        NA
-#>  3 Afghanistan AF    AFG    1962    33.5  8969047        NA
-#>  4 Afghanistan AF    AFG    1963    34.0  9157465        NA
-#>  5 Afghanistan AF    AFG    1964    34.5  9355514        NA
-#>  6 Afghanistan AF    AFG    1965    35.0  9565147        NA
-#>  7 Afghanistan AF    AFG    1966    35.5  9783147        NA
-#>  8 Afghanistan AF    AFG    1967    35.9 10010030        NA
-#>  9 Afghanistan AF    AFG    1968    36.4 10247780        NA
-#> 10 Afghanistan AF    AFG    1969    36.9 10494489        NA
-```
-
-
-```r
-df_wdi_extra <- WDI(
-  country = "all", 
-  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
-  extra = TRUE
-)
-```
-
-
-
-
-```
-#> Rows: 16758 Columns: 15
-#> ── Column specification ────────────────────────────────────
-#> Delimiter: ","
-#> chr  (7): country, iso2c, iso3c, region, capital, income...
-#> dbl  (6): year, lifeExp, pop, gdpPercap, longitude, lati...
-#> lgl  (1): status
-#> date (1): lastupdated
-#> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-
-```r
-df_wdi_extra
-#> # A tibble: 16,758 × 15
-#>    country     iso2c iso3c  year status lastupdated lifeExp
-#>    <chr>       <chr> <chr> <dbl> <lgl>  <date>        <dbl>
-#>  1 Afghanistan AF    AFG    2014 NA     2023-07-25     62.5
-#>  2 Afghanistan AF    AFG    2012 NA     2023-07-25     61.9
-#>  3 Afghanistan AF    AFG    2009 NA     2023-07-25     60.4
-#>  4 Afghanistan AF    AFG    2013 NA     2023-07-25     62.4
-#>  5 Afghanistan AF    AFG    1971 NA     2023-07-25     37.9
-#>  6 Afghanistan AF    AFG    2015 NA     2023-07-25     62.7
-#>  7 Afghanistan AF    AFG    1969 NA     2023-07-25     36.9
-#>  8 Afghanistan AF    AFG    2010 NA     2023-07-25     60.9
-#>  9 Afghanistan AF    AFG    2011 NA     2023-07-25     61.4
-#> 10 Afghanistan AF    AFG    2008 NA     2023-07-25     59.9
-#> # ℹ 16,748 more rows
-#> # ℹ 8 more variables: pop <dbl>, gdpPercap <dbl>,
-#> #   region <chr>, capital <chr>, longitude <dbl>,
-#> #   latitude <dbl>, income <chr>, lending <chr>
-```
-
-違いはわかりましたか。同じような変数についてのデータですが、WDI からダウンロードした実際のデータの場合には、練習用のデータとは、違った困難がいくつもあります。それを、少しず見ていきながら、現実世界のデータを扱えるようにしていきましょう。

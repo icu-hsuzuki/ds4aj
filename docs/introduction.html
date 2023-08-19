@@ -84,16 +84,16 @@
 <li class="book-part">PART II BASICS</li>
 <li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
 <li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R Basics</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
 <li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
 <li><a class="" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
 <li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
 <li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
 <li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
 <li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
-<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> About First Example</a></li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
+<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
 <li><a class="" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
 <li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
 <li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
@@ -233,41 +233,92 @@
 <p>たしかに、どれも、難しそうな課題ですね。みなさんは、これから、どのように、AI を活用し、どのように、向き合われるのでしょうか。</p>
 </div>
 </div>
-<div id="データサイエンスを始めましょうの特徴" class="section level2" number="1.2">
+<div id="gapminder" class="section level2" number="1.2">
 <h2>
-<span class="header-section-number">1.2</span> 「データサイエンスを始めましょう」の特徴<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%92%E5%A7%8B%E3%82%81%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%81%AE%E7%89%B9%E5%BE%B4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2</span> Gapminder<a class="anchor" aria-label="anchor" href="#gapminder"><i class="fas fa-link"></i></a>
 </h2>
-<div id="学習者として想定しているのは" class="section level3" number="1.2.1">
+<p>Gapminder は オラ ロスリング（Ola Rosling） と アンナ ロスリング（Anna Rosling Rönnlund）と ハンス ロスリング（Hans Rosling）が設立した組織です。</p>
+<p>ハンス・ロスリング は、FACTFULNESS（ファクトフルネス）10の思い込みを乗り越え、データを基に世界を正しく見る習慣 の著者です。</p>
+<p>Gapminder: <a href="https://www.gapminder.org" class="uri">https://www.gapminder.org</a></p>
+<p>一番上にテストあります。- もしかしたら、あなたの世界観は、間違っているかもしれません。（You are probably wrong about - upgrade your worldview）</p>
+<p>Bubble Chart: <a href="https://www.gapminder.org/tools/#%24chart-type=bubbles&amp;url=v1" class="uri">https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1</a></p>
+<p>Dallar Street: <a href="https://www.gapminder.org/tools/#%24chart-type=bubbles&amp;url=v1" class="uri">https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1</a></p>
+<p>Data: <a href="https://www.gapminder.org/data/" class="uri">https://www.gapminder.org/data/</a></p>
+<div id="factfulnessファクトフルネスhans-rosling" class="section level3" number="1.2.1">
 <h3>
-<span class="header-section-number">1.2.1</span> 学習者として想定しているのは<a class="anchor" aria-label="anchor" href="#%E5%AD%A6%E7%BF%92%E8%80%85%E3%81%A8%E3%81%97%E3%81%A6%E6%83%B3%E5%AE%9A%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%AF"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2.1</span> Factfulness（ファクトフルネス）Hans Rosling<a class="anchor" aria-label="anchor" href="#factfulness%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%95%E3%83%AB%E3%83%8D%E3%82%B9hans-rosling"><i class="fas fa-link"></i></a>
+</h3>
+<p>実際のデータから、現実を見ていないと、非常に歪んだ世界観に毒されているかもしれません。ハンス・ロスリングは、公衆衛生が専門のスエーデンの医師で、アフリカでもな年間も働いた経験ももっている方で、ひとは、さまざまなバイアス（先入観）により、間違った根拠のもとで世界を見ているといい、統計的な資料から、息子のオラと協力して、非常にわかりやすい、バブルチャートでの時代の移り変わりを表現し、サイトに載せています。また、それだけでは、実際の生活が見えにくいという理由から、息子の奥さんのアンナさんの提案で、ダラー・ストリートというプロジェクトもしています。この程度の経済状態の暮らしがどのようなものかを、写真などで、紹介するものです。</p>
+<p>先生から教わった知識は、先生が勉強した時代にはある程度正しかったかもしれないが、世界は変化している。自分の経験から、判断すると、その先入観から、多くの間違いを犯すというような指摘もしています。</p>
+<p>1．分断本能を抑えるには、大半の人がどこにいるかを探そう。
+2. ネガティブ本能を抑えるには、悪いニュースのほうが広まりやすいことを覚えておこう。
+3. 直線本能を抑えるには、直線もいつかは曲がることを知ろう、
+4. 恐怖本能を抑えるには、リスクを計算しよう。
+5. 過大視本能を抑えるには、数字を比較しよう。
+6. パターン化本能を抑えるには、分類を使おう。
+7. 宿命本能を抑えるには、ゆっくりとした変化でも変化していることを心に留めよう。
+8. 単純化本能を抑えるには、ひとつの知識がすべてに応用できないことを覚えておこう。
+9. 犯人捜し本能を抑えるには、誰かを責めても、問題は解決しないと肝に銘じよう。
+10. 焦り本能を抑えるには、小さな一歩を重ねよう。</p>
+<p>（ファクトフルネスから）</p>
+<p>データサイエンスはこれらのいくつかを克服するひとつの方法であるように見えます。</p>
+<p>ハンス・ロスリングは、すでに 2017年2月7日 に亡くなっていますが、心配している５つのリスクとして、挙げているのは、感染症の世界的な流行、金融危機、世界大戦、地球温暖化、極度の貧困。どれも示唆に富んでいるように見えます。</p>
+<p>Youtube にたくさん、ビデオも出ていますが、二つだけリンクを載せておきます。</p>
+<ul>
+<li>
+<a href="https://www.youtube.com/watch?v=Sm5xF-UYgdg">How not to be ignorant about the world | Hans and Ola Rosling</a>
+<ul>
+<li>バイアスを意識しながら（日本語の字幕がついています）</li>
+</ul>
+</li>
+<li><a href="http://www.edtech.events/the-best-stats-youve-ever-seen-hans-rosling/">The best stats you’ve ever seen, Hans Rosling</a></li>
+</ul>
+</div>
+<div id="参考文献" class="section level3" number="1.2.2">
+<h3>
+<span class="header-section-number">1.2.2</span> 参考文献<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>「私はこうして世界を理解できるようになった」ハンス・ロスリング、ファニー・ヘルエスタム著、青土社（ISBN978-4-7917-7217-9, 2019.10.10）“How I learned to understand the world” by Hans Rosling with Fanny Haergestam の翻訳</li>
+<li>「ファクトフルネス - 10の思い込みを乗り越え、データを基に世界を正しく見る習慣」ハンス・ロスリング、オーラ・ロスリング、アンナ・ロスリング・ロランド著、日経BP社（ISBN978-4-8222-8960-7, 2019.1.15）</li>
+</ul>
+</div>
+</div>
+<div id="データサイエンスを始めましょうの特徴" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> 「データサイエンスを始めましょう」の特徴<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%92%E5%A7%8B%E3%82%81%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%81%AE%E7%89%B9%E5%BE%B4"><i class="fas fa-link"></i></a>
+</h2>
+<div id="学習者として想定しているのは" class="section level3" number="1.3.1">
+<h3>
+<span class="header-section-number">1.3.1</span> 学習者として想定しているのは<a class="anchor" aria-label="anchor" href="#%E5%AD%A6%E7%BF%92%E8%80%85%E3%81%A8%E3%81%97%E3%81%A6%E6%83%B3%E5%AE%9A%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%AF"><i class="fas fa-link"></i></a>
 </h3>
 <p>高等学校を卒業したひとたちを対象と想定して、書いていこうと思います。</p>
 </div>
-<div id="オープンパブリックデータの活用" class="section level3" number="1.2.2">
+<div id="オープンパブリックデータの活用" class="section level3" number="1.3.2">
 <h3>
-<span class="header-section-number">1.2.2</span> オープン・パブリックデータの活用<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%91%E3%83%96%E3%83%AA%E3%83%83%E3%82%AF%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%B4%BB%E7%94%A8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.3.2</span> オープン・パブリックデータの活用<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%91%E3%83%96%E3%83%AA%E3%83%83%E3%82%AF%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%B4%BB%E7%94%A8"><i class="fas fa-link"></i></a>
 </h3>
 <p>データサイエンスは、広い分野ですが、ここでは、オープンデータとか、パブリックデータと言われるものを主として活用していきます。</p>
 <p>すでに、書いたように、それが可能になって来たこと。特に、世界に目をむけると、すばらしいサイトがたくさんあり、国際機関などが、膨大なデータを提供しているので、まずは、それを活用したいと思います。</p>
 </div>
-<div id="世界のデータをみること" class="section level3" number="1.2.3">
+<div id="世界のデータをみること" class="section level3" number="1.3.3">
 <h3>
-<span class="header-section-number">1.2.3</span> 世界のデータをみること<a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E3%81%BF%E3%82%8B%E3%81%93%E3%81%A8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.3.3</span> 世界のデータをみること<a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E3%81%BF%E3%82%8B%E3%81%93%E3%81%A8"><i class="fas fa-link"></i></a>
 </h3>
 <p>日本のデータも、使っていこうと思いますが、まずは、世界の中の課題をみることが必要だと思っています。扱いやすい、世界のデータがたくさんあるからも理由の一つです。</p>
 <p>むろん、日本の課題から目を逸らすわけではありません。世界の中の日本を意識し、さらに、日本の課題にも目を向けていきたいと思います。</p>
 </div>
-<div id="目標としていること" class="section level3" number="1.2.4">
+<div id="目標としていること" class="section level3" number="1.3.4">
 <h3>
-<span class="header-section-number">1.2.4</span> 目標としていること<a class="anchor" aria-label="anchor" href="#%E7%9B%AE%E6%A8%99%E3%81%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%93%E3%81%A8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.3.4</span> 目標としていること<a class="anchor" aria-label="anchor" href="#%E7%9B%AE%E6%A8%99%E3%81%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%93%E3%81%A8"><i class="fas fa-link"></i></a>
 </h3>
 <p>ここで扱う内容は限られていますが、データサイエンスの基本を身につけることで、ここで、取り上げる、オープンデータ、パブリックデータだけでなく、さまざまな課題にデータを通して、向き合うことができると考えています。</p>
 <p>ここまで学べばというゴールはありません。日常的に、データを通して、課題に向き合う習慣が身についていければと願っています。</p>
 </div>
 </div>
-<div id="学習方法について" class="section level2" number="1.3">
+<div id="学習方法について" class="section level2" number="1.4">
 <h2>
-<span class="header-section-number">1.3</span> 学習方法について<a class="anchor" aria-label="anchor" href="#%E5%AD%A6%E7%BF%92%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.4</span> 学習方法について<a class="anchor" aria-label="anchor" href="#%E5%AD%A6%E7%BF%92%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
 </h2>
 <p>インターネット上で公開していますので、さまざまな方法で学んでいっていただきたいと思います。個人で学ぶことも可能で、実際に、それが可能なように、書いていく予定です。</p>
 <p>しかし、おすすめは、何人かのグループ、または、大学などで一緒に学んでいくことです。それは、データサイエンスの目的でもある、問いを持ち、課題に取り組んでいくためには、さまざまな視点からの意見や、考え方が必要だからです。違って見方をたいせつにする訓練にもなります。</p>
@@ -278,9 +329,9 @@
 <p>コードも、AI は教えてくれますが、聞き方が適切ではないと、間違った回答が得られることもあります。それも、グループで議論することで、聞き方を変えていくことも可能かもしれません。</p>
 <p>人の前で、発表する練習も、一連の学びの中に加えることをお勧めします。ぜひ、みなさんにあった、学びの場を協力して作っていってください。</p>
 </div>
-<div id="参考-1" class="section level2" number="1.4">
+<div id="参考-1" class="section level2" number="1.5">
 <h2>
-<span class="header-section-number">1.4</span> 参考<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.5</span> 参考<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83-1"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -314,15 +365,21 @@
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%92%E5%A7%8B%E3%82%81%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%81%AE%E7%89%B9%E5%BE%B4"><span class="header-section-number">1.2</span> 「データサイエンスを始めましょう」の特徴</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E5%AD%A6%E7%BF%92%E8%80%85%E3%81%A8%E3%81%97%E3%81%A6%E6%83%B3%E5%AE%9A%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%AF"><span class="header-section-number">1.2.1</span> 学習者として想定しているのは</a></li>
-<li><a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%91%E3%83%96%E3%83%AA%E3%83%83%E3%82%AF%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%B4%BB%E7%94%A8"><span class="header-section-number">1.2.2</span> オープン・パブリックデータの活用</a></li>
-<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E3%81%BF%E3%82%8B%E3%81%93%E3%81%A8"><span class="header-section-number">1.2.3</span> 世界のデータをみること</a></li>
-<li><a class="nav-link" href="#%E7%9B%AE%E6%A8%99%E3%81%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%93%E3%81%A8"><span class="header-section-number">1.2.4</span> 目標としていること</a></li>
+<a class="nav-link" href="#gapminder"><span class="header-section-number">1.2</span> Gapminder</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#factfulness%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%95%E3%83%AB%E3%83%8D%E3%82%B9hans-rosling"><span class="header-section-number">1.2.1</span> Factfulness（ファクトフルネス）Hans Rosling</a></li>
+<li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="header-section-number">1.2.2</span> 参考文献</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#%E5%AD%A6%E7%BF%92%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">1.3</span> 学習方法について</a></li>
-<li><a class="nav-link" href="#%E5%8F%82%E8%80%83-1"><span class="header-section-number">1.4</span> 参考</a></li>
+<li>
+<a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%92%E5%A7%8B%E3%82%81%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%81%AE%E7%89%B9%E5%BE%B4"><span class="header-section-number">1.3</span> 「データサイエンスを始めましょう」の特徴</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E5%AD%A6%E7%BF%92%E8%80%85%E3%81%A8%E3%81%97%E3%81%A6%E6%83%B3%E5%AE%9A%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%AF"><span class="header-section-number">1.3.1</span> 学習者として想定しているのは</a></li>
+<li><a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%91%E3%83%96%E3%83%AA%E3%83%83%E3%82%AF%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%B4%BB%E7%94%A8"><span class="header-section-number">1.3.2</span> オープン・パブリックデータの活用</a></li>
+<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E3%81%BF%E3%82%8B%E3%81%93%E3%81%A8"><span class="header-section-number">1.3.3</span> 世界のデータをみること</a></li>
+<li><a class="nav-link" href="#%E7%9B%AE%E6%A8%99%E3%81%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%93%E3%81%A8"><span class="header-section-number">1.3.4</span> 目標としていること</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#%E5%AD%A6%E7%BF%92%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">1.4</span> 学習方法について</a></li>
+<li><a class="nav-link" href="#%E5%8F%82%E8%80%83-1"><span class="header-section-number">1.5</span> 参考</a></li>
 </ul>
 
       <div class="book-extra">

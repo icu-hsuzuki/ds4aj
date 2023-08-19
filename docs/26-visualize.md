@@ -230,11 +230,17 @@ Visualize the distribution of a single continuous variable by dividing the x axi
 ```r
 ggplot(data = iris, aes(x = Sepal.Length)) +
   geom_histogram()
+#> `stat_bin()` using `bins = 30`. Pick better value with
+#> `binwidth`.
 ```
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
+枠（bins）を幾つに分けるか、または枠の幅を指定するようにとのメッセージが表示されます。
+
 枠（bins）の数を変更するには `bins =` `<number>`　を使います。幅を指定するときは、`binwidth = <number>` とします。
+
+最初の例では、枠の個数を（初期設定では30になっているものを）10個とし、二つ目の例では、幅を1にしています。
 
 
 ```r
@@ -272,7 +278,7 @@ ggplot(data = iris, aes(x = Sepal.Length, color = Species)) +
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
-滑らかな曲線にするときは、density plot を使います。alpha は透明度で 0 から 1 の値で指定します。
+滑らかな曲線にするときは、density plot を使います。alpha は透明度で 0 から 1 の値で指定します。数が小さい方が薄くなります。color で線の色もあわせて設定することも可能です。いろいろと試してみてください。
 
 
 ```r
@@ -282,7 +288,7 @@ ggplot(data = iris, aes(x = Sepal.Length, fill = Species)) +
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
-## 線形モデル Data Modeling
+### 線形モデル Data Modeling
 
 回帰直線を加えたり、他の近似曲線を加えることも可能です。グラフとしても直感的理解を助けますが、統計的な扱いについては、Modeling で説明します。
 
@@ -303,6 +309,298 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 ```
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+
+## 例　パッケージ Gapminder を使って
+
+
+```r
+library(tidyverse)
+library(gapminder)
+library(WDI)
+```
+
+すでに、`dplyr` をつかった変形で確認しましたが、簡単に、データを見ておきましょう。
+
+
+```r
+df_gm <- gapminder
+df_gm %>% slice(1:10)
+#> # A tibble: 10 × 6
+#>    country     continent  year lifeExp      pop gdpPercap
+#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+#>  1 Afghanistan Asia       1952    28.8  8425333      779.
+#>  2 Afghanistan Asia       1957    30.3  9240934      821.
+#>  3 Afghanistan Asia       1962    32.0 10267083      853.
+#>  4 Afghanistan Asia       1967    34.0 11537966      836.
+#>  5 Afghanistan Asia       1972    36.1 13079460      740.
+#>  6 Afghanistan Asia       1977    38.4 14880372      786.
+#>  7 Afghanistan Asia       1982    39.9 12881816      978.
+#>  8 Afghanistan Asia       1987    40.8 13867957      852.
+#>  9 Afghanistan Asia       1992    41.7 16317921      649.
+#> 10 Afghanistan Asia       1997    41.8 22227415      635.
+```
+
+
+```r
+glimpse(df_gm)
+#> Rows: 1,704
+#> Columns: 6
+#> $ country   <fct> "Afghanistan", "Afghanistan", "Afghanist…
+#> $ continent <fct> Asia, Asia, Asia, Asia, Asia, Asia, Asia…
+#> $ year      <int> 1952, 1957, 1962, 1967, 1972, 1977, 1982…
+#> $ lifeExp   <dbl> 28.801, 30.332, 31.997, 34.020, 36.088, …
+#> $ pop       <int> 8425333, 9240934, 10267083, 11537966, 13…
+#> $ gdpPercap <dbl> 779.4453, 820.8530, 853.1007, 836.1971, …
+```
+
+
+```r
+summary(df_gm)
+#>         country        continent        year     
+#>  Afghanistan:  12   Africa  :624   Min.   :1952  
+#>  Albania    :  12   Americas:300   1st Qu.:1966  
+#>  Algeria    :  12   Asia    :396   Median :1980  
+#>  Angola     :  12   Europe  :360   Mean   :1980  
+#>  Argentina  :  12   Oceania : 24   3rd Qu.:1993  
+#>  Australia  :  12                  Max.   :2007  
+#>  (Other)    :1632                                
+#>     lifeExp           pop              gdpPercap       
+#>  Min.   :23.60   Min.   :6.001e+04   Min.   :   241.2  
+#>  1st Qu.:48.20   1st Qu.:2.794e+06   1st Qu.:  1202.1  
+#>  Median :60.71   Median :7.024e+06   Median :  3531.8  
+#>  Mean   :59.47   Mean   :2.960e+07   Mean   :  7215.3  
+#>  3rd Qu.:70.85   3rd Qu.:1.959e+07   3rd Qu.:  9325.5  
+#>  Max.   :82.60   Max.   :1.319e+09   Max.   :113523.1  
+#> 
+```
+
+#### Tidyverse::ggplot
+
+##### First Try - with failures
+
+You will encounter similar failures. We list three of them.
+
+
+```r
+ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_point()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+
+There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, .... Can you tell how many years are in the data? The following command shows different years in the data.
+
+
+```r
+unique(df_gm$year)
+#>  [1] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002
+#> [12] 2007
+```
+
+You can guess it from the data summary above. Can you imagine how many countries are in the data? 142? Anyhow, too many points are on each year.
+
+
+```r
+ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_line()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+
+Now, you can guess the reason why you had this output. This is often called a saw-tooth.
+
+
+```r
+ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_boxplot()
+#> Warning: Continuous x aesthetic
+#> ℹ did you forget `aes(group = ...)`?
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+
+Can you see what the problem is? The `year` is a numerical variable in integer.
+
+
+```r
+typeof(pull(df_gm, year)) # same as typeof(df$year)
+#> [1] "integer"
+```
+
+The following looks better.
+
+
+```r
+ggplot(df_gm, aes(y = lifeExp, group = year)) + geom_boxplot()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+
+##### Box Plot
+
+
+```r
+ggplot(df_gm, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+
+You can use `fill` and `color` for the box plot. Try and check the difference.
+
+
+```r
+df_gm %>% filter(year %in% c(1952, 1987, 2007)) %>%
+  ggplot(aes(x=as_factor(year), y = lifeExp, fill = continent)) +
+  geom_boxplot()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+
+The following are examples of line graphs. Please see the differences.
+
+
+```r
+df_lifeExp <- df_gm %>% 
+  group_by(continent, year) %>% 
+  summarize(mean_lifeExp = mean(lifeExp), median_lifeExp = median(lifeExp), max_lifeExp = max(lifeExp), min_lifeExp = min(lifeExp), .groups = "keep")
+```
+
+
+```r
+df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent)) +
+  geom_line()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+
+
+```r
+df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent, linetype = continent)) +
+  geom_line()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+
+
+```r
+df_lifeExp %>% ggplot() +
+  geom_line(aes(x = year, y = mean_lifeExp, color = continent)) + 
+  geom_line(aes(x = year, y = median_lifeExp, linetype = continent))
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-37-1.png" width="672" />
+
+### Original Data? WDI?
+
+
+```r
+df_gm %>% slice(1:10)
+#> # A tibble: 10 × 6
+#>    country     continent  year lifeExp      pop gdpPercap
+#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+#>  1 Afghanistan Asia       1952    28.8  8425333      779.
+#>  2 Afghanistan Asia       1957    30.3  9240934      821.
+#>  3 Afghanistan Asia       1962    32.0 10267083      853.
+#>  4 Afghanistan Asia       1967    34.0 11537966      836.
+#>  5 Afghanistan Asia       1972    36.1 13079460      740.
+#>  6 Afghanistan Asia       1977    38.4 14880372      786.
+#>  7 Afghanistan Asia       1982    39.9 12881816      978.
+#>  8 Afghanistan Asia       1987    40.8 13867957      852.
+#>  9 Afghanistan Asia       1992    41.7 16317921      649.
+#> 10 Afghanistan Asia       1997    41.8 22227415      635.
+```
+
+#### WDI
+
+-   SP.DYN.LE00.IN: Life expectancy at birth, total (years)
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$)
+-   SP.POP.TOTL: Population, total
+
+
+```r
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
+```
+
+
+
+
+```
+#> Rows: 16758 Columns: 7
+#> ── Column specification ────────────────────────────────────
+#> Delimiter: ","
+#> chr (3): country, iso2c, iso3c
+#> dbl (4): year, lifeExp, pop, gdpPercap
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+
+```r
+df_wdi %>% slice(1:10)
+#> # A tibble: 10 × 7
+#>    country     iso2c iso3c  year lifeExp      pop gdpPercap
+#>    <chr>       <chr> <chr> <dbl>   <dbl>    <dbl>     <dbl>
+#>  1 Afghanistan AF    AFG    1960    32.5  8622466        NA
+#>  2 Afghanistan AF    AFG    1961    33.1  8790140        NA
+#>  3 Afghanistan AF    AFG    1962    33.5  8969047        NA
+#>  4 Afghanistan AF    AFG    1963    34.0  9157465        NA
+#>  5 Afghanistan AF    AFG    1964    34.5  9355514        NA
+#>  6 Afghanistan AF    AFG    1965    35.0  9565147        NA
+#>  7 Afghanistan AF    AFG    1966    35.5  9783147        NA
+#>  8 Afghanistan AF    AFG    1967    35.9 10010030        NA
+#>  9 Afghanistan AF    AFG    1968    36.4 10247780        NA
+#> 10 Afghanistan AF    AFG    1969    36.9 10494489        NA
+```
+
+
+```r
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+```
+
+
+
+
+```
+#> Rows: 16758 Columns: 15
+#> ── Column specification ────────────────────────────────────
+#> Delimiter: ","
+#> chr  (7): country, iso2c, iso3c, region, capital, income...
+#> dbl  (6): year, lifeExp, pop, gdpPercap, longitude, lati...
+#> lgl  (1): status
+#> date (1): lastupdated
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+
+```r
+df_wdi_extra
+#> # A tibble: 16,758 × 15
+#>    country     iso2c iso3c  year status lastupdated lifeExp
+#>    <chr>       <chr> <chr> <dbl> <lgl>  <date>        <dbl>
+#>  1 Afghanistan AF    AFG    2014 NA     2023-07-25     62.5
+#>  2 Afghanistan AF    AFG    2012 NA     2023-07-25     61.9
+#>  3 Afghanistan AF    AFG    2009 NA     2023-07-25     60.4
+#>  4 Afghanistan AF    AFG    2013 NA     2023-07-25     62.4
+#>  5 Afghanistan AF    AFG    1971 NA     2023-07-25     37.9
+#>  6 Afghanistan AF    AFG    2015 NA     2023-07-25     62.7
+#>  7 Afghanistan AF    AFG    1969 NA     2023-07-25     36.9
+#>  8 Afghanistan AF    AFG    2010 NA     2023-07-25     60.9
+#>  9 Afghanistan AF    AFG    2011 NA     2023-07-25     61.4
+#> 10 Afghanistan AF    AFG    2008 NA     2023-07-25     59.9
+#> # ℹ 16,748 more rows
+#> # ℹ 8 more variables: pop <dbl>, gdpPercap <dbl>,
+#> #   region <chr>, capital <chr>, longitude <dbl>,
+#> #   latitude <dbl>, income <chr>, lending <chr>
+```
+
+違いはわかりましたか。同じような変数についてのデータですが、WDI からダウンロードした実際のデータの場合には、練習用のデータとは、違った困難がいくつもあります。それを、少しず見ていきながら、現実世界のデータを扱えるようにしていきましょう。
 
 ## コメント
 

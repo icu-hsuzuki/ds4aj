@@ -164,12 +164,16 @@ Visualize the distribution of a single continuous variable by dividing the x axi
 
 説明ビデオです。<https://vimeo.com/221607341>
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 ggplot(data = iris, aes(x = Sepal.Length)) +
   geom_histogram()
 ```
 
+枠（bins）を幾つに分けるか、または枠の幅を指定するようにとのメッセージが表示されます。
+
 枠（bins）の数を変更するには `bins =` `<number>`　を使います。幅を指定するときは、`binwidth = <number>` とします。
+
+最初の例では、枠の個数を（初期設定では30になっているものを）10個とし、二つ目の例では、幅を1にしています。
 
 ```{r}
 ggplot(data = iris, aes(x = Sepal.Length)) +
@@ -193,14 +197,14 @@ ggplot(data = iris, aes(x = Sepal.Length, color = Species)) +
   geom_freqpoly(bins = 10)
 ```
 
-滑らかな曲線にするときは、density plot を使います。alpha は透明度で 0 から 1 の値で指定します。
+滑らかな曲線にするときは、density plot を使います。alpha は透明度で 0 から 1 の値で指定します。数が小さい方が薄くなります。color で線の色もあわせて設定することも可能です。いろいろと試してみてください。
 
 ```{r}
 ggplot(data = iris, aes(x = Sepal.Length, fill = Species)) +
   geom_density(alpha = 0.5)
 ```
 
-## 線形モデル Data Modeling
+### 線形モデル Data Modeling
 
 回帰直線を加えたり、他の近似曲線を加えることも可能です。グラフとしても直感的理解を助けますが、統計的な扱いについては、Modeling で説明します。
 
@@ -215,6 +219,169 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() +
   geom_smooth()
 ```
+
+## 例　パッケージ Gapminder を使って
+
+```{r packages, message=FALSE}
+library(tidyverse)
+library(gapminder)
+library(WDI)
+```
+
+すでに、`dplyr` をつかった変形で確認しましたが、簡単に、データを見ておきましょう。
+
+```{r cache=TRUE}
+df_gm <- gapminder
+df_gm %>% slice(1:10)
+```
+
+```{r}
+glimpse(df_gm)
+```
+
+```{r}
+summary(df_gm)
+```
+
+#### Tidyverse::ggplot
+
+##### First Try - with failures
+
+You will encounter similar failures. We list three of them.
+
+```{r}
+ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_point()
+```
+
+There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, .... Can you tell how many years are in the data? The following command shows different years in the data.
+
+```{r}
+unique(df_gm$year)
+```
+
+You can guess it from the data summary above. Can you imagine how many countries are in the data? 142? Anyhow, too many points are on each year.
+
+```{r}
+ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_line()
+```
+
+Now, you can guess the reason why you had this output. This is often called a saw-tooth.
+
+```{r}
+ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_boxplot()
+```
+
+Can you see what the problem is? The `year` is a numerical variable in integer.
+
+```{r}
+typeof(pull(df_gm, year)) # same as typeof(df$year)
+```
+
+The following looks better.
+
+```{r}
+ggplot(df_gm, aes(y = lifeExp, group = year)) + geom_boxplot()
+```
+
+##### Box Plot
+
+```{r}
+ggplot(df_gm, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
+```
+
+You can use `fill` and `color` for the box plot. Try and check the difference.
+
+```{r}
+df_gm %>% filter(year %in% c(1952, 1987, 2007)) %>%
+  ggplot(aes(x=as_factor(year), y = lifeExp, fill = continent)) +
+  geom_boxplot()
+```
+
+The following are examples of line graphs. Please see the differences.
+
+```{r}
+df_lifeExp <- df_gm %>% 
+  group_by(continent, year) %>% 
+  summarize(mean_lifeExp = mean(lifeExp), median_lifeExp = median(lifeExp), max_lifeExp = max(lifeExp), min_lifeExp = min(lifeExp), .groups = "keep")
+```
+
+```{r}
+df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent)) +
+  geom_line()
+```
+
+```{r}
+df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent, linetype = continent)) +
+  geom_line()
+```
+
+```{r}
+df_lifeExp %>% ggplot() +
+  geom_line(aes(x = year, y = mean_lifeExp, color = continent)) + 
+  geom_line(aes(x = year, y = median_lifeExp, linetype = continent))
+```
+
+### Original Data? WDI?
+
+```{r}
+df_gm %>% slice(1:10)
+```
+
+#### WDI
+
+-   SP.DYN.LE00.IN: Life expectancy at birth, total (years)
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$)
+-   SP.POP.TOTL: Population, total
+
+```{r eval=FALSE}
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
+```
+
+```{r echo=FALSE, eval=FALSE}
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
+write_csv(df_wdi, "./data/wdi.csv")
+```
+
+```{r echo=FALSE, eval=TRUE}
+df_wdi <- read_csv("./data/wdi.csv")
+```
+
+```{r}
+df_wdi %>% slice(1:10)
+```
+
+```{r eval=FALSE}
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+```
+
+```{r eval=FALSE, echo=FALSE}
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+write_csv(df_wdi_extra, "./data/wdi_extra.csv")
+```
+
+```{r eval=TRUE, echo=FALSE}
+df_wdi_extra <- read_csv("./data/wdi_extra.csv")
+```
+
+```{r}
+df_wdi_extra
+```
+
+違いはわかりましたか。同じような変数についてのデータですが、WDI からダウンロードした実際のデータの場合には、練習用のデータとは、違った困難がいくつもあります。それを、少しず見ていきながら、現実世界のデータを扱えるようにしていきましょう。
 
 ## コメント
 

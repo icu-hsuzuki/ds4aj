@@ -1,4 +1,4 @@
-# R Basics {#rbasics}
+# R の基礎 {#rbasics}
 
 ## プロジェクト - Project
 
