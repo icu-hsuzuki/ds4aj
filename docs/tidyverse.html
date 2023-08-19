@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 16 Tidyverse | データサイエンスをはじめましょう - Data Science for All -</title>
+<meta name="author" content="鈴木寛（Hirosi Suzuki）">
+<meta name="description" content="R Basics について説明しました。R に最初に読み込まれる、base の基本を学びましが、ここでは、核となる tidyverse というパッケージについてその基本を学びます。 サイト：https://www.tidyverse.org タイトルに日本語を使う場合があるときは、install.packages('showtext') で、showtext...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 16 Tidyverse | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/tidyverse.html">
+<meta property="og:description" content="R Basics について説明しました。R に最初に読み込まれる、base の基本を学びましが、ここでは、核となる tidyverse というパッケージについてその基本を学びます。 サイト：https://www.tidyverse.org タイトルに日本語を使う場合があるときは、install.packages('showtext') で、showtext...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 16 Tidyverse | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="R Basics について説明しました。R に最初に読み込まれる、base の基本を学びましが、ここでは、核となる tidyverse というパッケージについてその基本を学びます。 サイト：https://www.tidyverse.org タイトルに日本語を使う場合があるときは、install.packages('showtext') で、showtext...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+- Data Science for All -</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">この文書について</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
+<li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
+<li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
+<li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
+<li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
+<li class="book-part">PART I オープンデータ</li>
+<li><a class="" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
+<li><a class="" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
+<li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
+<li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
+<li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
+<li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
+<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
+<li class="book-part">PART II BASICS</li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R Basics</a></li>
+<li><a class="active" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
+<li><a class="" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
+<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
+<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
+<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> About First Example</a></li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
+<li class="book-part">PART III INSTITUTIONAL DATA</li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
+<li class="book-part">PART IV EDA</li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
+<li class="book-part">PART V EXAMPLES</li>
+<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
+<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
+<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
+<li><a class="" href="todo-list.html"><span class="header-section-number">D</span> To Do リスト</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tidyverse" class="section level1" number="16">
+<h1>
+<span class="header-section-number">16</span> Tidyverse<a class="anchor" aria-label="anchor" href="#tidyverse"><i class="fas fa-link"></i></a>
+</h1>
+<p>R Basics について説明しました。R に最初に読み込まれる、<code>base</code> の基本を学びましが、ここでは、核となる <code>tidyverse</code> というパッケージについてその基本を学びます。</p>
+<p>サイト：<a href="https://www.tidyverse.org" class="uri">https://www.tidyverse.org</a></p>
+<p>タイトルに日本語を使う場合があるときは、<code>install.packages('showtext')</code> で、<code>showtext</code> パッケージをインストールして、下のように設定してください。</p>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
+<span><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
+<span><span class="co">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0</span></span>
+<span><span class="co">#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1</span></span>
+<span><span class="co">#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0</span></span>
+<span><span class="co">#&gt; ✔ purrr     1.0.1     </span></span>
+<span><span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span></span>
+<span><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
+<span><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
+<span><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span> </span>
+<span><span class="co">#&gt; Loading required package: sysfonts</span></span>
+<span><span class="co">#&gt; Loading required package: showtextdb</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Let us assign the <code>iris</code> data in the pre-installed package <code>datasets</code> to <code>df_iris</code>. You can give any name starting from an alphabet, though there are some rules.</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">&lt;-</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "data.frame"</span></span></code></pre></div>
+<p>The class of data <code>iris</code> is <code>data.frame</code>, the basic data class of R. You can assign the same data as a <code>tibble</code>, the data class of <code>tidyverse</code> as follows.</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tbl_iris</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">tbl_iris</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></span></code></pre></div>
+<ul>
+<li>
+<code>df_iris &lt;- iris</code> can replace <code>df_iris &lt;- datasets::iris</code> because the package <code>datasets</code> is installed and attached as default. Since you may have other data called <code>iris</code> included in a different package or you may have changed <code>iris</code> before, it is safer to specify the package’s name with the data’s name.</li>
+<li>Within R Notebook or in Console, you may get different output, and <code>tf_iris</code> and <code>tbl_iris</code> behave differently. It is because of the default settings of R Markdown.</li>
+</ul>
+<div id="look-at-the-data" class="section level3" number="16.0.1">
+<h3>
+<span class="header-section-number">16.0.1</span> Look at the data<a class="anchor" aria-label="anchor" href="#look-at-the-data"><i class="fas fa-link"></i></a>
+</h3>
+<div id="several-ways-to-view-the-data." class="section level4" number="16.0.1.1">
+<h4>
+<span class="header-section-number">16.0.1.1</span> Several ways to view the data.<a class="anchor" aria-label="anchor" href="#several-ways-to-view-the-data."><i class="fas fa-link"></i></a>
+</h4>
+<p>The <code>View</code> command opens up a window to show the contents of the data, and you can also use the filter.</p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span></code></pre></div>
+<p>The following simple command also shows the data.</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_iris</span></span></code></pre></div>
+<pre><code>#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width
+#&gt; 1           5.1         3.5          1.4         0.2
+#&gt; 2           4.9         3.0          1.4         0.2
+#&gt; 3           4.7         3.2          1.3         0.2
+#&gt; 4           4.6         3.1          1.5         0.2
+#&gt; 5           5.0         3.6          1.4         0.2
+#&gt; 6           5.4         3.9          1.7         0.4
+#&gt; 7           4.6         3.4          1.4         0.3
+#&gt; 8           5.0         3.4          1.5         0.2
+#&gt; 9           4.4         2.9          1.4         0.2
+#&gt; 10          4.9         3.1          1.5         0.1
+#&gt;    Species
+#&gt; 1   setosa
+#&gt; 2   setosa
+#&gt; 3   setosa
+#&gt; 4   setosa
+#&gt; 5   setosa
+#&gt; 6   setosa
+#&gt; 7   setosa
+#&gt; 8   setosa
+#&gt; 9   setosa
+#&gt; 10  setosa</code></pre>
+<p><code>%&gt;%</code> is called a pipe command, and we use it often.</p>
+<p>The output within R Notebook is a tibble style. Try the same command in Console.</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="va">df_iris</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
+<span><span class="co">#&gt; 1           5.1         3.5          1.4         0.2</span></span>
+<span><span class="co">#&gt; 2           4.9         3.0          1.4         0.2</span></span>
+<span><span class="co">#&gt; 3           4.7         3.2          1.3         0.2</span></span>
+<span><span class="co">#&gt; 4           4.6         3.1          1.5         0.2</span></span>
+<span><span class="co">#&gt; 5           5.0         3.6          1.4         0.2</span></span>
+<span><span class="co">#&gt; 6           5.4         3.9          1.7         0.4</span></span>
+<span><span class="co">#&gt; 7           4.6         3.4          1.4         0.3</span></span>
+<span><span class="co">#&gt; 8           5.0         3.4          1.5         0.2</span></span>
+<span><span class="co">#&gt; 9           4.4         2.9          1.4         0.2</span></span>
+<span><span class="co">#&gt; 10          4.9         3.1          1.5         0.1</span></span>
+<span><span class="co">#&gt;    Species</span></span>
+<span><span class="co">#&gt; 1   setosa</span></span>
+<span><span class="co">#&gt; 2   setosa</span></span>
+<span><span class="co">#&gt; 3   setosa</span></span>
+<span><span class="co">#&gt; 4   setosa</span></span>
+<span><span class="co">#&gt; 5   setosa</span></span>
+<span><span class="co">#&gt; 6   setosa</span></span>
+<span><span class="co">#&gt; 7   setosa</span></span>
+<span><span class="co">#&gt; 8   setosa</span></span>
+<span><span class="co">#&gt; 9   setosa</span></span>
+<span><span class="co">#&gt; 10  setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
+</div>
+<div id="data-structure" class="section level4" number="16.0.1.2">
+<h4>
+<span class="header-section-number">16.0.1.2</span> Data Structure<a class="anchor" aria-label="anchor" href="#data-structure"><i class="fas fa-link"></i></a>
+</h4>
+<p>Let us look at the structure of the data. You can try <code>str(df_iris)</code> on Console or by adding a code chunk in R Notebook introducing later.</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 150</span></span>
+<span><span class="co">#&gt; Columns: 5</span></span>
+<span><span class="co">#&gt; $ Sepal.Length &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.…</span></span>
+<span><span class="co">#&gt; $ Sepal.Width  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.…</span></span>
+<span><span class="co">#&gt; $ Petal.Length &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.…</span></span>
+<span><span class="co">#&gt; $ Petal.Width  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.…</span></span>
+<span><span class="co">#&gt; $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setos…</span></span></code></pre></div>
+<p>There are six types of data in R; Double, Integer, Character, Logical, Raw, and Complex. In this course, we use only the first four.</p>
+<p>The names after $ are column names. If you call <code>df_iris$Species</code>, you have the Species column. Species is in the 5th column, <code>typeof(df_iris[[5]])</code> does the same as the next.</p>
+<p>`<code>df_iris[2,4] = `0.2</code> is the fourth entry of Sepal.Width.</p>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "integer"</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "factor"</span></span></code></pre></div>
+<p>For <code>factors = fct</code> see <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor">the R Document</a> or an explanation in <a href="https://www.guru99.com/r-factor-categorical-continuous.html">Factor in R: Categorical Variable &amp; Continuous Variables</a>.</p>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Sepal.Length</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "double"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Sepal.Length</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
+<p><strong>Q1.</strong> What are the differences of <code>df_iris</code>, <code>slice(df_iris, 1:10)</code> and <code>glimpse(df_iris)</code> above?</p>
+<p><strong>Q2.</strong> What are the differences of<code>df_iris</code>, <code>slice(df_iris, 1:10)</code> and <code>glimpse(df_iris)</code> in the console?</p>
+</div>
+<div id="summary-of-the-data" class="section level4" number="16.0.1.3">
+<h4>
+<span class="header-section-number">16.0.1.3</span> Summary of the Data<a class="anchor" aria-label="anchor" href="#summary-of-the-data"><i class="fas fa-link"></i></a>
+</h4>
+<p>The following is very convenient to get the summary information of a data.</p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length    Sepal.Width     Petal.Length  </span></span>
+<span><span class="co">#&gt;  Min.   :4.300   Min.   :2.000   Min.   :1.000  </span></span>
+<span><span class="co">#&gt;  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  </span></span>
+<span><span class="co">#&gt;  Median :5.800   Median :3.000   Median :4.350  </span></span>
+<span><span class="co">#&gt;  Mean   :5.843   Mean   :3.057   Mean   :3.758  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  </span></span>
+<span><span class="co">#&gt;  Max.   :7.900   Max.   :4.400   Max.   :6.900  </span></span>
+<span><span class="co">#&gt;   Petal.Width          Species  </span></span>
+<span><span class="co">#&gt;  Min.   :0.100   setosa    :50  </span></span>
+<span><span class="co">#&gt;  1st Qu.:0.300   versicolor:50  </span></span>
+<span><span class="co">#&gt;  Median :1.300   virginica :50  </span></span>
+<span><span class="co">#&gt;  Mean   :1.199                  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:1.800                  </span></span>
+<span><span class="co">#&gt;  Max.   :2.500</span></span></code></pre></div>
+<p>Minimum, 1st Quadrant (25%), Median, Mean, 3rd Quadrant (75%), Maximum, and the count of each factor.</p>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="rbasics.html"><span class="header-section-number">15</span> R Basics</a></div>
+<div class="next"><a href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li>
+<a class="nav-link" href="#tidyverse"><span class="header-section-number">16</span> Tidyverse</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#look-at-the-data"><span class="header-section-number">16.0.1</span> Look at the data</a></li></ul>
+</li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/24-tidyverse.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/24-tidyverse.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>データサイエンスをはじめましょう<br>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-19.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

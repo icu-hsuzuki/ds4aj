@@ -16,6 +16,8 @@ R では、簡単に、グラフを描画できますが、質の高いグラフ
 
 #### `tidyverse` の読み込み
 
+タイトルに日本語を使う場合があるときは、`install.packages('showtext')` で、`showtext` パッケージをインストールして、下のように設定してください。
+
 
 ```r
 library(tidyverse)
@@ -29,6 +31,10 @@ library(tidyverse)
 #> ✖ dplyr::filter() masks stats::filter()
 #> ✖ dplyr::lag()    masks stats::lag()
 #> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+library(showtext) 
+#> Loading required package: sysfonts
+#> Loading required package: showtextdb
+showtext_auto()
 ```
 
 `ggplot2` に含まれている、`mpg` データを使って、簡単な、散布図と、箱ひげ図を描いてみます。`mpg` の変数などについては、Help で調べてください。
@@ -76,189 +82,11 @@ ggplot(data = mpg) + geom_boxplot(mapping = aes(x = class, y = hwy))
 
 記号的に書くと、下のようになっています。
 
-```{ggplot(data = <DATA>) + <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))}
-```
-
-### Importing data
-
-Let us assign the `iris` data in the pre-installed package `datasets` to `df_iris`. You can give any name starting from an alphabet, though there are some rules.
-
-
-```r
-df_iris <- datasets::iris
-class(df_iris)
-#> [1] "data.frame"
-```
-
-The class of data `iris` is `data.frame`, the basic data class of R. You can assign the same data as a `tibble`, the data class of `tidyverse` as follows.
-
-
-```r
-tbl_iris <- as_tibble(datasets::iris)
-class(tbl_iris)
-#> [1] "tbl_df"     "tbl"        "data.frame"
-```
-
--   `df_iris <- iris` can replace `df_iris <- datasets::iris` because the package `datasets` is installed and attached as default. Since you may have other data called `iris` included in a different package or you may have changed `iris` before, it is safer to specify the package's name with the data's name.
--   Within R Notebook or in Console, you may get different output, and `tf_iris` and `tbl_iris` behave differently. It is because of the default settings of R Markdown.
-
-### Look at the data
-
-#### Several ways to view the data.
-
-The `View` command opens up a window to show the contents of the data, and you can also use the filter.
-
-
-```r
-View(df_iris)
-```
-
-The following simple command also shows the data.
-
-
-```r
-df_iris
-```
-
-
-```
-#>    Sepal.Length Sepal.Width Petal.Length Petal.Width
-#> 1           5.1         3.5          1.4         0.2
-#> 2           4.9         3.0          1.4         0.2
-#> 3           4.7         3.2          1.3         0.2
-#> 4           4.6         3.1          1.5         0.2
-#> 5           5.0         3.6          1.4         0.2
-#> 6           5.4         3.9          1.7         0.4
-#> 7           4.6         3.4          1.4         0.3
-#> 8           5.0         3.4          1.5         0.2
-#> 9           4.4         2.9          1.4         0.2
-#> 10          4.9         3.1          1.5         0.1
-#>    Species
-#> 1   setosa
-#> 2   setosa
-#> 3   setosa
-#> 4   setosa
-#> 5   setosa
-#> 6   setosa
-#> 7   setosa
-#> 8   setosa
-#> 9   setosa
-#> 10  setosa
-```
-
-`%>%` is called a pipe command, and we use it often.
-
-The output within R Notebook is a tibble style. Try the same command in Console.
-
-
-```r
-slice(df_iris, 1:10)
-#>    Sepal.Length Sepal.Width Petal.Length Petal.Width
-#> 1           5.1         3.5          1.4         0.2
-#> 2           4.9         3.0          1.4         0.2
-#> 3           4.7         3.2          1.3         0.2
-#> 4           4.6         3.1          1.5         0.2
-#> 5           5.0         3.6          1.4         0.2
-#> 6           5.4         3.9          1.7         0.4
-#> 7           4.6         3.4          1.4         0.3
-#> 8           5.0         3.4          1.5         0.2
-#> 9           4.4         2.9          1.4         0.2
-#> 10          4.9         3.1          1.5         0.1
-#>    Species
-#> 1   setosa
-#> 2   setosa
-#> 3   setosa
-#> 4   setosa
-#> 5   setosa
-#> 6   setosa
-#> 7   setosa
-#> 8   setosa
-#> 9   setosa
-#> 10  setosa
-```
-
-
-```r
-1:10
-#>  [1]  1  2  3  4  5  6  7  8  9 10
-```
-
-#### Data Structure
-
-Let us look at the structure of the data. You can try `str(df_iris)` on Console or by adding a code chunk in R Notebook introducing later.
-
-
-```r
-glimpse(df_iris)
-#> Rows: 150
-#> Columns: 5
-#> $ Sepal.Length <dbl> 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.…
-#> $ Sepal.Width  <dbl> 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.…
-#> $ Petal.Length <dbl> 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.…
-#> $ Petal.Width  <dbl> 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.…
-#> $ Species      <fct> setosa, setosa, setosa, setosa, setos…
-```
-
-There are six types of data in R; Double, Integer, Character, Logical, Raw, and Complex. In this course, we use only the first four.
-
-The names after \$ are column names. If you call `df_iris$Species`, you have the Species column. Species is in the 5th column, `typeof(df_iris[[5]])` does the same as the next.
-
-``` df_iris[2,4] = `0.2`` is the fourth entry of Sepal.Width.
-
-
-```r
-typeof(df_iris$Species)
-#> [1] "integer"
-```
-
-
-```r
-class(df_iris$Species)
-#> [1] "factor"
-```
-
-For `factors = fct` see [the R Document](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor) or an explanation in [Factor in R: Categorical Variable & Continuous Variables](https://www.guru99.com/r-factor-categorical-continuous.html).
-
-
-```r
-typeof(df_iris$Sepal.Length)
-#> [1] "double"
-class(df_iris$Sepal.Length)
-#> [1] "numeric"
-```
-
-**Q1.** What are the differences of `df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` above?
-
-**Q2.** What are the differences of`df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` in the console?
-
-#### Summary of the Data
-
-The following is very convenient to get the summary information of a data.
-
-
-```r
-summary(df_iris)
-#>   Sepal.Length    Sepal.Width     Petal.Length  
-#>  Min.   :4.300   Min.   :2.000   Min.   :1.000  
-#>  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  
-#>  Median :5.800   Median :3.000   Median :4.350  
-#>  Mean   :5.843   Mean   :3.057   Mean   :3.758  
-#>  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  
-#>  Max.   :7.900   Max.   :4.400   Max.   :6.900  
-#>   Petal.Width          Species  
-#>  Min.   :0.100   setosa    :50  
-#>  1st Qu.:0.300   versicolor:50  
-#>  Median :1.300   virginica :50  
-#>  Mean   :1.199                  
-#>  3rd Qu.:1.800                  
-#>  Max.   :2.500
-```
-
-Minimum, 1st Quadrant (25%), Median, Mean, 3rd Quadrant (75%), Maximum, and the count of each factor.
+`ggplot(data = <DATA>) + <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))`
 
 ## 散布図（Scatter Plot）
 
-We use `ggplot` to draw graphs. The scatter plot is a projection of data with two variables $x$ and $y$.
+散布図は、データの二つの変数（列） を x と y に対応させる、最も基本的なグラフです。最初に試すべきグラフだともいうことができます。`mapping =` は省略することができます。
 
 ```         
 ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
@@ -270,17 +98,19 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
 ```
 
+変形（Transform）のときにつかった、`iris` データを使います。
+
 
 ```r
-ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 ### ラベル [Labels](https://ggplot2.tidyverse.org/reference/labs.html)
 
-Add title and labels adding `labs()`.
+グラフの表題や、x 軸、y 軸のラベルをつけるには `labs()` を使います。
 
 ```         
 ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
@@ -290,81 +120,189 @@ ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
 
 
 ```r
-ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() + 
   labs(title = "Scatter Plot of Sepal Data of Iris", x = "Sepal Length", y = "Sepal Width")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+
+
+```r
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() + 
+  labs(title = "菖蒲の萼の長さと幅についての散布図", x = "萼の長さ", y = "萼の幅")
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+
+このように、日本語をタイトルや、ラベルに使うことも可能ですが、以後は、データに日本語が含まれていない場合には、そのまま表示します。
 
 ### 色付き [Colors](https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html)
 
-Add different colors automatically to each species. Can you see each group?
+菖蒲（iris）のデータは、Species 列に、三種類の菖蒲の名前が含まれていました。それぞれに、違う色で表示してみましょう。それには、x 軸、y 軸に対応する変数を指定したように、`color = Species` と指定します。
 
 
 ```r
-ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
-### 形状
+### 形状 [Shapes](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)
+
+色ではなく、形で Species を区別することも可能です。
 
 
 ```r
-ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, shape = Species)) +
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, shape = Species)) +
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+
+色と、形、両方を同時に使うことも可能です。
+
+
+```r
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species)) +
+  geom_point()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 ## 箱ひげ図 [Boxplot](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)
 
 The boxplot compactly displays the distribution of a continuous variable.
 
+箱ひげ図は、連続な値をとる変数の分布を簡潔な表示でみることができるグラフです。箱や、線の長さ、外れ値の表示なども、正確に決まっていますので、次のビデオをみてください。英語ですが、わかりやすく、まとまっていると思います。
+
+<https://vimeo.com/222358034>
+
+Transcript ボタンから、スクリプトを表示することもできます。
+
+例のように、それぞれのグループごとに箱ひげ図を表示することもできますが、その場合は、文字データや、離散的な数値データ（いくつかの飛び飛びの値をとる変数）を使います。x と y を入れ替えれば、横向きになります。
+
 
 ```r
-ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
+ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+
+
+```r
+ggplot(data = iris, aes(y = Species, x = Sepal.Length)) +
+  geom_boxplot()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+
+color を指定すると、枠に色がつき、fill を指定すると、箱の中が塗り潰されます。
+
+
+```r
+ggplot(data = iris, aes(x = Species, y = Sepal.Length, color = Species)) +
+  geom_boxplot()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+
+
+```r
+ggplot(data = iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+
+### ヒストグラム [Histogram](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
+
+Visualize the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin. Histograms (geom_histogram()) display the counts with bars; frequency polygons (`geom_freqpoly()`) display the counts with lines. Frequency polygons are more suitable when you want to compare the distribution across the levels of a categorical variable.
+
+単一の連続変数の分布を可視化するために、x軸をビンに分割し、各ビン内の観測値の数を数えます。ヒストグラム（geom_histogram()）は、棒で数を表示します。一方、頻度多角形（geom_freqpoly()）は、数を線で表示します。頻度多角形は、カテゴリ変数のレベル間の分布を比較したい場合により適しています。
+
+説明ビデオです。<https://vimeo.com/221607341>
+
+
+```r
+ggplot(data = iris, aes(x = Sepal.Length)) +
+  geom_histogram()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+
+枠（bins）の数を変更するには `bins =` `<number>`　を使います。幅を指定するときは、`binwidth = <number>` とします。
+
+
+```r
+ggplot(data = iris, aes(x = Sepal.Length)) +
+  geom_histogram(bins = 10)
 ```
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
-##　ヒストグラム [Histogram](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
-
-Visualize the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin. Histograms (geom_histogram()) display the counts with bars.
-
 
 ```r
-ggplot(data = df_iris, aes(x = Sepal.Length)) +
-  geom_histogram()
+ggplot(data = iris, aes(x = Sepal.Length)) +
+  geom_histogram(binwidth = 1)
 ```
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
-Change the number of bins by `bins =` `<number>`.
+頻度多角形（geom_freqpoly()）を使うと以下のようになります。Species ごとに比べたり、色をつけたりもできます。
 
 
 ```r
-ggplot(data = df_iris, aes(x = Sepal.Length)) +
-  geom_histogram(bins = 10)
+ggplot(data = iris, aes(x = Sepal.Length)) +
+  geom_freqpoly()
+#> `stat_bin()` using `bins = 30`. Pick better value with
+#> `binwidth`.
 ```
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
-## 線形モデル Data Modeling
 
-Professor Kaizoji will cover the mathematical models and hypothesis testings.
+```r
+ggplot(data = iris, aes(x = Sepal.Length, color = Species)) +
+  geom_freqpoly(bins = 10)
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+
+滑らかな曲線にするときは、density plot を使います。alpha は透明度で 0 から 1 の値で指定します。
 
 
 ```r
-ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+ggplot(data = iris, aes(x = Sepal.Length, fill = Species)) +
+  geom_density(alpha = 0.5)
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+
+## 線形モデル Data Modeling
+
+回帰直線を加えたり、他の近似曲線を加えることも可能です。グラフとしても直感的理解を助けますが、統計的な扱いについては、Modeling で説明します。
+
+
+```r
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+
+
+```r
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() +
+  geom_smooth()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 ## コメント
 
