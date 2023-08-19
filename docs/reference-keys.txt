@@ -129,6 +129,8 @@ un-site
 api-2
 owid-site
 概要-5
+レポート
+war-and-peace
 データベース-3
 ダッシュボード-3
 api-3
@@ -251,12 +253,10 @@ group_by-and-summarize-1
 original-data-wdi
 wdi-1
 visualize
-準備
 基本的なこと
 ggplot2-概要-1
-examples
-template
-準備-1
+基本的な例
+tidyverse-の読み込み
 importing-data
 look-at-the-data
 several-ways-to-view-the-data.

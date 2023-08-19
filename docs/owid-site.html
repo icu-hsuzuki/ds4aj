@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 10 Our World in Data | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="10.1 概要   10.2 データベース owid: https://ourworldindata.org/  10.3 ダッシュボード SDGs No Poverty   10.4 API  パッケージの公式サイト: https://CRAN.R-project.org/package=owidR...">
+<meta name="description" content="10.1 概要 サイト：https://ourworldindata.org 様々なトピックについてデータからのレポートがあり、そのデータも見ることができるようになっています。さらに、使いやすい API も提供されています。 一番上の帯の Browse by Topic からトピック探すことができます。 Population and Demographic Change　人口動態...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 10 Our World in Data | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/owid-site.html">
-<meta property="og:description" content="10.1 概要   10.2 データベース owid: https://ourworldindata.org/  10.3 ダッシュボード SDGs No Poverty   10.4 API  パッケージの公式サイト: https://CRAN.R-project.org/package=owidR...">
+<meta property="og:description" content="10.1 概要 サイト：https://ourworldindata.org 様々なトピックについてデータからのレポートがあり、そのデータも見ることができるようになっています。さらに、使いやすい API も提供されています。 一番上の帯の Browse by Topic からトピック探すことができます。 Population and Demographic Change　人口動態...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 10 Our World in Data | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="10.1 概要   10.2 データベース owid: https://ourworldindata.org/  10.3 ダッシュボード SDGs No Poverty   10.4 API  パッケージの公式サイト: https://CRAN.R-project.org/package=owidR...">
+<meta name="twitter:description" content="10.1 概要 サイト：https://ourworldindata.org 様々なトピックについてデータからのレポートがあり、そのデータも見ることができるようになっています。さらに、使いやすい API も提供されています。 一番上の帯の Browse by Topic からトピック探すことができます。 Population and Demographic Change　人口動態...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -122,16 +122,78 @@
 <h2>
 <span class="header-section-number">10.1</span> 概要<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E8%A6%81-5"><i class="fas fa-link"></i></a>
 </h2>
+<p>サイト：<a href="https://ourworldindata.org" class="uri">https://ourworldindata.org</a></p>
+<p>様々なトピックについてデータからのレポートがあり、そのデータも見ることができるようになっています。さらに、使いやすい API も提供されています。</p>
+<p>一番上の帯の Browse by Topic からトピック探すことができます。</p>
+<ul>
+<li>
+<p>Population and Demographic Change　人口動態</p>
+<ul>
+<li><p><a href="https://ourworldindata.org/population-growth"><strong>Population Growth</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/age-structure"><strong>Age Structure</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/gender-ratio"><strong>Gender Ratio</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/life-expectancy"><strong>Life Expectancy</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/child-mortality"><strong>Child and Infant Mortality</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/fertility-rate"><strong>Fertility Rate</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/urbanization"><strong>Urbanization</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/migration"><strong>Migration</strong></a></p></li>
+</ul>
+</li>
+<li><p>Health　健康</p></li>
+<li><p>Energy and Environment　エネルギーと環境</p></li>
+<li><p>Food and Agriculture　食料と農業</p></li>
+<li><p>Poverty and Economic Development　貧困と開発経済</p></li>
+<li><p>Education and Knowledge　教育と知識</p></li>
+<li><p>Innovation and Technological Change　技術開発とイノベーション</p></li>
+<li><p>Living Conditions, Community and Wellbeing　生活環境、共同体と幸せ</p></li>
+<li>
+<p>Human Rights and Democracy　人権と民主主義</p>
+<ul>
+<li><p><a href="https://ourworldindata.org/lgbt-rights"><strong>LGBT+ Rights</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/women-rights"><strong>Women's Rights</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/child-labor"><strong>Child Labor</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/human-rights"><strong>Human Rights</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/democracy"><strong>Democracy</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/corruption"><strong>Corruption</strong></a></p></li>
+</ul>
+</li>
+<li>
+<p>Violence and War 暴力と戦争</p>
+<ul>
+<li><p><a href="https://ourworldindata.org/biological-and-chemical-weapons"><strong>Biological and Chemical Weapons</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/war-and-peace"><strong>War and Peace</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/military-personnel-spending"><strong>Military Personnel and Spending</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/terrorism"><strong>Terrorism</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/nuclear-weapons"><strong>Nuclear Weapons</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/violence-against-rights-for-children"><strong>Violence against children and children's rights</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/homicides"><strong>Homicides</strong></a></p></li>
+</ul>
+</li>
+</ul>
+<p>これら以外にも、コロナウイルス感染症や、持続的開発目標（SDGs）についてのサイトなどもあります。</p>
 </div>
-<div id="データベース-3" class="section level2" number="10.2">
+<div id="レポート" class="section level2" number="10.2">
 <h2>
-<span class="header-section-number">10.2</span> データベース<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2</span> レポート<a class="anchor" aria-label="anchor" href="#%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88"><i class="fas fa-link"></i></a>
+</h2>
+<div id="war-and-peace" class="section level3" number="10.2.1">
+<h3>
+<span class="header-section-number">10.2.1</span> <a href="https://ourworldindata.org/war-and-peace">War and Peace</a><a class="anchor" aria-label="anchor" href="#war-and-peace"><i class="fas fa-link"></i></a>
+</h3>
+<p>1945年以降のデータが主ですが、世界の紛争などの死者数などを知ることができます。古いデータも少しだけあります。</p>
+<p>&lt;iframe src=“<a href="https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region%22">https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region”</a> loading=”lazy” style=“width: 100%; height: 600px; border: 0px none;”&gt;&lt;/iframe&gt;</p>
+<p><a href="https://ourworldindata.org/war-and-peace#the-decline-of-wars-between-great-powers" class="uri">https://ourworldindata.org/war-and-peace#the-decline-of-wars-between-great-powers</a></p>
+</div>
+</div>
+<div id="データベース-3" class="section level2" number="10.3">
+<h2>
+<span class="header-section-number">10.3</span> データベース<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9-3"><i class="fas fa-link"></i></a>
 </h2>
 <p>owid: <a href="https://ourworldindata.org/" class="uri">https://ourworldindata.org/</a></p>
 </div>
-<div id="ダッシュボード-3" class="section level2" number="10.3">
+<div id="ダッシュボード-3" class="section level2" number="10.4">
 <h2>
-<span class="header-section-number">10.3</span> ダッシュボード<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4</span> ダッシュボード<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-3"><i class="fas fa-link"></i></a>
 </h2>
 <p>SDGs</p>
 <ol style="list-style-type: decimal">
@@ -140,9 +202,9 @@
 <iframe src="https://ourworldindata.org/grapher/share-of-population-in-extreme-poverty" loading="lazy" style="width: 100%; height: 600px; border: 0px none;">
 </iframe>
 </div>
-<div id="api-3" class="section level2" number="10.4">
+<div id="api-3" class="section level2" number="10.5">
 <h2>
-<span class="header-section-number">10.4</span> API<a class="anchor" aria-label="anchor" href="#api-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.5</span> API<a class="anchor" aria-label="anchor" href="#api-3"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -165,9 +227,12 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#owid-site"><span class="header-section-number">10</span> Our World in Data</a></li>
 <li><a class="nav-link" href="#%E6%A6%82%E8%A6%81-5"><span class="header-section-number">10.1</span> 概要</a></li>
-<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9-3"><span class="header-section-number">10.2</span> データベース</a></li>
-<li><a class="nav-link" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-3"><span class="header-section-number">10.3</span> ダッシュボード</a></li>
-<li><a class="nav-link" href="#api-3"><span class="header-section-number">10.4</span> API</a></li>
+<li>
+<a class="nav-link" href="#%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88"><span class="header-section-number">10.2</span> レポート</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#war-and-peace"><span class="header-section-number">10.2.1</span> War and Peace</a></li></ul>
+</li>
+<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9-3"><span class="header-section-number">10.3</span> データベース</a></li>
+<li><a class="nav-link" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-3"><span class="header-section-number">10.4</span> ダッシュボード</a></li>
+<li><a class="nav-link" href="#api-3"><span class="header-section-number">10.5</span> API</a></li>
 </ul>
 
       <div class="book-extra">
@@ -186,7 +251,7 @@
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-18.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

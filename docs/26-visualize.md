@@ -1,6 +1,20 @@
 # 視覚化（Visualize） {#visualize}
 
-## 準備
+## 基本的なこと
+
+R では、簡単に、グラフを描画できますが、質の高いグラフを作成するには、`ggplot2` パッケージを用いたものが標準となっています。`ggplot2` は、`tidyverse` パッケージの一部ですので、`tidyverse` パッケージをインストール、使えるように、`library(tidyverse)` として読み込んであれば、そのまま使うことができます。
+
+サイト：<https://ggplot2.tidyverse.org> パッケージサイト：<https://CRAN.R-project.org/package=ggplot2>
+
+### ggplot2 概要
+
+> ggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+>
+> ggplot2は、グラフィックスの生成に関する「Grammar of Graphics（グラフィックスの文法）」に基づいて、宣言的にグラフを作成するためのシステムです。データを提供し、変数を視覚的要素にマッピングする方法や、どのようなグラフィカルな基本要素を使用するかをggplot2に伝えると、詳細な部分はggplot2 が処理してくれます。
+
+### 基本的な例
+
+#### `tidyverse` の読み込み
 
 
 ```r
@@ -17,31 +31,57 @@ library(tidyverse)
 #> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
-## 基本的なこと
-
-### ggplot2 概要
-
-ggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
-
-### Examples
-
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy))
-
-ggplot(data = mpg) + 
-  geom_boxplot(mapping = aes(x = class, y = hwy))
-
-### Template
-
-ggplot(data = <DATA>) + 
-  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+`ggplot2` に含まれている、`mpg` データを使って、簡単な、散布図と、箱ひげ図を描いてみます。`mpg` の変数などについては、Help で調べてください。
 
 
-## 準備
+```r
+str(mpg)
+#> tibble [234 × 11] (S3: tbl_df/tbl/data.frame)
+#>  $ manufacturer: chr [1:234] "audi" "audi" "audi" "audi" ...
+#>  $ model       : chr [1:234] "a4" "a4" "a4" "a4" ...
+#>  $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
+#>  $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
+#>  $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...
+#>  $ trans       : chr [1:234] "auto(l5)" "manual(m5)" "manual(m6)" "auto(av)" ...
+#>  $ drv         : chr [1:234] "f" "f" "f" "f" ...
+#>  $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...
+#>  $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...
+#>  $ fl          : chr [1:234] "p" "p" "p" "p" ...
+#>  $ class       : chr [1:234] "compact" "compact" "compact" "compact" ...
+```
+
+
+```r
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+
+
+```r
+ggplot(data = mpg) + geom_boxplot(mapping = aes(x = class, y = hwy))
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+
+1.  `data = mpg` でデータを指定します。
+
+2.  どのようなグラフにするか、幾何関数（Geometric Function）を指定します。散布図では、`geom_pont()` 、箱ひげ図では、`geom_boxplot()` です。
+
+3.  x 軸、y 軸などに対応する変数の写像（mapping）を指定します。
+
+    -   散布図では、`dspl` （displacemnt エンジンの排気量（単位 リットル））を x 軸に、`hwy` 高速道路で１ガロンで走れる距離（単位 マイル）を y 軸に割り当てています。
+
+    -   箱ひげ図では、`class` 車の型式を、x 軸に、`hwy` 高速道路で１ガロンで走れる距離（単位 マイル）を y 軸に割り当てています。
+
+記号的に書くと、下のようになっています。
+
+```{ggplot(data = <DATA>) + <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))}
+```
 
 ### Importing data
 
-Let us assign the `iris` data in the pre-installed package `datasets` to `df_iris`. You can give any name starting from an alphabet, though there are some rules. 
+Let us assign the `iris` data in the pre-installed package `datasets` to `df_iris`. You can give any name starting from an alphabet, though there are some rules.
 
 
 ```r
@@ -59,10 +99,8 @@ class(tbl_iris)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
 
-* `df_iris <- iris` can replace  `df_iris <- datasets::iris` because the package `datasets` is installed and attached as default. Since you may have other data called `iris` included in a different package or you may have changed `iris` before, it is safer to specify the package's name with the data's name.
-* Within R Notebook or in Console, you may get different output, and `tf_iris` and `tbl_iris` behave differently. It is because of the default settings of R Markdown. 
-
-
+-   `df_iris <- iris` can replace `df_iris <- datasets::iris` because the package `datasets` is installed and attached as default. Since you may have other data called `iris` included in a different package or you may have changed `iris` before, it is safer to specify the package's name with the data's name.
+-   Within R Notebook or in Console, you may get different output, and `tf_iris` and `tbl_iris` behave differently. It is because of the default settings of R Markdown.
 
 ### Look at the data
 
@@ -75,13 +113,13 @@ The `View` command opens up a window to show the contents of the data, and you c
 View(df_iris)
 ```
 
-
-The following simple command also shows the data. 
+The following simple command also shows the data.
 
 
 ```r
 df_iris
 ```
+
 
 ```
 #>    Sepal.Length Sepal.Width Petal.Length Petal.Width
@@ -108,7 +146,7 @@ df_iris
 #> 10  setosa
 ```
 
-`%>%` is called a pipe command, and we use it often. 
+`%>%` is called a pipe command, and we use it often.
 
 The output within R Notebook is a tibble style. Try the same command in Console.
 
@@ -145,9 +183,6 @@ slice(df_iris, 1:10)
 #>  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
-
-
-
 #### Data Structure
 
 Let us look at the structure of the data. You can try `str(df_iris)` on Console or by adding a code chunk in R Notebook introducing later.
@@ -166,11 +201,9 @@ glimpse(df_iris)
 
 There are six types of data in R; Double, Integer, Character, Logical, Raw, and Complex. In this course, we use only the first four.
 
-The names after $ are column names. If you call `df_iris$Species`, you have the Species column. Species is in the 5th column, `typeof(df_iris[[5]])` does the same as the next. 
+The names after \$ are column names. If you call `df_iris$Species`, you have the Species column. Species is in the 5th column, `typeof(df_iris[[5]])` does the same as the next.
 
-`df_iris[2,4] = `0.2 is the fourth entry of Sepal.Width.
-
-
+``` df_iris[2,4] = `0.2`` is the fourth entry of Sepal.Width.
 
 
 ```r
@@ -187,8 +220,6 @@ class(df_iris$Species)
 For `factors = fct` see [the R Document](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor) or an explanation in [Factor in R: Categorical Variable & Continuous Variables](https://www.guru99.com/r-factor-categorical-continuous.html).
 
 
-
-
 ```r
 typeof(df_iris$Sepal.Length)
 #> [1] "double"
@@ -196,12 +227,9 @@ class(df_iris$Sepal.Length)
 #> [1] "numeric"
 ```
 
-
 **Q1.** What are the differences of `df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` above?
 
 **Q2.** What are the differences of`df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` in the console?
-
-
 
 #### Summary of the Data
 
@@ -226,25 +254,21 @@ summary(df_iris)
 #>  Max.   :2.500
 ```
 
-Minimum, 1st Quadrant (25%),  Median, Mean, 3rd Quadrant (75%), Maximum, and the count of each factor.
-
-
+Minimum, 1st Quadrant (25%), Median, Mean, 3rd Quadrant (75%), Maximum, and the count of each factor.
 
 ## 散布図（Scatter Plot）
 
-We use `ggplot` to draw graphs. The scatter plot is a projection of data with two variables $x$ and $y$. 
+We use `ggplot` to draw graphs. The scatter plot is a projection of data with two variables $x$ and $y$.
 
-```
+```         
 ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
   geom_point()
 ```
-```
+
+```         
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
 ```
-
-
-
 
 
 ```r
@@ -252,20 +276,17 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-9-1.png" width="672" />
-
-
+<img src="26-visualize_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 ### ラベル [Labels](https://ggplot2.tidyverse.org/reference/labs.html)
 
-Add title and labels adding `labs()`. 
+Add title and labels adding `labs()`.
 
-```
+```         
 ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
   geom_point() +
   labs(title = "Title", x = "Label for x", y = "Label for y")
 ```
-
 
 
 ```r
@@ -274,9 +295,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   labs(title = "Scatter Plot of Sepal Data of Iris", x = "Sepal Length", y = "Sepal Width")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-10-1.png" width="672" />
-
-
+<img src="26-visualize_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 ### 色付き [Colors](https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html)
 
@@ -288,9 +307,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) 
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-11-1.png" width="672" />
-
-
+<img src="26-visualize_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 ### 形状
 
@@ -300,13 +317,11 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, shape = Species)) 
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-12-1.png" width="672" />
-
-
+<img src="26-visualize_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 ## 箱ひげ図 [Boxplot](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)
 
-The boxplot compactly displays the distribution of a continuous variable. 
+The boxplot compactly displays the distribution of a continuous variable.
 
 
 ```r
@@ -314,13 +329,11 @@ ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-13-1.png" width="672" />
-
-
+<img src="26-visualize_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 ##　ヒストグラム [Histogram](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
 
-Visualize the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin. Histograms (geom_histogram()) display the counts with bars. 
+Visualize the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin. Histograms (geom_histogram()) display the counts with bars.
 
 
 ```r
@@ -328,9 +341,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_histogram()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-14-1.png" width="672" />
-
-
+<img src="26-visualize_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 Change the number of bins by `bins =` `<number>`.
 
@@ -340,13 +351,11 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_histogram(bins = 10)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
+## 線形モデル Data Modeling
 
-
-## 線形モデル Data Modeling 
-
-Professor Kaizoji will cover the mathematical models and hypothesis testings. 
+Professor Kaizoji will cover the mathematical models and hypothesis testings.
 
 
 ```r
@@ -355,25 +364,26 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 ## コメント
 
 ### 参考文献
 
-* Cheat Sheet in RStudio: https://www.rstudio.com/resources/cheatsheets/  
-  - [RStudio IED](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf)
-  - [Base R Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf)
-* 'Quick R' by DataCamp: https://www.statmethods.net/management
+-   Cheat Sheet in RStudio: <https://www.rstudio.com/resources/cheatsheets/>
 
-* [An Introduction to R](https://cran.rstudio.com)
+    -   [RStudio IED](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf)
+    -   [Base R Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf)
 
+-   'Quick R' by DataCamp: <https://www.statmethods.net/management>
 
+-   [An Introduction to R](https://cran.rstudio.com)
 
 ## 練習
 
-### Posit Primers https://posit.cloud/learn/primers
+### Posit Primers <https://posit.cloud/learn/primers>
 
-1. The Basics -- [r4ds: Explore, I](https://r4ds.had.co.nz/explore-intro.html#explore-intro)
-  - [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
-  - [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
+1.  The Basics -- [r4ds: Explore, I](https://r4ds.had.co.nz/explore-intro.html#explore-intro)
+
+-   [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+-   [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
