@@ -1,54 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Chapter 15 R の基礎 | データサイエンスをはじめましょう - Data Science for All -</title>
-
-    <meta name="author" content="鈴木寛（Hirosi Suzuki）" />
-  
-   <meta name="description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="Chapter 15 R の基礎 | データサイエンスをはじめましょう - Data Science for All -" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/" />
-  
-  <meta property="og:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 15 R の基礎 | データサイエンスをはじめましょう - Data Science for All -" />
-  
-  <meta name="twitter:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.4.2/transition.js"></script>
-    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
-    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 15 R の基礎 | データサイエンスをはじめましょう - Data Science for All -</title>
+<meta name="author" content="鈴木寛（Hirosi Suzuki）">
+<meta name="description" content="15.1 プロジェクト - Project RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。 まず、R Studio を起動します。 上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 15 R の基礎 | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/rbasics.html">
+<meta property="og:description" content="15.1 プロジェクト - Project RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。 まず、R Studio を起動します。 上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 15 R の基礎 | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="15.1 プロジェクト - Project RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。 まず、R Studio を起動します。 上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-    <style type="text/css">
+<style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -70,20 +44,17 @@ set in the _output.yml file.</p>" />
       margin-left: 2em;
     }
   </style>
-      <link rel="stylesheet" href="style.css" />
-  
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">データサイエンスをはじめましょう<br />
+        <a href="index.html" title="">データサイエンスをはじめましょう<br>
 - Data Science for All -</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -92,24 +63,66 @@ set in the _output.yml file.</p>" />
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">この文書について</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
+<li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
+<li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
+<li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
+<li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
+<li class="book-part">PART I オープンデータ</li>
+<li><a class="" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
+<li><a class="" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
+<li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
+<li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
+<li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
+<li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
+<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
+<li class="book-part">PART II BASICS</li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
+<li><a class="active" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
+<li><a class="" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
+<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
+<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
+<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
+<li class="book-part">PART III INSTITUTIONAL DATA</li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
+<li class="book-part">PART IV EDA</li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
+<li class="book-part">PART V EXAMPLES</li>
+<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
+<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
+<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
+<li><a class="" href="todo-list.html"><span class="header-section-number">D</span> To Do リスト</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="rbasics" class="section level1" number="15">
-<h1><span class="header-section-number">Chapter 15</span> R の基礎</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rbasics" class="section level1" number="15">
+<h1>
+<span class="header-section-number">15</span> R の基礎<a class="anchor" aria-label="anchor" href="#rbasics"><i class="fas fa-link"></i></a>
+</h1>
 <div id="プロジェクト---project" class="section level2" number="15.1">
-<h2><span class="header-section-number">15.1</span> プロジェクト - Project</h2>
+<h2>
+<span class="header-section-number">15.1</span> プロジェクト - Project<a class="anchor" aria-label="anchor" href="#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88---project"><i class="fas fa-link"></i></a>
+</h2>
 <p>RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。</p>
 <ol style="list-style-type: decimal">
 <li><p>まず、R Studio を起動します。</p></li>
@@ -134,10 +147,14 @@ set in the _output.yml file.</p>" />
 </ol>
 </div>
 <div id="コンソールで実行---run-in-console" class="section level2" number="15.2">
-<h2><span class="header-section-number">15.2</span> コンソールで実行 - Run in Console</h2>
+<h2>
+<span class="header-section-number">15.2</span> コンソールで実行 - Run in Console<a class="anchor" aria-label="anchor" href="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%A7%E5%AE%9F%E8%A1%8C---run-in-console"><i class="fas fa-link"></i></a>
+</h2>
 <p>プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console を選択してください。）</p>
 <div id="最初の四つ" class="section level3" number="15.2.1">
-<h3><span class="header-section-number">15.2.1</span> 最初の四つ</h3>
+<h3>
+<span class="header-section-number">15.2.1</span> 最初の四つ<a class="anchor" aria-label="anchor" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E5%9B%9B%E3%81%A4"><i class="fas fa-link"></i></a>
+</h3>
 <p>下の、四つを、一つずつ、一番下の、&gt; マークの次に書き（または、コピー・ペーストして）Return または、Enter キーを押してください。実行結果が、その下に出ます。最後の、<code>plot(cars)</code> は、<code>cars</code> というデータの、散布図が右下の、Plots タブに表示されます。</p>
 <ul>
 <li><code>head(cars)</code></li>
@@ -147,37 +164,43 @@ set in the _output.yml file.</p>" />
 </ul>
 <p>エラーが表示されたら、もう一度、スペルを確認して、入力してみてください。</p>
 <p>次のような、結果が表示されると思います。簡単な説明をつけます。</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="rbasics.html#cb40-1" tabindex="-1"></a><span class="fu">head</span>(cars)</span>
-<span id="cb40-2"><a href="rbasics.html#cb40-2" tabindex="-1"></a><span class="co">#&gt;   speed dist</span></span>
-<span id="cb40-3"><a href="rbasics.html#cb40-3" tabindex="-1"></a><span class="co">#&gt; 1     4    2</span></span>
-<span id="cb40-4"><a href="rbasics.html#cb40-4" tabindex="-1"></a><span class="co">#&gt; 2     4   10</span></span>
-<span id="cb40-5"><a href="rbasics.html#cb40-5" tabindex="-1"></a><span class="co">#&gt; 3     7    4</span></span>
-<span id="cb40-6"><a href="rbasics.html#cb40-6" tabindex="-1"></a><span class="co">#&gt; 4     7   22</span></span>
-<span id="cb40-7"><a href="rbasics.html#cb40-7" tabindex="-1"></a><span class="co">#&gt; 5     8   16</span></span>
-<span id="cb40-8"><a href="rbasics.html#cb40-8" tabindex="-1"></a><span class="co">#&gt; 6     9   10</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   speed dist</span></span>
+<span><span class="co">#&gt; 1     4    2</span></span>
+<span><span class="co">#&gt; 2     4   10</span></span>
+<span><span class="co">#&gt; 3     7    4</span></span>
+<span><span class="co">#&gt; 4     7   22</span></span>
+<span><span class="co">#&gt; 5     8   16</span></span>
+<span><span class="co">#&gt; 6     9   10</span></span></code></pre></div>
 <p><code>head(cars)</code> は、<code>cars</code> という、R に付属している、データの、最初（頭 head）の6行を、表示します。</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="rbasics.html#cb41-1" tabindex="-1"></a><span class="fu">str</span>(cars)</span>
-<span id="cb41-2"><a href="rbasics.html#cb41-2" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    50 obs. of  2 variables:</span></span>
-<span id="cb41-3"><a href="rbasics.html#cb41-3" tabindex="-1"></a><span class="co">#&gt;  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...</span></span>
-<span id="cb41-4"><a href="rbasics.html#cb41-4" tabindex="-1"></a><span class="co">#&gt;  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    50 obs. of  2 variables:</span></span>
+<span><span class="co">#&gt;  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...</span></span>
+<span><span class="co">#&gt;  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</span></span></code></pre></div>
 <p><code>str(cars)</code> は、<code>cars</code> という、R に付属している、データの構造（structure）を表示します。<code>data.frame</code> とありますが、これは、矩形になったデータ（各列の長さがおなじ）の一番簡単なクラスの名前で、2変数、それぞれが、50 個の数値データ（numerical data） からなっていることがわかります。</p>
 <p><code>head(cars)</code> では、縦に表示されていたものが、横に表示されています。<code>$speed</code>、<code>$dist</code> とありますが、<code>cars$speed</code>, <code>cars$dist</code> は、<code>cars</code> データの、それぞれの列を意味します。</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="rbasics.html#cb42-1" tabindex="-1"></a><span class="fu">summary</span>(cars)</span>
-<span id="cb42-2"><a href="rbasics.html#cb42-2" tabindex="-1"></a><span class="co">#&gt;      speed           dist       </span></span>
-<span id="cb42-3"><a href="rbasics.html#cb42-3" tabindex="-1"></a><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span id="cb42-4"><a href="rbasics.html#cb42-4" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span id="cb42-5"><a href="rbasics.html#cb42-5" tabindex="-1"></a><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
-<span id="cb42-6"><a href="rbasics.html#cb42-6" tabindex="-1"></a><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
-<span id="cb42-7"><a href="rbasics.html#cb42-7" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span id="cb42-8"><a href="rbasics.html#cb42-8" tabindex="-1"></a><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      speed           dist       </span></span>
+<span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
+<span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
+<span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
+<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
 <p><code>cars</code> データの概要（summary）が表示されます。各列（変数）について、最小値（Minimum）、小さい方から、4分の1を切り捨てたときの最小の値（1st Quadrant）、中央値（Median）、平均（Mean）、大きい方から、4分の1を切り捨てたときの最大の値（3rd Quadrant）、最大値（Maximum）が表示されます。</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="rbasics.html#cb43-1" tabindex="-1"></a><span class="fu">plot</span>(cars)</span></code></pre></div>
-<p><img src="23-rbasics_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
 <p>右下の、窓枠の、Plots に、上のグラフ（散布図）が表示されると思います。Export と書いてある、プルダウンメニューがあり、そこから、画像として保存することも、可能です。</p>
 <p>以前は、このように取り出した画像を、Word などに貼り付けて、使っていました。現在でも、そのような方法を知っていることは有効だと思います。</p>
 </div>
 <div id="アサインメントヘルプ" class="section level3" number="15.2.2">
-<h3><span class="header-section-number">15.2.2</span> アサインメント、ヘルプ</h3>
+<h3>
+<span class="header-section-number">15.2.2</span> アサインメント、ヘルプ<a class="anchor" aria-label="anchor" href="#%E3%82%A2%E3%82%B5%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%83%98%E3%83%AB%E3%83%97"><i class="fas fa-link"></i></a>
+</h3>
 <p>コンソールで次のそれぞれを、試してみてください。</p>
 <ul>
 <li><code>df &lt;- cars</code></li>
@@ -192,26 +215,28 @@ set in the _output.yml file.</p>" />
 </ul>
 <p>左上の、窓枠が開き、<code>cars</code> というデータ の内容が表示されます。列名のところには、三角形も表示され、それを用いると、大きい順、小さい順などに、並び替えることも可能です。また、フィルター機能も使えます。</p>
 <ul>
-<li><code>?cars</code></li>
+<li><code><a href="https://rdrr.io/r/datasets/cars.html">?cars</a></code></li>
 </ul>
 <p>右下の、窓枠の　Help タブに、<code>cars</code> の情報が表示されます。Help タブにある、虫眼鏡がついた、検索窓（search window）に、<code>cars</code> といれても、同じ結果が得られます。
 内容を確認してください。</p>
 <p>一番上には <code>cars {datasets}</code> とありますが、これは、<code>datasets</code> というパッケージの、<code>cars</code> だという意味です。そこで、<code>datasets</code> を調べてみましょう。</p>
 <ul>
-<li><code>?datasets</code></li>
+<li><code><a href="https://rdrr.io/r/datasets/datasets-package.html">?datasets</a></code></li>
 </ul>
 <p>“The R Datasets Package” だと書かれていて、さらに、</p>
 <p>This package contains a variety of datasets. For a complete list, use library(help = “datasets”).</p>
-<p>さまざまなデータが含まれています。全てのリストをみるには、<code>library(help = "datasets")</code> を使ってください。</p>
-<p>とありますから、<code>library(help = "datasets")</code> をコンソールに入力してみてください。</p>
+<p>さまざまなデータが含まれています。全てのリストをみるには、<code><a href="https://rdrr.io/r/base/library.html">library(help = "datasets")</a></code> を使ってください。</p>
+<p>とありますから、<code><a href="https://rdrr.io/r/base/library.html">library(help = "datasets")</a></code> をコンソールに入力してみてください。</p>
 <ul>
-<li><code>library(help = "datasets")</code></li>
+<li><code><a href="https://rdrr.io/r/base/library.html">library(help = "datasets")</a></code></li>
 </ul>
 <p>左上の窓枠に、リストが表示されます。古いデータばかりですが、例として使うには、十分すぎるぐらいの、数のデータがあります。これらは、Toy Data（おもちゃのデータ）と呼ばれることもあります。</p>
 <p><code>cars</code> も見つかりましたか。</p>
 </div>
 <div id="おすすめ" class="section level3" number="15.2.3">
-<h3><span class="header-section-number">15.2.3</span> おすすめ</h3>
+<h3>
+<span class="header-section-number">15.2.3</span> おすすめ<a class="anchor" aria-label="anchor" href="#%E3%81%8A%E3%81%99%E3%81%99%E3%82%81"><i class="fas fa-link"></i></a>
+</h3>
 <p>コンピュータのシステムが、日本語であると、R の言語も日本語になっているはずです。そこで、エラーが発生すると、一部、日本語で表示されます。しかし、ネット上などで、そのエラーの対応を検索するときは、英語のエラーメッセージで検索した方が、解決方法が得られる可能性が圧倒的に高いので、わたしは、英語に設定しています。英語にするには、Console で次のようにします。</p>
 <p>言語を英語に設定：<code>Sys.setenv(LANG = "en")</code></p>
 <p>RStudio を終了して、もう一度起動すると、日本語に戻っていると思います。ですから、作業の最初、または、エラーが出たら、変更することをお勧めします。</p>
@@ -220,366 +245,397 @@ set in the _output.yml file.</p>" />
 <p>さまざまな Help なども、すべて日本語で表示されれば日本語を使うのは有効かもしれませんが、すくなくとも、現在は、そうではないので、上に説明したことから、英語に設定することをお勧めします。</p>
 </div>
 <div id="練習-1" class="section level3" number="15.2.4">
-<h3><span class="header-section-number">15.2.4</span> 練習</h3>
+<h3>
+<span class="header-section-number">15.2.4</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-1"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
-<li><code>head(cars, 10L)</code> は何が出力されますか。<code>head(cars, n=10L)</code> と同じですか。</li>
-<li><code>?head</code> または、Help の検索窓に <code>head</code> と入力して、説明を見てみてください。<code>head(cars, n=10L)</code> などについて、書いてありましたか。他には、どのようなことが分かりましたか。</li>
-<li><code>datasets</code> のデータのいくつかについて、そのデータの help や、<code>head</code>, <code>str</code>, <code>summary</code> などを使ってみてください。これらで表示できない場合はありますか。データについては、最初に、これら、三つを試してみることをお勧めします。わかったことをメモしておくと良いでしょう。<code>datasets</code> のリストをみるには、<code>library(help = "datasets")</code> でしたね。</li>
+<li>
+<code>head(cars, 10L)</code> は何が出力されますか。<code>head(cars, n=10L)</code> と同じですか。</li>
+<li>
+<code><a href="https://rdrr.io/r/utils/head.html">?head</a></code> または、Help の検索窓に <code>head</code> と入力して、説明を見てみてください。<code>head(cars, n=10L)</code> などについて、書いてありましたか。他には、どのようなことが分かりましたか。</li>
+<li>
+<code>datasets</code> のデータのいくつかについて、そのデータの help や、<code>head</code>, <code>str</code>, <code>summary</code> などを使ってみてください。これらで表示できない場合はありますか。データについては、最初に、これら、三つを試してみることをお勧めします。わかったことをメモしておくと良いでしょう。<code>datasets</code> のリストをみるには、<code><a href="https://rdrr.io/r/base/library.html">library(help = "datasets")</a></code> でしたね。</li>
 </ol>
 </div>
 </div>
 <div id="rstudio-について" class="section level2" number="15.3">
-<h2><span class="header-section-number">15.3</span> RStudio について</h2>
+<h2>
+<span class="header-section-number">15.3</span> RStudio について<a class="anchor" aria-label="anchor" href="#rstudio-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
+</h2>
 <p>RStudio は多くの機能を持っています。</p>
 <div id="四つの窓枠とタブ-four-panes-and-tabs" class="section level3" number="15.3.1">
-<h3><span class="header-section-number">15.3.1</span> 四つの窓枠とタブ Four Panes and Tabs</h3>
+<h3>
+<span class="header-section-number">15.3.1</span> 四つの窓枠とタブ Four Panes and Tabs<a class="anchor" aria-label="anchor" href="#%E5%9B%9B%E3%81%A4%E3%81%AE%E7%AA%93%E6%9E%A0%E3%81%A8%E3%82%BF%E3%83%96-four-panes-and-tabs"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
 <li>左上（Top Left）: スクリプトや文書、データなどの編集（Source Editor）</li>
 <li>右上（Top Right）: 環境変数（Environment）, 履歴（History） など（etc.）</li>
 <li>左下（Bottom Left）: コードの実行・実行結果などを表示するコンソール（Console）, コンピュータシステムの端末（Terminal）, 文書の機械語翻訳（Render）, 背後での作業（Background Jobs）</li>
-<li>右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>）</li>
+<li>右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Viewerへの表示を使っており、Presentationへの表示を使っておらず不明&lt;/p&gt;"><sup>18</sup></a>）</li>
 </ul>
 </div>
 </div>
 <div id="r-script-実行記録" class="section level2" number="15.4">
-<h2><span class="header-section-number">15.4</span> R Script 実行記録</h2>
+<h2>
+<span class="header-section-number">15.4</span> R Script 実行記録<a class="anchor" aria-label="anchor" href="#r-script-%E5%AE%9F%E8%A1%8C%E8%A8%98%E9%8C%B2"><i class="fas fa-link"></i></a>
+</h2>
 <p>R Script を使って、コードを実行すると、その記録を残すことができます。</p>
 <div id="r-script-の作成" class="section level3" number="15.4.1">
-<h3><span class="header-section-number">15.4.1</span> R Script の作成</h3>
+<h3>
+<span class="header-section-number">15.4.1</span> R Script の作成<a class="anchor" aria-label="anchor" href="#r-script-%E3%81%AE%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
 <li>RStudio の上のメニュー・バーからFile &gt; New File &gt; R Script を選択します。</li>
 <li>File &gt; Save As で、名前をつけて保存します。{file_name}.R が作成されます。
 <ul>
 <li>右下の、Files から、ファイルを確認してください。</li>
-</ul></li>
-<li><code>head(cars)</code>, <code>str(cars)</code>, <code>summary(cars)</code>, <code>plot(cars)</code> などと改行をしながらコードを書きます。</li>
+</ul>
+</li>
+<li>
+<code>head(cars)</code>, <code>str(cars)</code>, <code>summary(cars)</code>, <code>plot(cars)</code> などと改行をしながらコードを書きます。</li>
 <li>実行するには、カーソルの場所で Ctrl+Shift+Enter (Win) または Cmd+Shift+Enter (Mac) とすると、カーソルのある行か、その下の行で、最初のコードが実行されます。
 <ul>
 <li>R Script エディターの上にある、Run ボタンを押しても、同様に実行されます。</li>
 <li>Run ボタンの右の、Source ボタンを押すと、そのスクリプトの、最初からすべてが実行されます。</li>
-</ul></li>
+</ul>
+</li>
 <li>最後には保存しておきましょう。たとえば、<code>myfirstscript</code> などとすると、File のところに、<code>myfirstscript.R</code> というファイルができていることを確認できます。</li>
 </ul>
 </div>
 <div id="r-script-による実行" class="section level3" number="15.4.2">
-<h3><span class="header-section-number">15.4.2</span> R Script による実行</h3>
+<h3>
+<span class="header-section-number">15.4.2</span> R Script による実行<a class="anchor" aria-label="anchor" href="#r-script-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9F%E8%A1%8C"><i class="fas fa-link"></i></a>
+</h3>
 <p>新しく、R Script を作成し、この下の、コード（ハイライトされている部分）をコピー・ペーストして、保存し、実行してみてください。</p>
 <p>それぞれ、どのようなことをしているでしょうか。</p>
 <div id="スクリプト1-basics.r" class="section level4" number="15.4.2.1">
-<h4><span class="header-section-number">15.4.2.1</span> スクリプト1: <code>basics.R</code></h4>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="rbasics.html#cb44-1" tabindex="-1"></a><span class="do">#################</span></span>
-<span id="cb44-2"><a href="rbasics.html#cb44-2" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb44-3"><a href="rbasics.html#cb44-3" tabindex="-1"></a><span class="co"># basics.R</span></span>
-<span id="cb44-4"><a href="rbasics.html#cb44-4" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb44-5"><a href="rbasics.html#cb44-5" tabindex="-1"></a><span class="do">################</span></span>
-<span id="cb44-6"><a href="rbasics.html#cb44-6" tabindex="-1"></a><span class="co"># &#39;Quick R&#39; by DataCamp may be a handy reference: </span></span>
-<span id="cb44-7"><a href="rbasics.html#cb44-7" tabindex="-1"></a><span class="co">#     https://www.statmethods.net/management/index.html</span></span>
-<span id="cb44-8"><a href="rbasics.html#cb44-8" tabindex="-1"></a><span class="co"># Cheat Sheet at RStudio: https://www.rstudio.com/resources/cheatsheets/</span></span>
-<span id="cb44-9"><a href="rbasics.html#cb44-9" tabindex="-1"></a><span class="co"># Base R Cheat Sheet: https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf</span></span>
-<span id="cb44-10"><a href="rbasics.html#cb44-10" tabindex="-1"></a><span class="co"># To execute the line: Control + Enter (Window and Linux), Command + Enter (Mac)</span></span>
-<span id="cb44-11"><a href="rbasics.html#cb44-11" tabindex="-1"></a><span class="do">## try your experiments on the console</span></span>
-<span id="cb44-12"><a href="rbasics.html#cb44-12" tabindex="-1"></a></span>
-<span id="cb44-13"><a href="rbasics.html#cb44-13" tabindex="-1"></a><span class="do">## calculator</span></span>
-<span id="cb44-14"><a href="rbasics.html#cb44-14" tabindex="-1"></a></span>
-<span id="cb44-15"><a href="rbasics.html#cb44-15" tabindex="-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">7</span></span>
-<span id="cb44-16"><a href="rbasics.html#cb44-16" tabindex="-1"></a></span>
-<span id="cb44-17"><a href="rbasics.html#cb44-17" tabindex="-1"></a><span class="do">### +, -, *, /, ^ (or **), %%, %/%</span></span>
-<span id="cb44-18"><a href="rbasics.html#cb44-18" tabindex="-1"></a></span>
-<span id="cb44-19"><a href="rbasics.html#cb44-19" tabindex="-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb44-20"><a href="rbasics.html#cb44-20" tabindex="-1"></a></span>
-<span id="cb44-21"><a href="rbasics.html#cb44-21" tabindex="-1"></a><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb44-22"><a href="rbasics.html#cb44-22" tabindex="-1"></a></span>
-<span id="cb44-23"><a href="rbasics.html#cb44-23" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span>
-<span id="cb44-24"><a href="rbasics.html#cb44-24" tabindex="-1"></a></span>
-<span id="cb44-25"><a href="rbasics.html#cb44-25" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span></span>
-<span id="cb44-26"><a href="rbasics.html#cb44-26" tabindex="-1"></a></span>
-<span id="cb44-27"><a href="rbasics.html#cb44-27" tabindex="-1"></a><span class="do">### assignment: &lt;-, (=, -&gt;, assign()) </span></span>
-<span id="cb44-28"><a href="rbasics.html#cb44-28" tabindex="-1"></a></span>
-<span id="cb44-29"><a href="rbasics.html#cb44-29" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb44-30"><a href="rbasics.html#cb44-30" tabindex="-1"></a></span>
-<span id="cb44-31"><a href="rbasics.html#cb44-31" tabindex="-1"></a>x </span>
-<span id="cb44-32"><a href="rbasics.html#cb44-32" tabindex="-1"></a></span>
-<span id="cb44-33"><a href="rbasics.html#cb44-33" tabindex="-1"></a><span class="do">#### object_name &lt;- value, &#39;&lt;-&#39; shortcut: Alt (option) + &#39;-&#39; (hyphen or minus) </span></span>
-<span id="cb44-34"><a href="rbasics.html#cb44-34" tabindex="-1"></a><span class="do">#### Object names must start with a letter and can only contain letter, numbers, _ and .</span></span>
-<span id="cb44-35"><a href="rbasics.html#cb44-35" tabindex="-1"></a></span>
-<span id="cb44-36"><a href="rbasics.html#cb44-36" tabindex="-1"></a>this_is_a_long_name <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">^</span><span class="dv">3</span></span>
-<span id="cb44-37"><a href="rbasics.html#cb44-37" tabindex="-1"></a></span>
-<span id="cb44-38"><a href="rbasics.html#cb44-38" tabindex="-1"></a>this_is_a_long_name</span>
-<span id="cb44-39"><a href="rbasics.html#cb44-39" tabindex="-1"></a></span>
-<span id="cb44-40"><a href="rbasics.html#cb44-40" tabindex="-1"></a>char_name <span class="ot">&lt;-</span> <span class="st">&quot;What is your name?&quot;</span></span>
-<span id="cb44-41"><a href="rbasics.html#cb44-41" tabindex="-1"></a></span>
-<span id="cb44-42"><a href="rbasics.html#cb44-42" tabindex="-1"></a>char_name</span>
-<span id="cb44-43"><a href="rbasics.html#cb44-43" tabindex="-1"></a></span>
-<span id="cb44-44"><a href="rbasics.html#cb44-44" tabindex="-1"></a><span class="do">#### Use &#39;tab completion&#39; and &#39;up arrow&#39;</span></span>
-<span id="cb44-45"><a href="rbasics.html#cb44-45" tabindex="-1"></a></span>
-<span id="cb44-46"><a href="rbasics.html#cb44-46" tabindex="-1"></a><span class="do">### ls(): list of all assignments</span></span>
-<span id="cb44-47"><a href="rbasics.html#cb44-47" tabindex="-1"></a></span>
-<span id="cb44-48"><a href="rbasics.html#cb44-48" tabindex="-1"></a><span class="fu">ls</span>()</span>
-<span id="cb44-49"><a href="rbasics.html#cb44-49" tabindex="-1"></a><span class="fu">ls.str</span>()</span>
-<span id="cb44-50"><a href="rbasics.html#cb44-50" tabindex="-1"></a></span>
-<span id="cb44-51"><a href="rbasics.html#cb44-51" tabindex="-1"></a><span class="do">#### check Environment in the upper right pane</span></span>
-<span id="cb44-52"><a href="rbasics.html#cb44-52" tabindex="-1"></a></span>
-<span id="cb44-53"><a href="rbasics.html#cb44-53" tabindex="-1"></a><span class="do">### (atomic) vectors</span></span>
-<span id="cb44-54"><a href="rbasics.html#cb44-54" tabindex="-1"></a></span>
-<span id="cb44-55"><a href="rbasics.html#cb44-55" tabindex="-1"></a><span class="dv">5</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb44-56"><a href="rbasics.html#cb44-56" tabindex="-1"></a></span>
-<span id="cb44-57"><a href="rbasics.html#cb44-57" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">5</span>,<span class="dv">10</span>)</span>
-<span id="cb44-58"><a href="rbasics.html#cb44-58" tabindex="-1"></a></span>
-<span id="cb44-59"><a href="rbasics.html#cb44-59" tabindex="-1"></a>a</span>
-<span id="cb44-60"><a href="rbasics.html#cb44-60" tabindex="-1"></a></span>
-<span id="cb44-61"><a href="rbasics.html#cb44-61" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb44-62"><a href="rbasics.html#cb44-62" tabindex="-1"></a></span>
-<span id="cb44-63"><a href="rbasics.html#cb44-63" tabindex="-1"></a><span class="fu">identical</span>(a,b)</span>
-<span id="cb44-64"><a href="rbasics.html#cb44-64" tabindex="-1"></a></span>
-<span id="cb44-65"><a href="rbasics.html#cb44-65" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">2</span>) <span class="co"># same as seq(from = 5, to = 10, by = 2)</span></span>
-<span id="cb44-66"><a href="rbasics.html#cb44-66" tabindex="-1"></a></span>
-<span id="cb44-67"><a href="rbasics.html#cb44-67" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>)</span>
-<span id="cb44-68"><a href="rbasics.html#cb44-68" tabindex="-1"></a></span>
-<span id="cb44-69"><a href="rbasics.html#cb44-69" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="at">length.out =</span> <span class="dv">10</span>)</span>
-<span id="cb44-70"><a href="rbasics.html#cb44-70" tabindex="-1"></a></span>
-<span id="cb44-71"><a href="rbasics.html#cb44-71" tabindex="-1"></a>c1</span>
-<span id="cb44-72"><a href="rbasics.html#cb44-72" tabindex="-1"></a></span>
-<span id="cb44-73"><a href="rbasics.html#cb44-73" tabindex="-1"></a>c2</span>
-<span id="cb44-74"><a href="rbasics.html#cb44-74" tabindex="-1"></a></span>
-<span id="cb44-75"><a href="rbasics.html#cb44-75" tabindex="-1"></a><span class="fu">length</span>(c1)</span>
-<span id="cb44-76"><a href="rbasics.html#cb44-76" tabindex="-1"></a></span>
-<span id="cb44-77"><a href="rbasics.html#cb44-77" tabindex="-1"></a><span class="do">#### ? seq   ? length   ? identical</span></span>
-<span id="cb44-78"><a href="rbasics.html#cb44-78" tabindex="-1"></a></span>
-<span id="cb44-79"><a href="rbasics.html#cb44-79" tabindex="-1"></a>(die <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
-<span id="cb44-80"><a href="rbasics.html#cb44-80" tabindex="-1"></a></span>
-<span id="cb44-81"><a href="rbasics.html#cb44-81" tabindex="-1"></a>zero_one <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># same as 0:1</span></span>
-<span id="cb44-82"><a href="rbasics.html#cb44-82" tabindex="-1"></a></span>
-<span id="cb44-83"><a href="rbasics.html#cb44-83" tabindex="-1"></a>die <span class="sc">+</span> zero_one <span class="co"># c(1,2,3,4,5,6) + c(0,1). re-use</span></span>
-<span id="cb44-84"><a href="rbasics.html#cb44-84" tabindex="-1"></a></span>
-<span id="cb44-85"><a href="rbasics.html#cb44-85" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">2</span>) <span class="co"># repeat</span></span>
-<span id="cb44-86"><a href="rbasics.html#cb44-86" tabindex="-1"></a></span>
-<span id="cb44-87"><a href="rbasics.html#cb44-87" tabindex="-1"></a></span>
-<span id="cb44-88"><a href="rbasics.html#cb44-88" tabindex="-1"></a>d1</span>
-<span id="cb44-89"><a href="rbasics.html#cb44-89" tabindex="-1"></a></span>
-<span id="cb44-90"><a href="rbasics.html#cb44-90" tabindex="-1"></a>die <span class="sc">==</span> d1</span>
-<span id="cb44-91"><a href="rbasics.html#cb44-91" tabindex="-1"></a></span>
-<span id="cb44-92"><a href="rbasics.html#cb44-92" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(die <span class="sc">==</span> d1)</span>
-<span id="cb44-93"><a href="rbasics.html#cb44-93" tabindex="-1"></a></span>
-<span id="cb44-94"><a href="rbasics.html#cb44-94" tabindex="-1"></a>d2</span>
-<span id="cb44-95"><a href="rbasics.html#cb44-95" tabindex="-1"></a></span>
-<span id="cb44-96"><a href="rbasics.html#cb44-96" tabindex="-1"></a>d3 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(die <span class="sc">==</span> d1)</span>
-<span id="cb44-97"><a href="rbasics.html#cb44-97" tabindex="-1"></a></span>
-<span id="cb44-98"><a href="rbasics.html#cb44-98" tabindex="-1"></a>d3</span>
-<span id="cb44-99"><a href="rbasics.html#cb44-99" tabindex="-1"></a></span>
-<span id="cb44-100"><a href="rbasics.html#cb44-100" tabindex="-1"></a><span class="do">### class() for class and typeof() for mode</span></span>
-<span id="cb44-101"><a href="rbasics.html#cb44-101" tabindex="-1"></a><span class="do">### class of vectors: numeric, charcters, logical</span></span>
-<span id="cb44-102"><a href="rbasics.html#cb44-102" tabindex="-1"></a><span class="do">### types of vectors: doubles, integers, characters, logicals (complex and raw)</span></span>
-<span id="cb44-103"><a href="rbasics.html#cb44-103" tabindex="-1"></a></span>
-<span id="cb44-104"><a href="rbasics.html#cb44-104" tabindex="-1"></a><span class="fu">typeof</span>(d1); <span class="fu">class</span>(d1)</span>
-<span id="cb44-105"><a href="rbasics.html#cb44-105" tabindex="-1"></a></span>
-<span id="cb44-106"><a href="rbasics.html#cb44-106" tabindex="-1"></a><span class="fu">typeof</span>(d2); <span class="fu">class</span>(d2)</span>
-<span id="cb44-107"><a href="rbasics.html#cb44-107" tabindex="-1"></a></span>
-<span id="cb44-108"><a href="rbasics.html#cb44-108" tabindex="-1"></a><span class="fu">typeof</span>(d3); <span class="fu">class</span>(d3)</span>
-<span id="cb44-109"><a href="rbasics.html#cb44-109" tabindex="-1"></a></span>
-<span id="cb44-110"><a href="rbasics.html#cb44-110" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)</span>
-<span id="cb44-111"><a href="rbasics.html#cb44-111" tabindex="-1"></a></span>
-<span id="cb44-112"><a href="rbasics.html#cb44-112" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb44-113"><a href="rbasics.html#cb44-113" tabindex="-1"></a></span>
-<span id="cb44-114"><a href="rbasics.html#cb44-114" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">2</span></span>
-<span id="cb44-115"><a href="rbasics.html#cb44-115" tabindex="-1"></a></span>
-<span id="cb44-116"><a href="rbasics.html#cb44-116" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">sqrt</span>(<span class="dv">2</span>))</span>
-<span id="cb44-117"><a href="rbasics.html#cb44-117" tabindex="-1"></a></span>
-<span id="cb44-118"><a href="rbasics.html#cb44-118" tabindex="-1"></a><span class="fu">typeof</span>(<span class="dv">2</span>)</span>
-<span id="cb44-119"><a href="rbasics.html#cb44-119" tabindex="-1"></a></span>
-<span id="cb44-120"><a href="rbasics.html#cb44-120" tabindex="-1"></a><span class="fu">typeof</span>(2L)</span>
-<span id="cb44-121"><a href="rbasics.html#cb44-121" tabindex="-1"></a></span>
-<span id="cb44-122"><a href="rbasics.html#cb44-122" tabindex="-1"></a><span class="dv">5</span> <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">5</span>)</span>
-<span id="cb44-123"><a href="rbasics.html#cb44-123" tabindex="-1"></a></span>
-<span id="cb44-124"><a href="rbasics.html#cb44-124" tabindex="-1"></a><span class="fu">length</span>(<span class="dv">5</span>)</span>
-<span id="cb44-125"><a href="rbasics.html#cb44-125" tabindex="-1"></a></span>
-<span id="cb44-126"><a href="rbasics.html#cb44-126" tabindex="-1"></a><span class="do">### Subsetting</span></span>
-<span id="cb44-127"><a href="rbasics.html#cb44-127" tabindex="-1"></a></span>
-<span id="cb44-128"><a href="rbasics.html#cb44-128" tabindex="-1"></a>(A_Z <span class="ot">&lt;-</span> LETTERS)</span>
-<span id="cb44-129"><a href="rbasics.html#cb44-129" tabindex="-1"></a></span>
-<span id="cb44-130"><a href="rbasics.html#cb44-130" tabindex="-1"></a>A_F <span class="ot">&lt;-</span> A_Z[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span>
-<span id="cb44-131"><a href="rbasics.html#cb44-131" tabindex="-1"></a></span>
-<span id="cb44-132"><a href="rbasics.html#cb44-132" tabindex="-1"></a>A_F</span>
-<span id="cb44-133"><a href="rbasics.html#cb44-133" tabindex="-1"></a></span>
-<span id="cb44-134"><a href="rbasics.html#cb44-134" tabindex="-1"></a>A_F[<span class="dv">3</span>]</span>
-<span id="cb44-135"><a href="rbasics.html#cb44-135" tabindex="-1"></a></span>
-<span id="cb44-136"><a href="rbasics.html#cb44-136" tabindex="-1"></a>A_F[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>)]</span>
-<span id="cb44-137"><a href="rbasics.html#cb44-137" tabindex="-1"></a></span>
-<span id="cb44-138"><a href="rbasics.html#cb44-138" tabindex="-1"></a>large <span class="ot">&lt;-</span> die <span class="sc">&gt;</span> <span class="dv">3</span></span>
-<span id="cb44-139"><a href="rbasics.html#cb44-139" tabindex="-1"></a></span>
-<span id="cb44-140"><a href="rbasics.html#cb44-140" tabindex="-1"></a>large</span>
-<span id="cb44-141"><a href="rbasics.html#cb44-141" tabindex="-1"></a></span>
-<span id="cb44-142"><a href="rbasics.html#cb44-142" tabindex="-1"></a>even <span class="ot">&lt;-</span> die <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
-<span id="cb44-143"><a href="rbasics.html#cb44-143" tabindex="-1"></a></span>
-<span id="cb44-144"><a href="rbasics.html#cb44-144" tabindex="-1"></a>even</span>
-<span id="cb44-145"><a href="rbasics.html#cb44-145" tabindex="-1"></a></span>
-<span id="cb44-146"><a href="rbasics.html#cb44-146" tabindex="-1"></a>A_F[large]</span>
-<span id="cb44-147"><a href="rbasics.html#cb44-147" tabindex="-1"></a></span>
-<span id="cb44-148"><a href="rbasics.html#cb44-148" tabindex="-1"></a>A_F[even]</span>
-<span id="cb44-149"><a href="rbasics.html#cb44-149" tabindex="-1"></a></span>
-<span id="cb44-150"><a href="rbasics.html#cb44-150" tabindex="-1"></a>A_F[die <span class="sc">&lt;</span> <span class="dv">4</span>]</span>
-<span id="cb44-151"><a href="rbasics.html#cb44-151" tabindex="-1"></a></span>
-<span id="cb44-152"><a href="rbasics.html#cb44-152" tabindex="-1"></a><span class="do">### Compare df with df1 &lt;- data.frame(number = die, alphabet = A_F)</span></span>
-<span id="cb44-153"><a href="rbasics.html#cb44-153" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">number =</span> die, <span class="at">alphabet =</span> A_F, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb44-154"><a href="rbasics.html#cb44-154" tabindex="-1"></a></span>
-<span id="cb44-155"><a href="rbasics.html#cb44-155" tabindex="-1"></a>df</span>
-<span id="cb44-156"><a href="rbasics.html#cb44-156" tabindex="-1"></a></span>
-<span id="cb44-157"><a href="rbasics.html#cb44-157" tabindex="-1"></a>df<span class="sc">$</span>number</span>
-<span id="cb44-158"><a href="rbasics.html#cb44-158" tabindex="-1"></a></span>
-<span id="cb44-159"><a href="rbasics.html#cb44-159" tabindex="-1"></a>df<span class="sc">$</span>alphabet</span>
-<span id="cb44-160"><a href="rbasics.html#cb44-160" tabindex="-1"></a></span>
-<span id="cb44-161"><a href="rbasics.html#cb44-161" tabindex="-1"></a>df[<span class="dv">3</span>,<span class="dv">2</span>]</span>
-<span id="cb44-162"><a href="rbasics.html#cb44-162" tabindex="-1"></a></span>
-<span id="cb44-163"><a href="rbasics.html#cb44-163" tabindex="-1"></a>df[<span class="dv">4</span>,<span class="dv">1</span>]</span>
-<span id="cb44-164"><a href="rbasics.html#cb44-164" tabindex="-1"></a></span>
-<span id="cb44-165"><a href="rbasics.html#cb44-165" tabindex="-1"></a>df[<span class="dv">1</span>]</span>
-<span id="cb44-166"><a href="rbasics.html#cb44-166" tabindex="-1"></a></span>
-<span id="cb44-167"><a href="rbasics.html#cb44-167" tabindex="-1"></a><span class="fu">class</span>(df[<span class="dv">1</span>])</span>
-<span id="cb44-168"><a href="rbasics.html#cb44-168" tabindex="-1"></a></span>
-<span id="cb44-169"><a href="rbasics.html#cb44-169" tabindex="-1"></a><span class="fu">class</span>(df[[<span class="dv">1</span>]])</span>
-<span id="cb44-170"><a href="rbasics.html#cb44-170" tabindex="-1"></a></span>
-<span id="cb44-171"><a href="rbasics.html#cb44-171" tabindex="-1"></a><span class="fu">identical</span>(df[[<span class="dv">1</span>]], die)</span>
-<span id="cb44-172"><a href="rbasics.html#cb44-172" tabindex="-1"></a></span>
-<span id="cb44-173"><a href="rbasics.html#cb44-173" tabindex="-1"></a><span class="fu">identical</span>(df[<span class="dv">1</span>],die)</span>
-<span id="cb44-174"><a href="rbasics.html#cb44-174" tabindex="-1"></a></span>
-<span id="cb44-175"><a href="rbasics.html#cb44-175" tabindex="-1"></a><span class="do">####################</span></span>
-<span id="cb44-176"><a href="rbasics.html#cb44-176" tabindex="-1"></a><span class="co"># The First Example</span></span>
-<span id="cb44-177"><a href="rbasics.html#cb44-177" tabindex="-1"></a><span class="do">####################</span></span>
-<span id="cb44-178"><a href="rbasics.html#cb44-178" tabindex="-1"></a></span>
-<span id="cb44-179"><a href="rbasics.html#cb44-179" tabindex="-1"></a><span class="fu">plot</span>(cars)</span>
-<span id="cb44-180"><a href="rbasics.html#cb44-180" tabindex="-1"></a></span>
-<span id="cb44-181"><a href="rbasics.html#cb44-181" tabindex="-1"></a><span class="co"># Help</span></span>
-<span id="cb44-182"><a href="rbasics.html#cb44-182" tabindex="-1"></a></span>
-<span id="cb44-183"><a href="rbasics.html#cb44-183" tabindex="-1"></a>? cars</span>
-<span id="cb44-184"><a href="rbasics.html#cb44-184" tabindex="-1"></a></span>
-<span id="cb44-185"><a href="rbasics.html#cb44-185" tabindex="-1"></a><span class="co"># cars is in the &#39;datasets&#39; package</span></span>
-<span id="cb44-186"><a href="rbasics.html#cb44-186" tabindex="-1"></a></span>
-<span id="cb44-187"><a href="rbasics.html#cb44-187" tabindex="-1"></a><span class="fu">data</span>()</span>
-<span id="cb44-188"><a href="rbasics.html#cb44-188" tabindex="-1"></a></span>
-<span id="cb44-189"><a href="rbasics.html#cb44-189" tabindex="-1"></a><span class="co"># help(cars) does the same as ? cars</span></span>
-<span id="cb44-190"><a href="rbasics.html#cb44-190" tabindex="-1"></a><span class="co"># You can use Help tab in the right bottom pane</span></span>
-<span id="cb44-191"><a href="rbasics.html#cb44-191" tabindex="-1"></a></span>
-<span id="cb44-192"><a href="rbasics.html#cb44-192" tabindex="-1"></a><span class="fu">help</span>(plot)</span>
-<span id="cb44-193"><a href="rbasics.html#cb44-193" tabindex="-1"></a>? par</span>
-<span id="cb44-194"><a href="rbasics.html#cb44-194" tabindex="-1"></a></span>
-<span id="cb44-195"><a href="rbasics.html#cb44-195" tabindex="-1"></a><span class="fu">head</span>(cars)</span>
-<span id="cb44-196"><a href="rbasics.html#cb44-196" tabindex="-1"></a></span>
-<span id="cb44-197"><a href="rbasics.html#cb44-197" tabindex="-1"></a><span class="fu">str</span>(cars)</span>
-<span id="cb44-198"><a href="rbasics.html#cb44-198" tabindex="-1"></a></span>
-<span id="cb44-199"><a href="rbasics.html#cb44-199" tabindex="-1"></a><span class="fu">summary</span>(cars)</span>
-<span id="cb44-200"><a href="rbasics.html#cb44-200" tabindex="-1"></a></span>
-<span id="cb44-201"><a href="rbasics.html#cb44-201" tabindex="-1"></a>x <span class="ot">&lt;-</span> cars<span class="sc">$</span>speed</span>
-<span id="cb44-202"><a href="rbasics.html#cb44-202" tabindex="-1"></a>y <span class="ot">&lt;-</span> cars<span class="sc">$</span>dist</span>
-<span id="cb44-203"><a href="rbasics.html#cb44-203" tabindex="-1"></a></span>
-<span id="cb44-204"><a href="rbasics.html#cb44-204" tabindex="-1"></a><span class="fu">min</span>(x)</span>
-<span id="cb44-205"><a href="rbasics.html#cb44-205" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
-<span id="cb44-206"><a href="rbasics.html#cb44-206" tabindex="-1"></a><span class="fu">quantile</span>(x)</span>
-<span id="cb44-207"><a href="rbasics.html#cb44-207" tabindex="-1"></a></span>
-<span id="cb44-208"><a href="rbasics.html#cb44-208" tabindex="-1"></a><span class="fu">plot</span>(cars)</span>
-<span id="cb44-209"><a href="rbasics.html#cb44-209" tabindex="-1"></a></span>
-<span id="cb44-210"><a href="rbasics.html#cb44-210" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(cars<span class="sc">$</span>dist <span class="sc">~</span> cars<span class="sc">$</span>speed))</span>
-<span id="cb44-211"><a href="rbasics.html#cb44-211" tabindex="-1"></a></span>
-<span id="cb44-212"><a href="rbasics.html#cb44-212" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(cars<span class="sc">$</span>dist <span class="sc">~</span> cars<span class="sc">$</span>speed))</span>
-<span id="cb44-213"><a href="rbasics.html#cb44-213" tabindex="-1"></a></span>
-<span id="cb44-214"><a href="rbasics.html#cb44-214" tabindex="-1"></a><span class="fu">boxplot</span>(cars)</span>
-<span id="cb44-215"><a href="rbasics.html#cb44-215" tabindex="-1"></a></span>
-<span id="cb44-216"><a href="rbasics.html#cb44-216" tabindex="-1"></a><span class="fu">hist</span>(cars<span class="sc">$</span>speed)</span>
-<span id="cb44-217"><a href="rbasics.html#cb44-217" tabindex="-1"></a><span class="fu">hist</span>(cars<span class="sc">$</span>dist)</span>
-<span id="cb44-218"><a href="rbasics.html#cb44-218" tabindex="-1"></a><span class="fu">hist</span>(cars<span class="sc">$</span>dist, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">120</span>, <span class="dv">10</span>))</span></code></pre></div>
+<h4>
+<span class="header-section-number">15.4.2.1</span> スクリプト1: <code>basics.R</code><a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%881-basics.r"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#################</span></span>
+<span><span class="co">#</span></span>
+<span><span class="co"># basics.R</span></span>
+<span><span class="co">#</span></span>
+<span><span class="co">################</span></span>
+<span><span class="co"># 'Quick R' by DataCamp may be a handy reference: </span></span>
+<span><span class="co">#     https://www.statmethods.net/management/index.html</span></span>
+<span><span class="co"># Cheat Sheet at RStudio: https://www.rstudio.com/resources/cheatsheets/</span></span>
+<span><span class="co"># Base R Cheat Sheet: https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf</span></span>
+<span><span class="co"># To execute the line: Control + Enter (Window and Linux), Command + Enter (Mac)</span></span>
+<span><span class="co">## try your experiments on the console</span></span>
+<span></span>
+<span><span class="co">## calculator</span></span>
+<span></span>
+<span><span class="fl">3</span> <span class="op">+</span> <span class="fl">7</span></span>
+<span></span>
+<span><span class="co">### +, -, *, /, ^ (or **), %%, %/%</span></span>
+<span></span>
+<span><span class="fl">3</span> <span class="op">+</span> <span class="fl">10</span> <span class="op">/</span> <span class="fl">2</span></span>
+<span></span>
+<span><span class="fl">3</span><span class="op">^</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="fl">2</span><span class="op">^</span><span class="fl">3</span></span>
+<span></span>
+<span><span class="fl">2</span><span class="op">*</span><span class="fl">2</span><span class="op">*</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="co">### assignment: &lt;-, (=, -&gt;, assign()) </span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span></span>
+<span><span class="va">x</span> </span>
+<span></span>
+<span><span class="co">#### object_name &lt;- value, '&lt;-' shortcut: Alt (option) + '-' (hyphen or minus) </span></span>
+<span><span class="co">#### Object names must start with a letter and can only contain letter, numbers, _ and .</span></span>
+<span></span>
+<span><span class="va">this_is_a_long_name</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">^</span><span class="fl">3</span></span>
+<span></span>
+<span><span class="va">this_is_a_long_name</span></span>
+<span></span>
+<span><span class="va">char_name</span> <span class="op">&lt;-</span> <span class="st">"What is your name?"</span></span>
+<span></span>
+<span><span class="va">char_name</span></span>
+<span></span>
+<span><span class="co">#### Use 'tab completion' and 'up arrow'</span></span>
+<span></span>
+<span><span class="co">### ls(): list of all assignments</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/ls_str.html">ls.str</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#### check Environment in the upper right pane</span></span>
+<span></span>
+<span><span class="co">### (atomic) vectors</span></span>
+<span></span>
+<span><span class="fl">5</span><span class="op">:</span><span class="fl">10</span></span>
+<span></span>
+<span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">a</span></span>
+<span></span>
+<span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">:</span><span class="fl">10</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># same as seq(from = 5, to = 10, by = 2)</span></span>
+<span></span>
+<span><span class="va">c1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">c2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, length.out <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">c1</span></span>
+<span></span>
+<span><span class="va">c2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">c1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#### ? seq   ? length   ? identical</span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">die</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">zero_one</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span> <span class="co"># same as 0:1</span></span>
+<span></span>
+<span><span class="va">die</span> <span class="op">+</span> <span class="va">zero_one</span> <span class="co"># c(1,2,3,4,5,6) + c(0,1). re-use</span></span>
+<span></span>
+<span><span class="va">d1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># repeat</span></span>
+<span></span>
+<span></span>
+<span><span class="va">d1</span></span>
+<span></span>
+<span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span></span>
+<span></span>
+<span><span class="va">d2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">d2</span></span>
+<span></span>
+<span><span class="va">d3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">d3</span></span>
+<span></span>
+<span><span class="co">### class() for class and typeof() for mode</span></span>
+<span><span class="co">### class of vectors: numeric, charcters, logical</span></span>
+<span><span class="co">### types of vectors: doubles, integers, characters, logicals (complex and raw)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d1</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d2</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d3</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fl">5</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">### Subsetting</span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">A_Z</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">A_F</span> <span class="op">&lt;-</span> <span class="va">A_Z</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">large</span> <span class="op">&lt;-</span> <span class="va">die</span> <span class="op">&gt;</span> <span class="fl">3</span></span>
+<span></span>
+<span><span class="va">large</span></span>
+<span></span>
+<span><span class="va">even</span> <span class="op">&lt;-</span> <span class="va">die</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">even</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">large</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">even</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">die</span> <span class="op">&lt;</span> <span class="fl">4</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co">### Compare df with df1 &lt;- data.frame(number = die, alphabet = A_F)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>number <span class="op">=</span> <span class="va">die</span>, alphabet <span class="op">=</span> <span class="va">A_F</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">number</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">alphabet</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">die</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,<span class="va">die</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">####################</span></span>
+<span><span class="co"># The First Example</span></span>
+<span><span class="co">####################</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Help</span></span>
+<span></span>
+<span><span class="op">?</span> <span class="va">cars</span></span>
+<span></span>
+<span><span class="co"># cars is in the 'datasets' package</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># help(cars) does the same as ? cars</span></span>
+<span><span class="co"># You can use Help tab in the right bottom pane</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span></span>
+<span><span class="op">?</span> <span class="va">par</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">cars</span><span class="op">$</span><span class="va">dist</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span> <span class="op">~</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span> <span class="op">~</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">120</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="スクリプト2-coronavirus.r" class="section level4" number="15.4.2.2">
-<h4><span class="header-section-number">15.4.2.2</span> スクリプト2: <code>coronavirus.R</code></h4>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="rbasics.html#cb45-1" tabindex="-1"></a><span class="co"># https://coronavirus.jhu.edu/map.html</span></span>
-<span id="cb45-2"><a href="rbasics.html#cb45-2" tabindex="-1"></a><span class="co"># JHU Covid-19 global time series data</span></span>
-<span id="cb45-3"><a href="rbasics.html#cb45-3" tabindex="-1"></a><span class="co"># See R package coronavirus at: https://github.com/RamiKrispin/coronavirus</span></span>
-<span id="cb45-4"><a href="rbasics.html#cb45-4" tabindex="-1"></a><span class="co"># Data taken from: https://github.com/RamiKrispin/coronavirus/tree/master/csv</span></span>
-<span id="cb45-5"><a href="rbasics.html#cb45-5" tabindex="-1"></a><span class="co"># Last Updated</span></span>
-<span id="cb45-6"><a href="rbasics.html#cb45-6" tabindex="-1"></a><span class="fu">Sys.Date</span>()</span>
-<span id="cb45-7"><a href="rbasics.html#cb45-7" tabindex="-1"></a></span>
-<span id="cb45-8"><a href="rbasics.html#cb45-8" tabindex="-1"></a><span class="do">## Download and read csv (comma separated value) file</span></span>
-<span id="cb45-9"><a href="rbasics.html#cb45-9" tabindex="-1"></a>coronavirus <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv&quot;</span>)</span>
-<span id="cb45-10"><a href="rbasics.html#cb45-10" tabindex="-1"></a><span class="co"># write.csv(coronavirus, &quot;data/coronavirus.csv&quot;)</span></span>
-<span id="cb45-11"><a href="rbasics.html#cb45-11" tabindex="-1"></a></span>
-<span id="cb45-12"><a href="rbasics.html#cb45-12" tabindex="-1"></a><span class="do">## Summaries and structures of the data</span></span>
-<span id="cb45-13"><a href="rbasics.html#cb45-13" tabindex="-1"></a><span class="fu">head</span>(coronavirus)</span>
-<span id="cb45-14"><a href="rbasics.html#cb45-14" tabindex="-1"></a><span class="fu">str</span>(coronavirus)</span>
-<span id="cb45-15"><a href="rbasics.html#cb45-15" tabindex="-1"></a>coronavirus<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(coronavirus<span class="sc">$</span>date)</span>
-<span id="cb45-16"><a href="rbasics.html#cb45-16" tabindex="-1"></a><span class="fu">str</span>(coronavirus)</span>
-<span id="cb45-17"><a href="rbasics.html#cb45-17" tabindex="-1"></a></span>
-<span id="cb45-18"><a href="rbasics.html#cb45-18" tabindex="-1"></a><span class="fu">range</span>(coronavirus<span class="sc">$</span>date)</span>
-<span id="cb45-19"><a href="rbasics.html#cb45-19" tabindex="-1"></a><span class="fu">unique</span>(coronavirus<span class="sc">$</span>country)</span>
-<span id="cb45-20"><a href="rbasics.html#cb45-20" tabindex="-1"></a><span class="fu">unique</span>(coronavirus<span class="sc">$</span>type)</span>
-<span id="cb45-21"><a href="rbasics.html#cb45-21" tabindex="-1"></a></span>
-<span id="cb45-22"><a href="rbasics.html#cb45-22" tabindex="-1"></a><span class="do">## Set Country</span></span>
-<span id="cb45-23"><a href="rbasics.html#cb45-23" tabindex="-1"></a>COUNTRY <span class="ot">&lt;-</span> <span class="st">&quot;Japan&quot;</span></span>
-<span id="cb45-24"><a href="rbasics.html#cb45-24" tabindex="-1"></a>df0 <span class="ot">&lt;-</span> coronavirus[coronavirus<span class="sc">$</span>country <span class="sc">==</span> COUNTRY,]</span>
-<span id="cb45-25"><a href="rbasics.html#cb45-25" tabindex="-1"></a><span class="fu">head</span>(df0)</span>
-<span id="cb45-26"><a href="rbasics.html#cb45-26" tabindex="-1"></a><span class="fu">tail</span>(df0)</span>
-<span id="cb45-27"><a href="rbasics.html#cb45-27" tabindex="-1"></a>(pop <span class="ot">&lt;-</span> df0<span class="sc">$</span>population[<span class="dv">1</span>])</span>
-<span id="cb45-28"><a href="rbasics.html#cb45-28" tabindex="-1"></a>df <span class="ot">&lt;-</span> df0[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">13</span>)]</span>
-<span id="cb45-29"><a href="rbasics.html#cb45-29" tabindex="-1"></a><span class="fu">str</span>(df)</span>
-<span id="cb45-30"><a href="rbasics.html#cb45-30" tabindex="-1"></a><span class="fu">head</span>(df)</span>
-<span id="cb45-31"><a href="rbasics.html#cb45-31" tabindex="-1"></a><span class="do">### alternatively,</span></span>
-<span id="cb45-32"><a href="rbasics.html#cb45-32" tabindex="-1"></a><span class="fu">head</span>(df0[<span class="fu">c</span>(<span class="st">&quot;date&quot;</span>, <span class="st">&quot;type&quot;</span>, <span class="st">&quot;cases&quot;</span>, <span class="st">&quot;population&quot;</span>)])</span>
-<span id="cb45-33"><a href="rbasics.html#cb45-33" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb45-34"><a href="rbasics.html#cb45-34" tabindex="-1"></a></span>
-<span id="cb45-35"><a href="rbasics.html#cb45-35" tabindex="-1"></a><span class="do">## Set types</span></span>
-<span id="cb45-36"><a href="rbasics.html#cb45-36" tabindex="-1"></a>df_confirmed <span class="ot">&lt;-</span> df[df<span class="sc">$</span>type <span class="sc">==</span> <span class="st">&quot;confirmed&quot;</span>,]</span>
-<span id="cb45-37"><a href="rbasics.html#cb45-37" tabindex="-1"></a>df_death <span class="ot">&lt;-</span> df[df<span class="sc">$</span>type <span class="sc">==</span> <span class="st">&quot;death&quot;</span>,]</span>
-<span id="cb45-38"><a href="rbasics.html#cb45-38" tabindex="-1"></a>df_recovery <span class="ot">&lt;-</span> df[df<span class="sc">$</span>data_type <span class="sc">==</span> <span class="st">&quot;recovery&quot;</span>,]</span>
-<span id="cb45-39"><a href="rbasics.html#cb45-39" tabindex="-1"></a><span class="fu">head</span>(df_confirmed)</span>
-<span id="cb45-40"><a href="rbasics.html#cb45-40" tabindex="-1"></a><span class="fu">head</span>(df_death)</span>
-<span id="cb45-41"><a href="rbasics.html#cb45-41" tabindex="-1"></a><span class="fu">head</span>(df_recovery)</span>
-<span id="cb45-42"><a href="rbasics.html#cb45-42" tabindex="-1"></a></span>
-<span id="cb45-43"><a href="rbasics.html#cb45-43" tabindex="-1"></a><span class="do">## Histogram</span></span>
-<span id="cb45-44"><a href="rbasics.html#cb45-44" tabindex="-1"></a><span class="fu">plot</span>(df_confirmed<span class="sc">$</span>date, df_confirmed<span class="sc">$</span>cases, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>)</span>
-<span id="cb45-45"><a href="rbasics.html#cb45-45" tabindex="-1"></a><span class="fu">plot</span>(df_death<span class="sc">$</span>date, df_death<span class="sc">$</span>cases, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>)</span>
-<span id="cb45-46"><a href="rbasics.html#cb45-46" tabindex="-1"></a><span class="co"># plot(df_recovered$date, df_recovered$cases, type = &quot;h&quot;) # no data for recovery</span></span>
-<span id="cb45-47"><a href="rbasics.html#cb45-47" tabindex="-1"></a></span>
-<span id="cb45-48"><a href="rbasics.html#cb45-48" tabindex="-1"></a><span class="do">## Scatter plot and correlation</span></span>
-<span id="cb45-49"><a href="rbasics.html#cb45-49" tabindex="-1"></a><span class="fu">plot</span>(df_confirmed<span class="sc">$</span>cases, df_death<span class="sc">$</span>cases, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>)</span>
-<span id="cb45-50"><a href="rbasics.html#cb45-50" tabindex="-1"></a><span class="fu">cor</span>(df_confirmed<span class="sc">$</span>cases, df_death<span class="sc">$</span>cases)</span>
-<span id="cb45-51"><a href="rbasics.html#cb45-51" tabindex="-1"></a></span>
-<span id="cb45-52"><a href="rbasics.html#cb45-52" tabindex="-1"></a></span>
-<span id="cb45-53"><a href="rbasics.html#cb45-53" tabindex="-1"></a><span class="do">## In addition set a period</span></span>
-<span id="cb45-54"><a href="rbasics.html#cb45-54" tabindex="-1"></a>start_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&quot;2022-07-01&quot;</span>)</span>
-<span id="cb45-55"><a href="rbasics.html#cb45-55" tabindex="-1"></a>end_date <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>() </span>
-<span id="cb45-56"><a href="rbasics.html#cb45-56" tabindex="-1"></a>df_date <span class="ot">&lt;-</span> df[df<span class="sc">$</span>date <span class="sc">&gt;=</span>start_date <span class="sc">&amp;</span> df<span class="sc">$</span>date <span class="sc">&lt;=</span> end_date,]</span>
-<span id="cb45-57"><a href="rbasics.html#cb45-57" tabindex="-1"></a><span class="do">##</span></span>
-<span id="cb45-58"><a href="rbasics.html#cb45-58" tabindex="-1"></a></span>
-<span id="cb45-59"><a href="rbasics.html#cb45-59" tabindex="-1"></a><span class="do">## Set types</span></span>
-<span id="cb45-60"><a href="rbasics.html#cb45-60" tabindex="-1"></a>df_date_confirmed <span class="ot">&lt;-</span> df_date[df_date<span class="sc">$</span>type <span class="sc">==</span> <span class="st">&quot;confirmed&quot;</span>,]</span>
-<span id="cb45-61"><a href="rbasics.html#cb45-61" tabindex="-1"></a>df_date_death <span class="ot">&lt;-</span> df_date[df_date<span class="sc">$</span>type <span class="sc">==</span> <span class="st">&quot;death&quot;</span>,]</span>
-<span id="cb45-62"><a href="rbasics.html#cb45-62" tabindex="-1"></a>df_date_recovery <span class="ot">&lt;-</span> df_date[df_date<span class="sc">$</span>data_type <span class="sc">==</span> <span class="st">&quot;recovery&quot;</span>,]</span>
-<span id="cb45-63"><a href="rbasics.html#cb45-63" tabindex="-1"></a><span class="fu">head</span>(df_date_confirmed)</span>
-<span id="cb45-64"><a href="rbasics.html#cb45-64" tabindex="-1"></a><span class="fu">head</span>(df_date_death)</span>
-<span id="cb45-65"><a href="rbasics.html#cb45-65" tabindex="-1"></a><span class="fu">head</span>(df_date_recovery)</span>
-<span id="cb45-66"><a href="rbasics.html#cb45-66" tabindex="-1"></a></span>
-<span id="cb45-67"><a href="rbasics.html#cb45-67" tabindex="-1"></a><span class="do">## Histogram</span></span>
-<span id="cb45-68"><a href="rbasics.html#cb45-68" tabindex="-1"></a><span class="fu">plot</span>(df_date_confirmed<span class="sc">$</span>date, df_date_confirmed<span class="sc">$</span>cases, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>)</span>
-<span id="cb45-69"><a href="rbasics.html#cb45-69" tabindex="-1"></a><span class="fu">plot</span>(df_date_death<span class="sc">$</span>date, df_date_death<span class="sc">$</span>cases, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>)</span>
-<span id="cb45-70"><a href="rbasics.html#cb45-70" tabindex="-1"></a><span class="co"># plot(df_date_recovered$date, df_date_recovered$cases, type = &quot;h&quot;) # no data for recovery</span></span>
-<span id="cb45-71"><a href="rbasics.html#cb45-71" tabindex="-1"></a></span>
-<span id="cb45-72"><a href="rbasics.html#cb45-72" tabindex="-1"></a><span class="fu">plot</span>(df_date_confirmed<span class="sc">$</span>cases, df_date_death<span class="sc">$</span>cases, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>)</span>
-<span id="cb45-73"><a href="rbasics.html#cb45-73" tabindex="-1"></a><span class="fu">cor</span>(df_date_confirmed<span class="sc">$</span>cases, df_date_death<span class="sc">$</span>cases)</span>
-<span id="cb45-74"><a href="rbasics.html#cb45-74" tabindex="-1"></a></span>
-<span id="cb45-75"><a href="rbasics.html#cb45-75" tabindex="-1"></a><span class="do">#### Extra</span></span>
-<span id="cb45-76"><a href="rbasics.html#cb45-76" tabindex="-1"></a><span class="fu">plot</span>(df_confirmed<span class="sc">$</span>date, df_confirmed<span class="sc">$</span>cases, <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, </span>
-<span id="cb45-77"><a href="rbasics.html#cb45-77" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Comfirmed Cases in&quot;</span>,COUNTRY), </span>
-<span id="cb45-78"><a href="rbasics.html#cb45-78" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Date&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of Cases&quot;</span>)</span></code></pre></div>
+<h4>
+<span class="header-section-number">15.4.2.2</span> スクリプト2: <code>coronavirus.R</code><a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%882-coronavirus.r"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># https://coronavirus.jhu.edu/map.html</span></span>
+<span><span class="co"># JHU Covid-19 global time series data</span></span>
+<span><span class="co"># See R package coronavirus at: https://github.com/RamiKrispin/coronavirus</span></span>
+<span><span class="co"># Data taken from: https://github.com/RamiKrispin/coronavirus/tree/master/csv</span></span>
+<span><span class="co"># Last Updated</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Download and read csv (comma separated value) file</span></span>
+<span><span class="va">coronavirus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv"</span><span class="op">)</span></span>
+<span><span class="co"># write.csv(coronavirus, "data/coronavirus.csv")</span></span>
+<span></span>
+<span><span class="co">## Summaries and structures of the data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">type</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Set Country</span></span>
+<span><span class="va">COUNTRY</span> <span class="op">&lt;-</span> <span class="st">"Japan"</span></span>
+<span><span class="va">df0</span> <span class="op">&lt;-</span> <span class="va">coronavirus</span><span class="op">[</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="va">COUNTRY</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df0</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">df0</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">pop</span> <span class="op">&lt;-</span> <span class="va">df0</span><span class="op">$</span><span class="va">population</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df0</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">13</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">### alternatively,</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df0</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"date"</span>, <span class="st">"type"</span>, <span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">###</span></span>
+<span></span>
+<span><span class="co">## Set types</span></span>
+<span><span class="va">df_confirmed</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"confirmed"</span>,<span class="op">]</span></span>
+<span><span class="va">df_death</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"death"</span>,<span class="op">]</span></span>
+<span><span class="va">df_recovery</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">data_type</span> <span class="op">==</span> <span class="st">"recovery"</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_death</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_recovery</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Histogram</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_death</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="co"># plot(df_recovered$date, df_recovered$cases, type = "h") # no data for recovery</span></span>
+<span></span>
+<span><span class="co">## Scatter plot and correlation</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">## In addition set a period</span></span>
+<span><span class="va">start_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2022-07-01"</span><span class="op">)</span></span>
+<span><span class="va">end_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="va">df_date</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">date</span> <span class="op">&gt;=</span><span class="va">start_date</span> <span class="op">&amp;</span> <span class="va">df</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;=</span> <span class="va">end_date</span>,<span class="op">]</span></span>
+<span><span class="co">##</span></span>
+<span></span>
+<span><span class="co">## Set types</span></span>
+<span><span class="va">df_date_confirmed</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"confirmed"</span>,<span class="op">]</span></span>
+<span><span class="va">df_date_death</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"death"</span>,<span class="op">]</span></span>
+<span><span class="va">df_date_recovery</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">data_type</span> <span class="op">==</span> <span class="st">"recovery"</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_death</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_recovery</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Histogram</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_death</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span>
+<span><span class="co"># plot(df_date_recovered$date, df_date_recovered$cases, type = "h") # no data for recovery</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#### Extra</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span>, </span>
+<span>     main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Comfirmed Cases in"</span>,<span class="va">COUNTRY</span><span class="op">)</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"Date"</span>, ylab <span class="op">=</span> <span class="st">"Number of Cases"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div id="練習-2" class="section level3" number="15.4.3">
-<h3><span class="header-section-number">15.4.3</span> 練習</h3>
+<h3>
+<span class="header-section-number">15.4.3</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-2"><i class="fas fa-link"></i></a>
+</h3>
 <p>上の、<code>coronavirus.R</code> について</p>
 <ol style="list-style-type: decimal">
-<li><code>COUNTRY &lt;- "Japan"</code> の Japan を他の国に変えてみましょう。</li>
-<li><code>start_date &lt;- as.Date("2022-07-01")</code> の日付を、他の日付に変えてみましょう。</li>
-<li><code>df_confirmed$cases</code> と <code>df_death$cases</code> についてどんなことがわかりますか。</li>
+<li>
+<code>COUNTRY &lt;- "Japan"</code> の Japan を他の国に変えてみましょう。</li>
+<li>
+<code>start_date &lt;- as.Date("2022-07-01")</code> の日付を、他の日付に変えてみましょう。</li>
+<li>
+<code>df_confirmed$cases</code> と <code>df_death$cases</code> についてどんなことがわかりますか。</li>
 <li>発見や、問いがあれば、書き出してみましょう。</li>
 </ol>
 </div>
 <div id="tips" class="section level3" number="15.4.4">
-<h3><span class="header-section-number">15.4.4</span> Tips</h3>
+<h3>
+<span class="header-section-number">15.4.4</span> Tips<a class="anchor" aria-label="anchor" href="#tips"><i class="fas fa-link"></i></a>
+</h3>
 <p>キーボード・ショートカットと言われる、さまざまな機能があります。</p>
 <ul>
 <li>上のメニュー・バー： Help &gt; Keyboard Short Cut Help 確認してみてください。</li>
@@ -588,7 +644,9 @@ set in the _output.yml file.</p>" />
 </div>
 </div>
 <div id="パッケージ---packages" class="section level2" number="15.5">
-<h2><span class="header-section-number">15.5</span> パッケージ - Packages</h2>
+<h2>
+<span class="header-section-number">15.5</span> パッケージ - Packages<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8---packages"><i class="fas fa-link"></i></a>
+</h2>
 <blockquote>
 <p>R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool &gt; Install Packages in the top menu bar of R Studio. <a href="https://en.wikipedia.org/wiki/R_package" class="uri">https://en.wikipedia.org/wiki/R_package</a></p>
 </blockquote>
@@ -596,7 +654,9 @@ set in the _output.yml file.</p>" />
 <p>Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool &gt; Install Packages からインストールできます。</p>
 </blockquote>
 <div id="パッケージのインストール" class="section level3" number="15.5.1">
-<h3><span class="header-section-number">15.5.1</span> パッケージのインストール</h3>
+<h3>
+<span class="header-section-number">15.5.1</span> パッケージのインストール<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fas fa-link"></i></a>
+</h3>
 <p>いずれ使いますので、まずは、三つのパッケージをインストールしてみましょう。</p>
 <ul>
 <li><code>tidyverse</code></li>
@@ -608,7 +668,7 @@ set in the _output.yml file.</p>" />
 <p>Console に、<code>install.packages("tidyverse")</code> などと表示され、たくさんメッセージが出ます。終了すると、&gt; のマークがでます。</p>
 <p>二つ目は、<code>install.packages("tidyverse")</code> のような書式で書いて、Console に入れる方法です。</p>
 <p>三つ目は、右下の窓枠の Packages のタブにある、Install というボタンを押す方法です。すると、一番目の方法に、戻り、パッケージ名を入力できるようになります。</p>
-<p>この Packages タブにある、ものが、すでに、インストールされているパッケージです。そのなかで、<code>base</code> や、<code>datasets</code> などいくつかに、チェックがついていると思いますが、それらは、ロードされていて、いつでも、使える状態になっていることを意味しています。ロードは、たとえば、<code>library(tidyverse)</code> のようにしますが、それは、いずれもう一度説明します。</p>
+<p>この Packages タブにある、ものが、すでに、インストールされているパッケージです。そのなかで、<code>base</code> や、<code>datasets</code> などいくつかに、チェックがついていると思いますが、それらは、ロードされていて、いつでも、使える状態になっていることを意味しています。ロードは、たとえば、<code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> のようにしますが、それは、いずれもう一度説明します。</p>
 <p>インストールは一回だけ。ときどき、Tools &gt; Check for Package Update をつかって、Update しておくと良いでしょう。</p>
 <div class="rmdnote">
 <p>パッケージのインストールで問題が生じることがあります。特に、Windows の日本語システムの場合です。（4.3.2 R Studio の インストール の下に書いてある部分を参照してください。）</p>
@@ -616,18 +676,24 @@ set in the _output.yml file.</p>" />
 </div>
 </div>
 <div id="備考-1" class="section level3" number="15.5.2">
-<h3><span class="header-section-number">15.5.2</span> 備考</h3>
+<h3>
+<span class="header-section-number">15.5.2</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-1"><i class="fas fa-link"></i></a>
+</h3>
 <p>Package によっては、Source から Compile するかと聞いてくる場合があります。どちらでも、良いのですが、特に、問題が起こっていなければ、No でよいと思います。コンピュータにあった形でインストールすることが必要な場合は、Yes とします。</p>
 <p>同じパッケージをもう一度、インストールしたり、または、関連するパッケージがあるような場合、R をリスタートするかと聞いてくることがあります。特に問題が起こらなければ、No で構いません。ただ、エラーが起こって、それに関連して、特別なパッケージをインストールする必要がある場合がありますが、そのときは、Yes としてください。</p>
 </div>
 </div>
 <div id="練習問題-posit-primers" class="section level2" number="15.6">
-<h2><span class="header-section-number">15.6</span> 練習問題 Posit Primers</h2>
+<h2>
+<span class="header-section-number">15.6</span> 練習問題 Posit Primers<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C-posit-primers"><i class="fas fa-link"></i></a>
+</h2>
 <p>Posit Primers <a href="https://posit.cloud/learn/primers" class="uri">https://posit.cloud/learn/primers</a></p>
 <p>教科書 <a href="https://r4ds.had.co.nz">“R for Data Science”</a> は、<code>tidyverse</code> パッケージを中心に、データサイエンスについて解説したものですが、Posit Primers は、演習問題をしながら、教科書の内容を理解できるように構成されています。</p>
 <p>Posit Cloud からは、左のメニュー（隠れている場合は左上の3本線をクリックして表示させて）から選ぶことができます。そうでない場合は、直接、上のリンクから、利用してください。</p>
 <div id="最初の演習-the-basics-r4ds-explore-i" class="section level3" number="15.6.1">
-<h3><span class="header-section-number">15.6.1</span> 最初の演習　The Basics – r4ds: Explore, I</h3>
+<h3>
+<span class="header-section-number">15.6.1</span> 最初の演習　The Basics – r4ds: Explore, I<a class="anchor" aria-label="anchor" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E6%BC%94%E7%BF%92-the-basics-r4ds-explore-i"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
 <li><a href="https://rstudio.cloud/learn/primers/1.1">Visualization Basics</a></li>
 <li><a href="https://rstudio.cloud/learn/primers/1.2">Programming Basics</a></li>
@@ -636,14 +702,19 @@ set in the _output.yml file.</p>" />
 </div>
 </div>
 <div id="参考文献-references" class="section level2" number="15.7">
-<h2><span class="header-section-number">15.7</span> 参考文献 References</h2>
+<h2>
+<span class="header-section-number">15.7</span> 参考文献 References<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-references"><i class="fas fa-link"></i></a>
+</h2>
 <p>一番目は、すでに紹介した、教科書です。二番目は、この文書を作成している、Bookdown というパッケージのサイトですが、そこに、たくさんの本が、無償で公開されています。素晴らしい本がたくさん含まれています。</p>
 <ul>
 <li>R For Data Science, by H. Wickham: <a href="https://r4ds.had.co.nz" class="uri">https://r4ds.had.co.nz</a>
 <ul>
-<li>Introduction: <a href="https://r4ds.had.co.nz/explore-intro.html#explore-intro" class="uri">https://r4ds.had.co.nz/explore-intro.html#explore-intro</a></li>
-</ul></li>
-<li>Bookdown: <a href="https://bookdown.org" class="uri">https://bookdown.org</a>, <a href="https://bookdown.org/home/archive/">Archive</a></li>
+<li>Introduction: <a href="https://r4ds.had.co.nz/explore-intro.html#explore-intro" class="uri">https://r4ds.had.co.nz/explore-intro.html#explore-intro</a>
+</li>
+</ul>
+</li>
+<li>Bookdown: <a href="https://bookdown.org" class="uri">https://bookdown.org</a>, <a href="https://bookdown.org/home/archive/">Archive</a>
+</li>
 </ul>
 <p>下の一番目は、R 入門を、２時限の講義でしたときのものです。二番目と三番目は、講義で使ったものを、まとめたものです。教科書のようには、できていませんが、参考になる部分もあるかと思いますので、紹介しておきます。</p>
 <ul>
@@ -653,45 +724,74 @@ set in the _output.yml file.</p>" />
 </ul>
 </div>
 <div id="youtube-video---getstarted" class="section level2" number="15.8">
-<h2><span class="header-section-number">15.8</span> YouTube Video - getstarted</h2>
+<h2>
+<span class="header-section-number">15.8</span> YouTube Video - getstarted<a class="anchor" aria-label="anchor" href="#youtube-video---getstarted"><i class="fas fa-link"></i></a>
+</h2>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9uQmMZoG74g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 </iframe>
 <ul>
-<li>ファイル：<a href="https://ds-sl.github.io/intro2r/getstarted.html" class="uri">https://ds-sl.github.io/intro2r/getstarted.html</a></li>
+<li>ファイル：<a href="https://ds-sl.github.io/intro2r/getstarted.html" class="uri">https://ds-sl.github.io/intro2r/getstarted.html</a>
+</li>
 </ul>
+</div>
+</div>
 
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="18">
-<li id="fn18"><p>Viewerへの表示を使っており、Presentationへの表示を使っておらず不明<a href="rbasics.html#fnref18" class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></div>
+<div class="next"><a href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#rbasics"><span class="header-section-number">15</span> R の基礎</a></li>
+<li><a class="nav-link" href="#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88---project"><span class="header-section-number">15.1</span> プロジェクト - Project</a></li>
+<li>
+<a class="nav-link" href="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%A7%E5%AE%9F%E8%A1%8C---run-in-console"><span class="header-section-number">15.2</span> コンソールで実行 - Run in Console</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E5%9B%9B%E3%81%A4"><span class="header-section-number">15.2.1</span> 最初の四つ</a></li>
+<li><a class="nav-link" href="#%E3%82%A2%E3%82%B5%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%83%98%E3%83%AB%E3%83%97"><span class="header-section-number">15.2.2</span> アサインメント、ヘルプ</a></li>
+<li><a class="nav-link" href="#%E3%81%8A%E3%81%99%E3%81%99%E3%82%81"><span class="header-section-number">15.2.3</span> おすすめ</a></li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-1"><span class="header-section-number">15.2.4</span> 練習</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#rstudio-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">15.3</span> RStudio について</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E5%9B%9B%E3%81%A4%E3%81%AE%E7%AA%93%E6%9E%A0%E3%81%A8%E3%82%BF%E3%83%96-four-panes-and-tabs"><span class="header-section-number">15.3.1</span> 四つの窓枠とタブ Four Panes and Tabs</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#r-script-%E5%AE%9F%E8%A1%8C%E8%A8%98%E9%8C%B2"><span class="header-section-number">15.4</span> R Script 実行記録</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-script-%E3%81%AE%E4%BD%9C%E6%88%90"><span class="header-section-number">15.4.1</span> R Script の作成</a></li>
+<li><a class="nav-link" href="#r-script-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9F%E8%A1%8C"><span class="header-section-number">15.4.2</span> R Script による実行</a></li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-2"><span class="header-section-number">15.4.3</span> 練習</a></li>
+<li><a class="nav-link" href="#tips"><span class="header-section-number">15.4.4</span> Tips</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8---packages"><span class="header-section-number">15.5</span> パッケージ - Packages</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="header-section-number">15.5.1</span> パッケージのインストール</a></li>
+<li><a class="nav-link" href="#%E5%82%99%E8%80%83-1"><span class="header-section-number">15.5.2</span> 備考</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C-posit-primers"><span class="header-section-number">15.6</span> 練習問題 Posit Primers</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E6%BC%94%E7%BF%92-the-basics-r4ds-explore-i"><span class="header-section-number">15.6.1</span> 最初の演習　The Basics – r4ds: Explore, I</a></li></ul>
+</li>
+<li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-references"><span class="header-section-number">15.7</span> 参考文献 References</a></li>
+<li><a class="nav-link" href="#youtube-video---getstarted"><span class="header-section-number">15.8</span> YouTube Video - getstarted</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/23-rbasics.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/23-rbasics.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう<br />
+    <p>"<strong>データサイエンスをはじめましょう<br>
 - Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-05.</p>
   </div>
 
@@ -700,11 +800,7 @@ set in the _output.yml file.</p>" />
   </div>
 
 </div></div>
-</footer>
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -716,8 +812,7 @@ set in the _output.yml file.</p>" />
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script>
-<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -735,5 +830,4 @@ for (let popover of popovers) {
 }
 </script>
 </body>
-
 </html>

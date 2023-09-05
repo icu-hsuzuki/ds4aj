@@ -1,54 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Chapter 7 世界銀行（World Bank） | データサイエンスをはじめましょう - Data Science for All -</title>
-
-    <meta name="author" content="鈴木寛（Hirosi Suzuki）" />
-  
-   <meta name="description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="Chapter 7 世界銀行（World Bank） | データサイエンスをはじめましょう - Data Science for All -" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/" />
-  
-  <meta property="og:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 世界銀行（World Bank） | データサイエンスをはじめましょう - Data Science for All -" />
-  
-  <meta name="twitter:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.4.2/transition.js"></script>
-    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
-    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 世界銀行（World Bank） | データサイエンスをはじめましょう - Data Science for All -</title>
+<meta name="author" content="鈴木寛（Hirosi Suzuki）">
+<meta name="description" content="7.1 概要 世界銀行は、貧困削減と持続的成長の実現に向けて、途上国政府に対し融資、技術協力、政策助言を提供する国際開発金融機関です。2030年までに極度の貧困をなくし、各国の下位40パーセントの人々の所得を引き上げて繁栄の共有を促進するという2つの目標を掲げています。...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 7 世界銀行（World Bank） | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/worldbank-site.html">
+<meta property="og:description" content="7.1 概要 世界銀行は、貧困削減と持続的成長の実現に向けて、途上国政府に対し融資、技術協力、政策助言を提供する国際開発金融機関です。2030年までに極度の貧困をなくし、各国の下位40パーセントの人々の所得を引き上げて繁栄の共有を促進するという2つの目標を掲げています。...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 世界銀行（World Bank） | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="7.1 概要 世界銀行は、貧困削減と持続的成長の実現に向けて、途上国政府に対し融資、技術協力、政策助言を提供する国際開発金融機関です。2030年までに極度の貧困をなくし、各国の下位40パーセントの人々の所得を引き上げて繁栄の共有を促進するという2つの目標を掲げています。...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-    <style type="text/css">
+<style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -70,20 +44,17 @@ set in the _output.yml file.</p>" />
       margin-left: 2em;
     }
   </style>
-      <link rel="stylesheet" href="style.css" />
-  
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">データサイエンスをはじめましょう<br />
+        <a href="index.html" title="">データサイエンスをはじめましょう<br>
 - Data Science for All -</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -92,32 +63,78 @@ set in the _output.yml file.</p>" />
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">この文書について</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
+<li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
+<li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
+<li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
+<li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
+<li class="book-part">PART I オープンデータ</li>
+<li><a class="" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
+<li><a class="active" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
+<li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
+<li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
+<li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
+<li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
+<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
+<li class="book-part">PART II BASICS</li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
+<li><a class="" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
+<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
+<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
+<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
+<li class="book-part">PART III INSTITUTIONAL DATA</li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
+<li class="book-part">PART IV EDA</li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
+<li class="book-part">PART V EXAMPLES</li>
+<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
+<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
+<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
+<li><a class="" href="todo-list.html"><span class="header-section-number">D</span> To Do リスト</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="worldbank-site" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> 世界銀行（World Bank）</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="worldbank-site" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> 世界銀行（World Bank）<a class="anchor" aria-label="anchor" href="#worldbank-site"><i class="fas fa-link"></i></a>
+</h1>
 <div id="概要-2" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> 概要</h2>
+<h2>
+<span class="header-section-number">7.1</span> 概要<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E8%A6%81-2"><i class="fas fa-link"></i></a>
+</h2>
 <p>世界銀行は、貧困削減と持続的成長の実現に向けて、途上国政府に対し融資、技術協力、政策助言を提供する国際開発金融機関です。2030年までに極度の貧困をなくし、各国の下位40パーセントの人々の所得を引き上げて繁栄の共有を促進するという2つの目標を掲げています。</p>
 <p>世界銀行の<a href="https://www.worldbank.org/en/home">サイト</a>を見てみると、下の方にはグラフも出ており、さまざまな統計データを提供することに力を入れていることがわかります。</p>
 <p>すでに、世界開発指標については、簡単に説明しました。ここでは、世界銀行のサイトの中のデータについて、見ていくとともに、ダッシュボード（dashboard）の活用、データの取得方法や、API （Application Program Interface）を用いて、R でデータを検索したり、取得するパッケージの紹介を簡単にします。</p>
 </div>
 <div id="データベース" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> データベース</h2>
+<h2>
+<span class="header-section-number">7.2</span> データベース<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9"><i class="fas fa-link"></i></a>
+</h2>
 <div id="三つのサイト" class="section level3" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> 三つのサイト</h3>
+<h3>
+<span class="header-section-number">7.2.1</span> 三つのサイト<a class="anchor" aria-label="anchor" href="#%E4%B8%89%E3%81%A4%E3%81%AE%E3%82%B5%E3%82%A4%E3%83%88"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
 <li><a href="https://data.worldbank.org">世界銀行オープンデータ</a></li>
 <li><a href="https://datacatalog.worldbank.org/home">データカタログ</a></li>
@@ -127,19 +144,25 @@ set in the _output.yml file.</p>" />
 <p>英語を読むことが苦手な場合は、ブラウザー（Google Chrome, Edge, Safari などのホームページ閲覧ソフト）の自動翻訳機能を使うのも良いでしょう。しかし、自動翻訳機能を利用していると、リンク先に飛べなかったり、いくつかの機能が使えないこともありますので、正常に機能しないときは、自動翻訳機能を一旦 OFF にして利用してください。</p>
 </div>
 <div id="世界銀行オープンデータ-1" class="section level3" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> <a href="https://data.worldbank.org">世界銀行オープンデータ</a></h3>
+<h3>
+<span class="header-section-number">7.2.2</span> <a href="https://data.worldbank.org">世界銀行オープンデータ</a><a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%8A%80%E8%A1%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF-1"><i class="fas fa-link"></i></a>
+</h3>
 <p>世界銀行のオープンデータ全体にアクセスできるサイトです。上の検索窓の下に、Country（国）と Indicators（指標）と書いてあります。</p>
 <p>その下には、いくつかのグラフや、最近のニュースやトピックが書かれており、さらにその下には、More Resources（さらに…）といくつかの項目があります。Open Data Catalog、Data Bank、などと共に、World Development Indicators もあります。このWorld Development Indicators (WDI) を選択すると、上の三つのサイトの三番目に飛びます。また、Data Bank を選択すると、三つのサイトの二番目に飛びます。</p>
 <p>最初に書いた、Country（国）と Indicators（指標）から説明しましょう。</p>
 <div id="国別サイト-1" class="section level4" number="7.2.2.1">
-<h4><span class="header-section-number">7.2.2.1</span> <a href="https://data.worldbank.org/country">国別サイト</a></h4>
+<h4>
+<span class="header-section-number">7.2.2.1</span> <a href="https://data.worldbank.org/country">国別サイト</a><a class="anchor" aria-label="anchor" href="#%E5%9B%BD%E5%88%A5%E3%82%B5%E3%82%A4%E3%83%88-1"><i class="fas fa-link"></i></a>
+</h4>
 <p>Country（国別）のサイトを選択すると、国のリストが出てきます。</p>
 <p>J のところに、Japan（日本）がありますから、選択してみてください。日本のさまざまな指標とグラフが出てきます。</p>
 <p>Indicator（指標）、Most Recent Values（直近の値）、Trend（傾向）が表示されます。指標をクリックすると、大きなグラフが出てきます。その指標のサイトですから、そこで、その指標についての他の国の状況などを確認することができます。そこでは、選択した指標と似た指標が選択できたり、もっと詳しいことをしらべるデータバンク（Data Bank）へのリンクもあります。このサイトから、データをダウンロードすることもできるようになっています。</p>
 <p>また、国別サイトの右の方には、地域など、グループに分けてある帯もあります。その一番下には、World （世界）もありますから、世界全体について見てみたり、収入の階級に分けたサイトの指標を見ることもできるようになっています。</p>
 </div>
 <div id="指標別サイト-1" class="section level4" number="7.2.2.2">
-<h4><span class="header-section-number">7.2.2.2</span> <a href="https://data.worldbank.org/indicator">指標別サイト</a></h4>
+<h4>
+<span class="header-section-number">7.2.2.2</span> <a href="https://data.worldbank.org/indicator">指標別サイト</a><a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99%E5%88%A5%E3%82%B5%E3%82%A4%E3%83%88-1"><i class="fas fa-link"></i></a>
+</h4>
 <p>Indicators（指標）を選択すると、トピックに分けて、指標が並んでいます。</p>
 <p>よく見ると、一番上に、Featured Indicators（特徴的な指標） と、All Indicators（すべての指標） とあり、最初に開いているのは、特徴的な指標の方であることがわかります。すべての指標の方を開けると、よりたくさんの指標を見ることができます。</p>
 <p>トピックは、以下のものに分かれています。</p>
@@ -171,7 +194,9 @@ set in the _output.yml file.</p>" />
 </div>
 </div>
 <div id="オープンデータカタログopen-data-catalog" class="section level3" number="7.2.3">
-<h3><span class="header-section-number">7.2.3</span> <a href="https://datacatalog.worldbank.org/home">オープンデータカタログ（Open Data Catalog）</a></h3>
+<h3>
+<span class="header-section-number">7.2.3</span> <a href="https://datacatalog.worldbank.org/home">オープンデータカタログ（Open Data Catalog）</a><a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%82%AB%E3%82%BF%E3%83%AD%E3%82%B0open-data-catalog"><i class="fas fa-link"></i></a>
+</h3>
 <blockquote>
 <p>The Data Catalog is designed to make World Bank’s development data easy to find, download, use, and share. It includes data from the World Bank’s <a href="https://microdata.worldbank.org/">microdata</a>, <a href="http://finances.worldbank.org/">finances</a> and <a href="https://energydata.info/">energy data</a> platforms, as well as datasets from the <a href="https://data.worldbank.org/">open data catalog.</a> There are different ways to access and download datasets.</p>
 <p>データカタログは、世界銀行で編纂した開発に関するデータを簡単に検索、ダウンロード、使用、共有できるように設計されています。これには、世界銀行の<a href="https://microdata.worldbank.org/">マイクロデータ</a>、<a href="http://finances.worldbank.org/">財務</a>、<a href="https://energydata.info/">エネルギーデータ</a>プラットフォームからのデータ、および<a href="https://data.worldbank.org/">オープンデータカタログ</a>からのデータセットが含まれています。データセットにアクセスしてダウンロードするには、さまざまな方法があります。</p>
@@ -181,87 +206,118 @@ set in the _output.yml file.</p>" />
 <p>それぞれの、トピックに、関連のデータがリストされています。</p>
 </div>
 <div id="world-bank-wdi---world-development-indicaters" class="section level3" number="7.2.4">
-<h3><span class="header-section-number">7.2.4</span> World Bank: WDI - World Development Indicaters</h3>
+<h3>
+<span class="header-section-number">7.2.4</span> World Bank: WDI - World Development Indicaters<a class="anchor" aria-label="anchor" href="#world-bank-wdi---world-development-indicaters"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li>世界銀行（World Bank）: <a href="https://www.worldbank.org" class="uri">https://www.worldbank.org</a></li>
-<li><a href="https://www.worldbank.org/en/who-we-are">世界銀行について（Who we are）</a>:
+<li>世界銀行（World Bank）: <a href="https://www.worldbank.org" class="uri">https://www.worldbank.org</a>
+</li>
+<li>
+<a href="https://www.worldbank.org/en/who-we-are">世界銀行について（Who we are）</a>:
 <ul>
 <li>極度の貧困状態の削減（To end extreme poverty）: 2030年までに、極度の貧困状態にある世界人口の割合を3%に削減する。By reducing the share of the global population that lives in extreme poverty to 3 percent by 2030.</li>
 <li>繁栄を共に享受（To promote shared prosperity）: すべての国の最貧困層の40％の人々の所得を増加させることによって共栄を促進。By increasing the incomes of the poorest 40 percent of people in every country.</li>
-</ul></li>
+</ul>
+</li>
 <li>世界銀行オープンデータ（World Bank Open Data）: <a href="https://data.worldbank.org" class="uri">https://data.worldbank.org</a>
 <ul>
 <li>Data Bank, World Development Indicators, etc.</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>日本について：<a href="https://data.worldbank.org/country/japan?view=chart" class="uri">https://data.worldbank.org/country/japan?view=chart</a></p>
 </div>
 <div id="世界開発指標world-development-indicator" class="section level3" number="7.2.5">
-<h3><span class="header-section-number">7.2.5</span> 世界開発指標（World Development Indicator）</h3>
+<h3>
+<span class="header-section-number">7.2.5</span> 世界開発指標（World Development Indicator）<a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99world-development-indicator"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li><a href="https://datatopics.worldbank.org/world-development-indicators/">World Development Indicators (WDI)</a> : 世界銀行が開発に関する各国間比較可能なデータの集大成である1400の時系列指標（the World Bank’s premier compilation of cross-country comparable data on development; 1400 time series indicators）
+<li>
+<a href="https://datatopics.worldbank.org/world-development-indicators/">World Development Indicators (WDI)</a> : 世界銀行が開発に関する各国間比較可能なデータの集大成である1400の時系列指標（the World Bank’s premier compilation of cross-country comparable data on development; 1400 time series indicators）
 <ul>
 <li>テーマ別（Themes）: 貧困と格差、人間、環境、経済、国家と市場、グローバルリンク集（Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links）</li>
 <li>オープンデータとデータバンク（Open Data &amp; DataBank）: Explore data, Query database</li>
 <li>Bulk Download: Excel, CSV</li>
 <li>API Documentation</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="ダッシュボードdashboard" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> ダッシュボード（Dashboard）</h2>
+<h2>
+<span class="header-section-number">7.3</span> ダッシュボード（Dashboard）<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89dashboard"><i class="fas fa-link"></i></a>
+</h2>
 <p>世界銀行のダッシュボードには二種類あります。一つは、それぞれの指標についてのダッシュボード、もう一つは、データバンク（DataBank）です。</p>
 <div id="world-bank-アカウント" class="section level3" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> World Bank アカウント</h3>
+<h3>
+<span class="header-section-number">7.3.1</span> World Bank アカウント<a class="anchor" aria-label="anchor" href="#world-bank-%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88"><i class="fas fa-link"></i></a>
+</h3>
 <p>ダッシュボードは、リンクにアクセスすれば、アカウントなどを作成せず、すぐに使えます。しかし、ダッシュボードを使って、グラフを作成したり、自分用の、データを作成したりした場合には、その結果を、保存をしたり、リンク（iframe 形式）を、文書に埋め込んだりする必要を感じる場合があります。その場合には、一般用アカウントを作成する必要があります。この<a href="https://login.worldbankgroup.org/worldbankgroupb2c.onmicrosoft.com/b2c_1_wbg-solexternal_sisu/oauth2/v2.0/authorize?client_id=7077d845-b099-4fca-9f1b-8fcaade1524c&amp;scope=openid%20profile%20offline_access&amp;redirect_uri=https%3A%2F%2Fpip.worldbank.org%2Fsol%2F&amp;client-request-id=a3010f0e-81e7-45c4-b519-d8e044d3a89b&amp;response_mode=fragment&amp;response_type=code&amp;x-client-SKU=msal.js.browser&amp;x-client-VER=2.34.0&amp;client_info=1&amp;code_challenge=Ome3V78SVvRRXZvJ3DjMvKDuE5CE-N59RHOY09WJ_LY&amp;code_challenge_method=S256&amp;nonce=0a59c36f-97dd-4369-a233-544b6a6393eb&amp;state=eyJpZCI6Ijc3M2MxM2MzLTg5OTItNDEwMS05MmJkLWYyZThmZDQwNjdlZiIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D">サイト</a>の Sign Up から、アカウントを作成してください。</p>
 </div>
 <div id="指標毎のダッシュボード" class="section level3" number="7.3.2">
-<h3><span class="header-section-number">7.3.2</span> 指標毎のダッシュボード</h3>
+<h3>
+<span class="header-section-number">7.3.2</span> 指標毎のダッシュボード<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99%E6%AF%8E%E3%81%AE%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
+</h3>
 <p>はじめてのデータサイエンスで使った、GDP (Current US$)、データコード NY.GDP.MKTP.CD についてみてみましょう。</p>
 <p>いくつかの方法があります。</p>
 <ol style="list-style-type: decimal">
-<li><a href="https://data.worldbank.org">世界銀行オープンデータ</a> から、指標（Indicator）を選択し、その中の Economy &amp; Growth（経済と成長）の中から、<a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?view=chart">GDP (current US$)</a> を選択すると、ダッシュボードが現れ、世界の GPD の推移のグラフが表示されます。</li>
-<li><a href="https://data.worldbank.org">世界銀行オープンデータ</a> から、国（Country）を選択し、例えば、J から、Japan を選択し、Economics（経済）の指標の <a href="#id_0">GDP (current US$)</a> を選択すると、ダッシュボードが現れ、日本の GDP の推移のグラフが表示されます。指標によっては、上の、Theme（テーマ）や、Topic（トピック）から選ぶ必要がある場合もあります。</li>
-<li><a href="https://datatopics.worldbank.org/world-development-indicators/">世界開発指標（WDI）</a>の Data Theme（テーマ）の中の、ECONOMY（経済） の中から、<a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?view=chart">GDP (current US$)</a> を選択すると、ダッシュボードが現れ、世界の GPD の推移のグラフが表示されます。</li>
+<li>
+<a href="https://data.worldbank.org">世界銀行オープンデータ</a> から、指標（Indicator）を選択し、その中の Economy &amp; Growth（経済と成長）の中から、<a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?view=chart">GDP (current US$)</a> を選択すると、ダッシュボードが現れ、世界の GPD の推移のグラフが表示されます。</li>
+<li>
+<a href="https://data.worldbank.org">世界銀行オープンデータ</a> から、国（Country）を選択し、例えば、J から、Japan を選択し、Economics（経済）の指標の <a href="#id_0">GDP (current US$)</a> を選択すると、ダッシュボードが現れ、日本の GDP の推移のグラフが表示されます。指標によっては、上の、Theme（テーマ）や、Topic（トピック）から選ぶ必要がある場合もあります。</li>
+<li>
+<a href="https://datatopics.worldbank.org/world-development-indicators/">世界開発指標（WDI）</a>の Data Theme（テーマ）の中の、ECONOMY（経済） の中から、<a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?view=chart">GDP (current US$)</a> を選択すると、ダッシュボードが現れ、世界の GPD の推移のグラフが表示されます。</li>
 <li>もし、WDI コード（この場合は、NY.GDP.MKTP.CD）を知っていれば、このコードを、<a href="https://data.worldbank.org">世界銀行オープンデータ</a> の検索窓に入れて検索すると、上のダッシュボードのページが表示されます。</li>
 </ol>
-<p>最初は、選択した指標について、世界か、日本など選択した国の、折れ線グラフ（Line Graph）が表示されていると思います。そして、下の方に、国のリストがあり、その一番下には、地域のリストが続いています<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>。また、Line （折れ線グラフ）と書いた右には、Bar（棒グラフ）と、Map（地図）とあります。</p>
+<p>最初は、選択した指標について、世界か、日本など選択した国の、折れ線グラフ（Line Graph）が表示されていると思います。そして、下の方に、国のリストがあり、その一番下には、地域のリストが続いています<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;アルファベットの昇順になっていますが、そのリストの Country（国）の右にある ⌃型のマークを押すと⌵に変わり、降順になります。&lt;/p&gt;"><sup>6</sup></a>。また、Line （折れ線グラフ）と書いた右には、Bar（棒グラフ）と、Map（地図）とあります。</p>
 <p>その右には、Also Show （追加）とあり、Aggregates（総合）、Same Region（同じ地域）、Similar Values（近い値）、Highest Values（最高値）、Lowest Values（最小値）を表示することもできます。表示しないときは、None を選択します。</p>
 <p>その右には、Share（共有）と、Details（詳細）があります。詳細には、その指標についての、詳しい説明があります。すべてを理解することはできないかもしれませんが、翻訳機能も使って、確認しておくことをお勧めします。詳細には、データコードも書かれています。記録しておくと、次に同じ指標のデータを探すときに便利です。共有からは、Web Page や、SNS に埋め込む、iframe link を取得することができます。</p>
 <p>右の方の帯には、関連する指標がリストされ、さらに、Download（ダウンロード）、Data Bank（データバンク）、WDI Tables （統計表）へのリンクがあります。</p>
 <div id="使い方" class="section level4" number="7.3.2.1">
-<h4><span class="header-section-number">7.3.2.1</span> 使い方</h4>
+<h4>
+<span class="header-section-number">7.3.2.1</span> 使い方<a class="anchor" aria-label="anchor" href="#%E4%BD%BF%E3%81%84%E6%96%B9"><i class="fas fa-link"></i></a>
+</h4>
 <p>具体例としては、GDP（Current US$）の世界（World）のグラフが表示されているとします。上の検索窓に GDP（Current US$）と入っていると思います。</p>
 <ul>
-<li><p>国や地域の追加</p>
+<li>
+<p>国や地域の追加</p>
 <ul>
 <li><p>英語で入力しますから、グラフの下の、国や地域名のところから、追加したい、国や地域名を選んで、書き出しておいてください。一つずつ追加するときは、コピーするのも良いかもしれません。</p></li>
 <li><p>日本をグラフに追加するときは、Japan ですから、検索窓に、Japan と入れて<strong>少し待ちます</strong>。すると、窓の下に、Japan が表示されますから、それを選択（クリック）します。すると、日本のグラフに変わります。India も加えてください。次に、検索窓に、United と入力すると、United Kingdom, United States, United Arab Emirates が表示されますから、United Kingdom を選択してください。Japan, India, United Kingdom の三つの国のグラフが同時に表示されます。これによって、いくつかの国のその指標における経年変化を比較することができます。</p></li>
 <li><p>いろいろな国や地域を加えてみてください。たとえば、GDP を指標として、United States を加えると、United States の GDP の値が大きいため、他の国のグラフは下の方に重なり合うようになります。Afghanistan を加えると、ある年以前のデータがなかったり、値がとても小さいために、X 軸に張り付くようになってしまったりします。みやすいグラフを表示するには、どのようなものの比較をするかも重要になってくることがわかると思います。</p></li>
 <li><p>追加した国や地域を消すのは、単にその国名の、右に表示される x マークを選択すれば良いですし、Delete キーでも消去できます。</p></li>
 <li><p>実は、Japan など一つの国を加えてからあとは、下の国名などのリストから、追加したい国を選択すると、追加されていきます。検索窓に入れるよりも簡単だと思います。</p></li>
-</ul></li>
-<li><p>Also Show の活用</p>
+</ul>
+</li>
+<li>
+<p>Also Show の活用</p>
 <ul>
 <li><p>上に書いたように、Aggregates（総合）、Same Region（同じ地域）、Similar Values（近い値）、Highest Values（最高値）、Lowest Values（最小値）を追加できます。たとえば、Japan（日本）だけを残しておいて、Same Region を選択すると、いくつかの国の値が、薄く表示されます。地域名をみると、これは、East Asia &amp; Pacific（東アジアと太平洋地域）であることが推測されます。</p></li>
 <li><p>そこで、East Asia &amp; Pasific を選択すると、その地域の総計の値が追加されます。</p></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="データダウンロード" class="section level4" number="7.3.2.2">
-<h4><span class="header-section-number">7.3.2.2</span> データダウンロード</h4>
+<h4>
+<span class="header-section-number">7.3.2.2</span> データダウンロード<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
+</h4>
 <p>R のパッケージを用いたデータのダウンロードについてはあとから述べますが、指標毎のダッシュボードの右の帯のダウンロードからも、データをダウンロードすることができます。</p>
 <p>CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（Micosoft Excel Spreadsheet） と三つの形式でデータを取得できます。それぞれ、R などで読み込むことができます。ただし、CSV と、XML は、Zip 形式の圧縮ファイルになっています。EXCEL は、三つのシート（Data, Metadata - Countries, Metadata - Indicators）が一つの、ブックになっています。Metadata（メタデータ）は、データのデータで、データについての情報が収められています。</p>
 </div>
 </div>
 <div id="データバンクdatabank" class="section level3" number="7.3.3">
-<h3><span class="header-section-number">7.3.3</span> データバンク（DataBank）</h3>
+<h3>
+<span class="header-section-number">7.3.3</span> データバンク（DataBank）<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%90%E3%83%B3%E3%82%AFdatabank"><i class="fas fa-link"></i></a>
+</h3>
 <p>上で説明した指標毎のダッシュボードの右の帯からも、データバンクのダッシュボードが開きますが、<a href="https://data.worldbank.org">世界銀行オープンデータ</a> の下にある、データバンクを選択すると、リストが表示されます。ここで、ある程度選択してから、ダッシュボードを表示させることもできます。一番上に、World Development Indicators（世界開発指標）がありますから、選択してください。あとから、他のものに変更することも可能です。</p>
 <p>表が表示され、左の方に、Variables（変数）、Layout（レイアウト）、Styles（形式）、Save（保存）、Share（共有）、Embed（埋め込み） とあり、右上には、Table（表）、Chart（グラフ）、Map（地図）、Metadata（メタデータ） とあり、その下には、Preview（表示）などとなっていると思います。</p>
 <p>膨大なデータを選択し、形式を整えて、ダウンロードしたり、グラフを表示したりすることができます。</p>
 <div id="例1" class="section level4" number="7.3.3.1">
-<h4><span class="header-section-number">7.3.3.1</span> 例1</h4>
+<h4>
+<span class="header-section-number">7.3.3.1</span> 例1<a class="anchor" aria-label="anchor" href="#%E4%BE%8B1"><i class="fas fa-link"></i></a>
+</h4>
 <p>まずは、一つ目の例として、GDP (Current US$) の値を大きい方から国順に並べてみましょう。</p>
 <ol style="list-style-type: decimal">
 <li><p>Variable の Database で、World Development Indicators を選択します。</p></li>
@@ -275,11 +331,13 @@ set in the _output.yml file.</p>" />
 <p>ここまでで、Table に、GDP (current US$) についての表が表示されていることを確認してください。</p>
 <p>これを書いている時点では、2022年が最も新しいデータで、2022 の年のところをクリックすると、最初は、国名のアルファベット順になっていると思いますが、それが、その指標の値の、昇順、降順に変更できます。ここでは、GDP が大きな値の順に並べたいので、降順にします。</p>
 <p>10位までの国は、United States, China, Japan, Germany, India, United Kingdom, France, Russian Federation, Canada, Italy となっているかと思います。</p>
-<iframe frameBorder="no" src="https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425">
+<iframe frameborder="no" src="https://databank.worldbank.org/embed/GDP%E2%80%94current-US%24/id/66aaa928?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425">
 </iframe>
 </div>
 <div id="例2" class="section level4" number="7.3.3.2">
-<h4><span class="header-section-number">7.3.3.2</span> 例2</h4>
+<h4>
+<span class="header-section-number">7.3.3.2</span> 例2<a class="anchor" aria-label="anchor" href="#%E4%BE%8B2"><i class="fas fa-link"></i></a>
+</h4>
 <p>2022年の値で、10位までの国を選択して、折れ線グラフや、棒グラフなどを書いてみましょう。</p>
 <ol style="list-style-type: decimal">
 <li>Variables の Countries の X で選択を解除し、上の10カ国を選んでください。</li>
@@ -287,12 +345,14 @@ set in the _output.yml file.</p>" />
 <li>上の、Styles を選択し、Chat Type &amp; Style で、Line（折れ線グラフ）を選択すると、しばらくして、10カ国の、折れ線グラフを表示させることができます。色も変更することも可能です。</li>
 <li>Chat Type &amp; Style で Horizontal Bar を選択し、Layout で、</li>
 </ol>
-<iframe frameBorder="no" src="https://databank.worldbank.org/embed/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425">
+<iframe frameborder="no" src="https://databank.worldbank.org/embed/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425">
 </iframe>
 <p>以下では、変数（Variables）の選び方と、グラフ（Chart）について簡単に説明します。</p>
 </div>
 <div id="変数variables" class="section level4" number="7.3.3.3">
-<h4><span class="header-section-number">7.3.3.3</span> 変数（Variables）</h4>
+<h4>
+<span class="header-section-number">7.3.3.3</span> 変数（Variables）<a class="anchor" aria-label="anchor" href="#%E5%A4%89%E6%95%B0variables"><i class="fas fa-link"></i></a>
+</h4>
 <p>Database、Country、Series、Time とあり、それぞれの右に、Available と Selected とあります。</p>
 <p>どのデータベースについて、国を選択し、系列を選び、期間を選択するという形式になっています。</p>
 <p>Database の左の三角印を選択すると、データベース名が確認できます。現在は、World Development Indicators が選択されています。ここで、他のデータベースに変更することも可能ですが、まずは、そのままにしましょう。</p>
@@ -301,67 +361,85 @@ set in the _output.yml file.</p>" />
 <p>国がいくつか選択されている場合もありますから、X マークをクリックして、すべて選択を消去し、国を選んでみましょう。GDP のところで経験したように、GDP の多い方から、United States、China、Japan、Germany、India、United Kingdom、France を選択してみましょう。</p>
 </div>
 <div id="gdp-per-capita-constant-2015-us" class="section level4" number="7.3.3.4">
-<h4><span class="header-section-number">7.3.3.4</span> GDP per capita (constant 2015 US$)</h4>
+<h4>
+<span class="header-section-number">7.3.3.4</span> GDP per capita (constant 2015 US$)<a class="anchor" aria-label="anchor" href="#gdp-per-capita-constant-2015-us"><i class="fas fa-link"></i></a>
+</h4>
 <p>実質GDP（2015年を基準にしたもの）を、総人口で割った値。アメリカ合衆国、英国、ドイツ、フランス、日本、中国、日本、ロシア、ウクライナの2021年における比較棒グラフ - <a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.KD?locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;end=2021&amp;view=bar">リンク</a></p>
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 <p>年次変化を示す折線グラフ -</p>
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1960&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
+<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1960&amp;view=chart" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 </div>
 <div id="central-government-debt-total-of-gdp" class="section level4" number="7.3.3.5">
-<h4><span class="header-section-number">7.3.3.5</span> Central government debt, total (% of GDP)</h4>
+<h4>
+<span class="header-section-number">7.3.3.5</span> Central government debt, total (% of GDP)<a class="anchor" aria-label="anchor" href="#central-government-debt-total-of-gdp"><i class="fas fa-link"></i></a>
+</h4>
 <p>2020年の政府の負債（GDP の百分率）- <a href="https://data.worldbank.org/indicator/GC.DOD.TOTL.GD.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2020&amp;end=2020&amp;view=bar">リンク</a></p>
-<iframe src="https://data.worldbank.org/share/widget?end=2020&amp;indicators=GC.DOD.TOTL.GD.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2020&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+<iframe src="https://data.worldbank.org/share/widget?end=2020&amp;indicators=GC.DOD.TOTL.GD.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2020&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
-<p>政府の負債（GDP の百分率）の年次変化を示す折線グラフ <iframe src="https://data.worldbank.org/share/widget?indicators=GC.DOD.TOTL.GD.ZS&locations=JP-GB-RU-FR-CN-US-UA-DE" width='450' height='300' frameBorder='0' scrolling="no" ></iframe></p>
+<p>政府の負債（GDP の百分率）の年次変化を示す折線グラフ <iframe src="https://data.worldbank.org/share/widget?indicators=GC.DOD.TOTL.GD.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE" width="450" height="300" frameborder="0" scrolling="no"></iframe></p>
 </div>
 <div id="co2-emissions-metric-tons-per-capita" class="section level4" number="7.3.3.6">
-<h4><span class="header-section-number">7.3.3.6</span> CO2 emissions (metric tons per capita)</h4>
+<h4>
+<span class="header-section-number">7.3.3.6</span> CO2 emissions (metric tons per capita)<a class="anchor" aria-label="anchor" href="#co2-emissions-metric-tons-per-capita"><i class="fas fa-link"></i></a>
+</h4>
 <p>CO2 排出量 (1 人あたりのメートル トン) - <a href="https://data.worldbank.org/indicator/EN.ATM.CO2E.PC?locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2019&amp;end=2019&amp;view=bar">リンク</a></p>
-<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2019&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2019&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 <p>CO2 排出量 (1 人あたりのメートル トン) の年次変化の折線グラフ</p>
-<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1990&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
+<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1990&amp;view=chart" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 </div>
 <div id="military-expenditure-of-gdp" class="section level4" number="7.3.3.7">
-<h4><span class="header-section-number">7.3.3.7</span> Military expenditure (% of GDP)</h4>
+<h4>
+<span class="header-section-number">7.3.3.7</span> Military expenditure (% of GDP)<a class="anchor" aria-label="anchor" href="#military-expenditure-of-gdp"><i class="fas fa-link"></i></a>
+</h4>
 <p>2021年の軍事費 (GDP の %) - <a href="https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS?locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;end=2021&amp;view=bar">リンク</a></p>
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 <p>軍事費 (GDP の %) の年次変化</p>
-<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
+<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 </div>
 <div id="military-expenditure-current-usd" class="section level4" number="7.3.3.8">
-<h4><span class="header-section-number">7.3.3.8</span> Military expenditure (current USD)</h4>
+<h4>
+<span class="header-section-number">7.3.3.8</span> Military expenditure (current USD)<a class="anchor" aria-label="anchor" href="#military-expenditure-current-usd"><i class="fas fa-link"></i></a>
+</h4>
 <p>2021年の軍事費 (現在の米ドル)</p>
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 <p>軍事費の年次変化</p>
-<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
+<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 </div>
 <div id="proportion-of-seats-held-by-women-in-natinal-parliaments" class="section level4" number="7.3.3.9">
-<h4><span class="header-section-number">7.3.3.9</span> Proportion of seats held by women in natinal parliaments (%)</h4>
+<h4>
+<span class="header-section-number">7.3.3.9</span> Proportion of seats held by women in natinal parliaments (%)<a class="anchor" aria-label="anchor" href="#proportion-of-seats-held-by-women-in-natinal-parliaments"><i class="fas fa-link"></i></a>
+</h4>
 <p>2021年、国会で女性が占める議席の割合 (%) - <a href="https://data.worldbank.org/indicator/SG.GEN.PARL.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;end=2021&amp;view=bar">リンク</a></p>
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 <p>国会で女性が占める議席の割合 (%) の年次変化</p>
-<iframe src="https://data.worldbank.org/share/widget?indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE" width="450" height="300" frameBorder="0" scrolling="no">
+<iframe src="https://data.worldbank.org/share/widget?indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE" width="450" height="300" frameborder="0" scrolling="no">
 </iframe>
 </div>
 </div>
 <div id="世界のさまざまな課題から見る" class="section level3" number="7.3.4">
-<h3><span class="header-section-number">7.3.4</span> 世界のさまざまな課題から見る</h3>
+<h3>
+<span class="header-section-number">7.3.4</span> 世界のさまざまな課題から見る<a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E3%81%AE%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E8%AA%B2%E9%A1%8C%E3%81%8B%E3%82%89%E8%A6%8B%E3%82%8B"><i class="fas fa-link"></i></a>
+</h3>
 </div>
 </div>
 <div id="api" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> API</h2>
+<h2>
+<span class="header-section-number">7.4</span> API<a class="anchor" aria-label="anchor" href="#api"><i class="fas fa-link"></i></a>
+</h2>
 <p>世界銀行（World Bank）の API を利用した R のパッケージを二つ紹介します。</p>
 <div id="wdi" class="section level3" number="7.4.1">
-<h3><span class="header-section-number">7.4.1</span> WDI</h3>
+<h3>
+<span class="header-section-number">7.4.1</span> WDI<a class="anchor" aria-label="anchor" href="#wdi"><i class="fas fa-link"></i></a>
+</h3>
 <p>Search and download data from over 40 databases hosted by the World Bank, including the World Development Indicators (‘WDI’), International Debt Statistics, Doing Business, Human Capital Index, and Sub-national Poverty indicators.</p>
 <p>世界開発指標(「WDI」)、国際債務統計、Doing Business、人的資本指数、準国家貧困指標など、世界銀行が主催する40以上のデータベースからデータを検索してダウンロードします。</p>
 <ul>
@@ -372,7 +450,9 @@ set in the _output.yml file.</p>" />
 </ul>
 </div>
 <div id="wbstats" class="section level3" number="7.4.2">
-<h3><span class="header-section-number">7.4.2</span> wbstats</h3>
+<h3>
+<span class="header-section-number">7.4.2</span> wbstats<a class="anchor" aria-label="anchor" href="#wbstats"><i class="fas fa-link"></i></a>
+</h3>
 <p>Programmatic Access to Data and Statistics from the World Bank API</p>
 <p>世界銀行APIからのデータと統計へのプログラムによるアクセス</p>
 <ul>
@@ -381,40 +461,59 @@ set in the _output.yml file.</p>" />
 <li><p>マニュアル（Manual）：<a href="https://cran.r-project.org/web/packages/wbstats/wbstats.pdf" class="uri">https://cran.r-project.org/web/packages/wbstats/wbstats.pdf</a></p></li>
 <li><p>使い方の例（Vignette）：<a href="https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html" class="uri">https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html</a></p></li>
 </ul>
+</div>
+</div>
+</div>
 
-</div>
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="6">
-<li id="fn6"><p>アルファベットの昇順になっていますが、そのリストの Country（国）の右にある ⌃型のマークを押すと⌵に変わり、降順になります。<a href="worldbank-site.html#fnref6" class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></div>
+<div class="next"><a href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#worldbank-site"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
+<li><a class="nav-link" href="#%E6%A6%82%E8%A6%81-2"><span class="header-section-number">7.1</span> 概要</a></li>
+<li>
+<a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9"><span class="header-section-number">7.2</span> データベース</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E4%B8%89%E3%81%A4%E3%81%AE%E3%82%B5%E3%82%A4%E3%83%88"><span class="header-section-number">7.2.1</span> 三つのサイト</a></li>
+<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%8A%80%E8%A1%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF-1"><span class="header-section-number">7.2.2</span> 世界銀行オープンデータ</a></li>
+<li><a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%82%AB%E3%82%BF%E3%83%AD%E3%82%B0open-data-catalog"><span class="header-section-number">7.2.3</span> オープンデータカタログ（Open Data Catalog）</a></li>
+<li><a class="nav-link" href="#world-bank-wdi---world-development-indicaters"><span class="header-section-number">7.2.4</span> World Bank: WDI - World Development Indicaters</a></li>
+<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99world-development-indicator"><span class="header-section-number">7.2.5</span> 世界開発指標（World Development Indicator）</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89dashboard"><span class="header-section-number">7.3</span> ダッシュボード（Dashboard）</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#world-bank-%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88"><span class="header-section-number">7.3.1</span> World Bank アカウント</a></li>
+<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99%E6%AF%8E%E3%81%AE%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89"><span class="header-section-number">7.3.2</span> 指標毎のダッシュボード</a></li>
+<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%90%E3%83%B3%E3%82%AFdatabank"><span class="header-section-number">7.3.3</span> データバンク（DataBank）</a></li>
+<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E3%81%AE%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E8%AA%B2%E9%A1%8C%E3%81%8B%E3%82%89%E8%A6%8B%E3%82%8B"><span class="header-section-number">7.3.4</span> 世界のさまざまな課題から見る</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#api"><span class="header-section-number">7.4</span> API</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#wdi"><span class="header-section-number">7.4.1</span> WDI</a></li>
+<li><a class="nav-link" href="#wbstats"><span class="header-section-number">7.4.2</span> wbstats</a></li>
+</ul>
+</li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/12-worldbank-site.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/12-worldbank-site.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう<br />
+    <p>"<strong>データサイエンスをはじめましょう<br>
 - Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-05.</p>
   </div>
 
@@ -423,11 +522,7 @@ set in the _output.yml file.</p>" />
   </div>
 
 </div></div>
-</footer>
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -439,8 +534,7 @@ set in the _output.yml file.</p>" />
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script>
-<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -458,5 +552,4 @@ for (let popover of popovers) {
 }
 </script>
 </body>
-
 </html>

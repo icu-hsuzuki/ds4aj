@@ -823,6 +823,11 @@ df_gdp |> drop_na(gdp) |> filter(region != "Aggregates") |>
 
 ```r
 library(maps)
+#> 
+#> Attaching package: 'maps'
+#> The following object is masked from 'package:purrr':
+#> 
+#>     map
 gdp_short <- df_gdp |> filter(year == 2021, region != "Aggregates") |>
   select(iso2c, gdp, income)
 map_world <- map_data('world')

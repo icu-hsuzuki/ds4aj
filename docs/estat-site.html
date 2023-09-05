@@ -1,54 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Chapter 11 e-Stat 日本の政府統計 | データサイエンスをはじめましょう - Data Science for All -</title>
-
-    <meta name="author" content="鈴木寛（Hirosi Suzuki）" />
-  
-   <meta name="description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="Chapter 11 e-Stat 日本の政府統計 | データサイエンスをはじめましょう - Data Science for All -" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/" />
-  
-  <meta property="og:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 e-Stat 日本の政府統計 | データサイエンスをはじめましょう - Data Science for All -" />
-  
-  <meta name="twitter:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.4.2/transition.js"></script>
-    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
-    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 11 e-Stat 日本の政府統計 | データサイエンスをはじめましょう - Data Science for All -</title>
+<meta name="author" content="鈴木寛（Hirosi Suzuki）">
+<meta name="description" content="11.1 概要 基本的なデータベースは、「社会・人口統計体系」から見ることができます。一覧表示も可能ですが、まずは、リンクから階層形式で見ると、都道府県別データと、市町村別データに分かれています。また、それぞれが、基礎データと社会統計指標に分かれ、さらに、それぞれが、  11.2 データベース  e-Stat：政府統計の総合窓口 - 統計で見る日本...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 11 e-Stat 日本の政府統計 | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/estat-site.html">
+<meta property="og:description" content="11.1 概要 基本的なデータベースは、「社会・人口統計体系」から見ることができます。一覧表示も可能ですが、まずは、リンクから階層形式で見ると、都道府県別データと、市町村別データに分かれています。また、それぞれが、基礎データと社会統計指標に分かれ、さらに、それぞれが、  11.2 データベース  e-Stat：政府統計の総合窓口 - 統計で見る日本...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 11 e-Stat 日本の政府統計 | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="11.1 概要 基本的なデータベースは、「社会・人口統計体系」から見ることができます。一覧表示も可能ですが、まずは、リンクから階層形式で見ると、都道府県別データと、市町村別データに分かれています。また、それぞれが、基礎データと社会統計指標に分かれ、さらに、それぞれが、  11.2 データベース  e-Stat：政府統計の総合窓口 - 統計で見る日本...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-    <style type="text/css">
+<style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -70,20 +44,17 @@ set in the _output.yml file.</p>" />
       margin-left: 2em;
     }
   </style>
-      <link rel="stylesheet" href="style.css" />
-  
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">データサイエンスをはじめましょう<br />
+        <a href="index.html" title="">データサイエンスをはじめましょう<br>
 - Data Science for All -</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -92,31 +63,77 @@ set in the _output.yml file.</p>" />
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">この文書について</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
+<li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
+<li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
+<li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
+<li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
+<li class="book-part">PART I オープンデータ</li>
+<li><a class="" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
+<li><a class="" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
+<li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
+<li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
+<li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
+<li><a class="active" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
+<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
+<li class="book-part">PART II BASICS</li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
+<li><a class="" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
+<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
+<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
+<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
+<li class="book-part">PART III INSTITUTIONAL DATA</li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
+<li class="book-part">PART IV EDA</li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
+<li class="book-part">PART V EXAMPLES</li>
+<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
+<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
+<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
+<li><a class="" href="todo-list.html"><span class="header-section-number">D</span> To Do リスト</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="estat-site" class="section level1" number="11">
-<h1><span class="header-section-number">Chapter 11</span> e-Stat 日本の政府統計</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estat-site" class="section level1" number="11">
+<h1>
+<span class="header-section-number">11</span> e-Stat 日本の政府統計<a class="anchor" aria-label="anchor" href="#estat-site"><i class="fas fa-link"></i></a>
+</h1>
 <div id="概要-6" class="section level2" number="11.1">
-<h2><span class="header-section-number">11.1</span> 概要</h2>
+<h2>
+<span class="header-section-number">11.1</span> 概要<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E8%A6%81-6"><i class="fas fa-link"></i></a>
+</h2>
 <p>基本的なデータベースは、「<a href="https://www.e-stat.go.jp/stat-search/database?page=1&amp;layout=normal&amp;toukei=00200502">社会・人口統計体系</a>」から見ることができます。一覧表示も可能ですが、まずは、リンクから階層形式で見ると、都道府県別データと、市町村別データに分かれています。また、それぞれが、基礎データと社会統計指標に分かれ、さらに、それぞれが、</p>
 </div>
 <div id="データベース-4" class="section level2" number="11.2">
-<h2><span class="header-section-number">11.2</span> データベース</h2>
+<h2>
+<span class="header-section-number">11.2</span> データベース<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9-4"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
-<li><a href="https://www.e-stat.go.jp/">e-Stat</a>：政府統計の総合窓口 - 統計で見る日本</li>
-<li><a href="https://dashboard.e-stat.go.jp">ダッシュボード</a>：対話型形式でのデータの視覚化</li>
+<li>
+<a href="https://www.e-stat.go.jp/">e-Stat</a>：政府統計の総合窓口 - 統計で見る日本</li>
+<li>
+<a href="https://dashboard.e-stat.go.jp">ダッシュボード</a>：対話型形式でのデータの視覚化</li>
 </ul>
 <p>たくさんの統計が掲載されています。ダッシュボードは、そのうちのいくつかを見やすいように、グラフによって視覚化されています。</p>
 <p>まず、<a href="https://www.e-stat.go.jp/">e-Stat</a> 政府統計の総合窓口に行くと、右上の若葉マークに使い方が書かれていますから、それを読むのがお勧めです。ここには、詳細は書きません。</p>
@@ -124,7 +141,9 @@ set in the _output.yml file.</p>" />
 <p>その下には、統計分類（大分類）として、トピックごとに分類されたものを調べるものがあります。これは、トップページの「分野」と大体対応しています。その下には、組織で調べる、統計の種類で絞り込み、政府統計名で絞り込み、提供周期で絞り込み、調査年で絞り込み、調査月で絞り込み、50音で絞り込み、統計表フォーマットで絞り込み、集計地域区分で絞り込みと続きます。</p>
 <p>まずは、統計の種類から、基幹統計を見てみましょう。<a href="https://www.e-stat.go.jp/stat-search?page=1&amp;toukei_kind=6&amp;metadata=1&amp;data=1">ここ</a>からも見ることができます。全部で61のデータベース、64のファイルと書かれて、国勢調査や、人口推計、労働力調査、家計調査、学校基本調査などが並んでいます。</p>
 <div id="家計調査" class="section level3" number="11.2.1">
-<h3><span class="header-section-number">11.2.1</span> 家計調査</h3>
+<h3>
+<span class="header-section-number">11.2.1</span> 家計調査<a class="anchor" aria-label="anchor" href="#%E5%AE%B6%E8%A8%88%E8%AA%BF%E6%9F%BB"><i class="fas fa-link"></i></a>
+</h3>
 <p><a href="https://www.e-stat.go.jp/stat-search/database?page=1&amp;toukei=00200561&amp;tstat=000000330001&amp;toukei_kind=6&amp;metadata=1&amp;data=1">家計調査</a>をみてみましょう。家計調査についての説明がありますが、その下の、二人以上の世帯、年次を見てみます。費目分類010 品目分類（2020年改定）（総数：金額）のDB（データベース）をみてみましょう。</p>
 <p>表が現れます。</p>
 <p>左の方にある、表示項目選択を開きます。</p>
@@ -136,7 +155,9 @@ set in the _output.yml file.</p>" />
 <p>確定させてもとに戻ると、それぞれの項目のそれぞれの地域の平均消費額がわかります。一番上には全国平均が載っています。</p>
 <p>たとえば、二人以上の世帯の、この調査における平均世帯人数は、2.91人、消費支出3,490,383円、牛乳の支出15,001円などと出ています。</p>
 <div id="補足" class="section level4" number="11.2.1.1">
-<h4><span class="header-section-number">11.2.1.1</span> 補足</h4>
+<h4>
+<span class="header-section-number">11.2.1.1</span> 補足<a class="anchor" aria-label="anchor" href="#%E8%A3%9C%E8%B6%B3"><i class="fas fa-link"></i></a>
+</h4>
 <p>統計表としてではありませんが、家計調査からのランキングのようなものも、公開されています。ご興味のあるかたはみてください。</p>
 <p><a href="https://www.stat.go.jp/data/kakei/5.html">家計調査（二人以上の世帯）　品目別都道府県庁所在市及び政令指定都市（※）ランキング（2020年（令和２年）～2022年（令和４年）平均）</a></p>
 <p>ただし、このランキングの下になっているデータを探そうとすると、なかなか大変です。</p>
@@ -144,21 +165,29 @@ set in the _output.yml file.</p>" />
 </div>
 </div>
 <div id="ダッシュボード-4" class="section level2" number="11.3">
-<h2><span class="header-section-number">11.3</span> <a href="https://dashboard.e-stat.go.jp">ダッシュボード</a></h2>
+<h2>
+<span class="header-section-number">11.3</span> <a href="https://dashboard.e-stat.go.jp">ダッシュボード</a><a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-4"><i class="fas fa-link"></i></a>
+</h2>
 <p>何種類かのグラフを見ることができると同時に、右の方に、時系列表とあり、これから、データをダウンロードできるようにもなっています。</p>
 <p><a href="https://dashboard.e-stat.go.jp/pyramidGraph?screenCode=00570&amp;regionCode=00000&amp;pyramidAreaType=2">人口ピラミッド</a></p>
 <p>人口ピラミッドを見てみましょう。1920年からの人口ピラミッドを見ることができます。また、日本の全体だけではなく、都道府県、市町村、世界の国々についても見ることができます。ピラミッドの形が変わっていく様子、戦争などで、急激に変化する様子なども、見ることができます。</p>
 <p>また、それぞれの個々のグラフのデータをダウンロードすることができます。全体のデータを一括ダウンロードできると良いと思うのですが。</p>
 </div>
 <div id="api-4" class="section level2" number="11.4">
-<h2><span class="header-section-number">11.4</span> API</h2>
+<h2>
+<span class="header-section-number">11.4</span> API<a class="anchor" aria-label="anchor" href="#api-4"><i class="fas fa-link"></i></a>
+</h2>
 </div>
 <div id="estatapi-利用概要" class="section level2" number="11.5">
-<h2><span class="header-section-number">11.5</span> <code>estatapi</code> 利用概要</h2>
+<h2>
+<span class="header-section-number">11.5</span> <code>estatapi</code> 利用概要<a class="anchor" aria-label="anchor" href="#estatapi-%E5%88%A9%E7%94%A8%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
+</h2>
 <p>CRAN <code>estatspi</code> URL: <a href="https://CRAN.R-project.org/package=estatapi" class="uri">https://CRAN.R-project.org/package=estatapi</a></p>
 <div id="アプリケーションidの設定" class="section level3" number="11.5.1">
-<h3><span class="header-section-number">11.5.1</span> アプリケーションIDの設定</h3>
-<pre><code>appId &lt;- &quot; &quot; # 私のものは、英数40文字</code></pre>
+<h3>
+<span class="header-section-number">11.5.1</span> アプリケーションIDの設定<a class="anchor" aria-label="anchor" href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E8%A8%AD%E5%AE%9A"><i class="fas fa-link"></i></a>
+</h3>
+<pre><code>appId &lt;- " " # 私のものは、英数40文字</code></pre>
 <!-- ```{r include=FALSE} -->
 <!-- appId <- read_lines("./../_data/key/estatkey.txt") -->
 <!-- ``` -->
@@ -166,30 +195,40 @@ set in the _output.yml file.</p>" />
 </div>
 </div>
 </div>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></div>
+<div class="next"><a href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#estat-site"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
+<li><a class="nav-link" href="#%E6%A6%82%E8%A6%81-6"><span class="header-section-number">11.1</span> 概要</a></li>
+<li>
+<a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9-4"><span class="header-section-number">11.2</span> データベース</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E5%AE%B6%E8%A8%88%E8%AA%BF%E6%9F%BB"><span class="header-section-number">11.2.1</span> 家計調査</a></li></ul>
+</li>
+<li><a class="nav-link" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-4"><span class="header-section-number">11.3</span> ダッシュボード</a></li>
+<li><a class="nav-link" href="#api-4"><span class="header-section-number">11.4</span> API</a></li>
+<li>
+<a class="nav-link" href="#estatapi-%E5%88%A9%E7%94%A8%E6%A6%82%E8%A6%81"><span class="header-section-number">11.5</span> estatapi 利用概要</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="header-section-number">11.5.1</span> アプリケーションIDの設定</a></li></ul>
+</li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/17-estat-site.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/17-estat-site.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう<br />
+    <p>"<strong>データサイエンスをはじめましょう<br>
 - Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-05.</p>
   </div>
 
@@ -198,11 +237,7 @@ set in the _output.yml file.</p>" />
   </div>
 
 </div></div>
-</footer>
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -214,8 +249,7 @@ set in the _output.yml file.</p>" />
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script>
-<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -233,5 +267,4 @@ for (let popover of popovers) {
 }
 </script>
 </body>
-
 </html>
