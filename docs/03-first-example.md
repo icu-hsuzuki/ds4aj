@@ -14,8 +14,8 @@
 
 下の図は [R for Data Science](https://r4ds.hadley.nz) に掲載されている図です。よく、表現されていると思います。詳細は、少しずつ説明します。
 
-![R4DS掲載の画像](https://r4ds.hadley.nz/diagrams/data-science/base.png){width="593"}
-
+<!-- ![R4DS掲載の画像](https://r4ds.hadley.nz/diagrams/data-science/base.png){width="593"} -->
+  
 <img src="./data/base.png" width="100%" />
 
 [はじめに](https://icu-hsuzuki.github.io/ds4aj/introduction.html#introduction)に書きましたが、基本的には、問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核だと思います。
