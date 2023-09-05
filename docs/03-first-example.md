@@ -710,18 +710,18 @@ df_gdp |>
 
 どのようなことがわかりますか。
 
-主要国で、60%〜70% を占めていることがわかります。それぞれの国や、幾つかの国の影響力も、ある程度みることができるように見えます。
+主要国で、60%〜70% を占めていることがわかります。それぞれの国や、幾つかの国の影響力や、その時代による変化も、ある程度みることができるように思います。
 
 気づいたこと、疑問に思ったことなどを、書き出してみてください。
 
 GDP が大きな国と、小さな国があるのはわかりますが、それは、どのように分布しているのでしょうか。
 
-#### Fig 5. 2021年の世界の国のGDPの分布（１）
+#### Fig 5. 2022年の世界の国のGDPの分布（１）
 
 
 ```r
 df_gdp |> drop_na(gdp) |> 
-  filter(year == 2021) |> filter(region != "Aggregates") |>
+  filter(year == 2022) |> filter(region != "Aggregates") |>
   ggplot(aes(gdp)) + geom_histogram()
 #> `stat_bin()` using `bins = 30`. Pick better value with
 #> `binwidth`.
@@ -733,12 +733,12 @@ df_gdp |> drop_na(gdp) |>
 
 $log10(1000) = 3$, $log10(1000000) = 6$, $log10(1000000000) = 9$ などになります。
 
-#### Fig 6. 2021年の世界の国のGDPの分布（２）
+#### Fig 6. 2022年の世界の国のGDPの分布（２）
 
 
 ```r
 df_gdp |> drop_na(gdp) |> 
-  filter(year == 2021) |> filter(region != "Aggregates") |>
+  filter(year == 2022) |> filter(region != "Aggregates") |>
   ggplot(aes(gdp)) + geom_histogram() + scale_x_log10()
 #> `stat_bin()` using `bins = 30`. Pick better value with
 #> `binwidth`.
@@ -761,27 +761,27 @@ df_gdp |> drop_na(gdp) |>
 
 <img src="03-first-example_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
-#### Fig 8. 2021年の世界の国のGDPの分布（４）
+#### Fig 8. 2022年までの世界の国のGDPの分布（４）
 
-これは、2021年のデータですが、density の変化を見てみます。alpha の値は透明度です。
+これは、2022年のデータですが、10年ごとの、density の変化を見てみます。alpha の値は透明度です。
 
 
 ```r
 df_gdp |> drop_na(gdp) |> 
-  filter(year %in% c(1961, 1971, 1981, 1991, 2001, 2011, 2021)) |>
+  filter(year %in% c(1962, 1972, 1982, 1992, 2002, 2012, 2022)) |>
   ggplot(aes(gdp, fill = factor(year))) + geom_density(alpha = 0.4) + scale_x_log10()
 ```
 
 <img src="03-first-example_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
-#### Fig 9. 2021年の世界の国のGDPの分布（５）
+#### Fig 9. 2022年の世界の国のGDPの分布（５）
 
 少しみにくいので、分けてみます。
 
 
 ```r
 df_gdp |> drop_na(gdp) |> 
-  filter(year %in% c(1971, 1981, 1991, 2001, 2011, 2021)) |>
+  filter(year %in% c(1972, 1982, 1992, 2002, 2012, 2022)) |>
   ggplot(aes(gdp, fill = factor(year))) + 
   geom_density() + scale_x_log10() + facet_wrap(~year)
 ```
@@ -790,12 +790,12 @@ df_gdp |> drop_na(gdp) |>
 
 #### Fig 10. 地域ごとの GDP の分布
 
-いくつかのグループごとに分布をみてみることも可能です。それには、Boxplot が有効です。
+いくつかのグループごとに分布をみてみることも可能です。それには、箱ひげ図（Boxplot）が有効です。箱ひげ図では、そのグループの国を値の大きさの順にならべて、四等分し、その、真ん中の二つが箱の部分に対応しています。また、真ん中の太い線は、中央値（median）を表しています。詳しくは、後ほど説明します。
 
 
 ```r
 df_gdp |> drop_na(gdp) |> filter(region != "Aggregates") |>
-  drop_na(region) |> filter(year %in% c(2021)) |>
+  drop_na(region) |> filter(year %in% c(2022)) |>
   ggplot(aes(gdp, region, fill = region)) + 
   geom_boxplot() + scale_x_log10() + labs(y = "") + 
   theme(legend.position = "none")
@@ -808,7 +808,7 @@ df_gdp |> drop_na(gdp) |> filter(region != "Aggregates") |>
 
 ```r
 df_gdp |> drop_na(gdp) |> filter(region != "Aggregates") |>
-  drop_na(income) |> filter(year %in% c(2021)) |>
+  drop_na(income) |> filter(year %in% c(2022)) |>
   mutate(level = factor(income, c("High income", "Upper middle income", "Lower middle income", "Low income"))) |>
   ggplot(aes(gdp, level, fill = income)) + 
   geom_boxplot() + scale_x_log10() + labs(y = "") + 
@@ -817,36 +817,36 @@ df_gdp |> drop_na(gdp) |> filter(region != "Aggregates") |>
 
 <img src="03-first-example_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
-これからも、いろいろなことがわかりますね。
+これからも、いろいろなことがわかりますね。点は、外れ値を表しています。外れ値についても、きちんと決まっています。収入の多寡（Income Level）のグループは、GNI per Capita という、一人当たりの国民総所得（GNI を人口で割ったもの）をもとに、世界銀行が決めているものです。
 
 #### 世界地図の準備
 
-地図で、国の income level をみてみましょう。
+地図で、国の収入の多寡（income level） をみてみましょう。
 
 
 ```r
 library(maps)
-gdp_short <- df_gdp |> filter(year == 2021, region != "Aggregates") |>
+gdp_short <- df_gdp |> filter(year == 2022, region != "Aggregates") |>
   select(iso2c, gdp, income)
 map_world <- map_data('world')
 map_gdp <- map_world |> 
   mutate(iso2c = iso.alpha(region, n=2)) |> 
   left_join(gdp_short, by = "iso2c") 
 head(map_gdp)
-#>        long      lat group order region subregion iso2c
-#> 1 -69.89912 12.45200     1     1  Aruba      <NA>    AW
-#> 2 -69.89571 12.42300     1     2  Aruba      <NA>    AW
-#> 3 -69.94219 12.43853     1     3  Aruba      <NA>    AW
-#> 4 -70.00415 12.50049     1     4  Aruba      <NA>    AW
-#> 5 -70.06612 12.54697     1     5  Aruba      <NA>    AW
-#> 6 -70.05088 12.59707     1     6  Aruba      <NA>    AW
-#>          gdp      income
-#> 1 3126019385 High income
-#> 2 3126019385 High income
-#> 3 3126019385 High income
-#> 4 3126019385 High income
-#> 5 3126019385 High income
-#> 6 3126019385 High income
+#>        long      lat group order region subregion iso2c gdp
+#> 1 -69.89912 12.45200     1     1  Aruba      <NA>    AW  NA
+#> 2 -69.89571 12.42300     1     2  Aruba      <NA>    AW  NA
+#> 3 -69.94219 12.43853     1     3  Aruba      <NA>    AW  NA
+#> 4 -70.00415 12.50049     1     4  Aruba      <NA>    AW  NA
+#> 5 -70.06612 12.54697     1     5  Aruba      <NA>    AW  NA
+#> 6 -70.05088 12.59707     1     6  Aruba      <NA>    AW  NA
+#>        income
+#> 1 High income
+#> 2 High income
+#> 3 High income
+#> 4 High income
+#> 5 High income
+#> 6 High income
 ```
 
 #### Fig 12. Income Level による色分け地図

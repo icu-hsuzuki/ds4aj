@@ -748,17 +748,17 @@ df_gdp |&gt; str()</code></pre>
 <div class="inline-figure"><img src="03-first-example_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
 <p>これらは、世界全体の GPT における割合です。</p>
 <p>どのようなことがわかりますか。</p>
-<p>主要国で、60%〜70% を占めていることがわかります。それぞれの国や、幾つかの国の影響力も、ある程度みることができるように見えます。</p>
+<p>主要国で、60%〜70% を占めていることがわかります。それぞれの国や、幾つかの国の影響力や、その時代による変化も、ある程度みることができるように思います。</p>
 <p>気づいたこと、疑問に思ったことなどを、書き出してみてください。</p>
 <p>GDP が大きな国と、小さな国があるのはわかりますが、それは、どのように分布しているのでしょうか。</p>
 </div>
-<div id="fig-5.-2021年の世界の国のgdpの分布１" class="section level4" number="3.2.7.7">
+<div id="fig-5.-2022年の世界の国のgdpの分布１" class="section level4" number="3.2.7.7">
 <h4>
-<span class="header-section-number">3.2.7.7</span> Fig 5. 2021年の世界の国のGDPの分布（１）<a class="anchor" aria-label="anchor" href="#fig-5.-2021%E5%B9%B4%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%AE%E5%9B%BD%E3%81%AEgdp%E3%81%AE%E5%88%86%E5%B8%83%EF%BC%91"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.7.7</span> Fig 5. 2022年の世界の国のGDPの分布（１）<a class="anchor" aria-label="anchor" href="#fig-5.-2022%E5%B9%B4%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%AE%E5%9B%BD%E3%81%AEgdp%E3%81%AE%E5%88%86%E5%B8%83%EF%BC%91"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2021</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2022</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with</span></span>
 <span><span class="co">#&gt; `binwidth`.</span></span></code></pre></div>
@@ -766,13 +766,13 @@ df_gdp |&gt; str()</code></pre>
 <p>小さいところに集中していることがわかりますが、<code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10()</a></code> を加え、対数軸をとってみます。</p>
 <p><span class="math inline">\(log10(1000) = 3\)</span>, <span class="math inline">\(log10(1000000) = 6\)</span>, <span class="math inline">\(log10(1000000000) = 9\)</span> などになります。</p>
 </div>
-<div id="fig-6.-2021年の世界の国のgdpの分布２" class="section level4" number="3.2.7.8">
+<div id="fig-6.-2022年の世界の国のgdpの分布２" class="section level4" number="3.2.7.8">
 <h4>
-<span class="header-section-number">3.2.7.8</span> Fig 6. 2021年の世界の国のGDPの分布（２）<a class="anchor" aria-label="anchor" href="#fig-6.-2021%E5%B9%B4%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%AE%E5%9B%BD%E3%81%AEgdp%E3%81%AE%E5%88%86%E5%B8%83%EF%BC%92"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.7.8</span> Fig 6. 2022年の世界の国のGDPの分布（２）<a class="anchor" aria-label="anchor" href="#fig-6.-2022%E5%B9%B4%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%AE%E5%9B%BD%E3%81%AEgdp%E3%81%AE%E5%88%86%E5%B8%83%EF%BC%92"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2021</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2022</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with</span></span>
 <span><span class="co">#&gt; `binwidth`.</span></span></code></pre></div>
@@ -790,25 +790,25 @@ df_gdp |&gt; str()</code></pre>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="03-first-example_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
 </div>
-<div id="fig-8.-2021年の世界の国のgdpの分布４" class="section level4" number="3.2.7.10">
+<div id="fig-8.-2022年までの世界の国のgdpの分布４" class="section level4" number="3.2.7.10">
 <h4>
-<span class="header-section-number">3.2.7.10</span> Fig 8. 2021年の世界の国のGDPの分布（４）<a class="anchor" aria-label="anchor" href="#fig-8.-2021%E5%B9%B4%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%AE%E5%9B%BD%E3%81%AEgdp%E3%81%AE%E5%88%86%E5%B8%83%EF%BC%94"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.7.10</span> Fig 8. 2022年までの世界の国のGDPの分布（４）<a class="anchor" aria-label="anchor" href="#fig-8.-2022%E5%B9%B4%E3%81%BE%E3%81%A7%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%AE%E5%9B%BD%E3%81%AEgdp%E3%81%AE%E5%88%86%E5%B8%83%EF%BC%94"><i class="fas fa-link"></i></a>
 </h4>
-<p>これは、2021年のデータですが、density の変化を見てみます。alpha の値は透明度です。</p>
+<p>これは、2022年のデータですが、10年ごとの、density の変化を見てみます。alpha の値は透明度です。</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1961</span>, <span class="fl">1971</span>, <span class="fl">1981</span>, <span class="fl">1991</span>, <span class="fl">2001</span>, <span class="fl">2011</span>, <span class="fl">2021</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1962</span>, <span class="fl">1972</span>, <span class="fl">1982</span>, <span class="fl">1992</span>, <span class="fl">2002</span>, <span class="fl">2012</span>, <span class="fl">2022</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">gdp</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="03-first-example_files/figure-html/unnamed-chunk-23-1.png" width="672"></div>
 </div>
-<div id="fig-9.-2021年の世界の国のgdpの分布５" class="section level4" number="3.2.7.11">
+<div id="fig-9.-2022年の世界の国のgdpの分布５" class="section level4" number="3.2.7.11">
 <h4>
-<span class="header-section-number">3.2.7.11</span> Fig 9. 2021年の世界の国のGDPの分布（５）<a class="anchor" aria-label="anchor" href="#fig-9.-2021%E5%B9%B4%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%AE%E5%9B%BD%E3%81%AEgdp%E3%81%AE%E5%88%86%E5%B8%83%EF%BC%95"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.7.11</span> Fig 9. 2022年の世界の国のGDPの分布（５）<a class="anchor" aria-label="anchor" href="#fig-9.-2022%E5%B9%B4%E3%81%AE%E4%B8%96%E7%95%8C%E3%81%AE%E5%9B%BD%E3%81%AEgdp%E3%81%AE%E5%88%86%E5%B8%83%EF%BC%95"><i class="fas fa-link"></i></a>
 </h4>
 <p>少しみにくいので、分けてみます。</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1971</span>, <span class="fl">1981</span>, <span class="fl">1991</span>, <span class="fl">2001</span>, <span class="fl">2011</span>, <span class="fl">2021</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1972</span>, <span class="fl">1982</span>, <span class="fl">1992</span>, <span class="fl">2002</span>, <span class="fl">2012</span>, <span class="fl">2022</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">gdp</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">year</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="03-first-example_files/figure-html/unnamed-chunk-24-1.png" width="672"></div>
@@ -817,10 +817,10 @@ df_gdp |&gt; str()</code></pre>
 <h4>
 <span class="header-section-number">3.2.7.12</span> Fig 10. 地域ごとの GDP の分布<a class="anchor" aria-label="anchor" href="#fig-10.-%E5%9C%B0%E5%9F%9F%E3%81%94%E3%81%A8%E3%81%AE-gdp-%E3%81%AE%E5%88%86%E5%B8%83"><i class="fas fa-link"></i></a>
 </h4>
-<p>いくつかのグループごとに分布をみてみることも可能です。それには、Boxplot が有効です。</p>
+<p>いくつかのグループごとに分布をみてみることも可能です。それには、箱ひげ図（Boxplot）が有効です。箱ひげ図では、そのグループの国を値の大きさの順にならべて、四等分し、その、真ん中の二つが箱の部分に対応しています。また、真ん中の太い線は、中央値（median）を表しています。詳しくは、後ほど説明します。</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2021</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2022</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">gdp</span>, <span class="va">region</span>, fill <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
@@ -832,42 +832,42 @@ df_gdp |&gt; str()</code></pre>
 </h4>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2021</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2022</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">income</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"High income"</span>, <span class="st">"Upper middle income"</span>, <span class="st">"Lower middle income"</span>, <span class="st">"Low income"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">gdp</span>, <span class="va">level</span>, fill <span class="op">=</span> <span class="va">income</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="03-first-example_files/figure-html/unnamed-chunk-26-1.png" width="672"></div>
-<p>これからも、いろいろなことがわかりますね。</p>
+<p>これからも、いろいろなことがわかりますね。点は、外れ値を表しています。外れ値についても、きちんと決まっています。収入の多寡（Income Level）のグループは、GNI per Capita という、一人当たりの国民総所得（GNI を人口で割ったもの）をもとに、世界銀行が決めているものです。</p>
 </div>
 <div id="世界地図の準備" class="section level4" number="3.2.7.14">
 <h4>
 <span class="header-section-number">3.2.7.14</span> 世界地図の準備<a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E5%9C%B0%E5%9B%B3%E3%81%AE%E6%BA%96%E5%82%99"><i class="fas fa-link"></i></a>
 </h4>
-<p>地図で、国の income level をみてみましょう。</p>
+<p>地図で、国の収入の多寡（income level） をみてみましょう。</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">maps</span><span class="op">)</span></span>
-<span><span class="va">gdp_short</span> <span class="op">&lt;-</span> <span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2021</span>, <span class="va">region</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="va">gdp_short</span> <span class="op">&lt;-</span> <span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2022</span>, <span class="va">region</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iso2c</span>, <span class="va">gdp</span>, <span class="va">income</span><span class="op">)</span></span>
 <span><span class="va">map_world</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="st">'world'</span><span class="op">)</span></span>
 <span><span class="va">map_gdp</span> <span class="op">&lt;-</span> <span class="va">map_world</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>iso2c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/maps/man/iso.expand.html">iso.alpha</a></span><span class="op">(</span><span class="va">region</span>, n<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gdp_short</span>, by <span class="op">=</span> <span class="st">"iso2c"</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">map_gdp</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        long      lat group order region subregion iso2c</span></span>
-<span><span class="co">#&gt; 1 -69.89912 12.45200     1     1  Aruba      &lt;NA&gt;    AW</span></span>
-<span><span class="co">#&gt; 2 -69.89571 12.42300     1     2  Aruba      &lt;NA&gt;    AW</span></span>
-<span><span class="co">#&gt; 3 -69.94219 12.43853     1     3  Aruba      &lt;NA&gt;    AW</span></span>
-<span><span class="co">#&gt; 4 -70.00415 12.50049     1     4  Aruba      &lt;NA&gt;    AW</span></span>
-<span><span class="co">#&gt; 5 -70.06612 12.54697     1     5  Aruba      &lt;NA&gt;    AW</span></span>
-<span><span class="co">#&gt; 6 -70.05088 12.59707     1     6  Aruba      &lt;NA&gt;    AW</span></span>
-<span><span class="co">#&gt;          gdp      income</span></span>
-<span><span class="co">#&gt; 1 3126019385 High income</span></span>
-<span><span class="co">#&gt; 2 3126019385 High income</span></span>
-<span><span class="co">#&gt; 3 3126019385 High income</span></span>
-<span><span class="co">#&gt; 4 3126019385 High income</span></span>
-<span><span class="co">#&gt; 5 3126019385 High income</span></span>
-<span><span class="co">#&gt; 6 3126019385 High income</span></span></code></pre></div>
+<span><span class="co">#&gt;        long      lat group order region subregion iso2c gdp</span></span>
+<span><span class="co">#&gt; 1 -69.89912 12.45200     1     1  Aruba      &lt;NA&gt;    AW  NA</span></span>
+<span><span class="co">#&gt; 2 -69.89571 12.42300     1     2  Aruba      &lt;NA&gt;    AW  NA</span></span>
+<span><span class="co">#&gt; 3 -69.94219 12.43853     1     3  Aruba      &lt;NA&gt;    AW  NA</span></span>
+<span><span class="co">#&gt; 4 -70.00415 12.50049     1     4  Aruba      &lt;NA&gt;    AW  NA</span></span>
+<span><span class="co">#&gt; 5 -70.06612 12.54697     1     5  Aruba      &lt;NA&gt;    AW  NA</span></span>
+<span><span class="co">#&gt; 6 -70.05088 12.59707     1     6  Aruba      &lt;NA&gt;    AW  NA</span></span>
+<span><span class="co">#&gt;        income</span></span>
+<span><span class="co">#&gt; 1 High income</span></span>
+<span><span class="co">#&gt; 2 High income</span></span>
+<span><span class="co">#&gt; 3 High income</span></span>
+<span><span class="co">#&gt; 4 High income</span></span>
+<span><span class="co">#&gt; 5 High income</span></span>
+<span><span class="co">#&gt; 6 High income</span></span></code></pre></div>
 </div>
 <div id="fig-12.-income-level-による色分け地図" class="section level4" number="3.2.7.15">
 <h4>
