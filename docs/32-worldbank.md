@@ -89,7 +89,7 @@ WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
-<img src="32-worldbank_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+![](32-worldbank_files/figure-epub3/unnamed-chunk-8-1.png)<!-- -->
 
 
 ```r
@@ -116,7 +116,7 @@ WDI(country = c("CN","IN","JP","US"),
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
-<img src="32-worldbank_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+![](32-worldbank_files/figure-epub3/unnamed-chunk-11-1.png)<!-- -->
 
 まず、世界の国々の、GDP（gross domestic product 国内総生産）のデータを、取得して、2021年の GDP を大きな順に並べています。
 
@@ -678,7 +678,7 @@ df_gdp4 %>% ggplot(aes(year, gdp, col=country)) + geom_line()
 #> (`geom_line()`).
 ```
 
-<img src="32-worldbank_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+![](32-worldbank_files/figure-epub3/unnamed-chunk-39-1.png)<!-- -->
 
 Warning として、missing values があると出ています。どこかは、分かりませんが、図を書くときですから、`y` に対応する、`gdp` の値がないものと思われます。
 
@@ -693,7 +693,7 @@ df_gdp4 %>% drop_na(gdp) %>%
   labs(title = "WDI - NY.GDP.MKTP.CD: gdp")
 ```
 
-<img src="32-worldbank_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+![](32-worldbank_files/figure-epub3/unnamed-chunk-40-1.png)<!-- -->
 
 ### テンプレート Templates
 

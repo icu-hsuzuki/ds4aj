@@ -557,7 +557,7 @@ df_gm %>% filter(country == "Afghanistan") %>%
   ggplot(aes(x = year, y = lifeExp)) + geom_line()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+![](25-transform_files/figure-epub3/unnamed-chunk-21-1.png)<!-- -->
 
 アフガニスタンでは 1952年 の誕生時の平均寿命（life expectancy at birth）は　30歳以下 （28.8歳）でした。2007年でも50歳以下（48.8 歳）のようですね。改善されていることも確かです。
 
@@ -590,7 +590,7 @@ df_gm %>% filter(country %in% c("Afghanistan", "Japan")) %>%
   ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+![](25-transform_files/figure-epub3/unnamed-chunk-23-1.png)<!-- -->
 
 どのような発見がありますか。かならず書き留めておいてください。
 
@@ -683,7 +683,7 @@ df_gm %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
   ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+![](25-transform_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
 
 ロシアが含まれていないことがわかります。ロシアは、以前は、ソビエト社会主義連邦でしたから、国が変化したものは含まれていないのかもしれません。上の国のリストで見てもありませんね。2007年より新しいデータ、ロシアなども含むデータなど、実際のデータでも見てみたいですね。それは、また後ほど。
 

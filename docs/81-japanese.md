@@ -31,7 +31,7 @@ showtext_auto()
 plot(cars, main="散布図")
 ```
 
-<img src="81-japanese_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+![](81-japanese_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
 
 
 ## 列名や、データに日本語
@@ -79,7 +79,7 @@ ggplot(df_iris, aes(x = `葉長`, y = `葉幅`, col = `種別`)) +
   geom_point() + labs(title = "散布図", x = "葉長", y = "葉幅")
 ```
 
-<img src="81-japanese_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+![](81-japanese_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
 
 
 ## 備考：

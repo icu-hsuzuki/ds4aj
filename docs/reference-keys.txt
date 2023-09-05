@@ -1,7 +1,6 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
-thm:tri
 introduction
 データサイエンスとは
 なぜデータサイエンスが最近注目されているのか

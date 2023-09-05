@@ -22,7 +22,6 @@
 
 下の図は [R for Data Science](https://r4ds.hadley.nz) に掲載されている図です。よく、表現されていると思います。詳細は、少しずつ説明します。
 
-![R4DS掲載の画像](https://r4ds.hadley.nz/diagrams/data-science/base.png){width="593"}
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("./data/base.png")
