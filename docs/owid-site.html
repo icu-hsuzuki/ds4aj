@@ -1,28 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 10 Our World in Data | データサイエンスをはじめましょう - Data Science for All -</title>
-<meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="10.1 概要 サイト：https://ourworldindata.org 様々なトピックについてデータからのレポートがあり、そのデータも見ることができるようになっています。さらに、使いやすい API も提供されています。 一番上の帯の Browse by Topic からトピック探すことができます。 Population and Demographic Change　人口動態...">
-<meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 10 Our World in Data | データサイエンスをはじめましょう - Data Science for All -">
-<meta property="og:type" content="book">
-<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/owid-site.html">
-<meta property="og:description" content="10.1 概要 サイト：https://ourworldindata.org 様々なトピックについてデータからのレポートがあり、そのデータも見ることができるようになっています。さらに、使いやすい API も提供されています。 一番上の帯の Browse by Topic からトピック探すことができます。 Population and Demographic Change　人口動態...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 10 Our World in Data | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="10.1 概要 サイト：https://ourworldindata.org 様々なトピックについてデータからのレポートがあり、そのデータも見ることができるようになっています。さらに、使いやすい API も提供されています。 一番上の帯の Browse by Topic からトピック探すことができます。 Population and Demographic Change　人口動態...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 10 Our World in Data | データサイエンスをはじめましょう - Data Science for All -</title>
+
+    <meta name="author" content="鈴木寛（Hirosi Suzuki）" />
+  
+   <meta name="description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 10 Our World in Data | データサイエンスをはじめましょう - Data Science for All -" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/" />
+  
+  <meta property="og:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Our World in Data | データサイエンスをはじめましょう - Data Science for All -" />
+  
+  <meta name="twitter:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.2/transition.js"></script>
+    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<style type="text/css">
+    <style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -44,17 +70,20 @@
       margin-left: 2em;
     }
   </style>
-<link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="style.css" />
+  
 </head>
+
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+        <a href="index.html" title="">データサイエンスをはじめましょう<br />
 - Data Science for All -</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -63,72 +92,29 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
+      </form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">この文書について</a></li>
-<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
-<li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
-<li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
-<li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
-<li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
-<li class="book-part">PART I オープンデータ</li>
-<li><a class="" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
-<li><a class="" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
-<li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
-<li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
-<li><a class="active" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
-<li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
-<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
-<li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
-<li><a class="" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
-<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
-<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
-<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
-<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
-<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
-<li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
-<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
-<li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
-<li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
-<li class="book-part">APPENDIX</li>
-<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
-<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
-<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
-<li><a class="" href="todo-list.html"><span class="header-section-number">D</span> To Do リスト</a></li>
-</ul>
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
         </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="owid-site" class="section level1" number="10">
-<h1>
-<span class="header-section-number">10</span> Our World in Data<a class="anchor" aria-label="anchor" href="#owid-site"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="owid-site" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Our World in Data</h1>
 <div id="概要-5" class="section level2" number="10.1">
-<h2>
-<span class="header-section-number">10.1</span> 概要<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E8%A6%81-5"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">10.1</span> 概要</h2>
 <p>サイト：<a href="https://ourworldindata.org" class="uri">https://ourworldindata.org</a></p>
 <p>様々なトピックについてデータからのレポートがあり、そのデータも見ることができるようになっています。さらに、使いやすい API も提供されています。</p>
 <p>一番上の帯の Browse by Topic からトピック探すことができます。</p>
 <ul>
-<li>
-<p>Population and Demographic Change　人口動態</p>
+<li><p>Population and Demographic Change　人口動態</p>
 <ul>
 <li><p><a href="https://ourworldindata.org/population-growth"><strong>Population Growth</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/age-structure"><strong>Age Structure</strong></a></p></li>
@@ -138,8 +124,7 @@
 <li><p><a href="https://ourworldindata.org/fertility-rate"><strong>Fertility Rate</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/urbanization"><strong>Urbanization</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/migration"><strong>Migration</strong></a></p></li>
-</ul>
-</li>
+</ul></li>
 <li><p>Health　健康</p></li>
 <li><p>Energy and Environment　エネルギーと環境</p></li>
 <li><p>Food and Agriculture　食料と農業</p></li>
@@ -147,55 +132,43 @@
 <li><p>Education and Knowledge　教育と知識</p></li>
 <li><p>Innovation and Technological Change　技術開発とイノベーション</p></li>
 <li><p>Living Conditions, Community and Wellbeing　生活環境、共同体と幸せ</p></li>
-<li>
-<p>Human Rights and Democracy　人権と民主主義</p>
+<li><p>Human Rights and Democracy　人権と民主主義</p>
 <ul>
 <li><p><a href="https://ourworldindata.org/lgbt-rights"><strong>LGBT+ Rights</strong></a></p></li>
-<li><p><a href="https://ourworldindata.org/women-rights"><strong>Women's Rights</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/women-rights"><strong>Women’s Rights</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/child-labor"><strong>Child Labor</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/human-rights"><strong>Human Rights</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/democracy"><strong>Democracy</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/corruption"><strong>Corruption</strong></a></p></li>
-</ul>
-</li>
-<li>
-<p>Violence and War 暴力と戦争</p>
+</ul></li>
+<li><p>Violence and War 暴力と戦争</p>
 <ul>
 <li><p><a href="https://ourworldindata.org/biological-and-chemical-weapons"><strong>Biological and Chemical Weapons</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/war-and-peace"><strong>War and Peace</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/military-personnel-spending"><strong>Military Personnel and Spending</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/terrorism"><strong>Terrorism</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/nuclear-weapons"><strong>Nuclear Weapons</strong></a></p></li>
-<li><p><a href="https://ourworldindata.org/violence-against-rights-for-children"><strong>Violence against children and children's rights</strong></a></p></li>
+<li><p><a href="https://ourworldindata.org/violence-against-rights-for-children"><strong>Violence against children and children’s rights</strong></a></p></li>
 <li><p><a href="https://ourworldindata.org/homicides"><strong>Homicides</strong></a></p></li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p>これら以外にも、コロナウイルス感染症や、持続的開発目標（SDGs）についてのサイトなどもあります。</p>
 </div>
 <div id="レポート" class="section level2" number="10.2">
-<h2>
-<span class="header-section-number">10.2</span> レポート<a class="anchor" aria-label="anchor" href="#%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">10.2</span> レポート</h2>
 <div id="war-and-peace" class="section level3" number="10.2.1">
-<h3>
-<span class="header-section-number">10.2.1</span> <a href="https://ourworldindata.org/war-and-peace">War and Peace</a><a class="anchor" aria-label="anchor" href="#war-and-peace"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">10.2.1</span> <a href="https://ourworldindata.org/war-and-peace">War and Peace</a></h3>
 <p>1945年以降のデータが主ですが、世界の紛争などの死者数などを知ることができます。古いデータも少しだけあります。</p>
 <p>&lt;iframe src=“<a href="https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region%22">https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region”</a> loading=”lazy” style=“width: 100%; height: 600px; border: 0px none;”&gt;&lt;/iframe&gt;</p>
 <p><a href="https://ourworldindata.org/war-and-peace#the-decline-of-wars-between-great-powers" class="uri">https://ourworldindata.org/war-and-peace#the-decline-of-wars-between-great-powers</a></p>
 </div>
 </div>
 <div id="データベース-3" class="section level2" number="10.3">
-<h2>
-<span class="header-section-number">10.3</span> データベース<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9-3"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">10.3</span> データベース</h2>
 <p>owid: <a href="https://ourworldindata.org/" class="uri">https://ourworldindata.org/</a></p>
 </div>
 <div id="ダッシュボード-3" class="section level2" number="10.4">
-<h2>
-<span class="header-section-number">10.4</span> ダッシュボード<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-3"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">10.4</span> ダッシュボード</h2>
 <p>SDGs</p>
 <ol style="list-style-type: decimal">
 <li>No Poverty</li>
@@ -204,55 +177,44 @@
 </iframe>
 </div>
 <div id="api-3" class="section level2" number="10.5">
-<h2>
-<span class="header-section-number">10.5</span> API<a class="anchor" aria-label="anchor" href="#api-3"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">10.5</span> API</h2>
 <ul>
-<li>
-<p>パッケージの公式サイト: <a href="https://cran.r-project.org/package=owidR">https://CRAN.R-project.org/package=owidR</a></p>
+<li><p>パッケージの公式サイト: <a href="https://cran.r-project.org/package=owidR">https://CRAN.R-project.org/package=owidR</a></p>
 <ul>
 <li><p>はじめにお読みください（ReadMe）: <a href="https://cran.r-project.org/web/packages/owidR/readme/README.html" class="uri">https://cran.r-project.org/web/packages/owidR/readme/README.html</a></p></li>
 <li><p>マニュアル（Manual）: <a href="https://cran.r-project.org/web/packages/owidR/owidR.pdf" class="uri">https://cran.r-project.org/web/packages/owidR/owidR.pdf</a></p></li>
 <li><p>使い方の例（Vignette）: <a href="https://cran.r-project.org/web/packages/owidR/vignettes/example-analysis.html">Create and Analyse a Dataset</a></p></li>
-</ul>
-</li>
+</ul></li>
 <li><p><a href="https://rdrr.io/cran/owidR/">owidR: Import Data from Our World in Data</a></p></li>
 </ul>
+
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></div>
-<div class="next"><a href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#owid-site"><span class="header-section-number">10</span> Our World in Data</a></li>
-<li><a class="nav-link" href="#%E6%A6%82%E8%A6%81-5"><span class="header-section-number">10.1</span> 概要</a></li>
-<li>
-<a class="nav-link" href="#%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88"><span class="header-section-number">10.2</span> レポート</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#war-and-peace"><span class="header-section-number">10.2.1</span> War and Peace</a></li></ul>
-</li>
-<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9-3"><span class="header-section-number">10.3</span> データベース</a></li>
-<li><a class="nav-link" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89-3"><span class="header-section-number">10.4</span> ダッシュボード</a></li>
-<li><a class="nav-link" href="#api-3"><span class="header-section-number">10.5</span> API</a></li>
-</ul>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/15-owid-site.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/15-owid-site.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-</div>
+      </div>
     </nav>
-</div>
+  </div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-19.</p>
+    <p>"<strong>データサイエンスをはじめましょう<br />
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -260,7 +222,11 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -272,7 +238,8 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -290,4 +257,5 @@ for (let popover of popovers) {
 }
 </script>
 </body>
+
 </html>

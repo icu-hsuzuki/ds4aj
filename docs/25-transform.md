@@ -39,7 +39,7 @@ library(tidyverse)
 ### [`select`](https://dplyr.tidyverse.org/reference/select.html): 名前とタイプによって、列（変数）を選択
 
 | 補助関数      | 条件                   | 例                                            |
-|-----------------|--------------------------|------------------------------|
+|---------------|------------------------|-----------------------------------------------|
 | \-            | 列の排除               | select(babynames, -prop)                      |
 | :             | 列の範囲               | select(babynames, year:n)                     |
 | contains()    | 指定文字列を含         | select(babynames, contains("n"))              |
@@ -122,7 +122,7 @@ library(tidyverse)
 
 2.  実際には、`tidyverse` の `%>%` と、R に組み込まれた `|>` とは多少異なるようです。こちらの[記事](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/)をご覧ください。本書では、`|>` を使いますが、注意が必要な場合は、コメントします。
 
-## 例から学ぶ `dplyr`  I
+## 例から学ぶ `dplyr` I
 
 ### Data `iris`
 

@@ -1,28 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 17 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -</title>
-<meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="ここでは、tidyverse パッケージを構成する dplyr...">
-<meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 17 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -">
-<meta property="og:type" content="book">
-<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/transform.html">
-<meta property="og:description" content="ここでは、tidyverse パッケージを構成する dplyr...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 17 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="ここでは、tidyverse パッケージを構成する dplyr...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 17 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -</title>
+
+    <meta name="author" content="鈴木寛（Hirosi Suzuki）" />
+  
+   <meta name="description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 17 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/" />
+  
+  <meta property="og:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 17 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -" />
+  
+  <meta name="twitter:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.2/transition.js"></script>
+    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<style type="text/css">
+    <style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -44,17 +70,20 @@
       margin-left: 2em;
     }
   </style>
-<link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="style.css" />
+  
 </head>
+
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+        <a href="index.html" title="">データサイエンスをはじめましょう<br />
 - Data Science for All -</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -63,115 +92,66 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
+      </form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">この文書について</a></li>
-<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
-<li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
-<li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
-<li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
-<li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
-<li class="book-part">PART I オープンデータ</li>
-<li><a class="" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
-<li><a class="" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
-<li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
-<li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
-<li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
-<li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
-<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
-<li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
-<li><a class="active" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
-<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
-<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
-<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
-<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
-<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
-<li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
-<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
-<li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
-<li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
-<li class="book-part">APPENDIX</li>
-<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
-<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
-<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
-<li><a class="" href="todo-list.html"><span class="header-section-number">D</span> To Do リスト</a></li>
-</ul>
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
         </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="transform" class="section level1" number="17">
-<h1>
-<span class="header-section-number">17</span> 変形（Transform）<a class="anchor" aria-label="anchor" href="#transform"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="transform" class="section level1" number="17">
+<h1><span class="header-section-number">Chapter 17</span> 変形（Transform）</h1>
 <blockquote>
 <p>ここでは、<code>tidyverse</code> パッケージを構成する <code>dplyr</code> パッケージを用いて、データを変形することを学びます。変形とは、例えば、データのなかのある条件を満たす行や列を抽出したり、特定の列を修正したり、データの中のいくつかの列に含まれる情報をもとに計算して、新たな列を作ったり、グループに分けたり、順番を入れ替えたりといったことです。データを集約したり、グラフを作成するときにも、必要不可欠な作業です。</p>
 <p><code>dplyr</code> パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、<code>tidyverse</code> パッケージを構成する <code>tidyr</code> パッケージ による変形も、後ほど扱います。</p>
 </blockquote>
-<p><code>dplyr</code> パッケージは、<code>tidyverse</code> パッケージをインストールしたり、使えるように <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> で読み込んだりするときに、一緒に読み込まれますから、あらためて、<code>dplyr</code> を指定する必要はありません。</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
-<span><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
-<span><span class="co">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0</span></span>
-<span><span class="co">#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1</span></span>
-<span><span class="co">#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0</span></span>
-<span><span class="co">#&gt; ✔ purrr     1.0.1     </span></span>
-<span><span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span></span>
-<span><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
-<span><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
-<span><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code></pre></div>
+<p><code>dplyr</code> パッケージは、<code>tidyverse</code> パッケージをインストールしたり、使えるように <code>library(tidyverse)</code> で読み込んだりするときに、一緒に読み込まれますから、あらためて、<code>dplyr</code> を指定する必要はありません。</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="transform.html#cb59-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb59-2"><a href="transform.html#cb59-2" tabindex="-1"></a><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
+<span id="cb59-3"><a href="transform.html#cb59-3" tabindex="-1"></a><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
+<span id="cb59-4"><a href="transform.html#cb59-4" tabindex="-1"></a><span class="co">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0</span></span>
+<span id="cb59-5"><a href="transform.html#cb59-5" tabindex="-1"></a><span class="co">#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1</span></span>
+<span id="cb59-6"><a href="transform.html#cb59-6" tabindex="-1"></a><span class="co">#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0</span></span>
+<span id="cb59-7"><a href="transform.html#cb59-7" tabindex="-1"></a><span class="co">#&gt; ✔ purrr     1.0.1     </span></span>
+<span id="cb59-8"><a href="transform.html#cb59-8" tabindex="-1"></a><span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb59-9"><a href="transform.html#cb59-9" tabindex="-1"></a><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
+<span id="cb59-10"><a href="transform.html#cb59-10" tabindex="-1"></a><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
+<span id="cb59-11"><a href="transform.html#cb59-11" tabindex="-1"></a><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code></pre></div>
 <div id="dplyr-概要" class="section level2" number="17.1">
-<h2>
-<span class="header-section-number">17.1</span> <code>dplyr</code> <a href="https://dplyr.tidyverse.org">概要</a><a class="anchor" aria-label="anchor" href="#dplyr-%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">17.1</span> <code>dplyr</code> <a href="https://dplyr.tidyverse.org">概要</a></h2>
 <p><code>dplyr</code> はデータ操作の文法のようなもので、最も一般的なデータ操作に役立つ一貫したいくつかの「動詞」の役割を果たすものを提供しています。</p>
 <ul>
-<li>
-<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> 変数をその名前によって選択 - 列の選択に対応します。</li>
-<li>
-<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> ケースをその値によって選択 - 行の選択に対応します。</li>
-<li>
-<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 新しい変数を既存の値を使って定義します - 新しい列を作成することに対応しています。</li>
-<li>
-<code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> たくさんの値を一つの値に集約します - 代表値（平均、メディアンなど）を求めることに対応します。</li>
-<li>
-<code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> 行の順序を変更します。</li>
-<li>
-<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> グループを指定した表に変換します。</li>
+<li><code>select()</code> 変数をその名前によって選択 - 列の選択に対応します。</li>
+<li><code>filter()</code> ケースをその値によって選択 - 行の選択に対応します。</li>
+<li><code>mutate()</code> 新しい変数を既存の値を使って定義します - 新しい列を作成することに対応しています。</li>
+<li><code>summarise()</code> たくさんの値を一つの値に集約します - 代表値（平均、メディアンなど）を求めることに対応します。</li>
+<li><code>arrange()</code> 行の順序を変更します。</li>
+<li><code>group_by()</code> グループを指定した表に変換します。</li>
 </ul>
 <p>さらに詳しく知りたい場合は Console（コンソールに）vignette(“dplyr”) と入れるか、<a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">こちら</a> を参照してください。上では、一つの表について述べていますが、二つの表の扱い方は、Console（コンソール）に vignette(“two-table”) と入れるか、<a href="https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html">こちら</a> を参照してください。二つの表の扱いについては、後から説明します。</p>
 <p><code>dplyr</code> を初めて使われる場合には、まず <a href="https://r4ds.hadley.nz/transform">R for data science (2e) Transform</a> を学ばれることをお勧めします。以下も、このサイトに沿った説明をします。</p>
 <div id="select-名前とタイプによって列変数を選択" class="section level3" number="17.1.1">
-<h3>
-<span class="header-section-number">17.1.1</span> <a href="https://dplyr.tidyverse.org/reference/select.html"><code>select</code></a>: 名前とタイプによって、列（変数）を選択<a class="anchor" aria-label="anchor" href="#select-%E5%90%8D%E5%89%8D%E3%81%A8%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E9%81%B8%E6%8A%9E"><i class="fas fa-link"></i></a>
-</h3>
-<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<h3><span class="header-section-number">17.1.1</span> <a href="https://dplyr.tidyverse.org/reference/select.html"><code>select</code></a>: 名前とタイプによって、列（変数）を選択</h3>
+<table>
 <colgroup>
-<col width="23%">
-<col width="35%">
-<col width="41%">
+<col width="17%" />
+<col width="27%" />
+<col width="54%" />
 </colgroup>
-<thead><tr class="header">
+<thead>
+<tr class="header">
 <th>補助関数</th>
 <th>条件</th>
 <th>例</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td>-</td>
@@ -214,18 +194,18 @@
 <td>select(babynames, starts_with(“n”))</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
 <div id="filter-列の値の条件に適合した行の選択" class="section level3" number="17.1.2">
-<h3>
-<span class="header-section-number">17.1.2</span> <a href="https://dplyr.tidyverse.org/reference/filter.html"><code>filter</code></a>: 列の値の条件に適合した行の選択<a class="anchor" aria-label="anchor" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><i class="fas fa-link"></i></a>
-</h3>
-<div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
+<h3><span class="header-section-number">17.1.2</span> <a href="https://dplyr.tidyverse.org/reference/filter.html"><code>filter</code></a>: 列の値の条件に適合した行の選択</h3>
+<table>
+<thead>
+<tr class="header">
 <th>論理作用素</th>
 <th>条件</th>
 <th>例</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td>&gt;</td>
@@ -268,19 +248,15 @@
 <td>!is.na(x)</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
 <div id="arrange" class="section level3" number="17.1.3">
-<h3>
-<span class="header-section-number">17.1.3</span> <a href="https://dplyr.tidyverse.org/reference/arrange.html"><code>arrange</code></a><a class="anchor" aria-label="anchor" href="#arrange"><i class="fas fa-link"></i></a>
-</h3>
-<p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> では、選択した列の値によって、行を並び替えます。</p>
+<h3><span class="header-section-number">17.1.3</span> <a href="https://dplyr.tidyverse.org/reference/arrange.html"><code>arrange</code></a></h3>
+<p><code>arrange()</code> では、選択した列の値によって、行を並び替えます。</p>
 <p>注意点すべきは、他の、<code>dplyr</code> の動詞とは異なり、基本的に、グループ化は、無視し、その表全体に適用します。グループ内で並び替えをしたい場合には、グループ化した変数を指定するか、<code>.by_group = TRUE</code> とします。</p>
 </div>
 <div id="mutate" class="section level3" number="17.1.4">
-<h3>
-<span class="header-section-number">17.1.4</span> <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutate</code></a><a class="anchor" aria-label="anchor" href="#mutate"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.1.4</span> <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutate</code></a></h3>
 <p>新しい列を作成または、既存の列を修正、削除します。</p>
 <p>以下は便利な補助関数の例です。</p>
 <ul>
@@ -288,30 +264,24 @@
 <li><p>lead(), lag()</p></li>
 <li><p>dense_rank(), min_rank(), percent_rank(), row_number(), cume_dist(), ntile()</p></li>
 <li><p>cumsum(), cummean(), cummin(), cummax(), cumany(), cumall()</p></li>
-<li><p>na_if(), coalesce()### <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></p></li>
+<li><p>na_if(), coalesce()### <code>group_by()</code> and <code>summarise()</code></p></li>
 </ul>
 </div>
 <div id="group_by" class="section level3" number="17.1.5">
-<h3>
-<span class="header-section-number">17.1.5</span> <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by</code></a><a class="anchor" aria-label="anchor" href="#group_by"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.1.5</span> <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by</code></a></h3>
 <p>指定した列の値によって表全体をグループ化した表を作成します。表自体が変形されるわけではありませんから、注意してください。次の、<code>summarize</code> と合わせて利用すると便利です。</p>
 </div>
 <div id="summarise-or-summarize" class="section level3" number="17.1.6">
-<h3>
-<span class="header-section-number">17.1.6</span> <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise</code> or <code>summarize</code></a><a class="anchor" aria-label="anchor" href="#summarise-or-summarize"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.1.6</span> <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise</code> or <code>summarize</code></a></h3>
 <p>値の集約 (summarize) に利用します。グループ化された表の場合には、そのグループごとに、値を集約します。</p>
 <div id="集約のための関数" class="section level4" number="17.1.6.1">
-<h4>
-<span class="header-section-number">17.1.6.1</span> 集約のための関数<a class="anchor" aria-label="anchor" href="#%E9%9B%86%E7%B4%84%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E9%96%A2%E6%95%B0"><i class="fas fa-link"></i></a>
-</h4>
-<p><code>summarize</code> には、 <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>, <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code>, や <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> が使われますが、ベクトルに対して定義され、一つの値だけを出力する関数でであれば、なんでも使うことができます。以下は、その例です。それぞれの関数については、Help で調べてください。</p>
+<h4><span class="header-section-number">17.1.6.1</span> 集約のための関数</h4>
+<p><code>summarize</code> には、 <code>sum()</code>, <code>max()</code>, や <code>mean()</code> が使われますが、ベクトルに対して定義され、一つの値だけを出力する関数でであれば、なんでも使うことができます。以下は、その例です。それぞれの関数については、Help で調べてください。</p>
 <ol style="list-style-type: decimal">
 <li><p>特定の値 - <code>mean(x)</code>, <code>median(x)</code>, <code>quantile(x, 0.25)</code>, <code>min(x)</code>, <code>max(x)</code></p></li>
 <li><p>分布の値 - <code>sd(x)</code>, <code>var(x)</code>, <code>IQR(x)</code>, <code>mad(x)</code></p></li>
 <li><p>値の位置 - <code>first(x)</code>, <code>nth(x, 2)</code>, <code>last(x)</code></p></li>
-<li><p>個数 - <code>n_distinct(x),</code> <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> （引数なし：表またはグループのサイズ）</p></li>
+<li><p>個数 - <code>n_distinct(x),</code> <code>n()</code> （引数なし：表またはグループのサイズ）</p></li>
 <li><p>論理値の数または割合 - sum(!is.na(x)), mean(y == 0)</p></li>
 </ol>
 <p>条件文で値を指定することも可能です。</p>
@@ -321,15 +291,11 @@
 </div>
 </div>
 <div id="パイプpipe" class="section level3" number="17.1.7">
-<h3>
-<span class="header-section-number">17.1.7</span> パイプ（Pipe）<code>%&gt;%</code> <code>|&gt;</code><a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.1.7</span> パイプ（Pipe）<code>%&gt;%</code> <code>|&gt;</code></h3>
 <p><a href="https://r4ds.hadley.nz/workflow-style.html#sec-pipes"><code>pipes</code></a> in R for Data Science.</p>
-<p><code>%&gt;%</code> は、<code>tidyverse</code> パッケージで、関数のチェーン化を行うために使用されるパイプ演算子ですが、R 4.1 以降は、<code>|&gt;</code> が、R に組み込まれた、ネイティブなパイプライン演算子になっています。<code>tidyverse</code> を使っているときは、どちらを使うことも可能ですが、<code>|&gt;</code> を使うことをお勧めします。R の versoin を確認するには、コンソール（Console）で、<code><a href="https://rdrr.io/r/base/Version.html">R.Version()</a></code> または、<code>R.version$version.string</code> とします。</p>
+<p><code>%&gt;%</code> は、<code>tidyverse</code> パッケージで、関数のチェーン化を行うために使用されるパイプ演算子ですが、R 4.1 以降は、<code>|&gt;</code> が、R に組み込まれた、ネイティブなパイプライン演算子になっています。<code>tidyverse</code> を使っているときは、どちらを使うことも可能ですが、<code>|&gt;</code> を使うことをお勧めします。R の versoin を確認するには、コンソール（Console）で、<code>R.Version()</code> または、<code>R.version$version.string</code> とします。</p>
 <div id="備考-2" class="section level4" number="17.1.7.1">
-<h4>
-<span class="header-section-number">17.1.7.1</span> <strong>備考</strong><a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-2"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">17.1.7.1</span> <strong>備考</strong></h4>
 <ol style="list-style-type: decimal">
 <li><p>パイプを使うコードで、複数行にまたがるときは、<code>|&gt;</code> の後で、改行してください。次の行に続くことがわかります。</p></li>
 <li><p>実際には、<code>tidyverse</code> の <code>%&gt;%</code> と、R に組み込まれた <code>|&gt;</code> とは多少異なるようです。こちらの<a href="https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/">記事</a>をご覧ください。本書では、<code>|&gt;</code> を使いますが、注意が必要な場合は、コメントします。</p></li>
@@ -338,259 +304,211 @@
 </div>
 </div>
 <div id="例から学ぶ-dplyr-i" class="section level2" number="17.2">
-<h2>
-<span class="header-section-number">17.2</span> 例から学ぶ <code>dplyr</code> I<a class="anchor" aria-label="anchor" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-i"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">17.2</span> 例から学ぶ <code>dplyr</code> I</h2>
 <div id="data-iris" class="section level3" number="17.2.1">
-<h3>
-<span class="header-section-number">17.2.1</span> Data <code>iris</code><a class="anchor" aria-label="anchor" href="#data-iris"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.2.1</span> Data <code>iris</code></h3>
 <p>R 起動時に読み込まれる、<code>datasets</code> の中の、<code>iris</code> （あやめのデータ）を使い、いくつかの例を示します。<code>iris</code> は、何もしなくてもそのまま使えますが、もし、下の結果と違う場合には、すでに、<code>iris</code> を使い、変形などをしている可能性がありますから、そのときは、下のコードを実行してください。</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">&lt;-</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span></span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="transform.html#cb60-1" tabindex="-1"></a>iris <span class="ot">&lt;-</span> datasets<span class="sc">::</span>iris</span></code></pre></div>
 <p>確認します。</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
-<span><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
-<span><span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span></span>
-<span><span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span></span>
-<span><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
-<span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
-<span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span><span class="co">#&gt; 'data.frame':    150 obs. of  5 variables:</span></span>
-<span><span class="co">#&gt;  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...</span></span>
-<span><span class="co">#&gt;  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...</span></span>
-<span><span class="co">#&gt;  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...</span></span>
-<span><span class="co">#&gt;  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...</span></span>
-<span><span class="co">#&gt;  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="transform.html#cb61-1" tabindex="-1"></a><span class="fu">head</span>(iris)</span>
+<span id="cb61-2"><a href="transform.html#cb61-2" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span id="cb61-3"><a href="transform.html#cb61-3" tabindex="-1"></a><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
+<span id="cb61-4"><a href="transform.html#cb61-4" tabindex="-1"></a><span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span></span>
+<span id="cb61-5"><a href="transform.html#cb61-5" tabindex="-1"></a><span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span></span>
+<span id="cb61-6"><a href="transform.html#cb61-6" tabindex="-1"></a><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
+<span id="cb61-7"><a href="transform.html#cb61-7" tabindex="-1"></a><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
+<span id="cb61-8"><a href="transform.html#cb61-8" tabindex="-1"></a><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="transform.html#cb62-1" tabindex="-1"></a><span class="fu">str</span>(iris)</span>
+<span id="cb62-2"><a href="transform.html#cb62-2" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    150 obs. of  5 variables:</span></span>
+<span id="cb62-3"><a href="transform.html#cb62-3" tabindex="-1"></a><span class="co">#&gt;  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...</span></span>
+<span id="cb62-4"><a href="transform.html#cb62-4" tabindex="-1"></a><span class="co">#&gt;  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...</span></span>
+<span id="cb62-5"><a href="transform.html#cb62-5" tabindex="-1"></a><span class="co">#&gt;  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...</span></span>
+<span id="cb62-6"><a href="transform.html#cb62-6" tabindex="-1"></a><span class="co">#&gt;  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...</span></span>
+<span id="cb62-7"><a href="transform.html#cb62-7" tabindex="-1"></a><span class="co">#&gt;  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
 <p><code>iris</code> データは、名前のついた5個の変数（列）Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, Species があり、それぞれ、150の値（observations (obs.) 観察値）からなっています。5番目の Species は、三つのレベルのファクター（factor）setosa, versicolor ともう一つ virginica からなっていることがわかります。<code>unique</code> は、ベクトル型の変数（今の場合は、<code>iris</code> の <code>Species</code> という列）の中の異なる値を抽出します。ファクター（factor）は、ある分け方がされているという意味です。いずれ説明します。</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] setosa     versicolor virginica </span></span>
-<span><span class="co">#&gt; Levels: setosa versicolor virginica</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="transform.html#cb63-1" tabindex="-1"></a><span class="fu">unique</span>(iris<span class="sc">$</span>Species)</span>
+<span id="cb63-2"><a href="transform.html#cb63-2" tabindex="-1"></a><span class="co">#&gt; [1] setosa     versicolor virginica </span></span>
+<span id="cb63-3"><a href="transform.html#cb63-3" tabindex="-1"></a><span class="co">#&gt; Levels: setosa versicolor virginica</span></span></code></pre></div>
 </div>
 <div id="select-列の抽出" class="section level3" number="17.2.2">
-<h3>
-<span class="header-section-number">17.2.2</span> <code>select</code> 列の抽出<a class="anchor" aria-label="anchor" href="#select-%E5%88%97%E3%81%AE%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.2.2</span> <code>select</code> 列の抽出</h3>
 </div>
 <div id="select-1---第-1-2-5-列を抽出" class="section level3" number="17.2.3">
-<h3>
-<span class="header-section-number">17.2.3</span> <code>select</code> 1 - 第 1, 2, 5 列を抽出<a class="anchor" aria-label="anchor" href="#select-1---%E7%AC%AC-1-2-5-%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
-<span><span class="co">#&gt; 1          5.1         3.5  setosa</span></span>
-<span><span class="co">#&gt; 2          4.9         3.0  setosa</span></span>
-<span><span class="co">#&gt; 3          4.7         3.2  setosa</span></span>
-<span><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
-<span><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
-<span><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
+<h3><span class="header-section-number">17.2.3</span> <code>select</code> 1 - 第 1, 2, 5 列を抽出</h3>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="transform.html#cb64-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">select</span>(iris, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>)))</span>
+<span id="cb64-2"><a href="transform.html#cb64-2" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
+<span id="cb64-3"><a href="transform.html#cb64-3" tabindex="-1"></a><span class="co">#&gt; 1          5.1         3.5  setosa</span></span>
+<span id="cb64-4"><a href="transform.html#cb64-4" tabindex="-1"></a><span class="co">#&gt; 2          4.9         3.0  setosa</span></span>
+<span id="cb64-5"><a href="transform.html#cb64-5" tabindex="-1"></a><span class="co">#&gt; 3          4.7         3.2  setosa</span></span>
+<span id="cb64-6"><a href="transform.html#cb64-6" tabindex="-1"></a><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
+<span id="cb64-7"><a href="transform.html#cb64-7" tabindex="-1"></a><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
+<span id="cb64-8"><a href="transform.html#cb64-8" tabindex="-1"></a><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
 <p>第1列、第2列、第5列を、<code>c(1,2,5)</code> で表しています。列名で指定することもできます。</p>
 <p><code>head(select(iris, c(1,2,5)))</code> としてありますから、その最初の6行を表示していますが、新しい変数を割り当ててはいませんから、<code>iris</code> 自体は変更されていません。</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
-<span><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
-<span><span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span></span>
-<span><span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span></span>
-<span><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
-<span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
-<span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="transform.html#cb65-1" tabindex="-1"></a><span class="fu">head</span>(iris)</span>
+<span id="cb65-2"><a href="transform.html#cb65-2" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span id="cb65-3"><a href="transform.html#cb65-3" tabindex="-1"></a><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
+<span id="cb65-4"><a href="transform.html#cb65-4" tabindex="-1"></a><span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span></span>
+<span id="cb65-5"><a href="transform.html#cb65-5" tabindex="-1"></a><span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span></span>
+<span id="cb65-6"><a href="transform.html#cb65-6" tabindex="-1"></a><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
+<span id="cb65-7"><a href="transform.html#cb65-7" tabindex="-1"></a><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
+<span id="cb65-8"><a href="transform.html#cb65-8" tabindex="-1"></a><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
 <p>第1列、第2列、第5列を選んだものを、あとから使いたいときは、新しい名前をつける必要があります。以下同様ですが、この場合だけ、df_<code>iris125</code> という名前（object name）をつけておきましょう。</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_iris125</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_iris125</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
-<span><span class="co">#&gt; 1          5.1         3.5  setosa</span></span>
-<span><span class="co">#&gt; 2          4.9         3.0  setosa</span></span>
-<span><span class="co">#&gt; 3          4.7         3.2  setosa</span></span>
-<span><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
-<span><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
-<span><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="transform.html#cb66-1" tabindex="-1"></a>df_iris125 <span class="ot">&lt;-</span> <span class="fu">select</span>(iris, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>))</span>
+<span id="cb66-2"><a href="transform.html#cb66-2" tabindex="-1"></a><span class="fu">head</span>(df_iris125)</span>
+<span id="cb66-3"><a href="transform.html#cb66-3" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
+<span id="cb66-4"><a href="transform.html#cb66-4" tabindex="-1"></a><span class="co">#&gt; 1          5.1         3.5  setosa</span></span>
+<span id="cb66-5"><a href="transform.html#cb66-5" tabindex="-1"></a><span class="co">#&gt; 2          4.9         3.0  setosa</span></span>
+<span id="cb66-6"><a href="transform.html#cb66-6" tabindex="-1"></a><span class="co">#&gt; 3          4.7         3.2  setosa</span></span>
+<span id="cb66-7"><a href="transform.html#cb66-7" tabindex="-1"></a><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
+<span id="cb66-8"><a href="transform.html#cb66-8" tabindex="-1"></a><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
+<span id="cb66-9"><a href="transform.html#cb66-9" tabindex="-1"></a><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
 <div id="パイプpipe-を使ったコード" class="section level4" number="17.2.3.1">
-<h4>
-<span class="header-section-number">17.2.3.1</span> パイプ（Pipe） <code>|&gt;</code> を使ったコード<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97pipe-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">17.2.3.1</span> パイプ（Pipe） <code>|&gt;</code> を使ったコード</h4>
 <p>最初の例では <code>head(select(iris, c(1,2,5)))</code> としました。<code>head</code> の引数として、 <code>select(iris, c(1,2,5))</code> を使ったからです。しかし、慣れてくると、順番に関数を適用することを表現するには、 パイプを使うのも便利です。パイプでは、直前の出力が次の関数の第一引数として引き継がれるというルールになっています。以下のようになります。</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
-<span><span class="co">#&gt; 1          5.1         3.5  setosa</span></span>
-<span><span class="co">#&gt; 2          4.9         3.0  setosa</span></span>
-<span><span class="co">#&gt; 3          4.7         3.2  setosa</span></span>
-<span><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
-<span><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
-<span><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="transform.html#cb67-1" tabindex="-1"></a>iris <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>)) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb67-2"><a href="transform.html#cb67-2" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Species</span></span>
+<span id="cb67-3"><a href="transform.html#cb67-3" tabindex="-1"></a><span class="co">#&gt; 1          5.1         3.5  setosa</span></span>
+<span id="cb67-4"><a href="transform.html#cb67-4" tabindex="-1"></a><span class="co">#&gt; 2          4.9         3.0  setosa</span></span>
+<span id="cb67-5"><a href="transform.html#cb67-5" tabindex="-1"></a><span class="co">#&gt; 3          4.7         3.2  setosa</span></span>
+<span id="cb67-6"><a href="transform.html#cb67-6" tabindex="-1"></a><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
+<span id="cb67-7"><a href="transform.html#cb67-7" tabindex="-1"></a><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
+<span id="cb67-8"><a href="transform.html#cb67-8" tabindex="-1"></a><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
 <p>より、詳しく知りたい場合には、Help に <code>|&gt;</code> と入れて説明を読んでください。</p>
 <p>In the following, we use pipes.</p>
 </div>
 </div>
 <div id="select-2---species-列以外" class="section level3" number="17.2.4">
-<h3>
-<span class="header-section-number">17.2.4</span> <code>select</code> 2 - Species 列以外<a class="anchor" aria-label="anchor" href="#select-2---species-%E5%88%97%E4%BB%A5%E5%A4%96"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.2.4</span> <code>select</code> 2 - Species 列以外</h3>
 <p>列名の前に、<code>-</code> ハイフン（半角）をつけると、その列以外を抽出します。</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="op">-</span><span class="va">Species</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
-<span><span class="co">#&gt; 1          5.1         3.5          1.4         0.2</span></span>
-<span><span class="co">#&gt; 2          4.9         3.0          1.4         0.2</span></span>
-<span><span class="co">#&gt; 3          4.7         3.2          1.3         0.2</span></span>
-<span><span class="co">#&gt; 4          4.6         3.1          1.5         0.2</span></span>
-<span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2</span></span>
-<span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="transform.html#cb68-1" tabindex="-1"></a><span class="fu">select</span>(iris, <span class="sc">-</span>Species) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb68-2"><a href="transform.html#cb68-2" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
+<span id="cb68-3"><a href="transform.html#cb68-3" tabindex="-1"></a><span class="co">#&gt; 1          5.1         3.5          1.4         0.2</span></span>
+<span id="cb68-4"><a href="transform.html#cb68-4" tabindex="-1"></a><span class="co">#&gt; 2          4.9         3.0          1.4         0.2</span></span>
+<span id="cb68-5"><a href="transform.html#cb68-5" tabindex="-1"></a><span class="co">#&gt; 3          4.7         3.2          1.3         0.2</span></span>
+<span id="cb68-6"><a href="transform.html#cb68-6" tabindex="-1"></a><span class="co">#&gt; 4          4.6         3.1          1.5         0.2</span></span>
+<span id="cb68-7"><a href="transform.html#cb68-7" tabindex="-1"></a><span class="co">#&gt; 5          5.0         3.6          1.4         0.2</span></span>
+<span id="cb68-8"><a href="transform.html#cb68-8" tabindex="-1"></a><span class="co">#&gt; 6          5.4         3.9          1.7         0.4</span></span></code></pre></div>
 </div>
 <div id="select-3---列を抽出するとともに列名も変更" class="section level3" number="17.2.5">
-<h3>
-<span class="header-section-number">17.2.5</span> <code>select</code> 3 - 列を抽出するとともに列名も変更<a class="anchor" aria-label="anchor" href="#select-3---%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA%E3%81%99%E3%82%8B%E3%81%A8%E3%81%A8%E3%82%82%E3%81%AB%E5%88%97%E5%90%8D%E3%82%82%E5%A4%89%E6%9B%B4"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.2.5</span> <code>select</code> 3 - 列を抽出するとともに列名も変更</h3>
 <p>新しい列名 = 現在の列名 という形式で、列名を変更することも可能です。</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, sl <span class="op">=</span> <span class="va">Sepal.Length</span>, sw <span class="op">=</span> <span class="va">Sepal.Width</span>, sp <span class="op">=</span> <span class="va">Species</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    sl  sw     sp</span></span>
-<span><span class="co">#&gt; 1 5.1 3.5 setosa</span></span>
-<span><span class="co">#&gt; 2 4.9 3.0 setosa</span></span>
-<span><span class="co">#&gt; 3 4.7 3.2 setosa</span></span>
-<span><span class="co">#&gt; 4 4.6 3.1 setosa</span></span>
-<span><span class="co">#&gt; 5 5.0 3.6 setosa</span></span>
-<span><span class="co">#&gt; 6 5.4 3.9 setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="transform.html#cb69-1" tabindex="-1"></a><span class="fu">select</span>(iris, <span class="at">sl =</span> Sepal.Length, <span class="at">sw =</span> Sepal.Width, <span class="at">sp =</span> Species) <span class="sc">|&gt;</span> </span>
+<span id="cb69-2"><a href="transform.html#cb69-2" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb69-3"><a href="transform.html#cb69-3" tabindex="-1"></a><span class="co">#&gt;    sl  sw     sp</span></span>
+<span id="cb69-4"><a href="transform.html#cb69-4" tabindex="-1"></a><span class="co">#&gt; 1 5.1 3.5 setosa</span></span>
+<span id="cb69-5"><a href="transform.html#cb69-5" tabindex="-1"></a><span class="co">#&gt; 2 4.9 3.0 setosa</span></span>
+<span id="cb69-6"><a href="transform.html#cb69-6" tabindex="-1"></a><span class="co">#&gt; 3 4.7 3.2 setosa</span></span>
+<span id="cb69-7"><a href="transform.html#cb69-7" tabindex="-1"></a><span class="co">#&gt; 4 4.6 3.1 setosa</span></span>
+<span id="cb69-8"><a href="transform.html#cb69-8" tabindex="-1"></a><span class="co">#&gt; 5 5.0 3.6 setosa</span></span>
+<span id="cb69-9"><a href="transform.html#cb69-9" tabindex="-1"></a><span class="co">#&gt; 6 5.4 3.9 setosa</span></span></code></pre></div>
 </div>
 <div id="select-4---列順の変更" class="section level3" number="17.2.6">
-<h3>
-<span class="header-section-number">17.2.6</span> <code>select</code> 4 - 列順の変更<a class="anchor" aria-label="anchor" href="#select-4---%E5%88%97%E9%A0%86%E3%81%AE%E5%A4%89%E6%9B%B4"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Species Petal.Length Petal.Width Sepal.Length Sepal.Width</span></span>
-<span><span class="co">#&gt; 1  setosa          1.4         0.2          5.1         3.5</span></span>
-<span><span class="co">#&gt; 2  setosa          1.4         0.2          4.9         3.0</span></span>
-<span><span class="co">#&gt; 3  setosa          1.3         0.2          4.7         3.2</span></span>
-<span><span class="co">#&gt; 4  setosa          1.5         0.2          4.6         3.1</span></span>
-<span><span class="co">#&gt; 5  setosa          1.4         0.2          5.0         3.6</span></span>
-<span><span class="co">#&gt; 6  setosa          1.7         0.4          5.4         3.9</span></span></code></pre></div>
+<h3><span class="header-section-number">17.2.6</span> <code>select</code> 4 - 列順の変更</h3>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="transform.html#cb70-1" tabindex="-1"></a><span class="fu">select</span>(iris, <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">2</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb70-2"><a href="transform.html#cb70-2" tabindex="-1"></a><span class="co">#&gt;   Species Petal.Length Petal.Width Sepal.Length Sepal.Width</span></span>
+<span id="cb70-3"><a href="transform.html#cb70-3" tabindex="-1"></a><span class="co">#&gt; 1  setosa          1.4         0.2          5.1         3.5</span></span>
+<span id="cb70-4"><a href="transform.html#cb70-4" tabindex="-1"></a><span class="co">#&gt; 2  setosa          1.4         0.2          4.9         3.0</span></span>
+<span id="cb70-5"><a href="transform.html#cb70-5" tabindex="-1"></a><span class="co">#&gt; 3  setosa          1.3         0.2          4.7         3.2</span></span>
+<span id="cb70-6"><a href="transform.html#cb70-6" tabindex="-1"></a><span class="co">#&gt; 4  setosa          1.5         0.2          4.6         3.1</span></span>
+<span id="cb70-7"><a href="transform.html#cb70-7" tabindex="-1"></a><span class="co">#&gt; 5  setosa          1.4         0.2          5.0         3.6</span></span>
+<span id="cb70-8"><a href="transform.html#cb70-8" tabindex="-1"></a><span class="co">#&gt; 6  setosa          1.7         0.4          5.4         3.9</span></span></code></pre></div>
 <div id="備考-3" class="section level4" number="17.2.6.1">
-<h4>
-<span class="header-section-number">17.2.6.1</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-3"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">17.2.6.1</span> 備考</h4>
 <ol style="list-style-type: decimal">
 <li>上の、<code>select</code>` の 補助関数（helper functions）にも書きましたように、他にも様々な方法で、列を抽出することが可能です。たくさんの列がある、表に出会ったら、ぜひ使ってください。</li>
 </ol>
 </div>
 </div>
 <div id="filter---値による抽出" class="section level3" number="17.2.7">
-<h3>
-<span class="header-section-number">17.2.7</span> <code>filter</code> - 値による抽出<a class="anchor" aria-label="anchor" href="#filter---%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.2.7</span> <code>filter</code> - 値による抽出</h3>
 <p>Species の列の値が、virginica であるものだけを抽出します。<code>==</code> とイコールが二つであることと、文字列の場合には、半角の引用符（double quote）でくくります。‘verginica’ でも同じです。（列名に空白や、特殊記号が含まれているときには、back tick と呼ばれる、反対向きの引用符で括ります。あとからその必要が生じたときに説明します。）</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span> <span class="op">==</span> <span class="st">"virginica"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
-<span><span class="co">#&gt; 1          6.3         3.3          6.0         2.5</span></span>
-<span><span class="co">#&gt; 2          5.8         2.7          5.1         1.9</span></span>
-<span><span class="co">#&gt; 3          7.1         3.0          5.9         2.1</span></span>
-<span><span class="co">#&gt; 4          6.3         2.9          5.6         1.8</span></span>
-<span><span class="co">#&gt; 5          6.5         3.0          5.8         2.2</span></span>
-<span><span class="co">#&gt; 6          7.6         3.0          6.6         2.1</span></span>
-<span><span class="co">#&gt;     Species</span></span>
-<span><span class="co">#&gt; 1 virginica</span></span>
-<span><span class="co">#&gt; 2 virginica</span></span>
-<span><span class="co">#&gt; 3 virginica</span></span>
-<span><span class="co">#&gt; 4 virginica</span></span>
-<span><span class="co">#&gt; 5 virginica</span></span>
-<span><span class="co">#&gt; 6 virginica</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="transform.html#cb71-1" tabindex="-1"></a><span class="fu">filter</span>(iris, Species <span class="sc">==</span> <span class="st">&quot;virginica&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb71-2"><a href="transform.html#cb71-2" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
+<span id="cb71-3"><a href="transform.html#cb71-3" tabindex="-1"></a><span class="co">#&gt; 1          6.3         3.3          6.0         2.5</span></span>
+<span id="cb71-4"><a href="transform.html#cb71-4" tabindex="-1"></a><span class="co">#&gt; 2          5.8         2.7          5.1         1.9</span></span>
+<span id="cb71-5"><a href="transform.html#cb71-5" tabindex="-1"></a><span class="co">#&gt; 3          7.1         3.0          5.9         2.1</span></span>
+<span id="cb71-6"><a href="transform.html#cb71-6" tabindex="-1"></a><span class="co">#&gt; 4          6.3         2.9          5.6         1.8</span></span>
+<span id="cb71-7"><a href="transform.html#cb71-7" tabindex="-1"></a><span class="co">#&gt; 5          6.5         3.0          5.8         2.2</span></span>
+<span id="cb71-8"><a href="transform.html#cb71-8" tabindex="-1"></a><span class="co">#&gt; 6          7.6         3.0          6.6         2.1</span></span>
+<span id="cb71-9"><a href="transform.html#cb71-9" tabindex="-1"></a><span class="co">#&gt;     Species</span></span>
+<span id="cb71-10"><a href="transform.html#cb71-10" tabindex="-1"></a><span class="co">#&gt; 1 virginica</span></span>
+<span id="cb71-11"><a href="transform.html#cb71-11" tabindex="-1"></a><span class="co">#&gt; 2 virginica</span></span>
+<span id="cb71-12"><a href="transform.html#cb71-12" tabindex="-1"></a><span class="co">#&gt; 3 virginica</span></span>
+<span id="cb71-13"><a href="transform.html#cb71-13" tabindex="-1"></a><span class="co">#&gt; 4 virginica</span></span>
+<span id="cb71-14"><a href="transform.html#cb71-14" tabindex="-1"></a><span class="co">#&gt; 5 virginica</span></span>
+<span id="cb71-15"><a href="transform.html#cb71-15" tabindex="-1"></a><span class="co">#&gt; 6 virginica</span></span></code></pre></div>
 </div>
 <div id="arrange---昇順降順" class="section level3" number="17.2.8">
-<h3>
-<span class="header-section-number">17.2.8</span> <code>arrange</code> - 昇順、降順<a class="anchor" aria-label="anchor" href="#arrange---%E6%98%87%E9%A0%86%E9%99%8D%E9%A0%86"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.2.8</span> <code>arrange</code> - 昇順、降順</h3>
 <p>次の例では、Sepal.Length の値の、昇順（小さい順）にし、同じ値の中では、Spepal.Width の降順（大きい順 （desc は descending order からとったもの）にします。Sepal.Length の値が、4.4 の部分の、Sepal.Width の値をみてください。</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">Sepal.Length</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">Sepal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
-<span><span class="co">#&gt; 1          4.3         3.0          1.1         0.1  setosa</span></span>
-<span><span class="co">#&gt; 2          4.4         3.2          1.3         0.2  setosa</span></span>
-<span><span class="co">#&gt; 3          4.4         3.0          1.3         0.2  setosa</span></span>
-<span><span class="co">#&gt; 4          4.4         2.9          1.4         0.2  setosa</span></span>
-<span><span class="co">#&gt; 5          4.5         2.3          1.3         0.3  setosa</span></span>
-<span><span class="co">#&gt; 6          4.6         3.6          1.0         0.2  setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="transform.html#cb72-1" tabindex="-1"></a><span class="fu">arrange</span>(iris, Sepal.Length, <span class="fu">desc</span>(Sepal.Width)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb72-2"><a href="transform.html#cb72-2" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span id="cb72-3"><a href="transform.html#cb72-3" tabindex="-1"></a><span class="co">#&gt; 1          4.3         3.0          1.1         0.1  setosa</span></span>
+<span id="cb72-4"><a href="transform.html#cb72-4" tabindex="-1"></a><span class="co">#&gt; 2          4.4         3.2          1.3         0.2  setosa</span></span>
+<span id="cb72-5"><a href="transform.html#cb72-5" tabindex="-1"></a><span class="co">#&gt; 3          4.4         3.0          1.3         0.2  setosa</span></span>
+<span id="cb72-6"><a href="transform.html#cb72-6" tabindex="-1"></a><span class="co">#&gt; 4          4.4         2.9          1.4         0.2  setosa</span></span>
+<span id="cb72-7"><a href="transform.html#cb72-7" tabindex="-1"></a><span class="co">#&gt; 5          4.5         2.3          1.3         0.3  setosa</span></span>
+<span id="cb72-8"><a href="transform.html#cb72-8" tabindex="-1"></a><span class="co">#&gt; 6          4.6         3.6          1.0         0.2  setosa</span></span></code></pre></div>
 </div>
 <div id="mutate---rank階級" class="section level3" number="17.2.9">
-<h3>
-<span class="header-section-number">17.2.9</span> <code>mutate</code> - rank（階級）<a class="anchor" aria-label="anchor" href="#mutate---rank%E9%9A%8E%E7%B4%9A"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.2.9</span> <code>mutate</code> - rank（階級）</h3>
 <p>小さい順に順序付けて新しい列を作成し、その順序で表示します。順序付も様々な種類があります。ここでは、同じ値のときには、同じ階級にしています。下の出力を右の方を見てください。1, 2, 2, 2, 5, … となっています。</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sl_rank <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sl_rank</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
-<span><span class="co">#&gt; 1          4.3         3.0          1.1         0.1  setosa</span></span>
-<span><span class="co">#&gt; 2          4.4         2.9          1.4         0.2  setosa</span></span>
-<span><span class="co">#&gt; 3          4.4         3.0          1.3         0.2  setosa</span></span>
-<span><span class="co">#&gt; 4          4.4         3.2          1.3         0.2  setosa</span></span>
-<span><span class="co">#&gt; 5          4.5         2.3          1.3         0.3  setosa</span></span>
-<span><span class="co">#&gt; 6          4.6         3.1          1.5         0.2  setosa</span></span>
-<span><span class="co">#&gt;   sl_rank</span></span>
-<span><span class="co">#&gt; 1       1</span></span>
-<span><span class="co">#&gt; 2       2</span></span>
-<span><span class="co">#&gt; 3       2</span></span>
-<span><span class="co">#&gt; 4       2</span></span>
-<span><span class="co">#&gt; 5       5</span></span>
-<span><span class="co">#&gt; 6       6</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="transform.html#cb73-1" tabindex="-1"></a>iris <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">sl_rank =</span> <span class="fu">min_rank</span>(Sepal.Length)) <span class="sc">|&gt;</span> </span>
+<span id="cb73-2"><a href="transform.html#cb73-2" tabindex="-1"></a>  <span class="fu">arrange</span>(sl_rank) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb73-3"><a href="transform.html#cb73-3" tabindex="-1"></a><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span id="cb73-4"><a href="transform.html#cb73-4" tabindex="-1"></a><span class="co">#&gt; 1          4.3         3.0          1.1         0.1  setosa</span></span>
+<span id="cb73-5"><a href="transform.html#cb73-5" tabindex="-1"></a><span class="co">#&gt; 2          4.4         2.9          1.4         0.2  setosa</span></span>
+<span id="cb73-6"><a href="transform.html#cb73-6" tabindex="-1"></a><span class="co">#&gt; 3          4.4         3.0          1.3         0.2  setosa</span></span>
+<span id="cb73-7"><a href="transform.html#cb73-7" tabindex="-1"></a><span class="co">#&gt; 4          4.4         3.2          1.3         0.2  setosa</span></span>
+<span id="cb73-8"><a href="transform.html#cb73-8" tabindex="-1"></a><span class="co">#&gt; 5          4.5         2.3          1.3         0.3  setosa</span></span>
+<span id="cb73-9"><a href="transform.html#cb73-9" tabindex="-1"></a><span class="co">#&gt; 6          4.6         3.1          1.5         0.2  setosa</span></span>
+<span id="cb73-10"><a href="transform.html#cb73-10" tabindex="-1"></a><span class="co">#&gt;   sl_rank</span></span>
+<span id="cb73-11"><a href="transform.html#cb73-11" tabindex="-1"></a><span class="co">#&gt; 1       1</span></span>
+<span id="cb73-12"><a href="transform.html#cb73-12" tabindex="-1"></a><span class="co">#&gt; 2       2</span></span>
+<span id="cb73-13"><a href="transform.html#cb73-13" tabindex="-1"></a><span class="co">#&gt; 3       2</span></span>
+<span id="cb73-14"><a href="transform.html#cb73-14" tabindex="-1"></a><span class="co">#&gt; 4       2</span></span>
+<span id="cb73-15"><a href="transform.html#cb73-15" tabindex="-1"></a><span class="co">#&gt; 5       5</span></span>
+<span id="cb73-16"><a href="transform.html#cb73-16" tabindex="-1"></a><span class="co">#&gt; 6       6</span></span></code></pre></div>
 <div id="備考-4" class="section level4" number="17.2.9.1">
-<h4>
-<span class="header-section-number">17.2.9.1</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-4"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">17.2.9.1</span> 備考</h4>
 <ol style="list-style-type: decimal">
 <li>パイプを紹介したときにも書きましたが、改行は、<code>|&gt;</code> のあとでしてください。</li>
 </ol>
 </div>
 </div>
 <div id="group_by-and-summarize" class="section level3" number="17.2.10">
-<h3>
-<span class="header-section-number">17.2.10</span> <code>group_by</code> and <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-and-summarize"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.2.10</span> <code>group_by</code> and <code>summarize</code></h3>
 <p>グループにわけて、グループごとに、平均を求めています。</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>sl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Sepal.Length</span><span class="op">)</span>, sw <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Sepal.Width</span><span class="op">)</span>, </span>
-<span>  pl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Petal.Length</span><span class="op">)</span>, pw <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Petal.Width</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 5</span></span>
-<span><span class="co">#&gt;   Species       sl    sw    pl    pw</span></span>
-<span><span class="co">#&gt;   &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 setosa      5.01  3.43  1.46 0.246</span></span>
-<span><span class="co">#&gt; 2 versicolor  5.94  2.77  4.26 1.33 </span></span>
-<span><span class="co">#&gt; 3 virginica   6.59  2.97  5.55 2.03</span></span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="transform.html#cb74-1" tabindex="-1"></a>iris <span class="sc">|&gt;</span> </span>
+<span id="cb74-2"><a href="transform.html#cb74-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">|&gt;</span></span>
+<span id="cb74-3"><a href="transform.html#cb74-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sl =</span> <span class="fu">mean</span>(Sepal.Length), <span class="at">sw =</span> <span class="fu">mean</span>(Sepal.Width), </span>
+<span id="cb74-4"><a href="transform.html#cb74-4" tabindex="-1"></a>  <span class="at">pl =</span> <span class="fu">mean</span>(Petal.Length), <span class="at">pw =</span> <span class="fu">mean</span>(Petal.Width))</span>
+<span id="cb74-5"><a href="transform.html#cb74-5" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 5</span></span>
+<span id="cb74-6"><a href="transform.html#cb74-6" tabindex="-1"></a><span class="co">#&gt;   Species       sl    sw    pl    pw</span></span>
+<span id="cb74-7"><a href="transform.html#cb74-7" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb74-8"><a href="transform.html#cb74-8" tabindex="-1"></a><span class="co">#&gt; 1 setosa      5.01  3.43  1.46 0.246</span></span>
+<span id="cb74-9"><a href="transform.html#cb74-9" tabindex="-1"></a><span class="co">#&gt; 2 versicolor  5.94  2.77  4.26 1.33 </span></span>
+<span id="cb74-10"><a href="transform.html#cb74-10" tabindex="-1"></a><span class="co">#&gt; 3 virginica   6.59  2.97  5.55 2.03</span></span></code></pre></div>
 <ul>
-<li>mean: <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> or <code>mean(x, na.rm = TRUE)</code> - 相加平均 (average)</li>
-<li>median: <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> , <code>median(x, na.rm = TRUE)</code> - 中央値（mid value）</li>
+<li>mean: <code>mean()</code> or <code>mean(x, na.rm = TRUE)</code> - 相加平均 (average)</li>
+<li>median: <code>median()</code> , <code>median(x, na.rm = TRUE)</code> - 中央値（mid value）</li>
 </ul>
 <p>以下のリンクには、もう少し例が書かれています。</p>
 <p><a href="https://icu-hsuzuki.github.io/da4r2022_note/dplyr-iris.nb.html">dplr_iris</a></p>
 </div>
 </div>
 <div id="dplyr-の参考文献" class="section level2" number="17.3">
-<h2>
-<span class="header-section-number">17.3</span> <code>dplyr</code> の参考文献<a class="anchor" aria-label="anchor" href="#dplyr-%E3%81%AE%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">17.3</span> <code>dplyr</code> の参考文献</h2>
 <p>より詳しい説明は、教科書の該当箇所を見てください。</p>
 <ul>
 <li><a href="https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro">R for Data Science, Part II Explore</a></li>
 <li><a href="https://r4ds.hadley.nz/transform">R for Data Science (2e), Transform</a></li>
 </ul>
 <div id="rstudio-primers-対話型の演習問題" class="section level3" number="17.3.1">
-<h3>
-<span class="header-section-number">17.3.1</span> RStudio Primers: 対話型の演習問題<a class="anchor" aria-label="anchor" href="#rstudio-primers-%E5%AF%BE%E8%A9%B1%E5%9E%8B%E3%81%AE%E6%BC%94%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.3.1</span> RStudio Primers: 対話型の演習問題</h3>
 <ol start="2" style="list-style-type: decimal">
-<li>Work with Data – <a href="https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro">r4ds: Wrangle, I</a>
-</li>
+<li>Work with Data – <a href="https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro">r4ds: Wrangle, I</a></li>
 </ol>
 <ul>
 <li><a href="https://rstudio.cloud/learn/primers/2.1">Working with Tibbles</a></li>
@@ -600,14 +518,10 @@
 </div>
 </div>
 <div id="例から学ぶ-dplyr-ii---gapminder" class="section level2" number="17.4">
-<h2>
-<span class="header-section-number">17.4</span> 例から学ぶ <code>dplyr</code> II - <code>gapminder</code><a class="anchor" aria-label="anchor" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-ii---gapminder"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">17.4</span> 例から学ぶ <code>dplyr</code> II - <code>gapminder</code></h2>
 <p><code>gapminder</code> というパッケージのデータを使って、<code>dplyr</code> を学びます。この次の章で、<code>ggplot2</code> を使った視覚化について学びますが、この章で学んでいる変形は、<code>ggplot2</code> で、視覚化する準備のために、する場合も多いので、ここでも、<code>ggplot2</code> を使います。</p>
 <div id="ggplot2-概要" class="section level3" number="17.4.1">
-<h3>
-<span class="header-section-number">17.4.1</span> <code>ggplot2</code> <a href="https://ggplot2.tidyverse.org">概要</a><a class="anchor" aria-label="anchor" href="#ggplot2-%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.4.1</span> <code>ggplot2</code> <a href="https://ggplot2.tidyverse.org">概要</a></h3>
 <p>次のような形式で使います。</p>
 <p><strong>例1 散布図</strong></p>
 <pre><code>ggplot(data = mpg) + 
@@ -619,40 +533,27 @@
 <pre><code>ggplot(data = &lt;DATA&gt;) + 
   &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))</code></pre>
 <div id="gapminder-と-r-package-gapminder" class="section level4" number="17.4.1.1">
-<h4>
-<span class="header-section-number">17.4.1.1</span> Gapminder と R Package <code>gapminder</code><a class="anchor" aria-label="anchor" href="#gapminder-%E3%81%A8-r-package-gapminder"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">17.4.1.1</span> Gapminder と R Package <code>gapminder</code></h4>
 <blockquote>
 <p>Gapminder は オラ ロスリング（Ola Rosling） と アンナ ロスリング（Anna Rosling Rönnlund）と ハンス ロスリング（Hans Rosling）が設立した組織です。</p>
 <p>ハンス・ロスリング は、<strong>FACTFULNESS（ファクトフルネス）10の思い込みを乗り越え、データを基に世界を正しく見る習慣</strong> の著者です。</p>
 <p>また、R の gapminder パッケージには、ファクトフルネス にも登場するデータで、Gapminder サイトでも使っているデータの一部を、使いやすい、練習用のデータとして提供しているものです。</p>
 </blockquote>
 <ul>
-<li>
-<p>Gapminder: <a href="https://www.gapminder.org" class="uri">https://www.gapminder.org</a></p>
+<li><p>Gapminder: <a href="https://www.gapminder.org" class="uri">https://www.gapminder.org</a></p>
 <ul>
 <li>Test on Top: You are probably wrong about - upgrade your worldview</li>
-<li>Bubble Chart: <a href="https://www.gapminder.org/tools/#%24chart-type=bubbles&amp;url=v1" class="uri">https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1</a>
-</li>
-<li>Dallar Street: <a href="https://www.gapminder.org/tools/#%24chart-type=bubbles&amp;url=v1" class="uri">https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1</a>
-</li>
-<li>Data: <a href="https://www.gapminder.org/data/" class="uri">https://www.gapminder.org/data/</a>
-</li>
-</ul>
-</li>
-<li>
-<p>R Package gapminder by Jennifer Bryan</p>
+<li>Bubble Chart: <a href="https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1" class="uri">https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1</a></li>
+<li>Dallar Street: <a href="https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1" class="uri">https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1</a></li>
+<li>Data: <a href="https://www.gapminder.org/data/" class="uri">https://www.gapminder.org/data/</a></li>
+</ul></li>
+<li><p>R Package gapminder by Jennifer Bryan</p>
 <ul>
-<li>Package site: <a href="https://CRAN.R-project.org/package=gapminder" class="uri">https://CRAN.R-project.org/package=gapminder</a>
-</li>
-<li>Site: <a href="https://github.com/jennybc/gapminder" class="uri">https://github.com/jennybc/gapminder</a>
-</li>
-<li>Documents: <a href="https://www.rdocumentation.org/packages/gapminder/versions/0.3.0" class="uri">https://www.rdocumentation.org/packages/gapminder/versions/0.3.0</a>
-</li>
-</ul>
-</li>
-<li>
-<p>Package Help <code><a href="https://jennybc.github.io/gapminder/reference/gapminder.html">?gapminder</a></code> or <code>gapminder</code> in the search window of Help</p>
+<li>Package site: <a href="https://CRAN.R-project.org/package=gapminder" class="uri">https://CRAN.R-project.org/package=gapminder</a></li>
+<li>Site: <a href="https://github.com/jennybc/gapminder" class="uri">https://github.com/jennybc/gapminder</a></li>
+<li>Documents: <a href="https://www.rdocumentation.org/packages/gapminder/versions/0.3.0" class="uri">https://www.rdocumentation.org/packages/gapminder/versions/0.3.0</a></li>
+</ul></li>
+<li><p>Package Help <code>?gapminder</code> or <code>gapminder</code> in the search window of Help</p>
 <ul>
 <li>The main data frame gapminder has 1704 rows and 6 variables:
 <ul>
@@ -662,214 +563,194 @@
 <li>lifeExp: life expectancy at birth, in years</li>
 <li>pop: population</li>
 <li>gdpPercap: GDP per capita (US$, inflation-adjusted)</li>
+</ul></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/WDI/">WDI</a></span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="transform.html#cb78-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb78-2"><a href="transform.html#cb78-2" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb78-3"><a href="transform.html#cb78-3" tabindex="-1"></a><span class="fu">library</span>(WDI)</span></code></pre></div>
 </div>
 <div id="r-package-gapminder-data" class="section level4" number="17.4.1.2">
-<h4>
-<span class="header-section-number">17.4.1.2</span> R Package <code>gapminder</code> data<a class="anchor" aria-label="anchor" href="#r-package-gapminder-data"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">17.4.1.2</span> R Package <code>gapminder</code> data</h4>
 <p>We will use a <code>tidyverse</code> function <code>slice</code> replacing <code>head</code>. Check <code>slice</code> in the search window under the Help tab on the bottom right pane.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gm</span> <span class="op">&lt;-</span> <span class="va">gapminder</span></span>
-<span><span class="va">df_gm</span></span>
-<span><span class="co">#&gt; # A tibble: 1,704 × 6</span></span>
-<span><span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span></span>
-<span><span class="co">#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
-<span><span class="co">#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
-<span><span class="co">#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
-<span><span class="co">#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
-<span><span class="co">#&gt;  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
-<span><span class="co">#&gt;  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
-<span><span class="co">#&gt;  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
-<span><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
-<span><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
-<span><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span>
-<span><span class="co">#&gt; # ℹ 1,694 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">df_gm</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Rows: 1,704</span></span>
-<span><span class="co">#&gt; Columns: 6</span></span>
-<span><span class="co">#&gt; $ country   &lt;fct&gt; "Afghanistan", "Afghanistan", "Afghanist…</span></span>
-<span><span class="co">#&gt; $ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia…</span></span>
-<span><span class="co">#&gt; $ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982…</span></span>
-<span><span class="co">#&gt; $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, …</span></span>
-<span><span class="co">#&gt; $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13…</span></span>
-<span><span class="co">#&gt; $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, …</span></span></code></pre></div>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df_gm</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         country        continent        year     </span></span>
-<span><span class="co">#&gt;  Afghanistan:  12   Africa  :624   Min.   :1952  </span></span>
-<span><span class="co">#&gt;  Albania    :  12   Americas:300   1st Qu.:1966  </span></span>
-<span><span class="co">#&gt;  Algeria    :  12   Asia    :396   Median :1980  </span></span>
-<span><span class="co">#&gt;  Angola     :  12   Europe  :360   Mean   :1980  </span></span>
-<span><span class="co">#&gt;  Argentina  :  12   Oceania : 24   3rd Qu.:1993  </span></span>
-<span><span class="co">#&gt;  Australia  :  12                  Max.   :2007  </span></span>
-<span><span class="co">#&gt;  (Other)    :1632                                </span></span>
-<span><span class="co">#&gt;     lifeExp           pop              gdpPercap       </span></span>
-<span><span class="co">#&gt;  Min.   :23.60   Min.   :6.001e+04   Min.   :   241.2  </span></span>
-<span><span class="co">#&gt;  1st Qu.:48.20   1st Qu.:2.794e+06   1st Qu.:  1202.1  </span></span>
-<span><span class="co">#&gt;  Median :60.71   Median :7.024e+06   Median :  3531.8  </span></span>
-<span><span class="co">#&gt;  Mean   :59.47   Mean   :2.960e+07   Mean   :  7215.3  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:70.85   3rd Qu.:1.959e+07   3rd Qu.:  9325.5  </span></span>
-<span><span class="co">#&gt;  Max.   :82.60   Max.   :1.319e+09   Max.   :113523.1  </span></span>
-<span><span class="co">#&gt; </span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="transform.html#cb79-1" tabindex="-1"></a>df_gm <span class="ot">&lt;-</span> gapminder</span>
+<span id="cb79-2"><a href="transform.html#cb79-2" tabindex="-1"></a>df_gm</span>
+<span id="cb79-3"><a href="transform.html#cb79-3" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1,704 × 6</span></span>
+<span id="cb79-4"><a href="transform.html#cb79-4" tabindex="-1"></a><span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span></span>
+<span id="cb79-5"><a href="transform.html#cb79-5" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb79-6"><a href="transform.html#cb79-6" tabindex="-1"></a><span class="co">#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span id="cb79-7"><a href="transform.html#cb79-7" tabindex="-1"></a><span class="co">#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span id="cb79-8"><a href="transform.html#cb79-8" tabindex="-1"></a><span class="co">#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
+<span id="cb79-9"><a href="transform.html#cb79-9" tabindex="-1"></a><span class="co">#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
+<span id="cb79-10"><a href="transform.html#cb79-10" tabindex="-1"></a><span class="co">#&gt;  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
+<span id="cb79-11"><a href="transform.html#cb79-11" tabindex="-1"></a><span class="co">#&gt;  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
+<span id="cb79-12"><a href="transform.html#cb79-12" tabindex="-1"></a><span class="co">#&gt;  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
+<span id="cb79-13"><a href="transform.html#cb79-13" tabindex="-1"></a><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
+<span id="cb79-14"><a href="transform.html#cb79-14" tabindex="-1"></a><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
+<span id="cb79-15"><a href="transform.html#cb79-15" tabindex="-1"></a><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span>
+<span id="cb79-16"><a href="transform.html#cb79-16" tabindex="-1"></a><span class="co">#&gt; # ℹ 1,694 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="transform.html#cb80-1" tabindex="-1"></a><span class="fu">glimpse</span>(df_gm)</span>
+<span id="cb80-2"><a href="transform.html#cb80-2" tabindex="-1"></a><span class="co">#&gt; Rows: 1,704</span></span>
+<span id="cb80-3"><a href="transform.html#cb80-3" tabindex="-1"></a><span class="co">#&gt; Columns: 6</span></span>
+<span id="cb80-4"><a href="transform.html#cb80-4" tabindex="-1"></a><span class="co">#&gt; $ country   &lt;fct&gt; &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanist…</span></span>
+<span id="cb80-5"><a href="transform.html#cb80-5" tabindex="-1"></a><span class="co">#&gt; $ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia…</span></span>
+<span id="cb80-6"><a href="transform.html#cb80-6" tabindex="-1"></a><span class="co">#&gt; $ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982…</span></span>
+<span id="cb80-7"><a href="transform.html#cb80-7" tabindex="-1"></a><span class="co">#&gt; $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, …</span></span>
+<span id="cb80-8"><a href="transform.html#cb80-8" tabindex="-1"></a><span class="co">#&gt; $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13…</span></span>
+<span id="cb80-9"><a href="transform.html#cb80-9" tabindex="-1"></a><span class="co">#&gt; $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="transform.html#cb81-1" tabindex="-1"></a><span class="fu">summary</span>(df_gm)</span>
+<span id="cb81-2"><a href="transform.html#cb81-2" tabindex="-1"></a><span class="co">#&gt;         country        continent        year     </span></span>
+<span id="cb81-3"><a href="transform.html#cb81-3" tabindex="-1"></a><span class="co">#&gt;  Afghanistan:  12   Africa  :624   Min.   :1952  </span></span>
+<span id="cb81-4"><a href="transform.html#cb81-4" tabindex="-1"></a><span class="co">#&gt;  Albania    :  12   Americas:300   1st Qu.:1966  </span></span>
+<span id="cb81-5"><a href="transform.html#cb81-5" tabindex="-1"></a><span class="co">#&gt;  Algeria    :  12   Asia    :396   Median :1980  </span></span>
+<span id="cb81-6"><a href="transform.html#cb81-6" tabindex="-1"></a><span class="co">#&gt;  Angola     :  12   Europe  :360   Mean   :1980  </span></span>
+<span id="cb81-7"><a href="transform.html#cb81-7" tabindex="-1"></a><span class="co">#&gt;  Argentina  :  12   Oceania : 24   3rd Qu.:1993  </span></span>
+<span id="cb81-8"><a href="transform.html#cb81-8" tabindex="-1"></a><span class="co">#&gt;  Australia  :  12                  Max.   :2007  </span></span>
+<span id="cb81-9"><a href="transform.html#cb81-9" tabindex="-1"></a><span class="co">#&gt;  (Other)    :1632                                </span></span>
+<span id="cb81-10"><a href="transform.html#cb81-10" tabindex="-1"></a><span class="co">#&gt;     lifeExp           pop              gdpPercap       </span></span>
+<span id="cb81-11"><a href="transform.html#cb81-11" tabindex="-1"></a><span class="co">#&gt;  Min.   :23.60   Min.   :6.001e+04   Min.   :   241.2  </span></span>
+<span id="cb81-12"><a href="transform.html#cb81-12" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:48.20   1st Qu.:2.794e+06   1st Qu.:  1202.1  </span></span>
+<span id="cb81-13"><a href="transform.html#cb81-13" tabindex="-1"></a><span class="co">#&gt;  Median :60.71   Median :7.024e+06   Median :  3531.8  </span></span>
+<span id="cb81-14"><a href="transform.html#cb81-14" tabindex="-1"></a><span class="co">#&gt;  Mean   :59.47   Mean   :2.960e+07   Mean   :  7215.3  </span></span>
+<span id="cb81-15"><a href="transform.html#cb81-15" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:70.85   3rd Qu.:1.959e+07   3rd Qu.:  9325.5  </span></span>
+<span id="cb81-16"><a href="transform.html#cb81-16" tabindex="-1"></a><span class="co">#&gt;  Max.   :82.60   Max.   :1.319e+09   Max.   :113523.1  </span></span>
+<span id="cb81-17"><a href="transform.html#cb81-17" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
 </div>
 <div id="dplyr-の応用" class="section level4" number="17.4.1.3">
-<h4>
-<span class="header-section-number">17.4.1.3</span> <code>dplyr</code> の応用<a class="anchor" aria-label="anchor" href="#dplyr-%E3%81%AE%E5%BF%9C%E7%94%A8"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">17.4.1.3</span> <code>dplyr</code> の応用</h4>
 <div id="filter" class="section level5" number="17.4.1.3.1">
-<h5>
-<span class="header-section-number">17.4.1.3.1</span> <code>filter</code><a class="anchor" aria-label="anchor" href="#filter"><i class="fas fa-link"></i></a>
-</h5>
+<h5><span class="header-section-number">17.4.1.3.1</span> <code>filter</code></h5>
 <p>一番上に、国名（country）に、アフガニスタン（Afghanistan） がありましたから、aアフガニスタンのデータを選び、平均寿命（lifeExp: Life Expectancy）の折線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。</p>
 <p><code>filter(country == "Afghanistan")</code></p>
 <p>特定の値のデータを抽出するには、<code>==</code> を使うのでした。二つの <code>=</code> ですから、間違わないでください。</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Afghanistan"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 12 × 6</span></span>
-<span><span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span></span>
-<span><span class="co">#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
-<span><span class="co">#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
-<span><span class="co">#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
-<span><span class="co">#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
-<span><span class="co">#&gt;  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
-<span><span class="co">#&gt;  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
-<span><span class="co">#&gt;  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
-<span><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
-<span><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
-<span><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span>
-<span><span class="co">#&gt; 11 Afghanistan Asia       2002    42.1 25268405      727.</span></span>
-<span><span class="co">#&gt; 12 Afghanistan Asia       2007    43.8 31889923      975.</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="transform.html#cb82-1" tabindex="-1"></a>df_gm <span class="sc">%&gt;%</span> <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;Afghanistan&quot;</span>)</span>
+<span id="cb82-2"><a href="transform.html#cb82-2" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 × 6</span></span>
+<span id="cb82-3"><a href="transform.html#cb82-3" tabindex="-1"></a><span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span></span>
+<span id="cb82-4"><a href="transform.html#cb82-4" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb82-5"><a href="transform.html#cb82-5" tabindex="-1"></a><span class="co">#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span id="cb82-6"><a href="transform.html#cb82-6" tabindex="-1"></a><span class="co">#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span id="cb82-7"><a href="transform.html#cb82-7" tabindex="-1"></a><span class="co">#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
+<span id="cb82-8"><a href="transform.html#cb82-8" tabindex="-1"></a><span class="co">#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
+<span id="cb82-9"><a href="transform.html#cb82-9" tabindex="-1"></a><span class="co">#&gt;  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
+<span id="cb82-10"><a href="transform.html#cb82-10" tabindex="-1"></a><span class="co">#&gt;  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
+<span id="cb82-11"><a href="transform.html#cb82-11" tabindex="-1"></a><span class="co">#&gt;  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
+<span id="cb82-12"><a href="transform.html#cb82-12" tabindex="-1"></a><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
+<span id="cb82-13"><a href="transform.html#cb82-13" tabindex="-1"></a><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
+<span id="cb82-14"><a href="transform.html#cb82-14" tabindex="-1"></a><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span>
+<span id="cb82-15"><a href="transform.html#cb82-15" tabindex="-1"></a><span class="co">#&gt; 11 Afghanistan Asia       2002    42.1 25268405      727.</span></span>
+<span id="cb82-16"><a href="transform.html#cb82-16" tabindex="-1"></a><span class="co">#&gt; 12 Afghanistan Asia       2007    43.8 31889923      975.</span></span></code></pre></div>
 <p>確認できましたか。</p>
 <p>折線グラフを書きます。この場合は、GEOM は、<code>geom_line</code> です。</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Afghanistan"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-21-1.png" width="672"></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="transform.html#cb83-1" tabindex="-1"></a>df_gm <span class="sc">%&gt;%</span> <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;Afghanistan&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb83-2"><a href="transform.html#cb83-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="25-transform_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>アフガニスタンでは 1952年 の誕生時の平均寿命（life expectancy at birth）は　30歳以下 （28.8歳）でした。2007年でも50歳以下（48.8 歳）のようですね。改善されていることも確かです。</p>
 <p>アフガニスタンと日本両方を抽出してみましょう。そのときは、 <code>country %in% c("Afghanistan", "Japan")</code>　とします。</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Japan"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 24 × 6</span></span>
-<span><span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span></span>
-<span><span class="co">#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
-<span><span class="co">#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
-<span><span class="co">#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
-<span><span class="co">#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
-<span><span class="co">#&gt;  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
-<span><span class="co">#&gt;  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
-<span><span class="co">#&gt;  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
-<span><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
-<span><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
-<span><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span>
-<span><span class="co">#&gt; # ℹ 14 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="transform.html#cb84-1" tabindex="-1"></a>df_gm <span class="sc">%&gt;%</span> <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;Japan&quot;</span>))</span>
+<span id="cb84-2"><a href="transform.html#cb84-2" tabindex="-1"></a><span class="co">#&gt; # A tibble: 24 × 6</span></span>
+<span id="cb84-3"><a href="transform.html#cb84-3" tabindex="-1"></a><span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span></span>
+<span id="cb84-4"><a href="transform.html#cb84-4" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb84-5"><a href="transform.html#cb84-5" tabindex="-1"></a><span class="co">#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span id="cb84-6"><a href="transform.html#cb84-6" tabindex="-1"></a><span class="co">#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span id="cb84-7"><a href="transform.html#cb84-7" tabindex="-1"></a><span class="co">#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
+<span id="cb84-8"><a href="transform.html#cb84-8" tabindex="-1"></a><span class="co">#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
+<span id="cb84-9"><a href="transform.html#cb84-9" tabindex="-1"></a><span class="co">#&gt;  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
+<span id="cb84-10"><a href="transform.html#cb84-10" tabindex="-1"></a><span class="co">#&gt;  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
+<span id="cb84-11"><a href="transform.html#cb84-11" tabindex="-1"></a><span class="co">#&gt;  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
+<span id="cb84-12"><a href="transform.html#cb84-12" tabindex="-1"></a><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
+<span id="cb84-13"><a href="transform.html#cb84-13" tabindex="-1"></a><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
+<span id="cb84-14"><a href="transform.html#cb84-14" tabindex="-1"></a><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span>
+<span id="cb84-15"><a href="transform.html#cb84-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 14 more rows</span></span></code></pre></div>
 <p>グラフにしてみましょう。今度は、区別のため、<code>color = country</code> を追加します。すると、線が違う色で表示されます。詳しくは、視覚化を参照してください。</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Japan"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-23-1.png" width="672"></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="transform.html#cb85-1" tabindex="-1"></a>df_gm <span class="sc">%&gt;%</span> <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;Japan&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-2"><a href="transform.html#cb85-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp, <span class="at">color =</span> country)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="25-transform_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>どのような発見がありますか。かならず書き留めておいてください。</p>
 <p>他の国についても調べるときは、国のリストがあるとよいので、 <code>unique(df_gm$country)</code> とすると、リストが得られます。<code>distinct(country)</code> で、異なる国を選択してから、その部分をベクトルとして出力することもできます。</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   [1] Afghanistan              Albania                 </span></span>
-<span><span class="co">#&gt;   [3] Algeria                  Angola                  </span></span>
-<span><span class="co">#&gt;   [5] Argentina                Australia               </span></span>
-<span><span class="co">#&gt;   [7] Austria                  Bahrain                 </span></span>
-<span><span class="co">#&gt;   [9] Bangladesh               Belgium                 </span></span>
-<span><span class="co">#&gt;  [11] Benin                    Bolivia                 </span></span>
-<span><span class="co">#&gt;  [13] Bosnia and Herzegovina   Botswana                </span></span>
-<span><span class="co">#&gt;  [15] Brazil                   Bulgaria                </span></span>
-<span><span class="co">#&gt;  [17] Burkina Faso             Burundi                 </span></span>
-<span><span class="co">#&gt;  [19] Cambodia                 Cameroon                </span></span>
-<span><span class="co">#&gt;  [21] Canada                   Central African Republic</span></span>
-<span><span class="co">#&gt;  [23] Chad                     Chile                   </span></span>
-<span><span class="co">#&gt;  [25] China                    Colombia                </span></span>
-<span><span class="co">#&gt;  [27] Comoros                  Congo, Dem. Rep.        </span></span>
-<span><span class="co">#&gt;  [29] Congo, Rep.              Costa Rica              </span></span>
-<span><span class="co">#&gt;  [31] Cote d'Ivoire            Croatia                 </span></span>
-<span><span class="co">#&gt;  [33] Cuba                     Czech Republic          </span></span>
-<span><span class="co">#&gt;  [35] Denmark                  Djibouti                </span></span>
-<span><span class="co">#&gt;  [37] Dominican Republic       Ecuador                 </span></span>
-<span><span class="co">#&gt;  [39] Egypt                    El Salvador             </span></span>
-<span><span class="co">#&gt;  [41] Equatorial Guinea        Eritrea                 </span></span>
-<span><span class="co">#&gt;  [43] Ethiopia                 Finland                 </span></span>
-<span><span class="co">#&gt;  [45] France                   Gabon                   </span></span>
-<span><span class="co">#&gt;  [47] Gambia                   Germany                 </span></span>
-<span><span class="co">#&gt;  [49] Ghana                    Greece                  </span></span>
-<span><span class="co">#&gt;  [51] Guatemala                Guinea                  </span></span>
-<span><span class="co">#&gt;  [53] Guinea-Bissau            Haiti                   </span></span>
-<span><span class="co">#&gt;  [55] Honduras                 Hong Kong, China        </span></span>
-<span><span class="co">#&gt;  [57] Hungary                  Iceland                 </span></span>
-<span><span class="co">#&gt;  [59] India                    Indonesia               </span></span>
-<span><span class="co">#&gt;  [61] Iran                     Iraq                    </span></span>
-<span><span class="co">#&gt;  [63] Ireland                  Israel                  </span></span>
-<span><span class="co">#&gt;  [65] Italy                    Jamaica                 </span></span>
-<span><span class="co">#&gt;  [67] Japan                    Jordan                  </span></span>
-<span><span class="co">#&gt;  [69] Kenya                    Korea, Dem. Rep.        </span></span>
-<span><span class="co">#&gt;  [71] Korea, Rep.              Kuwait                  </span></span>
-<span><span class="co">#&gt;  [73] Lebanon                  Lesotho                 </span></span>
-<span><span class="co">#&gt;  [75] Liberia                  Libya                   </span></span>
-<span><span class="co">#&gt;  [77] Madagascar               Malawi                  </span></span>
-<span><span class="co">#&gt;  [79] Malaysia                 Mali                    </span></span>
-<span><span class="co">#&gt;  [81] Mauritania               Mauritius               </span></span>
-<span><span class="co">#&gt;  [83] Mexico                   Mongolia                </span></span>
-<span><span class="co">#&gt;  [85] Montenegro               Morocco                 </span></span>
-<span><span class="co">#&gt;  [87] Mozambique               Myanmar                 </span></span>
-<span><span class="co">#&gt;  [89] Namibia                  Nepal                   </span></span>
-<span><span class="co">#&gt;  [91] Netherlands              New Zealand             </span></span>
-<span><span class="co">#&gt;  [93] Nicaragua                Niger                   </span></span>
-<span><span class="co">#&gt;  [95] Nigeria                  Norway                  </span></span>
-<span><span class="co">#&gt;  [97] Oman                     Pakistan                </span></span>
-<span><span class="co">#&gt;  [99] Panama                   Paraguay                </span></span>
-<span><span class="co">#&gt; [101] Peru                     Philippines             </span></span>
-<span><span class="co">#&gt; [103] Poland                   Portugal                </span></span>
-<span><span class="co">#&gt; [105] Puerto Rico              Reunion                 </span></span>
-<span><span class="co">#&gt; [107] Romania                  Rwanda                  </span></span>
-<span><span class="co">#&gt; [109] Sao Tome and Principe    Saudi Arabia            </span></span>
-<span><span class="co">#&gt; [111] Senegal                  Serbia                  </span></span>
-<span><span class="co">#&gt; [113] Sierra Leone             Singapore               </span></span>
-<span><span class="co">#&gt; [115] Slovak Republic          Slovenia                </span></span>
-<span><span class="co">#&gt; [117] Somalia                  South Africa            </span></span>
-<span><span class="co">#&gt; [119] Spain                    Sri Lanka               </span></span>
-<span><span class="co">#&gt; [121] Sudan                    Swaziland               </span></span>
-<span><span class="co">#&gt; [123] Sweden                   Switzerland             </span></span>
-<span><span class="co">#&gt; [125] Syria                    Taiwan                  </span></span>
-<span><span class="co">#&gt; [127] Tanzania                 Thailand                </span></span>
-<span><span class="co">#&gt; [129] Togo                     Trinidad and Tobago     </span></span>
-<span><span class="co">#&gt; [131] Tunisia                  Turkey                  </span></span>
-<span><span class="co">#&gt; [133] Uganda                   United Kingdom          </span></span>
-<span><span class="co">#&gt; [135] United States            Uruguay                 </span></span>
-<span><span class="co">#&gt; [137] Venezuela                Vietnam                 </span></span>
-<span><span class="co">#&gt; [139] West Bank and Gaza       Yemen, Rep.             </span></span>
-<span><span class="co">#&gt; [141] Zambia                   Zimbabwe                </span></span>
-<span><span class="co">#&gt; 142 Levels: Afghanistan Albania Algeria Angola ... Zimbabwe</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="transform.html#cb86-1" tabindex="-1"></a>df_gm <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(country) <span class="sc">%&gt;%</span> <span class="fu">pull</span>()</span>
+<span id="cb86-2"><a href="transform.html#cb86-2" tabindex="-1"></a><span class="co">#&gt;   [1] Afghanistan              Albania                 </span></span>
+<span id="cb86-3"><a href="transform.html#cb86-3" tabindex="-1"></a><span class="co">#&gt;   [3] Algeria                  Angola                  </span></span>
+<span id="cb86-4"><a href="transform.html#cb86-4" tabindex="-1"></a><span class="co">#&gt;   [5] Argentina                Australia               </span></span>
+<span id="cb86-5"><a href="transform.html#cb86-5" tabindex="-1"></a><span class="co">#&gt;   [7] Austria                  Bahrain                 </span></span>
+<span id="cb86-6"><a href="transform.html#cb86-6" tabindex="-1"></a><span class="co">#&gt;   [9] Bangladesh               Belgium                 </span></span>
+<span id="cb86-7"><a href="transform.html#cb86-7" tabindex="-1"></a><span class="co">#&gt;  [11] Benin                    Bolivia                 </span></span>
+<span id="cb86-8"><a href="transform.html#cb86-8" tabindex="-1"></a><span class="co">#&gt;  [13] Bosnia and Herzegovina   Botswana                </span></span>
+<span id="cb86-9"><a href="transform.html#cb86-9" tabindex="-1"></a><span class="co">#&gt;  [15] Brazil                   Bulgaria                </span></span>
+<span id="cb86-10"><a href="transform.html#cb86-10" tabindex="-1"></a><span class="co">#&gt;  [17] Burkina Faso             Burundi                 </span></span>
+<span id="cb86-11"><a href="transform.html#cb86-11" tabindex="-1"></a><span class="co">#&gt;  [19] Cambodia                 Cameroon                </span></span>
+<span id="cb86-12"><a href="transform.html#cb86-12" tabindex="-1"></a><span class="co">#&gt;  [21] Canada                   Central African Republic</span></span>
+<span id="cb86-13"><a href="transform.html#cb86-13" tabindex="-1"></a><span class="co">#&gt;  [23] Chad                     Chile                   </span></span>
+<span id="cb86-14"><a href="transform.html#cb86-14" tabindex="-1"></a><span class="co">#&gt;  [25] China                    Colombia                </span></span>
+<span id="cb86-15"><a href="transform.html#cb86-15" tabindex="-1"></a><span class="co">#&gt;  [27] Comoros                  Congo, Dem. Rep.        </span></span>
+<span id="cb86-16"><a href="transform.html#cb86-16" tabindex="-1"></a><span class="co">#&gt;  [29] Congo, Rep.              Costa Rica              </span></span>
+<span id="cb86-17"><a href="transform.html#cb86-17" tabindex="-1"></a><span class="co">#&gt;  [31] Cote d&#39;Ivoire            Croatia                 </span></span>
+<span id="cb86-18"><a href="transform.html#cb86-18" tabindex="-1"></a><span class="co">#&gt;  [33] Cuba                     Czech Republic          </span></span>
+<span id="cb86-19"><a href="transform.html#cb86-19" tabindex="-1"></a><span class="co">#&gt;  [35] Denmark                  Djibouti                </span></span>
+<span id="cb86-20"><a href="transform.html#cb86-20" tabindex="-1"></a><span class="co">#&gt;  [37] Dominican Republic       Ecuador                 </span></span>
+<span id="cb86-21"><a href="transform.html#cb86-21" tabindex="-1"></a><span class="co">#&gt;  [39] Egypt                    El Salvador             </span></span>
+<span id="cb86-22"><a href="transform.html#cb86-22" tabindex="-1"></a><span class="co">#&gt;  [41] Equatorial Guinea        Eritrea                 </span></span>
+<span id="cb86-23"><a href="transform.html#cb86-23" tabindex="-1"></a><span class="co">#&gt;  [43] Ethiopia                 Finland                 </span></span>
+<span id="cb86-24"><a href="transform.html#cb86-24" tabindex="-1"></a><span class="co">#&gt;  [45] France                   Gabon                   </span></span>
+<span id="cb86-25"><a href="transform.html#cb86-25" tabindex="-1"></a><span class="co">#&gt;  [47] Gambia                   Germany                 </span></span>
+<span id="cb86-26"><a href="transform.html#cb86-26" tabindex="-1"></a><span class="co">#&gt;  [49] Ghana                    Greece                  </span></span>
+<span id="cb86-27"><a href="transform.html#cb86-27" tabindex="-1"></a><span class="co">#&gt;  [51] Guatemala                Guinea                  </span></span>
+<span id="cb86-28"><a href="transform.html#cb86-28" tabindex="-1"></a><span class="co">#&gt;  [53] Guinea-Bissau            Haiti                   </span></span>
+<span id="cb86-29"><a href="transform.html#cb86-29" tabindex="-1"></a><span class="co">#&gt;  [55] Honduras                 Hong Kong, China        </span></span>
+<span id="cb86-30"><a href="transform.html#cb86-30" tabindex="-1"></a><span class="co">#&gt;  [57] Hungary                  Iceland                 </span></span>
+<span id="cb86-31"><a href="transform.html#cb86-31" tabindex="-1"></a><span class="co">#&gt;  [59] India                    Indonesia               </span></span>
+<span id="cb86-32"><a href="transform.html#cb86-32" tabindex="-1"></a><span class="co">#&gt;  [61] Iran                     Iraq                    </span></span>
+<span id="cb86-33"><a href="transform.html#cb86-33" tabindex="-1"></a><span class="co">#&gt;  [63] Ireland                  Israel                  </span></span>
+<span id="cb86-34"><a href="transform.html#cb86-34" tabindex="-1"></a><span class="co">#&gt;  [65] Italy                    Jamaica                 </span></span>
+<span id="cb86-35"><a href="transform.html#cb86-35" tabindex="-1"></a><span class="co">#&gt;  [67] Japan                    Jordan                  </span></span>
+<span id="cb86-36"><a href="transform.html#cb86-36" tabindex="-1"></a><span class="co">#&gt;  [69] Kenya                    Korea, Dem. Rep.        </span></span>
+<span id="cb86-37"><a href="transform.html#cb86-37" tabindex="-1"></a><span class="co">#&gt;  [71] Korea, Rep.              Kuwait                  </span></span>
+<span id="cb86-38"><a href="transform.html#cb86-38" tabindex="-1"></a><span class="co">#&gt;  [73] Lebanon                  Lesotho                 </span></span>
+<span id="cb86-39"><a href="transform.html#cb86-39" tabindex="-1"></a><span class="co">#&gt;  [75] Liberia                  Libya                   </span></span>
+<span id="cb86-40"><a href="transform.html#cb86-40" tabindex="-1"></a><span class="co">#&gt;  [77] Madagascar               Malawi                  </span></span>
+<span id="cb86-41"><a href="transform.html#cb86-41" tabindex="-1"></a><span class="co">#&gt;  [79] Malaysia                 Mali                    </span></span>
+<span id="cb86-42"><a href="transform.html#cb86-42" tabindex="-1"></a><span class="co">#&gt;  [81] Mauritania               Mauritius               </span></span>
+<span id="cb86-43"><a href="transform.html#cb86-43" tabindex="-1"></a><span class="co">#&gt;  [83] Mexico                   Mongolia                </span></span>
+<span id="cb86-44"><a href="transform.html#cb86-44" tabindex="-1"></a><span class="co">#&gt;  [85] Montenegro               Morocco                 </span></span>
+<span id="cb86-45"><a href="transform.html#cb86-45" tabindex="-1"></a><span class="co">#&gt;  [87] Mozambique               Myanmar                 </span></span>
+<span id="cb86-46"><a href="transform.html#cb86-46" tabindex="-1"></a><span class="co">#&gt;  [89] Namibia                  Nepal                   </span></span>
+<span id="cb86-47"><a href="transform.html#cb86-47" tabindex="-1"></a><span class="co">#&gt;  [91] Netherlands              New Zealand             </span></span>
+<span id="cb86-48"><a href="transform.html#cb86-48" tabindex="-1"></a><span class="co">#&gt;  [93] Nicaragua                Niger                   </span></span>
+<span id="cb86-49"><a href="transform.html#cb86-49" tabindex="-1"></a><span class="co">#&gt;  [95] Nigeria                  Norway                  </span></span>
+<span id="cb86-50"><a href="transform.html#cb86-50" tabindex="-1"></a><span class="co">#&gt;  [97] Oman                     Pakistan                </span></span>
+<span id="cb86-51"><a href="transform.html#cb86-51" tabindex="-1"></a><span class="co">#&gt;  [99] Panama                   Paraguay                </span></span>
+<span id="cb86-52"><a href="transform.html#cb86-52" tabindex="-1"></a><span class="co">#&gt; [101] Peru                     Philippines             </span></span>
+<span id="cb86-53"><a href="transform.html#cb86-53" tabindex="-1"></a><span class="co">#&gt; [103] Poland                   Portugal                </span></span>
+<span id="cb86-54"><a href="transform.html#cb86-54" tabindex="-1"></a><span class="co">#&gt; [105] Puerto Rico              Reunion                 </span></span>
+<span id="cb86-55"><a href="transform.html#cb86-55" tabindex="-1"></a><span class="co">#&gt; [107] Romania                  Rwanda                  </span></span>
+<span id="cb86-56"><a href="transform.html#cb86-56" tabindex="-1"></a><span class="co">#&gt; [109] Sao Tome and Principe    Saudi Arabia            </span></span>
+<span id="cb86-57"><a href="transform.html#cb86-57" tabindex="-1"></a><span class="co">#&gt; [111] Senegal                  Serbia                  </span></span>
+<span id="cb86-58"><a href="transform.html#cb86-58" tabindex="-1"></a><span class="co">#&gt; [113] Sierra Leone             Singapore               </span></span>
+<span id="cb86-59"><a href="transform.html#cb86-59" tabindex="-1"></a><span class="co">#&gt; [115] Slovak Republic          Slovenia                </span></span>
+<span id="cb86-60"><a href="transform.html#cb86-60" tabindex="-1"></a><span class="co">#&gt; [117] Somalia                  South Africa            </span></span>
+<span id="cb86-61"><a href="transform.html#cb86-61" tabindex="-1"></a><span class="co">#&gt; [119] Spain                    Sri Lanka               </span></span>
+<span id="cb86-62"><a href="transform.html#cb86-62" tabindex="-1"></a><span class="co">#&gt; [121] Sudan                    Swaziland               </span></span>
+<span id="cb86-63"><a href="transform.html#cb86-63" tabindex="-1"></a><span class="co">#&gt; [123] Sweden                   Switzerland             </span></span>
+<span id="cb86-64"><a href="transform.html#cb86-64" tabindex="-1"></a><span class="co">#&gt; [125] Syria                    Taiwan                  </span></span>
+<span id="cb86-65"><a href="transform.html#cb86-65" tabindex="-1"></a><span class="co">#&gt; [127] Tanzania                 Thailand                </span></span>
+<span id="cb86-66"><a href="transform.html#cb86-66" tabindex="-1"></a><span class="co">#&gt; [129] Togo                     Trinidad and Tobago     </span></span>
+<span id="cb86-67"><a href="transform.html#cb86-67" tabindex="-1"></a><span class="co">#&gt; [131] Tunisia                  Turkey                  </span></span>
+<span id="cb86-68"><a href="transform.html#cb86-68" tabindex="-1"></a><span class="co">#&gt; [133] Uganda                   United Kingdom          </span></span>
+<span id="cb86-69"><a href="transform.html#cb86-69" tabindex="-1"></a><span class="co">#&gt; [135] United States            Uruguay                 </span></span>
+<span id="cb86-70"><a href="transform.html#cb86-70" tabindex="-1"></a><span class="co">#&gt; [137] Venezuela                Vietnam                 </span></span>
+<span id="cb86-71"><a href="transform.html#cb86-71" tabindex="-1"></a><span class="co">#&gt; [139] West Bank and Gaza       Yemen, Rep.             </span></span>
+<span id="cb86-72"><a href="transform.html#cb86-72" tabindex="-1"></a><span class="co">#&gt; [141] Zambia                   Zimbabwe                </span></span>
+<span id="cb86-73"><a href="transform.html#cb86-73" tabindex="-1"></a><span class="co">#&gt; 142 Levels: Afghanistan Albania Algeria Angola ... Zimbabwe</span></span></code></pre></div>
 <p>このデータには 142 の国のデータがあることがわかりました。</p>
 <p>BRICs を選んでみるとどうなるでしょうか。最近は、BRICS として、South Africa を加えることが増えてきているようです。</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Brazil"</span>, <span class="st">"Russia"</span>, <span class="st">"India"</span>, <span class="st">"China"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="transform.html#cb87-1" tabindex="-1"></a>df_gm <span class="sc">%&gt;%</span> <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Russia&quot;</span>, <span class="st">&quot;India&quot;</span>, <span class="st">&quot;China&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb87-2"><a href="transform.html#cb87-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp, <span class="at">color =</span> country)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p>ロシアが含まれていないことがわかります。ロシアは、以前は、ソビエト社会主義連邦でしたから、国が変化したものは含まれていないのかもしれません。上の国のリストで見てもありませんね。2007年より新しいデータ、ロシアなども含むデータなど、実際のデータでも見てみたいですね。それは、また後ほど。</p>
 </div>
 </div>
 </div>
 <div id="練習-3" class="section level3" number="17.4.2">
-<h3>
-<span class="header-section-number">17.4.2</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-3"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.4.2</span> 練習</h3>
 <ol style="list-style-type: decimal">
 <li>平均寿命 <code>lifeExp</code> を人口 <code>pop</code> や、一人当たりの GDP <code>gdpPercap</code> に変えて、試してみてください。</li>
 <li>ASEAN （東南アジア諸国連合）ではどうでしょうか。</li>
@@ -883,31 +764,26 @@
 </ol>
 </div>
 <div id="group_by-と-summarize" class="section level3" number="17.4.3">
-<h3>
-<span class="header-section-number">17.4.3</span> <code>group_by</code> と <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-%E3%81%A8-summarize"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">17.4.3</span> <code>group_by</code> と <code>summarize</code></h3>
 <p>データには大陸（<code>continent</code> ）という変数があります。幾つの大陸があり、それぞれの大陸のいくつ国のデータがこのデータには入っているでしょうか。</p>
 <p>それぞれの大陸ごとの2007年の平均寿命の平均と中央値と最大、最小を求めてみましょう。</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, median_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, max_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, min_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"keep"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 5 × 5</span></span>
-<span><span class="co">#&gt; # Groups:   continent [5]</span></span>
-<span><span class="co">#&gt;   continent mean_lifeExp median_lifeExp max_lifeExp</span></span>
-<span><span class="co">#&gt;   &lt;fct&gt;            &lt;dbl&gt;          &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Africa            54.8           52.9        76.4</span></span>
-<span><span class="co">#&gt; 2 Americas          73.6           72.9        80.7</span></span>
-<span><span class="co">#&gt; 3 Asia              70.7           72.4        82.6</span></span>
-<span><span class="co">#&gt; 4 Europe            77.6           78.6        81.8</span></span>
-<span><span class="co">#&gt; 5 Oceania           80.7           80.7        81.2</span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: min_lifeExp &lt;dbl&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="transform.html#cb88-1" tabindex="-1"></a>df_gm <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-2"><a href="transform.html#cb88-2" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-3"><a href="transform.html#cb88-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp), <span class="at">median_lifeExp =</span> <span class="fu">median</span>(lifeExp), <span class="at">max_lifeExp =</span> <span class="fu">max</span>(lifeExp), <span class="at">min_lifeExp =</span> <span class="fu">min</span>(lifeExp), <span class="at">.groups =</span> <span class="st">&quot;keep&quot;</span>)</span>
+<span id="cb88-4"><a href="transform.html#cb88-4" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 5</span></span>
+<span id="cb88-5"><a href="transform.html#cb88-5" tabindex="-1"></a><span class="co">#&gt; # Groups:   continent [5]</span></span>
+<span id="cb88-6"><a href="transform.html#cb88-6" tabindex="-1"></a><span class="co">#&gt;   continent mean_lifeExp median_lifeExp max_lifeExp</span></span>
+<span id="cb88-7"><a href="transform.html#cb88-7" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;            &lt;dbl&gt;          &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb88-8"><a href="transform.html#cb88-8" tabindex="-1"></a><span class="co">#&gt; 1 Africa            54.8           52.9        76.4</span></span>
+<span id="cb88-9"><a href="transform.html#cb88-9" tabindex="-1"></a><span class="co">#&gt; 2 Americas          73.6           72.9        80.7</span></span>
+<span id="cb88-10"><a href="transform.html#cb88-10" tabindex="-1"></a><span class="co">#&gt; 3 Asia              70.7           72.4        82.6</span></span>
+<span id="cb88-11"><a href="transform.html#cb88-11" tabindex="-1"></a><span class="co">#&gt; 4 Europe            77.6           78.6        81.8</span></span>
+<span id="cb88-12"><a href="transform.html#cb88-12" tabindex="-1"></a><span class="co">#&gt; 5 Oceania           80.7           80.7        81.2</span></span>
+<span id="cb88-13"><a href="transform.html#cb88-13" tabindex="-1"></a><span class="co">#&gt; # ℹ 1 more variable: min_lifeExp &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 </div>
 <div id="練習問題" class="section level2" number="17.5">
-<h2>
-<span class="header-section-number">17.5</span> 練習問題<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">17.5</span> 練習問題</h2>
 <p><strong>R Markdown and <code>dplyr</code></strong></p>
 <ul>
 <li>Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. <code>a2_123456.nb.html</code>)
@@ -917,96 +793,54 @@
 <li>run each code block,</li>
 <li>preview to create <code>a2_123456.nb.html</code>,</li>
 <li>submit <code>a2_123456.nb.html</code> to Moodle.</li>
-</ol>
-</li>
+</ol></li>
 </ul>
 <ol style="list-style-type: decimal">
-<li>
-<p>Pick data from the built-in datasets besides <code>cars</code>. (<code><a href="https://rdrr.io/r/base/library.html">library(help = "datasets")</a></code> or go to the site <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html">The R Datasets Package</a>)</p>
+<li><p>Pick data from the built-in datasets besides <code>cars</code>. (<code>library(help = "datasets")</code> or go to the site <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html">The R Datasets Package</a>)</p>
 <ul>
 <li>Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)</li>
-<li>Use <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code>, …, and create at least one chart using <code>ggplot2</code> - Code Chunk.
+<li>Use <code>head()</code>, <code>str()</code>, …, and create at least one chart using <code>ggplot2</code> - Code Chunk.
 <ul>
-<li>Don’t forget to add <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> in the first code chunk.</li>
-</ul>
-</li>
+<li>Don’t forget to add <code>library(tidyverse)</code> in the first code chunk.</li>
+</ul></li>
 <li>An observation of the chart - in your own words.</li>
-</ul>
-</li>
-<li>
-<p>Load <code>gapminder</code> by <code><a href="https://github.com/jennybc/gapminder">library(gapminder)</a></code>.</p>
+</ul></li>
+<li><p>Load <code>gapminder</code> by <code>library(gapminder)</code>.</p>
 <ul>
 <li>Choose <code>pop</code> or <code>gdpPercap</code>, or both, one country in the data, a group of countries in the data.</li>
 <li>Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for <code>lifeExp</code>.)</li>
 <li>Study the data as you like.</li>
 <li>Observations and difficulties encountered.</li>
-</ul>
-</li>
+</ul></li>
 </ol>
+
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></div>
-<div class="next"><a href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#transform"><span class="header-section-number">17</span> 変形（Transform）</a></li>
-<li>
-<a class="nav-link" href="#dplyr-%E6%A6%82%E8%A6%81"><span class="header-section-number">17.1</span> dplyr 概要</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#select-%E5%90%8D%E5%89%8D%E3%81%A8%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E9%81%B8%E6%8A%9E"><span class="header-section-number">17.1.1</span> select: 名前とタイプによって、列（変数）を選択</a></li>
-<li><a class="nav-link" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><span class="header-section-number">17.1.2</span> filter: 列の値の条件に適合した行の選択</a></li>
-<li><a class="nav-link" href="#arrange"><span class="header-section-number">17.1.3</span> arrange</a></li>
-<li><a class="nav-link" href="#mutate"><span class="header-section-number">17.1.4</span> mutate</a></li>
-<li><a class="nav-link" href="#group_by"><span class="header-section-number">17.1.5</span> group_by</a></li>
-<li><a class="nav-link" href="#summarise-or-summarize"><span class="header-section-number">17.1.6</span> summarise or summarize</a></li>
-<li><a class="nav-link" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><span class="header-section-number">17.1.7</span> パイプ（Pipe）%&gt;% |&gt;</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-i"><span class="header-section-number">17.2</span> 例から学ぶ dplyr I</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-iris"><span class="header-section-number">17.2.1</span> Data iris</a></li>
-<li><a class="nav-link" href="#select-%E5%88%97%E3%81%AE%E6%8A%BD%E5%87%BA"><span class="header-section-number">17.2.2</span> select 列の抽出</a></li>
-<li><a class="nav-link" href="#select-1---%E7%AC%AC-1-2-5-%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA"><span class="header-section-number">17.2.3</span> select 1 - 第 1, 2, 5 列を抽出</a></li>
-<li><a class="nav-link" href="#select-2---species-%E5%88%97%E4%BB%A5%E5%A4%96"><span class="header-section-number">17.2.4</span> select 2 - Species 列以外</a></li>
-<li><a class="nav-link" href="#select-3---%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA%E3%81%99%E3%82%8B%E3%81%A8%E3%81%A8%E3%82%82%E3%81%AB%E5%88%97%E5%90%8D%E3%82%82%E5%A4%89%E6%9B%B4"><span class="header-section-number">17.2.5</span> select 3 - 列を抽出するとともに列名も変更</a></li>
-<li><a class="nav-link" href="#select-4---%E5%88%97%E9%A0%86%E3%81%AE%E5%A4%89%E6%9B%B4"><span class="header-section-number">17.2.6</span> select 4 - 列順の変更</a></li>
-<li><a class="nav-link" href="#filter---%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E6%8A%BD%E5%87%BA"><span class="header-section-number">17.2.7</span> filter - 値による抽出</a></li>
-<li><a class="nav-link" href="#arrange---%E6%98%87%E9%A0%86%E9%99%8D%E9%A0%86"><span class="header-section-number">17.2.8</span> arrange - 昇順、降順</a></li>
-<li><a class="nav-link" href="#mutate---rank%E9%9A%8E%E7%B4%9A"><span class="header-section-number">17.2.9</span> mutate - rank（階級）</a></li>
-<li><a class="nav-link" href="#group_by-and-summarize"><span class="header-section-number">17.2.10</span> group_by and summarize</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#dplyr-%E3%81%AE%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="header-section-number">17.3</span> dplyr の参考文献</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#rstudio-primers-%E5%AF%BE%E8%A9%B1%E5%9E%8B%E3%81%AE%E6%BC%94%E7%BF%92%E5%95%8F%E9%A1%8C"><span class="header-section-number">17.3.1</span> RStudio Primers: 対話型の演習問題</a></li></ul>
-</li>
-<li>
-<a class="nav-link" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-ii---gapminder"><span class="header-section-number">17.4</span> 例から学ぶ dplyr II - gapminder</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#ggplot2-%E6%A6%82%E8%A6%81"><span class="header-section-number">17.4.1</span> ggplot2 概要</a></li>
-<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-3"><span class="header-section-number">17.4.2</span> 練習</a></li>
-<li><a class="nav-link" href="#group_by-%E3%81%A8-summarize"><span class="header-section-number">17.4.3</span> group_by と summarize</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><span class="header-section-number">17.5</span> 練習問題</a></li>
-</ul>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/25-transform.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/25-transform.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-</div>
+      </div>
     </nav>
-</div>
+  </div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-19.</p>
+    <p>"<strong>データサイエンスをはじめましょう<br />
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -1014,7 +848,11 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -1026,7 +864,8 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -1044,4 +883,5 @@ for (let popover of popovers) {
 }
 </script>
 </body>
+
 </html>

@@ -1,28 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 6 オープンデータ | データサイエンスをはじめましょう - Data Science for All -</title>
-<meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="6.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。...">
-<meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 6 オープンデータ | データサイエンスをはじめましょう - Data Science for All -">
-<meta property="og:type" content="book">
-<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/publicdata-site.html">
-<meta property="og:description" content="6.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 6 オープンデータ | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="6.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 6 オープンデータ | データサイエンスをはじめましょう - Data Science for All -</title>
+
+    <meta name="author" content="鈴木寛（Hirosi Suzuki）" />
+  
+   <meta name="description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 6 オープンデータ | データサイエンスをはじめましょう - Data Science for All -" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/" />
+  
+  <meta property="og:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 オープンデータ | データサイエンスをはじめましょう - Data Science for All -" />
+  
+  <meta name="twitter:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.2/transition.js"></script>
+    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<style type="text/css">
+    <style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -44,17 +70,20 @@
       margin-left: 2em;
     }
   </style>
-<link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="style.css" />
+  
 </head>
+
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+        <a href="index.html" title="">データサイエンスをはじめましょう<br />
 - Data Science for All -</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -63,66 +92,24 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
+      </form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">この文書について</a></li>
-<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
-<li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
-<li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
-<li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
-<li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
-<li class="book-part">PART I オープンデータ</li>
-<li><a class="active" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
-<li><a class="" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
-<li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
-<li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
-<li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
-<li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
-<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
-<li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
-<li><a class="" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
-<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
-<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
-<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
-<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
-<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
-<li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
-<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
-<li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
-<li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
-<li class="book-part">APPENDIX</li>
-<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
-<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
-<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
-<li><a class="" href="todo-list.html"><span class="header-section-number">D</span> To Do リスト</a></li>
-</ul>
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
         </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="publicdata-site" class="section level1" number="6">
-<h1>
-<span class="header-section-number">6</span> オープンデータ<a class="anchor" aria-label="anchor" href="#publicdata-site"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="publicdata-site" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> オープンデータ</h1>
 <div id="概要-1" class="section level2" number="6.1">
-<h2>
-<span class="header-section-number">6.1</span> 概要<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E8%A6%81-1"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">6.1</span> 概要</h2>
 <p>すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。</p>
 <p>第一部では、世界銀行や、経済協力開発機構（OECD）、国際連合（United Nations）などの、国際機関のオープンデータや、日本のデータとして、政府機関統計（e-Stat）の紹介をします。</p>
 <p>さらに、実際に、それぞれのサイトのオープンデータを、対話型（Interactive）の、ダッシュボード（dashboard）呼ばれている機能の使い方を紹介しながら、データ自身を見ていきます。</p>
@@ -133,50 +120,35 @@
 <p>こんなふうに、データがたくさん、公開されているのか、と、そんな感触を持っていただければと思います。</p>
 </div>
 <div id="さまざまな機関のオープンデータ" class="section level2" number="6.2">
-<h2>
-<span class="header-section-number">6.2</span> さまざまな機関のオープンデータ<a class="anchor" aria-label="anchor" href="#%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E6%A9%9F%E9%96%A2%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">6.2</span> さまざまな機関のオープンデータ</h2>
 <p>すでに少しだけ紹介した世界銀行以外にも、それぞれの機関がデータを提供しています。どれも、少しずつ使いやすくなってきています。少しずつ、いくつかのデータベースに、アクセスして、できれば、API の利用の仕方も、習得して、データを調べることに少しずつ慣れていっていただければと思います。</p>
 <p>下のリストは、私が個人的に、何度か使ったことのある、データベースです。「データサイエンスをはじめましょう」でも、少しずつ消化していきます。他にも、たくさんのデータベースがありますので、ぜひ、調べてみてください。</p>
 <ul>
-<li>国際連合　<a href="https://data.un.org">UNdata</a>
-</li>
+<li>国際連合　<a href="https://data.un.org">UNdata</a></li>
 <li>経済協力開発機構　<a href="https://data.oecd.org">OECD data</a>、</li>
 <li>世界格差データベース（World Inequality Database）<a href="https://wid.world">WID</a>、</li>
 <li>欧州連合の統計局　<a href="https://ec.europa.eu/eurostat">Eurostat</a>、</li>
-<li>データで見る私たちの世界　<a href="https://ourworldindata.org">Our World in Data</a>
-</li>
+<li>データで見る私たちの世界　<a href="https://ourworldindata.org">Our World in Data</a></li>
 </ul>
 <p>なども、同様の、ダッシュボードを備えており、データの提供もしている。</p>
 <p>
-</p>
 <p>日本では、</p>
 <ul>
-<li>
-<a href="https://www.e-stat.go.jp/">e-Stat</a>：政府統計の総合窓口 - 統計で見る日本</li>
-<li>
-<a href="https://dashboard.e-stat.go.jp">ダッシュボード</a>：対話型形式でのデータの視覚化</li>
+<li><a href="https://www.e-stat.go.jp/">e-Stat</a>：政府統計の総合窓口 - 統計で見る日本</li>
+<li><a href="https://dashboard.e-stat.go.jp">ダッシュボード</a>：対話型形式でのデータの視覚化</li>
 </ul>
 <div id="持続的開発目標sdgs-データ" class="section level3" number="6.2.1">
-<h3>
-<span class="header-section-number">6.2.1</span> 持続的開発目標（SDGs） データ<a class="anchor" aria-label="anchor" href="#%E6%8C%81%E7%B6%9A%E7%9A%84%E9%96%8B%E7%99%BA%E7%9B%AE%E6%A8%99sdgs-%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">6.2.1</span> 持続的開発目標（SDGs） データ</h3>
 <ul>
-<li>世界銀行：<a href="https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)" class="uri">https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)</a>
-</li>
-<li>国連：<a href="https://unstats.un.org/sdgs/dataportal/database" class="uri">https://unstats.un.org/sdgs/dataportal/database</a>
-</li>
-<li>データで見る私たちの世界：Our World in Data SGD Tracker: <a href="https://sdg-tracker.org/" class="uri">https://sdg-tracker.org/</a>
-</li>
-<li>SDG Index: <a href="https://dashboards.sdgindex.org/map" class="uri">https://dashboards.sdgindex.org/map</a>
-</li>
+<li>世界銀行：<a href="https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)" class="uri">https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)</a></li>
+<li>国連：<a href="https://unstats.un.org/sdgs/dataportal/database" class="uri">https://unstats.un.org/sdgs/dataportal/database</a></li>
+<li>データで見る私たちの世界：Our World in Data SGD Tracker: <a href="https://sdg-tracker.org/" class="uri">https://sdg-tracker.org/</a></li>
+<li>SDG Index: <a href="https://dashboards.sdgindex.org/map" class="uri">https://dashboards.sdgindex.org/map</a></li>
 </ul>
 </div>
 </div>
 <div id="オープンデータについて" class="section level2" number="6.3">
-<h2>
-<span class="header-section-number">6.3</span> オープンデータについて<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">6.3</span> オープンデータについて</h2>
 <p>オープンデータについては、すでに、世界銀行の定義をご紹介しました。パブリックデータをいう言葉も使われます。それらの違いなども含めて、AI に聞いてみましょう。</p>
 <p><strong>Q. オープンデータ（Open Data）とか、パブリックデータ（Public Data）と言われるものは、どのようなものですか。定義のようなものと、いくつかの例、さらに、重要視されてきている背景を説明してください。</strong></p>
 <p><strong>GPT4.</strong> (2023.8.15)</p>
@@ -200,16 +172,12 @@
 </ol>
 <p>以上のように、オープンデータとパブリックデータは、透明性、説明責任、イノベーション、市民参加、社会的・環境的課題の解決などの観点から重要性を増しています。</p>
 <div id="オープンデータの未来" class="section level3" number="6.3.1">
-<h3>
-<span class="header-section-number">6.3.1</span> オープンデータの未来<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%9C%AA%E6%9D%A5"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">6.3.1</span> オープンデータの未来</h3>
 <p>みなさんは、どのように考えますか。まだ、発展途上で、特に、パブリックデータについては、国によって、考え方も一定ではないように見受けられますが、これから、どのような世界を目指していくのか、データサイエンスは、どのような目的のために必要なのか。みなさんは、なんのために勉強しているのか、上の一つ一つの項目をもとに、周囲のみなさん、友人などと、ディスカッションをしながら、考えていただければと思います。</p>
 </div>
 </div>
 <div id="ダッシュボード" class="section level2" number="6.4">
-<h2>
-<span class="header-section-number">6.4</span> ダッシュボード<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">6.4</span> ダッシュボード</h2>
 <p>はじめて、オープンデータを利用するときには、対話型のダッシュボードは、助けとなります。ダッシュボードとはどのようなものか、AI に説明してもらいましょう。</p>
 <p><strong>Q. データを対話的にみたり視覚化したりする、ダッシュボード（dashboard）について説明してください。</strong></p>
 <p><strong>ChatGPT</strong> (2023.08.15)</p>
@@ -239,9 +207,7 @@
 <p>これらのサイトでは、ダッシュボード作成ツールやサービスを利用して、カスタムのダッシュボードを作成することができます。それぞれのサイトには、詳細な情報やデモが提供されている場合もありますので、ぜひご覧ください。</p>
 </div>
 <div id="api-を利用したパッケージ" class="section level2" number="6.5">
-<h2>
-<span class="header-section-number">6.5</span> API を利用したパッケージ<a class="anchor" aria-label="anchor" href="#api-%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">6.5</span> API を利用したパッケージ</h2>
 <p>それぞれのオープンデータを検索したり、読み込んだりするための R のパッケージの紹介をします。上に書いたように、第二部で利用するためです。詳しい使い方は、第三部で紹介します。</p>
 <p>基本的には、以下の項目について紹介します。</p>
 <ul>
@@ -250,43 +216,34 @@
 <li><p>マニュアル（Manual）：利用者用説明書です。パッケージで利用可能な関数（命令、データ）などの情報がすべて書かれてあります。それぞれの関数（命令）に関しては、R Studio 内の Help（ヘルプ検索窓）からも利用可能です。</p></li>
 <li><p>使い方の例（Vignette）：開発者のサイト（GitHub（バージョン管理システムの支援サイト）など）にある場合もありますが、最近は、公式パッケージサイトに、Vignette として使い方の例が掲載されている場合が増えてきています。すべて理解しようとせず、使い方の例からまずはみてみることが有効です</p></li>
 </ul>
+
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></div>
-<div class="next"><a href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#publicdata-site"><span class="header-section-number">6</span> オープンデータ</a></li>
-<li><a class="nav-link" href="#%E6%A6%82%E8%A6%81-1"><span class="header-section-number">6.1</span> 概要</a></li>
-<li>
-<a class="nav-link" href="#%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E6%A9%9F%E9%96%A2%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">6.2</span> さまざまな機関のオープンデータ</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E6%8C%81%E7%B6%9A%E7%9A%84%E9%96%8B%E7%99%BA%E7%9B%AE%E6%A8%99sdgs-%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">6.2.1</span> 持続的開発目標（SDGs） データ</a></li></ul>
-</li>
-<li>
-<a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">6.3</span> オープンデータについて</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%9C%AA%E6%9D%A5"><span class="header-section-number">6.3.1</span> オープンデータの未来</a></li></ul>
-</li>
-<li><a class="nav-link" href="#%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89"><span class="header-section-number">6.4</span> ダッシュボード</a></li>
-<li><a class="nav-link" href="#api-%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"><span class="header-section-number">6.5</span> API を利用したパッケージ</a></li>
-</ul>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/11-publicdata-site.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/11-publicdata-site.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-</div>
+      </div>
     </nav>
-</div>
+  </div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-19.</p>
+    <p>"<strong>データサイエンスをはじめましょう<br />
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -294,7 +251,11 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -306,7 +267,8 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -324,4 +286,5 @@ for (let popover of popovers) {
 }
 </script>
 </body>
+
 </html>

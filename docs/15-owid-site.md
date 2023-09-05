@@ -44,7 +44,7 @@
 
     -   [**LGBT+ Rights**](https://ourworldindata.org/lgbt-rights)
 
-    -   [**Women\'s Rights**](https://ourworldindata.org/women-rights)
+    -   [**Women's Rights**](https://ourworldindata.org/women-rights)
 
     -   [**Child Labor**](https://ourworldindata.org/child-labor)
 
@@ -66,7 +66,7 @@
 
     -   [**Nuclear Weapons**](https://ourworldindata.org/nuclear-weapons)
 
-    -   [**Violence against children and children\'s rights**](https://ourworldindata.org/violence-against-rights-for-children)
+    -   [**Violence against children and children's rights**](https://ourworldindata.org/violence-against-rights-for-children)
 
     -   [**Homicides**](https://ourworldindata.org/homicides)
 
@@ -78,7 +78,7 @@
 
 1945年以降のデータが主ですが、世界の紛争などの死者数などを知ることができます。古いデータも少しだけあります。
 
-\<iframe src="[https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region"](https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region") loading="lazy" style="width: 100%; height: 600px; border: 0px none;"\>\</iframe\>
+\<iframe src="[https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region"](https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region%22) loading="lazy" style="width: 100%; height: 600px; border: 0px none;"\>\</iframe\>
 
 <https://ourworldindata.org/war-and-peace#the-decline-of-wars-between-great-powers>
 

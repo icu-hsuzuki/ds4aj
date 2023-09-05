@@ -1,28 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 4 世界開発指標とオープンデータ | データサイエンスをはじめましょう - Data Science for All -</title>
-<meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="最初の例として紹介した、はじめてのデータサイエンスでは、世界銀行（World Bank）の 世界開発指標（WDI）のひとつである、GDP（Gross Domestic Product 国内総生産）のデータを使いました。「データサイエンスをはじめましょう」では、世界開発指標をこれからも、頻繁に活用しますので、世界開発指標が、どのようなものか確認しておきましょう。...">
-<meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 4 世界開発指標とオープンデータ | データサイエンスをはじめましょう - Data Science for All -">
-<meta property="og:type" content="book">
-<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/wdi-site.html">
-<meta property="og:description" content="最初の例として紹介した、はじめてのデータサイエンスでは、世界銀行（World Bank）の 世界開発指標（WDI）のひとつである、GDP（Gross Domestic Product 国内総生産）のデータを使いました。「データサイエンスをはじめましょう」では、世界開発指標をこれからも、頻繁に活用しますので、世界開発指標が、どのようなものか確認しておきましょう。...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 4 世界開発指標とオープンデータ | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="最初の例として紹介した、はじめてのデータサイエンスでは、世界銀行（World Bank）の 世界開発指標（WDI）のひとつである、GDP（Gross Domestic Product 国内総生産）のデータを使いました。「データサイエンスをはじめましょう」では、世界開発指標をこれからも、頻繁に活用しますので、世界開発指標が、どのようなものか確認しておきましょう。...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 4 世界開発指標とオープンデータ | データサイエンスをはじめましょう - Data Science for All -</title>
+
+    <meta name="author" content="鈴木寛（Hirosi Suzuki）" />
+  
+   <meta name="description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 4 世界開発指標とオープンデータ | データサイエンスをはじめましょう - Data Science for All -" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/" />
+  
+  <meta property="og:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 世界開発指標とオープンデータ | データサイエンスをはじめましょう - Data Science for All -" />
+  
+  <meta name="twitter:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.2/transition.js"></script>
+    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<style type="text/css">
+    <style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -44,17 +70,20 @@
       margin-left: 2em;
     }
   </style>
-<link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="style.css" />
+  
 </head>
+
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+        <a href="index.html" title="">データサイエンスをはじめましょう<br />
 - Data Science for All -</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -63,97 +92,46 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
+      </form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">この文書について</a></li>
-<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
-<li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
-<li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
-<li><a class="active" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
-<li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
-<li class="book-part">PART I オープンデータ</li>
-<li><a class="" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
-<li><a class="" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
-<li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
-<li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
-<li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
-<li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
-<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
-<li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
-<li><a class="" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
-<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
-<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
-<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
-<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
-<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
-<li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
-<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
-<li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
-<li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
-<li class="book-part">APPENDIX</li>
-<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
-<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
-<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
-<li><a class="" href="todo-list.html"><span class="header-section-number">D</span> To Do リスト</a></li>
-</ul>
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
         </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="wdi-site" class="section level1" number="4">
-<h1>
-<span class="header-section-number">4</span> 世界開発指標とオープンデータ<a class="anchor" aria-label="anchor" href="#wdi-site"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="wdi-site" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> 世界開発指標とオープンデータ</h1>
 <p>最初の例として紹介した、<a href="https://icu-hsuzuki.github.io/ds4aj/first-example.html#first-example">はじめてのデータサイエンス</a>では、世界銀行（World Bank）の 世界開発指標（WDI）のひとつである、GDP（Gross Domestic Product 国内総生産）のデータを使いました。「データサイエンスをはじめましょう」では、世界開発指標をこれからも、頻繁に活用しますので、世界開発指標が、どのようなものか確認しておきましょう。</p>
 <p>また、世界開発指標に代表されるオープンデータによって誰でも世界の課題を知り、向き合うことができるようになっています。そのオープンデータは、どのようなものなのかも、見ていきたいと思います。</p>
 <div id="世界開発指標wdi" class="section level2" number="4.1">
-<h2>
-<span class="header-section-number">4.1</span> 世界開発指標（WDI）<a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">4.1</span> 世界開発指標（WDI）</h2>
 <p>世界開発指標は、貧困撲滅と開発援助とに取り組んでいる金融機関である世界銀行が提供している、オープンデータの一つで、世界銀行は、他にも、たくさんのデータを提供しています。</p>
 <p>世界開発指標は、英語では、World Development Indicators（WDI）と呼びますので、以下、省略形の WDI を使います。</p>
 <div id="概要" class="section level3" number="4.1.1">
-<h3>
-<span class="header-section-number">4.1.1</span> 概要<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.1.1</span> 概要</h3>
 <p>まず、簡単に概要を述べておきましょう。</p>
 <p><a href="https://datatopics.worldbank.org/world-development-indicators/">World Development Indicators (WDI)</a> は、世界銀行が開発に関する各国間比較可能なデータの集大成である1400の時系列指標（the World Bank’s premier compilation of cross-country comparable data on development; 1400 time series indicators）からなっており、それらは、テーマ別にも分類されています。</p>
 <p>また、さまざまな形式（CSV, Excel など）で、データを検索し、ダウンロードできるように整理されており、さらに、API （Application Program Interface：アプリケーションのプログラムを使ってデータを利用するための仕様）も整備されており、「データサイエンスをはじめましょう」で利用する コンピュータ言語 R でも、簡単に、検索やデータのダウンロードが可能なパッケージが提供されています。</p>
 </div>
 <div id="三つの入り口" class="section level3" number="4.1.2">
-<h3>
-<span class="header-section-number">4.1.2</span> 三つの入り口<a class="anchor" aria-label="anchor" href="#%E4%B8%89%E3%81%A4%E3%81%AE%E5%85%A5%E3%82%8A%E5%8F%A3"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.1.2</span> 三つの入り口</h3>
 <ul>
-<li>
-<a href="https://datatopics.worldbank.org/world-development-indicators/">世界開発指標（WDI）</a> （World Development Indicators）</li>
-<li>
-<a href="https://data.worldbank.org">世界銀行オープンデータ</a> （World Bank Open Data）</li>
-<li>
-<a href="http://wdi.worldbank.org/tables">世界開発指標（WDI）の統計表</a> （World Development Indicators Statistical Tables）</li>
+<li><a href="https://datatopics.worldbank.org/world-development-indicators/">世界開発指標（WDI）</a> （World Development Indicators）</li>
+<li><a href="https://data.worldbank.org">世界銀行オープンデータ</a> （World Bank Open Data）</li>
+<li><a href="http://wdi.worldbank.org/tables">世界開発指標（WDI）の統計表</a> （World Development Indicators Statistical Tables）</li>
 </ul>
 <p>三つのサイトのリンクを書きました。一つ一つみていきましょう。</p>
 <p>まず、英語を読むことが苦手な場合は、ブラウザー（Google Chrome, Edge, Safari などのホームページ閲覧ソフト）の自動翻訳機能を使うのも良いでしょう。しかし、自動翻訳機能を利用していると、リンク先に飛べなかったり、いくつかの機能が使えないこともありますので、正常に機能しないときは、自動翻訳機能を一旦 OFF にして利用してください。</p>
 </div>
 <div id="世界開発指標wdi-1" class="section level3" number="4.1.3">
-<h3>
-<span class="header-section-number">4.1.3</span> <a href="https://datatopics.worldbank.org/world-development-indicators/">世界開発指標（WDI）</a><a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi-1"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.1.3</span> <a href="https://datatopics.worldbank.org/world-development-indicators/">世界開発指標（WDI）</a></h3>
 <p>まずは、この<a href="https://datatopics.worldbank.org/world-development-indicators/">サイト</a>がお薦めです。上の方に以下のように書かれています。</p>
 <blockquote>
 <p>The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,400 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.</p>
@@ -161,9 +139,7 @@
 </blockquote>
 <p>この文章の下には、テーマ別のアイコンがあり、そこから、それぞれのテーマについてみていくことができるようになっています。さらにその下には、最近のニュースやお薦めの記事などが掲載されています。</p>
 <div id="テーマさまざまなトピック課題" class="section level4" number="4.1.3.1">
-<h4>
-<span class="header-section-number">4.1.3.1</span> <a href="https://datatopics.worldbank.org/world-development-indicators/">テーマ</a>（さまざまなトピック・課題）<a class="anchor" aria-label="anchor" href="#%E3%83%86%E3%83%BC%E3%83%9E%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E3%83%88%E3%83%94%E3%83%83%E3%82%AF%E8%AA%B2%E9%A1%8C"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">4.1.3.1</span> <a href="https://datatopics.worldbank.org/world-development-indicators/">テーマ</a>（さまざまなトピック・課題）</h4>
 <ol style="list-style-type: decimal">
 <li>貧困と不平等（Poverty and Inequality）：貧困、繁栄、消費、所得分配</li>
 <li>人々（People）：人口動態、教育、労働、健康、ジェンダー</li>
@@ -174,55 +150,39 @@
 </ol>
 </div>
 <div id="それぞれのテーマについて" class="section level4" number="4.1.3.2">
-<h4>
-<span class="header-section-number">4.1.3.2</span> それぞれのテーマについて<a class="anchor" aria-label="anchor" href="#%E3%81%9D%E3%82%8C%E3%81%9E%E3%82%8C%E3%81%AE%E3%83%86%E3%83%BC%E3%83%9E%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">4.1.3.2</span> それぞれのテーマについて</h4>
 <p>一つテーマを選んで中身をみてみましょう。テーマを選んで、中身をみてみると、一番上に、最近のトピックなどが書かれ、次に、そのテーマについての概要や課題が書かれています。データの集め方や、どのように標準化するかなどについての説明もあります。</p>
 <p>その下に、注目の指標（Featured Indicators）として、主要な WDI の指標のリストがあり、さらにその下には、データについての説明などが書かれています。</p>
 </div>
 <div id="注目の指標featured-indicators" class="section level4" number="4.1.3.3">
-<h4>
-<span class="header-section-number">4.1.3.3</span> 注目の指標（Featured Indicators）<a class="anchor" aria-label="anchor" href="#%E6%B3%A8%E7%9B%AE%E3%81%AE%E6%8C%87%E6%A8%99featured-indicators"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">4.1.3.3</span> 注目の指標（Featured Indicators）</h4>
 <p>この指標も、いくつかのグループに分けられていますが、それぞれの指標には、以下のような情報があります。</p>
 <ul>
-<li>
-<p>Indicator 指標の名称</p>
+<li><p>Indicator 指標の名称</p>
 <ul>
 <li>マウスを当てると、より詳しい概要をみることができます。</li>
-</ul>
-</li>
-<li>
-<p>Code 指標コード</p>
+</ul></li>
+<li><p>Code 指標コード</p>
 <ul>
 <li><p>R の WDI パッケージなど、API を利用して、データを取得するときに必要なコードです。</p></li>
 <li><p>このコードをクリックすると、World（世界）に関する、この指標のデータをグラフが表示されます。世界に対応するデーががない場合もあります。</p></li>
-</ul>
-</li>
-<li>
-<p>Time coverage どの程度の期間のデータがあるかの概要</p>
+</ul></li>
+<li><p>Time coverage どの程度の期間のデータがあるかの概要</p>
 <ul>
 <li>1960年から10年刻みでデータがどの程度あるかを確認することができます。</li>
-</ul>
-</li>
-<li>
-<p>Region coverage 地域ごとのデータの収集状況の概要</p>
+</ul></li>
+<li><p>Region coverage 地域ごとのデータの収集状況の概要</p>
 <ul>
 <li>ラテンアメリカ、南アジア、サハラ砂漠以南のアフリカ、ヨーロッパと中央アジア、中東と北アフリカ、東アジアと太平洋諸国、北アメリカごとに、データがどの程度揃っているかを確認することができます。</li>
-</ul>
-</li>
-<li>
-<p>Get data データの取得</p>
+</ul></li>
+<li><p>Get data データの取得</p>
 <ul>
 <li>API、XLS、CSV、DataBank とあり、データを、取得するための情報や、Excel、コンマで区切られてテキストデータが取得可能で、また、DataBank では、World Bank のデータの、表や、グラフ、地図、各データの情報などを調べることができます。この DataBank の利用については、別の項で説明します。</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </div>
 <div id="備考" class="section level4" number="4.1.3.4">
-<h4>
-<span class="header-section-number">4.1.3.4</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">4.1.3.4</span> 備考</h4>
 <p>はじめてのデータサイエンスで利用した、GDP の指標は、テーマから経済（Economy）を選択すると、Featured Indicator （注目の指標）の一番上にあります。まずは、GDP について、上に書いた、Indicator、Code、Time Coverage、Region Coverage、GetData を確認してみることをお勧めします。</p>
 <p>このサイトにあるのは、基本的な指標だけです。すべての指標についての情報を得るときには、この次とその次の項目を見てください。しかし、全体では、1400も指標があり、何をみたらよいか、かえって混乱してしまうかもしれません。まずは、このような基本的なデータで、使い方を把握してから、興味のあるデータを調べるのが良いと思います。</p>
 <p>また、基本的な指標を調べると、その指標のページから関連した指標についても調べることができます。</p>
@@ -231,25 +191,19 @@
 </div>
 </div>
 <div id="世界銀行オープンデータ" class="section level3" number="4.1.4">
-<h3>
-<span class="header-section-number">4.1.4</span> <a href="https://data.worldbank.org">世界銀行オープンデータ</a><a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%8A%80%E8%A1%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.1.4</span> <a href="https://data.worldbank.org">世界銀行オープンデータ</a></h3>
 <p>世界銀行のオープンデータ全体にアクセスできるサイトです。</p>
 <p>その下には、いくつかのグラフや、最近のニュースやトピックが書かれており、さらにその下には、More Resources（さらに…）といくつかの項目があります。Open Data Catalog、Data Bank、などと共に、World Development Indicators もあります。このWorld Development Indicators (WDI) を選択すると、最初に紹介したサイトに飛ぶことができます。また、Data Bank を選択すると、WDI の説明に登場した、ダッシュボートに飛ぶことができ、WDI だけでなく、他のデータについても、調べることができます。</p>
 <p>上の検索窓の下に、Country（国）と Indicators（指標）と書いてあります。これらから、WDI について調べることができます。</p>
 <div id="国別サイト" class="section level4" number="4.1.4.1">
-<h4>
-<span class="header-section-number">4.1.4.1</span> <a href="https://data.worldbank.org/country">国別サイト</a><a class="anchor" aria-label="anchor" href="#%E5%9B%BD%E5%88%A5%E3%82%B5%E3%82%A4%E3%83%88"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">4.1.4.1</span> <a href="https://data.worldbank.org/country">国別サイト</a></h4>
 <p>Country（国別）のサイトを選択すると、国のリストが出てきます。</p>
 <p>J のところに、Japan（日本）がありますから、選択してみてください。日本のさまざまな指標と小さなグラフが出てきます。</p>
 <p>Indicator（指標）、Most Recent Values（直近の値）、Trend（傾向）が表示されます。指標をクリックすると、大きなグラフが出てきます。その指標のサイトですから、そこで、その指標についての他の国の状況などを確認することができます。そこでは、選択した指標と似た指標が選択できたり、もっと詳しいことをしらべるデータバンク（Data Bank）へのリンクもあります。このサイトから、データをダウンロードすることもできるようになっています。</p>
 <p>また、<a href="https://data.worldbank.org/country">国別サイト</a>の右の方には、地域や、経済的状況などによって、グループに分けてある帯もあります。その一番下には、World （世界）もありますから、世界全体について見てみたり、６段階の収入（GNI per Capita：一人当たりの国民総生産）の階級に分けた階級ごとの値を見ることもできるようになっています。</p>
 </div>
 <div id="指標別サイト" class="section level4" number="4.1.4.2">
-<h4>
-<span class="header-section-number">4.1.4.2</span> <a href="https://data.worldbank.org/indicator">指標別サイト</a><a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99%E5%88%A5%E3%82%B5%E3%82%A4%E3%83%88"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">4.1.4.2</span> <a href="https://data.worldbank.org/indicator">指標別サイト</a></h4>
 <p>Indicators（指標）を選択すると、トピックに分けて、指標が並んでいます。</p>
 <p>よく見ると、一番上に、Featured Indicators（特徴的な指標） と、All Indicators（すべての指標） とあり、最初に開いているのは、特徴的な指標の方であることがわかります。すべての指標（All Indicators）の方を開けると、よりたくさんの指標を見ることができます。</p>
 <p>トピックは、以下のものに分かれています。</p>
@@ -281,9 +235,7 @@
 </div>
 </div>
 <div id="世界開発指標wdiの統計表" class="section level3" number="4.1.5">
-<h3>
-<span class="header-section-number">4.1.5</span> <a href="http://wdi.worldbank.org/tables">世界開発指標（WDI）の統計表</a><a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi%E3%81%AE%E7%B5%B1%E8%A8%88%E8%A1%A8"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.1.5</span> <a href="http://wdi.worldbank.org/tables">世界開発指標（WDI）の統計表</a></h3>
 <p>三つ目の入り口の説明をしましょう。英語名は、World Development Indicators Statistical Tables となっています。WDI の一番下の、Useful Resouces （資料）の中にもありますし、それぞれの、テーマの中にもリンクがあります。</p>
 <p>世界開発指標（WDI）の統計表 の<a href="http://wdi.worldbank.org/tables">リンク</a>を開くと、WDI が7つのグループに分けられています。</p>
 <ol style="list-style-type: decimal">
@@ -298,23 +250,17 @@
 <p>WDI のテーマとほぼ一致しています。それぞれのテーマを選択すると、その説明とともに、さらに項目に分かれており、そのデータを見たり、データを PDF または Excel 形式で、ダウンロードして利用できるようになっています。</p>
 </div>
 <div id="課題" class="section level3" number="4.1.6">
-<h3>
-<span class="header-section-number">4.1.6</span> 課題<a class="anchor" aria-label="anchor" href="#%E8%AA%B2%E9%A1%8C"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.1.6</span> 課題</h3>
 <p>世界開発指標（WDI）の、データで、調べてみたい データコードをいくつか見つけて、書き出してください。あとで利用しやすいように、データ名と、WDI コードをコピーして、メモ帳などに貼り付けておくと良いでしょう。さらに、そのコードに関する情報やリンクを、一緒に記録としておくと、あとで便利です。</p>
 </div>
 </div>
 <div id="オープンデータopen-data" class="section level2" number="4.2">
-<h2>
-<span class="header-section-number">4.2</span> オープンデータ（Open Data）<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BFopen-data"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">4.2</span> オープンデータ（Open Data）</h2>
 <p>世界開発指標（WDI）のように、公開されているデータを、オープンデータと呼びます。世界銀行などの、国際機関や、国際的に活動する非営利団体、それぞれの国の公的機関が、膨大なデータを公開（オープンに）し、誰でも利用できるようになってきています。</p>
 <p>パブリックデータ（Public Data）とも呼ばれますが、正確な定義があるわけではなく、各機関によって、少しずつ考え方が違う面もあります。しかし、そのリーダーとでもいうべき、世界銀行は、オープンデータについて、厳密に定義をしています。</p>
 <p>世界銀行のオープンデータ（Open Data）の定義を見てみましょう。</p>
 <div id="オープンデータの定義open-data-defined" class="section level3" number="4.2.1">
-<h3>
-<span class="header-section-number">4.2.1</span> オープンデータの定義（<a href="http://opendatatoolkit.worldbank.org/en/essentials.html">Open Data Defined</a>）<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%AE%9A%E7%BE%A9open-data-defined"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.2.1</span> オープンデータの定義（<a href="http://opendatatoolkit.worldbank.org/en/essentials.html">Open Data Defined</a>）</h3>
 <p>オープンデータという言葉は、厳密な意味を持っています。データまたはコンテンツは、出所が明示されオープンという性質が維持されれば、誰でも自由に利用、再利用、再配布できるものを言います。</p>
 <ol style="list-style-type: decimal">
 <li><p>データは法的にオープンでなければなりません。つまり、パブリックドメインに置かれ、最小限の制限で自由に使用できなければなりません。</p></li>
@@ -323,9 +269,7 @@
 <p>上の定義で使われている、一つ一つの言葉について、詳細は述べませんが、最初に、はじめてのデータサイエンスで、例を示し、この章で、WDI を例にとって説明してきましたので、みなさんも、基本的な部分は、ご理解いただいたと思います。</p>
 </div>
 <div id="オープンデータの意義" class="section level3" number="4.2.2">
-<h3>
-<span class="header-section-number">4.2.2</span> オープンデータの意義<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%84%8F%E7%BE%A9"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.2.2</span> オープンデータの意義</h3>
 <p>一旦、足を止めて、みなさんに考えていただきたいと思います。</p>
 <ol style="list-style-type: decimal">
 <li><p>オープンデータは誰に対してオープン（公開）になっているのでしょうか。</p></li>
@@ -337,9 +281,7 @@
 </center>
 </div>
 <div id="オープンデータの利活用" class="section level3" number="4.2.3">
-<h3>
-<span class="header-section-number">4.2.3</span> オープンデータの利活用<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.2.3</span> オープンデータの利活用</h3>
 <p>さまざまな国際機関では、データを、Excel 形式や、CSV (Comma Separated Values）形式などで、提供する以外に、ダッシュボード形式で、グラフを生成するなどして、データを視覚化をある程度できるようにしています。さらに、コンピュータのアプリケーションでデータを直接取得できるように、API (Application Program Interface) を提供しています。</p>
 <p>世界開発指標（WDI）は、この章で説明してきたように、世界の状況やそれぞれの国についての、1400余のさまざまな指標についてのデータを、長期間にわたって（1960年ごろから）提供している基本的なデータベースで、最初に調べてみることをお勧めします。さまざまな課題を理解するためにも、たいせつだと思います。</p>
 <p>さらに、WDI は、この膨大な指標についてのデータすべてを統一した形式で提供しているという特徴があります。したがって、複数の指標についての関係を調べることなども、容易にです。実は、データサイエンスを始めると、違ったデータを一つにまとめて分析することは、技術的にそれなりにハードルがあります。それが、WDI では、ほとんどないのです。そのために、非常に使いやすいデータベースになっています。</p>
@@ -349,49 +291,31 @@
 </div>
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></div>
-<div class="next"><a href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#wdi-site"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
-<li>
-<a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi"><span class="header-section-number">4.1</span> 世界開発指標（WDI）</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E6%A6%82%E8%A6%81"><span class="header-section-number">4.1.1</span> 概要</a></li>
-<li><a class="nav-link" href="#%E4%B8%89%E3%81%A4%E3%81%AE%E5%85%A5%E3%82%8A%E5%8F%A3"><span class="header-section-number">4.1.2</span> 三つの入り口</a></li>
-<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi-1"><span class="header-section-number">4.1.3</span> 世界開発指標（WDI）</a></li>
-<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%8A%80%E8%A1%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">4.1.4</span> 世界銀行オープンデータ</a></li>
-<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%96%8B%E7%99%BA%E6%8C%87%E6%A8%99wdi%E3%81%AE%E7%B5%B1%E8%A8%88%E8%A1%A8"><span class="header-section-number">4.1.5</span> 世界開発指標（WDI）の統計表</a></li>
-<li><a class="nav-link" href="#%E8%AA%B2%E9%A1%8C"><span class="header-section-number">4.1.6</span> 課題</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BFopen-data"><span class="header-section-number">4.2</span> オープンデータ（Open Data）</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%AE%9A%E7%BE%A9open-data-defined"><span class="header-section-number">4.2.1</span> オープンデータの定義（Open Data Defined）</a></li>
-<li><a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%84%8F%E7%BE%A9"><span class="header-section-number">4.2.2</span> オープンデータの意義</a></li>
-<li><a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%88%A9%E6%B4%BB%E7%94%A8"><span class="header-section-number">4.2.3</span> オープンデータの利活用</a></li>
-</ul>
-</li>
-</ul>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/04-wdi-site.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/04-wdi-site.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-</div>
+      </div>
     </nav>
-</div>
+  </div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-19.</p>
+    <p>"<strong>データサイエンスをはじめましょう<br />
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -399,7 +323,11 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -411,7 +339,8 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -429,4 +358,5 @@ for (let popover of popovers) {
 }
 </script>
 </body>
+
 </html>

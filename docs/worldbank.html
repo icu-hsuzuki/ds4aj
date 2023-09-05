@@ -1,28 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 24 World Bank | データサイエンスをはじめましょう - Data Science for All -</title>
-<meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="24.1 World Development Indicator (WDI) パッケージ と tidyverse と WDI を使いますから、下のコードによって、ロードします。 library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔...">
-<meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 24 World Bank | データサイエンスをはじめましょう - Data Science for All -">
-<meta property="og:type" content="book">
-<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/worldbank.html">
-<meta property="og:description" content="24.1 World Development Indicator (WDI) パッケージ と tidyverse と WDI を使いますから、下のコードによって、ロードします。 library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 24 World Bank | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="24.1 World Development Indicator (WDI) パッケージ と tidyverse と WDI を使いますから、下のコードによって、ロードします。 library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 24 World Bank | データサイエンスをはじめましょう - Data Science for All -</title>
+
+    <meta name="author" content="鈴木寛（Hirosi Suzuki）" />
+  
+   <meta name="description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 24 World Bank | データサイエンスをはじめましょう - Data Science for All -" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/" />
+  
+  <meta property="og:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 24 World Bank | データサイエンスをはじめましょう - Data Science for All -" />
+  
+  <meta name="twitter:description" content="<p>This is a lecture note using the bookdown package to write a book in Japanese.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.2/transition.js"></script>
+    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<style type="text/css">
+    <style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -44,17 +70,20 @@
       margin-left: 2em;
     }
   </style>
-<link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="style.css" />
+  
 </head>
+
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+        <a href="index.html" title="">データサイエンスをはじめましょう<br />
 - Data Science for All -</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -63,89 +92,45 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
+      </form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">この文書について</a></li>
-<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
-<li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
-<li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
-<li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
-<li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
-<li class="book-part">PART I オープンデータ</li>
-<li><a class="" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
-<li><a class="" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
-<li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
-<li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
-<li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
-<li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
-<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
-<li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
-<li><a class="" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
-<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
-<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
-<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
-<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
-<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
-<li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
-<li><a class="active" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
-<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
-<li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
-<li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
-<li class="book-part">APPENDIX</li>
-<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
-<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
-<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
-<li><a class="" href="todo-list.html"><span class="header-section-number">D</span> To Do リスト</a></li>
-</ul>
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
         </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="worldbank" class="section level1" number="24">
-<h1>
-<span class="header-section-number">24</span> World Bank<a class="anchor" aria-label="anchor" href="#worldbank"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="worldbank" class="section level1" number="24">
+<h1><span class="header-section-number">Chapter 24</span> World Bank</h1>
 <div id="world-development-indicator-wdi" class="section level2" number="24.1">
-<h2>
-<span class="header-section-number">24.1</span> World Development Indicator (WDI)<a class="anchor" aria-label="anchor" href="#world-development-indicator-wdi"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">24.1</span> World Development Indicator (WDI)</h2>
 <p>パッケージ と <code>tidyverse</code> と <code>WDI</code> を使いますから、下のコードによって、ロードします。</p>
-<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
-<span><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
-<span><span class="co">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0</span></span>
-<span><span class="co">#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1</span></span>
-<span><span class="co">#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0</span></span>
-<span><span class="co">#&gt; ✔ purrr     1.0.1     </span></span>
-<span><span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span></span>
-<span><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
-<span><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
-<span><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/WDI/">WDI</a></span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="worldbank.html#cb289-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb289-2"><a href="worldbank.html#cb289-2" tabindex="-1"></a><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
+<span id="cb289-3"><a href="worldbank.html#cb289-3" tabindex="-1"></a><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
+<span id="cb289-4"><a href="worldbank.html#cb289-4" tabindex="-1"></a><span class="co">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0</span></span>
+<span id="cb289-5"><a href="worldbank.html#cb289-5" tabindex="-1"></a><span class="co">#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1</span></span>
+<span id="cb289-6"><a href="worldbank.html#cb289-6" tabindex="-1"></a><span class="co">#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0</span></span>
+<span id="cb289-7"><a href="worldbank.html#cb289-7" tabindex="-1"></a><span class="co">#&gt; ✔ purrr     1.0.1     </span></span>
+<span id="cb289-8"><a href="worldbank.html#cb289-8" tabindex="-1"></a><span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb289-9"><a href="worldbank.html#cb289-9" tabindex="-1"></a><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
+<span id="cb289-10"><a href="worldbank.html#cb289-10" tabindex="-1"></a><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
+<span id="cb289-11"><a href="worldbank.html#cb289-11" tabindex="-1"></a><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span>
+<span id="cb289-12"><a href="worldbank.html#cb289-12" tabindex="-1"></a><span class="fu">library</span>(WDI)</span></code></pre></div>
 <p>まず、三つの例を見てみましょう。なにをしているかわかりますか。考えて見てください。</p>
-<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>gdp <span class="op">=</span> <span class="st">"NY.GDP.MKTP.CD"</span><span class="op">)</span>,</span>
-<span>    extra<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, <span class="va">income</span> <span class="op">!=</span><span class="st">"Aggregates"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="worldbank.html#cb290-1" tabindex="-1"></a><span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">gdp =</span> <span class="st">&quot;NY.GDP.MKTP.CD&quot;</span>),</span>
+<span id="cb290-2"><a href="worldbank.html#cb290-2" tabindex="-1"></a>    <span class="at">extra=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(gdp) <span class="sc">%&gt;%</span></span>
+<span id="cb290-3"><a href="worldbank.html#cb290-3" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="fu">max</span>(year), income <span class="sc">!=</span><span class="st">&quot;Aggregates&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb290-4"><a href="worldbank.html#cb290-4" tabindex="-1"></a>  <span class="fu">drop_na</span>(region) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(gdp))</span></code></pre></div>
 <pre><code>#&gt; Rows: 16492 Columns: 13
 #&gt; ── Column specification ────────────────────────────────────
-#&gt; Delimiter: ","
+#&gt; Delimiter: &quot;,&quot;
 #&gt; chr  (7): country, iso2c, iso3c, region, capital, income...
 #&gt; dbl  (4): year, gdp, longitude, latitude
 #&gt; lgl  (1): status
@@ -170,13 +155,12 @@
 #&gt; # ℹ 6 more variables: region &lt;chr&gt;, capital &lt;chr&gt;,
 #&gt; #   longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, income &lt;chr&gt;,
 #&gt; #   lending &lt;chr&gt;</code></pre>
-<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"CN"</span>,<span class="st">"GB"</span>,<span class="st">"JP"</span>,<span class="st">"IN"</span>,<span class="st">"US"</span>,<span class="st">"DE"</span><span class="op">)</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>gdp <span class="op">=</span> <span class="st">"NY.GDP.MKTP.CD"</span><span class="op">)</span>, extra<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">gdp</span>, col <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"WDI NY.GDP.MKTP.CD: gdp"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="worldbank.html#cb292-1" tabindex="-1"></a><span class="fu">WDI</span>(<span class="at">country =</span> <span class="fu">c</span>(<span class="st">&quot;CN&quot;</span>,<span class="st">&quot;GB&quot;</span>,<span class="st">&quot;JP&quot;</span>,<span class="st">&quot;IN&quot;</span>,<span class="st">&quot;US&quot;</span>,<span class="st">&quot;DE&quot;</span>), <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">gdp =</span> <span class="st">&quot;NY.GDP.MKTP.CD&quot;</span>), <span class="at">extra=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(gdp) <span class="sc">%&gt;%</span> </span>
+<span id="cb292-2"><a href="worldbank.html#cb292-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, gdp, <span class="at">col =</span> country)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb292-3"><a href="worldbank.html#cb292-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;WDI NY.GDP.MKTP.CD: gdp&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; Rows: 372 Columns: 13
 #&gt; ── Column specification ────────────────────────────────────
-#&gt; Delimiter: ","
+#&gt; Delimiter: &quot;,&quot;
 #&gt; chr  (7): country, iso2c, iso3c, region, capital, income...
 #&gt; dbl  (4): year, gdp, longitude, latitude
 #&gt; lgl  (1): status
@@ -184,16 +168,15 @@
 #&gt; 
 #&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
 #&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="inline-figure"><img src="32-worldbank_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
-<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"CN"</span>,<span class="st">"IN"</span>,<span class="st">"JP"</span>,<span class="st">"US"</span><span class="op">)</span>, </span>
-<span>    indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>gdp_growth_rate <span class="op">=</span> <span class="st">"NY.GDP.MKTP.KD.ZG"</span><span class="op">)</span>, extra<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp_growth_rate</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">gdp_growth_rate</span>, col <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI NY.GDP.MKTP.KD.ZG: gdp growth rate"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="32-worldbank_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="worldbank.html#cb294-1" tabindex="-1"></a><span class="fu">WDI</span>(<span class="at">country =</span> <span class="fu">c</span>(<span class="st">&quot;CN&quot;</span>,<span class="st">&quot;IN&quot;</span>,<span class="st">&quot;JP&quot;</span>,<span class="st">&quot;US&quot;</span>), </span>
+<span id="cb294-2"><a href="worldbank.html#cb294-2" tabindex="-1"></a>    <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">gdp_growth_rate =</span> <span class="st">&quot;NY.GDP.MKTP.KD.ZG&quot;</span>), <span class="at">extra=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb294-3"><a href="worldbank.html#cb294-3" tabindex="-1"></a>  <span class="fu">drop_na</span>(gdp_growth_rate) <span class="sc">%&gt;%</span> </span>
+<span id="cb294-4"><a href="worldbank.html#cb294-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, gdp_growth_rate, <span class="at">col =</span> country)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb294-5"><a href="worldbank.html#cb294-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;WDI NY.GDP.MKTP.KD.ZG: gdp growth rate&quot;</span>))</span></code></pre></div>
 <pre><code>#&gt; Rows: 248 Columns: 13
 #&gt; ── Column specification ────────────────────────────────────
-#&gt; Delimiter: ","
+#&gt; Delimiter: &quot;,&quot;
 #&gt; chr  (7): country, iso2c, iso3c, region, capital, income...
 #&gt; dbl  (4): year, gdp_growth_rate, longitude, latitude
 #&gt; lgl  (1): status
@@ -201,16 +184,14 @@
 #&gt; 
 #&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
 #&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="inline-figure"><img src="32-worldbank_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
+<p><img src="32-worldbank_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>まず、世界の国々の、GDP（gross domestic product 国内総生産）のデータを、取得して、2021年の GDP を大きな順に並べています。</p>
 <p>値は、たとえば、<span class="math inline">\(2.331508e+13\)</span> のように書かれていますが、これは、科学的記法と呼ばれるもので、<span class="math inline">\(2.331508 \times 10^{13}\)</span> を意味しています。約23兆ドルです。</p>
 <p>次に、3兆ドル以上の、６カ国を選択し、その、iso2c と呼ばれるコードを使って、それらの国のデータをもう一度取得し、年次変化をあらわすグラフを描いています。</p>
 <p>さらにその中から、４カ国を選んで、今度は、GDP の年次変化率を描いています。単位は、パーセントです。</p>
 <p>これは、ひとつの例ですが、ここで使われているのが、WDI World Development Indicator というもので、世界銀行が、いくつかの指標を定めて、編纂しているものです。</p>
 <div id="指標-indicators-wdi" class="section level3" number="24.1.1">
-<h3>
-<span class="header-section-number">24.1.1</span> 指標 Indicators (WDI)<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-indicators-wdi"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">24.1.1</span> 指標 Indicators (WDI)</h3>
 <p>上の例では、次の二つの指標のコード Indicator Code (WDI Code) が使われました。</p>
 <ul>
 <li>NY.GDP.MKTP.CD: GDP (current US$)</li>
@@ -218,9 +199,7 @@
 </ul>
 </div>
 <div id="指標-wdi-world-development-indicators" class="section level3" number="24.1.2">
-<h3>
-<span class="header-section-number">24.1.2</span> 指標 WDI (World Development Indicators)<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi-world-development-indicators"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">24.1.2</span> 指標 WDI (World Development Indicators)</h3>
 <blockquote>
 <p>The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,400 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.</p>
 </blockquote>
@@ -228,26 +207,20 @@
 <p>WDIは、世界の開発状況と、貧困との戦いに関する、適切で上質、かつ、国際的に比較可能な時系列の統計データを編纂したものです。このデータベースは、217の経済と40以上の国グループについて1,400の時系列指標を含み、指標のデータの多くは50年以上前に遡ることができます。</p>
 </blockquote>
 <ul>
-<li>世界銀行（World Bank）: <a href="https://www.worldbank.org" class="uri">https://www.worldbank.org</a>
-</li>
+<li>世界銀行（World Bank）: <a href="https://www.worldbank.org" class="uri">https://www.worldbank.org</a></li>
 <li>World Bank Open Data: <a href="https://data.worldbank.org" class="uri">https://data.worldbank.org</a>
 <ul>
 <li>Country / Indicator &gt; Featured &amp; All &gt; Details</li>
-</ul>
-</li>
-<li>
-<a href="https://datatopics.worldbank.org/world-development-indicators/">World Development Indicators (WDI)</a> :
+</ul></li>
+<li><a href="https://datatopics.worldbank.org/world-development-indicators/">World Development Indicators (WDI)</a> :
 <ul>
 <li>Themes: Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links</li>
 <li>Open Data &amp; DataBank: Explore data, Query database</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </div>
 <div id="指標-のコードwdi-code-を探してみよう" class="section level3" number="24.1.3">
-<h3>
-<span class="header-section-number">24.1.3</span> 指標 のコード、WDI code を探してみよう<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89wdi-code-%E3%82%92%E6%8E%A2%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">24.1.3</span> 指標 のコード、WDI code を探してみよう</h3>
 <p>いくつかの探し方があります。まず、ここでは、World Bank のサイトから探す方法を説明しましょう。</p>
 <p>ふた通りあります。</p>
 <ol style="list-style-type: decimal">
@@ -264,9 +237,7 @@
 <p>1 の方法の途中に出てきた、検索窓から検索することも可能です。</p>
 </div>
 <div id="指標-wdiの例" class="section level3" number="24.1.4">
-<h3>
-<span class="header-section-number">24.1.4</span> 指標 WDIの例<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi%E3%81%AE%E4%BE%8B"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">24.1.4</span> 指標 WDIの例</h3>
 <p>このあとの、例で使う指標を書いておきます。</p>
 <ul>
 <li>NY.GDP.MKTP.CD: GDP (current US$)</li>
@@ -278,82 +249,63 @@
 </ul>
 </div>
 <div id="練習-1.---調べてみたい-wdi-指標とそのコード" class="section level3" number="24.1.5">
-<h3>
-<span class="header-section-number">24.1.5</span> 練習 1. - 調べてみたい WDI 指標とそのコード<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-1.---%E8%AA%BF%E3%81%B9%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%84-wdi-%E6%8C%87%E6%A8%99%E3%81%A8%E3%81%9D%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">24.1.5</span> 練習 1. - 調べてみたい WDI 指標とそのコード</h3>
 <p>いくつか、リストしてみましょう。</p>
 </div>
 </div>
 <div id="wdi-パッケージ" class="section level2" number="24.2">
-<h2>
-<span class="header-section-number">24.2</span> WDI パッケージ<a class="anchor" aria-label="anchor" href="#wdi-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">24.2</span> WDI パッケージ</h2>
 <p><code>WDI</code> パッケージ の使い方を紹介します。</p>
 <p><code>WDI</code> パッケージで、データをダウンロードしたり、探したり、詳細情報を得たりできます。</p>
 <div id="指標-wdi-検索" class="section level3" number="24.2.1">
-<h3>
-<span class="header-section-number">24.2.1</span> 指標 WDI 検索<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi-%E6%A4%9C%E7%B4%A2"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">24.2.1</span> 指標 WDI 検索</h3>
 <p>まず、検索です。上で、サイトから調べる方法を紹介しましたが、<code>WDI</code> パッケージの、<code>WDIsearch</code> でも探すことができます。詳細は、右下の窓枠の Help タブの検索窓に、WDIsearch といれて調べて見てください。ここでは、二種類の検索方法を紹介します。</p>
 <div id="検索例-1wdi名" class="section level4" number="24.2.1.1">
-<h4>
-<span class="header-section-number">24.2.1.1</span> 検索例 1（WDI名）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-1wdi%E5%90%8D"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.2.1.1</span> 検索例 1（WDI名）</h4>
 <p>WDI 名に、ある文字列が含まれているものを検索します。検索文字列は、大文字・小文字は関係ありません。</p>
-<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDIsearch.html">WDIsearch</a></span><span class="op">(</span>string <span class="op">=</span> <span class="st">"gdp"</span>, field <span class="op">=</span> <span class="st">"name"</span>, short <span class="op">=</span> <span class="cn">TRUE</span>, cache <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 540 × 2</span></span>
-<span><span class="co">#&gt;    indicator            name                                </span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;                &lt;chr&gt;                               </span></span>
-<span><span class="co">#&gt;  1 5.51.01.10.gdp       "Per capita GDP growth"             </span></span>
-<span><span class="co">#&gt;  2 6.0.GDP_current      "GDP (current $)"                   </span></span>
-<span><span class="co">#&gt;  3 6.0.GDP_growth       "GDP growth (annual %)"             </span></span>
-<span><span class="co">#&gt;  4 6.0.GDP_usd          "GDP (constant 2005 $)"             </span></span>
-<span><span class="co">#&gt;  5 6.0.GDPpc_constant   "GDP per capita, PPP (constant 2011…</span></span>
-<span><span class="co">#&gt;  6 BG.GSR.NFSV.GD.ZS    "Trade in services (% of GDP)"      </span></span>
-<span><span class="co">#&gt;  7 BG.KAC.FNEI.GD.PP.ZS "Gross private capital flows (% of …</span></span>
-<span><span class="co">#&gt;  8 BG.KAC.FNEI.GD.ZS    "Gross private capital flows (% of …</span></span>
-<span><span class="co">#&gt;  9 BG.KLT.DINV.GD.PP.ZS "Gross foreign direct investment (%…</span></span>
-<span><span class="co">#&gt; 10 BG.KLT.DINV.GD.ZS    "Gross foreign direct investment (%…</span></span>
-<span><span class="co">#&gt; # ℹ 530 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="worldbank.html#cb296-1" tabindex="-1"></a><span class="fu">WDIsearch</span>(<span class="at">string =</span> <span class="st">&quot;gdp&quot;</span>, <span class="at">field =</span> <span class="st">&quot;name&quot;</span>, <span class="at">short =</span> <span class="cn">TRUE</span>, <span class="at">cache =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb296-2"><a href="worldbank.html#cb296-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb296-3"><a href="worldbank.html#cb296-3" tabindex="-1"></a><span class="co">#&gt; # A tibble: 540 × 2</span></span>
+<span id="cb296-4"><a href="worldbank.html#cb296-4" tabindex="-1"></a><span class="co">#&gt;    indicator            name                                </span></span>
+<span id="cb296-5"><a href="worldbank.html#cb296-5" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                &lt;chr&gt;                               </span></span>
+<span id="cb296-6"><a href="worldbank.html#cb296-6" tabindex="-1"></a><span class="co">#&gt;  1 5.51.01.10.gdp       &quot;Per capita GDP growth&quot;             </span></span>
+<span id="cb296-7"><a href="worldbank.html#cb296-7" tabindex="-1"></a><span class="co">#&gt;  2 6.0.GDP_current      &quot;GDP (current $)&quot;                   </span></span>
+<span id="cb296-8"><a href="worldbank.html#cb296-8" tabindex="-1"></a><span class="co">#&gt;  3 6.0.GDP_growth       &quot;GDP growth (annual %)&quot;             </span></span>
+<span id="cb296-9"><a href="worldbank.html#cb296-9" tabindex="-1"></a><span class="co">#&gt;  4 6.0.GDP_usd          &quot;GDP (constant 2005 $)&quot;             </span></span>
+<span id="cb296-10"><a href="worldbank.html#cb296-10" tabindex="-1"></a><span class="co">#&gt;  5 6.0.GDPpc_constant   &quot;GDP per capita, PPP (constant 2011…</span></span>
+<span id="cb296-11"><a href="worldbank.html#cb296-11" tabindex="-1"></a><span class="co">#&gt;  6 BG.GSR.NFSV.GD.ZS    &quot;Trade in services (% of GDP)&quot;      </span></span>
+<span id="cb296-12"><a href="worldbank.html#cb296-12" tabindex="-1"></a><span class="co">#&gt;  7 BG.KAC.FNEI.GD.PP.ZS &quot;Gross private capital flows (% of …</span></span>
+<span id="cb296-13"><a href="worldbank.html#cb296-13" tabindex="-1"></a><span class="co">#&gt;  8 BG.KAC.FNEI.GD.ZS    &quot;Gross private capital flows (% of …</span></span>
+<span id="cb296-14"><a href="worldbank.html#cb296-14" tabindex="-1"></a><span class="co">#&gt;  9 BG.KLT.DINV.GD.PP.ZS &quot;Gross foreign direct investment (%…</span></span>
+<span id="cb296-15"><a href="worldbank.html#cb296-15" tabindex="-1"></a><span class="co">#&gt; 10 BG.KLT.DINV.GD.ZS    &quot;Gross foreign direct investment (%…</span></span>
+<span id="cb296-16"><a href="worldbank.html#cb296-16" tabindex="-1"></a><span class="co">#&gt; # ℹ 530 more rows</span></span></code></pre></div>
 <p>なんと、500件以上出てきました。Indicator（指標コード）と、Name（指標名）が列挙されます。すべてに、GDP という文字列が入っていることを確認できると思います。</p>
 </div>
 <div id="検索例-2wdi" class="section level4" number="24.2.1.2">
-<h4>
-<span class="header-section-number">24.2.1.2</span> 検索例 2（WDI）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-2wdi"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.2.1.2</span> 検索例 2（WDI）</h4>
 <p>Indicator（指標コード）から、Name（指標名）を検索します。</p>
-<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDIsearch.html">WDIsearch</a></span><span class="op">(</span>string <span class="op">=</span> <span class="st">"NY.GDP.MKTP.CD"</span>, field <span class="op">=</span> <span class="st">"indicator"</span>, short <span class="op">=</span> <span class="cn">TRUE</span>, cache <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
-<span><span class="co">#&gt;               indicator</span></span>
-<span><span class="co">#&gt; 11410    NY.GDP.MKTP.CD</span></span>
-<span><span class="co">#&gt; 11411 NY.GDP.MKTP.CD.XD</span></span>
-<span><span class="co">#&gt;                                             name</span></span>
-<span><span class="co">#&gt; 11410                          GDP (current US$)</span></span>
-<span><span class="co">#&gt; 11411 GDP deflator, index (2000=100; US$ series)</span></span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="worldbank.html#cb297-1" tabindex="-1"></a><span class="fu">WDIsearch</span>(<span class="at">string =</span> <span class="st">&quot;NY.GDP.MKTP.CD&quot;</span>, <span class="at">field =</span> <span class="st">&quot;indicator&quot;</span>, <span class="at">short =</span> <span class="cn">TRUE</span>, <span class="at">cache =</span> <span class="cn">NULL</span>)</span>
+<span id="cb297-2"><a href="worldbank.html#cb297-2" tabindex="-1"></a><span class="co">#&gt;               indicator</span></span>
+<span id="cb297-3"><a href="worldbank.html#cb297-3" tabindex="-1"></a><span class="co">#&gt; 11410    NY.GDP.MKTP.CD</span></span>
+<span id="cb297-4"><a href="worldbank.html#cb297-4" tabindex="-1"></a><span class="co">#&gt; 11411 NY.GDP.MKTP.CD.XD</span></span>
+<span id="cb297-5"><a href="worldbank.html#cb297-5" tabindex="-1"></a><span class="co">#&gt;                                             name</span></span>
+<span id="cb297-6"><a href="worldbank.html#cb297-6" tabindex="-1"></a><span class="co">#&gt; 11410                          GDP (current US$)</span></span>
+<span id="cb297-7"><a href="worldbank.html#cb297-7" tabindex="-1"></a><span class="co">#&gt; 11411 GDP deflator, index (2000=100; US$ series)</span></span></code></pre></div>
 <p>二件出てきました。</p>
 </div>
 <div id="練習-2.---検索short" class="section level4" number="24.2.1.3">
-<h4>
-<span class="header-section-number">24.2.1.3</span> 練習 2. - 検索（short）<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-2.---%E6%A4%9C%E7%B4%A2short"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.2.1.3</span> 練習 2. - 検索（short）</h4>
 <p>名前で検索（“” の間に、（なるべく簡単な）検索文字列を入れてください。）</p>
-<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDIsearch.html">WDIsearch</a></span><span class="op">(</span>string <span class="op">=</span> <span class="st">""</span>, field <span class="op">=</span> <span class="st">"name"</span>, short <span class="op">=</span> <span class="cn">TRUE</span>, cache <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="worldbank.html#cb298-1" tabindex="-1"></a><span class="fu">WDIsearch</span>(<span class="at">string =</span> <span class="st">&quot;&quot;</span>, <span class="at">field =</span> <span class="st">&quot;name&quot;</span>, <span class="at">short =</span> <span class="cn">TRUE</span>, <span class="at">cache =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 <p>Indicator で検索（“” の間に、調べたい indicator を入れてください。）</p>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDIsearch.html">WDIsearch</a></span><span class="op">(</span>string <span class="op">=</span> <span class="st">""</span>, field <span class="op">=</span> <span class="st">"indicator"</span>, short <span class="op">=</span> <span class="cn">TRUE</span>, cache <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="worldbank.html#cb299-1" tabindex="-1"></a><span class="fu">WDIsearch</span>(<span class="at">string =</span> <span class="st">&quot;&quot;</span>, <span class="at">field =</span> <span class="st">&quot;indicator&quot;</span>, <span class="at">short =</span> <span class="cn">TRUE</span>, <span class="at">cache =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 </div>
 <div id="詳しい情報を得るには" class="section level4" number="24.2.1.4">
-<h4>
-<span class="header-section-number">24.2.1.4</span> 詳しい情報を得るには<a class="anchor" aria-label="anchor" href="#%E8%A9%B3%E3%81%97%E3%81%84%E6%83%85%E5%A0%B1%E3%82%92%E5%BE%97%E3%82%8B%E3%81%AB%E3%81%AF"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.2.1.4</span> 詳しい情報を得るには</h4>
 <p>上では、Indicator（指標コード）と、Name（指標名）だけでしたが、Description（説明） なども得ることができます。</p>
 <p>それには、<code>short = FALSE</code> とします。</p>
 <p>一回一回、World Bank にアクセスして調べるのは、時間もかかりますから、Indicator と、名前などの情報をもったファイルを手元に持っておくことにします。それには、次のようにします。</p>
-<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">wdi_cache</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDIcache.html">WDIcache</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="worldbank.html#cb300-1" tabindex="-1"></a>wdi_cache <span class="ot">&lt;-</span> <span class="fu">WDIcache</span>()</span></code></pre></div>
 <p>これは、series と、country の二つのデータ・フレームからなっているリストです。</p>
 <p>右上の窓枠（pane）から、<code>wdi_cache</code> を探して、中身を見てみましょう。三角印や、右から二番目の巻物のようなアイコンをクリックすると中身が見えます。</p>
 <p>series には、すべての指標がリストされ、その情報が書かれています。</p>
@@ -361,97 +313,82 @@
 <p>今後、さまざまに利用していきたいと思います。</p>
 </div>
 <div id="検索例-3wdi名" class="section level4" number="24.2.1.5">
-<h4>
-<span class="header-section-number">24.2.1.5</span> 検索例 3（WDI名）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-3wdi%E5%90%8D"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.2.1.5</span> 検索例 3（WDI名）</h4>
 <p><code>short = FALSE</code> として、検索してみましょう。文字列が入っている、指標名を検索します。</p>
-<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDIsearch.html">WDIsearch</a></span><span class="op">(</span>string <span class="op">=</span> <span class="st">"CPI Price"</span>, field <span class="op">=</span> <span class="st">"name"</span>, short <span class="op">=</span> <span class="cn">FALSE</span>, cache <span class="op">=</span> <span class="va">wdi_cache</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         indicator</span></span>
-<span><span class="co">#&gt; 2586    CPTOTNSXN</span></span>
-<span><span class="co">#&gt; 2587 CPTOTSAXMZGY</span></span>
-<span><span class="co">#&gt; 2588    CPTOTSAXN</span></span>
-<span><span class="co">#&gt; 2589 CPTOTSAXNZGY</span></span>
-<span><span class="co">#&gt;                                                 name</span></span>
-<span><span class="co">#&gt; 2586                              CPI Price, nominal</span></span>
-<span><span class="co">#&gt; 2587 CPI Price, % y-o-y, median weighted, seas. adj.</span></span>
-<span><span class="co">#&gt; 2588                  CPI Price, nominal, seas. adj.</span></span>
-<span><span class="co">#&gt; 2589         CPI Price, % y-o-y, nominal, seas. adj.</span></span>
-<span><span class="co">#&gt;                                                                                                                                                                                                                  description</span></span>
-<span><span class="co">#&gt; 2586                                                                The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.</span></span>
-<span><span class="co">#&gt; 2587                                                                Median inflation rate calculated for geographical aggregates (regions, world, etc) of the annual percent change of the CPI. Data is seasonally adjusted.</span></span>
-<span><span class="co">#&gt; 2588                                               The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is in nominal terms and seasonally adjusted.</span></span>
-<span><span class="co">#&gt; 2589 The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is in nominal percentage terms, measured on a year-on-year basis, and seasonally adjusted.</span></span>
-<span><span class="co">#&gt;               sourceDatabase</span></span>
-<span><span class="co">#&gt; 2586 Global Economic Monitor</span></span>
-<span><span class="co">#&gt; 2587 Global Economic Monitor</span></span>
-<span><span class="co">#&gt; 2588 Global Economic Monitor</span></span>
-<span><span class="co">#&gt; 2589 Global Economic Monitor</span></span>
-<span><span class="co">#&gt;                                           sourceOrganization</span></span>
-<span><span class="co">#&gt; 2586 World Bank staff calculations based on Datastream data.</span></span>
-<span><span class="co">#&gt; 2587 World Bank staff calculations based on Datastream data.</span></span>
-<span><span class="co">#&gt; 2588 World Bank staff calculations based on Datastream data.</span></span>
-<span><span class="co">#&gt; 2589 World Bank staff calculations based on Datastream data.</span></span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="worldbank.html#cb301-1" tabindex="-1"></a><span class="fu">WDIsearch</span>(<span class="at">string =</span> <span class="st">&quot;CPI Price&quot;</span>, <span class="at">field =</span> <span class="st">&quot;name&quot;</span>, <span class="at">short =</span> <span class="cn">FALSE</span>, <span class="at">cache =</span> wdi_cache)</span>
+<span id="cb301-2"><a href="worldbank.html#cb301-2" tabindex="-1"></a><span class="co">#&gt;         indicator</span></span>
+<span id="cb301-3"><a href="worldbank.html#cb301-3" tabindex="-1"></a><span class="co">#&gt; 2586    CPTOTNSXN</span></span>
+<span id="cb301-4"><a href="worldbank.html#cb301-4" tabindex="-1"></a><span class="co">#&gt; 2587 CPTOTSAXMZGY</span></span>
+<span id="cb301-5"><a href="worldbank.html#cb301-5" tabindex="-1"></a><span class="co">#&gt; 2588    CPTOTSAXN</span></span>
+<span id="cb301-6"><a href="worldbank.html#cb301-6" tabindex="-1"></a><span class="co">#&gt; 2589 CPTOTSAXNZGY</span></span>
+<span id="cb301-7"><a href="worldbank.html#cb301-7" tabindex="-1"></a><span class="co">#&gt;                                                 name</span></span>
+<span id="cb301-8"><a href="worldbank.html#cb301-8" tabindex="-1"></a><span class="co">#&gt; 2586                              CPI Price, nominal</span></span>
+<span id="cb301-9"><a href="worldbank.html#cb301-9" tabindex="-1"></a><span class="co">#&gt; 2587 CPI Price, % y-o-y, median weighted, seas. adj.</span></span>
+<span id="cb301-10"><a href="worldbank.html#cb301-10" tabindex="-1"></a><span class="co">#&gt; 2588                  CPI Price, nominal, seas. adj.</span></span>
+<span id="cb301-11"><a href="worldbank.html#cb301-11" tabindex="-1"></a><span class="co">#&gt; 2589         CPI Price, % y-o-y, nominal, seas. adj.</span></span>
+<span id="cb301-12"><a href="worldbank.html#cb301-12" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                                                                                  description</span></span>
+<span id="cb301-13"><a href="worldbank.html#cb301-13" tabindex="-1"></a><span class="co">#&gt; 2586                                                                The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.</span></span>
+<span id="cb301-14"><a href="worldbank.html#cb301-14" tabindex="-1"></a><span class="co">#&gt; 2587                                                                Median inflation rate calculated for geographical aggregates (regions, world, etc) of the annual percent change of the CPI. Data is seasonally adjusted.</span></span>
+<span id="cb301-15"><a href="worldbank.html#cb301-15" tabindex="-1"></a><span class="co">#&gt; 2588                                               The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is in nominal terms and seasonally adjusted.</span></span>
+<span id="cb301-16"><a href="worldbank.html#cb301-16" tabindex="-1"></a><span class="co">#&gt; 2589 The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is in nominal percentage terms, measured on a year-on-year basis, and seasonally adjusted.</span></span>
+<span id="cb301-17"><a href="worldbank.html#cb301-17" tabindex="-1"></a><span class="co">#&gt;               sourceDatabase</span></span>
+<span id="cb301-18"><a href="worldbank.html#cb301-18" tabindex="-1"></a><span class="co">#&gt; 2586 Global Economic Monitor</span></span>
+<span id="cb301-19"><a href="worldbank.html#cb301-19" tabindex="-1"></a><span class="co">#&gt; 2587 Global Economic Monitor</span></span>
+<span id="cb301-20"><a href="worldbank.html#cb301-20" tabindex="-1"></a><span class="co">#&gt; 2588 Global Economic Monitor</span></span>
+<span id="cb301-21"><a href="worldbank.html#cb301-21" tabindex="-1"></a><span class="co">#&gt; 2589 Global Economic Monitor</span></span>
+<span id="cb301-22"><a href="worldbank.html#cb301-22" tabindex="-1"></a><span class="co">#&gt;                                           sourceOrganization</span></span>
+<span id="cb301-23"><a href="worldbank.html#cb301-23" tabindex="-1"></a><span class="co">#&gt; 2586 World Bank staff calculations based on Datastream data.</span></span>
+<span id="cb301-24"><a href="worldbank.html#cb301-24" tabindex="-1"></a><span class="co">#&gt; 2587 World Bank staff calculations based on Datastream data.</span></span>
+<span id="cb301-25"><a href="worldbank.html#cb301-25" tabindex="-1"></a><span class="co">#&gt; 2588 World Bank staff calculations based on Datastream data.</span></span>
+<span id="cb301-26"><a href="worldbank.html#cb301-26" tabindex="-1"></a><span class="co">#&gt; 2589 World Bank staff calculations based on Datastream data.</span></span></code></pre></div>
 <ul>
 <li>CPTOTNSXN: CPI Price, nominal
 <ul>
 <li>The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </div>
 <div id="検索例-4wdi" class="section level4" number="24.2.1.6">
-<h4>
-<span class="header-section-number">24.2.1.6</span> 検索例 4（WDI）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-4wdi"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.2.1.6</span> 検索例 4（WDI）</h4>
 <p>指標コードから、詳細情報を得ます。</p>
-<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDIsearch.html">WDIsearch</a></span><span class="op">(</span>string <span class="op">=</span> <span class="st">"NY.GDP.MKTP.KD.ZG"</span>, field <span class="op">=</span> <span class="st">"indicator"</span>, short <span class="op">=</span> <span class="cn">FALSE</span>, cache <span class="op">=</span> <span class="va">wdi_cache</span><span class="op">)</span></span>
-<span><span class="co">#&gt;               indicator                  name</span></span>
-<span><span class="co">#&gt; 12114 NY.GDP.MKTP.KD.ZG GDP growth (annual %)</span></span>
-<span><span class="co">#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                           description</span></span>
-<span><span class="co">#&gt; 12114 Annual percentage growth rate of GDP at market prices based on constant local currency. Aggregates are based on constant 2015 prices, expressed in U.S. dollars. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources.</span></span>
-<span><span class="co">#&gt;                     sourceDatabase</span></span>
-<span><span class="co">#&gt; 12114 World Development Indicators</span></span>
-<span><span class="co">#&gt;                                                              sourceOrganization</span></span>
-<span><span class="co">#&gt; 12114 World Bank national accounts data, and OECD National Accounts data files.</span></span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="worldbank.html#cb302-1" tabindex="-1"></a><span class="fu">WDIsearch</span>(<span class="at">string =</span> <span class="st">&quot;NY.GDP.MKTP.KD.ZG&quot;</span>, <span class="at">field =</span> <span class="st">&quot;indicator&quot;</span>, <span class="at">short =</span> <span class="cn">FALSE</span>, <span class="at">cache =</span> wdi_cache)</span>
+<span id="cb302-2"><a href="worldbank.html#cb302-2" tabindex="-1"></a><span class="co">#&gt;               indicator                  name</span></span>
+<span id="cb302-3"><a href="worldbank.html#cb302-3" tabindex="-1"></a><span class="co">#&gt; 12114 NY.GDP.MKTP.KD.ZG GDP growth (annual %)</span></span>
+<span id="cb302-4"><a href="worldbank.html#cb302-4" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                           description</span></span>
+<span id="cb302-5"><a href="worldbank.html#cb302-5" tabindex="-1"></a><span class="co">#&gt; 12114 Annual percentage growth rate of GDP at market prices based on constant local currency. Aggregates are based on constant 2015 prices, expressed in U.S. dollars. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources.</span></span>
+<span id="cb302-6"><a href="worldbank.html#cb302-6" tabindex="-1"></a><span class="co">#&gt;                     sourceDatabase</span></span>
+<span id="cb302-7"><a href="worldbank.html#cb302-7" tabindex="-1"></a><span class="co">#&gt; 12114 World Development Indicators</span></span>
+<span id="cb302-8"><a href="worldbank.html#cb302-8" tabindex="-1"></a><span class="co">#&gt;                                                              sourceOrganization</span></span>
+<span id="cb302-9"><a href="worldbank.html#cb302-9" tabindex="-1"></a><span class="co">#&gt; 12114 World Bank national accounts data, and OECD National Accounts data files.</span></span></code></pre></div>
 </div>
 <div id="練習-2---検索long-w-cache" class="section level4" number="24.2.1.7">
-<h4>
-<span class="header-section-number">24.2.1.7</span> 練習 2 - 検索（long w/ cache）<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-2---%E6%A4%9C%E7%B4%A2long-w-cache"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.2.1.7</span> 練習 2 - 検索（long w/ cache）</h4>
 <p><code>string</code> と、<code>field</code> を、ふたつとも入れてください。</p>
-<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDIsearch.html">WDIsearch</a></span><span class="op">(</span>string <span class="op">=</span> <span class="st">""</span>, field <span class="op">=</span> <span class="st">""</span>, short <span class="op">=</span> <span class="cn">FALSE</span>, cache <span class="op">=</span> <span class="va">wdi_cache</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="worldbank.html#cb303-1" tabindex="-1"></a><span class="fu">WDIsearch</span>(<span class="at">string =</span> <span class="st">&quot;&quot;</span>, <span class="at">field =</span> <span class="st">&quot;&quot;</span>, <span class="at">short =</span> <span class="cn">FALSE</span>, <span class="at">cache =</span> wdi_cache)</span></code></pre></div>
 </div>
 </div>
 <div id="指標-wdi-データのダウンロード" class="section level3" number="24.2.2">
-<h3>
-<span class="header-section-number">24.2.2</span> 指標 WDI データのダウンロード<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi-%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">24.2.2</span> 指標 WDI データのダウンロード</h3>
 <p>Indicator が決まったら、ダウンロードします。右下の窓枠の Help タブの検索枠に、<code>WDI</code> と入れて確認しましょう。</p>
 <pre><code>WDI(
-  country = "all",
-  indicator = "NY.GDP.PCAP.KD",
+  country = &quot;all&quot;,
+  indicator = &quot;NY.GDP.PCAP.KD&quot;,
   start = 1960,
   end = NULL,
   extra = FALSE,
   cache = NULL,
   latest = NULL,
-  language = "en"
+  language = &quot;en&quot;
 )</code></pre>
 <p>上が基本的な用法ですが、<code>start</code> 以下は、Default（初期値）が書かれていますから、たいせつなのは、最初の二つ、country と、indicator です。</p>
 <div id="ダウンロード例-1-1" class="section level4" number="24.2.2.1">
-<h4>
-<span class="header-section-number">24.2.2.1</span> ダウンロード例 1-1<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-1"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.2.2.1</span> ダウンロード例 1-1</h4>
 <p>country は、初期値も、“all” となっていますから、最も簡単なのは、indicator に、指標コードを入れることです。引用符を忘れずに。</p>
-<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gdp1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="st">"NY.GDP.MKTP.CD"</span><span class="op">)</span></span>
-<span><span class="va">df_gdp1</span></span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="worldbank.html#cb305-1" tabindex="-1"></a>df_gdp1 <span class="ot">&lt;-</span> <span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, <span class="at">indicator =</span> <span class="st">&quot;NY.GDP.MKTP.CD&quot;</span>)</span>
+<span id="cb305-2"><a href="worldbank.html#cb305-2" tabindex="-1"></a>df_gdp1</span></code></pre></div>
 <pre><code>#&gt; Rows: 16492 Columns: 5
 #&gt; ── Column specification ────────────────────────────────────
-#&gt; Delimiter: ","
+#&gt; Delimiter: &quot;,&quot;
 #&gt; chr (3): country, iso2c, iso3c
 #&gt; dbl (2): year, NY.GDP.MKTP.CD
 #&gt; 
@@ -474,15 +411,12 @@
 <p>これでも良いのですが、利用するには、指標コードではわかりにくいので、それを簡単な名前に置き換えて、データを読み込むこができます。</p>
 </div>
 <div id="ダウンロード例-1-2" class="section level4" number="24.2.2.2">
-<h4>
-<span class="header-section-number">24.2.2.2</span> ダウンロード例 1-2<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-2"><i class="fas fa-link"></i></a>
-</h4>
-<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gdp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>gdp <span class="op">=</span> <span class="st">"NY.GDP.MKTP.CD"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">df_gdp2</span></span></code></pre></div>
+<h4><span class="header-section-number">24.2.2.2</span> ダウンロード例 1-2</h4>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="worldbank.html#cb307-1" tabindex="-1"></a>df_gdp2 <span class="ot">&lt;-</span> <span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">gdp =</span> <span class="st">&quot;NY.GDP.MKTP.CD&quot;</span>))</span>
+<span id="cb307-2"><a href="worldbank.html#cb307-2" tabindex="-1"></a>df_gdp2</span></code></pre></div>
 <pre><code>#&gt; Rows: 16492 Columns: 5
 #&gt; ── Column specification ────────────────────────────────────
-#&gt; Delimiter: ","
+#&gt; Delimiter: &quot;,&quot;
 #&gt; chr (3): country, iso2c, iso3c
 #&gt; dbl (2): year, gdp
 #&gt; 
@@ -504,17 +438,15 @@
 #&gt; # ℹ 16,482 more rows</code></pre>
 </div>
 <div id="ダウンロード例-1-3" class="section level4" number="24.2.2.3">
-<h4>
-<span class="header-section-number">24.2.2.3</span> ダウンロード例 1-3<br><a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-3"><i class="fas fa-link"></i></a>
+<h4><span class="header-section-number">24.2.2.3</span> ダウンロード例 1-3<br />
 </h4>
 <p>今度は、<code>extra = TRUE</code> として、読み込みましょう。先ほど、読み込んである、<code>wdi_cache</code> を使います。</p>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gdp3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>gdp <span class="op">=</span> <span class="st">"NY.GDP.MKTP.CD"</span><span class="op">)</span>, </span>
-<span>               extra<span class="op">=</span><span class="cn">TRUE</span>, cache<span class="op">=</span><span class="va">wdi_cache</span><span class="op">)</span></span>
-<span><span class="va">df_gdp3</span></span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="worldbank.html#cb309-1" tabindex="-1"></a>df_gdp3 <span class="ot">&lt;-</span> <span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">gdp =</span> <span class="st">&quot;NY.GDP.MKTP.CD&quot;</span>), </span>
+<span id="cb309-2"><a href="worldbank.html#cb309-2" tabindex="-1"></a>               <span class="at">extra=</span><span class="cn">TRUE</span>, <span class="at">cache=</span>wdi_cache)</span>
+<span id="cb309-3"><a href="worldbank.html#cb309-3" tabindex="-1"></a>df_gdp3</span></code></pre></div>
 <pre><code>#&gt; Rows: 16492 Columns: 13
 #&gt; ── Column specification ────────────────────────────────────
-#&gt; Delimiter: ","
+#&gt; Delimiter: &quot;,&quot;
 #&gt; chr  (7): country, iso2c, iso3c, region, capital, income...
 #&gt; dbl  (4): year, gdp, longitude, latitude
 #&gt; lgl  (1): status
@@ -542,17 +474,14 @@
 <p>右上の三角印を使って、どのような詳細情報が付加されたか見て見ましょう。どんなことがわかりますか。</p>
 </div>
 <div id="ダウンロード例-1-4" class="section level4" number="24.2.2.4">
-<h4>
-<span class="header-section-number">24.2.2.4</span> ダウンロード例 1-4<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-4"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.2.2.4</span> ダウンロード例 1-4</h4>
 <p>国名を指定します。<code>WDI</code> では、iso2c コードを使って、国名を指定します。上で見たように、Envoronment から、<code>wdi_cache</code> を選択すると、国名と、iso2c コード両方を見ることができました。iso2c や、iso3c は、よく使われるので、web 検索でも簡単にみつけることができます。最初に紹介した例ですから、どの国かはわかりますね、</p>
-<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gdp4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"CN"</span>,<span class="st">"GB"</span>,<span class="st">"JP"</span>,<span class="st">"IN"</span>,<span class="st">"US"</span>,<span class="st">"DE"</span><span class="op">)</span>, </span>
-<span>               indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>gdp <span class="op">=</span> <span class="st">"NY.GDP.MKTP.CD"</span><span class="op">)</span>, extra<span class="op">=</span><span class="cn">TRUE</span>, cache<span class="op">=</span><span class="va">wdi_cache</span><span class="op">)</span></span>
-<span><span class="va">df_gdp4</span></span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="worldbank.html#cb311-1" tabindex="-1"></a>df_gdp4 <span class="ot">&lt;-</span> <span class="fu">WDI</span>(<span class="at">country =</span> <span class="fu">c</span>(<span class="st">&quot;CN&quot;</span>,<span class="st">&quot;GB&quot;</span>,<span class="st">&quot;JP&quot;</span>,<span class="st">&quot;IN&quot;</span>,<span class="st">&quot;US&quot;</span>,<span class="st">&quot;DE&quot;</span>), </span>
+<span id="cb311-2"><a href="worldbank.html#cb311-2" tabindex="-1"></a>               <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">gdp =</span> <span class="st">&quot;NY.GDP.MKTP.CD&quot;</span>), <span class="at">extra=</span><span class="cn">TRUE</span>, <span class="at">cache=</span>wdi_cache)</span>
+<span id="cb311-3"><a href="worldbank.html#cb311-3" tabindex="-1"></a>df_gdp4</span></code></pre></div>
 <pre><code>#&gt; Rows: 372 Columns: 13
 #&gt; ── Column specification ────────────────────────────────────
-#&gt; Delimiter: ","
+#&gt; Delimiter: &quot;,&quot;
 #&gt; chr  (7): country, iso2c, iso3c, region, capital, income...
 #&gt; dbl  (4): year, gdp, longitude, latitude
 #&gt; lgl  (1): status
@@ -579,23 +508,20 @@
 #&gt; #   lending &lt;chr&gt;</code></pre>
 </div>
 <div id="ダウンロード例-2-1" class="section level4" number="24.2.2.5">
-<h4>
-<span class="header-section-number">24.2.2.5</span> ダウンロード例 2-1<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-2-1"><i class="fas fa-link"></i></a>
-</h4>
-<p>二つの、指標コードを使って、同時に読み込むこともできます。そのときは、<code><a href="https://rdrr.io/r/base/c.html">c()</a></code> (combine) を使います。</p>
+<h4><span class="header-section-number">24.2.2.5</span> ダウンロード例 2-1</h4>
+<p>二つの、指標コードを使って、同時に読み込むこともできます。そのときは、<code>c()</code> (combine) を使います。</p>
 <ul>
 <li>NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)</li>
 <li>CPTOTNSXN: CPI Price, nominal</li>
 </ul>
-<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gdp21</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, </span>
-<span>                indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>gdp_deflator <span class="op">=</span> <span class="st">"NY.GDP.DEFL.KD.ZG"</span>, </span>
-<span>                              cpi_price <span class="op">=</span> <span class="st">"CPTOTNSXN"</span><span class="op">)</span>, </span>
-<span>                extra<span class="op">=</span><span class="cn">TRUE</span>, cache<span class="op">=</span><span class="va">wdi_cache</span><span class="op">)</span></span>
-<span><span class="va">df_gdp21</span></span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="worldbank.html#cb313-1" tabindex="-1"></a>df_gdp21 <span class="ot">&lt;-</span> <span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, </span>
+<span id="cb313-2"><a href="worldbank.html#cb313-2" tabindex="-1"></a>                <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">gdp_deflator =</span> <span class="st">&quot;NY.GDP.DEFL.KD.ZG&quot;</span>, </span>
+<span id="cb313-3"><a href="worldbank.html#cb313-3" tabindex="-1"></a>                              <span class="at">cpi_price =</span> <span class="st">&quot;CPTOTNSXN&quot;</span>), </span>
+<span id="cb313-4"><a href="worldbank.html#cb313-4" tabindex="-1"></a>                <span class="at">extra=</span><span class="cn">TRUE</span>, <span class="at">cache=</span>wdi_cache)</span>
+<span id="cb313-5"><a href="worldbank.html#cb313-5" tabindex="-1"></a>df_gdp21</span></code></pre></div>
 <pre><code>#&gt; Rows: 23972 Columns: 14
 #&gt; ── Column specification ────────────────────────────────────
-#&gt; Delimiter: ","
+#&gt; Delimiter: &quot;,&quot;
 #&gt; chr  (7): country, iso2c, iso3c, region, capital, income...
 #&gt; dbl  (5): year, gdp_deflator, cpi_price, longitude, lati...
 #&gt; lgl  (1): status
@@ -621,286 +547,231 @@
 #&gt; #   capital &lt;chr&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;,
 #&gt; #   income &lt;chr&gt;, lending &lt;chr&gt;</code></pre>
 <p>NA (not available) つまり、データがないものが多いことがわかります。もう少し、データをよく見て見ましょう。</p>
-<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df_gdp21</span><span class="op">)</span></span>
-<span><span class="co">#&gt; spc_tbl_ [23,972 × 14] (S3: spec_tbl_df/tbl_df/tbl/data.frame)</span></span>
-<span><span class="co">#&gt;  $ country     : chr [1:23972] "Advanced Economies" "Advanced Economies" "Advanced Economies" "Advanced Economies" ...</span></span>
-<span><span class="co">#&gt;  $ iso2c       : chr [1:23972] "AME" "AME" "AME" "AME" ...</span></span>
-<span><span class="co">#&gt;  $ iso3c       : chr [1:23972] NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ year        : num [1:23972] 1987 1988 1989 1990 1991 ...</span></span>
-<span><span class="co">#&gt;  $ status      : logi [1:23972] NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ lastupdated : Date[1:23972], format: "2020-07-27" ...</span></span>
-<span><span class="co">#&gt;  $ gdp_deflator: num [1:23972] NA NA NA NA NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ cpi_price   : num [1:23972] 58.7 60.5 63 66 69.1 ...</span></span>
-<span><span class="co">#&gt;  $ region      : chr [1:23972] NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ capital     : chr [1:23972] NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ longitude   : num [1:23972] NA NA NA NA NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ latitude    : num [1:23972] NA NA NA NA NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ income      : chr [1:23972] NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ lending     : chr [1:23972] NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  - attr(*, "spec")=</span></span>
-<span><span class="co">#&gt;   .. cols(</span></span>
-<span><span class="co">#&gt;   ..   country = col_character(),</span></span>
-<span><span class="co">#&gt;   ..   iso2c = col_character(),</span></span>
-<span><span class="co">#&gt;   ..   iso3c = col_character(),</span></span>
-<span><span class="co">#&gt;   ..   year = col_double(),</span></span>
-<span><span class="co">#&gt;   ..   status = col_logical(),</span></span>
-<span><span class="co">#&gt;   ..   lastupdated = col_date(format = ""),</span></span>
-<span><span class="co">#&gt;   ..   gdp_deflator = col_double(),</span></span>
-<span><span class="co">#&gt;   ..   cpi_price = col_double(),</span></span>
-<span><span class="co">#&gt;   ..   region = col_character(),</span></span>
-<span><span class="co">#&gt;   ..   capital = col_character(),</span></span>
-<span><span class="co">#&gt;   ..   longitude = col_double(),</span></span>
-<span><span class="co">#&gt;   ..   latitude = col_double(),</span></span>
-<span><span class="co">#&gt;   ..   income = col_character(),</span></span>
-<span><span class="co">#&gt;   ..   lending = col_character()</span></span>
-<span><span class="co">#&gt;   .. )</span></span>
-<span><span class="co">#&gt;  - attr(*, "problems")=&lt;externalptr&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df_gdp21</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    country             iso2c              iso3c          </span></span>
-<span><span class="co">#&gt;  Length:23972       Length:23972       Length:23972      </span></span>
-<span><span class="co">#&gt;  Class :character   Class :character   Class :character  </span></span>
-<span><span class="co">#&gt;  Mode  :character   Mode  :character   Mode  :character  </span></span>
-<span><span class="co">#&gt;                                                          </span></span>
-<span><span class="co">#&gt;                                                          </span></span>
-<span><span class="co">#&gt;                                                          </span></span>
-<span><span class="co">#&gt;                                                          </span></span>
-<span><span class="co">#&gt;       year       status         lastupdated        </span></span>
-<span><span class="co">#&gt;  Min.   :1960   Mode:logical   Min.   :2020-07-27  </span></span>
-<span><span class="co">#&gt;  1st Qu.:1982   NA's:23972     1st Qu.:2020-07-27  </span></span>
-<span><span class="co">#&gt;  Median :1996                  Median :2022-12-22  </span></span>
-<span><span class="co">#&gt;  Mean   :1995                  Mean   :2022-03-23  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:2009                  3rd Qu.:2022-12-22  </span></span>
-<span><span class="co">#&gt;  Max.   :2021                  Max.   :2022-12-22  </span></span>
-<span><span class="co">#&gt;                                                    </span></span>
-<span><span class="co">#&gt;   gdp_deflator         cpi_price         region         </span></span>
-<span><span class="co">#&gt;  Min.   :  -98.704   Min.   :  0.00   Length:23972      </span></span>
-<span><span class="co">#&gt;  1st Qu.:    2.317   1st Qu.: 55.95   Class :character  </span></span>
-<span><span class="co">#&gt;  Median :    5.273   Median : 83.28   Mode  :character  </span></span>
-<span><span class="co">#&gt;  Mean   :   25.308   Mean   : 84.18                     </span></span>
-<span><span class="co">#&gt;  3rd Qu.:   10.411   3rd Qu.:108.75                     </span></span>
-<span><span class="co">#&gt;  Max.   :26765.858   Max.   :551.25                     </span></span>
-<span><span class="co">#&gt;  NA's   :11616       NA's   :18410                      </span></span>
-<span><span class="co">#&gt;    capital            longitude          latitude      </span></span>
-<span><span class="co">#&gt;  Length:23972       Min.   :-175.22   Min.   :-41.286  </span></span>
-<span><span class="co">#&gt;  Class :character   1st Qu.: -15.18   1st Qu.:  4.174  </span></span>
-<span><span class="co">#&gt;  Mode  :character   Median :  19.26   Median : 17.300  </span></span>
-<span><span class="co">#&gt;                     Mean   :  19.14   Mean   : 18.889  </span></span>
-<span><span class="co">#&gt;                     3rd Qu.:  50.53   3rd Qu.: 40.050  </span></span>
-<span><span class="co">#&gt;                     Max.   : 179.09   Max.   : 64.184  </span></span>
-<span><span class="co">#&gt;                     NA's   :10890     NA's   :10890    </span></span>
-<span><span class="co">#&gt;     income            lending         </span></span>
-<span><span class="co">#&gt;  Length:23972       Length:23972      </span></span>
-<span><span class="co">#&gt;  Class :character   Class :character  </span></span>
-<span><span class="co">#&gt;  Mode  :character   Mode  :character  </span></span>
-<span><span class="co">#&gt;                                       </span></span>
-<span><span class="co">#&gt;                                       </span></span>
-<span><span class="co">#&gt;                                       </span></span>
-<span><span class="co">#&gt; </span></span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="worldbank.html#cb315-1" tabindex="-1"></a><span class="fu">str</span>(df_gdp21)</span>
+<span id="cb315-2"><a href="worldbank.html#cb315-2" tabindex="-1"></a><span class="co">#&gt; spc_tbl_ [23,972 × 14] (S3: spec_tbl_df/tbl_df/tbl/data.frame)</span></span>
+<span id="cb315-3"><a href="worldbank.html#cb315-3" tabindex="-1"></a><span class="co">#&gt;  $ country     : chr [1:23972] &quot;Advanced Economies&quot; &quot;Advanced Economies&quot; &quot;Advanced Economies&quot; &quot;Advanced Economies&quot; ...</span></span>
+<span id="cb315-4"><a href="worldbank.html#cb315-4" tabindex="-1"></a><span class="co">#&gt;  $ iso2c       : chr [1:23972] &quot;AME&quot; &quot;AME&quot; &quot;AME&quot; &quot;AME&quot; ...</span></span>
+<span id="cb315-5"><a href="worldbank.html#cb315-5" tabindex="-1"></a><span class="co">#&gt;  $ iso3c       : chr [1:23972] NA NA NA NA ...</span></span>
+<span id="cb315-6"><a href="worldbank.html#cb315-6" tabindex="-1"></a><span class="co">#&gt;  $ year        : num [1:23972] 1987 1988 1989 1990 1991 ...</span></span>
+<span id="cb315-7"><a href="worldbank.html#cb315-7" tabindex="-1"></a><span class="co">#&gt;  $ status      : logi [1:23972] NA NA NA NA NA NA ...</span></span>
+<span id="cb315-8"><a href="worldbank.html#cb315-8" tabindex="-1"></a><span class="co">#&gt;  $ lastupdated : Date[1:23972], format: &quot;2020-07-27&quot; ...</span></span>
+<span id="cb315-9"><a href="worldbank.html#cb315-9" tabindex="-1"></a><span class="co">#&gt;  $ gdp_deflator: num [1:23972] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span id="cb315-10"><a href="worldbank.html#cb315-10" tabindex="-1"></a><span class="co">#&gt;  $ cpi_price   : num [1:23972] 58.7 60.5 63 66 69.1 ...</span></span>
+<span id="cb315-11"><a href="worldbank.html#cb315-11" tabindex="-1"></a><span class="co">#&gt;  $ region      : chr [1:23972] NA NA NA NA ...</span></span>
+<span id="cb315-12"><a href="worldbank.html#cb315-12" tabindex="-1"></a><span class="co">#&gt;  $ capital     : chr [1:23972] NA NA NA NA ...</span></span>
+<span id="cb315-13"><a href="worldbank.html#cb315-13" tabindex="-1"></a><span class="co">#&gt;  $ longitude   : num [1:23972] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span id="cb315-14"><a href="worldbank.html#cb315-14" tabindex="-1"></a><span class="co">#&gt;  $ latitude    : num [1:23972] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span id="cb315-15"><a href="worldbank.html#cb315-15" tabindex="-1"></a><span class="co">#&gt;  $ income      : chr [1:23972] NA NA NA NA ...</span></span>
+<span id="cb315-16"><a href="worldbank.html#cb315-16" tabindex="-1"></a><span class="co">#&gt;  $ lending     : chr [1:23972] NA NA NA NA ...</span></span>
+<span id="cb315-17"><a href="worldbank.html#cb315-17" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;spec&quot;)=</span></span>
+<span id="cb315-18"><a href="worldbank.html#cb315-18" tabindex="-1"></a><span class="co">#&gt;   .. cols(</span></span>
+<span id="cb315-19"><a href="worldbank.html#cb315-19" tabindex="-1"></a><span class="co">#&gt;   ..   country = col_character(),</span></span>
+<span id="cb315-20"><a href="worldbank.html#cb315-20" tabindex="-1"></a><span class="co">#&gt;   ..   iso2c = col_character(),</span></span>
+<span id="cb315-21"><a href="worldbank.html#cb315-21" tabindex="-1"></a><span class="co">#&gt;   ..   iso3c = col_character(),</span></span>
+<span id="cb315-22"><a href="worldbank.html#cb315-22" tabindex="-1"></a><span class="co">#&gt;   ..   year = col_double(),</span></span>
+<span id="cb315-23"><a href="worldbank.html#cb315-23" tabindex="-1"></a><span class="co">#&gt;   ..   status = col_logical(),</span></span>
+<span id="cb315-24"><a href="worldbank.html#cb315-24" tabindex="-1"></a><span class="co">#&gt;   ..   lastupdated = col_date(format = &quot;&quot;),</span></span>
+<span id="cb315-25"><a href="worldbank.html#cb315-25" tabindex="-1"></a><span class="co">#&gt;   ..   gdp_deflator = col_double(),</span></span>
+<span id="cb315-26"><a href="worldbank.html#cb315-26" tabindex="-1"></a><span class="co">#&gt;   ..   cpi_price = col_double(),</span></span>
+<span id="cb315-27"><a href="worldbank.html#cb315-27" tabindex="-1"></a><span class="co">#&gt;   ..   region = col_character(),</span></span>
+<span id="cb315-28"><a href="worldbank.html#cb315-28" tabindex="-1"></a><span class="co">#&gt;   ..   capital = col_character(),</span></span>
+<span id="cb315-29"><a href="worldbank.html#cb315-29" tabindex="-1"></a><span class="co">#&gt;   ..   longitude = col_double(),</span></span>
+<span id="cb315-30"><a href="worldbank.html#cb315-30" tabindex="-1"></a><span class="co">#&gt;   ..   latitude = col_double(),</span></span>
+<span id="cb315-31"><a href="worldbank.html#cb315-31" tabindex="-1"></a><span class="co">#&gt;   ..   income = col_character(),</span></span>
+<span id="cb315-32"><a href="worldbank.html#cb315-32" tabindex="-1"></a><span class="co">#&gt;   ..   lending = col_character()</span></span>
+<span id="cb315-33"><a href="worldbank.html#cb315-33" tabindex="-1"></a><span class="co">#&gt;   .. )</span></span>
+<span id="cb315-34"><a href="worldbank.html#cb315-34" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="worldbank.html#cb316-1" tabindex="-1"></a><span class="fu">summary</span>(df_gdp21)</span>
+<span id="cb316-2"><a href="worldbank.html#cb316-2" tabindex="-1"></a><span class="co">#&gt;    country             iso2c              iso3c          </span></span>
+<span id="cb316-3"><a href="worldbank.html#cb316-3" tabindex="-1"></a><span class="co">#&gt;  Length:23972       Length:23972       Length:23972      </span></span>
+<span id="cb316-4"><a href="worldbank.html#cb316-4" tabindex="-1"></a><span class="co">#&gt;  Class :character   Class :character   Class :character  </span></span>
+<span id="cb316-5"><a href="worldbank.html#cb316-5" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Mode  :character   Mode  :character  </span></span>
+<span id="cb316-6"><a href="worldbank.html#cb316-6" tabindex="-1"></a><span class="co">#&gt;                                                          </span></span>
+<span id="cb316-7"><a href="worldbank.html#cb316-7" tabindex="-1"></a><span class="co">#&gt;                                                          </span></span>
+<span id="cb316-8"><a href="worldbank.html#cb316-8" tabindex="-1"></a><span class="co">#&gt;                                                          </span></span>
+<span id="cb316-9"><a href="worldbank.html#cb316-9" tabindex="-1"></a><span class="co">#&gt;                                                          </span></span>
+<span id="cb316-10"><a href="worldbank.html#cb316-10" tabindex="-1"></a><span class="co">#&gt;       year       status         lastupdated        </span></span>
+<span id="cb316-11"><a href="worldbank.html#cb316-11" tabindex="-1"></a><span class="co">#&gt;  Min.   :1960   Mode:logical   Min.   :2020-07-27  </span></span>
+<span id="cb316-12"><a href="worldbank.html#cb316-12" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:1982   NA&#39;s:23972     1st Qu.:2020-07-27  </span></span>
+<span id="cb316-13"><a href="worldbank.html#cb316-13" tabindex="-1"></a><span class="co">#&gt;  Median :1996                  Median :2022-12-22  </span></span>
+<span id="cb316-14"><a href="worldbank.html#cb316-14" tabindex="-1"></a><span class="co">#&gt;  Mean   :1995                  Mean   :2022-03-23  </span></span>
+<span id="cb316-15"><a href="worldbank.html#cb316-15" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:2009                  3rd Qu.:2022-12-22  </span></span>
+<span id="cb316-16"><a href="worldbank.html#cb316-16" tabindex="-1"></a><span class="co">#&gt;  Max.   :2021                  Max.   :2022-12-22  </span></span>
+<span id="cb316-17"><a href="worldbank.html#cb316-17" tabindex="-1"></a><span class="co">#&gt;                                                    </span></span>
+<span id="cb316-18"><a href="worldbank.html#cb316-18" tabindex="-1"></a><span class="co">#&gt;   gdp_deflator         cpi_price         region         </span></span>
+<span id="cb316-19"><a href="worldbank.html#cb316-19" tabindex="-1"></a><span class="co">#&gt;  Min.   :  -98.704   Min.   :  0.00   Length:23972      </span></span>
+<span id="cb316-20"><a href="worldbank.html#cb316-20" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:    2.317   1st Qu.: 55.95   Class :character  </span></span>
+<span id="cb316-21"><a href="worldbank.html#cb316-21" tabindex="-1"></a><span class="co">#&gt;  Median :    5.273   Median : 83.28   Mode  :character  </span></span>
+<span id="cb316-22"><a href="worldbank.html#cb316-22" tabindex="-1"></a><span class="co">#&gt;  Mean   :   25.308   Mean   : 84.18                     </span></span>
+<span id="cb316-23"><a href="worldbank.html#cb316-23" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:   10.411   3rd Qu.:108.75                     </span></span>
+<span id="cb316-24"><a href="worldbank.html#cb316-24" tabindex="-1"></a><span class="co">#&gt;  Max.   :26765.858   Max.   :551.25                     </span></span>
+<span id="cb316-25"><a href="worldbank.html#cb316-25" tabindex="-1"></a><span class="co">#&gt;  NA&#39;s   :11616       NA&#39;s   :18410                      </span></span>
+<span id="cb316-26"><a href="worldbank.html#cb316-26" tabindex="-1"></a><span class="co">#&gt;    capital            longitude          latitude      </span></span>
+<span id="cb316-27"><a href="worldbank.html#cb316-27" tabindex="-1"></a><span class="co">#&gt;  Length:23972       Min.   :-175.22   Min.   :-41.286  </span></span>
+<span id="cb316-28"><a href="worldbank.html#cb316-28" tabindex="-1"></a><span class="co">#&gt;  Class :character   1st Qu.: -15.18   1st Qu.:  4.174  </span></span>
+<span id="cb316-29"><a href="worldbank.html#cb316-29" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Median :  19.26   Median : 17.300  </span></span>
+<span id="cb316-30"><a href="worldbank.html#cb316-30" tabindex="-1"></a><span class="co">#&gt;                     Mean   :  19.14   Mean   : 18.889  </span></span>
+<span id="cb316-31"><a href="worldbank.html#cb316-31" tabindex="-1"></a><span class="co">#&gt;                     3rd Qu.:  50.53   3rd Qu.: 40.050  </span></span>
+<span id="cb316-32"><a href="worldbank.html#cb316-32" tabindex="-1"></a><span class="co">#&gt;                     Max.   : 179.09   Max.   : 64.184  </span></span>
+<span id="cb316-33"><a href="worldbank.html#cb316-33" tabindex="-1"></a><span class="co">#&gt;                     NA&#39;s   :10890     NA&#39;s   :10890    </span></span>
+<span id="cb316-34"><a href="worldbank.html#cb316-34" tabindex="-1"></a><span class="co">#&gt;     income            lending         </span></span>
+<span id="cb316-35"><a href="worldbank.html#cb316-35" tabindex="-1"></a><span class="co">#&gt;  Length:23972       Length:23972      </span></span>
+<span id="cb316-36"><a href="worldbank.html#cb316-36" tabindex="-1"></a><span class="co">#&gt;  Class :character   Class :character  </span></span>
+<span id="cb316-37"><a href="worldbank.html#cb316-37" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Mode  :character  </span></span>
+<span id="cb316-38"><a href="worldbank.html#cb316-38" tabindex="-1"></a><span class="co">#&gt;                                       </span></span>
+<span id="cb316-39"><a href="worldbank.html#cb316-39" tabindex="-1"></a><span class="co">#&gt;                                       </span></span>
+<span id="cb316-40"><a href="worldbank.html#cb316-40" tabindex="-1"></a><span class="co">#&gt;                                       </span></span>
+<span id="cb316-41"><a href="worldbank.html#cb316-41" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
 <p>どんなことが分かりましたか。</p>
 <p>右上の窓枠の、Environment でも <code>df_gdp21</code> を見てみましょう。</p>
 </div>
 </div>
 </div>
 <div id="可視化-visualization" class="section level2" number="24.3">
-<h2>
-<span class="header-section-number">24.3</span> 可視化 Visualization<a class="anchor" aria-label="anchor" href="#%E5%8F%AF%E8%A6%96%E5%8C%96-visualization"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">24.3</span> 可視化 Visualization</h2>
 <p>グラフ（Chart）を描いて視覚化します。ここでは、年ごとの変化をみる、折れ線グラフだけを描いて見ます。</p>
 <div id="グラフ-1" class="section level3" number="24.3.1">
-<h3>
-<span class="header-section-number">24.3.1</span> グラフ 1<a class="anchor" aria-label="anchor" href="#%E3%82%B0%E3%83%A9%E3%83%95-1"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">24.3.1</span> グラフ 1</h3>
 <p><code>x = year</code>, <code>y = gdp</code> の、<code>x=</code>, <code>y=</code> は省略してあります。<code>col=country</code> は、国ごとに、グループにして、色分けをします。<code>col</code> は、<code>color</code> としても <code>colour</code> としても、問題ありません。
 `</p>
-<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gdp4</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">gdp</span>, col<span class="op">=</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Removed 10 rows containing missing values</span></span>
-<span><span class="co">#&gt; (`geom_line()`).</span></span></code></pre></div>
-<div class="inline-figure"><img src="32-worldbank_files/figure-html/unnamed-chunk-39-1.png" width="672"></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="worldbank.html#cb317-1" tabindex="-1"></a>df_gdp4 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, gdp, <span class="at">col=</span>country)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span>
+<span id="cb317-2"><a href="worldbank.html#cb317-2" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 10 rows containing missing values</span></span>
+<span id="cb317-3"><a href="worldbank.html#cb317-3" tabindex="-1"></a><span class="co">#&gt; (`geom_line()`).</span></span></code></pre></div>
+<p><img src="32-worldbank_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>Warning として、missing values があると出ています。どこかは、分かりませんが、図を書くときですから、<code>y</code> に対応する、<code>gdp</code> の値がないものと思われます。</p>
 </div>
 <div id="グラフ-2" class="section level3" number="24.3.2">
-<h3>
-<span class="header-section-number">24.3.2</span> グラフ 2<a class="anchor" aria-label="anchor" href="#%E3%82%B0%E3%83%A9%E3%83%95-2"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">24.3.2</span> グラフ 2</h3>
 <p><code>drop_na(gdp)</code> で、<code>gdp</code> の値が、NA であるものを削除します。また、<code>labs</code> で、図にタイトルをつけます。</p>
-<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_gdp4</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">gdp</span>, col<span class="op">=</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"WDI - NY.GDP.MKTP.CD: gdp"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="32-worldbank_files/figure-html/unnamed-chunk-40-1.png" width="672"></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="worldbank.html#cb318-1" tabindex="-1"></a>df_gdp4 <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(gdp) <span class="sc">%&gt;%</span> </span>
+<span id="cb318-2"><a href="worldbank.html#cb318-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, gdp, <span class="at">col=</span>country)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb318-3"><a href="worldbank.html#cb318-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;WDI - NY.GDP.MKTP.CD: gdp&quot;</span>)</span></code></pre></div>
+<p><img src="32-worldbank_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
 </div>
 <div id="テンプレート-templates" class="section level3" number="24.3.3">
-<h3>
-<span class="header-section-number">24.3.3</span> テンプレート Templates<a class="anchor" aria-label="anchor" href="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88-templates"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">24.3.3</span> テンプレート Templates</h3>
 <p>下に、テンプレートをつけます。コピーして、指標コードや、略称、国などを、それぞれ置き換えて、試して見てください。少し、複雑な変形をしていますが、少しずつ説明します。</p>
 <div id="一つの国についての一つの指標wdiとその略称から折線グラフを作成" class="section level4" number="24.3.3.1">
-<h4>
-<span class="header-section-number">24.3.3.1</span> 一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E4%B8%80%E3%81%A4%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%B8%80%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.3.3.1</span> 一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成</h4>
 <p>Line Plot with one indicator with abbreviation and one country</p>
-<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">chosen_indicator</span> <span class="op">&lt;-</span> <span class="st">"SL.UEM.TOTL.NE.ZS"</span></span>
-<span><span class="va">short_name</span> <span class="op">&lt;-</span> <span class="st">"unemployment"</span></span>
-<span><span class="va">chosen_country</span> <span class="op">&lt;-</span> <span class="st">"United States"</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>short_name <span class="op">=</span> <span class="va">chosen_indicator</span><span class="op">)</span>, extra<span class="op">=</span><span class="cn">TRUE</span>, cache<span class="op">=</span><span class="va">wdi_cache</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="va">chosen_country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">short_name</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI "</span>, <span class="va">chosen_indicator</span>, <span class="st">": "</span>, <span class="va">short_name</span>, <span class="st">" - "</span>, <span class="va">chosen_country</span><span class="op">)</span>,</span>
-<span>       y <span class="op">=</span> <span class="va">short_name</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="worldbank.html#cb319-1" tabindex="-1"></a>chosen_indicator <span class="ot">&lt;-</span> <span class="st">&quot;SL.UEM.TOTL.NE.ZS&quot;</span></span>
+<span id="cb319-2"><a href="worldbank.html#cb319-2" tabindex="-1"></a>short_name <span class="ot">&lt;-</span> <span class="st">&quot;unemployment&quot;</span></span>
+<span id="cb319-3"><a href="worldbank.html#cb319-3" tabindex="-1"></a>chosen_country <span class="ot">&lt;-</span> <span class="st">&quot;United States&quot;</span></span>
+<span id="cb319-4"><a href="worldbank.html#cb319-4" tabindex="-1"></a><span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">short_name =</span> chosen_indicator), <span class="at">extra=</span><span class="cn">TRUE</span>, <span class="at">cache=</span>wdi_cache) <span class="sc">%&gt;%</span></span>
+<span id="cb319-5"><a href="worldbank.html#cb319-5" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> chosen_country) <span class="sc">%&gt;%</span> </span>
+<span id="cb319-6"><a href="worldbank.html#cb319-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, short_name)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb319-7"><a href="worldbank.html#cb319-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;WDI &quot;</span>, chosen_indicator, <span class="st">&quot;: &quot;</span>, short_name, <span class="st">&quot; - &quot;</span>, chosen_country),</span>
+<span id="cb319-8"><a href="worldbank.html#cb319-8" tabindex="-1"></a>       <span class="at">y =</span> short_name)</span></code></pre></div>
 </div>
 <div id="一つの国についての一つの指標wdiから折線グラフを作成" class="section level4" number="24.3.3.2">
-<h4>
-<span class="header-section-number">24.3.3.2</span> 一つの国についての、一つの指標（WDI）から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E4%B8%80%E3%81%A4%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%B8%80%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.3.3.2</span> 一つの国についての、一つの指標（WDI）から、折線グラフを作成</h4>
 <p>Line Plot with one indicator and one country</p>
-<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">chosen_indicator</span> <span class="op">&lt;-</span> <span class="st">"SL.UEM.TOTL.NE.ZS"</span></span>
-<span><span class="va">chosen_country</span> <span class="op">&lt;-</span> <span class="st">"United States"</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>chosen_indicator <span class="op">=</span> <span class="va">chosen_indicator</span><span class="op">)</span>, </span>
-<span>    extra<span class="op">=</span><span class="cn">TRUE</span>, cache<span class="op">=</span><span class="va">wdi_cache</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="va">chosen_country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">chosen_indicator</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI "</span>, <span class="va">chosen_indicator</span>, <span class="st">" - "</span>, <span class="va">chosen_country</span><span class="op">)</span>, </span>
-<span>       y <span class="op">=</span> <span class="va">chosen_indicator</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="worldbank.html#cb320-1" tabindex="-1"></a>chosen_indicator <span class="ot">&lt;-</span> <span class="st">&quot;SL.UEM.TOTL.NE.ZS&quot;</span></span>
+<span id="cb320-2"><a href="worldbank.html#cb320-2" tabindex="-1"></a>chosen_country <span class="ot">&lt;-</span> <span class="st">&quot;United States&quot;</span></span>
+<span id="cb320-3"><a href="worldbank.html#cb320-3" tabindex="-1"></a><span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">chosen_indicator =</span> chosen_indicator), </span>
+<span id="cb320-4"><a href="worldbank.html#cb320-4" tabindex="-1"></a>    <span class="at">extra=</span><span class="cn">TRUE</span>, <span class="at">cache=</span>wdi_cache) <span class="sc">%&gt;%</span></span>
+<span id="cb320-5"><a href="worldbank.html#cb320-5" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> chosen_country) <span class="sc">%&gt;%</span> </span>
+<span id="cb320-6"><a href="worldbank.html#cb320-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, chosen_indicator)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb320-7"><a href="worldbank.html#cb320-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;WDI &quot;</span>, chosen_indicator, <span class="st">&quot; - &quot;</span>, chosen_country), </span>
+<span id="cb320-8"><a href="worldbank.html#cb320-8" tabindex="-1"></a>       <span class="at">y =</span> chosen_indicator)</span></code></pre></div>
 </div>
 <div id="いくつかの国についての一つの指標wdiとその略称から折線グラフを作成" class="section level4" number="24.3.3.3">
-<h4>
-<span class="header-section-number">24.3.3.3</span> いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%B8%80%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.3.3.3</span> いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成</h4>
 <p>Line Plot with one indicator with abbreviation and several countries</p>
-<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">chosen_indicator</span> <span class="op">&lt;-</span> <span class="st">"SL.UEM.TOTL.NE.ZS"</span></span>
-<span><span class="va">short_name</span> <span class="op">&lt;-</span> <span class="st">"unemployment"</span></span>
-<span><span class="va">chosen_countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"United States"</span>,<span class="st">"United Kingdom"</span>, <span class="st">"Japan"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>short_name <span class="op">=</span> <span class="va">chosen_indicator</span><span class="op">)</span>, extra<span class="op">=</span><span class="cn">TRUE</span>, cache<span class="op">=</span><span class="va">wdi_cache</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">chosen_countries</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">short_name</span>, col <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI "</span>, <span class="va">chosen_indicator</span>, <span class="st">": "</span>, <span class="va">short_name</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">short_name</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="worldbank.html#cb321-1" tabindex="-1"></a>chosen_indicator <span class="ot">&lt;-</span> <span class="st">&quot;SL.UEM.TOTL.NE.ZS&quot;</span></span>
+<span id="cb321-2"><a href="worldbank.html#cb321-2" tabindex="-1"></a>short_name <span class="ot">&lt;-</span> <span class="st">&quot;unemployment&quot;</span></span>
+<span id="cb321-3"><a href="worldbank.html#cb321-3" tabindex="-1"></a>chosen_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;United States&quot;</span>,<span class="st">&quot;United Kingdom&quot;</span>, <span class="st">&quot;Japan&quot;</span>)</span>
+<span id="cb321-4"><a href="worldbank.html#cb321-4" tabindex="-1"></a><span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">short_name =</span> chosen_indicator), <span class="at">extra=</span><span class="cn">TRUE</span>, <span class="at">cache=</span>wdi_cache) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(short_name) <span class="sc">%&gt;%</span> </span>
+<span id="cb321-5"><a href="worldbank.html#cb321-5" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> chosen_countries) <span class="sc">%&gt;%</span> </span>
+<span id="cb321-6"><a href="worldbank.html#cb321-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, short_name, <span class="at">col =</span> country)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb321-7"><a href="worldbank.html#cb321-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;WDI &quot;</span>, chosen_indicator, <span class="st">&quot;: &quot;</span>, short_name), <span class="at">y =</span> short_name)</span></code></pre></div>
 </div>
 <div id="一つの国についての二つの指標wdiとその略称から折線グラフを作成" class="section level4" number="24.3.3.4">
-<h4>
-<span class="header-section-number">24.3.3.4</span> 一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E4%B8%80%E3%81%A4%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%BA%8C%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.3.3.4</span> 一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成</h4>
 <p>Line Plot with two indicators with abbreviation and one country</p>
-<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">chosen_indicator_1</span> <span class="op">&lt;-</span> <span class="st">"NY.GDP.DEFL.KD.ZG"</span></span>
-<span><span class="va">short_name_1</span> <span class="op">&lt;-</span> <span class="st">"gdp_deflator"</span></span>
-<span><span class="va">chosen_indicator_2</span> <span class="op">&lt;-</span> <span class="st">"CPTOTSAXNZGY"</span></span>
-<span><span class="va">short_name_2</span> <span class="op">&lt;-</span> <span class="st">"cpi_price"</span></span>
-<span><span class="va">chosen_country</span> <span class="op">&lt;-</span> <span class="st">"United States"</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>short_name_1 <span class="op">=</span> <span class="va">chosen_indicator_1</span>, short_name_2 <span class="op">=</span> <span class="va">chosen_indicator_2</span><span class="op">)</span>, extra<span class="op">=</span><span class="cn">TRUE</span>, cache<span class="op">=</span><span class="va">wdi_cache</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="va">chosen_country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">short_name_1</span>, <span class="va">short_name_2</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"class"</span>, values_to <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">value</span>, col <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI "</span>, <span class="va">chosen_indicator_1</span>, <span class="st">": "</span>, <span class="va">short_name_1</span>, <span class="st">"\n"</span>, <span class="va">chosen_indicator_2</span>, <span class="st">": "</span>, <span class="va">short_name_2</span>, <span class="st">" - "</span>, <span class="va">chosen_country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">short_name_1</span>, <span class="va">short_name_2</span><span class="op">)</span>, values <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/hue_pal.html">hue_pal</a></span><span class="op">(</span><span class="op">)</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">chosen_indicator_1</span> <span class="op">&lt;-</span> <span class="st">"SL.TLF.CACT.MA.NE.ZS"</span></span>
-<span><span class="va">short_name_1</span> <span class="op">&lt;-</span> <span class="st">"male"</span></span>
-<span><span class="va">chosen_indicator_2</span> <span class="op">&lt;-</span> <span class="st">"SL.TLF.CACT.FE.NE.ZS"</span></span>
-<span><span class="va">short_name_2</span> <span class="op">&lt;-</span> <span class="st">"female"</span></span>
-<span><span class="va">chosen_country</span> <span class="op">&lt;-</span> <span class="st">"United States"</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>short_name_1 <span class="op">=</span> <span class="va">chosen_indicator_1</span>, short_name_2 <span class="op">=</span> <span class="va">chosen_indicator_2</span><span class="op">)</span>, extra<span class="op">=</span><span class="cn">TRUE</span>, cache<span class="op">=</span><span class="va">wdi_cache</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="va">chosen_country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">short_name_1</span>, <span class="va">short_name_2</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"class"</span>, values_to <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">value</span>, col <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI "</span>, <span class="va">chosen_indicator_1</span>, <span class="st">": "</span>, <span class="va">short_name_1</span>, <span class="st">"\n"</span>, <span class="va">chosen_indicator_2</span>, <span class="st">": "</span>, <span class="va">short_name_2</span>, <span class="st">" - "</span>, <span class="va">chosen_country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">short_name_1</span>, <span class="va">short_name_2</span><span class="op">)</span>, values <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/hue_pal.html">hue_pal</a></span><span class="op">(</span><span class="op">)</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="worldbank.html#cb322-1" tabindex="-1"></a>chosen_indicator_1 <span class="ot">&lt;-</span> <span class="st">&quot;NY.GDP.DEFL.KD.ZG&quot;</span></span>
+<span id="cb322-2"><a href="worldbank.html#cb322-2" tabindex="-1"></a>short_name_1 <span class="ot">&lt;-</span> <span class="st">&quot;gdp_deflator&quot;</span></span>
+<span id="cb322-3"><a href="worldbank.html#cb322-3" tabindex="-1"></a>chosen_indicator_2 <span class="ot">&lt;-</span> <span class="st">&quot;CPTOTSAXNZGY&quot;</span></span>
+<span id="cb322-4"><a href="worldbank.html#cb322-4" tabindex="-1"></a>short_name_2 <span class="ot">&lt;-</span> <span class="st">&quot;cpi_price&quot;</span></span>
+<span id="cb322-5"><a href="worldbank.html#cb322-5" tabindex="-1"></a>chosen_country <span class="ot">&lt;-</span> <span class="st">&quot;United States&quot;</span></span>
+<span id="cb322-6"><a href="worldbank.html#cb322-6" tabindex="-1"></a><span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">short_name_1 =</span> chosen_indicator_1, <span class="at">short_name_2 =</span> chosen_indicator_2), <span class="at">extra=</span><span class="cn">TRUE</span>, <span class="at">cache=</span>wdi_cache) <span class="sc">%&gt;%</span> </span>
+<span id="cb322-7"><a href="worldbank.html#cb322-7" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> chosen_country) <span class="sc">%&gt;%</span> </span>
+<span id="cb322-8"><a href="worldbank.html#cb322-8" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(short_name_1, short_name_2), <span class="at">names_to =</span> <span class="st">&quot;class&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(value) <span class="sc">%&gt;%</span></span>
+<span id="cb322-9"><a href="worldbank.html#cb322-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, value, <span class="at">col =</span> class)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb322-10"><a href="worldbank.html#cb322-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;WDI &quot;</span>, chosen_indicator_1, <span class="st">&quot;: &quot;</span>, short_name_1, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, chosen_indicator_2, <span class="st">&quot;: &quot;</span>, short_name_2, <span class="st">&quot; - &quot;</span>, chosen_country)) <span class="sc">+</span></span>
+<span id="cb322-11"><a href="worldbank.html#cb322-11" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">labels =</span> <span class="fu">c</span>(short_name_1, short_name_2), <span class="at">values =</span> scales<span class="sc">::</span><span class="fu">hue_pal</span>()(<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="worldbank.html#cb323-1" tabindex="-1"></a>chosen_indicator_1 <span class="ot">&lt;-</span> <span class="st">&quot;SL.TLF.CACT.MA.NE.ZS&quot;</span></span>
+<span id="cb323-2"><a href="worldbank.html#cb323-2" tabindex="-1"></a>short_name_1 <span class="ot">&lt;-</span> <span class="st">&quot;male&quot;</span></span>
+<span id="cb323-3"><a href="worldbank.html#cb323-3" tabindex="-1"></a>chosen_indicator_2 <span class="ot">&lt;-</span> <span class="st">&quot;SL.TLF.CACT.FE.NE.ZS&quot;</span></span>
+<span id="cb323-4"><a href="worldbank.html#cb323-4" tabindex="-1"></a>short_name_2 <span class="ot">&lt;-</span> <span class="st">&quot;female&quot;</span></span>
+<span id="cb323-5"><a href="worldbank.html#cb323-5" tabindex="-1"></a>chosen_country <span class="ot">&lt;-</span> <span class="st">&quot;United States&quot;</span></span>
+<span id="cb323-6"><a href="worldbank.html#cb323-6" tabindex="-1"></a><span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">short_name_1 =</span> chosen_indicator_1, <span class="at">short_name_2 =</span> chosen_indicator_2), <span class="at">extra=</span><span class="cn">TRUE</span>, <span class="at">cache=</span>wdi_cache) <span class="sc">%&gt;%</span> </span>
+<span id="cb323-7"><a href="worldbank.html#cb323-7" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> chosen_country) <span class="sc">%&gt;%</span> </span>
+<span id="cb323-8"><a href="worldbank.html#cb323-8" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(short_name_1, short_name_2), <span class="at">names_to =</span> <span class="st">&quot;class&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(value) <span class="sc">%&gt;%</span></span>
+<span id="cb323-9"><a href="worldbank.html#cb323-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, value, <span class="at">col =</span> class)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb323-10"><a href="worldbank.html#cb323-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;WDI &quot;</span>, chosen_indicator_1, <span class="st">&quot;: &quot;</span>, short_name_1, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, chosen_indicator_2, <span class="st">&quot;: &quot;</span>, short_name_2, <span class="st">&quot; - &quot;</span>, chosen_country)) <span class="sc">+</span></span>
+<span id="cb323-11"><a href="worldbank.html#cb323-11" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">labels =</span> <span class="fu">c</span>(short_name_1, short_name_2), <span class="at">values =</span> scales<span class="sc">::</span><span class="fu">hue_pal</span>()(<span class="dv">2</span>))</span></code></pre></div>
 </div>
 <div id="いくつかの国についての二つの指標wdiとその略称から折線グラフを作成" class="section level4" number="24.3.3.5">
-<h4>
-<span class="header-section-number">24.3.3.5</span> いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%BA%8C%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
-</h4>
+<h4><span class="header-section-number">24.3.3.5</span> いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成</h4>
 <p>Line Plot with two indicators with abbreviation and several countries</p>
-<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">chosen_indicator_1</span> <span class="op">&lt;-</span> <span class="st">"NY.GDP.DEFL.KD.ZG"</span></span>
-<span><span class="va">short_name_1</span> <span class="op">&lt;-</span> <span class="st">"gdp_deflator"</span></span>
-<span><span class="va">chosen_indicator_2</span> <span class="op">&lt;-</span> <span class="st">"CPTOTSAXNZGY"</span></span>
-<span><span class="va">short_name_2</span> <span class="op">&lt;-</span> <span class="st">"cpi_price"</span></span>
-<span><span class="va">chosen_countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"United States"</span>, <span class="st">"France"</span>, <span class="st">"Japan"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>short_name_1 <span class="op">=</span> <span class="va">chosen_indicator_1</span>, short_name_2 <span class="op">=</span> <span class="va">chosen_indicator_2</span><span class="op">)</span>, extra<span class="op">=</span><span class="cn">TRUE</span>, cache<span class="op">=</span><span class="va">wdi_cache</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">chosen_countries</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">short_name_1</span>, <span class="va">short_name_2</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"class"</span>, values_to <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">value</span>, linetype <span class="op">=</span> <span class="va">class</span>, col <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI "</span>, <span class="va">chosen_indicator_1</span>, <span class="st">": "</span>, <span class="va">short_name_1</span>, <span class="st">"\n"</span>, <span class="va">chosen_indicator_2</span>, <span class="st">": "</span>, <span class="va">short_name_2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_linetype_manual</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">short_name_1</span>, <span class="va">short_name_2</span><span class="op">)</span>, values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">chosen_indicator_1</span> <span class="op">&lt;-</span> <span class="st">"SL.TLF.CACT.MA.NE.ZS"</span></span>
-<span><span class="va">short_name_1</span> <span class="op">&lt;-</span> <span class="st">"male"</span></span>
-<span><span class="va">chosen_indicator_2</span> <span class="op">&lt;-</span> <span class="st">"SL.TLF.CACT.FE.NE.ZS"</span></span>
-<span><span class="va">short_name_2</span> <span class="op">&lt;-</span> <span class="st">"female"</span></span>
-<span><span class="va">chosen_countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"United States"</span>, <span class="st">"France"</span>, <span class="st">"Japan"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>short_name_1 <span class="op">=</span> <span class="va">chosen_indicator_1</span>, short_name_2 <span class="op">=</span> <span class="va">chosen_indicator_2</span><span class="op">)</span>, extra<span class="op">=</span><span class="cn">TRUE</span>, cache<span class="op">=</span><span class="va">wdi_cache</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">chosen_countries</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">short_name_1</span>, <span class="va">short_name_2</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"class"</span>, values_to <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">value</span>, linetype <span class="op">=</span> <span class="va">class</span>, col <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI "</span>, <span class="va">chosen_indicator_1</span>, <span class="st">": "</span>, <span class="va">short_name_1</span>, <span class="st">"\n"</span>, <span class="va">chosen_indicator_2</span>, <span class="st">": "</span>, <span class="va">short_name_2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_linetype_manual</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">short_name_1</span>, <span class="va">short_name_2</span><span class="op">)</span>, values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="worldbank.html#cb324-1" tabindex="-1"></a>chosen_indicator_1 <span class="ot">&lt;-</span> <span class="st">&quot;NY.GDP.DEFL.KD.ZG&quot;</span></span>
+<span id="cb324-2"><a href="worldbank.html#cb324-2" tabindex="-1"></a>short_name_1 <span class="ot">&lt;-</span> <span class="st">&quot;gdp_deflator&quot;</span></span>
+<span id="cb324-3"><a href="worldbank.html#cb324-3" tabindex="-1"></a>chosen_indicator_2 <span class="ot">&lt;-</span> <span class="st">&quot;CPTOTSAXNZGY&quot;</span></span>
+<span id="cb324-4"><a href="worldbank.html#cb324-4" tabindex="-1"></a>short_name_2 <span class="ot">&lt;-</span> <span class="st">&quot;cpi_price&quot;</span></span>
+<span id="cb324-5"><a href="worldbank.html#cb324-5" tabindex="-1"></a>chosen_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;United States&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Japan&quot;</span>)</span>
+<span id="cb324-6"><a href="worldbank.html#cb324-6" tabindex="-1"></a><span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">short_name_1 =</span> chosen_indicator_1, <span class="at">short_name_2 =</span> chosen_indicator_2), <span class="at">extra=</span><span class="cn">TRUE</span>, <span class="at">cache=</span>wdi_cache) <span class="sc">%&gt;%</span> </span>
+<span id="cb324-7"><a href="worldbank.html#cb324-7" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> chosen_countries) <span class="sc">%&gt;%</span> </span>
+<span id="cb324-8"><a href="worldbank.html#cb324-8" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(short_name_1, short_name_2), <span class="at">names_to =</span> <span class="st">&quot;class&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(value) <span class="sc">%&gt;%</span></span>
+<span id="cb324-9"><a href="worldbank.html#cb324-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, value, <span class="at">linetype =</span> class, <span class="at">col =</span> country)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb324-10"><a href="worldbank.html#cb324-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;WDI &quot;</span>, chosen_indicator_1, <span class="st">&quot;: &quot;</span>, short_name_1, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, chosen_indicator_2, <span class="st">&quot;: &quot;</span>, short_name_2)) <span class="sc">+</span></span>
+<span id="cb324-11"><a href="worldbank.html#cb324-11" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">labels =</span> <span class="fu">c</span>(short_name_1, short_name_2), <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;solid&quot;</span>, <span class="st">&quot;dashed&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="worldbank.html#cb325-1" tabindex="-1"></a>chosen_indicator_1 <span class="ot">&lt;-</span> <span class="st">&quot;SL.TLF.CACT.MA.NE.ZS&quot;</span></span>
+<span id="cb325-2"><a href="worldbank.html#cb325-2" tabindex="-1"></a>short_name_1 <span class="ot">&lt;-</span> <span class="st">&quot;male&quot;</span></span>
+<span id="cb325-3"><a href="worldbank.html#cb325-3" tabindex="-1"></a>chosen_indicator_2 <span class="ot">&lt;-</span> <span class="st">&quot;SL.TLF.CACT.FE.NE.ZS&quot;</span></span>
+<span id="cb325-4"><a href="worldbank.html#cb325-4" tabindex="-1"></a>short_name_2 <span class="ot">&lt;-</span> <span class="st">&quot;female&quot;</span></span>
+<span id="cb325-5"><a href="worldbank.html#cb325-5" tabindex="-1"></a>chosen_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;United States&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Japan&quot;</span>)</span>
+<span id="cb325-6"><a href="worldbank.html#cb325-6" tabindex="-1"></a><span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;all&quot;</span>, <span class="at">indicator =</span> <span class="fu">c</span>(<span class="at">short_name_1 =</span> chosen_indicator_1, <span class="at">short_name_2 =</span> chosen_indicator_2), <span class="at">extra=</span><span class="cn">TRUE</span>, <span class="at">cache=</span>wdi_cache) <span class="sc">%&gt;%</span> </span>
+<span id="cb325-7"><a href="worldbank.html#cb325-7" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> chosen_countries) <span class="sc">%&gt;%</span> </span>
+<span id="cb325-8"><a href="worldbank.html#cb325-8" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(short_name_1, short_name_2), <span class="at">names_to =</span> <span class="st">&quot;class&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(value) <span class="sc">%&gt;%</span></span>
+<span id="cb325-9"><a href="worldbank.html#cb325-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, value, <span class="at">linetype =</span> class, <span class="at">col =</span> country)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb325-10"><a href="worldbank.html#cb325-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;WDI &quot;</span>, chosen_indicator_1, <span class="st">&quot;: &quot;</span>, short_name_1, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, chosen_indicator_2, <span class="st">&quot;: &quot;</span>, short_name_2)) <span class="sc">+</span></span>
+<span id="cb325-11"><a href="worldbank.html#cb325-11" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">labels =</span> <span class="fu">c</span>(short_name_1, short_name_2), <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;solid&quot;</span>, <span class="st">&quot;dashed&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 </div>
 <div id="課題-assignment" class="section level2" number="24.4">
-<h2>
-<span class="header-section-number">24.4</span> 課題　Assignment<a class="anchor" aria-label="anchor" href="#%E8%AA%B2%E9%A1%8C-assignment"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">24.4</span> 課題　Assignment</h2>
 <p>上のテンプレートをコピーして、下に貼り付け、指標 <code>indicator</code> と、略称 <code>short_name</code> と、いくつかの国名 <code>chosen_countries</code> を、入れ替えて、試してみてください。</p>
 
 
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></div>
-<div class="next"><a href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#worldbank"><span class="header-section-number">24</span> World Bank</a></li>
-<li>
-<a class="nav-link" href="#world-development-indicator-wdi"><span class="header-section-number">24.1</span> World Development Indicator (WDI)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-indicators-wdi"><span class="header-section-number">24.1.1</span> 指標 Indicators (WDI)</a></li>
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi-world-development-indicators"><span class="header-section-number">24.1.2</span> 指標 WDI (World Development Indicators)</a></li>
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89wdi-code-%E3%82%92%E6%8E%A2%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86"><span class="header-section-number">24.1.3</span> 指標 のコード、WDI code を探してみよう</a></li>
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi%E3%81%AE%E4%BE%8B"><span class="header-section-number">24.1.4</span> 指標 WDIの例</a></li>
-<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-1.---%E8%AA%BF%E3%81%B9%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%84-wdi-%E6%8C%87%E6%A8%99%E3%81%A8%E3%81%9D%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89"><span class="header-section-number">24.1.5</span> 練習 1. - 調べてみたい WDI 指標とそのコード</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#wdi-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"><span class="header-section-number">24.2</span> WDI パッケージ</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi-%E6%A4%9C%E7%B4%A2"><span class="header-section-number">24.2.1</span> 指標 WDI 検索</a></li>
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi-%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><span class="header-section-number">24.2.2</span> 指標 WDI データのダウンロード</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#%E5%8F%AF%E8%A6%96%E5%8C%96-visualization"><span class="header-section-number">24.3</span> 可視化 Visualization</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%82%B0%E3%83%A9%E3%83%95-1"><span class="header-section-number">24.3.1</span> グラフ 1</a></li>
-<li><a class="nav-link" href="#%E3%82%B0%E3%83%A9%E3%83%95-2"><span class="header-section-number">24.3.2</span> グラフ 2</a></li>
-<li><a class="nav-link" href="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88-templates"><span class="header-section-number">24.3.3</span> テンプレート Templates</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#%E8%AA%B2%E9%A1%8C-assignment"><span class="header-section-number">24.4</span> 課題　Assignment</a></li>
-</ul>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/32-worldbank.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/32-worldbank.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-</div>
+      </div>
     </nav>
-</div>
+  </div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-08-19.</p>
+    <p>"<strong>データサイエンスをはじめましょう<br />
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -908,7 +779,11 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -920,7 +795,8 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -938,4 +814,5 @@ for (let popover of popovers) {
 }
 </script>
 </body>
+
 </html>
