@@ -15,7 +15,7 @@
 下の図は [R for Data Science](https://r4ds.hadley.nz) に掲載されている図です。よく、表現されていると思います。詳細は、少しずつ説明します。
 
 <!-- ![R4DS掲載の画像](https://r4ds.hadley.nz/diagrams/data-science/base.png){width="593"} -->
-  
+
 <img src="./data/base.png" width="100%" />
 
 [はじめに](https://icu-hsuzuki.github.io/ds4aj/introduction.html#introduction)に書きましたが、基本的には、問いをもちデータを取得し、視覚化などを通して、データを理解し、さらに問いを深めるサイクルが、データサイエンスの核だと思います。
@@ -34,13 +34,13 @@
 
 NY.GDP.MKTP.CD は、データコードと言われるもので、世界開発指標（WDI）には、一つづつ決まっています。
 
-[World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）からテーマを選択し、下にスクロールすると、Code をみることができます。ちなみに、ここで利用する NY.GDP.MKTP.CD: GDP (current US\$) は、テーマの Economy（経済）の、一番上にあります。
+[World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）からテーマを選択し、下にスクロールすると、Code をみることができます。ちなみに、ここで利用する NY.GDP.MKTP.CD: GDP (current US\$) は、テーマ Economy（経済）の、一番上にあります。
 
 経済用語の英語はよく知らないという方は、ブラウザー（Edge, Google Chrome, Safari など）の翻訳機能を使うのも良いでしょう。ただ、そのページの対話型の機能（interactive function）を利用するときは、翻訳機能をOFF にする必要がある場合もありますので、注意してください。
 
 エラーメッセージを調べるときなどに、英語のほうが情報がたくさん得られますから、言語を、英語に変更しておきます。
 
-R には、WDI のデータを取得する R のツール（パッケージ）`WDI` がありますから、それを使います。また、データを取り扱うための基本的なツール（パッケージ）`tidyverse` を使いますので、次のコードで、これらを読み込みます。\\#\\\> 以下は、コードを実行すると、表示される情報（出力）です。以下同様です。
+R には、WDI のデータを取得する R のツール（パッケージ）`WDI` がありますから、それを使います。また、データを取り扱うための基本的なツール（パッケージ）`tidyverse` を使いますので、次のコードで、これらを読み込みます。`#` 以下はコメント（簡単な説明を書きました） `#>` 以下は、コードを実行すると、表示される情報（出力）です。以下同様です。
 
 
 ```r
@@ -79,6 +79,8 @@ df_gdp <- WDI(country = "all",
 
 
 
+
+
 このコードで、全ての国の GDP を取得できます。GDP の値は、`NY.GDP.MKTP.CD` という名前の列にありますが、覚えやすいように、gdp という名前に変更しておきます。`extra = TRUE` とすることによって、それぞれの国についての情報などが追加されます。
 
 ### データ構造の確認
@@ -89,17 +91,16 @@ df_gdp <- WDI(country = "all",
 ```r
 head(df_gdp)
 #> # A tibble: 6 × 13
-#>   country     iso2c iso3c  year       gdp status lastupdated
-#>   <chr>       <chr> <chr> <dbl>     <dbl> <lgl>  <date>     
-#> 1 Afghanistan AF    AFG    2015   2.00e10 NA     2022-12-22 
-#> 2 Afghanistan AF    AFG    2011   1.82e10 NA     2022-12-22 
-#> 3 Afghanistan AF    AFG    2014   2.06e10 NA     2022-12-22 
-#> 4 Afghanistan AF    AFG    2013   2.06e10 NA     2022-12-22 
-#> 5 Afghanistan AF    AFG    2012   2.02e10 NA     2022-12-22 
-#> 6 Afghanistan AF    AFG    2007   9.72e 9 NA     2022-12-22 
-#> # ℹ 6 more variables: region <chr>, capital <chr>,
-#> #   longitude <dbl>, latitude <dbl>, income <chr>,
-#> #   lending <chr>
+#>   country iso2c iso3c  year    gdp status lastupdated region
+#>   <chr>   <chr> <chr> <dbl>  <dbl> <lgl>  <date>      <chr> 
+#> 1 Afghan… AF    AFG    1963 7.51e8 NA     2023-07-25  South…
+#> 2 Afghan… AF    AFG    1962 5.47e8 NA     2023-07-25  South…
+#> 3 Afghan… AF    AFG    1961 5.49e8 NA     2023-07-25  South…
+#> 4 Afghan… AF    AFG    1960 5.38e8 NA     2023-07-25  South…
+#> 5 Afghan… AF    AFG    2003 4.54e9 NA     2023-07-25  South…
+#> 6 Afghan… AF    AFG    2002 3.85e9 NA     2023-07-25  South…
+#> # ℹ 5 more variables: capital <chr>, longitude <dbl>,
+#> #   latitude <dbl>, income <chr>, lending <chr>
 ```
 
 データの構造を見るときには、`str(df_gdp)` もよく使われます。今度は、列が縦に並んで表示されます。
@@ -107,20 +108,20 @@ head(df_gdp)
 
 ```r
 str(df_gdp)
-#> spc_tbl_ [16,492 × 13] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-#>  $ country    : chr [1:16492] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
-#>  $ iso2c      : chr [1:16492] "AF" "AF" "AF" "AF" ...
-#>  $ iso3c      : chr [1:16492] "AFG" "AFG" "AFG" "AFG" ...
-#>  $ year       : num [1:16492] 2015 2011 2014 2013 2012 ...
-#>  $ gdp        : num [1:16492] 2.00e+10 1.82e+10 2.06e+10 2.06e+10 2.02e+10 ...
-#>  $ status     : logi [1:16492] NA NA NA NA NA NA ...
-#>  $ lastupdated: Date[1:16492], format: "2022-12-22" ...
-#>  $ region     : chr [1:16492] "South Asia" "South Asia" "South Asia" "South Asia" ...
-#>  $ capital    : chr [1:16492] "Kabul" "Kabul" "Kabul" "Kabul" ...
-#>  $ longitude  : num [1:16492] 69.2 69.2 69.2 69.2 69.2 ...
-#>  $ latitude   : num [1:16492] 34.5 34.5 34.5 34.5 34.5 ...
-#>  $ income     : chr [1:16492] "Low income" "Low income" "Low income" "Low income" ...
-#>  $ lending    : chr [1:16492] "IDA" "IDA" "IDA" "IDA" ...
+#> spc_tbl_ [16,758 × 13] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+#>  $ country    : chr [1:16758] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
+#>  $ iso2c      : chr [1:16758] "AF" "AF" "AF" "AF" ...
+#>  $ iso3c      : chr [1:16758] "AFG" "AFG" "AFG" "AFG" ...
+#>  $ year       : num [1:16758] 1963 1962 1961 1960 2003 ...
+#>  $ gdp        : num [1:16758] 7.51e+08 5.47e+08 5.49e+08 5.38e+08 4.54e+09 ...
+#>  $ status     : logi [1:16758] NA NA NA NA NA NA ...
+#>  $ lastupdated: Date[1:16758], format: "2023-07-25" ...
+#>  $ region     : chr [1:16758] "South Asia" "South Asia" "South Asia" "South Asia" ...
+#>  $ capital    : chr [1:16758] "Kabul" "Kabul" "Kabul" "Kabul" ...
+#>  $ longitude  : num [1:16758] 69.2 69.2 69.2 69.2 69.2 ...
+#>  $ latitude   : num [1:16758] 34.5 34.5 34.5 34.5 34.5 ...
+#>  $ income     : chr [1:16758] "Low income" "Low income" "Low income" "Low income" ...
+#>  $ lending    : chr [1:16758] "IDA" "IDA" "IDA" "IDA" ...
 #>  - attr(*, "spec")=
 #>   .. cols(
 #>   ..   country = col_character(),
@@ -146,7 +147,7 @@ str(df_gdp)
 ```r
 summary(df_gdp) 
 #>    country             iso2c              iso3c          
-#>  Length:16492       Length:16492       Length:16492      
+#>  Length:16758       Length:16758       Length:16758      
 #>  Class :character   Class :character   Class :character  
 #>  Mode  :character   Mode  :character   Mode  :character  
 #>                                                          
@@ -154,31 +155,31 @@ summary(df_gdp)
 #>                                                          
 #>                                                          
 #>       year           gdp             status       
-#>  Min.   :1960   Min.   :8.824e+06   Mode:logical  
-#>  1st Qu.:1975   1st Qu.:2.441e+09   NA's:16492    
-#>  Median :1990   Median :1.784e+10                 
-#>  Mean   :1990   Mean   :1.162e+12                 
-#>  3rd Qu.:2006   3rd Qu.:2.158e+11                 
-#>  Max.   :2021   Max.   :9.651e+13                 
-#>                 NA's   :3343                      
+#>  Min.   :1960   Min.   :8.825e+06   Mode:logical  
+#>  1st Qu.:1975   1st Qu.:2.523e+09   NA's:16758    
+#>  Median :1991   Median :1.843e+10                 
+#>  Mean   :1991   Mean   :1.207e+12                 
+#>  3rd Qu.:2007   3rd Qu.:2.244e+11                 
+#>  Max.   :2022   Max.   :1.006e+14                 
+#>                 NA's   :3393                      
 #>   lastupdated            region            capital         
-#>  Min.   :2022-12-22   Length:16492       Length:16492      
-#>  1st Qu.:2022-12-22   Class :character   Class :character  
-#>  Median :2022-12-22   Mode  :character   Mode  :character  
-#>  Mean   :2022-12-22                                        
-#>  3rd Qu.:2022-12-22                                        
-#>  Max.   :2022-12-22                                        
+#>  Min.   :2023-07-25   Length:16758       Length:16758      
+#>  1st Qu.:2023-07-25   Class :character   Class :character  
+#>  Median :2023-07-25   Mode  :character   Mode  :character  
+#>  Mean   :2023-07-25                                        
+#>  3rd Qu.:2023-07-25                                        
+#>  Max.   :2023-07-25                                        
 #>                                                            
 #>    longitude          latitude          income         
-#>  Min.   :-175.22   Min.   :-41.286   Length:16492      
+#>  Min.   :-175.22   Min.   :-41.286   Length:16758      
 #>  1st Qu.: -15.18   1st Qu.:  4.174   Class :character  
 #>  Median :  19.54   Median : 17.277   Mode  :character  
 #>  Mean   :  19.16   Mean   : 18.740                     
 #>  3rd Qu.:  50.53   3rd Qu.: 39.715                     
 #>  Max.   : 179.09   Max.   : 64.184                     
-#>  NA's   :3472      NA's   :3472                        
+#>  NA's   :3528      NA's   :3528                        
 #>    lending         
-#>  Length:16492      
+#>  Length:16758      
 #>  Class :character  
 #>  Mode  :character  
 #>                    
@@ -490,20 +491,20 @@ df_gdp |> str()
 
 ```r
 df_gdp |> filter(country == "Japan")
-#> # A tibble: 62 × 13
+#> # A tibble: 63 × 13
 #>    country iso2c iso3c  year     gdp status lastupdated
 #>    <chr>   <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
-#>  1 Japan   JP    JPN    2021 4.94e12 NA     2022-12-22 
-#>  2 Japan   JP    JPN    2020 5.04e12 NA     2022-12-22 
-#>  3 Japan   JP    JPN    2019 5.12e12 NA     2022-12-22 
-#>  4 Japan   JP    JPN    2018 5.04e12 NA     2022-12-22 
-#>  5 Japan   JP    JPN    2017 4.93e12 NA     2022-12-22 
-#>  6 Japan   JP    JPN    2016 5.00e12 NA     2022-12-22 
-#>  7 Japan   JP    JPN    2015 4.44e12 NA     2022-12-22 
-#>  8 Japan   JP    JPN    2014 4.90e12 NA     2022-12-22 
-#>  9 Japan   JP    JPN    2013 5.21e12 NA     2022-12-22 
-#> 10 Japan   JP    JPN    2012 6.27e12 NA     2022-12-22 
-#> # ℹ 52 more rows
+#>  1 Japan   JP    JPN    2022 4.23e12 NA     2023-07-25 
+#>  2 Japan   JP    JPN    2021 5.01e12 NA     2023-07-25 
+#>  3 Japan   JP    JPN    2020 5.05e12 NA     2023-07-25 
+#>  4 Japan   JP    JPN    2019 5.12e12 NA     2023-07-25 
+#>  5 Japan   JP    JPN    2018 5.04e12 NA     2023-07-25 
+#>  6 Japan   JP    JPN    2017 4.93e12 NA     2023-07-25 
+#>  7 Japan   JP    JPN    2016 5.00e12 NA     2023-07-25 
+#>  8 Japan   JP    JPN    2015 4.44e12 NA     2023-07-25 
+#>  9 Japan   JP    JPN    2014 4.90e12 NA     2023-07-25 
+#> 10 Japan   JP    JPN    2013 5.21e12 NA     2023-07-25 
+#> # ℹ 53 more rows
 #> # ℹ 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>
@@ -515,18 +516,18 @@ df_gdp |> filter(country == "Japan") |> head(2)
 #> # A tibble: 2 × 13
 #>   country iso2c iso3c  year     gdp status lastupdated
 #>   <chr>   <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
-#> 1 Japan   JP    JPN    2021 4.94e12 NA     2022-12-22 
-#> 2 Japan   JP    JPN    2020 5.04e12 NA     2022-12-22 
+#> 1 Japan   JP    JPN    2022 4.23e12 NA     2023-07-25 
+#> 2 Japan   JP    JPN    2021 5.01e12 NA     2023-07-25 
 #> # ℹ 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>
 ```
 
-２行目の、gdp の、4.940878e+12 は、Scientific notation と言われるもので、 $$4.940878 \times 10^{12} = 4,940,887,800,000$$ を意味します。`e+3` は千（thousand）、`e+6` は百万（million）、`e+9` は、10億（billion）、`e+12` は、兆（trillion）ですから、日本の、2021 年の GDP は、約5兆ドルとなります。
+２行目の、gdp の、4.940878e+12 （この文書では、幅の都合で、`4.9e+12` と表示されているかもしれません）は、Scientific notation と言われるもので、 $$4.940878 \times 10^{12} = 4,940,887,800,000$$ を意味します。`e+3` は千（thousand）、`e+6` は百万（million）、`e+9` は、10億（billion）、`e+12` は、兆（trillion）ですから、日本の、2021 年の GDP は、約5兆ドルとなります。
 
 ### 視覚化 data visualization
 
-#### Fig 1. 日本のGDP の経年変化を折線グラフ（line graph）
+#### Fig 1. 日本のGDP の経年変化を表す折線グラフ（line graph）
 
 
 ```r
@@ -534,14 +535,14 @@ df_gdp |> filter(country == "Japan") |>
   ggplot(aes(x = year, y = gdp)) + geom_line()
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 ```         
 df_gdp |> filter(country == "Japan") |>
   ggplot(aes(x = year, y = gdp)) + geom_line()
 ```
 
-日本を選択したときに、それに名前をつけておいて、それを使うこともできますが、名前がどんどん増えるので、それに続けて、コードを書いていく方法をとっています。
+日本を選択したときに、それに名前をつけた新しいオブジェクトを作り、それを使うこともできますが、名前がどんどん増えるので、パイプを使って、コードを続けて書いていく方法をとっています。
 
 `ggplot(aes(x = year, y = gdp)) + geom_line()`
 
@@ -549,54 +550,56 @@ df_gdp |> filter(country == "Japan") |>
 
 Warning: [38;5;238mRemoved 1 row containing missing values
 
-と表示されています。値がない年があることを言っています。2022年のデータがないことがわかっていますから、最初から削除してこくことも可能です。
+などと表示される場合がありますが、それは、値がない（missing または 値が NA, not available）年があることを言っています。データがない年を最初から削除してこくことも可能です。
 
 ### データの理解 Understand data
 
-視覚化によって見えてくることがいくつもありますね。どんなことがわかりますか。気づいたこと（observation）をあげてみましょう。
+上の折線グラフを使った、視覚化によって見えてくることがいくつもありますね。どんなことがわかりますか。気づいたこと（observation）をあげてみましょう。
 
-コードを描くことではなく、この部分が、データサイエンスの核の部分です。気づいたことを列挙してみましょう。
+コードを描くことではなく、この部分が、データサイエンスの核の部分です。気づいたこと、疑問点を列挙してみましょう。
+
+急激に増加しているとき、増加減少が繰り返している時、全体としては、1995年ごろからはあまり、増加していないように見えることなどがわかりますね。それぞれのピークや、下落は、なにがあったのかも気になりませんか。これは、世界的な傾向なのでしょうか。日本だけでしょうか。他にも似た傾向の国があるのでしょうか。将来はどうなっていくのでしょうか。などなど。
 
 ### さまざまな視覚化
 
 #### Fig 2. 各年ごとのデータの数
 
-`summary(df_gdp)` で、データ自体は、1960年から2022年までのようですが、日本も、2022年のデータはありませんでしたから、年によって、どの程度データがあるか、調べてみます。
+`summary(df_gdp)` で、データ自体は、1960年から2022年までのようですが、年によって、どの程度データがあるか、調べてみます。
 
 
 ```r
 df_gdp |> drop_na(gdp) |> ggplot(aes(x = year)) + geom_bar()
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 ```         
 df_gdp |> drop_na(gdp) |> ggplot(aes(x = year)) + geom_bar()
 ```
 
-バー・グラフを使いますが、`gdp` の値が、欠損値（NA: not available）のデータを削除してから、グラフを描きます。
+棒グラフ（bar graph）を使います。`gdp` の値が、欠損値（NA: not available）のデータを削除してから、グラフを描きます。
 
-#### 2021年のGDPの降順での表示（１）
+#### 2022年のGDPの降順での表示（１）
 
-最新の2021年のデータはすべてあるわけではなさそうですが、`gdp` の値が大きい順に並べてみましょう。
+最新の2022年のデータはすべてあるわけではなさそうですが、`gdp` の値が大きい順に並べてみましょう。
 
 
 ```r
-df_gdp |> filter(year == 2021) |> drop_na(gdp) |> arrange(desc(gdp))
-#> # A tibble: 245 × 13
+df_gdp |> filter(year == 2022) |> drop_na(gdp) |> arrange(desc(gdp))
+#> # A tibble: 233 × 13
 #>    country      iso2c iso3c  year     gdp status lastupdated
 #>    <chr>        <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
-#>  1 World        1W    WLD    2021 9.65e13 NA     2022-12-22 
-#>  2 High income  XD    <NA>   2021 5.98e13 NA     2022-12-22 
-#>  3 OECD members OE    OED    2021 5.83e13 NA     2022-12-22 
-#>  4 Post-demogr… V4    PST    2021 5.50e13 NA     2022-12-22 
-#>  5 IDA & IBRD … ZT    IBT    2021 3.80e13 NA     2022-12-22 
-#>  6 Low & middl… XO    LMY    2021 3.64e13 NA     2022-12-22 
-#>  7 Middle inco… XP    MIC    2021 3.58e13 NA     2022-12-22 
-#>  8 IBRD only    XF    IBD    2021 3.55e13 NA     2022-12-22 
-#>  9 East Asia &… Z4    EAS    2021 3.09e13 NA     2022-12-22 
-#> 10 Upper middl… XT    <NA>   2021 2.71e13 NA     2022-12-22 
-#> # ℹ 235 more rows
+#>  1 World        1W    WLD    2022 1.01e14 NA     2023-07-25 
+#>  2 High income  XD    <NA>   2022 6.15e13 NA     2023-07-25 
+#>  3 OECD members OE    OED    2022 5.96e13 NA     2023-07-25 
+#>  4 Post-demogr… V4    PST    2022 5.60e13 NA     2023-07-25 
+#>  5 IDA & IBRD … ZT    IBT    2022 4.04e13 NA     2023-07-25 
+#>  6 Low & middl… XO    LMY    2022 3.87e13 NA     2023-07-25 
+#>  7 Middle inco… XP    MIC    2022 3.82e13 NA     2023-07-25 
+#>  8 IBRD only    XF    IBD    2022 3.76e13 NA     2023-07-25 
+#>  9 East Asia &… Z4    EAS    2022 3.07e13 NA     2023-07-25 
+#> 10 Upper middl… XT    <NA>   2022 3.01e13 NA     2023-07-25 
+#> # ℹ 223 more rows
 #> # ℹ 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>
@@ -608,32 +611,32 @@ df_gdp |> filter(year == 2021) |> drop_na(gdp) |> arrange(desc(gdp))
 
 
 ```r
-df_gdp |> filter(year == 2021, region != "Aggregates") |> 
+df_gdp |> filter(year == 2022, region != "Aggregates") |> 
   drop_na(gdp) |> arrange(desc(gdp))
-#> # A tibble: 196 × 13
+#> # A tibble: 184 × 13
 #>    country      iso2c iso3c  year     gdp status lastupdated
 #>    <chr>        <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
-#>  1 United Stat… US    USA    2021 2.33e13 NA     2022-12-22 
-#>  2 China        CN    CHN    2021 1.77e13 NA     2022-12-22 
-#>  3 Japan        JP    JPN    2021 4.94e12 NA     2022-12-22 
-#>  4 Germany      DE    DEU    2021 4.26e12 NA     2022-12-22 
-#>  5 India        IN    IND    2021 3.18e12 NA     2022-12-22 
-#>  6 United King… GB    GBR    2021 3.13e12 NA     2022-12-22 
-#>  7 France       FR    FRA    2021 2.96e12 NA     2022-12-22 
-#>  8 Italy        IT    ITA    2021 2.11e12 NA     2022-12-22 
-#>  9 Canada       CA    CAN    2021 1.99e12 NA     2022-12-22 
-#> 10 Korea, Rep.  KR    KOR    2021 1.81e12 NA     2022-12-22 
-#> # ℹ 186 more rows
+#>  1 United Stat… US    USA    2022 2.55e13 NA     2023-07-25 
+#>  2 China        CN    CHN    2022 1.80e13 NA     2023-07-25 
+#>  3 Japan        JP    JPN    2022 4.23e12 NA     2023-07-25 
+#>  4 Germany      DE    DEU    2022 4.07e12 NA     2023-07-25 
+#>  5 India        IN    IND    2022 3.39e12 NA     2023-07-25 
+#>  6 United King… GB    GBR    2022 3.07e12 NA     2023-07-25 
+#>  7 France       FR    FRA    2022 2.78e12 NA     2023-07-25 
+#>  8 Russian Fed… RU    RUS    2022 2.24e12 NA     2023-07-25 
+#>  9 Canada       CA    CAN    2022 2.14e12 NA     2023-07-25 
+#> 10 Italy        IT    ITA    2022 2.01e12 NA     2023-07-25 
+#> # ℹ 174 more rows
 #> # ℹ 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>
 ```
 
-これは、グラフではありませんが、これも一つの視覚化とも考えられないことはありません。
+これは、グラフではありませんが、これも一つの可視化と考えられないことはありません。
 
-上位７カ国は、United States, China, Japan, Germany, India, United Kingdom, France であることがわかりました。8番目は、Italy でここまでが、GDP が 2兆ドルを越している国となります。
+上位７カ国は、United States, China, Japan, Germany, India, United Kingdom, France であることがわかりました。このあと、Russian Federation, Canada, Italy と続き、でここまでが、2022年のGDP が 2兆ドルを越している国となります。
 
-#### Fig 3. 2021年時のGDP上位7カ国のGDP経年変化
+#### Fig 3. 2022年時のGDP上位7カ国のGDP経年変化
 
 
 ```r
@@ -643,7 +646,7 @@ df_gdp |> filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) |>
 #> (`geom_line()`).
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 ```         
 df_gdp |> filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) |>
@@ -669,7 +672,7 @@ df_gdp |>
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 まず、下の部分が新しいですが、ここでは、年毎にグループにして、その上で、新しい `dgp_ratio` という名前の列を追加し、その gdp の値を、gdp 合計で割っています。すなわち、世界の、GDP における割合が計算されています。
 
@@ -701,7 +704,7 @@ df_gdp |>
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 これらは、世界全体の GPT における割合です。
 
@@ -724,7 +727,7 @@ df_gdp |> drop_na(gdp) |>
 #> `binwidth`.
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 小さいところに集中していることがわかりますが、`scale_x_log10()` を加え、対数軸をとってみます。
 
@@ -741,7 +744,7 @@ df_gdp |> drop_na(gdp) |>
 #> `binwidth`.
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 幅を変更したり、分ける個数を変更するには `binwidth = 0.5` や、`bins = 20` を、`geom_histogram()` のかっこの中に入れます。
 
@@ -756,7 +759,7 @@ df_gdp |> drop_na(gdp) |>
   ggplot(aes(gdp)) + geom_density() + scale_x_log10()
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 #### Fig 8. 2021年の世界の国のGDPの分布（４）
 
@@ -769,7 +772,7 @@ df_gdp |> drop_na(gdp) |>
   ggplot(aes(gdp, fill = factor(year))) + geom_density(alpha = 0.4) + scale_x_log10()
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 #### Fig 9. 2021年の世界の国のGDPの分布（５）
 
@@ -783,7 +786,7 @@ df_gdp |> drop_na(gdp) |>
   geom_density() + scale_x_log10() + facet_wrap(~year)
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
 #### Fig 10. 地域ごとの GDP の分布
 
@@ -798,7 +801,7 @@ df_gdp |> drop_na(gdp) |> filter(region != "Aggregates") |>
   theme(legend.position = "none")
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 #### Fig 11. 収入の多寡による分類ごとの GDP 分布
 
@@ -812,7 +815,7 @@ df_gdp |> drop_na(gdp) |> filter(region != "Aggregates") |>
   theme(legend.position = "none")
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
 これからも、いろいろなことがわかりますね。
 
@@ -823,11 +826,6 @@ df_gdp |> drop_na(gdp) |> filter(region != "Aggregates") |>
 
 ```r
 library(maps)
-#> 
-#> Attaching package: 'maps'
-#> The following object is masked from 'package:purrr':
-#> 
-#>     map
 gdp_short <- df_gdp |> filter(year == 2021, region != "Aggregates") |>
   select(iso2c, gdp, income)
 map_world <- map_data('world')
@@ -843,12 +841,12 @@ head(map_gdp)
 #> 5 -70.06612 12.54697     1     5  Aruba      <NA>    AW
 #> 6 -70.05088 12.59707     1     6  Aruba      <NA>    AW
 #>          gdp      income
-#> 1 3126019399 High income
-#> 2 3126019399 High income
-#> 3 3126019399 High income
-#> 4 3126019399 High income
-#> 5 3126019399 High income
-#> 6 3126019399 High income
+#> 1 3126019385 High income
+#> 2 3126019385 High income
+#> 3 3126019385 High income
+#> 4 3126019385 High income
+#> 5 3126019385 High income
+#> 6 3126019385 High income
 ```
 
 #### Fig 12. Income Level による色分け地図
@@ -868,7 +866,7 @@ map_gdp |> mutate(income_level = factor(income, levels = c("High income", "Upper
 #> income_level), : Ignoring unknown aesthetics: x and y
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 #### Fig 13. GDP による色分け地図
 
@@ -881,7 +879,7 @@ map_gdp |>
 #> fill = gdp), : Ignoring unknown aesthetics: x and y
 ```
 
-<img src="03-first-example_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<img src="03-first-example_files/figure-html/unnamed-chunk-29-1.png" width="672" />
 
 ## 練習
 

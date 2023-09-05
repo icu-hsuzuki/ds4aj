@@ -36,7 +36,7 @@ WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"),
 
 
 ```
-#> Rows: 16492 Columns: 13
+#> Rows: 16758 Columns: 13
 #> ── Column specification ────────────────────────────────────
 #> Delimiter: ","
 #> chr  (7): country, iso2c, iso3c, region, capital, income...
@@ -46,20 +46,20 @@ WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"),
 #> 
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-#> # A tibble: 196 × 13
+#> # A tibble: 184 × 13
 #>    country      iso2c iso3c  year     gdp status lastupdated
 #>    <chr>        <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
-#>  1 United Stat… US    USA    2021 2.33e13 NA     2022-12-22 
-#>  2 China        CN    CHN    2021 1.77e13 NA     2022-12-22 
-#>  3 Japan        JP    JPN    2021 4.94e12 NA     2022-12-22 
-#>  4 Germany      DE    DEU    2021 4.26e12 NA     2022-12-22 
-#>  5 India        IN    IND    2021 3.18e12 NA     2022-12-22 
-#>  6 United King… GB    GBR    2021 3.13e12 NA     2022-12-22 
-#>  7 France       FR    FRA    2021 2.96e12 NA     2022-12-22 
-#>  8 Italy        IT    ITA    2021 2.11e12 NA     2022-12-22 
-#>  9 Canada       CA    CAN    2021 1.99e12 NA     2022-12-22 
-#> 10 Korea, Rep.  KR    KOR    2021 1.81e12 NA     2022-12-22 
-#> # ℹ 186 more rows
+#>  1 United Stat… US    USA    2022 2.55e13 NA     2023-07-25 
+#>  2 China        CN    CHN    2022 1.80e13 NA     2023-07-25 
+#>  3 Japan        JP    JPN    2022 4.23e12 NA     2023-07-25 
+#>  4 Germany      DE    DEU    2022 4.07e12 NA     2023-07-25 
+#>  5 India        IN    IND    2022 3.39e12 NA     2023-07-25 
+#>  6 United King… GB    GBR    2022 3.07e12 NA     2023-07-25 
+#>  7 France       FR    FRA    2022 2.78e12 NA     2023-07-25 
+#>  8 Russian Fed… RU    RUS    2022 2.24e12 NA     2023-07-25 
+#>  9 Canada       CA    CAN    2022 2.14e12 NA     2023-07-25 
+#> 10 Italy        IT    ITA    2022 2.01e12 NA     2023-07-25 
+#> # ℹ 174 more rows
 #> # ℹ 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>

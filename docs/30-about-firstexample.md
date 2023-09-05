@@ -97,17 +97,16 @@ df_gdp <- WDI(country = "all",
 ```r
 head(df_gdp)
 #> # A tibble: 6 × 13
-#>   country     iso2c iso3c  year       gdp status lastupdated
-#>   <chr>       <chr> <chr> <dbl>     <dbl> <lgl>  <date>     
-#> 1 Afghanistan AF    AFG    2015   2.00e10 NA     2022-12-22 
-#> 2 Afghanistan AF    AFG    2011   1.82e10 NA     2022-12-22 
-#> 3 Afghanistan AF    AFG    2014   2.06e10 NA     2022-12-22 
-#> 4 Afghanistan AF    AFG    2013   2.06e10 NA     2022-12-22 
-#> 5 Afghanistan AF    AFG    2012   2.02e10 NA     2022-12-22 
-#> 6 Afghanistan AF    AFG    2007   9.72e 9 NA     2022-12-22 
-#> # ℹ 6 more variables: region <chr>, capital <chr>,
-#> #   longitude <dbl>, latitude <dbl>, income <chr>,
-#> #   lending <chr>
+#>   country iso2c iso3c  year    gdp status lastupdated region
+#>   <chr>   <chr> <chr> <dbl>  <dbl> <lgl>  <date>      <chr> 
+#> 1 Afghan… AF    AFG    1963 7.51e8 NA     2023-07-25  South…
+#> 2 Afghan… AF    AFG    1962 5.47e8 NA     2023-07-25  South…
+#> 3 Afghan… AF    AFG    1961 5.49e8 NA     2023-07-25  South…
+#> 4 Afghan… AF    AFG    1960 5.38e8 NA     2023-07-25  South…
+#> 5 Afghan… AF    AFG    2003 4.54e9 NA     2023-07-25  South…
+#> 6 Afghan… AF    AFG    2002 3.85e9 NA     2023-07-25  South…
+#> # ℹ 5 more variables: capital <chr>, longitude <dbl>,
+#> #   latitude <dbl>, income <chr>, lending <chr>
 ```
 
 データの構造を見るときには、`str(df_gdp)` もよく使われます。今度は、列が縦に並んで表示されます。
@@ -115,20 +114,20 @@ head(df_gdp)
 
 ```r
 str(df_gdp)
-#> spc_tbl_ [16,492 × 13] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-#>  $ country    : chr [1:16492] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
-#>  $ iso2c      : chr [1:16492] "AF" "AF" "AF" "AF" ...
-#>  $ iso3c      : chr [1:16492] "AFG" "AFG" "AFG" "AFG" ...
-#>  $ year       : num [1:16492] 2015 2011 2014 2013 2012 ...
-#>  $ gdp        : num [1:16492] 2.00e+10 1.82e+10 2.06e+10 2.06e+10 2.02e+10 ...
-#>  $ status     : logi [1:16492] NA NA NA NA NA NA ...
-#>  $ lastupdated: Date[1:16492], format: "2022-12-22" ...
-#>  $ region     : chr [1:16492] "South Asia" "South Asia" "South Asia" "South Asia" ...
-#>  $ capital    : chr [1:16492] "Kabul" "Kabul" "Kabul" "Kabul" ...
-#>  $ longitude  : num [1:16492] 69.2 69.2 69.2 69.2 69.2 ...
-#>  $ latitude   : num [1:16492] 34.5 34.5 34.5 34.5 34.5 ...
-#>  $ income     : chr [1:16492] "Low income" "Low income" "Low income" "Low income" ...
-#>  $ lending    : chr [1:16492] "IDA" "IDA" "IDA" "IDA" ...
+#> spc_tbl_ [16,758 × 13] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+#>  $ country    : chr [1:16758] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
+#>  $ iso2c      : chr [1:16758] "AF" "AF" "AF" "AF" ...
+#>  $ iso3c      : chr [1:16758] "AFG" "AFG" "AFG" "AFG" ...
+#>  $ year       : num [1:16758] 1963 1962 1961 1960 2003 ...
+#>  $ gdp        : num [1:16758] 7.51e+08 5.47e+08 5.49e+08 5.38e+08 4.54e+09 ...
+#>  $ status     : logi [1:16758] NA NA NA NA NA NA ...
+#>  $ lastupdated: Date[1:16758], format: "2023-07-25" ...
+#>  $ region     : chr [1:16758] "South Asia" "South Asia" "South Asia" "South Asia" ...
+#>  $ capital    : chr [1:16758] "Kabul" "Kabul" "Kabul" "Kabul" ...
+#>  $ longitude  : num [1:16758] 69.2 69.2 69.2 69.2 69.2 ...
+#>  $ latitude   : num [1:16758] 34.5 34.5 34.5 34.5 34.5 ...
+#>  $ income     : chr [1:16758] "Low income" "Low income" "Low income" "Low income" ...
+#>  $ lending    : chr [1:16758] "IDA" "IDA" "IDA" "IDA" ...
 #>  - attr(*, "spec")=
 #>   .. cols(
 #>   ..   country = col_character(),
@@ -154,7 +153,7 @@ str(df_gdp)
 ```r
 summary(df_gdp) 
 #>    country             iso2c              iso3c          
-#>  Length:16492       Length:16492       Length:16492      
+#>  Length:16758       Length:16758       Length:16758      
 #>  Class :character   Class :character   Class :character  
 #>  Mode  :character   Mode  :character   Mode  :character  
 #>                                                          
@@ -162,31 +161,31 @@ summary(df_gdp)
 #>                                                          
 #>                                                          
 #>       year           gdp             status       
-#>  Min.   :1960   Min.   :8.824e+06   Mode:logical  
-#>  1st Qu.:1975   1st Qu.:2.441e+09   NA's:16492    
-#>  Median :1990   Median :1.784e+10                 
-#>  Mean   :1990   Mean   :1.162e+12                 
-#>  3rd Qu.:2006   3rd Qu.:2.158e+11                 
-#>  Max.   :2021   Max.   :9.651e+13                 
-#>                 NA's   :3343                      
+#>  Min.   :1960   Min.   :8.825e+06   Mode:logical  
+#>  1st Qu.:1975   1st Qu.:2.523e+09   NA's:16758    
+#>  Median :1991   Median :1.843e+10                 
+#>  Mean   :1991   Mean   :1.207e+12                 
+#>  3rd Qu.:2007   3rd Qu.:2.244e+11                 
+#>  Max.   :2022   Max.   :1.006e+14                 
+#>                 NA's   :3393                      
 #>   lastupdated            region            capital         
-#>  Min.   :2022-12-22   Length:16492       Length:16492      
-#>  1st Qu.:2022-12-22   Class :character   Class :character  
-#>  Median :2022-12-22   Mode  :character   Mode  :character  
-#>  Mean   :2022-12-22                                        
-#>  3rd Qu.:2022-12-22                                        
-#>  Max.   :2022-12-22                                        
+#>  Min.   :2023-07-25   Length:16758       Length:16758      
+#>  1st Qu.:2023-07-25   Class :character   Class :character  
+#>  Median :2023-07-25   Mode  :character   Mode  :character  
+#>  Mean   :2023-07-25                                        
+#>  3rd Qu.:2023-07-25                                        
+#>  Max.   :2023-07-25                                        
 #>                                                            
 #>    longitude          latitude          income         
-#>  Min.   :-175.22   Min.   :-41.286   Length:16492      
+#>  Min.   :-175.22   Min.   :-41.286   Length:16758      
 #>  1st Qu.: -15.18   1st Qu.:  4.174   Class :character  
 #>  Median :  19.54   Median : 17.277   Mode  :character  
 #>  Mean   :  19.16   Mean   : 18.740                     
 #>  3rd Qu.:  50.53   3rd Qu.: 39.715                     
 #>  Max.   : 179.09   Max.   : 64.184                     
-#>  NA's   :3472      NA's   :3472                        
+#>  NA's   :3528      NA's   :3528                        
 #>    lending         
-#>  Length:16492      
+#>  Length:16758      
 #>  Class :character  
 #>  Mode  :character  
 #>                    
@@ -498,20 +497,20 @@ df_gdp |> str()
 
 ```r
 df_gdp |> filter(country == "Japan")
-#> # A tibble: 62 × 13
+#> # A tibble: 63 × 13
 #>    country iso2c iso3c  year     gdp status lastupdated
 #>    <chr>   <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
-#>  1 Japan   JP    JPN    2021 4.94e12 NA     2022-12-22 
-#>  2 Japan   JP    JPN    2020 5.04e12 NA     2022-12-22 
-#>  3 Japan   JP    JPN    2019 5.12e12 NA     2022-12-22 
-#>  4 Japan   JP    JPN    2018 5.04e12 NA     2022-12-22 
-#>  5 Japan   JP    JPN    2017 4.93e12 NA     2022-12-22 
-#>  6 Japan   JP    JPN    2016 5.00e12 NA     2022-12-22 
-#>  7 Japan   JP    JPN    2015 4.44e12 NA     2022-12-22 
-#>  8 Japan   JP    JPN    2014 4.90e12 NA     2022-12-22 
-#>  9 Japan   JP    JPN    2013 5.21e12 NA     2022-12-22 
-#> 10 Japan   JP    JPN    2012 6.27e12 NA     2022-12-22 
-#> # ℹ 52 more rows
+#>  1 Japan   JP    JPN    2022 4.23e12 NA     2023-07-25 
+#>  2 Japan   JP    JPN    2021 5.01e12 NA     2023-07-25 
+#>  3 Japan   JP    JPN    2020 5.05e12 NA     2023-07-25 
+#>  4 Japan   JP    JPN    2019 5.12e12 NA     2023-07-25 
+#>  5 Japan   JP    JPN    2018 5.04e12 NA     2023-07-25 
+#>  6 Japan   JP    JPN    2017 4.93e12 NA     2023-07-25 
+#>  7 Japan   JP    JPN    2016 5.00e12 NA     2023-07-25 
+#>  8 Japan   JP    JPN    2015 4.44e12 NA     2023-07-25 
+#>  9 Japan   JP    JPN    2014 4.90e12 NA     2023-07-25 
+#> 10 Japan   JP    JPN    2013 5.21e12 NA     2023-07-25 
+#> # ℹ 53 more rows
 #> # ℹ 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>
@@ -523,8 +522,8 @@ df_gdp |> filter(country == "Japan") |> head(2)
 #> # A tibble: 2 × 13
 #>   country iso2c iso3c  year     gdp status lastupdated
 #>   <chr>   <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
-#> 1 Japan   JP    JPN    2021 4.94e12 NA     2022-12-22 
-#> 2 Japan   JP    JPN    2020 5.04e12 NA     2022-12-22 
+#> 1 Japan   JP    JPN    2022 4.23e12 NA     2023-07-25 
+#> 2 Japan   JP    JPN    2021 5.01e12 NA     2023-07-25 
 #> # ℹ 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>
@@ -591,20 +590,20 @@ df_gdp |> drop_na(gdp) |> ggplot(aes(x = year)) + geom_bar()
 
 ```r
 df_gdp |> filter(year == 2021) |> drop_na(gdp) |> arrange(desc(gdp))
-#> # A tibble: 245 × 13
+#> # A tibble: 251 × 13
 #>    country      iso2c iso3c  year     gdp status lastupdated
 #>    <chr>        <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
-#>  1 World        1W    WLD    2021 9.65e13 NA     2022-12-22 
-#>  2 High income  XD    <NA>   2021 5.98e13 NA     2022-12-22 
-#>  3 OECD members OE    OED    2021 5.83e13 NA     2022-12-22 
-#>  4 Post-demogr… V4    PST    2021 5.50e13 NA     2022-12-22 
-#>  5 IDA & IBRD … ZT    IBT    2021 3.80e13 NA     2022-12-22 
-#>  6 Low & middl… XO    LMY    2021 3.64e13 NA     2022-12-22 
-#>  7 Middle inco… XP    MIC    2021 3.58e13 NA     2022-12-22 
-#>  8 IBRD only    XF    IBD    2021 3.55e13 NA     2022-12-22 
-#>  9 East Asia &… Z4    EAS    2021 3.09e13 NA     2022-12-22 
-#> 10 Upper middl… XT    <NA>   2021 2.71e13 NA     2022-12-22 
-#> # ℹ 235 more rows
+#>  1 World        1W    WLD    2021 9.69e13 NA     2023-07-25 
+#>  2 High income  XD    <NA>   2021 6.00e13 NA     2023-07-25 
+#>  3 OECD members OE    OED    2021 5.84e13 NA     2023-07-25 
+#>  4 Post-demogr… V4    PST    2021 5.51e13 NA     2023-07-25 
+#>  5 IDA & IBRD … ZT    IBT    2021 3.82e13 NA     2023-07-25 
+#>  6 Low & middl… XO    LMY    2021 3.65e13 NA     2023-07-25 
+#>  7 Middle inco… XP    MIC    2021 3.61e13 NA     2023-07-25 
+#>  8 IBRD only    XF    IBD    2021 3.56e13 NA     2023-07-25 
+#>  9 East Asia &… Z4    EAS    2021 3.11e13 NA     2023-07-25 
+#> 10 Upper middl… XT    <NA>   2021 2.85e13 NA     2023-07-25 
+#> # ℹ 241 more rows
 #> # ℹ 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>
@@ -618,20 +617,20 @@ df_gdp |> filter(year == 2021) |> drop_na(gdp) |> arrange(desc(gdp))
 ```r
 df_gdp |> filter(year == 2021, region != "Aggregates") |> 
   drop_na(gdp) |> arrange(desc(gdp))
-#> # A tibble: 196 × 13
+#> # A tibble: 202 × 13
 #>    country      iso2c iso3c  year     gdp status lastupdated
 #>    <chr>        <chr> <chr> <dbl>   <dbl> <lgl>  <date>     
-#>  1 United Stat… US    USA    2021 2.33e13 NA     2022-12-22 
-#>  2 China        CN    CHN    2021 1.77e13 NA     2022-12-22 
-#>  3 Japan        JP    JPN    2021 4.94e12 NA     2022-12-22 
-#>  4 Germany      DE    DEU    2021 4.26e12 NA     2022-12-22 
-#>  5 India        IN    IND    2021 3.18e12 NA     2022-12-22 
-#>  6 United King… GB    GBR    2021 3.13e12 NA     2022-12-22 
-#>  7 France       FR    FRA    2021 2.96e12 NA     2022-12-22 
-#>  8 Italy        IT    ITA    2021 2.11e12 NA     2022-12-22 
-#>  9 Canada       CA    CAN    2021 1.99e12 NA     2022-12-22 
-#> 10 Korea, Rep.  KR    KOR    2021 1.81e12 NA     2022-12-22 
-#> # ℹ 186 more rows
+#>  1 United Stat… US    USA    2021 2.33e13 NA     2023-07-25 
+#>  2 China        CN    CHN    2021 1.78e13 NA     2023-07-25 
+#>  3 Japan        JP    JPN    2021 5.01e12 NA     2023-07-25 
+#>  4 Germany      DE    DEU    2021 4.26e12 NA     2023-07-25 
+#>  5 India        IN    IND    2021 3.15e12 NA     2023-07-25 
+#>  6 United King… GB    GBR    2021 3.12e12 NA     2023-07-25 
+#>  7 France       FR    FRA    2021 2.96e12 NA     2023-07-25 
+#>  8 Italy        IT    ITA    2021 2.11e12 NA     2023-07-25 
+#>  9 Canada       CA    CAN    2021 2.00e12 NA     2023-07-25 
+#> 10 Russian Fed… RU    RUS    2021 1.84e12 NA     2023-07-25 
+#> # ℹ 192 more rows
 #> # ℹ 6 more variables: region <chr>, capital <chr>,
 #> #   longitude <dbl>, latitude <dbl>, income <chr>,
 #> #   lending <chr>

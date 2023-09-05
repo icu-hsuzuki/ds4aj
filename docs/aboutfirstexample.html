@@ -205,34 +205,33 @@
 <div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_gdp</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 13</span></span>
-<span><span class="co">#&gt;   country     iso2c iso3c  year       gdp status lastupdated</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;lgl&gt;  &lt;date&gt;     </span></span>
-<span><span class="co">#&gt; 1 Afghanistan AF    AFG    2015   2.00e10 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; 2 Afghanistan AF    AFG    2011   1.82e10 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; 3 Afghanistan AF    AFG    2014   2.06e10 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; 4 Afghanistan AF    AFG    2013   2.06e10 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; 5 Afghanistan AF    AFG    2012   2.02e10 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; 6 Afghanistan AF    AFG    2007   9.72e 9 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; # ℹ 6 more variables: region &lt;chr&gt;, capital &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, income &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   lending &lt;chr&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt;   country iso2c iso3c  year    gdp status lastupdated region</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt;  &lt;date&gt;      &lt;chr&gt; </span></span>
+<span><span class="co">#&gt; 1 Afghan… AF    AFG    1963 7.51e8 NA     2023-07-25  South…</span></span>
+<span><span class="co">#&gt; 2 Afghan… AF    AFG    1962 5.47e8 NA     2023-07-25  South…</span></span>
+<span><span class="co">#&gt; 3 Afghan… AF    AFG    1961 5.49e8 NA     2023-07-25  South…</span></span>
+<span><span class="co">#&gt; 4 Afghan… AF    AFG    1960 5.38e8 NA     2023-07-25  South…</span></span>
+<span><span class="co">#&gt; 5 Afghan… AF    AFG    2003 4.54e9 NA     2023-07-25  South…</span></span>
+<span><span class="co">#&gt; 6 Afghan… AF    AFG    2002 3.85e9 NA     2023-07-25  South…</span></span>
+<span><span class="co">#&gt; # ℹ 5 more variables: capital &lt;chr&gt;, longitude &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   latitude &lt;dbl&gt;, income &lt;chr&gt;, lending &lt;chr&gt;</span></span></code></pre></div>
 <p>データの構造を見るときには、<code>str(df_gdp)</code> もよく使われます。今度は、列が縦に並んで表示されます。</p>
 <div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df_gdp</span><span class="op">)</span></span>
-<span><span class="co">#&gt; spc_tbl_ [16,492 × 13] (S3: spec_tbl_df/tbl_df/tbl/data.frame)</span></span>
-<span><span class="co">#&gt;  $ country    : chr [1:16492] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...</span></span>
-<span><span class="co">#&gt;  $ iso2c      : chr [1:16492] "AF" "AF" "AF" "AF" ...</span></span>
-<span><span class="co">#&gt;  $ iso3c      : chr [1:16492] "AFG" "AFG" "AFG" "AFG" ...</span></span>
-<span><span class="co">#&gt;  $ year       : num [1:16492] 2015 2011 2014 2013 2012 ...</span></span>
-<span><span class="co">#&gt;  $ gdp        : num [1:16492] 2.00e+10 1.82e+10 2.06e+10 2.06e+10 2.02e+10 ...</span></span>
-<span><span class="co">#&gt;  $ status     : logi [1:16492] NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ lastupdated: Date[1:16492], format: "2022-12-22" ...</span></span>
-<span><span class="co">#&gt;  $ region     : chr [1:16492] "South Asia" "South Asia" "South Asia" "South Asia" ...</span></span>
-<span><span class="co">#&gt;  $ capital    : chr [1:16492] "Kabul" "Kabul" "Kabul" "Kabul" ...</span></span>
-<span><span class="co">#&gt;  $ longitude  : num [1:16492] 69.2 69.2 69.2 69.2 69.2 ...</span></span>
-<span><span class="co">#&gt;  $ latitude   : num [1:16492] 34.5 34.5 34.5 34.5 34.5 ...</span></span>
-<span><span class="co">#&gt;  $ income     : chr [1:16492] "Low income" "Low income" "Low income" "Low income" ...</span></span>
-<span><span class="co">#&gt;  $ lending    : chr [1:16492] "IDA" "IDA" "IDA" "IDA" ...</span></span>
+<span><span class="co">#&gt; spc_tbl_ [16,758 × 13] (S3: spec_tbl_df/tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ country    : chr [1:16758] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...</span></span>
+<span><span class="co">#&gt;  $ iso2c      : chr [1:16758] "AF" "AF" "AF" "AF" ...</span></span>
+<span><span class="co">#&gt;  $ iso3c      : chr [1:16758] "AFG" "AFG" "AFG" "AFG" ...</span></span>
+<span><span class="co">#&gt;  $ year       : num [1:16758] 1963 1962 1961 1960 2003 ...</span></span>
+<span><span class="co">#&gt;  $ gdp        : num [1:16758] 7.51e+08 5.47e+08 5.49e+08 5.38e+08 4.54e+09 ...</span></span>
+<span><span class="co">#&gt;  $ status     : logi [1:16758] NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ lastupdated: Date[1:16758], format: "2023-07-25" ...</span></span>
+<span><span class="co">#&gt;  $ region     : chr [1:16758] "South Asia" "South Asia" "South Asia" "South Asia" ...</span></span>
+<span><span class="co">#&gt;  $ capital    : chr [1:16758] "Kabul" "Kabul" "Kabul" "Kabul" ...</span></span>
+<span><span class="co">#&gt;  $ longitude  : num [1:16758] 69.2 69.2 69.2 69.2 69.2 ...</span></span>
+<span><span class="co">#&gt;  $ latitude   : num [1:16758] 34.5 34.5 34.5 34.5 34.5 ...</span></span>
+<span><span class="co">#&gt;  $ income     : chr [1:16758] "Low income" "Low income" "Low income" "Low income" ...</span></span>
+<span><span class="co">#&gt;  $ lending    : chr [1:16758] "IDA" "IDA" "IDA" "IDA" ...</span></span>
 <span><span class="co">#&gt;  - attr(*, "spec")=</span></span>
 <span><span class="co">#&gt;   .. cols(</span></span>
 <span><span class="co">#&gt;   ..   country = col_character(),</span></span>
@@ -254,7 +253,7 @@
 <div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df_gdp</span><span class="op">)</span> </span>
 <span><span class="co">#&gt;    country             iso2c              iso3c          </span></span>
-<span><span class="co">#&gt;  Length:16492       Length:16492       Length:16492      </span></span>
+<span><span class="co">#&gt;  Length:16758       Length:16758       Length:16758      </span></span>
 <span><span class="co">#&gt;  Class :character   Class :character   Class :character  </span></span>
 <span><span class="co">#&gt;  Mode  :character   Mode  :character   Mode  :character  </span></span>
 <span><span class="co">#&gt;                                                          </span></span>
@@ -262,31 +261,31 @@
 <span><span class="co">#&gt;                                                          </span></span>
 <span><span class="co">#&gt;                                                          </span></span>
 <span><span class="co">#&gt;       year           gdp             status       </span></span>
-<span><span class="co">#&gt;  Min.   :1960   Min.   :8.824e+06   Mode:logical  </span></span>
-<span><span class="co">#&gt;  1st Qu.:1975   1st Qu.:2.441e+09   NA's:16492    </span></span>
-<span><span class="co">#&gt;  Median :1990   Median :1.784e+10                 </span></span>
-<span><span class="co">#&gt;  Mean   :1990   Mean   :1.162e+12                 </span></span>
-<span><span class="co">#&gt;  3rd Qu.:2006   3rd Qu.:2.158e+11                 </span></span>
-<span><span class="co">#&gt;  Max.   :2021   Max.   :9.651e+13                 </span></span>
-<span><span class="co">#&gt;                 NA's   :3343                      </span></span>
+<span><span class="co">#&gt;  Min.   :1960   Min.   :8.825e+06   Mode:logical  </span></span>
+<span><span class="co">#&gt;  1st Qu.:1975   1st Qu.:2.523e+09   NA's:16758    </span></span>
+<span><span class="co">#&gt;  Median :1991   Median :1.843e+10                 </span></span>
+<span><span class="co">#&gt;  Mean   :1991   Mean   :1.207e+12                 </span></span>
+<span><span class="co">#&gt;  3rd Qu.:2007   3rd Qu.:2.244e+11                 </span></span>
+<span><span class="co">#&gt;  Max.   :2022   Max.   :1.006e+14                 </span></span>
+<span><span class="co">#&gt;                 NA's   :3393                      </span></span>
 <span><span class="co">#&gt;   lastupdated            region            capital         </span></span>
-<span><span class="co">#&gt;  Min.   :2022-12-22   Length:16492       Length:16492      </span></span>
-<span><span class="co">#&gt;  1st Qu.:2022-12-22   Class :character   Class :character  </span></span>
-<span><span class="co">#&gt;  Median :2022-12-22   Mode  :character   Mode  :character  </span></span>
-<span><span class="co">#&gt;  Mean   :2022-12-22                                        </span></span>
-<span><span class="co">#&gt;  3rd Qu.:2022-12-22                                        </span></span>
-<span><span class="co">#&gt;  Max.   :2022-12-22                                        </span></span>
+<span><span class="co">#&gt;  Min.   :2023-07-25   Length:16758       Length:16758      </span></span>
+<span><span class="co">#&gt;  1st Qu.:2023-07-25   Class :character   Class :character  </span></span>
+<span><span class="co">#&gt;  Median :2023-07-25   Mode  :character   Mode  :character  </span></span>
+<span><span class="co">#&gt;  Mean   :2023-07-25                                        </span></span>
+<span><span class="co">#&gt;  3rd Qu.:2023-07-25                                        </span></span>
+<span><span class="co">#&gt;  Max.   :2023-07-25                                        </span></span>
 <span><span class="co">#&gt;                                                            </span></span>
 <span><span class="co">#&gt;    longitude          latitude          income         </span></span>
-<span><span class="co">#&gt;  Min.   :-175.22   Min.   :-41.286   Length:16492      </span></span>
+<span><span class="co">#&gt;  Min.   :-175.22   Min.   :-41.286   Length:16758      </span></span>
 <span><span class="co">#&gt;  1st Qu.: -15.18   1st Qu.:  4.174   Class :character  </span></span>
 <span><span class="co">#&gt;  Median :  19.54   Median : 17.277   Mode  :character  </span></span>
 <span><span class="co">#&gt;  Mean   :  19.16   Mean   : 18.740                     </span></span>
 <span><span class="co">#&gt;  3rd Qu.:  50.53   3rd Qu.: 39.715                     </span></span>
 <span><span class="co">#&gt;  Max.   : 179.09   Max.   : 64.184                     </span></span>
-<span><span class="co">#&gt;  NA's   :3472      NA's   :3472                        </span></span>
+<span><span class="co">#&gt;  NA's   :3528      NA's   :3528                        </span></span>
 <span><span class="co">#&gt;    lending         </span></span>
-<span><span class="co">#&gt;  Length:16492      </span></span>
+<span><span class="co">#&gt;  Length:16758      </span></span>
 <span><span class="co">#&gt;  Class :character  </span></span>
 <span><span class="co">#&gt;  Mode  :character  </span></span>
 <span><span class="co">#&gt;                    </span></span>
@@ -579,20 +578,20 @@ df_gdp |&gt; str()</code></pre>
 <p>変数が多いので、日本の部分だけ <code>filter</code> を使って選択します。country が Japan と一致する場合のみを選択するときは、<code>==</code> を使います。数値ではないので、引用符をつけます。半角を使ってください。</p>
 <div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Japan"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 62 × 13</span></span>
+<span><span class="co">#&gt; # A tibble: 63 × 13</span></span>
 <span><span class="co">#&gt;    country iso2c iso3c  year     gdp status lastupdated</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;  &lt;date&gt;     </span></span>
-<span><span class="co">#&gt;  1 Japan   JP    JPN    2021 4.94e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  2 Japan   JP    JPN    2020 5.04e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  3 Japan   JP    JPN    2019 5.12e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  4 Japan   JP    JPN    2018 5.04e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  5 Japan   JP    JPN    2017 4.93e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  6 Japan   JP    JPN    2016 5.00e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  7 Japan   JP    JPN    2015 4.44e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  8 Japan   JP    JPN    2014 4.90e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  9 Japan   JP    JPN    2013 5.21e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; 10 Japan   JP    JPN    2012 6.27e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; # ℹ 52 more rows</span></span>
+<span><span class="co">#&gt;  1 Japan   JP    JPN    2022 4.23e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  2 Japan   JP    JPN    2021 5.01e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  3 Japan   JP    JPN    2020 5.05e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  4 Japan   JP    JPN    2019 5.12e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  5 Japan   JP    JPN    2018 5.04e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  6 Japan   JP    JPN    2017 4.93e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  7 Japan   JP    JPN    2016 5.00e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  8 Japan   JP    JPN    2015 4.44e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  9 Japan   JP    JPN    2014 4.90e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt; 10 Japan   JP    JPN    2013 5.21e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt; # ℹ 53 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 6 more variables: region &lt;chr&gt;, capital &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, income &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   lending &lt;chr&gt;</span></span></code></pre></div>
@@ -601,8 +600,8 @@ df_gdp |&gt; str()</code></pre>
 <span><span class="co">#&gt; # A tibble: 2 × 13</span></span>
 <span><span class="co">#&gt;   country iso2c iso3c  year     gdp status lastupdated</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;  &lt;date&gt;     </span></span>
-<span><span class="co">#&gt; 1 Japan   JP    JPN    2021 4.94e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; 2 Japan   JP    JPN    2020 5.04e12 NA     2022-12-22 </span></span>
+<span><span class="co">#&gt; 1 Japan   JP    JPN    2022 4.23e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt; 2 Japan   JP    JPN    2021 5.01e12 NA     2023-07-25 </span></span>
 <span><span class="co">#&gt; # ℹ 6 more variables: region &lt;chr&gt;, capital &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, income &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   lending &lt;chr&gt;</span></span></code></pre></div>
@@ -612,9 +611,9 @@ df_gdp |&gt; str()</code></pre>
 <h4>
 <span class="header-section-number">22.1.2.5</span> 視覚化 data visualization<a class="anchor" aria-label="anchor" href="#%E8%A6%96%E8%A6%9A%E5%8C%96-data-visualization-1"><i class="fas fa-link"></i></a>
 </h4>
-<div id="fig-1.-日本のgdp-の経年変化を折線グラフline-graph-1" class="section level5" number="22.1.2.5.1">
+<div id="fig-1.-日本のgdp-の経年変化を折線グラフline-graph" class="section level5" number="22.1.2.5.1">
 <h5>
-<span class="header-section-number">22.1.2.5.1</span> Fig 1. 日本のGDP の経年変化を折線グラフ（line graph）<a class="anchor" aria-label="anchor" href="#fig-1.-%E6%97%A5%E6%9C%AC%E3%81%AEgdp-%E3%81%AE%E7%B5%8C%E5%B9%B4%E5%A4%89%E5%8C%96%E3%82%92%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95line-graph-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.1.2.5.1</span> Fig 1. 日本のGDP の経年変化を折線グラフ（line graph）<a class="anchor" aria-label="anchor" href="#fig-1.-%E6%97%A5%E6%9C%AC%E3%81%AEgdp-%E3%81%AE%E7%B5%8C%E5%B9%B4%E5%A4%89%E5%8C%96%E3%82%92%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95line-graph"><i class="fas fa-link"></i></a>
 </h5>
 <div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Japan"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -658,20 +657,20 @@ df_gdp |&gt; str()</code></pre>
 <p>最新の2021年のデータはすべてあるわけではなさそうですが、<code>gdp</code> の値が大きい順に並べてみましょう。</p>
 <div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2021</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 245 × 13</span></span>
+<span><span class="co">#&gt; # A tibble: 251 × 13</span></span>
 <span><span class="co">#&gt;    country      iso2c iso3c  year     gdp status lastupdated</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;  &lt;date&gt;     </span></span>
-<span><span class="co">#&gt;  1 World        1W    WLD    2021 9.65e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  2 High income  XD    &lt;NA&gt;   2021 5.98e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  3 OECD members OE    OED    2021 5.83e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  4 Post-demogr… V4    PST    2021 5.50e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  5 IDA &amp; IBRD … ZT    IBT    2021 3.80e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  6 Low &amp; middl… XO    LMY    2021 3.64e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  7 Middle inco… XP    MIC    2021 3.58e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  8 IBRD only    XF    IBD    2021 3.55e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  9 East Asia &amp;… Z4    EAS    2021 3.09e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; 10 Upper middl… XT    &lt;NA&gt;   2021 2.71e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; # ℹ 235 more rows</span></span>
+<span><span class="co">#&gt;  1 World        1W    WLD    2021 9.69e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  2 High income  XD    &lt;NA&gt;   2021 6.00e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  3 OECD members OE    OED    2021 5.84e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  4 Post-demogr… V4    PST    2021 5.51e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  5 IDA &amp; IBRD … ZT    IBT    2021 3.82e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  6 Low &amp; middl… XO    LMY    2021 3.65e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  7 Middle inco… XP    MIC    2021 3.61e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  8 IBRD only    XF    IBD    2021 3.56e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  9 East Asia &amp;… Z4    EAS    2021 3.11e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt; 10 Upper middl… XT    &lt;NA&gt;   2021 2.85e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt; # ℹ 241 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 6 more variables: region &lt;chr&gt;, capital &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, income &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   lending &lt;chr&gt;</span></span></code></pre></div>
@@ -684,29 +683,29 @@ df_gdp |&gt; str()</code></pre>
 <div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2021</span>, <span class="va">region</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 196 × 13</span></span>
+<span><span class="co">#&gt; # A tibble: 202 × 13</span></span>
 <span><span class="co">#&gt;    country      iso2c iso3c  year     gdp status lastupdated</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;  &lt;date&gt;     </span></span>
-<span><span class="co">#&gt;  1 United Stat… US    USA    2021 2.33e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  2 China        CN    CHN    2021 1.77e13 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  3 Japan        JP    JPN    2021 4.94e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  4 Germany      DE    DEU    2021 4.26e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  5 India        IN    IND    2021 3.18e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  6 United King… GB    GBR    2021 3.13e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  7 France       FR    FRA    2021 2.96e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  8 Italy        IT    ITA    2021 2.11e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt;  9 Canada       CA    CAN    2021 1.99e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; 10 Korea, Rep.  KR    KOR    2021 1.81e12 NA     2022-12-22 </span></span>
-<span><span class="co">#&gt; # ℹ 186 more rows</span></span>
+<span><span class="co">#&gt;  1 United Stat… US    USA    2021 2.33e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  2 China        CN    CHN    2021 1.78e13 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  3 Japan        JP    JPN    2021 5.01e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  4 Germany      DE    DEU    2021 4.26e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  5 India        IN    IND    2021 3.15e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  6 United King… GB    GBR    2021 3.12e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  7 France       FR    FRA    2021 2.96e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  8 Italy        IT    ITA    2021 2.11e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt;  9 Canada       CA    CAN    2021 2.00e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt; 10 Russian Fed… RU    RUS    2021 1.84e12 NA     2023-07-25 </span></span>
+<span><span class="co">#&gt; # ℹ 192 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 6 more variables: region &lt;chr&gt;, capital &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, income &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   lending &lt;chr&gt;</span></span></code></pre></div>
 <p>これは、グラフではありませんが、これも一つの視覚化とも考えられないことはありません。</p>
 <p>上位７カ国は、United States, China, Japan, Germany, India, United Kingdom, France であることがわかりました。8番目は、Italy でここまでが、GDP が 2兆ドルを越している国となります。</p>
 </div>
-<div id="fig-3.-2021年時のgdp上位7カ国のgdp経年変化-1" class="section level5" number="22.1.2.7.4">
+<div id="fig-3.-2021年時のgdp上位7カ国のgdp経年変化" class="section level5" number="22.1.2.7.4">
 <h5>
-<span class="header-section-number">22.1.2.7.4</span> Fig 3. 2021年時のGDP上位7カ国のGDP経年変化<a class="anchor" aria-label="anchor" href="#fig-3.-2021%E5%B9%B4%E6%99%82%E3%81%AEgdp%E4%B8%8A%E4%BD%8D7%E3%82%AB%E5%9B%BD%E3%81%AEgdp%E7%B5%8C%E5%B9%B4%E5%A4%89%E5%8C%96-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.1.2.7.4</span> Fig 3. 2021年時のGDP上位7カ国のGDP経年変化<a class="anchor" aria-label="anchor" href="#fig-3.-2021%E5%B9%B4%E6%99%82%E3%81%AEgdp%E4%B8%8A%E4%BD%8D7%E3%82%AB%E5%9B%BD%E3%81%AEgdp%E7%B5%8C%E5%B9%B4%E5%A4%89%E5%8C%96"><i class="fas fa-link"></i></a>
 </h5>
 <div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">iso2c</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"US"</span>, <span class="st">"CN"</span>, <span class="st">"JP"</span>, <span class="st">"DE"</span>, <span class="st">"IN"</span>, <span class="st">"GB"</span>, <span class="st">"FR"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>

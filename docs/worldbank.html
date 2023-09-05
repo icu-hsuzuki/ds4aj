@@ -143,7 +143,7 @@
 <span>    extra<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, <span class="va">income</span> <span class="op">!=</span><span class="st">"Aggregates"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>#&gt; Rows: 16492 Columns: 13
+<pre><code>#&gt; Rows: 16758 Columns: 13
 #&gt; ── Column specification ────────────────────────────────────
 #&gt; Delimiter: ","
 #&gt; chr  (7): country, iso2c, iso3c, region, capital, income...
@@ -153,20 +153,20 @@
 #&gt; 
 #&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
 #&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-#&gt; # A tibble: 196 × 13
+#&gt; # A tibble: 184 × 13
 #&gt;    country      iso2c iso3c  year     gdp status lastupdated
 #&gt;    &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;  &lt;date&gt;     
-#&gt;  1 United Stat… US    USA    2021 2.33e13 NA     2022-12-22 
-#&gt;  2 China        CN    CHN    2021 1.77e13 NA     2022-12-22 
-#&gt;  3 Japan        JP    JPN    2021 4.94e12 NA     2022-12-22 
-#&gt;  4 Germany      DE    DEU    2021 4.26e12 NA     2022-12-22 
-#&gt;  5 India        IN    IND    2021 3.18e12 NA     2022-12-22 
-#&gt;  6 United King… GB    GBR    2021 3.13e12 NA     2022-12-22 
-#&gt;  7 France       FR    FRA    2021 2.96e12 NA     2022-12-22 
-#&gt;  8 Italy        IT    ITA    2021 2.11e12 NA     2022-12-22 
-#&gt;  9 Canada       CA    CAN    2021 1.99e12 NA     2022-12-22 
-#&gt; 10 Korea, Rep.  KR    KOR    2021 1.81e12 NA     2022-12-22 
-#&gt; # ℹ 186 more rows
+#&gt;  1 United Stat… US    USA    2022 2.55e13 NA     2023-07-25 
+#&gt;  2 China        CN    CHN    2022 1.80e13 NA     2023-07-25 
+#&gt;  3 Japan        JP    JPN    2022 4.23e12 NA     2023-07-25 
+#&gt;  4 Germany      DE    DEU    2022 4.07e12 NA     2023-07-25 
+#&gt;  5 India        IN    IND    2022 3.39e12 NA     2023-07-25 
+#&gt;  6 United King… GB    GBR    2022 3.07e12 NA     2023-07-25 
+#&gt;  7 France       FR    FRA    2022 2.78e12 NA     2023-07-25 
+#&gt;  8 Russian Fed… RU    RUS    2022 2.24e12 NA     2023-07-25 
+#&gt;  9 Canada       CA    CAN    2022 2.14e12 NA     2023-07-25 
+#&gt; 10 Italy        IT    ITA    2022 2.01e12 NA     2023-07-25 
+#&gt; # ℹ 174 more rows
 #&gt; # ℹ 6 more variables: region &lt;chr&gt;, capital &lt;chr&gt;,
 #&gt; #   longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, income &lt;chr&gt;,
 #&gt; #   lending &lt;chr&gt;</code></pre>

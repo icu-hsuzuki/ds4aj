@@ -15,7 +15,7 @@
 下の図は [R for Data Science](https://r4ds.hadley.nz) に掲載されている図です。よく、表現されていると思います。詳細は、少しずつ説明します。
 
 <!-- ![R4DS掲載の画像](https://r4ds.hadley.nz/diagrams/data-science/base.png){width="593"} -->
-  
+
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("./data/base.png")
 ```
@@ -36,13 +36,13 @@ knitr::include_graphics("./data/base.png")
 
 NY.GDP.MKTP.CD は、データコードと言われるもので、世界開発指標（WDI）には、一つづつ決まっています。
 
-[World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）からテーマを選択し、下にスクロールすると、Code をみることができます。ちなみに、ここで利用する NY.GDP.MKTP.CD: GDP (current US\$) は、テーマの Economy（経済）の、一番上にあります。
+[World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）からテーマを選択し、下にスクロールすると、Code をみることができます。ちなみに、ここで利用する NY.GDP.MKTP.CD: GDP (current US\$) は、テーマ Economy（経済）の、一番上にあります。
 
 経済用語の英語はよく知らないという方は、ブラウザー（Edge, Google Chrome, Safari など）の翻訳機能を使うのも良いでしょう。ただ、そのページの対話型の機能（interactive function）を利用するときは、翻訳機能をOFF にする必要がある場合もありますので、注意してください。
 
 エラーメッセージを調べるときなどに、英語のほうが情報がたくさん得られますから、言語を、英語に変更しておきます。
 
-R には、WDI のデータを取得する R のツール（パッケージ）`WDI` がありますから、それを使います。また、データを取り扱うための基本的なツール（パッケージ）`tidyverse` を使いますので、次のコードで、これらを読み込みます。\\#\\\> 以下は、コードを実行すると、表示される情報（出力）です。以下同様です。
+R には、WDI のデータを取得する R のツール（パッケージ）`WDI` がありますから、それを使います。また、データを取り扱うための基本的なツール（パッケージ）`tidyverse` を使いますので、次のコードで、これらを読み込みます。`#` 以下はコメント（簡単な説明を書きました） `#>` 以下は、コードを実行すると、表示される情報（出力）です。以下同様です。
 
 ```{r}
 Sys.setenv(LANG = "en") # 言語を英語に
@@ -64,6 +64,10 @@ dir.create("./data")
 df_gdp <- WDI(country = "all", 
               indicator = c(gdp = "NY.GDP.MKTP.CD"), 
               extra = TRUE)
+```
+
+```{r include=FALSE, eval=FALSE}
+write_csv(df_gdp, "./data/df_wdi_gdp.csv")
 ```
 
 ```{r include=FALSE}
@@ -133,11 +137,11 @@ df_gdp |> filter(country == "Japan")
 df_gdp |> filter(country == "Japan") |> head(2)
 ```
 
-２行目の、gdp の、4.940878e+12 は、Scientific notation と言われるもので、 $$4.940878 \times 10^{12} = 4,940,887,800,000$$ を意味します。`e+3` は千（thousand）、`e+6` は百万（million）、`e+9` は、10億（billion）、`e+12` は、兆（trillion）ですから、日本の、2021 年の GDP は、約5兆ドルとなります。
+２行目の、gdp の、4.940878e+12 （この文書では、幅の都合で、`4.9e+12` と表示されているかもしれません）は、Scientific notation と言われるもので、 $$4.940878 \times 10^{12} = 4,940,887,800,000$$ を意味します。`e+3` は千（thousand）、`e+6` は百万（million）、`e+9` は、10億（billion）、`e+12` は、兆（trillion）ですから、日本の、2021 年の GDP は、約5兆ドルとなります。
 
 ### 視覚化 data visualization
 
-#### Fig 1. 日本のGDP の経年変化を折線グラフ（line graph）
+#### Fig 1. 日本のGDP の経年変化を表す折線グラフ（line graph）
 
 ```{r}
 df_gdp |> filter(country == "Japan") |>
@@ -149,7 +153,7 @@ df_gdp |> filter(country == "Japan") |>
   ggplot(aes(x = year, y = gdp)) + geom_line()
 ```
 
-日本を選択したときに、それに名前をつけておいて、それを使うこともできますが、名前がどんどん増えるので、それに続けて、コードを書いていく方法をとっています。
+日本を選択したときに、それに名前をつけた新しいオブジェクトを作り、それを使うこともできますが、名前がどんどん増えるので、パイプを使って、コードを続けて書いていく方法をとっています。
 
 `ggplot(aes(x = year, y = gdp)) + geom_line()`
 
@@ -157,19 +161,21 @@ df_gdp |> filter(country == "Japan") |>
 
 Warning: [38;5;238mRemoved 1 row containing missing values
 
-と表示されています。値がない年があることを言っています。2022年のデータがないことがわかっていますから、最初から削除してこくことも可能です。
+などと表示される場合がありますが、それは、値がない（missing または 値が NA, not available）年があることを言っています。データがない年を最初から削除してこくことも可能です。
 
 ### データの理解 Understand data
 
-視覚化によって見えてくることがいくつもありますね。どんなことがわかりますか。気づいたこと（observation）をあげてみましょう。
+上の折線グラフを使った、視覚化によって見えてくることがいくつもありますね。どんなことがわかりますか。気づいたこと（observation）をあげてみましょう。
 
-コードを描くことではなく、この部分が、データサイエンスの核の部分です。気づいたことを列挙してみましょう。
+コードを描くことではなく、この部分が、データサイエンスの核の部分です。気づいたこと、疑問点を列挙してみましょう。
+
+急激に増加しているとき、増加減少が繰り返している時、全体としては、1995年ごろからはあまり、増加していないように見えることなどがわかりますね。それぞれのピークや、下落は、なにがあったのかも気になりませんか。これは、世界的な傾向なのでしょうか。日本だけでしょうか。他にも似た傾向の国があるのでしょうか。将来はどうなっていくのでしょうか。などなど。
 
 ### さまざまな視覚化
 
 #### Fig 2. 各年ごとのデータの数
 
-`summary(df_gdp)` で、データ自体は、1960年から2022年までのようですが、日本も、2022年のデータはありませんでしたから、年によって、どの程度データがあるか、調べてみます。
+`summary(df_gdp)` で、データ自体は、1960年から2022年までのようですが、年によって、どの程度データがあるか、調べてみます。
 
 ```{r}
 df_gdp |> drop_na(gdp) |> ggplot(aes(x = year)) + geom_bar()
@@ -179,14 +185,14 @@ df_gdp |> drop_na(gdp) |> ggplot(aes(x = year)) + geom_bar()
 df_gdp |> drop_na(gdp) |> ggplot(aes(x = year)) + geom_bar()
 ```
 
-バー・グラフを使いますが、`gdp` の値が、欠損値（NA: not available）のデータを削除してから、グラフを描きます。
+棒グラフ（bar graph）を使います。`gdp` の値が、欠損値（NA: not available）のデータを削除してから、グラフを描きます。
 
-#### 2021年のGDPの降順での表示（１）
+#### 2022年のGDPの降順での表示（１）
 
-最新の2021年のデータはすべてあるわけではなさそうですが、`gdp` の値が大きい順に並べてみましょう。
+最新の2022年のデータはすべてあるわけではなさそうですが、`gdp` の値が大きい順に並べてみましょう。
 
 ```{r}
-df_gdp |> filter(year == 2021) |> drop_na(gdp) |> arrange(desc(gdp))
+df_gdp |> filter(year == 2022) |> drop_na(gdp) |> arrange(desc(gdp))
 ```
 
 #### 2021年のGDPの降順での表示（２）
@@ -194,15 +200,15 @@ df_gdp |> filter(year == 2021) |> drop_na(gdp) |> arrange(desc(gdp))
 最初に、World と表示され、グループや、カテゴリーのデータもあるようですから、それを、まず、削除することが必要です。`region` の列を見ると、World などは、Aggregates となっているので、そのようなものを削除すればよさそうです。数値の大きい順に並べたいので、`desc` 降順（descending order）にします。
 
 ```{r}
-df_gdp |> filter(year == 2021, region != "Aggregates") |> 
+df_gdp |> filter(year == 2022, region != "Aggregates") |> 
   drop_na(gdp) |> arrange(desc(gdp))
 ```
 
-これは、グラフではありませんが、これも一つの視覚化とも考えられないことはありません。
+これは、グラフではありませんが、これも一つの可視化と考えられないことはありません。
 
-上位７カ国は、United States, China, Japan, Germany, India, United Kingdom, France であることがわかりました。8番目は、Italy でここまでが、GDP が 2兆ドルを越している国となります。
+上位７カ国は、United States, China, Japan, Germany, India, United Kingdom, France であることがわかりました。このあと、Russian Federation, Canada, Italy と続き、でここまでが、2022年のGDP が 2兆ドルを越している国となります。
 
-#### Fig 3. 2021年時のGDP上位7カ国のGDP経年変化
+#### Fig 3. 2022年時のGDP上位7カ国のGDP経年変化
 
 ```{r}
 df_gdp |> filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) |>
