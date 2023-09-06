@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 6 オープンデータ | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="6.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。...">
+<meta name="description" content="6.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その指標の一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際を見ました。...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 6 オープンデータ | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/publicdata-site.html">
-<meta property="og:description" content="6.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。...">
+<meta property="og:description" content="6.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その指標の一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際を見ました。...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 6 オープンデータ | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="6.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。...">
+<meta name="twitter:description" content="6.1 概要 すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その指標の一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際を見ました。...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -73,7 +73,7 @@
 <li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
 <li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
 <li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
-<li class="book-part">PART I オープンデータ</li>
+<li class="book-part">第一部 オープンデータ</li>
 <li><a class="active" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
 <li><a class="" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
 <li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
@@ -123,20 +123,20 @@
 <h2>
 <span class="header-section-number">6.1</span> 概要<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E8%A6%81-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。</p>
+<p>すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その指標の一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際を見ました。</p>
 <p>第一部では、世界銀行や、経済協力開発機構（OECD）、国際連合（United Nations）などの、国際機関のオープンデータや、日本のデータとして、政府機関統計（e-Stat）の紹介をします。</p>
-<p>さらに、実際に、それぞれのサイトのオープンデータを、対話型（Interactive）の、ダッシュボード（dashboard）呼ばれている機能の使い方を紹介しながら、データ自身を見ていきます。</p>
-<p>さらに、実際のデータの取得（ダウンロード）にも触れ、それぞれの期間が提供する API（アプリケーションプログラムインターフェース）の活用についても、簡単に触れていきます。</p>
-<p>第二部で、R を使ったデータサイエンスについて学びますが、その例においても、いくつかのデータを用いる機会がありますので、その準備としての位置付けです。詳細は、第三部で説明します。</p>
+<p>さらに、実際に、それぞれのサイトのオープンデータを、ダッシュボード（dashboard）呼ばれる対話型（Interactive）の機能の使い方を紹介しながら、データを見ていきます。</p>
+<p>また、実際のデータの取得（ダウンロード）にも触れ、それぞれの期間が提供する API（アプリケーションプログラムインターフェース）の活用についても、簡単に触れていきます。</p>
+<p>第二部で、R を使ったデータサイエンスについて学びますが、その例においても、いくつかのオープンデータを用いる機会がありますので、第一部は、その準備としての位置付けです。オープンデータの分析のより詳しい説明は、第三部で行います。</p>
 <p>R を使ったデータサイエンスを、早く学びたい方は、この第一部をスキップして、第二部から読んでくださって構いません。しかし、みなさんの中には、R を使うところまでできるかは自信がないけれど、実際のオープンデータを見て、データサイエンスではどのようなことを考えるのかを体験してみたいという方もおられると思い、第一部を書いています。</p>
-<p>同時に、実際に、オープンデータを活用して、ある課題について調べるときには、基本的なオープンデータについての知識は有用です。どこに、そのようなデータがあるかを見つけることがたいせつであるとともに、データサイエンスはなんと言っても、理論ではなく、実証的なものですから、実際のデータに触れながら、学んでいくのがたいせつだと考えているからです。</p>
-<p>こんなふうに、データがたくさん、公開されているのか、と、そんな感触を持っていただければと思います。</p>
+<p>また、実際に、オープンデータを活用して、ある課題について調べるときには、基本的なオープンデータについての知識は有用です。どこに、そのようなデータがあるかを見つけることがたいせつであるとともに、データサイエンスはなんと言っても、理論ではなく、実証的なものですから、実際のデータに触れながら、学んでいくのがたいせつだと考えているからです。</p>
+<p>第一部の学びを通して、こんなふうに、データがたくさん、公開されているのか、と、そんな感触を持っていただければと思います。</p>
 </div>
 <div id="さまざまな機関のオープンデータ" class="section level2" number="6.2">
 <h2>
 <span class="header-section-number">6.2</span> さまざまな機関のオープンデータ<a class="anchor" aria-label="anchor" href="#%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E6%A9%9F%E9%96%A2%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
 </h2>
-<p>すでに少しだけ紹介した世界銀行以外にも、それぞれの機関がデータを提供しています。どれも、少しずつ使いやすくなってきています。少しずつ、いくつかのデータベースに、アクセスして、できれば、API の利用の仕方も、習得して、データを調べることに少しずつ慣れていっていただければと思います。</p>
+<p>すでに少しだけ紹介した世界銀行以外にも、多くの機関がデータを提供しています。いずれも、使いやすくなってきています。少しずつ、いくつかのデータベースに、アクセスして、できれば、API の利用の仕方も、習得して、データを調べることに少しずつ慣れていっていただければと思います。</p>
 <p>下のリストは、私が個人的に、何度か使ったことのある、データベースです。「データサイエンスをはじめましょう」でも、少しずつ消化していきます。他にも、たくさんのデータベースがありますので、ぜひ、調べてみてください。</p>
 <ul>
 <li>国際連合　<a href="https://data.un.org">UNdata</a>
@@ -147,20 +147,24 @@
 <li>データで見る私たちの世界　<a href="https://ourworldindata.org">Our World in Data</a>
 </li>
 </ul>
-<p>なども、同様の、ダッシュボードを備えており、データの提供もしている。</p>
-<p>
-</p>
-<p>日本では、</p>
+<div id="日本のデータ" class="section level3" number="6.2.1">
+<h3>
+<span class="header-section-number">6.2.1</span> 日本のデータ<a class="anchor" aria-label="anchor" href="#%E6%97%A5%E6%9C%AC%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
+</h3>
+<p>日本では、それぞれの政府機関でデータを膨大なデータを公開していますが、次のサイトで、それらをまとめて公開しています。</p>
 <ul>
 <li>
 <a href="https://www.e-stat.go.jp/">e-Stat</a>：政府統計の総合窓口 - 統計で見る日本</li>
 <li>
 <a href="https://dashboard.e-stat.go.jp">ダッシュボード</a>：対話型形式でのデータの視覚化</li>
 </ul>
-<div id="持続的開発目標sdgs-データ" class="section level3" number="6.2.1">
+</div>
+<div id="持続的開発目標sdgs-データ" class="section level3" number="6.2.2">
 <h3>
-<span class="header-section-number">6.2.1</span> 持続的開発目標（SDGs） データ<a class="anchor" aria-label="anchor" href="#%E6%8C%81%E7%B6%9A%E7%9A%84%E9%96%8B%E7%99%BA%E7%9B%AE%E6%A8%99sdgs-%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.2.2</span> 持続的開発目標（SDGs） データ<a class="anchor" aria-label="anchor" href="#%E6%8C%81%E7%B6%9A%E7%9A%84%E9%96%8B%E7%99%BA%E7%9B%AE%E6%A8%99sdgs-%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
 </h3>
+<p>持続的開発目標（Sustainable Development Goals （SDGs））は、皆さんもご存知かと思います。2015年に国際連合で定められ、2030年までの達成目標が掲げられています。様々なサイトがありますから、ご存知かと思いますが、SGDs は、17の分野に分かれており、それぞれにさらに細かい分類があり、その一つ一つに、数値目標が掲げられています。数値目標だけに、依存することは、十分ではないかもしれませんが、少なくとも、その数値目標の達成を検証するために、データが公開されています。</p>
+<p>自分が興味をもっている課題に絞って、各サイトでどのようなデータが提供されているかをみていくのもよいと思います。</p>
 <ul>
 <li>世界銀行：<a href="https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)" class="uri">https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)</a>
 </li>
@@ -204,6 +208,7 @@
 <span class="header-section-number">6.3.1</span> オープンデータの未来<a class="anchor" aria-label="anchor" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%9C%AA%E6%9D%A5"><i class="fas fa-link"></i></a>
 </h3>
 <p>みなさんは、どのように考えますか。まだ、発展途上で、特に、パブリックデータについては、国によって、考え方も一定ではないように見受けられますが、これから、どのような世界を目指していくのか、データサイエンスは、どのような目的のために必要なのか。みなさんは、なんのために勉強しているのか、上の一つ一つの項目をもとに、周囲のみなさん、友人などと、ディスカッションをしながら、考えていただければと思います。</p>
+<p>いずれもたいせつな項目だと思いますが、項目3の市民参加は、公開されているデータをわたしたち市民が利用して初めて可能になることです。項目4の、社会的・環境的課題の解決には、私たち市民も責任をもって、取り組むべきだということが基盤にあるのだと思います。みなさんは、どう考えられますか。</p>
 </div>
 </div>
 <div id="ダッシュボード" class="section level2" number="6.4">
@@ -237,6 +242,7 @@
 <li><p>Microsoft Power BI (<a href="https://powerbi.microsoft.com/" class="uri">https://powerbi.microsoft.com/</a>)</p></li>
 </ol>
 <p>これらのサイトでは、ダッシュボード作成ツールやサービスを利用して、カスタムのダッシュボードを作成することができます。それぞれのサイトには、詳細な情報やデモが提供されている場合もありますので、ぜひご覧ください。</p>
+<p>上で、ダッシュボードのサイトとあるのは、これらのサイトのツールを使って、ダッシュボードを作ることができるというものです。少し、ダッシュボードの利用に慣れてきたら、挑戦してみてはいかがでしょうか。</p>
 </div>
 <div id="api-を利用したパッケージ" class="section level2" number="6.5">
 <h2>
@@ -261,7 +267,10 @@
 <li><a class="nav-link" href="#publicdata-site"><span class="header-section-number">6</span> オープンデータ</a></li>
 <li><a class="nav-link" href="#%E6%A6%82%E8%A6%81-1"><span class="header-section-number">6.1</span> 概要</a></li>
 <li>
-<a class="nav-link" href="#%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E6%A9%9F%E9%96%A2%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">6.2</span> さまざまな機関のオープンデータ</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E6%8C%81%E7%B6%9A%E7%9A%84%E9%96%8B%E7%99%BA%E7%9B%AE%E6%A8%99sdgs-%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">6.2.1</span> 持続的開発目標（SDGs） データ</a></li></ul>
+<a class="nav-link" href="#%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E6%A9%9F%E9%96%A2%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">6.2</span> さまざまな機関のオープンデータ</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E6%97%A5%E6%9C%AC%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">6.2.1</span> 日本のデータ</a></li>
+<li><a class="nav-link" href="#%E6%8C%81%E7%B6%9A%E7%9A%84%E9%96%8B%E7%99%BA%E7%9B%AE%E6%A8%99sdgs-%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">6.2.2</span> 持続的開発目標（SDGs） データ</a></li>
+</ul>
 </li>
 <li>
 <a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">6.3</span> オープンデータについて</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%9C%AA%E6%9D%A5"><span class="header-section-number">6.3.1</span> オープンデータの未来</a></li></ul>

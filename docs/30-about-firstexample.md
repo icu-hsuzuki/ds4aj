@@ -849,12 +849,12 @@ head(map_gdp)
 #> 5 -70.06612 12.54697     1     5  Aruba      <NA>    AW
 #> 6 -70.05088 12.59707     1     6  Aruba      <NA>    AW
 #>          gdp      income
-#> 1 3126019399 High income
-#> 2 3126019399 High income
-#> 3 3126019399 High income
-#> 4 3126019399 High income
-#> 5 3126019399 High income
-#> 6 3126019399 High income
+#> 1 3126019385 High income
+#> 2 3126019385 High income
+#> 3 3126019385 High income
+#> 4 3126019385 High income
+#> 5 3126019385 High income
+#> 6 3126019385 High income
 ```
 
 ##### Fig 12. Income Level による色分け地図
