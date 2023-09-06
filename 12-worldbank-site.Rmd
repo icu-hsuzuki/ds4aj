@@ -201,9 +201,7 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 
 10位までの国は、United States, China, Japan, Germany, India, United Kingdom, France, Russian Federation, Canada, Italy となっているかと思います。
 
-<iframe frameBorder="no" src="https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425">
-
-</iframe>
+[リンク](<iframe frameBorder="no" src="https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425">  </iframe>)
 
 #### 例2
 
@@ -214,9 +212,7 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 3.  上の、Styles を選択し、Chat Type & Style で、Line（折れ線グラフ）を選択すると、しばらくして、10カ国の、折れ線グラフを表示させることができます。色も変更することも可能です。
 4.  Chat Type & Style で Horizontal Bar を選択し、Layout で、
 
-<iframe frameBorder="no" src="https://databank.worldbank.org/embed/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425">
-
-</iframe>
+[リンク](<iframe frameBorder="no" src="https://databank.worldbank.org/embed/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425">  </iframe>)
 
 以下では、変数（Variables）の選び方と、グラフ（Chart）について簡単に説明します。
 
@@ -238,81 +234,61 @@ Database の左の三角印を選択すると、データベース名が確認�
 
 実質GDP（2015年を基準にしたもの）を、総人口で割った値。アメリカ合衆国、英国、ドイツ、フランス、日本、中国、日本、ロシア、ウクライナの2021年における比較棒グラフ - [リンク](https://data.worldbank.org/indicator/NY.GDP.PCAP.KD?locations=JP-GB-RU-FR-CN-US-UA-DE&start=2021&end=2021&view=bar)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
-
-</iframe>
+[リンク](<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>)
 
 年次変化を示す折線グラフ -
 
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1960&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
-
-</iframe>
+[リンク](<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1960&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>)
 
 #### Central government debt, total (% of GDP)
 
 2020年の政府の負債（GDP の百分率）- [リンク](https://data.worldbank.org/indicator/GC.DOD.TOTL.GD.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE&start=2020&end=2020&view=bar)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2020&amp;indicators=GC.DOD.TOTL.GD.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2020&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+[リンク](<iframe src="https://data.worldbank.org/share/widget?end=2020&amp;indicators=GC.DOD.TOTL.GD.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2020&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>)
 
-</iframe>
+政府の負債（GDP の百分率）の年次変化を示す折線グラフ
 
-政府の負債（GDP の百分率）の年次変化を示す折線グラフ <iframe src="https://data.worldbank.org/share/widget?indicators=GC.DOD.TOTL.GD.ZS&locations=JP-GB-RU-FR-CN-US-UA-DE" width='450' height='300' frameBorder='0' scrolling="no" ></iframe>
+[リンク](<iframe src="https://data.worldbank.org/share/widget?indicators=GC.DOD.TOTL.GD.ZS&locations=JP-GB-RU-FR-CN-US-UA-DE" width='450' height='300' frameBorder='0' scrolling="no" ></iframe>)
 
 #### CO2 emissions (metric tons per capita)
 
 CO2 排出量 (1 人あたりのメートル トン) - [リンク](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC?locations=JP-GB-RU-FR-CN-US-UA-DE&start=2019&end=2019&view=bar)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2019&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
-
-</iframe>
+[リンク](<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2019&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>)
 
 CO2 排出量 (1 人あたりのメートル トン) の年次変化の折線グラフ
 
-<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1990&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
-
-</iframe>
+[リンク](<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1990&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>)
 
 #### Military expenditure (% of GDP)
 
 2021年の軍事費 (GDP の %) - [リンク](https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS?locations=JP-GB-RU-FR-CN-UA&start=2021&end=2021&view=bar)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
-
-</iframe>
+[リンク](<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>)
 
 軍事費 (GDP の %) の年次変化
 
-<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
-
-</iframe>
+[リンク](<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>)
 
 #### Military expenditure (current USD)
 
 2021年の軍事費 (現在の米ドル)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
-
-</iframe>
+[リンク](<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>)
 
 軍事費の年次変化
 
-<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
-
-</iframe>
+[リンク](<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>)
 
 #### Proportion of seats held by women in natinal parliaments (%)
 
 2021年、国会で女性が占める議席の割合 (%) - [リンク](https://data.worldbank.org/indicator/SG.GEN.PARL.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE&start=2021&end=2021&view=bar)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
-
-</iframe>
+[リンク](<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>)
 
 国会で女性が占める議席の割合 (%) の年次変化
 
-<iframe src="https://data.worldbank.org/share/widget?indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE" width="450" height="300" frameBorder="0" scrolling="no">
-
-</iframe>
+[リンク](<iframe src="https://data.worldbank.org/share/widget?indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>)
 
 ### 世界のさまざまな課題から見る
 
@@ -348,6 +324,108 @@ Programmatic Access to Data and Statistics from the World Bank API
 
 -   使い方の例（Vignette）：<https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html>
 
-## Google Analytics
+## Google Public Data Explorer
+
+> Google の パブリックデータ探索（Public Data Explorer）サイトの紹介とともに、世界開発指標をこれを使って見てみたいと思います。
+
+Google で Public Data を検索すると、おそらく、次のサイトが見つかると思います。
+
+<https://www.google.com/publicdata/directory?hl=ja&dl=ja#!>
+
+これは、日本語サイトで、2023年9月現在では、データの提供元の数が7となっています。また、
+
+右上に、言語とありますから、それで English (United States) を選択すると下のリンクに飛びます。ここには、45と書かれています。
 
 <https://www.google.co.jp/publicdata/directory?hl=en_US&dl=en_US#!>
+
+英語版で使うことをお勧めしますが、例として、上で見た世界開発指標を見てみたいと思いますが、それは、日本語にもありますから、まずは、日本語で見てみましょう。日本語だけをみていて、あまり、データがないなとは思わないでください。
+
+日本語に戻る前に、英語版には、上に例が出ていると思います。自動的にスライドしますが、一番最初は、世界開発指標で、私が確認したときは、Living Longer with Fewer Children（子供の数が少ないと長生き）という表題になっています。このグラフをクリックしてください。
+
+### 例1 WDI: Living Longer with Fewer Children
+
+グラフをクリックすると、[このようなページ](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&nselm=s&met_x=sp_dyn_le00_in&scale_x=lin&ind_x=false&met_y=sp_dyn_tfrt_in&scale_y=lin&ind_y=false&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:region&ifdim=country&hl=en_US&dl=en_US&iconSize=0.5&uniSize=0.035) が表示されると思います。
+
+左の帯には、Public Data、World Development Indicators と書かれ、いろいろな項目が並んでいます。また、よく見ると、以下のように書かれています。
+
+X軸：Life Expectancy（生まれた時点の平均寿命）
+
+Y軸：Fertility Rate（出生率）
+
+色：Region（地域）
+
+サイズ：Population（人口）
+
+下：矢印と2017の数
+
+と出ているかと思います。何が書いてあるか確認してください。違っていても構いません。
+
+これで大体理解できたと思いますが、これが、WDI のデータを元にして、2017年時点での、平均寿命と、出生率の散布図で、丸の大きさで、人口を表し、色で地域を表しています。
+
+下の矢印を押すと、1960から始まって、どのように変化したかを見ることができます。Gapminder のところで、書いた、バブルチャートと言われるもので、ハンス・ロスリングが Google に管理を依頼したと言われています。
+
+左には、Compare by という項目があります。それを開くと、Region、Lending Type、Income Level とあります。Region に Color と書いてあると思いますが、Income Level の右の プルダウンメニューを推し、一番下にある、Color by This を選択すると、右上の、凡例（Legend）と言われるものが、Income Level に変わると思います。動かしてみるとわかりますが、右下に、High Income がまとまっていると思います。日本は、見つけられますか。
+
+Counrtry List のところの、日本にチェックを入れると、Japan と表示されますから、すぐ見つけられます。マウス（ポインター）を丸に近づけると国をみることもできます。High Income でも、Fertility Rate が 2に近い国もあることがわかります。どんな国がそうなっていますか。
+
+この辺りでやめておきます。
+
+右上には、折れ線グラフと、棒グラフと、地球のマークと、散布図のマークがあります。現在は、散布図が使われています。その右には、ギアマークと、リンクのようなマークがあります。
+
+ギアマークで、X軸や、Y軸を対数にしたり、リンクから、このグラフのリンクを取得することもできます。リンクは二種類ありますが、上が、[通常のリンク](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_x=sp_dyn_le00_in&scale_x=lin&ind_x=false&met_y=sp_dyn_tfrt_in&scale_y=lin&ind_y=false&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:income_level&idim=country:JPN&ifdim=country&tunit=Y&pit=1504623600000&hl=en_US&dl=en_US&ind=false&icfg&iconSize=0.5)、下は、[iframe リンク](<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=sp_dyn_le00_in&amp;scale_x=lin&amp;ind_x=false&amp;met_y=sp_dyn_tfrt_in&amp;scale_y=lin&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:income_level&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1504623600000&amp;hl=en_US&amp;dl=en_US&amp;ind=false&amp;icfg&amp;iconSize=0.5"></iframe>)と言われるものです。このように、使います。
+
+### 例2 GDP per Cap vs CO2 per Cap in Log-Log
+
+今度は、日本語でも、英語でも良いですが、一人当たりの GDP を X 軸に、一人当たりの、CO2 排出量を Y 軸にとり、対数にして、表示してみましょう。
+
+X軸：**1 人あたり GDP（実質値: 2010 年基準、米ドル表示） - 対数**
+
+Y軸：**1 人あたりの CO2 排出量 - 対数**
+
+サイズ：人口
+
+色：地域
+
+[通常のリンク](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:region&met_y=en_atm_co2e_pc&scale_y=log&ind_y=false&met_x=ny_gdp_pcap_kd&scale_x=log&ind_x=false&idim=country:JPN&ifdim=country&tunit=Y&pit=1409929200000&ind=false&icfg&iconSize=0.5)
+
+[iframe リンク](<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:region&amp;met_y=en_atm_co2e_pc&amp;scale_y=log&amp;ind_y=false&amp;met_x=ny_gdp_pcap_kd&amp;scale_x=log&amp;ind_x=false&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1409929200000&amp;hl=ja&amp;dl=ja&amp;ind=false&amp;icfg&amp;iconSize=0.5"</iframe>)
+
+### まとめ
+
+例から始めましたので、二つの WDI の指標を使い、さらに、人口や、地域など、他の指標も、一つのグラフに含めたものを見てきました。最初にすごいものから始めてしまいましたが、大雑把には、次のようなものになっています。
+
+-   折れ線グラフ（line graph）：一つの指標の時系列での変化。
+
+    -   いくつかの国や地域などについての値を用いて、色で区別して表示することも可能です。
+
+-   棒グラフ（bar graph）：一つの指標をいくつかの項目（国や、地域など）を表示
+
+    -   特定の年の、特定の指標の値を、いくつかの国や地域について表示
+
+-   色付き世界地図（choropleth map）：カテゴリーごとに、色を変えて、地図上に表示
+
+    -   個人の収入の多寡などのグループ（income level）ごとに色を変えて、地図上に表示することなどが可能です。
+
+-   散布図（scatter plot）：二つの指標の関係性を表示
+
+    -   さらに、点などの大きさにも他の指標の情報を加えたり、色などで、カテゴリーごとの情報を加えることも可能です。
+
+最後に一番最初に挙げた、Living Longer with Fewer Children で何種類の情報が表示されているか見てみましょう。同時に、数値か、カテゴリー（グループ）かも書いておきます。
+
+1.  Life Expectancy（生まれた時点の平均寿命）：数値 - X 軸
+
+2.  Fertility Rate（出生率）：数値 - Y 軸
+
+3.  Country（国）：カテゴリー：点
+
+4.  Population （人口）：数値：点の大きさ
+
+5.  Region（地域）：カテゴリー：点の色
+
+6.  Year（年）：（離散的：とびとびの）数値：一枚ごとのスライド
+
+ほかにはありますか。普通は二つの指標しか表せないように思いますが、ここでは、7つの情報が入っていますね。
+
+いろいろと調べてみませんか。
+
+なかなか素晴らしいですね。ただ、2014年にプロジェクトがスタートしてから、2017年、2020年と更新されていますが、更新の頻度はあまり高くないように見えます。例としては、十分機能していると思いますが。

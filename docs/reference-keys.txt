@@ -114,7 +114,10 @@ proportion-of-seats-held-by-women-in-natinal-parliaments
 api
 wdi
 wbstats
-google-analytics
+google-public-data-explorer
+例1-wdi-living-longer-with-fewer-children
+例2-gdp-per-cap-vs-co2-per-cap-in-log-log
+まとめ-2
 oecd-site
 概要-3
 データベース-1
