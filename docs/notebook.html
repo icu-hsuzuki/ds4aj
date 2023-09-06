@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 5 データサイエンス ノートブック | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="データサイエンスの記録について書きます。 また、そのために、必要なツールについても、少しだけ説明します。 R で、自分でコードを書き、R Markdown や、Quarto に記録し、データサイエンスを進めていくことがお勧めです。しかし、第一部では、まず、データを見ることに慣れるために、それぞれのサイトが提供する、ダッシュボードを使ってデータを見ていくことを、紹介します。...">
+<meta name="description" content="データサイエンスの記録について書きます。 また、そのために、必要なツールについても、少しだけ説明します。 この「データサイエンスをはじめましょう」では、R で、自分でコードを書き、R Markdown や、Quarto...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 5 データサイエンス ノートブック | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/notebook.html">
-<meta property="og:description" content="データサイエンスの記録について書きます。 また、そのために、必要なツールについても、少しだけ説明します。 R で、自分でコードを書き、R Markdown や、Quarto に記録し、データサイエンスを進めていくことがお勧めです。しかし、第一部では、まず、データを見ることに慣れるために、それぞれのサイトが提供する、ダッシュボードを使ってデータを見ていくことを、紹介します。...">
+<meta property="og:description" content="データサイエンスの記録について書きます。 また、そのために、必要なツールについても、少しだけ説明します。 この「データサイエンスをはじめましょう」では、R で、自分でコードを書き、R Markdown や、Quarto...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 5 データサイエンス ノートブック | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="データサイエンスの記録について書きます。 また、そのために、必要なツールについても、少しだけ説明します。 R で、自分でコードを書き、R Markdown や、Quarto に記録し、データサイエンスを進めていくことがお勧めです。しかし、第一部では、まず、データを見ることに慣れるために、それぞれのサイトが提供する、ダッシュボードを使ってデータを見ていくことを、紹介します。...">
+<meta name="twitter:description" content="データサイエンスの記録について書きます。 また、そのために、必要なツールについても、少しだけ説明します。 この「データサイエンスをはじめましょう」では、R で、自分でコードを書き、R Markdown や、Quarto...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -120,58 +120,84 @@
 <span class="header-section-number">5</span> データサイエンス ノートブック<a class="anchor" aria-label="anchor" href="#notebook"><i class="fas fa-link"></i></a>
 </h1>
 <p>データサイエンスの記録について書きます。 また、そのために、必要なツールについても、少しだけ説明します。</p>
-<p>R で、自分でコードを書き、R Markdown や、Quarto に記録し、データサイエンスを進めていくことがお勧めです。しかし、第一部では、まず、データを見ることに慣れるために、それぞれのサイトが提供する、ダッシュボードを使ってデータを見ていくことを、紹介します。</p>
+<p>この「データサイエンスをはじめましょう」では、R で、自分でコードを書き、R Markdown や、Quarto に記録し、データサイエンスを進めていくことを目指しています。しかし、第一部では、まず、データを見ることに慣れるために、それぞれのサイトが提供する、ダッシュボードを使ってデータを見ていくことを、紹介します。</p>
 <p>そのときにも、ノートを作成し、記録をとっていくことは、とても大切です。その説明を少しだけ書きます。</p>
-<div id="再現性" class="section level2" number="5.1">
+<div id="再現性のために記録すべきこと" class="section level2" number="5.1">
 <h2>
-<span class="header-section-number">5.1</span> 再現性<a class="anchor" aria-label="anchor" href="#%E5%86%8D%E7%8F%BE%E6%80%A7"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1</span> 再現性のために記録すべきこと<a class="anchor" aria-label="anchor" href="#%E5%86%8D%E7%8F%BE%E6%80%A7%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB%E8%A8%98%E9%8C%B2%E3%81%99%E3%81%B9%E3%81%8D%E3%81%93%E3%81%A8"><i class="fas fa-link"></i></a>
 </h2>
-<p>根拠を明確にする（evidence based）ことが、データサイエンスにおいて、重要であることは、すでに、書きました。これから、データを見て行きますが、そのときに、記録をしておくことをお勧めします。それが、今後のためにも有用ですし、その習慣をつけることが大切だからです。いくつか、記録すべきことを書いておきます。</p>
+<p>根拠を明確にする（evidence based）ことが、データサイエンスにおいて、必須であることは、すでに、書きました。これから、データを見て行きますが、そのときに、基本的な情報を、記録をしておくことをお勧めします。それが、今後のためにも有用ですし、その習慣をつけることが大切だからです。いくつか、記録すべき項目を書いておきます。</p>
 <ol style="list-style-type: decimal">
+<li><p>日付：そのデータを調べた日付を書いておきます。サイトの内容が変更になる場合もあります。</p></li>
 <li><p>データ名：もし、そのデータを特定するデータコードがあれば、それも記録しておきましょう。</p></li>
-<li><p>データリンク：インターネット上のアドレスです。ブラウザー（Google Chrome、Edge, Safari などのホームページ閲覧ソフト）の上の窓に、URL（Universal Resource Locator）が表示されますから、それを記録しておきましょう。データ自体の URL を取得できる場合もありますが、そのデータが置かれている、ページ（Website）の　URL だけが、取得でき、ダウンロードボタンでダウンロードできるようになっているケースもあります。その場合、右クリックや、Ctrl+Click で、URL が取得できる場合もありますが、できない場合もあります。</p></li>
-<li><p>ダッシュボードを設定したパラメター：ていねいに、記録するのは、大変ですが、再現性には、必要です。場合によっては、そのリンクが提供され、そのリンクを使って、同じものが再現できる場合もあります。あるいは、埋め込み（embed）するための iframe link というものが提供されている場合もあります。もし、それがあれば、記録しておいてください。実際には、HTML 文書に埋め込んでも、そのままでは表示できない場合もありますが、設定値が含まれていますので、少し慣れれば、再現することも可能です。</p></li>
-<li><p>コメント：そのデータからわかったこと、疑問点、さらに知りたいことなど。少しでも書いてあると、あとで、とても便利です。このようなものが、データサイエンスの核だとも思いますから、ぜひ、記録しておいてください。</p></li>
+<li>
+<p>データリンク：インターネット上のアドレスです。ブラウザー（Google Chrome、Edge, Safari などのホームページ閲覧ソフト）の上の窓に、URL（Universal Resource Locator）が表示されますから、それを記録しておきましょう。データ自体の URL を取得できる場合もありますが、そのデータが置かれている、ページ（Website）の　URL だけが、取得でき、ダウンロードボタンでダウンロードする形式になっている場合もあります。その場合、右クリックや、Ctrl+Click で、データの、URL が取得できる場合もありますが、できない場合もあります。</p>
+<ul>
+<li>データをダウンロードした時は、そのファイル名と、ダウンロードした日付も忘れずにかいておくことをお勧めします。</li>
+</ul>
+</li>
+<li><p>メタデータ：また説明しますが、データには、データについてのデータ（これをメタデータと言います）が付いていることが多いです。最初からすべて記録する必要はありません。上の、データリンクがあれば、必要な時に、戻ることができますから。しかし、データの定義や、変数の定義、データの収集方法などによっては、自分が求めているものではなかったり、データ自体がオリジナルデータではない場合もあります。最初から、詳細を記録する必要はありませんが、注意をはらうことを習慣にしておくことは大切です。</p></li>
+<li><p>ダッシュボードを設定したパラメター（何を意味するかは少しずつ説明して行きます）：ていねいに、記録するのは、大変ですが、再現には、パラメター情報は、必要です。場合によっては、そのリンクが提供され、そのリンクを使って、同じものが再現できる場合もあります。あるいは、埋め込み（embed）するための iframe link というものが提供されている場合もあります。もし、それがあれば、記録しておいてください。実際には、HTML 文書に埋め込んでも、そのままでは表示できない場合もありますが、設定値が含まれていますので、少し慣れれば、再現することも可能です。</p></li>
+<li><p>コメント：そのデータからわかったこと、疑問点、さらに知りたいことなど。少しでも書いてあると、あとで、とても便利です。このようなものが、データサイエンスの核でもありますから、ぜひ、記録しておいてください。</p></li>
 </ol>
 </div>
 <div id="技術的なこと" class="section level2" number="5.2">
 <h2>
 <span class="header-section-number">5.2</span> 技術的なこと<a class="anchor" aria-label="anchor" href="#%E6%8A%80%E8%A1%93%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8"><i class="fas fa-link"></i></a>
 </h2>
-<div id="ブラウザーの言語と翻訳機能" class="section level3" number="5.2.1">
+<div id="ブラウザーの言語と様々な翻訳機能" class="section level3" number="5.2.1">
 <h3>
-<span class="header-section-number">5.2.1</span> ブラウザーの言語と翻訳機能<a class="anchor" aria-label="anchor" href="#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%83%BC%E3%81%AE%E8%A8%80%E8%AA%9E%E3%81%A8%E7%BF%BB%E8%A8%B3%E6%A9%9F%E8%83%BD"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2.1</span> ブラウザーの言語と様々な翻訳機能<a class="anchor" aria-label="anchor" href="#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%83%BC%E3%81%AE%E8%A8%80%E8%AA%9E%E3%81%A8%E6%A7%98%E3%80%85%E3%81%AA%E7%BF%BB%E8%A8%B3%E6%A9%9F%E8%83%BD"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
-<li><p>ブラウザーの言語：実は、コンピュータのシステム言語が関係しますが、ほとんどの場合、ブラウザーの言語を変更できるようになっています。Windows でも、Mac でも、Google Chrome が使えますから、Google Chrome で説明すると、Google Account を管理から、設定できます。たとえば、Google Public Data Explorer と検索してみてください。すると、日本語の場合には、ほとんど出てきませんが、英語だと膨大なデータがあります。このサイトの場合には、右上に言語とでますから、それを英語に変更すると、たくさんのデータを見ることができます。検索エンジンの言語によって、表示されるものが、大きく変化しますから、わたしは、Google のアカウントを複数使って、それぞれで、違う言語設定にしています。言語を変更できるようになると、検索の世界がとても広がります。</p></li>
-<li><p>ブラウザーの翻訳機能：最近のブラウザーには、翻訳機能がついています、簡単に切り替えられるようにもできますので、その機能も調べておいてください。必要に応じて、翻訳機能の ON/OFF をするととても便利です。</p></li>
+<li>
+<p>ブラウザーの言語：実は、コンピュータのシステム言語が関係しますが、ほとんどの場合、システムの言語は変更せずに、ブラウザーの言語を変更できるようになっています。</p>
+<ul>
+<li><p>Windows でも、Mac でも、Google Chrome が使えますから、Google Chrome で説明すると、「Google Account を管理」から、設定できます。</p></li>
+<li><p>Google Public Data Explorer と検索してみてください。すると、日本語の場合には、ほとんど出てきませんが、英語だと膨大なデータがあります。このサイトの場合には、右上に言語とでますから、言語を英語に変更すると、たくさんのデータを見ることができます。検索エンジンの言語によって、表示されるものが、大きく変化しますから、わたしは、Google のアカウントを複数使って、それぞれで、違う言語設定にしています。言語を変更できるようになると、検索の世界がとても広がります。</p></li>
+</ul>
+</li>
+<li><p>ブラウザーの翻訳機能：最近のブラウザーには、翻訳機能が付属しており、簡単に切り替えることができます。しかし、ブラウザーによって、設定方法が異なりますので、調べて、いつでも使えるようにしておいてください。必要に応じて、翻訳機能の ON/OFF ができるととても便利です。</p></li>
+<li><p><a href="https://www.deepl.com/ja/translator">DeepL</a> などのアプリの翻訳機能：最近は、ブラウザーの翻訳機能の質も向上しているので、不要かもしれませんが、わたしは、DeepL も併用しています。サイト上でも、翻訳ができますし、アプリをダウンロードして、設定を確認すると、翻訳したい箇所を選択すれば、すぐ翻訳してくれるショートカット機能があります。</p></li>
+<li><p>ChatGPT など AI の翻訳機能：最近は、LLM（Large Language Model）の発達で、様々な AI による、翻訳の質も非常に向上しています。ここでは、ChatGPT と書きましたが、他にも様々な AI で、翻訳が可能です。長い文章は、字数を指定して要約をしてもらうことも可能ですから、慣れると世界が広がって行きます。</p></li>
 </ol>
 </div>
 <div id="画像" class="section level3" number="5.2.2">
 <h3>
 <span class="header-section-number">5.2.2</span> 画像<a class="anchor" aria-label="anchor" href="#%E7%94%BB%E5%83%8F"><i class="fas fa-link"></i></a>
 </h3>
+<ol style="list-style-type: decimal">
+<li><p>グラフのダウンロード：グラフ（graph, chart とも言います）は、画像になっていますから、あとで、利用する場合は、リンクを取得して、そのリンクで同じものを開くことができる場合もありますが、ダウンロードして保存しておくほうが安全です。ダウンロード方法が書いてあったり、右クリックまたは、Ctrl+クリックで、ダウンロードできる場合が多いと思います。また、ダウンロードしたあとに、ノートに貼り付けておくことができれば、そのほうがあとで利用するときに便利です。取得したサイトの URL や、取得した日付も記録しておくことをお勧めします。</p></li>
+<li><p>画面収録（Screen Capture）：ダウンロードできない場合、その方法が見つからない場合は、画面収録も一つの方法です。Windows, Mac によって方法が異なりますから、あらかじめ調べておくと良いでしょう。</p></li>
+</ol>
 </div>
-<div id="html-要素" class="section level3" number="5.2.3">
+<div id="データファイル" class="section level3" number="5.2.3">
 <h3>
-<span class="header-section-number">5.2.3</span> HTML 要素<a class="anchor" aria-label="anchor" href="#html-%E8%A6%81%E7%B4%A0"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2.3</span> データファイル<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB"><i class="fas fa-link"></i></a>
 </h3>
+<p>データファイルは、CSV（comma separated values カンマで区切られたテキストデータ）などのテキストデータ、Excel ファイル、または、これらを、圧縮したり、いくつかのファイルをまとめて圧縮したりしてある場合があります。以下、少しだけ、注意点や、確認すべき点を書いておきます。</p>
+<ol style="list-style-type: decimal">
+<li><p>圧縮されている場合の解凍方法を確認しておくこと。Windows か Mac でも違いますから、解凍方法を確認しておいてください。</p></li>
+<li>
+<p>CSV が一般的ですが、他にも、区切り文字が、スペースだったり、TAB だったり、縦棒だったりと、様々な形式があります。R を使うようになれば、どの形式であっても、読み込めますし、変換することも可能ですが、二種類の問題が一般的です。</p>
 <ul>
-<li><p>リンク</p></li>
-<li><p>iframe リンク</p></li>
+<li><p>上に書いた区切り文字の違い</p></li>
+<li><p>Encoding の問題。こちらは、日本語などを含むファイルではよく起こる問題です。いわゆる文字化けが生じて中身が読めない場合があります。</p></li>
+<li><p>すべての対策を書くことはできませんが、区切り文字の違いは、Excel の機能でも、解決できます。Microsoft Office も高額なソフトですから、持っていないという場合は、機能限定ですが、Online 版は無料で使えますから、試してみてください。Google Spreadsheet でよみこいむことができる場合もあります。</p></li>
 </ul>
+</li>
+</ol>
 </div>
-<div id="データファイル" class="section level3" number="5.2.4">
-<h3>
-<span class="header-section-number">5.2.4</span> データファイル<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB"><i class="fas fa-link"></i></a>
-</h3>
-<ul>
-<li><p>文字化け</p></li>
-<li><p>形式</p></li>
-<li><p>圧縮ファイル</p></li>
-<li><p>Excel と Google Spread Sheet</p></li>
-</ul>
 </div>
+<div id="まとめ-1" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> まとめ<a class="anchor" aria-label="anchor" href="#%E3%81%BE%E3%81%A8%E3%82%81-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>本書で紹介する、R を使い始めれば、統一した方法で解決できる課題もありますが、記録を取るということは、基本的ですから、簡単に書きました。</p>
+<p>上のような記録を何に書くかということは書きませんでした。基本的には、記録を取ることが大切で、何に記録することはあまり、問題ではありません。しかし、リンクを貼り付けて、すぐ開くことができたり、画像を貼り付けたりが、できると便利でしょう。</p>
+<p>使い慣れたものを使ってください。できれば、どこでも使えるような Cloud 型のサービスがお勧めです。他の方におすすめを聞くのも良いかもしれません。</p>
+<p>次からは、実際に、オープンデータのサイトに行って、データを見ることを経験して行きたいと思います。</p>
+
 </div>
 </div>
 
@@ -184,15 +210,15 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#notebook"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
-<li><a class="nav-link" href="#%E5%86%8D%E7%8F%BE%E6%80%A7"><span class="header-section-number">5.1</span> 再現性</a></li>
+<li><a class="nav-link" href="#%E5%86%8D%E7%8F%BE%E6%80%A7%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB%E8%A8%98%E9%8C%B2%E3%81%99%E3%81%B9%E3%81%8D%E3%81%93%E3%81%A8"><span class="header-section-number">5.1</span> 再現性のために記録すべきこと</a></li>
 <li>
 <a class="nav-link" href="#%E6%8A%80%E8%A1%93%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8"><span class="header-section-number">5.2</span> 技術的なこと</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%83%BC%E3%81%AE%E8%A8%80%E8%AA%9E%E3%81%A8%E7%BF%BB%E8%A8%B3%E6%A9%9F%E8%83%BD"><span class="header-section-number">5.2.1</span> ブラウザーの言語と翻訳機能</a></li>
+<li><a class="nav-link" href="#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%83%BC%E3%81%AE%E8%A8%80%E8%AA%9E%E3%81%A8%E6%A7%98%E3%80%85%E3%81%AA%E7%BF%BB%E8%A8%B3%E6%A9%9F%E8%83%BD"><span class="header-section-number">5.2.1</span> ブラウザーの言語と様々な翻訳機能</a></li>
 <li><a class="nav-link" href="#%E7%94%BB%E5%83%8F"><span class="header-section-number">5.2.2</span> 画像</a></li>
-<li><a class="nav-link" href="#html-%E8%A6%81%E7%B4%A0"><span class="header-section-number">5.2.3</span> HTML 要素</a></li>
-<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB"><span class="header-section-number">5.2.4</span> データファイル</a></li>
+<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB"><span class="header-section-number">5.2.3</span> データファイル</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#%E3%81%BE%E3%81%A8%E3%82%81-1"><span class="header-section-number">5.3</span> まとめ</a></li>
 </ul>
 
       <div class="book-extra">
@@ -211,7 +237,7 @@
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-05.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
