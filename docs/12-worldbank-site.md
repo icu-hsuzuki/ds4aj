@@ -34,7 +34,7 @@ Country（国別）のサイトを選択すると、国のリストが出てき�
 
 J のところに、Japan（日本）がありますから、選択してみてください。日本のさまざまな指標とグラフが出てきます。
 
-Indicator（指標）、Most Recent Values（直近の値）、Trend（傾向）が表示されます。指標をクリックすると、大きなグラフが出てきます。その指標のサイトですから、そこで、その指標についての他の国の状況などを確認することができます。そこでは、選択した指標と似た指標が選択できたり、もっと詳しいことをしらべるデータバンク（Data Bank）へのリンクもあります。このサイトから、データをダウンロードすることもできるようになっています。
+Indicator（指標）、Most Recent Values（直近の値）、Trend（傾向）が表示されます。指標をクリックすると、大きなグラフが出てきます。その指標のサイトですから、そこで、その指標についての他の国の状況などを確認することができます。そこでは、選択した指標と似た指標が選択できたり、もっと詳しいことを調べるデータバンク（Data Bank）へのリンクもあります。このサイトから、データをダウンロードすることもできるようになっています。
 
 また、国別サイトの右の方には、地域など、グループに分けてある帯もあります。その一番下には、World （世界）もありますから、世界全体について見てみたり、収入の階級に分けたサイトの指標を見ることもできるようになっています。
 
@@ -85,7 +85,9 @@ GDP を調べるときには、NY.GDP.MKTP.CD という、コードを指定し�
 
 それぞれの、トピックに、関連のデータがリストされています。
 
-### World Bank: WDI - World Development Indicaters
+### 世界銀行（World Bank）
+
+このページの最初にも書きましたが、簡単にまとめておきましょう。
 
 -   世界銀行（World Bank）: <https://www.worldbank.org>
 -   [世界銀行について（Who we are）](https://www.worldbank.org/en/who-we-are):
@@ -98,11 +100,17 @@ GDP を調べるときには、NY.GDP.MKTP.CD という、コードを指定し�
 
 ### 世界開発指標（World Development Indicator）
 
+すでに紹介しましたが、簡単にまとめておきます。
+
 -   [World Development Indicators (WDI)](https://datatopics.worldbank.org/world-development-indicators/) : 世界銀行が開発に関する各国間比較可能なデータの集大成である1400の時系列指標（the World Bank's premier compilation of cross-country comparable data on development; 1400 time series indicators）
     -   テーマ別（Themes）: 貧困と格差、人間、環境、経済、国家と市場、グローバルリンク集（Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links）
     -   オープンデータとデータバンク（Open Data & DataBank）: Explore data, Query database
-    -   Bulk Download: Excel, CSV
-    -   API Documentation
+    -   すべてのデータおよびメタデータを Excel または CSV 形式で、一括してダウンロードすることもできるようになっています。Bulk Download:
+    -   コンピュータを使って読み込む場合のデータの仕様が書かれています。API（Application Program Interface）Documentation
+
+1400ものデータがありますから、すべてのデータやメタデータをダウンロードすれば、すぐ、データを調べることができるわけではありません。基本的なことをおく必要がありますね。上にもリンクのある、データカタログから、世界開発指標（World Development Indicators）を選択すると、次のサイトに[リンク](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)がついています。
+
+このページからは、Databank（ダッシュボード）へのリンクなどの他、Excel ファイルや、CSV ファイルで、メタデータを取得することもできるようになっています。WDI 全部のリストもここで見ることができます。このファイルから探すのが最適とは言えませんが、そのようなファイルを持っておくことは便利です。
 
 ## ダッシュボード（Dashboard）
 
@@ -193,7 +201,9 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 
 10位までの国は、United States, China, Japan, Germany, India, United Kingdom, France, Russian Federation, Canada, Italy となっているかと思います。
 
-<iframe frameBorder='no' src="https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&ds=n&dd=y&tb=y&sh=y&dw=y&pr=y&inf=y&zm=y&md=y&navigator=n&theme=darkGrey&bdrClr=rgb(68,68,68)&bdrStyle=solid&bdrWidth=0px&title=Arial;14px;true;false;rgb(68,68,68);justify&exptypes=Excel,CSV,TabbedTxt" width= "500"  height="425"></iframe>
+<iframe frameBorder="no" src="https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425">
+
+</iframe>
 
 #### 例2
 
@@ -204,7 +214,9 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 3.  上の、Styles を選択し、Chat Type & Style で、Line（折れ線グラフ）を選択すると、しばらくして、10カ国の、折れ線グラフを表示させることができます。色も変更することも可能です。
 4.  Chat Type & Style で Horizontal Bar を選択し、Layout で、
 
-<iframe frameBorder='no' src="https://databank.worldbank.org/embed/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74?ti=y&ds=n&dd=y&tb=y&sh=y&dw=y&pr=y&inf=y&zm=y&md=y&navigator=n&theme=darkGrey&bdrClr=rgb(68,68,68)&bdrStyle=solid&bdrWidth=0px&title=Arial;14px;true;false;rgb(68,68,68);justify&exptypes=Excel,CSV,TabbedTxt" width= "500"  height="425"></iframe>
+<iframe frameBorder="no" src="https://databank.worldbank.org/embed/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425">
+
+</iframe>
 
 以下では、変数（Variables）の選び方と、グラフ（Chart）について簡単に説明します。
 
@@ -330,8 +342,12 @@ Programmatic Access to Data and Statistics from the World Bank API
 
 -   R のパッケージサイト：[https://CRAN.R-project.org/package=wbstats](https://cran.r-project.org/package=wbstats)
 
--   資料（Materials）：	[README](https://cran.r-project.org/web/packages/wbstats/readme/README.html)
+-   資料（Materials）： [README](https://cran.r-project.org/web/packages/wbstats/readme/README.html)
 
 -   マニュアル（Manual）：<https://cran.r-project.org/web/packages/wbstats/wbstats.pdf>
 
 -   使い方の例（Vignette）：<https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html>
+
+## Google Analytics
+
+<https://www.google.co.jp/publicdata/directory?hl=en_US&dl=en_US#!>

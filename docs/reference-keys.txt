@@ -1,7 +1,4 @@
-fig:nice-fig
-tab:nice-tab
-eq:binom
-thm:tri
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
 introduction
 データサイエンスとは
 なぜデータサイエンスが最近注目されているのか
@@ -80,7 +77,6 @@ notebook
 画像
 データファイル
 まとめ-1
-publicdata-site
 概要-1
 さまざまな機関のオープンデータ
 日本のデータ
@@ -97,7 +93,7 @@ worldbank-site
 国別サイト-1
 指標別サイト-1
 オープンデータカタログopen-data-catalog
-world-bank-wdi---world-development-indicaters
+世界銀行world-bank
 世界開発指標world-development-indicator
 ダッシュボードdashboard
 world-bank-アカウント
@@ -118,6 +114,7 @@ proportion-of-seats-held-by-women-in-natinal-parliaments
 api
 wdi
 wbstats
+google-analytics
 oecd-site
 概要-3
 データベース-1
@@ -486,3 +483,8 @@ publishing
 pages
 metadata-for-sharing
 todo-list
+fig:nice-fig
+tab:nice-tab
+eq:binom
+thm:tri
+publicdata-site
