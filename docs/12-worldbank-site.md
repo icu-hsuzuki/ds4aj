@@ -201,7 +201,7 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 
 10位までの国は、United States, China, Japan, Germany, India, United Kingdom, France, Russian Federation, Canada, Italy となっているかと思います。
 
-<iframe frameBorder="no" src="https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425">  </iframe>
+<!-- <iframe frameBorder="no" src="https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425"></iframe> -->
 
 #### 例2
 
@@ -212,7 +212,7 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 3.  上の、Styles を選択し、Chat Type & Style で、Line（折れ線グラフ）を選択すると、しばらくして、10カ国の、折れ線グラフを表示させることができます。色も変更することも可能です。
 4.  Chat Type & Style で Horizontal Bar を選択し、Layout で、
 
-<iframe frameBorder="no" src="https://databank.worldbank.org/embed/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425"></iframe>
+<!-- <iframe frameBorder="no" src="https://databank.worldbank.org/embed/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425"></iframe> -->
 
 以下では、変数（Variables）の選び方と、グラフ（Chart）について簡単に説明します。
 
@@ -234,61 +234,85 @@ Database の左の三角印を選択すると、データベース名が確認�
 
 実質GDP（2015年を基準にしたもの）を、総人口で割った値。アメリカ合衆国、英国、ドイツ、フランス、日本、中国、日本、ロシア、ウクライナの2021年における比較棒グラフ - [リンク](https://data.worldbank.org/indicator/NY.GDP.PCAP.KD?locations=JP-GB-RU-FR-CN-US-UA-DE&start=2021&end=2021&view=bar)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>
+<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 年次変化を示す折線グラフ -
 
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1960&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>
+<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=NY.GDP.PCAP.KD&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1960&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 #### Central government debt, total (% of GDP)
 
 2020年の政府の負債（GDP の百分率）- [リンク](https://data.worldbank.org/indicator/GC.DOD.TOTL.GD.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE&start=2020&end=2020&view=bar)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2020&amp;indicators=GC.DOD.TOTL.GD.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2020&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>
+<iframe src="https://data.worldbank.org/share/widget?end=2020&amp;indicators=GC.DOD.TOTL.GD.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2020&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 政府の負債（GDP の百分率）の年次変化を示す折線グラフ
 
-<iframe src="https://data.worldbank.org/share/widget?indicators=GC.DOD.TOTL.GD.ZS&locations=JP-GB-RU-FR-CN-US-UA-DE" width='450' height='300' frameBorder='0' scrolling="no" ></iframe>
+<iframe src="https://data.worldbank.org/share/widget?indicators=GC.DOD.TOTL.GD.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 #### CO2 emissions (metric tons per capita)
 
 CO2 排出量 (1 人あたりのメートル トン) - [リンク](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC?locations=JP-GB-RU-FR-CN-US-UA-DE&start=2019&end=2019&view=bar)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2019&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>
+<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2019&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 CO2 排出量 (1 人あたりのメートル トン) の年次変化の折線グラフ
 
-<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1990&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>
+<iframe src="https://data.worldbank.org/share/widget?end=2019&amp;indicators=EN.ATM.CO2E.PC&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=1990&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 #### Military expenditure (% of GDP)
 
 2021年の軍事費 (GDP の %) - [リンク](https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS?locations=JP-GB-RU-FR-CN-UA&start=2021&end=2021&view=bar)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>
+<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 軍事費 (GDP の %) の年次変化
 
-<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>
+<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.GD.ZS&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 #### Military expenditure (current USD)
 
 2021年の軍事費 (現在の米ドル)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>
+<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-CN-UA&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 軍事費の年次変化
 
-<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>
+<iframe src="https://data.worldbank.org/share/widget?indicators=MS.MIL.XPND.CD&amp;locations=JP-GB-RU-FR-UA-KR-DE&amp;view=chart" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 #### Proportion of seats held by women in natinal parliaments (%)
 
 2021年、国会で女性が占める議席の割合 (%) - [リンク](https://data.worldbank.org/indicator/SG.GEN.PARL.ZS?locations=JP-GB-RU-FR-CN-US-UA-DE&start=2021&end=2021&view=bar)
 
-<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>
+<iframe src="https://data.worldbank.org/share/widget?end=2021&amp;indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE&amp;start=2021&amp;view=bar" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 国会で女性が占める議席の割合 (%) の年次変化
 
-<iframe src="https://data.worldbank.org/share/widget?indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE" width="450" height="300" frameBorder="0" scrolling="no">  </iframe>
+<iframe src="https://data.worldbank.org/share/widget?indicators=SG.GEN.PARL.ZS&amp;locations=JP-GB-RU-FR-CN-US-UA-DE" width="450" height="300" frameBorder="0" scrolling="no">
+
+</iframe>
 
 ### 世界のさまざまな課題から見る
 
@@ -372,9 +396,9 @@ Counrtry List のところの、日本にチェックを入れると、Japan と
 
 右上には、折れ線グラフと、棒グラフと、地球のマークと、散布図のマークがあります。現在は、散布図が使われています。その右には、ギアマークと、リンクのようなマークがあります。
 
-ギアマークで、X軸や、Y軸を対数にしたり、リンクから、このグラフのリンクを取得することもできます。リンクは二種類ありますが、上が、[通常のリンク](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_x=sp_dyn_le00_in&scale_x=lin&ind_x=false&met_y=sp_dyn_tfrt_in&scale_y=lin&ind_y=false&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:income_level&idim=country:JPN&ifdim=country&tunit=Y&pit=1504623600000&hl=en_US&dl=en_US&ind=false&icfg&iconSize=0.5)、下は、
+ギアマークで、X軸や、Y軸を対数にしたり、リンクから、このグラフのリンクを取得することもできます。リンクは二種類ありますが、上が、[通常のリンク](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_x=sp_dyn_le00_in&scale_x=lin&ind_x=false&met_y=sp_dyn_tfrt_in&scale_y=lin&ind_y=false&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:income_level&idim=country:JPN&ifdim=country&tunit=Y&pit=1504623600000&hl=en_US&dl=en_US&ind=false&icfg&iconSize=0.5)、下は、iframe リンクと言われるものです。
 
-[iframe リンク](<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=sp_dyn_le00_in&amp;scale_x=lin&amp;ind_x=false&amp;met_y=sp_dyn_tfrt_in&amp;scale_y=lin&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:income_level&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1504623600000&amp;hl=en_US&amp;dl=en_US&amp;ind=false&amp;icfg&amp;iconSize=0.5"></iframe>)と言われるものです。このように、使います。
+<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=sp_dyn_le00_in&amp;scale_x=lin&amp;ind_x=false&amp;met_y=sp_dyn_tfrt_in&amp;scale_y=lin&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:income_level&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1504623600000&amp;hl=en_US&amp;dl=en_US&amp;ind=false&amp;icfg&amp;iconSize=0.5"></iframe>
 
 ### 例2 GDP per Cap vs CO2 per Cap in Log-Log
 
@@ -388,10 +412,9 @@ Y軸：**1 人あたりの CO2 排出量 - 対数**
 
 色：地域
 
-[通常のリンク](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:region&met_y=en_atm_co2e_pc&scale_y=log&ind_y=false&met_x=ny_gdp_pcap_kd&scale_x=log&ind_x=false&idim=country:JPN&ifdim=country&tunit=Y&pit=1409929200000&ind=false&icfg&iconSize=0.5)
+[リンク](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:region&met_y=en_atm_co2e_pc&scale_y=log&ind_y=false&met_x=ny_gdp_pcap_kd&scale_x=log&ind_x=false&idim=country:JPN&ifdim=country&tunit=Y&pit=1409929200000&ind=false&icfg&iconSize=0.5)
 
-[iframe リンク](<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:region&amp;met_y=en_atm_co2e_pc&amp;scale_y=log&amp;ind_y=false&amp;met_x=ny_gdp_pcap_kd&amp;scale_x=log&amp;ind_x=false&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1409929200000&amp;hl=ja&amp;dl=ja&amp;ind=false&amp;icfg&amp;iconSize=0.5"</iframe>)
-
+<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=ny_gdp_pcap_kd&amp;scale_x=log&amp;ind_x=false&amp;met_y=en_atm_co2e_pc&amp;scale_y=log&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:region&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1410015600000&amp;hl=ja&amp;dl=ja&amp;ind=false&amp;icfg&amp;iconSize=0.5"></iframe>
 
 ### まとめ
 
