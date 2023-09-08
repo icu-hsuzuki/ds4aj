@@ -61,14 +61,14 @@ str(mpg)
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
 
 
 ```r
 ggplot(data = mpg) + geom_boxplot(mapping = aes(x = class, y = hwy))
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-4-1.png)<!-- -->
 
 1.  `data = mpg` でデータを指定します。
 
@@ -106,7 +106,7 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
 
 ### ラベル [Labels](https://ggplot2.tidyverse.org/reference/labs.html)
 
@@ -125,7 +125,7 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   labs(title = "Scatter Plot of Sepal Data of Iris", x = "Sepal Length", y = "Sepal Width")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
 
 
 ```r
@@ -134,7 +134,7 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   labs(title = "菖蒲の萼の長さと幅についての散布図", x = "萼の長さ", y = "萼の幅")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
 
 このように、日本語をタイトルや、ラベルに使うことも可能ですが、以後は、データに日本語が含まれていない場合には、そのまま表示します。
 
@@ -148,7 +148,7 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-8-1.png)<!-- -->
 
 ### 形状 [Shapes](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)
 
@@ -160,7 +160,7 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, shape = Species)) +
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
 
 色と、形、両方を同時に使うことも可能です。
 
@@ -170,7 +170,7 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, shap
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
 
 ## 箱ひげ図 [Boxplot](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)
 
@@ -190,7 +190,7 @@ ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-11-1.png)<!-- -->
 
 
 ```r
@@ -198,7 +198,7 @@ ggplot(data = iris, aes(y = Species, x = Sepal.Length)) +
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-12-1.png)<!-- -->
 
 color を指定すると、枠に色がつき、fill を指定すると、箱の中が塗り潰されます。
 
@@ -208,7 +208,7 @@ ggplot(data = iris, aes(x = Species, y = Sepal.Length, color = Species)) +
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-13-1.png)<!-- -->
 
 
 ```r
@@ -216,7 +216,7 @@ ggplot(data = iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
 
 ### ヒストグラム [Histogram](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
 
@@ -234,7 +234,7 @@ ggplot(data = iris, aes(x = Sepal.Length)) +
 #> `binwidth`.
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-15-1.png)<!-- -->
 
 枠（bins）を幾つに分けるか、または枠の幅を指定するようにとのメッセージが表示されます。
 
@@ -248,7 +248,7 @@ ggplot(data = iris, aes(x = Sepal.Length)) +
   geom_histogram(bins = 10)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-16-1.png)<!-- -->
 
 
 ```r
@@ -256,7 +256,7 @@ ggplot(data = iris, aes(x = Sepal.Length)) +
   geom_histogram(binwidth = 1)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-17-1.png)<!-- -->
 
 頻度多角形（geom_freqpoly()）を使うと以下のようになります。Species ごとに比べたり、色をつけたりもできます。
 
@@ -268,7 +268,7 @@ ggplot(data = iris, aes(x = Sepal.Length)) +
 #> `binwidth`.
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-18-1.png)<!-- -->
 
 
 ```r
@@ -276,7 +276,7 @@ ggplot(data = iris, aes(x = Sepal.Length, color = Species)) +
   geom_freqpoly(bins = 10)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-19-1.png)<!-- -->
 
 滑らかな曲線にするときは、density plot を使います。alpha は透明度で 0 から 1 の値で指定します。数が小さい方が薄くなります。color で線の色もあわせて設定することも可能です。いろいろと試してみてください。
 
@@ -286,7 +286,7 @@ ggplot(data = iris, aes(x = Sepal.Length, fill = Species)) +
   geom_density(alpha = 0.5)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-20-1.png)<!-- -->
 
 ### 線形モデル Data Modeling
 
@@ -299,7 +299,7 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-21-1.png)<!-- -->
 
 
 ```r
@@ -308,7 +308,7 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_smooth()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-22-1.png)<!-- -->
 
 ## 例　パッケージ Gapminder を使って
 
@@ -385,7 +385,7 @@ You will encounter similar failures. We list three of them.
 ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-26-1.png)<!-- -->
 
 There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, .... Can you tell how many years are in the data? The following command shows different years in the data.
 
@@ -403,7 +403,7 @@ You can guess it from the data summary above. Can you imagine how many countries
 ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_line()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-28-1.png)<!-- -->
 
 Now, you can guess the reason why you had this output. This is often called a saw-tooth.
 
@@ -414,7 +414,7 @@ ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_boxplot()
 #> ℹ did you forget `aes(group = ...)`?
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-29-1.png)<!-- -->
 
 Can you see what the problem is? The `year` is a numerical variable in integer.
 
@@ -431,7 +431,7 @@ The following looks better.
 ggplot(df_gm, aes(y = lifeExp, group = year)) + geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-31-1.png)<!-- -->
 
 ##### Box Plot
 
@@ -440,7 +440,7 @@ ggplot(df_gm, aes(y = lifeExp, group = year)) + geom_boxplot()
 ggplot(df_gm, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-32-1.png)<!-- -->
 
 You can use `fill` and `color` for the box plot. Try and check the difference.
 
@@ -451,7 +451,7 @@ df_gm %>% filter(year %in% c(1952, 1987, 2007)) %>%
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-33-1.png)<!-- -->
 
 The following are examples of line graphs. Please see the differences.
 
@@ -468,7 +468,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent)) +
   geom_line()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-35-1.png)<!-- -->
 
 
 ```r
@@ -476,7 +476,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent, linetyp
   geom_line()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-36-1.png)<!-- -->
 
 
 ```r
@@ -485,7 +485,7 @@ df_lifeExp %>% ggplot() +
   geom_line(aes(x = year, y = median_lifeExp, linetype = continent))
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-37-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-37-1.png)<!-- -->
 
 ### Original Data? WDI?
 

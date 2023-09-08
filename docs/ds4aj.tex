@@ -150,7 +150,7 @@
 \title{データサイエンスをはじめましょう\\
 - Data Science for All -}
 \author{鈴木寛（Hirosi Suzuki）}
-\date{2023-09-05}
+\date{2023-09-09}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2004,70 +2004,108 @@ WDI のテーマとほぼ一致しています。それぞれのテーマを選�
 
 データサイエンスの記録について書きます。 また、そのために、必要なツールについても、少しだけ説明します。
 
-R で、自分でコードを書き、R Markdown や、Quarto に記録し、データサイエンスを進めていくことがお勧めです。しかし、第一部では、まず、データを見ることに慣れるために、それぞれのサイトが提供する、ダッシュボードを使ってデータを見ていくことを、紹介します。
+この「データサイエンスをはじめましょう」では、R で、自分でコードを書き、R Markdown や、Quarto に記録し、データサイエンスを進めていくことを目指しています。しかし、第一部では、まず、データを見ることに慣れるために、それぞれのサイトが提供する、ダッシュボードを使ってデータを見ていくことを、紹介します。
 
 そのときにも、ノートを作成し、記録をとっていくことは、とても大切です。その説明を少しだけ書きます。
 
-\hypertarget{ux518dux73feux6027}{%
-\section{再現性}\label{ux518dux73feux6027}}
+\hypertarget{ux518dux73feux6027ux306eux305fux3081ux306bux8a18ux9332ux3059ux3079ux304dux3053ux3068}{%
+\section{再現性のために記録すべきこと}\label{ux518dux73feux6027ux306eux305fux3081ux306bux8a18ux9332ux3059ux3079ux304dux3053ux3068}}
 
-根拠を明確にする（evidence based）ことが、データサイエンスにおいて、重要であることは、すでに、書きました。これから、データを見て行きますが、そのときに、記録をしておくことをお勧めします。それが、今後のためにも有用ですし、その習慣をつけることが大切だからです。いくつか、記録すべきことを書いておきます。
+根拠を明確にする（evidence based）ことが、データサイエンスにおいて、必須であることは、すでに、書きました。これから、データを見て行きますが、そのときに、基本的な情報を、記録をしておくことをお勧めします。それが、今後のためにも有用ですし、その習慣をつけることが大切だからです。いくつか、記録すべき項目を書いておきます。
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
+  日付：そのデータを調べた日付を書いておきます。サイトの内容が変更になる場合もあります。
+\item
   データ名：もし、そのデータを特定するデータコードがあれば、それも記録しておきましょう。
 \item
-  データリンク：インターネット上のアドレスです。ブラウザー（Google Chrome、Edge, Safari などのホームページ閲覧ソフト）の上の窓に、URL（Universal Resource Locator）が表示されますから、それを記録しておきましょう。データ自体の URL を取得できる場合もありますが、そのデータが置かれている、ページ（Website）の　URL だけが、取得でき、ダウンロードボタンでダウンロードできるようになっているケースもあります。その場合、右クリックや、Ctrl+Click で、URL が取得できる場合もありますが、できない場合もあります。
+  データリンク：インターネット上のアドレスです。ブラウザー（Google Chrome、Edge, Safari などのホームページ閲覧ソフト）の上の窓に、URL（Universal Resource Locator）が表示されますから、それを記録しておきましょう。データ自体の URL を取得できる場合もありますが、そのデータが置かれている、ページ（Website）の　URL だけが、取得でき、ダウンロードボタンでダウンロードする形式になっている場合もあります。その場合、右クリックや、Ctrl+Click で、データの、URL が取得できる場合もありますが、できない場合もあります。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    データをダウンロードした時は、そのファイル名と、ダウンロードした日付も忘れずにかいておくことをお勧めします。
+  \end{itemize}
 \item
-  ダッシュボードを設定したパラメター：ていねいに、記録するのは、大変ですが、再現性には、必要です。場合によっては、そのリンクが提供され、そのリンクを使って、同じものが再現できる場合もあります。あるいは、埋め込み（embed）するための iframe link というものが提供されている場合もあります。もし、それがあれば、記録しておいてください。実際には、HTML 文書に埋め込んでも、そのままでは表示できない場合もありますが、設定値が含まれていますので、少し慣れれば、再現することも可能です。
+  メタデータ：また説明しますが、データには、データについてのデータ（これをメタデータと言います）が付いていることが多いです。最初からすべて記録する必要はありません。上の、データリンクがあれば、必要な時に、戻ることができますから。しかし、データの定義や、変数の定義、データの収集方法などによっては、自分が求めているものではなかったり、データ自体がオリジナルデータではない場合もあります。最初から、詳細を記録する必要はありませんが、注意をはらうことを習慣にしておくことは大切です。
 \item
-  コメント：そのデータからわかったこと、疑問点、さらに知りたいことなど。少しでも書いてあると、あとで、とても便利です。このようなものが、データサイエンスの核だとも思いますから、ぜひ、記録しておいてください。
+  ダッシュボードを設定したパラメター（何を意味するかは少しずつ説明して行きます）：ていねいに、記録するのは、大変ですが、再現には、パラメター情報は、必要です。場合によっては、そのリンクが提供され、そのリンクを使って、同じものが再現できる場合もあります。あるいは、埋め込み（embed）するための iframe link というものが提供されている場合もあります。もし、それがあれば、記録しておいてください。実際には、HTML 文書に埋め込んでも、そのままでは表示できない場合もありますが、設定値が含まれていますので、少し慣れれば、再現することも可能です。
+\item
+  コメント：そのデータからわかったこと、疑問点、さらに知りたいことなど。少しでも書いてあると、あとで、とても便利です。このようなものが、データサイエンスの核でもありますから、ぜひ、記録しておいてください。
 \end{enumerate}
 
 \hypertarget{ux6280ux8853ux7684ux306aux3053ux3068}{%
 \section{技術的なこと}\label{ux6280ux8853ux7684ux306aux3053ux3068}}
 
-\hypertarget{ux30d6ux30e9ux30a6ux30b6ux30fcux306eux8a00ux8a9eux3068ux7ffbux8a33ux6a5fux80fd}{%
-\subsection{ブラウザーの言語と翻訳機能}\label{ux30d6ux30e9ux30a6ux30b6ux30fcux306eux8a00ux8a9eux3068ux7ffbux8a33ux6a5fux80fd}}
+\hypertarget{ux30d6ux30e9ux30a6ux30b6ux30fcux306eux8a00ux8a9eux3068ux69d8ux3005ux306aux7ffbux8a33ux6a5fux80fd}{%
+\subsection{ブラウザーの言語と様々な翻訳機能}\label{ux30d6ux30e9ux30a6ux30b6ux30fcux306eux8a00ux8a9eux3068ux69d8ux3005ux306aux7ffbux8a33ux6a5fux80fd}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  ブラウザーの言語：実は、コンピュータのシステム言語が関係しますが、ほとんどの場合、ブラウザーの言語を変更できるようになっています。Windows でも、Mac でも、Google Chrome が使えますから、Google Chrome で説明すると、Google Account を管理から、設定できます。たとえば、Google Public Data Explorer と検索してみてください。すると、日本語の場合には、ほとんど出てきませんが、英語だと膨大なデータがあります。このサイトの場合には、右上に言語とでますから、それを英語に変更すると、たくさんのデータを見ることができます。検索エンジンの言語によって、表示されるものが、大きく変化しますから、わたしは、Google のアカウントを複数使って、それぞれで、違う言語設定にしています。言語を変更できるようになると、検索の世界がとても広がります。
+  ブラウザーの言語：実は、コンピュータのシステム言語が関係しますが、ほとんどの場合、システムの言語は変更せずに、ブラウザーの言語を変更できるようになっています。
+
+  \begin{itemize}
+  \item
+    Windows でも、Mac でも、Google Chrome が使えますから、Google Chrome で説明すると、「Google Account を管理」から、設定できます。
+  \item
+    Google Public Data Explorer と検索してみてください。すると、日本語の場合には、ほとんど出てきませんが、英語だと膨大なデータがあります。このサイトの場合には、右上に言語とでますから、言語を英語に変更すると、たくさんのデータを見ることができます。検索エンジンの言語によって、表示されるものが、大きく変化しますから、わたしは、Google のアカウントを複数使って、それぞれで、違う言語設定にしています。言語を変更できるようになると、検索の世界がとても広がります。
+  \end{itemize}
 \item
-  ブラウザーの翻訳機能：最近のブラウザーには、翻訳機能がついています、簡単に切り替えられるようにもできますので、その機能も調べておいてください。必要に応じて、翻訳機能の ON/OFF をするととても便利です。
+  ブラウザーの翻訳機能：最近のブラウザーには、翻訳機能が付属しており、簡単に切り替えることができます。しかし、ブラウザーによって、設定方法が異なりますので、調べて、いつでも使えるようにしておいてください。必要に応じて、翻訳機能の ON/OFF ができるととても便利です。
+\item
+  \href{https://www.deepl.com/ja/translator}{DeepL} などのアプリの翻訳機能：最近は、ブラウザーの翻訳機能の質も向上しているので、不要かもしれませんが、わたしは、DeepL も併用しています。サイト上でも、翻訳ができますし、アプリをダウンロードして、設定を確認すると、翻訳したい箇所を選択すれば、すぐ翻訳してくれるショートカット機能があります。
+\item
+  ChatGPT など AI の翻訳機能：最近は、LLM（Large Language Model）の発達で、様々な AI による、翻訳の質も非常に向上しています。ここでは、ChatGPT と書きましたが、他にも様々な AI で、翻訳が可能です。長い文章は、字数を指定して要約をしてもらうことも可能ですから、慣れると世界が広がって行きます。
 \end{enumerate}
 
 \hypertarget{ux753bux50cf}{%
 \subsection{画像}\label{ux753bux50cf}}
 
-\hypertarget{html-ux8981ux7d20}{%
-\subsection{HTML 要素}\label{html-ux8981ux7d20}}
-
-\begin{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \item
-  リンク
+  グラフのダウンロード：グラフ（graph, chart とも言います）は、画像になっていますから、あとで、利用する場合は、リンクを取得して、そのリンクで同じものを開くことができる場合もありますが、ダウンロードして保存しておくほうが安全です。ダウンロード方法が書いてあったり、右クリックまたは、Ctrl+クリックで、ダウンロードできる場合が多いと思います。また、ダウンロードしたあとに、ノートに貼り付けておくことができれば、そのほうがあとで利用するときに便利です。取得したサイトの URL や、取得した日付も記録しておくことをお勧めします。
 \item
-  iframe リンク
-\end{itemize}
+  画面収録（Screen Capture）：ダウンロードできない場合、その方法が見つからない場合は、画面収録も一つの方法です。Windows, Mac によって方法が異なりますから、あらかじめ調べておくと良いでしょう。
+\end{enumerate}
 
 \hypertarget{ux30c7ux30fcux30bfux30d5ux30a1ux30a4ux30eb}{%
 \subsection{データファイル}\label{ux30c7ux30fcux30bfux30d5ux30a1ux30a4ux30eb}}
 
-\begin{itemize}
-\item
-  文字化け
-\item
-  形式
-\item
-  圧縮ファイル
-\item
-  Excel と Google Spread Sheet
-\end{itemize}
+データファイルは、CSV（comma separated values カンマで区切られたテキストデータ）などのテキストデータ、Excel ファイル、または、これらを、圧縮したり、いくつかのファイルをまとめて圧縮したりしてある場合があります。以下、少しだけ、注意点や、確認すべき点を書いておきます。
 
-\hypertarget{part-part-i-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}{%
-\part{PART I オープンデータ}\label{part-part-i-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  圧縮されている場合の解凍方法を確認しておくこと。Windows か Mac でも違いますから、解凍方法を確認しておいてください。
+\item
+  CSV が一般的ですが、他にも、区切り文字が、スペースだったり、TAB だったり、縦棒だったりと、様々な形式があります。R を使うようになれば、どの形式であっても、読み込めますし、変換することも可能ですが、二種類の問題が一般的です。
+
+  \begin{itemize}
+  \item
+    上に書いた区切り文字の違い
+  \item
+    Encoding の問題。こちらは、日本語などを含むファイルではよく起こる問題です。いわゆる文字化けが生じて中身が読めない場合があります。
+  \item
+    すべての対策を書くことはできませんが、区切り文字の違いは、Excel の機能でも、解決できます。Microsoft Office も高額なソフトですから、持っていないという場合は、機能限定ですが、Online 版は無料で使えますから、試してみてください。Google Spreadsheet でよみこいむことができる場合もあります。
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{ux307eux3068ux3081-1}{%
+\section{まとめ}\label{ux307eux3068ux3081-1}}
+
+本書で紹介する、R を使い始めれば、統一した方法で解決できる課題もありますが、記録を取るということは、基本的ですから、簡単に書きました。
+
+上のような記録を何に書くかということは書きませんでした。基本的には、記録を取ることが大切で、何に記録することはあまり、問題ではありません。しかし、リンクを貼り付けて、すぐ開くことができたり、画像を貼り付けたりが、できると便利でしょう。
+
+使い慣れたものを使ってください。できれば、どこでも使えるような Cloud 型のサービスがお勧めです。他の方におすすめを聞くのも良いかもしれません。
+
+次からは、実際に、オープンデータのサイトに行って、データを見ることを経験して行きたいと思います。
+
+\hypertarget{part-ux7b2cux4e00ux90e8-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}{%
+\part{第一部 オープンデータ}\label{part-ux7b2cux4e00ux90e8-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}}
 
 \hypertarget{publicdata-site}{%
 \chapter{オープンデータ}\label{publicdata-site}}
@@ -2075,26 +2113,26 @@ R で、自分でコードを書き、R Markdown や、Quarto に記録し、デ
 \hypertarget{ux6982ux8981-1}{%
 \section{概要}\label{ux6982ux8981-1}}
 
-すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際について一つの例を見ました。
+すでに、オープンデータについて、説明をし、その例として、世界銀行の世界開発指標（World Development Indicators (WDI)）の説明をし、その指標の一つである、GDP（Gross Domestic Product 国内総生産）を例にとって、はじめてのデータサイエンスというタイトルで、データサイエンスの実際を見ました。
 
 第一部では、世界銀行や、経済協力開発機構（OECD）、国際連合（United Nations）などの、国際機関のオープンデータや、日本のデータとして、政府機関統計（e-Stat）の紹介をします。
 
-さらに、実際に、それぞれのサイトのオープンデータを、対話型（Interactive）の、ダッシュボード（dashboard）呼ばれている機能の使い方を紹介しながら、データ自身を見ていきます。
+さらに、実際に、それぞれのサイトのオープンデータを、ダッシュボード（dashboard）呼ばれる対話型（Interactive）の機能の使い方を紹介しながら、データを見ていきます。
 
-さらに、実際のデータの取得（ダウンロード）にも触れ、それぞれの期間が提供する API（アプリケーションプログラムインターフェース）の活用についても、簡単に触れていきます。
+また、実際のデータの取得（ダウンロード）にも触れ、それぞれの期間が提供する API（アプリケーションプログラムインターフェース）の活用についても、簡単に触れていきます。
 
-第二部で、R を使ったデータサイエンスについて学びますが、その例においても、いくつかのデータを用いる機会がありますので、その準備としての位置付けです。詳細は、第三部で説明します。
+第二部で、R を使ったデータサイエンスについて学びますが、その例においても、いくつかのオープンデータを用いる機会がありますので、第一部は、その準備としての位置付けです。オープンデータの分析のより詳しい説明は、第三部で行います。
 
 R を使ったデータサイエンスを、早く学びたい方は、この第一部をスキップして、第二部から読んでくださって構いません。しかし、みなさんの中には、R を使うところまでできるかは自信がないけれど、実際のオープンデータを見て、データサイエンスではどのようなことを考えるのかを体験してみたいという方もおられると思い、第一部を書いています。
 
-同時に、実際に、オープンデータを活用して、ある課題について調べるときには、基本的なオープンデータについての知識は有用です。どこに、そのようなデータがあるかを見つけることがたいせつであるとともに、データサイエンスはなんと言っても、理論ではなく、実証的なものですから、実際のデータに触れながら、学んでいくのがたいせつだと考えているからです。
+また、実際に、オープンデータを活用して、ある課題について調べるときには、基本的なオープンデータについての知識は有用です。どこに、そのようなデータがあるかを見つけることがたいせつであるとともに、データサイエンスはなんと言っても、理論ではなく、実証的なものですから、実際のデータに触れながら、学んでいくのがたいせつだと考えているからです。
 
-こんなふうに、データがたくさん、公開されているのか、と、そんな感触を持っていただければと思います。
+第一部の学びを通して、こんなふうに、データがたくさん、公開されているのか、と、そんな感触を持っていただければと思います。
 
 \hypertarget{ux3055ux307eux3056ux307eux306aux6a5fux95a2ux306eux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}{%
 \section{さまざまな機関のオープンデータ}\label{ux3055ux307eux3056ux307eux306aux6a5fux95a2ux306eux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}}
 
-すでに少しだけ紹介した世界銀行以外にも、それぞれの機関がデータを提供しています。どれも、少しずつ使いやすくなってきています。少しずつ、いくつかのデータベースに、アクセスして、できれば、API の利用の仕方も、習得して、データを調べることに少しずつ慣れていっていただければと思います。
+すでに少しだけ紹介した世界銀行以外にも、多くの機関がデータを提供しています。いずれも、使いやすくなってきています。少しずつ、いくつかのデータベースに、アクセスして、できれば、API の利用の仕方も、習得して、データを調べることに少しずつ慣れていっていただければと思います。
 
 下のリストは、私が個人的に、何度か使ったことのある、データベースです。「データサイエンスをはじめましょう」でも、少しずつ消化していきます。他にも、たくさんのデータベースがありますので、ぜひ、調べてみてください。
 
@@ -2112,9 +2150,10 @@ R を使ったデータサイエンスを、早く学びたい方は、この第
   データで見る私たちの世界　\href{https://ourworldindata.org}{Our World in Data}
 \end{itemize}
 
-なども、同様の、ダッシュボードを備えており、データの提供もしている。
+\hypertarget{ux65e5ux672cux306eux30c7ux30fcux30bf}{%
+\subsection{日本のデータ}\label{ux65e5ux672cux306eux30c7ux30fcux30bf}}
 
-日本では、
+日本では、それぞれの政府機関でデータを膨大なデータを公開していますが、次のサイトで、それらをまとめて公開しています。
 
 \begin{itemize}
 \tightlist
@@ -2126,6 +2165,10 @@ R を使ったデータサイエンスを、早く学びたい方は、この第
 
 \hypertarget{ux6301ux7d9aux7684ux958bux767aux76eeux6a19sdgs-ux30c7ux30fcux30bf}{%
 \subsection{持続的開発目標（SDGs） データ}\label{ux6301ux7d9aux7684ux958bux767aux76eeux6a19sdgs-ux30c7ux30fcux30bf}}
+
+持続的開発目標（Sustainable Development Goals （SDGs））は、皆さんもご存知かと思います。2015年に国際連合で定められ、2030年までの達成目標が掲げられています。様々なサイトがありますから、ご存知かと思いますが、SGDs は、17の分野に分かれており、それぞれにさらに細かい分類があり、その一つ一つに、数値目標が掲げられています。数値目標だけに、依存することは、十分ではないかもしれませんが、少なくとも、その数値目標の達成を検証するために、データが公開されています。
+
+自分が興味をもっている課題に絞って、各サイトでどのようなデータが提供されているかをみていくのもよいと思います。
 
 \begin{itemize}
 \tightlist
@@ -2191,6 +2234,8 @@ R を使ったデータサイエンスを、早く学びたい方は、この第
 
 みなさんは、どのように考えますか。まだ、発展途上で、特に、パブリックデータについては、国によって、考え方も一定ではないように見受けられますが、これから、どのような世界を目指していくのか、データサイエンスは、どのような目的のために必要なのか。みなさんは、なんのために勉強しているのか、上の一つ一つの項目をもとに、周囲のみなさん、友人などと、ディスカッションをしながら、考えていただければと思います。
 
+いずれもたいせつな項目だと思いますが、項目3の市民参加は、公開されているデータをわたしたち市民が利用して初めて可能になることです。項目4の、社会的・環境的課題の解決には、私たち市民も責任をもって、取り組むべきだということが基盤にあるのだと思います。みなさんは、どう考えられますか。
+
 \hypertarget{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9}{%
 \section{ダッシュボード}\label{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9}}
 
@@ -2248,6 +2293,8 @@ R を使ったデータサイエンスを、早く学びたい方は、この第
 
 これらのサイトでは、ダッシュボード作成ツールやサービスを利用して、カスタムのダッシュボードを作成することができます。それぞれのサイトには、詳細な情報やデモが提供されている場合もありますので、ぜひご覧ください。
 
+上で、ダッシュボードのサイトとあるのは、これらのサイトのツールを使って、ダッシュボードを作ることができるというものです。少し、ダッシュボードの利用に慣れてきたら、挑戦してみてはいかがでしょうか。
+
 \hypertarget{api-ux3092ux5229ux7528ux3057ux305fux30d1ux30c3ux30b1ux30fcux30b8}{%
 \section{API を利用したパッケージ}\label{api-ux3092ux5229ux7528ux3057ux305fux30d1ux30c3ux30b1ux30fcux30b8}}
 
@@ -2265,6 +2312,8 @@ R を使ったデータサイエンスを、早く学びたい方は、この第
 \item
   使い方の例（Vignette）：開発者のサイト（GitHub（バージョン管理システムの支援サイト）など）にある場合もありますが、最近は、公式パッケージサイトに、Vignette として使い方の例が掲載されている場合が増えてきています。すべて理解しようとせず、使い方の例からまずはみてみることが有効です
 \end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{worldbank-site}{%
 \chapter{世界銀行（World Bank）}\label{worldbank-site}}
@@ -2314,7 +2363,7 @@ Country（国別）のサイトを選択すると、国のリストが出てき�
 
 J のところに、Japan（日本）がありますから、選択してみてください。日本のさまざまな指標とグラフが出てきます。
 
-Indicator（指標）、Most Recent Values（直近の値）、Trend（傾向）が表示されます。指標をクリックすると、大きなグラフが出てきます。その指標のサイトですから、そこで、その指標についての他の国の状況などを確認することができます。そこでは、選択した指標と似た指標が選択できたり、もっと詳しいことをしらべるデータバンク（Data Bank）へのリンクもあります。このサイトから、データをダウンロードすることもできるようになっています。
+Indicator（指標）、Most Recent Values（直近の値）、Trend（傾向）が表示されます。指標をクリックすると、大きなグラフが出てきます。その指標のサイトですから、そこで、その指標についての他の国の状況などを確認することができます。そこでは、選択した指標と似た指標が選択できたり、もっと詳しいことを調べるデータバンク（Data Bank）へのリンクもあります。このサイトから、データをダウンロードすることもできるようになっています。
 
 また、国別サイトの右の方には、地域など、グループに分けてある帯もあります。その一番下には、World （世界）もありますから、世界全体について見てみたり、収入の階級に分けたサイトの指標を見ることもできるようになっています。
 
@@ -2392,8 +2441,10 @@ The Data Catalog is designed to make World Bank's development data easy to find,
 
 それぞれの、トピックに、関連のデータがリストされています。
 
-\hypertarget{world-bank-wdi---world-development-indicaters}{%
-\subsection{World Bank: WDI - World Development Indicaters}\label{world-bank-wdi---world-development-indicaters}}
+\hypertarget{ux4e16ux754cux9280ux884cworld-bank}{%
+\subsection{世界銀行（World Bank）}\label{ux4e16ux754cux9280ux884cworld-bank}}
+
+このページの最初にも書きましたが、簡単にまとめておきましょう。
 
 \begin{itemize}
 \tightlist
@@ -2424,6 +2475,8 @@ The Data Catalog is designed to make World Bank's development data easy to find,
 \hypertarget{ux4e16ux754cux958bux767aux6307ux6a19world-development-indicator}{%
 \subsection{世界開発指標（World Development Indicator）}\label{ux4e16ux754cux958bux767aux6307ux6a19world-development-indicator}}
 
+すでに紹介しましたが、簡単にまとめておきます。
+
 \begin{itemize}
 \tightlist
 \item
@@ -2436,11 +2489,15 @@ The Data Catalog is designed to make World Bank's development data easy to find,
   \item
     オープンデータとデータバンク（Open Data \& DataBank）: Explore data, Query database
   \item
-    Bulk Download: Excel, CSV
+    すべてのデータおよびメタデータを Excel または CSV 形式で、一括してダウンロードすることもできるようになっています。Bulk Download:
   \item
-    API Documentation
+    コンピュータを使って読み込む場合のデータの仕様が書かれています。API（Application Program Interface）Documentation
   \end{itemize}
 \end{itemize}
+
+1400ものデータがありますから、すべてのデータやメタデータをダウンロードすれば、すぐ、データを調べることができるわけではありません。基本的なことをおく必要がありますね。上にもリンクのある、データカタログから、世界開発指標（World Development Indicators）を選択すると、次のサイトに\href{https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators}{リンク}がついています。
+
+このページからは、Databank（ダッシュボード）へのリンクなどの他、Excel ファイルや、CSV ファイルで、メタデータを取得することもできるようになっています。WDI 全部のリストもここで見ることができます。このファイルから探すのが最適とは言えませんが、そのようなファイルを持っておくことは便利です。
 
 \hypertarget{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9dashboard}{%
 \section{ダッシュボード（Dashboard）}\label{ux30c0ux30c3ux30b7ux30e5ux30dcux30fcux30c9dashboard}}
@@ -2557,6 +2614,8 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 
 10位までの国は、United States, China, Japan, Germany, India, United Kingdom, France, Russian Federation, Canada, Italy となっているかと思います。
 
+\href{https://databank.worldbank.org/data/embed/GDP-top-10-in-2022/id/c7fdca3c}{リンク}
+
 \hypertarget{ux4f8b2}{%
 \subsubsection{例2}\label{ux4f8b2}}
 
@@ -2574,6 +2633,8 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 \item
   Chat Type \& Style で Horizontal Bar を選択し、Layout で、
 \end{enumerate}
+
+\href{https://databank.worldbank.org/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74}{リンク}
 
 以下では、変数（Variables）の選び方と、グラフ（Chart）について簡単に説明します。
 
@@ -2677,6 +2738,139 @@ Programmatic Access to Data and Statistics from the World Bank API
 \item
   使い方の例（Vignette）：\url{https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html}
 \end{itemize}
+
+\hypertarget{google-public-data-explorer}{%
+\section{Google Public Data Explorer}\label{google-public-data-explorer}}
+
+\begin{quote}
+Google の パブリックデータ探索（Public Data Explorer）サイトの紹介とともに、世界開発指標をこれを使って見てみたいと思います。
+\end{quote}
+
+Google で Public Data を検索すると、おそらく、次のサイトが見つかると思います。
+
+\url{https://www.google.com/publicdata/directory?hl=ja\&dl=ja\#!}
+
+これは、日本語サイトで、2023年9月現在では、データの提供元の数が7となっています。また、
+
+右上に、言語とありますから、それで English (United States) を選択すると下のリンクに飛びます。ここには、45と書かれています。
+
+\url{https://www.google.co.jp/publicdata/directory?hl=en_US\&dl=en_US\#!}
+
+英語版で使うことをお勧めします。例えば、上で見た World Development Indicators（世界開発指標）は、英語版だけでなく、日本語版にもありますが、中身を見てみると、国によってデータがなかったり、少し古いデータまでしかなかったりなどあるようです。どの指標の、どのデータとすべてを挙げることはできませんが、英語版を使った方が安全だと思います。指標について、英語で意味するものがよくわからない時は、ブラウザーの翻訳機能を使って見当をつけるのも良いでしょう。
+
+英語版には、上に例が出ていると思います。自動的にスライドしますが、一番最初は、世界開発指標で、私が確認したときは、Living Longer with Fewer Children（子供の数が少ないと長生き）という表題になっています。このグラフをクリックしてください。
+
+\hypertarget{ux4f8b1-wdi-living-longer-with-fewer-children}{%
+\subsection{例1 WDI: Living Longer with Fewer Children}\label{ux4f8b1-wdi-living-longer-with-fewer-children}}
+
+グラフをクリックすると、\href{https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_\&ctype=b\&strail=false\&nselm=s\&met_x=sp_dyn_le00_in\&scale_x=lin\&ind_x=false\&met_y=sp_dyn_tfrt_in\&scale_y=lin\&ind_y=false\&met_s=sp_pop_totl\&scale_s=lin\&ind_s=false\&dimp_c=country:region\&ifdim=country\&hl=en_US\&dl=en_US\&iconSize=0.5\&uniSize=0.035}{このようなページ} が表示されると思います。
+
+左の帯には、Public Data、World Development Indicators と書かれ、いろいろな項目が並んでいます。また、よく見ると、以下のように書かれています。
+
+X軸：Life Expectancy（生まれた時点の平均寿命）
+
+Y軸：Fertility Rate（出生率）
+
+色：Region（地域）
+
+サイズ：Population（人口）
+
+下：矢印と2017の数
+
+と出ているかと思います。何が書いてあるか確認してください。違っていても構いません。
+
+これで大体理解できたと思いますが、これが、WDI のデータを元にして、2017年時点での、平均寿命と、出生率の散布図で、丸の大きさで、人口を表し、色で地域を表しています。
+
+下の矢印を押すと、1960から始まって、どのように変化したかを見ることができます。Gapminder のところで、書いた、バブルチャートと言われるもので、ハンス・ロスリングが Google に管理を依頼したと言われています。
+
+左には、Compare by という項目があります。それを開くと、Region、Lending Type、Income Level とあります。Region に Color と書いてあると思いますが、Income Level の右の プルダウンメニューを推し、一番下にある、Color by This を選択すると、右上の、凡例（Legend）と言われるものが、Income Level に変わると思います。動かしてみるとわかりますが、右下に、High Income がまとまっていると思います。日本は、見つけられますか。
+
+Counrtry List のところの、日本にチェックを入れると、Japan と表示されますから、すぐ見つけられます。マウス（ポインター）を丸に近づけると国をみることもできます。High Income でも、Fertility Rate が 2に近い国もあることがわかります。どんな国がそうなっていますか。
+
+この辺りでやめておきます。
+
+右上には、折れ線グラフと、棒グラフと、地球のマークと、散布図のマークがあります。現在は、散布図が使われています。その右には、ギアマークと、リンクのようなマークがあります。
+
+ギアマークで、X軸や、Y軸を対数にしたり、リンクから、このグラフのリンクを取得することもできます。リンクは二種類ありますが、上が、\href{https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_\&ctype=b\&strail=false\&bcs=d\&nselm=s\&met_x=sp_dyn_le00_in\&scale_x=lin\&ind_x=false\&met_y=sp_dyn_tfrt_in\&scale_y=lin\&ind_y=false\&met_s=sp_pop_totl\&scale_s=lin\&ind_s=false\&dimp_c=country:income_level\&idim=country:JPN\&ifdim=country\&tunit=Y\&pit=1504623600000\&hl=en_US\&dl=en_US\&ind=false\&icfg\&iconSize=0.5}{通常のリンク}、下は、iframe リンクと言われるものです。
+
+\hypertarget{ux4f8b2-gdp-per-cap-vs-co2-per-cap-in-log-log}{%
+\subsection{例2 GDP per Cap vs CO2 per Cap in Log-Log}\label{ux4f8b2-gdp-per-cap-vs-co2-per-cap-in-log-log}}
+
+今度は、日本語でも、英語でも良いですが、一人当たりの GDP を X 軸に、一人当たりの、CO2 排出量を Y 軸にとり、対数にして、表示してみましょう。
+
+X軸：\textbf{1 人あたり GDP（実質値: 2010 年基準、米ドル表示） - 対数}
+
+Y軸：\textbf{1 人あたりの CO2 排出量 -~対数}
+
+サイズ：人口
+
+色：地域
+
+\href{https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_\&ctype=b\&strail=false\&bcs=d\&nselm=s\&met_s=sp_pop_totl\&scale_s=lin\&ind_s=false\&dimp_c=country:region\&met_y=en_atm_co2e_pc\&scale_y=log\&ind_y=false\&met_x=ny_gdp_pcap_kd\&scale_x=log\&ind_x=false\&idim=country:JPN\&ifdim=country\&tunit=Y\&pit=1409929200000\&ind=false\&icfg\&iconSize=0.5}{リンク}
+
+\hypertarget{ux307eux3068ux3081-2}{%
+\subsection{まとめ}\label{ux307eux3068ux3081-2}}
+
+例から始めましたので、二つの WDI の指標を使い、さらに、人口や、地域など、他の指標も、一つのグラフに含めたものを見てきました。最初にすごいものから始めてしまいましたが、大雑把には、次のようなものになっています。
+
+\begin{itemize}
+\item
+  折れ線グラフ（line graph）：一つの指標の時系列での変化。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    いくつかの国や地域などについての値を用いて、色で区別して表示することも可能です。
+  \end{itemize}
+\item
+  棒グラフ（bar graph）：一つの指標をいくつかの項目（国や、地域など）を表示
+
+  \begin{itemize}
+  \tightlist
+  \item
+    特定の年の、特定の指標の値を、いくつかの国や地域について表示
+  \end{itemize}
+\item
+  色付き世界地図（choropleth map）：カテゴリーごとに、色を変えて、地図上に表示
+
+  \begin{itemize}
+  \tightlist
+  \item
+    個人の収入の多寡などのグループ（income level）ごとに色を変えて、地図上に表示することなどが可能です。
+  \end{itemize}
+\item
+  散布図（scatter plot）：二つの指標の関係性を表示
+
+  \begin{itemize}
+  \tightlist
+  \item
+    さらに、点などの大きさにも他の指標の情報を加えたり、色などで、カテゴリーごとの情報を加えることも可能です。
+  \end{itemize}
+\end{itemize}
+
+最後に一番最初に挙げた、Living Longer with Fewer Children で何種類の情報が表示されているか見てみましょう。同時に、数値か、カテゴリー（グループ）かも書いておきます。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Life Expectancy（生まれた時点の平均寿命）：数値 - X 軸
+\item
+  Fertility Rate（出生率）：数値 - Y 軸
+\item
+  Country（国）：カテゴリー：点
+\item
+  Population （人口）：数値：点の大きさ
+\item
+  Region（地域）：カテゴリー：点の色
+\item
+  Year（年）：（離散的：とびとびの）数値：一枚ごとのスライド
+\end{enumerate}
+
+ほかにはありますか。普通は二つの指標しか表せないように思いますが、ここでは、6つの情報が入っていますね。
+
+いろいろと調べてみませんか。
+
+なかなか素晴らしいですね。ただ、2014年にプロジェクトがスタートしてから、2017年、2020年と更新されていますが、更新の頻度はあまり高くないように見えます。例としては、十分機能していると思いますが。
 
 \hypertarget{oecd-site}{%
 \chapter{OECD（経済協力開発機構）}\label{oecd-site}}
