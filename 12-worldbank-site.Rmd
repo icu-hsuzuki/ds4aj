@@ -366,9 +366,9 @@ Google で Public Data を検索すると、おそらく、次のサイトが見
 
 <https://www.google.co.jp/publicdata/directory?hl=en_US&dl=en_US#!>
 
-英語版で使うことをお勧めしますが、例として、上で見た世界開発指標を見てみたいと思いますが、それは、日本語にもありますから、まずは、日本語で見てみましょう。日本語だけをみていて、あまり、データがないなとは思わないでください。
+英語版で使うことをお勧めします。例えば、上で見た World Development Indicators（世界開発指標）は、英語版だけでなく、日本語版にもありますが、中身を見てみると、国によってデータがなかったり、少し古いデータまでしかなかったりなどあるようです。どの指標の、どのデータとすべてを挙げることはできませんが、英語版を使った方が安全だと思います。指標について、英語で意味するものがよくわからない時は、ブラウザーの翻訳機能を使って見当をつけるのも良いでしょう。
 
-日本語に戻る前に、英語版には、上に例が出ていると思います。自動的にスライドしますが、一番最初は、世界開発指標で、私が確認したときは、Living Longer with Fewer Children（子供の数が少ないと長生き）という表題になっています。このグラフをクリックしてください。
+英語版には、上に例が出ていると思います。自動的にスライドしますが、一番最初は、世界開発指標で、私が確認したときは、Living Longer with Fewer Children（子供の数が少ないと長生き）という表題になっています。このグラフをクリックしてください。
 
 ### 例1 WDI: Living Longer with Fewer Children
 
@@ -402,9 +402,11 @@ Counrtry List のところの、日本にチェックを入れると、Japan と
 
 ギアマークで、X軸や、Y軸を対数にしたり、リンクから、このグラフのリンクを取得することもできます。リンクは二種類ありますが、上が、[通常のリンク](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_x=sp_dyn_le00_in&scale_x=lin&ind_x=false&met_y=sp_dyn_tfrt_in&scale_y=lin&ind_y=false&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:income_level&idim=country:JPN&ifdim=country&tunit=Y&pit=1504623600000&hl=en_US&dl=en_US&ind=false&icfg&iconSize=0.5)、下は、iframe リンクと言われるものです。
 
-<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=sp_dyn_le00_in&amp;scale_x=lin&amp;ind_x=false&amp;met_y=sp_dyn_tfrt_in&amp;scale_y=lin&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:income_level&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1504623600000&amp;hl=en_US&amp;dl=en_US&amp;ind=false&amp;icfg&amp;iconSize=0.5">
+```{=html}
+<iframe width="600" height="487" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=sp_dyn_le00_in&amp;scale_x=lin&amp;ind_x=false&amp;met_y=sp_dyn_tfrt_in&amp;scale_y=lin&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:income_level&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1504623600000&amp;hl=en_US&amp;dl=en_US&amp;ind=false&amp;icfg&amp;iconSize=0.5">
 
 </iframe>
+```
 
 ### 例2 GDP per Cap vs CO2 per Cap in Log-Log
 
@@ -420,10 +422,11 @@ Y軸：**1 人あたりの CO2 排出量 - 対数**
 
 [リンク](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:region&met_y=en_atm_co2e_pc&scale_y=log&ind_y=false&met_x=ny_gdp_pcap_kd&scale_x=log&ind_x=false&idim=country:JPN&ifdim=country&tunit=Y&pit=1409929200000&ind=false&icfg&iconSize=0.5)
 
-<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=ny_gdp_pcap_kd&amp;scale_x=log&amp;ind_x=false&amp;met_y=en_atm_co2e_pc&amp;scale_y=log&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:region&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1410015600000&amp;hl=ja&amp;dl=ja&amp;ind=false&amp;icfg&amp;iconSize=0.5">
+```{=html}
+<iframe width="600" height="487" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=ny_gdp_pcap_kd&amp;scale_x=log&amp;ind_x=false&amp;met_y=en_atm_co2e_pc&amp;scale_y=log&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:region&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1410015600000&amp;hl=ja&amp;dl=ja&amp;ind=false&amp;icfg&amp;iconSize=0.5">
 
 </iframe>
-
+```
 ### まとめ
 
 例から始めましたので、二つの WDI の指標を使い、さらに、人口や、地域など、他の指標も、一つのグラフに含めたものを見てきました。最初にすごいものから始めてしまいましたが、大雑把には、次のようなものになっています。
@@ -458,7 +461,7 @@ Y軸：**1 人あたりの CO2 排出量 - 対数**
 
 6.  Year（年）：（離散的：とびとびの）数値：一枚ごとのスライド
 
-ほかにはありますか。普通は二つの指標しか表せないように思いますが、ここでは、7つの情報が入っていますね。
+ほかにはありますか。普通は二つの指標しか表せないように思いますが、ここでは、6つの情報が入っていますね。
 
 いろいろと調べてみませんか。
 
