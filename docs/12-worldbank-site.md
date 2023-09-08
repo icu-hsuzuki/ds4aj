@@ -1,3 +1,7 @@
+---
+---
+---
+
 # 世界銀行（World Bank） {#worldbank-site}
 
 ## 概要
@@ -201,6 +205,11 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 
 10位までの国は、United States, China, Japan, Germany, India, United Kingdom, France, Russian Federation, Canada, Italy となっているかと思います。
 
+[リンク](https://databank.worldbank.org/data/embed/GDP-top-10-in-2022/id/c7fdca3c)
+
+```{=html}
+<iframe frameborder="0" width="500" height="425" scrolling="no" src="https://databank.worldbank.org/data/embed/GDP-top-10-in-2022/id/c7fdca3c?dd=y&tb=y&sh=y&dw=y&pr=n&inf=y&zm=y&theme=darkGrey&bdrClr=rgb(177,186,170)&bdrStyle=solid&bdrWidth=0px"></iframe>
+```
 <!-- <iframe frameBorder="no" src="https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425"></iframe> -->
 
 #### 例2
@@ -212,7 +221,7 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 3.  上の、Styles を選択し、Chat Type & Style で、Line（折れ線グラフ）を選択すると、しばらくして、10カ国の、折れ線グラフを表示させることができます。色も変更することも可能です。
 4.  Chat Type & Style で Horizontal Bar を選択し、Layout で、
 
-<!-- <iframe frameBorder="no" src="https://databank.worldbank.org/embed/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425"></iframe> -->
+[リンク](https://databank.worldbank.org/Line-graph-of-GDP-of-top-10-countries/id/ff8c5a74)
 
 以下では、変数（Variables）の選び方と、グラフ（Chart）について簡単に説明します。
 
@@ -398,7 +407,9 @@ Counrtry List のところの、日本にチェックを入れると、Japan と
 
 ギアマークで、X軸や、Y軸を対数にしたり、リンクから、このグラフのリンクを取得することもできます。リンクは二種類ありますが、上が、[通常のリンク](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_x=sp_dyn_le00_in&scale_x=lin&ind_x=false&met_y=sp_dyn_tfrt_in&scale_y=lin&ind_y=false&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:income_level&idim=country:JPN&ifdim=country&tunit=Y&pit=1504623600000&hl=en_US&dl=en_US&ind=false&icfg&iconSize=0.5)、下は、iframe リンクと言われるものです。
 
-<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=sp_dyn_le00_in&amp;scale_x=lin&amp;ind_x=false&amp;met_y=sp_dyn_tfrt_in&amp;scale_y=lin&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:income_level&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1504623600000&amp;hl=en_US&amp;dl=en_US&amp;ind=false&amp;icfg&amp;iconSize=0.5"></iframe>
+<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=sp_dyn_le00_in&amp;scale_x=lin&amp;ind_x=false&amp;met_y=sp_dyn_tfrt_in&amp;scale_y=lin&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:income_level&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1504623600000&amp;hl=en_US&amp;dl=en_US&amp;ind=false&amp;icfg&amp;iconSize=0.5">
+
+</iframe>
 
 ### 例2 GDP per Cap vs CO2 per Cap in Log-Log
 
@@ -414,7 +425,9 @@ Y軸：**1 人あたりの CO2 排出量 - 対数**
 
 [リンク](https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:region&met_y=en_atm_co2e_pc&scale_y=log&ind_y=false&met_x=ny_gdp_pcap_kd&scale_x=log&ind_x=false&idim=country:JPN&ifdim=country&tunit=Y&pit=1409929200000&ind=false&icfg&iconSize=0.5)
 
-<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=ny_gdp_pcap_kd&amp;scale_x=log&amp;ind_x=false&amp;met_y=en_atm_co2e_pc&amp;scale_y=log&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:region&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1410015600000&amp;hl=ja&amp;dl=ja&amp;ind=false&amp;icfg&amp;iconSize=0.5"></iframe>
+<iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=b&amp;strail=false&amp;bcs=d&amp;nselm=s&amp;met_x=ny_gdp_pcap_kd&amp;scale_x=log&amp;ind_x=false&amp;met_y=en_atm_co2e_pc&amp;scale_y=log&amp;ind_y=false&amp;met_s=sp_pop_totl&amp;scale_s=lin&amp;ind_s=false&amp;dimp_c=country:region&amp;idim=country:JPN&amp;ifdim=country&amp;tunit=Y&amp;pit=1410015600000&amp;hl=ja&amp;dl=ja&amp;ind=false&amp;icfg&amp;iconSize=0.5">
+
+</iframe>
 
 ### まとめ
 
