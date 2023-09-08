@@ -207,11 +207,6 @@ CSV（Comma Separated Values）、XML（Extensible Markup Language）、EXCEL（
 
 [リンク](https://databank.worldbank.org/data/embed/GDP-top-10-in-2022/id/c7fdca3c)
 
-```{=html}
-<iframe frameborder="0" width="500" height="425" scrolling="no" src="https://databank.worldbank.org/data/embed/GDP-top-10-in-2022/id/c7fdca3c?dd=y&tb=y&sh=y&dw=y&pr=n&inf=y&zm=y&theme=darkGrey&bdrClr=rgb(177,186,170)&bdrStyle=solid&bdrWidth=0px"></iframe>
-```
-<!-- <iframe frameBorder="no" src="https://databank.worldbank.org/embed/GDP—current-US$/id/66aaa928?ti=y&amp;ds=n&amp;dd=y&amp;tb=y&amp;sh=y&amp;dw=y&amp;pr=y&amp;inf=y&amp;zm=y&amp;md=y&amp;navigator=n&amp;theme=darkGrey&amp;bdrClr=rgb(68,68,68)&amp;bdrStyle=solid&amp;bdrWidth=0px&amp;title=Arial;14px;true;false;rgb(68,68,68);justify&amp;exptypes=Excel,CSV,TabbedTxt" width="500" height="425"></iframe> -->
-
 #### 例2
 
 2022年の値で、10位までの国を選択して、折れ線グラフや、棒グラフなどを書いてみましょう。

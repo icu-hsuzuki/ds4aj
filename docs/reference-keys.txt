@@ -1,4 +1,7 @@
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+fig:nice-fig
+tab:nice-tab
+eq:binom
+thm:tri
 introduction
 データサイエンスとは
 なぜデータサイエンスが最近注目されているのか
@@ -77,6 +80,7 @@ notebook
 画像
 データファイル
 まとめ-1
+publicdata-site
 概要-1
 さまざまな機関のオープンデータ
 日本のデータ
@@ -486,8 +490,3 @@ publishing
 pages
 metadata-for-sharing
 todo-list
-fig:nice-fig
-tab:nice-tab
-eq:binom
-thm:tri
-publicdata-site
