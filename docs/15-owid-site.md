@@ -74,12 +74,20 @@
 
 ## レポート
 
+### [Population Growth](https://ourworldindata.org/population-growth)
+
+```{=html}
+<iframe src="https://ourworldindata.org/explorers/population-and-demography?facet=none&country=CHN~IND~USA~IDN~PAK~JPN&hideControls=true&Metric=Population&Sex=Both+sexes&Age+group=Total&Projection+Scenario=None" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+```
+人口において、日本は、1950年に何番目で、2021年には何番目だかわかりますか。上のダッシュボードからもわかります。
+
 ### [War and Peace](https://ourworldindata.org/war-and-peace)
 
 1945年以降のデータが主ですが、世界の紛争などの死者数などを知ることができます。古いデータも少しだけあります。
 
-\<iframe src="[https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region"](https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region%22) loading="lazy" style="width: 100%; height: 600px; border: 0px none;"\>\</iframe\>
-
+```{=html}
+<iframe src="https://ourworldindata.org/grapher/deaths-in-state-based-conflicts-by-world-region" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+```
 <https://ourworldindata.org/war-and-peace#the-decline-of-wars-between-great-powers>
 
 ## データベース
@@ -88,14 +96,59 @@ owid: <https://ourworldindata.org/>
 
 ## ダッシュボード
 
-SDGs
+### 使い方
 
-1.  No Poverty
+1.  Chart グラフ
 
-<iframe src="https://ourworldindata.org/grapher/share-of-population-in-extreme-poverty" loading="lazy" style="width: 100%; height: 600px; border: 0px none;">
+    -   いくつかの国（変更可能な場合もあります）についての年次変化を表す折れ線グラフや棒グラフなど
 
-</iframe>
+2.  Choropleth 色付き地図
 
+    -   右上のプルダウンメニューからは、地域（アフリカ、北アメリカ、南アメリカ、アジア、ヨーロッパ、オセアニア）を選択して拡大することができます。
+
+    -   それぞれの国にマウスまたはポインターを重ねると、その国の状況を見ることができます。
+
+3.  Table 表
+
+    -   データの一部が表となっています。降順・昇順などの並べ替えも可能です。
+
+4.  Sources 出典
+
+    -   変数の簡単な定義とともに、World Bank などもともとのデータの出典へのリンクも含まれています。
+
+5.  Download ダウンロード
+
+    -   グラフやデータをダウンロードすることができるようになっています。
+
+6.  Share 共有
+
+    -   共有リンクや、ホームページに埋め込む iframe リンクなどが付いています。
+
+### Covid-19 Data Explorer
+
+[リンク](https://ourworldindata.org/explorers/coronavirus-data-explorer?zoomToSelection=true&time=2020-03-01..latest&facet=none&country=USA~GBR~CAN~DEU~ITA~IND&pickerSort=asc&pickerMetric=location&Metric=Confirmed+cases&Interval=7-day+rolling+average&Relative+to+Population=true&Color+by+test+positivity=false)
+
+日本を加えてあります。
+
+```{=html}
+<iframe src="https://ourworldindata.org/explorers/coronavirus-data-explorer?zoomToSelection=true&time=2020-03-01..latest&facet=none&country=USA~GBR~CAN~DEU~ITA~IND~JPN&pickerSort=asc&pickerMetric=location&Metric=Confirmed+cases&Interval=7-day+rolling+average&Relative+to+Population=true&Color+by+test+positivity=false&hideControls=true" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+```
+### **Causes of Death**
+
+死亡原因についての分析のページです。
+
+リンク<https://ourworldindata.org/causes-of-death>
+
+### [Causes of death, World, 2019](https://ourworldindata.org/grapher/annual-number-of-deaths-by-cause)
+
+```{=html}
+<iframe src="https://ourworldindata.org/grapher/annual-number-of-deaths-by-cause" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+```
+### [Share of Deaths from major causes of Japan, 2020](https://ourworldindata.org/grapher/share-of-deaths-from-major-causes?country=~JPN)
+
+```{=html}
+<iframe src="https://ourworldindata.org/grapher/share-of-deaths-from-major-causes?country=~JPN" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+```
 ## API
 
 -   パッケージの公式サイト: [https://CRAN.R-project.org/package=owidR](https://cran.r-project.org/package=owidR)
