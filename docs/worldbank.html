@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 24 World Bank | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 25 World Bank | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="24.1 World Development Indicator (WDI) パッケージ と tidyverse と WDI を使いますから、下のコードによって、ロードします。 library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔...">
+<meta name="description" content="25.1 World Development Indicator (WDI) パッケージ と tidyverse と WDI を使いますから、下のコードによって、ロードします。 library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 24 World Bank | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 25 World Bank | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/worldbank.html">
-<meta property="og:description" content="24.1 World Development Indicator (WDI) パッケージ と tidyverse と WDI を使いますから、下のコードによって、ロードします。 library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔...">
+<meta property="og:description" content="25.1 World Development Indicator (WDI) パッケージ と tidyverse と WDI を使いますから、下のコードによって、ロードします。 library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 24 World Bank | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="24.1 World Development Indicator (WDI) パッケージ と tidyverse と WDI を使いますから、下のコードによって、ロードします。 library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔...">
+<meta name="twitter:title" content="Chapter 25 World Bank | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="25.1 World Development Indicator (WDI) パッケージ と tidyverse と WDI を使いますから、下のコードによって、ロードします。 library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -80,29 +80,30 @@
 <li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
 <li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
 <li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
-<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
+<li><a class="" href="sdgs-site.html"><span class="header-section-number">12</span> SDGs</a></li>
+<li><a class="" href="other-site.html"><span class="header-section-number">13</span> その他のサイト</a></li>
 <li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
-<li><a class="" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
-<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
-<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
-<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
-<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
-<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">14</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">15</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">16</span> R の基礎</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">17</span> Tidyverse</a></li>
+<li><a class="" href="transform.html"><span class="header-section-number">18</span> 変形（Transform）</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">19</span> 視覚化（Visualize）</a></li>
+<li><a class="" href="import.html"><span class="header-section-number">20</span> Import</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">21</span> Modeling</a></li>
+<li><a class="" href="communicate.html"><span class="header-section-number">22</span> Communicate</a></li>
+<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">23</span> 復習</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
-<li><a class="active" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
-<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">24</span> Public Data の分析</a></li>
+<li><a class="active" href="worldbank.html"><span class="header-section-number">25</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">26</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">27</span> Our World in Data</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">28</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">29</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">30</span> 探索的データ解析</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">31</span> Example 1</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -115,13 +116,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="worldbank" class="section level1" number="24">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="worldbank" class="section level1" number="25">
 <h1>
-<span class="header-section-number">24</span> World Bank<a class="anchor" aria-label="anchor" href="#worldbank"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25</span> World Bank<a class="anchor" aria-label="anchor" href="#worldbank"><i class="fas fa-link"></i></a>
 </h1>
-<div id="world-development-indicator-wdi" class="section level2" number="24.1">
+<div id="world-development-indicator-wdi" class="section level2" number="25.1">
 <h2>
-<span class="header-section-number">24.1</span> World Development Indicator (WDI)<a class="anchor" aria-label="anchor" href="#world-development-indicator-wdi"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.1</span> World Development Indicator (WDI)<a class="anchor" aria-label="anchor" href="#world-development-indicator-wdi"><i class="fas fa-link"></i></a>
 </h2>
 <p>パッケージ と <code>tidyverse</code> と <code>WDI</code> を使いますから、下のコードによって、ロードします。</p>
 <div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
@@ -207,9 +208,9 @@
 <p>次に、3兆ドル以上の、６カ国を選択し、その、iso2c と呼ばれるコードを使って、それらの国のデータをもう一度取得し、年次変化をあらわすグラフを描いています。</p>
 <p>さらにその中から、４カ国を選んで、今度は、GDP の年次変化率を描いています。単位は、パーセントです。</p>
 <p>これは、ひとつの例ですが、ここで使われているのが、WDI World Development Indicator というもので、世界銀行が、いくつかの指標を定めて、編纂しているものです。</p>
-<div id="指標-indicators-wdi" class="section level3" number="24.1.1">
+<div id="指標-indicators-wdi" class="section level3" number="25.1.1">
 <h3>
-<span class="header-section-number">24.1.1</span> 指標 Indicators (WDI)<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-indicators-wdi"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.1.1</span> 指標 Indicators (WDI)<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-indicators-wdi"><i class="fas fa-link"></i></a>
 </h3>
 <p>上の例では、次の二つの指標のコード Indicator Code (WDI Code) が使われました。</p>
 <ul>
@@ -217,9 +218,9 @@
 <li>NY.GDP.MKTP.KD.ZG: GDP growth (annual %)</li>
 </ul>
 </div>
-<div id="指標-wdi-world-development-indicators" class="section level3" number="24.1.2">
+<div id="指標-wdi-world-development-indicators" class="section level3" number="25.1.2">
 <h3>
-<span class="header-section-number">24.1.2</span> 指標 WDI (World Development Indicators)<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi-world-development-indicators"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.1.2</span> 指標 WDI (World Development Indicators)<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi-world-development-indicators"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,400 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.</p>
@@ -244,9 +245,9 @@
 </li>
 </ul>
 </div>
-<div id="指標-のコードwdi-code-を探してみよう" class="section level3" number="24.1.3">
+<div id="指標-のコードwdi-code-を探してみよう" class="section level3" number="25.1.3">
 <h3>
-<span class="header-section-number">24.1.3</span> 指標 のコード、WDI code を探してみよう<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89wdi-code-%E3%82%92%E6%8E%A2%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.1.3</span> 指標 のコード、WDI code を探してみよう<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89wdi-code-%E3%82%92%E6%8E%A2%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86"><i class="fas fa-link"></i></a>
 </h3>
 <p>いくつかの探し方があります。まず、ここでは、World Bank のサイトから探す方法を説明しましょう。</p>
 <p>ふた通りあります。</p>
@@ -263,9 +264,9 @@
 <p>それぞれの方法で、上で使った、二つの指標およびそのコードは見つかりましたか。</p>
 <p>1 の方法の途中に出てきた、検索窓から検索することも可能です。</p>
 </div>
-<div id="指標-wdiの例" class="section level3" number="24.1.4">
+<div id="指標-wdiの例" class="section level3" number="25.1.4">
 <h3>
-<span class="header-section-number">24.1.4</span> 指標 WDIの例<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi%E3%81%AE%E4%BE%8B"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.1.4</span> 指標 WDIの例<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi%E3%81%AE%E4%BE%8B"><i class="fas fa-link"></i></a>
 </h3>
 <p>このあとの、例で使う指標を書いておきます。</p>
 <ul>
@@ -277,27 +278,27 @@
 <li>SL.TLF.CACT.FE.NE.ZS: Labor force participation rate, female (% of male population ages 15+) (national estimate)</li>
 </ul>
 </div>
-<div id="練習-1.---調べてみたい-wdi-指標とそのコード" class="section level3" number="24.1.5">
+<div id="練習-1.---調べてみたい-wdi-指標とそのコード" class="section level3" number="25.1.5">
 <h3>
-<span class="header-section-number">24.1.5</span> 練習 1. - 調べてみたい WDI 指標とそのコード<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-1.---%E8%AA%BF%E3%81%B9%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%84-wdi-%E6%8C%87%E6%A8%99%E3%81%A8%E3%81%9D%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.1.5</span> 練習 1. - 調べてみたい WDI 指標とそのコード<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-1.---%E8%AA%BF%E3%81%B9%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%84-wdi-%E6%8C%87%E6%A8%99%E3%81%A8%E3%81%9D%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
 </h3>
 <p>いくつか、リストしてみましょう。</p>
 </div>
 </div>
-<div id="wdi-パッケージ" class="section level2" number="24.2">
+<div id="wdi-パッケージ" class="section level2" number="25.2">
 <h2>
-<span class="header-section-number">24.2</span> WDI パッケージ<a class="anchor" aria-label="anchor" href="#wdi-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2</span> WDI パッケージ<a class="anchor" aria-label="anchor" href="#wdi-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"><i class="fas fa-link"></i></a>
 </h2>
 <p><code>WDI</code> パッケージ の使い方を紹介します。</p>
 <p><code>WDI</code> パッケージで、データをダウンロードしたり、探したり、詳細情報を得たりできます。</p>
-<div id="指標-wdi-検索" class="section level3" number="24.2.1">
+<div id="指標-wdi-検索" class="section level3" number="25.2.1">
 <h3>
-<span class="header-section-number">24.2.1</span> 指標 WDI 検索<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi-%E6%A4%9C%E7%B4%A2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.1</span> 指標 WDI 検索<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi-%E6%A4%9C%E7%B4%A2"><i class="fas fa-link"></i></a>
 </h3>
 <p>まず、検索です。上で、サイトから調べる方法を紹介しましたが、<code>WDI</code> パッケージの、<code>WDIsearch</code> でも探すことができます。詳細は、右下の窓枠の Help タブの検索窓に、WDIsearch といれて調べて見てください。ここでは、二種類の検索方法を紹介します。</p>
-<div id="検索例-1wdi名" class="section level4" number="24.2.1.1">
+<div id="検索例-1wdi名" class="section level4" number="25.2.1.1">
 <h4>
-<span class="header-section-number">24.2.1.1</span> 検索例 1（WDI名）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-1wdi%E5%90%8D"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.1.1</span> 検索例 1（WDI名）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-1wdi%E5%90%8D"><i class="fas fa-link"></i></a>
 </h4>
 <p>WDI 名に、ある文字列が含まれているものを検索します。検索文字列は、大文字・小文字は関係ありません。</p>
 <div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
@@ -319,9 +320,9 @@
 <span><span class="co">#&gt; # ℹ 530 more rows</span></span></code></pre></div>
 <p>なんと、500件以上出てきました。Indicator（指標コード）と、Name（指標名）が列挙されます。すべてに、GDP という文字列が入っていることを確認できると思います。</p>
 </div>
-<div id="検索例-2wdi" class="section level4" number="24.2.1.2">
+<div id="検索例-2wdi" class="section level4" number="25.2.1.2">
 <h4>
-<span class="header-section-number">24.2.1.2</span> 検索例 2（WDI）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-2wdi"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.1.2</span> 検索例 2（WDI）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-2wdi"><i class="fas fa-link"></i></a>
 </h4>
 <p>Indicator（指標コード）から、Name（指標名）を検索します。</p>
 <div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
@@ -334,9 +335,9 @@
 <span><span class="co">#&gt; 11411 GDP deflator, index (2000=100; US$ series)</span></span></code></pre></div>
 <p>二件出てきました。</p>
 </div>
-<div id="練習-2.---検索short" class="section level4" number="24.2.1.3">
+<div id="練習-2.---検索short" class="section level4" number="25.2.1.3">
 <h4>
-<span class="header-section-number">24.2.1.3</span> 練習 2. - 検索（short）<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-2.---%E6%A4%9C%E7%B4%A2short"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.1.3</span> 練習 2. - 検索（short）<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-2.---%E6%A4%9C%E7%B4%A2short"><i class="fas fa-link"></i></a>
 </h4>
 <p>名前で検索（“” の間に、（なるべく簡単な）検索文字列を入れてください。）</p>
 <div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
@@ -345,9 +346,9 @@
 <div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDIsearch.html">WDIsearch</a></span><span class="op">(</span>string <span class="op">=</span> <span class="st">""</span>, field <span class="op">=</span> <span class="st">"indicator"</span>, short <span class="op">=</span> <span class="cn">TRUE</span>, cache <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="詳しい情報を得るには" class="section level4" number="24.2.1.4">
+<div id="詳しい情報を得るには" class="section level4" number="25.2.1.4">
 <h4>
-<span class="header-section-number">24.2.1.4</span> 詳しい情報を得るには<a class="anchor" aria-label="anchor" href="#%E8%A9%B3%E3%81%97%E3%81%84%E6%83%85%E5%A0%B1%E3%82%92%E5%BE%97%E3%82%8B%E3%81%AB%E3%81%AF"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.1.4</span> 詳しい情報を得るには<a class="anchor" aria-label="anchor" href="#%E8%A9%B3%E3%81%97%E3%81%84%E6%83%85%E5%A0%B1%E3%82%92%E5%BE%97%E3%82%8B%E3%81%AB%E3%81%AF"><i class="fas fa-link"></i></a>
 </h4>
 <p>上では、Indicator（指標コード）と、Name（指標名）だけでしたが、Description（説明） なども得ることができます。</p>
 <p>それには、<code>short = FALSE</code> とします。</p>
@@ -360,9 +361,9 @@
 <p>また、country には、それぞれについて、さまざまな情報が書かれています。これは、とても、たいせつな情報です。国名と、iso2c, iso3c のようなコードもありますし、地域（region）や、その国が、どの income level（収入の階級）に入るかも書かれています。また、国だけではなく、地域など、グループの名称も含まれています。</p>
 <p>今後、さまざまに利用していきたいと思います。</p>
 </div>
-<div id="検索例-3wdi名" class="section level4" number="24.2.1.5">
+<div id="検索例-3wdi名" class="section level4" number="25.2.1.5">
 <h4>
-<span class="header-section-number">24.2.1.5</span> 検索例 3（WDI名）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-3wdi%E5%90%8D"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.1.5</span> 検索例 3（WDI名）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-3wdi%E5%90%8D"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>short = FALSE</code> として、検索してみましょう。文字列が入っている、指標名を検索します。</p>
 <div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
@@ -400,9 +401,9 @@
 </li>
 </ul>
 </div>
-<div id="検索例-4wdi" class="section level4" number="24.2.1.6">
+<div id="検索例-4wdi" class="section level4" number="25.2.1.6">
 <h4>
-<span class="header-section-number">24.2.1.6</span> 検索例 4（WDI）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-4wdi"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.1.6</span> 検索例 4（WDI）<a class="anchor" aria-label="anchor" href="#%E6%A4%9C%E7%B4%A2%E4%BE%8B-4wdi"><i class="fas fa-link"></i></a>
 </h4>
 <p>指標コードから、詳細情報を得ます。</p>
 <div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
@@ -416,18 +417,18 @@
 <span><span class="co">#&gt;                                                              sourceOrganization</span></span>
 <span><span class="co">#&gt; 12114 World Bank national accounts data, and OECD National Accounts data files.</span></span></code></pre></div>
 </div>
-<div id="練習-2---検索long-w-cache" class="section level4" number="24.2.1.7">
+<div id="練習-2---検索long-w-cache" class="section level4" number="25.2.1.7">
 <h4>
-<span class="header-section-number">24.2.1.7</span> 練習 2 - 検索（long w/ cache）<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-2---%E6%A4%9C%E7%B4%A2long-w-cache"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.1.7</span> 練習 2 - 検索（long w/ cache）<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-2---%E6%A4%9C%E7%B4%A2long-w-cache"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>string</code> と、<code>field</code> を、ふたつとも入れてください。</p>
 <div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDIsearch.html">WDIsearch</a></span><span class="op">(</span>string <span class="op">=</span> <span class="st">""</span>, field <span class="op">=</span> <span class="st">""</span>, short <span class="op">=</span> <span class="cn">FALSE</span>, cache <span class="op">=</span> <span class="va">wdi_cache</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="指標-wdi-データのダウンロード" class="section level3" number="24.2.2">
+<div id="指標-wdi-データのダウンロード" class="section level3" number="25.2.2">
 <h3>
-<span class="header-section-number">24.2.2</span> 指標 WDI データのダウンロード<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi-%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.2</span> 指標 WDI データのダウンロード<a class="anchor" aria-label="anchor" href="#%E6%8C%87%E6%A8%99-wdi-%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
 </h3>
 <p>Indicator が決まったら、ダウンロードします。右下の窓枠の Help タブの検索枠に、<code>WDI</code> と入れて確認しましょう。</p>
 <pre><code>WDI(
@@ -441,9 +442,9 @@
   language = "en"
 )</code></pre>
 <p>上が基本的な用法ですが、<code>start</code> 以下は、Default（初期値）が書かれていますから、たいせつなのは、最初の二つ、country と、indicator です。</p>
-<div id="ダウンロード例-1-1" class="section level4" number="24.2.2.1">
+<div id="ダウンロード例-1-1" class="section level4" number="25.2.2.1">
 <h4>
-<span class="header-section-number">24.2.2.1</span> ダウンロード例 1-1<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.2.1</span> ダウンロード例 1-1<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-1"><i class="fas fa-link"></i></a>
 </h4>
 <p>country は、初期値も、“all” となっていますから、最も簡単なのは、indicator に、指標コードを入れることです。引用符を忘れずに。</p>
 <div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
@@ -473,9 +474,9 @@
 #&gt; # ℹ 16,482 more rows</code></pre>
 <p>これでも良いのですが、利用するには、指標コードではわかりにくいので、それを簡単な名前に置き換えて、データを読み込むこができます。</p>
 </div>
-<div id="ダウンロード例-1-2" class="section level4" number="24.2.2.2">
+<div id="ダウンロード例-1-2" class="section level4" number="25.2.2.2">
 <h4>
-<span class="header-section-number">24.2.2.2</span> ダウンロード例 1-2<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.2.2</span> ダウンロード例 1-2<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-2"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_gdp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"all"</span>, indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>gdp <span class="op">=</span> <span class="st">"NY.GDP.MKTP.CD"</span><span class="op">)</span><span class="op">)</span></span>
@@ -503,9 +504,9 @@
 #&gt; 10 Africa Eastern and Southern ZH    AFE    2012 9.73e11
 #&gt; # ℹ 16,482 more rows</code></pre>
 </div>
-<div id="ダウンロード例-1-3" class="section level4" number="24.2.2.3">
+<div id="ダウンロード例-1-3" class="section level4" number="25.2.2.3">
 <h4>
-<span class="header-section-number">24.2.2.3</span> ダウンロード例 1-3<br><a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.2.3</span> ダウンロード例 1-3<br><a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-3"><i class="fas fa-link"></i></a>
 </h4>
 <p>今度は、<code>extra = TRUE</code> として、読み込みましょう。先ほど、読み込んである、<code>wdi_cache</code> を使います。</p>
 <div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
@@ -541,9 +542,9 @@
 #&gt; #   lending &lt;chr&gt;</code></pre>
 <p>右上の三角印を使って、どのような詳細情報が付加されたか見て見ましょう。どんなことがわかりますか。</p>
 </div>
-<div id="ダウンロード例-1-4" class="section level4" number="24.2.2.4">
+<div id="ダウンロード例-1-4" class="section level4" number="25.2.2.4">
 <h4>
-<span class="header-section-number">24.2.2.4</span> ダウンロード例 1-4<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.2.4</span> ダウンロード例 1-4<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-1-4"><i class="fas fa-link"></i></a>
 </h4>
 <p>国名を指定します。<code>WDI</code> では、iso2c コードを使って、国名を指定します。上で見たように、Envoronment から、<code>wdi_cache</code> を選択すると、国名と、iso2c コード両方を見ることができました。iso2c や、iso3c は、よく使われるので、web 検索でも簡単にみつけることができます。最初に紹介した例ですから、どの国かはわかりますね、</p>
 <div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
@@ -578,9 +579,9 @@
 #&gt; #   longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, income &lt;chr&gt;,
 #&gt; #   lending &lt;chr&gt;</code></pre>
 </div>
-<div id="ダウンロード例-2-1" class="section level4" number="24.2.2.5">
+<div id="ダウンロード例-2-1" class="section level4" number="25.2.2.5">
 <h4>
-<span class="header-section-number">24.2.2.5</span> ダウンロード例 2-1<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-2-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2.2.5</span> ダウンロード例 2-1<a class="anchor" aria-label="anchor" href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E4%BE%8B-2-1"><i class="fas fa-link"></i></a>
 </h4>
 <p>二つの、指標コードを使って、同時に読み込むこともできます。そのときは、<code><a href="https://rdrr.io/r/base/c.html">c()</a></code> (combine) を使います。</p>
 <ul>
@@ -703,14 +704,14 @@
 </div>
 </div>
 </div>
-<div id="可視化-visualization" class="section level2" number="24.3">
+<div id="可視化-visualization" class="section level2" number="25.3">
 <h2>
-<span class="header-section-number">24.3</span> 可視化 Visualization<a class="anchor" aria-label="anchor" href="#%E5%8F%AF%E8%A6%96%E5%8C%96-visualization"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3</span> 可視化 Visualization<a class="anchor" aria-label="anchor" href="#%E5%8F%AF%E8%A6%96%E5%8C%96-visualization"><i class="fas fa-link"></i></a>
 </h2>
 <p>グラフ（Chart）を描いて視覚化します。ここでは、年ごとの変化をみる、折れ線グラフだけを描いて見ます。</p>
-<div id="グラフ-1" class="section level3" number="24.3.1">
+<div id="グラフ-1" class="section level3" number="25.3.1">
 <h3>
-<span class="header-section-number">24.3.1</span> グラフ 1<a class="anchor" aria-label="anchor" href="#%E3%82%B0%E3%83%A9%E3%83%95-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3.1</span> グラフ 1<a class="anchor" aria-label="anchor" href="#%E3%82%B0%E3%83%A9%E3%83%95-1"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>x = year</code>, <code>y = gdp</code> の、<code>x=</code>, <code>y=</code> は省略してあります。<code>col=country</code> は、国ごとに、グループにして、色分けをします。<code>col</code> は、<code>color</code> としても <code>colour</code> としても、問題ありません。
 `</p>
@@ -721,9 +722,9 @@
 <div class="inline-figure"><img src="32-worldbank_files/figure-html/unnamed-chunk-39-1.png" width="672"></div>
 <p>Warning として、missing values があると出ています。どこかは、分かりませんが、図を書くときですから、<code>y</code> に対応する、<code>gdp</code> の値がないものと思われます。</p>
 </div>
-<div id="グラフ-2" class="section level3" number="24.3.2">
+<div id="グラフ-2" class="section level3" number="25.3.2">
 <h3>
-<span class="header-section-number">24.3.2</span> グラフ 2<a class="anchor" aria-label="anchor" href="#%E3%82%B0%E3%83%A9%E3%83%95-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3.2</span> グラフ 2<a class="anchor" aria-label="anchor" href="#%E3%82%B0%E3%83%A9%E3%83%95-2"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>drop_na(gdp)</code> で、<code>gdp</code> の値が、NA であるものを削除します。また、<code>labs</code> で、図にタイトルをつけます。</p>
 <div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
@@ -732,14 +733,14 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"WDI - NY.GDP.MKTP.CD: gdp"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="32-worldbank_files/figure-html/unnamed-chunk-40-1.png" width="672"></div>
 </div>
-<div id="テンプレート-templates" class="section level3" number="24.3.3">
+<div id="テンプレート-templates" class="section level3" number="25.3.3">
 <h3>
-<span class="header-section-number">24.3.3</span> テンプレート Templates<a class="anchor" aria-label="anchor" href="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88-templates"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3.3</span> テンプレート Templates<a class="anchor" aria-label="anchor" href="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88-templates"><i class="fas fa-link"></i></a>
 </h3>
 <p>下に、テンプレートをつけます。コピーして、指標コードや、略称、国などを、それぞれ置き換えて、試して見てください。少し、複雑な変形をしていますが、少しずつ説明します。</p>
-<div id="一つの国についての一つの指標wdiとその略称から折線グラフを作成" class="section level4" number="24.3.3.1">
+<div id="一つの国についての一つの指標wdiとその略称から折線グラフを作成" class="section level4" number="25.3.3.1">
 <h4>
-<span class="header-section-number">24.3.3.1</span> 一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E4%B8%80%E3%81%A4%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%B8%80%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3.3.1</span> 一つの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E4%B8%80%E3%81%A4%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%B8%80%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
 </h4>
 <p>Line Plot with one indicator with abbreviation and one country</p>
 <div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
@@ -752,9 +753,9 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI "</span>, <span class="va">chosen_indicator</span>, <span class="st">": "</span>, <span class="va">short_name</span>, <span class="st">" - "</span>, <span class="va">chosen_country</span><span class="op">)</span>,</span>
 <span>       y <span class="op">=</span> <span class="va">short_name</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="一つの国についての一つの指標wdiから折線グラフを作成" class="section level4" number="24.3.3.2">
+<div id="一つの国についての一つの指標wdiから折線グラフを作成" class="section level4" number="25.3.3.2">
 <h4>
-<span class="header-section-number">24.3.3.2</span> 一つの国についての、一つの指標（WDI）から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E4%B8%80%E3%81%A4%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%B8%80%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3.3.2</span> 一つの国についての、一つの指標（WDI）から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E4%B8%80%E3%81%A4%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%B8%80%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
 </h4>
 <p>Line Plot with one indicator and one country</p>
 <div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
@@ -767,9 +768,9 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI "</span>, <span class="va">chosen_indicator</span>, <span class="st">" - "</span>, <span class="va">chosen_country</span><span class="op">)</span>, </span>
 <span>       y <span class="op">=</span> <span class="va">chosen_indicator</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="いくつかの国についての一つの指標wdiとその略称から折線グラフを作成" class="section level4" number="24.3.3.3">
+<div id="いくつかの国についての一つの指標wdiとその略称から折線グラフを作成" class="section level4" number="25.3.3.3">
 <h4>
-<span class="header-section-number">24.3.3.3</span> いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%B8%80%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3.3.3</span> いくつかの国についての、一つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%B8%80%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
 </h4>
 <p>Line Plot with one indicator with abbreviation and several countries</p>
 <div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
@@ -781,9 +782,9 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">short_name</span>, col <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI "</span>, <span class="va">chosen_indicator</span>, <span class="st">": "</span>, <span class="va">short_name</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">short_name</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="一つの国についての二つの指標wdiとその略称から折線グラフを作成" class="section level4" number="24.3.3.4">
+<div id="一つの国についての二つの指標wdiとその略称から折線グラフを作成" class="section level4" number="25.3.3.4">
 <h4>
-<span class="header-section-number">24.3.3.4</span> 一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E4%B8%80%E3%81%A4%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%BA%8C%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3.3.4</span> 一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E4%B8%80%E3%81%A4%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%BA%8C%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
 </h4>
 <p>Line Plot with two indicators with abbreviation and one country</p>
 <div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
@@ -811,9 +812,9 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"WDI "</span>, <span class="va">chosen_indicator_1</span>, <span class="st">": "</span>, <span class="va">short_name_1</span>, <span class="st">"\n"</span>, <span class="va">chosen_indicator_2</span>, <span class="st">": "</span>, <span class="va">short_name_2</span>, <span class="st">" - "</span>, <span class="va">chosen_country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">short_name_1</span>, <span class="va">short_name_2</span><span class="op">)</span>, values <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/hue_pal.html">hue_pal</a></span><span class="op">(</span><span class="op">)</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="いくつかの国についての二つの指標wdiとその略称から折線グラフを作成" class="section level4" number="24.3.3.5">
+<div id="いくつかの国についての二つの指標wdiとその略称から折線グラフを作成" class="section level4" number="25.3.3.5">
 <h4>
-<span class="header-section-number">24.3.3.5</span> いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%BA%8C%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3.3.5</span> いくつかの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成<a class="anchor" aria-label="anchor" href="#%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE%E5%9B%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E4%BA%8C%E3%81%A4%E3%81%AE%E6%8C%87%E6%A8%99wdi%E3%81%A8%E3%81%9D%E3%81%AE%E7%95%A5%E7%A7%B0%E3%81%8B%E3%82%89%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
 </h4>
 <p>Line Plot with two indicators with abbreviation and several countries</p>
 <div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
@@ -843,9 +844,9 @@
 </div>
 </div>
 </div>
-<div id="課題-assignment" class="section level2" number="24.4">
+<div id="課題-assignment" class="section level2" number="25.4">
 <h2>
-<span class="header-section-number">24.4</span> 課題　Assignment<a class="anchor" aria-label="anchor" href="#%E8%AA%B2%E9%A1%8C-assignment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.4</span> 課題　Assignment<a class="anchor" aria-label="anchor" href="#%E8%AA%B2%E9%A1%8C-assignment"><i class="fas fa-link"></i></a>
 </h2>
 <p>上のテンプレートをコピーして、下に貼り付け、指標 <code>indicator</code> と、略称 <code>short_name</code> と、いくつかの国名 <code>chosen_countries</code> を、入れ替えて、試してみてください。</p>
 
@@ -853,35 +854,35 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></div>
-<div class="next"><a href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></div>
+<div class="prev"><a href="publicdata.html"><span class="header-section-number">24</span> Public Data の分析</a></div>
+<div class="next"><a href="un.html"><span class="header-section-number">26</span> UN Data（国際連合データ）</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#worldbank"><span class="header-section-number">24</span> World Bank</a></li>
+<li><a class="nav-link" href="#worldbank"><span class="header-section-number">25</span> World Bank</a></li>
 <li>
-<a class="nav-link" href="#world-development-indicator-wdi"><span class="header-section-number">24.1</span> World Development Indicator (WDI)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-indicators-wdi"><span class="header-section-number">24.1.1</span> 指標 Indicators (WDI)</a></li>
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi-world-development-indicators"><span class="header-section-number">24.1.2</span> 指標 WDI (World Development Indicators)</a></li>
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89wdi-code-%E3%82%92%E6%8E%A2%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86"><span class="header-section-number">24.1.3</span> 指標 のコード、WDI code を探してみよう</a></li>
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi%E3%81%AE%E4%BE%8B"><span class="header-section-number">24.1.4</span> 指標 WDIの例</a></li>
-<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-1.---%E8%AA%BF%E3%81%B9%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%84-wdi-%E6%8C%87%E6%A8%99%E3%81%A8%E3%81%9D%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89"><span class="header-section-number">24.1.5</span> 練習 1. - 調べてみたい WDI 指標とそのコード</a></li>
+<a class="nav-link" href="#world-development-indicator-wdi"><span class="header-section-number">25.1</span> World Development Indicator (WDI)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-indicators-wdi"><span class="header-section-number">25.1.1</span> 指標 Indicators (WDI)</a></li>
+<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi-world-development-indicators"><span class="header-section-number">25.1.2</span> 指標 WDI (World Development Indicators)</a></li>
+<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89wdi-code-%E3%82%92%E6%8E%A2%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86"><span class="header-section-number">25.1.3</span> 指標 のコード、WDI code を探してみよう</a></li>
+<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi%E3%81%AE%E4%BE%8B"><span class="header-section-number">25.1.4</span> 指標 WDIの例</a></li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-1.---%E8%AA%BF%E3%81%B9%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%84-wdi-%E6%8C%87%E6%A8%99%E3%81%A8%E3%81%9D%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89"><span class="header-section-number">25.1.5</span> 練習 1. - 調べてみたい WDI 指標とそのコード</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#wdi-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"><span class="header-section-number">24.2</span> WDI パッケージ</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi-%E6%A4%9C%E7%B4%A2"><span class="header-section-number">24.2.1</span> 指標 WDI 検索</a></li>
-<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi-%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><span class="header-section-number">24.2.2</span> 指標 WDI データのダウンロード</a></li>
+<a class="nav-link" href="#wdi-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"><span class="header-section-number">25.2</span> WDI パッケージ</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi-%E6%A4%9C%E7%B4%A2"><span class="header-section-number">25.2.1</span> 指標 WDI 検索</a></li>
+<li><a class="nav-link" href="#%E6%8C%87%E6%A8%99-wdi-%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><span class="header-section-number">25.2.2</span> 指標 WDI データのダウンロード</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#%E5%8F%AF%E8%A6%96%E5%8C%96-visualization"><span class="header-section-number">24.3</span> 可視化 Visualization</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%82%B0%E3%83%A9%E3%83%95-1"><span class="header-section-number">24.3.1</span> グラフ 1</a></li>
-<li><a class="nav-link" href="#%E3%82%B0%E3%83%A9%E3%83%95-2"><span class="header-section-number">24.3.2</span> グラフ 2</a></li>
-<li><a class="nav-link" href="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88-templates"><span class="header-section-number">24.3.3</span> テンプレート Templates</a></li>
+<a class="nav-link" href="#%E5%8F%AF%E8%A6%96%E5%8C%96-visualization"><span class="header-section-number">25.3</span> 可視化 Visualization</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%82%B0%E3%83%A9%E3%83%95-1"><span class="header-section-number">25.3.1</span> グラフ 1</a></li>
+<li><a class="nav-link" href="#%E3%82%B0%E3%83%A9%E3%83%95-2"><span class="header-section-number">25.3.2</span> グラフ 2</a></li>
+<li><a class="nav-link" href="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88-templates"><span class="header-section-number">25.3.3</span> テンプレート Templates</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#%E8%AA%B2%E9%A1%8C-assignment"><span class="header-section-number">24.4</span> 課題　Assignment</a></li>
+<li><a class="nav-link" href="#%E8%AA%B2%E9%A1%8C-assignment"><span class="header-section-number">25.4</span> 課題　Assignment</a></li>
 </ul>
 
       <div class="book-extra">

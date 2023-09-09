@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 12 SDGs | データサイエンスをはじめましょう - Data Science for All -</title>
+<meta name="author" content="鈴木寛（Hirosi Suzuki）">
+<meta name="description" content="持続的開発目標（Sustainable Development Goals）関連の情報がまとまっているサイトの紹介とともに、そのダッシュボードの使い方などデータ関係を中心に書いていきます。  12.1 SDGs とは  持続可能な開発目標（SDGs：Sustainable Development...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 12 SDGs | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/sdgs-site.html">
+<meta property="og:description" content="持続的開発目標（Sustainable Development Goals）関連の情報がまとまっているサイトの紹介とともに、そのダッシュボードの使い方などデータ関係を中心に書いていきます。  12.1 SDGs とは  持続可能な開発目標（SDGs：Sustainable Development...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 12 SDGs | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="持続的開発目標（Sustainable Development Goals）関連の情報がまとまっているサイトの紹介とともに、そのダッシュボードの使い方などデータ関係を中心に書いていきます。  12.1 SDGs とは  持続可能な開発目標（SDGs：Sustainable Development...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+- Data Science for All -</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">この文書について</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
+<li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
+<li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
+<li><a class="" href="wdi-site.html"><span class="header-section-number">4</span> 世界開発指標とオープンデータ</a></li>
+<li><a class="" href="notebook.html"><span class="header-section-number">5</span> データサイエンス ノートブック</a></li>
+<li class="book-part">第一部 オープンデータ</li>
+<li><a class="" href="publicdata-site.html"><span class="header-section-number">6</span> オープンデータ</a></li>
+<li><a class="" href="worldbank-site.html"><span class="header-section-number">7</span> 世界銀行（World Bank）</a></li>
+<li><a class="" href="oecd-site.html"><span class="header-section-number">8</span> OECD（経済協力開発機構）</a></li>
+<li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
+<li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
+<li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
+<li><a class="active" href="sdgs-site.html"><span class="header-section-number">12</span> SDGs</a></li>
+<li><a class="" href="other-site.html"><span class="header-section-number">13</span> その他のサイト</a></li>
+<li class="book-part">PART II BASICS</li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">14</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">15</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">16</span> R の基礎</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">17</span> Tidyverse</a></li>
+<li><a class="" href="transform.html"><span class="header-section-number">18</span> 変形（Transform）</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">19</span> 視覚化（Visualize）</a></li>
+<li><a class="" href="import.html"><span class="header-section-number">20</span> Import</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">21</span> Modeling</a></li>
+<li><a class="" href="communicate.html"><span class="header-section-number">22</span> Communicate</a></li>
+<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">23</span> 復習</a></li>
+<li class="book-part">PART III INSTITUTIONAL DATA</li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">24</span> Public Data の分析</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">25</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">26</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">27</span> Our World in Data</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">28</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">29</span> その他のデータベース</a></li>
+<li class="book-part">PART IV EDA</li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">30</span> 探索的データ解析</a></li>
+<li class="book-part">PART V EXAMPLES</li>
+<li><a class="" href="example1.html"><span class="header-section-number">31</span> Example 1</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
+<li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
+<li><a class="" href="bookdown-original.html"><span class="header-section-number">C</span> Bookdown</a></li>
+<li><a class="" href="todo-list.html"><span class="header-section-number">D</span> To Do リスト</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/icu-hsuzuki/ds4aj">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="sdgs-site" class="section level1" number="12">
+<h1>
+<span class="header-section-number">12</span> SDGs<a class="anchor" aria-label="anchor" href="#sdgs-site"><i class="fas fa-link"></i></a>
+</h1>
+<p>持続的開発目標（Sustainable Development Goals）関連の情報がまとまっているサイトの紹介とともに、そのダッシュボードの使い方などデータ関係を中心に書いていきます。</p>
+<div id="sdgs-とは" class="section level2" number="12.1">
+<h2>
+<span class="header-section-number">12.1</span> SDGs とは<a class="anchor" aria-label="anchor" href="#sdgs-%E3%81%A8%E3%81%AF"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>持続可能な開発目標（SDGs：Sustainable Development Goals）とは，2001年に策定された<a href="https://www.mofa.go.jp/mofaj/gaiko/oda/doukou/mdgs.html">ミレニアム開発目標（MDGs）</a><img src="https://www.mofa.go.jp/mofaj/gaiko/oda/sdgs/common_img/icon_window.gif" alt="別ウィンドウで開く">の後継として，2015年9月の国連サミットで加盟国の全会一致で採択された「持続可能な開発のための2030アジェンダ」に記載された，2030年までに持続可能でよりよい世界を目指す国際目標です。17のゴール・169のターゲットから構成され，地球上の「誰一人取り残さない（leave no one behind）」ことを誓っています。SDGsは発展途上国のみならず，先進国自身が取り組むユニバーサル（普遍的）なものであり，日本としても積極的に取り組んでいます。（<a href="https://www.mofa.go.jp/mofaj/gaiko/oda/sdgs/about/index.html">外務省ホームページ</a>）</p>
+</blockquote>
+</div>
+<div id="国際連合" class="section level2" number="12.2">
+<h2>
+<span class="header-section-number">12.2</span> 国際連合<a class="anchor" aria-label="anchor" href="#%E5%9B%BD%E9%9A%9B%E9%80%A3%E5%90%88"><i class="fas fa-link"></i></a>
+</h2>
+<p>17 Goals to Transform Our World: <a href="https://www.un.org/sustainabledevelopment/" class="uri">https://www.un.org/sustainabledevelopment/</a></p>
+<p>SDGs HOME: <a href="https://unstats.un.org/sdgs" class="uri">https://unstats.un.org/sdgs</a></p>
+<p>国連：<a href="https://unstats.un.org/sdgs/dataportal/database" class="uri">https://unstats.un.org/sdgs/dataportal/database</a></p>
+</div>
+<div id="世界銀行" class="section level2" number="12.3">
+<h2>
+<span class="header-section-number">12.3</span> 世界銀行<a class="anchor" aria-label="anchor" href="#%E4%B8%96%E7%95%8C%E9%8A%80%E8%A1%8C"><i class="fas fa-link"></i></a>
+</h2>
+<p>世界銀行のダッシュボードとして紹介したデータバンク（DataBank）には、データベースとして、Sustainable Development Goals (SDGs) があります。下のリンクでは、そのデータベースがすでに選択されてあります。</p>
+<p>SDGs DataBank：<a href="https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)" class="uri">https://databank.worldbank.org/source/sustainable-development-goals-(sdgs)</a></p>
+<p>全部で408の項目（Series）に分かれて、データを見ることができます。</p>
+<p>Data Topics of SDGs: <a href="https://datatopics.worldbank.org/sdgatlas/" class="uri">https://datatopics.worldbank.org/sdgatlas/</a></p>
+<p>17の各項目についての状況がまとめられています。</p>
+</div>
+<div id="owid" class="section level2" number="12.4">
+<h2>
+<span class="header-section-number">12.4</span> OWID<a class="anchor" aria-label="anchor" href="#owid"><i class="fas fa-link"></i></a>
+</h2>
+<p>データで見る私たちの世界：Our World in Data SGD Tracker: <a href="https://sdg-tracker.org/" class="uri">https://sdg-tracker.org/</a></p>
+<p>17のそれぞれの項目について</p>
+<ul>
+<li><p>概要</p></li>
+<li><p>数値目標と指標</p></li>
+<li><p>簡単な解説など</p></li>
+<li><p>Chart 視覚化のためのダッシュボード</p></li>
+</ul>
+<p>がついています。ダッシュボードについて少し書いておきます。</p>
+<ol style="list-style-type: decimal">
+<li>
+<p>Chart グラフ</p>
+<ul>
+<li><p>いくつかの国についての年次変化を表す折れ線グラフなどがあります。</p></li>
+<li><p>Add Country or Region から国や地域を選択することができるようになっています。</p></li>
+</ul>
+</li>
+<li>
+<p>Choropleth 色付き地図</p>
+<ul>
+<li><p>右上のプルダウンメニューからは、地域（アフリカ、北アメリカ、南アメリカ、アジア、ヨーロッパ、オセアニア）を選択して拡大することができます。</p></li>
+<li><p>それぞれの国にマウスまたはポインターを重ねると、その国の状況を見ることができます。</p></li>
+</ul>
+</li>
+<li>
+<p>Table 表</p>
+<ul>
+<li>データの一部が表となっています。降順・昇順などの並べ替えも可能です。</li>
+</ul>
+</li>
+<li>
+<p>Sources 出典</p>
+<ul>
+<li>変数の簡単な定義とともに、World Bank などもともとのデータの出典へのリンクも含まれています。</li>
+</ul>
+</li>
+<li>
+<p>Download ダウンロード</p>
+<ul>
+<li>グラフやデータをダウンロードすることができるようになっています。</li>
+</ul>
+</li>
+<li>
+<p>Share 共有</p>
+<ul>
+<li>共有リンクや、ホームページに埋め込む iframe リンクなどが付いています。</li>
+</ul>
+</li>
+</ol>
+<div id="例sdg1-end-poverty-in-all-its-forms-everywhere" class="section level3" number="12.4.1">
+<h3>
+<span class="header-section-number">12.4.1</span> 例：SDG1: <strong>End poverty in all its forms everywhere</strong><a class="anchor" aria-label="anchor" href="#%E4%BE%8Bsdg1-end-poverty-in-all-its-forms-everywhere"><i class="fas fa-link"></i></a>
+</h3>
+<p><a href="https://ourworldindata.org/grapher/share-of-population-in-extreme-poverty">リンク</a></p>
+<iframe src="https://ourworldindata.org/grapher/share-of-population-in-extreme-poverty" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+</div>
+<div id="例sdg5-achieve-gender-equality-and-empower-all-women-and-girls" class="section level3" number="12.4.2">
+<h3>
+<span class="header-section-number">12.4.2</span> 例：SDG5: <strong>Achieve gender equality and empower all women and girls</strong><a class="anchor" aria-label="anchor" href="#%E4%BE%8Bsdg5-achieve-gender-equality-and-empower-all-women-and-girls"><i class="fas fa-link"></i></a>
+</h3>
+<p><a href="https://ourworldindata.org/grapher/overarching-legal-frameworks-regarding-gender-equality">リンク</a></p>
+<iframe src="https://ourworldindata.org/grapher/overarching-legal-frameworks-regarding-gender-equality?tab=chart&amp;time=2018..2022&amp;country=ARE~OWID_WRL~KEN~JPN" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+</div>
+</div>
+<div id="sdg-index" class="section level2" number="12.5">
+<h2>
+<span class="header-section-number">12.5</span> SDG Index<a class="anchor" aria-label="anchor" href="#sdg-index"><i class="fas fa-link"></i></a>
+</h2>
+<p>SDG Report: <a href="https://dashboards.sdgindex.org" class="uri">https://dashboards.sdgindex.org</a></p>
+<p>SDG Index: <a href="https://dashboards.sdgindex.org/map" class="uri">https://dashboards.sdgindex.org/map</a></p>
+<p>Sustainable Development Report（SDGs 報告）を毎年出しています。17の項目それぞれについての達成度を国別にも確認できるようになっており、改善されている、変化なし、悪化しているなどの状況も掲載されています。</p>
+<p>報告全体を読むこともできますが、リンク上の地図で日本を選択すると、日本の状況を見ることができます。SDG1 から SDG17 までの項目について詳しくみていくことも可能です。</p>
+<p>指標をどのように決めているかも気になりますが、それを理解するコースも公開しています。</p>
+<p>SDGAcademyX: <a href="https://www.edx.org/school/sdgacademyx" class="uri">https://www.edx.org/school/sdgacademyx</a></p>
+<ul>
+<li><a href="https://www.edx.org/learn/sustainable-development/sdg-academy-measuring-sustainable-development?webview=false&amp;campaign=Measuring+Sustainable+Development&amp;source=edx&amp;product_category=course&amp;placement_url=https%3A%2F%2Fwww.edx.org%2Fschool%2Fsdgacademyx">Measuring Sustainable Development</a></li>
+</ul>
+</div>
+<div id="外務省" class="section level2" number="12.6">
+<h2>
+<span class="header-section-number">12.6</span> 外務省<a class="anchor" aria-label="anchor" href="#%E5%A4%96%E5%8B%99%E7%9C%81"><i class="fas fa-link"></i></a>
+</h2>
+<p>リンク：<a href="https://www.mofa.go.jp/mofaj/gaiko/oda/sdgs/statistics/index.html" class="uri">https://www.mofa.go.jp/mofaj/gaiko/oda/sdgs/statistics/index.html</a></p>
+<p>17項目についての説明があり、少し資料もついています。</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></div>
+<div class="next"><a href="other-site.html"><span class="header-section-number">13</span> その他のサイト</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#sdgs-site"><span class="header-section-number">12</span> SDGs</a></li>
+<li><a class="nav-link" href="#sdgs-%E3%81%A8%E3%81%AF"><span class="header-section-number">12.1</span> SDGs とは</a></li>
+<li><a class="nav-link" href="#%E5%9B%BD%E9%9A%9B%E9%80%A3%E5%90%88"><span class="header-section-number">12.2</span> 国際連合</a></li>
+<li><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E9%8A%80%E8%A1%8C"><span class="header-section-number">12.3</span> 世界銀行</a></li>
+<li>
+<a class="nav-link" href="#owid"><span class="header-section-number">12.4</span> OWID</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E4%BE%8Bsdg1-end-poverty-in-all-its-forms-everywhere"><span class="header-section-number">12.4.1</span> 例：SDG1: End poverty in all its forms everywhere</a></li>
+<li><a class="nav-link" href="#%E4%BE%8Bsdg5-achieve-gender-equality-and-empower-all-women-and-girls"><span class="header-section-number">12.4.2</span> 例：SDG5: Achieve gender equality and empower all women and girls</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#sdg-index"><span class="header-section-number">12.5</span> SDG Index</a></li>
+<li><a class="nav-link" href="#%E5%A4%96%E5%8B%99%E7%9C%81"><span class="header-section-number">12.6</span> 外務省</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/icu-hsuzuki/ds4aj/blob/master/18-sdgs-site.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/icu-hsuzuki/ds4aj/edit/master/18-sdgs-site.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>データサイエンスをはじめましょう<br>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-09.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

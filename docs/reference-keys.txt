@@ -1,6 +1,7 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
+thm:tri
 introduction
 データサイエンスとは
 なぜデータサイエンスが最近注目されているのか
@@ -150,6 +151,15 @@ estat-site
 api-4
 estatapi-利用概要
 アプリケーションidの設定
+sdgs-site
+sdgs-とは
+国際連合
+世界銀行
+owid
+例sdg1-end-poverty-in-all-its-forms-everywhere
+例sdg5-achieve-gender-equality-and-empower-all-women-and-girls
+sdg-index
+外務省
 other-site
 wir
 概要-7
@@ -400,7 +410,6 @@ wdi-パッケージ
 いくつかの国についての二つの指標wdiとその略称から折線グラフを作成
 課題-assignment
 un
-owid
 estat
 api-の使い方
 はじめての-e-stat-with-api

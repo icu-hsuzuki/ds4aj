@@ -452,5 +452,5 @@ estat_pop_alien2020 |>
   labs(title = "国籍別日本在住外国人数", caption = "令和2（2020）年 国勢調査 統計表表示ID=0003445244")
 ```
 
-![](37-estat_files/figure-epub3/unnamed-chunk-19-1.png)<!-- -->
+<img src="37-estat_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 

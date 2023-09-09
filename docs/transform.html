@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 17 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 18 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
 <meta name="description" content="ここでは、tidyverse パッケージを構成する dplyr...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 17 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 18 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/transform.html">
 <meta property="og:description" content="ここでは、tidyverse パッケージを構成する dplyr...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 17 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:title" content="Chapter 18 変形（Transform） | データサイエンスをはじめましょう - Data Science for All -">
 <meta name="twitter:description" content="ここでは、tidyverse パッケージを構成する dplyr...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -80,29 +80,30 @@
 <li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
 <li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
 <li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
-<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
+<li><a class="" href="sdgs-site.html"><span class="header-section-number">12</span> SDGs</a></li>
+<li><a class="" href="other-site.html"><span class="header-section-number">13</span> その他のサイト</a></li>
 <li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
-<li><a class="active" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
-<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
-<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
-<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
-<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
-<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">14</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">15</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">16</span> R の基礎</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">17</span> Tidyverse</a></li>
+<li><a class="active" href="transform.html"><span class="header-section-number">18</span> 変形（Transform）</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">19</span> 視覚化（Visualize）</a></li>
+<li><a class="" href="import.html"><span class="header-section-number">20</span> Import</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">21</span> Modeling</a></li>
+<li><a class="" href="communicate.html"><span class="header-section-number">22</span> Communicate</a></li>
+<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">23</span> 復習</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
-<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">24</span> Public Data の分析</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">25</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">26</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">27</span> Our World in Data</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">28</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">29</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">30</span> 探索的データ解析</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">31</span> Example 1</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -115,9 +116,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="transform" class="section level1" number="17">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="transform" class="section level1" number="18">
 <h1>
-<span class="header-section-number">17</span> 変形（Transform）<a class="anchor" aria-label="anchor" href="#transform"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18</span> 変形（Transform）<a class="anchor" aria-label="anchor" href="#transform"><i class="fas fa-link"></i></a>
 </h1>
 <blockquote>
 <p>ここでは、<code>tidyverse</code> パッケージを構成する <code>dplyr</code> パッケージを用いて、データを変形することを学びます。変形とは、例えば、データのなかのある条件を満たす行や列を抽出したり、特定の列を修正したり、データの中のいくつかの列に含まれる情報をもとに計算して、新たな列を作ったり、グループに分けたり、順番を入れ替えたりといったことです。データを集約したり、グラフを作成するときにも、必要不可欠な作業です。</p>
@@ -136,9 +137,9 @@
 <span><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
 <span><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
 <span><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code></pre></div>
-<div id="dplyr-概要" class="section level2" number="17.1">
+<div id="dplyr-概要" class="section level2" number="18.1">
 <h2>
-<span class="header-section-number">17.1</span> <code>dplyr</code> <a href="https://dplyr.tidyverse.org">概要</a><a class="anchor" aria-label="anchor" href="#dplyr-%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.1</span> <code>dplyr</code> <a href="https://dplyr.tidyverse.org">概要</a><a class="anchor" aria-label="anchor" href="#dplyr-%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
 </h2>
 <p><code>dplyr</code> はデータ操作の文法のようなもので、最も一般的なデータ操作に役立つ一貫したいくつかの「動詞」の役割を果たすものを提供しています。</p>
 <ul>
@@ -157,9 +158,9 @@
 </ul>
 <p>さらに詳しく知りたい場合は Console（コンソールに）vignette(“dplyr”) と入れるか、<a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">こちら</a> を参照してください。上では、一つの表について述べていますが、二つの表の扱い方は、Console（コンソール）に vignette(“two-table”) と入れるか、<a href="https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html">こちら</a> を参照してください。二つの表の扱いについては、後から説明します。</p>
 <p><code>dplyr</code> を初めて使われる場合には、まず <a href="https://r4ds.hadley.nz/transform">R for data science (2e) Transform</a> を学ばれることをお勧めします。以下も、このサイトに沿った説明をします。</p>
-<div id="select-名前とタイプによって列変数を選択" class="section level3" number="17.1.1">
+<div id="select-名前とタイプによって列変数を選択" class="section level3" number="18.1.1">
 <h3>
-<span class="header-section-number">17.1.1</span> <a href="https://dplyr.tidyverse.org/reference/select.html"><code>select</code></a>: 名前とタイプによって、列（変数）を選択<a class="anchor" aria-label="anchor" href="#select-%E5%90%8D%E5%89%8D%E3%81%A8%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E9%81%B8%E6%8A%9E"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.1.1</span> <a href="https://dplyr.tidyverse.org/reference/select.html"><code>select</code></a>: 名前とタイプによって、列（変数）を選択<a class="anchor" aria-label="anchor" href="#select-%E5%90%8D%E5%89%8D%E3%81%A8%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E9%81%B8%E6%8A%9E"><i class="fas fa-link"></i></a>
 </h3>
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
@@ -216,9 +217,9 @@
 </tbody>
 </table></div>
 </div>
-<div id="filter-列の値の条件に適合した行の選択" class="section level3" number="17.1.2">
+<div id="filter-列の値の条件に適合した行の選択" class="section level3" number="18.1.2">
 <h3>
-<span class="header-section-number">17.1.2</span> <a href="https://dplyr.tidyverse.org/reference/filter.html"><code>filter</code></a>: 列の値の条件に適合した行の選択<a class="anchor" aria-label="anchor" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.1.2</span> <a href="https://dplyr.tidyverse.org/reference/filter.html"><code>filter</code></a>: 列の値の条件に適合した行の選択<a class="anchor" aria-label="anchor" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><i class="fas fa-link"></i></a>
 </h3>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -270,16 +271,16 @@
 </tbody>
 </table></div>
 </div>
-<div id="arrange" class="section level3" number="17.1.3">
+<div id="arrange" class="section level3" number="18.1.3">
 <h3>
-<span class="header-section-number">17.1.3</span> <a href="https://dplyr.tidyverse.org/reference/arrange.html"><code>arrange</code></a><a class="anchor" aria-label="anchor" href="#arrange"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.1.3</span> <a href="https://dplyr.tidyverse.org/reference/arrange.html"><code>arrange</code></a><a class="anchor" aria-label="anchor" href="#arrange"><i class="fas fa-link"></i></a>
 </h3>
 <p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> では、選択した列の値によって、行を並び替えます。</p>
 <p>注意点すべきは、他の、<code>dplyr</code> の動詞とは異なり、基本的に、グループ化は、無視し、その表全体に適用します。グループ内で並び替えをしたい場合には、グループ化した変数を指定するか、<code>.by_group = TRUE</code> とします。</p>
 </div>
-<div id="mutate" class="section level3" number="17.1.4">
+<div id="mutate" class="section level3" number="18.1.4">
 <h3>
-<span class="header-section-number">17.1.4</span> <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutate</code></a><a class="anchor" aria-label="anchor" href="#mutate"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.1.4</span> <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutate</code></a><a class="anchor" aria-label="anchor" href="#mutate"><i class="fas fa-link"></i></a>
 </h3>
 <p>新しい列を作成または、既存の列を修正、削除します。</p>
 <p>以下は便利な補助関数の例です。</p>
@@ -291,20 +292,20 @@
 <li><p>na_if(), coalesce()### <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></p></li>
 </ul>
 </div>
-<div id="group_by" class="section level3" number="17.1.5">
+<div id="group_by" class="section level3" number="18.1.5">
 <h3>
-<span class="header-section-number">17.1.5</span> <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by</code></a><a class="anchor" aria-label="anchor" href="#group_by"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.1.5</span> <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by</code></a><a class="anchor" aria-label="anchor" href="#group_by"><i class="fas fa-link"></i></a>
 </h3>
 <p>指定した列の値によって表全体をグループ化した表を作成します。表自体が変形されるわけではありませんから、注意してください。次の、<code>summarize</code> と合わせて利用すると便利です。</p>
 </div>
-<div id="summarise-or-summarize" class="section level3" number="17.1.6">
+<div id="summarise-or-summarize" class="section level3" number="18.1.6">
 <h3>
-<span class="header-section-number">17.1.6</span> <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise</code> or <code>summarize</code></a><a class="anchor" aria-label="anchor" href="#summarise-or-summarize"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.1.6</span> <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise</code> or <code>summarize</code></a><a class="anchor" aria-label="anchor" href="#summarise-or-summarize"><i class="fas fa-link"></i></a>
 </h3>
 <p>値の集約 (summarize) に利用します。グループ化された表の場合には、そのグループごとに、値を集約します。</p>
-<div id="集約のための関数" class="section level4" number="17.1.6.1">
+<div id="集約のための関数" class="section level4" number="18.1.6.1">
 <h4>
-<span class="header-section-number">17.1.6.1</span> 集約のための関数<a class="anchor" aria-label="anchor" href="#%E9%9B%86%E7%B4%84%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E9%96%A2%E6%95%B0"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.1.6.1</span> 集約のための関数<a class="anchor" aria-label="anchor" href="#%E9%9B%86%E7%B4%84%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E9%96%A2%E6%95%B0"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>summarize</code> には、 <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>, <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code>, や <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> が使われますが、ベクトルに対して定義され、一つの値だけを出力する関数でであれば、なんでも使うことができます。以下は、その例です。それぞれの関数については、Help で調べてください。</p>
 <ol style="list-style-type: decimal">
@@ -320,15 +321,15 @@
 </ul>
 </div>
 </div>
-<div id="パイプpipe" class="section level3" number="17.1.7">
+<div id="パイプpipe" class="section level3" number="18.1.7">
 <h3>
-<span class="header-section-number">17.1.7</span> パイプ（Pipe）<code>%&gt;%</code> <code>|&gt;</code><a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.1.7</span> パイプ（Pipe）<code>%&gt;%</code> <code>|&gt;</code><a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><i class="fas fa-link"></i></a>
 </h3>
 <p><a href="https://r4ds.hadley.nz/workflow-style.html#sec-pipes"><code>pipes</code></a> in R for Data Science.</p>
 <p><code>%&gt;%</code> は、<code>tidyverse</code> パッケージで、関数のチェーン化を行うために使用されるパイプ演算子ですが、R 4.1 以降は、<code>|&gt;</code> が、R に組み込まれた、ネイティブなパイプライン演算子になっています。<code>tidyverse</code> を使っているときは、どちらを使うことも可能ですが、<code>|&gt;</code> を使うことをお勧めします。R の versoin を確認するには、コンソール（Console）で、<code><a href="https://rdrr.io/r/base/Version.html">R.Version()</a></code> または、<code>R.version$version.string</code> とします。</p>
-<div id="備考-2" class="section level4" number="17.1.7.1">
+<div id="備考-2" class="section level4" number="18.1.7.1">
 <h4>
-<span class="header-section-number">17.1.7.1</span> <strong>備考</strong><a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.1.7.1</span> <strong>備考</strong><a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-2"><i class="fas fa-link"></i></a>
 </h4>
 <ol style="list-style-type: decimal">
 <li><p>パイプを使うコードで、複数行にまたがるときは、<code>|&gt;</code> の後で、改行してください。次の行に続くことがわかります。</p></li>
@@ -337,13 +338,13 @@
 </div>
 </div>
 </div>
-<div id="例から学ぶ-dplyr-i" class="section level2" number="17.2">
+<div id="例から学ぶ-dplyr-i" class="section level2" number="18.2">
 <h2>
-<span class="header-section-number">17.2</span> 例から学ぶ <code>dplyr</code> I<a class="anchor" aria-label="anchor" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-i"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2</span> 例から学ぶ <code>dplyr</code> I<a class="anchor" aria-label="anchor" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-i"><i class="fas fa-link"></i></a>
 </h2>
-<div id="data-iris" class="section level3" number="17.2.1">
+<div id="data-iris" class="section level3" number="18.2.1">
 <h3>
-<span class="header-section-number">17.2.1</span> Data <code>iris</code><a class="anchor" aria-label="anchor" href="#data-iris"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.1</span> Data <code>iris</code><a class="anchor" aria-label="anchor" href="#data-iris"><i class="fas fa-link"></i></a>
 </h3>
 <p>R 起動時に読み込まれる、<code>datasets</code> の中の、<code>iris</code> （あやめのデータ）を使い、いくつかの例を示します。<code>iris</code> は、何もしなくてもそのまま使えますが、もし、下の結果と違う場合には、すでに、<code>iris</code> を使い、変形などをしている可能性がありますから、そのときは、下のコードを実行してください。</p>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
@@ -372,14 +373,14 @@
 <span><span class="co">#&gt; [1] setosa     versicolor virginica </span></span>
 <span><span class="co">#&gt; Levels: setosa versicolor virginica</span></span></code></pre></div>
 </div>
-<div id="select-列の抽出" class="section level3" number="17.2.2">
+<div id="select-列の抽出" class="section level3" number="18.2.2">
 <h3>
-<span class="header-section-number">17.2.2</span> <code>select</code> 列の抽出<a class="anchor" aria-label="anchor" href="#select-%E5%88%97%E3%81%AE%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.2</span> <code>select</code> 列の抽出<a class="anchor" aria-label="anchor" href="#select-%E5%88%97%E3%81%AE%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
 </h3>
 </div>
-<div id="select-1---第-1-2-5-列を抽出" class="section level3" number="17.2.3">
+<div id="select-1---第-1-2-5-列を抽出" class="section level3" number="18.2.3">
 <h3>
-<span class="header-section-number">17.2.3</span> <code>select</code> 1 - 第 1, 2, 5 列を抽出<a class="anchor" aria-label="anchor" href="#select-1---%E7%AC%AC-1-2-5-%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.3</span> <code>select</code> 1 - 第 1, 2, 5 列を抽出<a class="anchor" aria-label="anchor" href="#select-1---%E7%AC%AC-1-2-5-%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -412,9 +413,9 @@
 <span><span class="co">#&gt; 4          4.6         3.1  setosa</span></span>
 <span><span class="co">#&gt; 5          5.0         3.6  setosa</span></span>
 <span><span class="co">#&gt; 6          5.4         3.9  setosa</span></span></code></pre></div>
-<div id="パイプpipe-を使ったコード" class="section level4" number="17.2.3.1">
+<div id="パイプpipe-を使ったコード" class="section level4" number="18.2.3.1">
 <h4>
-<span class="header-section-number">17.2.3.1</span> パイプ（Pipe） <code>|&gt;</code> を使ったコード<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97pipe-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.3.1</span> パイプ（Pipe） <code>|&gt;</code> を使ったコード<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%82%A4%E3%83%97pipe-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
 </h4>
 <p>最初の例では <code>head(select(iris, c(1,2,5)))</code> としました。<code>head</code> の引数として、 <code>select(iris, c(1,2,5))</code> を使ったからです。しかし、慣れてくると、順番に関数を適用することを表現するには、 パイプを使うのも便利です。パイプでは、直前の出力が次の関数の第一引数として引き継がれるというルールになっています。以下のようになります。</p>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
@@ -430,9 +431,9 @@
 <p>In the following, we use pipes.</p>
 </div>
 </div>
-<div id="select-2---species-列以外" class="section level3" number="17.2.4">
+<div id="select-2---species-列以外" class="section level3" number="18.2.4">
 <h3>
-<span class="header-section-number">17.2.4</span> <code>select</code> 2 - Species 列以外<a class="anchor" aria-label="anchor" href="#select-2---species-%E5%88%97%E4%BB%A5%E5%A4%96"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.4</span> <code>select</code> 2 - Species 列以外<a class="anchor" aria-label="anchor" href="#select-2---species-%E5%88%97%E4%BB%A5%E5%A4%96"><i class="fas fa-link"></i></a>
 </h3>
 <p>列名の前に、<code>-</code> ハイフン（半角）をつけると、その列以外を抽出します。</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
@@ -445,9 +446,9 @@
 <span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2</span></span>
 <span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4</span></span></code></pre></div>
 </div>
-<div id="select-3---列を抽出するとともに列名も変更" class="section level3" number="17.2.5">
+<div id="select-3---列を抽出するとともに列名も変更" class="section level3" number="18.2.5">
 <h3>
-<span class="header-section-number">17.2.5</span> <code>select</code> 3 - 列を抽出するとともに列名も変更<a class="anchor" aria-label="anchor" href="#select-3---%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA%E3%81%99%E3%82%8B%E3%81%A8%E3%81%A8%E3%82%82%E3%81%AB%E5%88%97%E5%90%8D%E3%82%82%E5%A4%89%E6%9B%B4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.5</span> <code>select</code> 3 - 列を抽出するとともに列名も変更<a class="anchor" aria-label="anchor" href="#select-3---%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA%E3%81%99%E3%82%8B%E3%81%A8%E3%81%A8%E3%82%82%E3%81%AB%E5%88%97%E5%90%8D%E3%82%82%E5%A4%89%E6%9B%B4"><i class="fas fa-link"></i></a>
 </h3>
 <p>新しい列名 = 現在の列名 という形式で、列名を変更することも可能です。</p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
@@ -461,9 +462,9 @@
 <span><span class="co">#&gt; 5 5.0 3.6 setosa</span></span>
 <span><span class="co">#&gt; 6 5.4 3.9 setosa</span></span></code></pre></div>
 </div>
-<div id="select-4---列順の変更" class="section level3" number="17.2.6">
+<div id="select-4---列順の変更" class="section level3" number="18.2.6">
 <h3>
-<span class="header-section-number">17.2.6</span> <code>select</code> 4 - 列順の変更<a class="anchor" aria-label="anchor" href="#select-4---%E5%88%97%E9%A0%86%E3%81%AE%E5%A4%89%E6%9B%B4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.6</span> <code>select</code> 4 - 列順の変更<a class="anchor" aria-label="anchor" href="#select-4---%E5%88%97%E9%A0%86%E3%81%AE%E5%A4%89%E6%9B%B4"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -474,18 +475,18 @@
 <span><span class="co">#&gt; 4  setosa          1.5         0.2          4.6         3.1</span></span>
 <span><span class="co">#&gt; 5  setosa          1.4         0.2          5.0         3.6</span></span>
 <span><span class="co">#&gt; 6  setosa          1.7         0.4          5.4         3.9</span></span></code></pre></div>
-<div id="備考-3" class="section level4" number="17.2.6.1">
+<div id="備考-3" class="section level4" number="18.2.6.1">
 <h4>
-<span class="header-section-number">17.2.6.1</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.6.1</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-3"><i class="fas fa-link"></i></a>
 </h4>
 <ol style="list-style-type: decimal">
 <li>上の、<code>select</code>` の 補助関数（helper functions）にも書きましたように、他にも様々な方法で、列を抽出することが可能です。たくさんの列がある、表に出会ったら、ぜひ使ってください。</li>
 </ol>
 </div>
 </div>
-<div id="filter---値による抽出" class="section level3" number="17.2.7">
+<div id="filter---値による抽出" class="section level3" number="18.2.7">
 <h3>
-<span class="header-section-number">17.2.7</span> <code>filter</code> - 値による抽出<a class="anchor" aria-label="anchor" href="#filter---%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.7</span> <code>filter</code> - 値による抽出<a class="anchor" aria-label="anchor" href="#filter---%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E6%8A%BD%E5%87%BA"><i class="fas fa-link"></i></a>
 </h3>
 <p>Species の列の値が、virginica であるものだけを抽出します。<code>==</code> とイコールが二つであることと、文字列の場合には、半角の引用符（double quote）でくくります。‘verginica’ でも同じです。（列名に空白や、特殊記号が含まれているときには、back tick と呼ばれる、反対向きの引用符で括ります。あとからその必要が生じたときに説明します。）</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
@@ -505,9 +506,9 @@
 <span><span class="co">#&gt; 5 virginica</span></span>
 <span><span class="co">#&gt; 6 virginica</span></span></code></pre></div>
 </div>
-<div id="arrange---昇順降順" class="section level3" number="17.2.8">
+<div id="arrange---昇順降順" class="section level3" number="18.2.8">
 <h3>
-<span class="header-section-number">17.2.8</span> <code>arrange</code> - 昇順、降順<a class="anchor" aria-label="anchor" href="#arrange---%E6%98%87%E9%A0%86%E9%99%8D%E9%A0%86"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.8</span> <code>arrange</code> - 昇順、降順<a class="anchor" aria-label="anchor" href="#arrange---%E6%98%87%E9%A0%86%E9%99%8D%E9%A0%86"><i class="fas fa-link"></i></a>
 </h3>
 <p>次の例では、Sepal.Length の値の、昇順（小さい順）にし、同じ値の中では、Spepal.Width の降順（大きい順 （desc は descending order からとったもの）にします。Sepal.Length の値が、4.4 の部分の、Sepal.Width の値をみてください。</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
@@ -520,9 +521,9 @@
 <span><span class="co">#&gt; 5          4.5         2.3          1.3         0.3  setosa</span></span>
 <span><span class="co">#&gt; 6          4.6         3.6          1.0         0.2  setosa</span></span></code></pre></div>
 </div>
-<div id="mutate---rank階級" class="section level3" number="17.2.9">
+<div id="mutate---rank階級" class="section level3" number="18.2.9">
 <h3>
-<span class="header-section-number">17.2.9</span> <code>mutate</code> - rank（階級）<a class="anchor" aria-label="anchor" href="#mutate---rank%E9%9A%8E%E7%B4%9A"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.9</span> <code>mutate</code> - rank（階級）<a class="anchor" aria-label="anchor" href="#mutate---rank%E9%9A%8E%E7%B4%9A"><i class="fas fa-link"></i></a>
 </h3>
 <p>小さい順に順序付けて新しい列を作成し、その順序で表示します。順序付も様々な種類があります。ここでは、同じ値のときには、同じ階級にしています。下の出力を右の方を見てください。1, 2, 2, 2, 5, … となっています。</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
@@ -542,18 +543,18 @@
 <span><span class="co">#&gt; 4       2</span></span>
 <span><span class="co">#&gt; 5       5</span></span>
 <span><span class="co">#&gt; 6       6</span></span></code></pre></div>
-<div id="備考-4" class="section level4" number="17.2.9.1">
+<div id="備考-4" class="section level4" number="18.2.9.1">
 <h4>
-<span class="header-section-number">17.2.9.1</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.9.1</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-4"><i class="fas fa-link"></i></a>
 </h4>
 <ol style="list-style-type: decimal">
 <li>パイプを紹介したときにも書きましたが、改行は、<code>|&gt;</code> のあとでしてください。</li>
 </ol>
 </div>
 </div>
-<div id="group_by-and-summarize" class="section level3" number="17.2.10">
+<div id="group_by-and-summarize" class="section level3" number="18.2.10">
 <h3>
-<span class="header-section-number">17.2.10</span> <code>group_by</code> and <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-and-summarize"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.2.10</span> <code>group_by</code> and <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-and-summarize"><i class="fas fa-link"></i></a>
 </h3>
 <p>グループにわけて、グループごとに、平均を求めています。</p>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
@@ -575,18 +576,18 @@
 <p><a href="https://icu-hsuzuki.github.io/da4r2022_note/dplyr-iris.nb.html">dplr_iris</a></p>
 </div>
 </div>
-<div id="dplyr-の参考文献" class="section level2" number="17.3">
+<div id="dplyr-の参考文献" class="section level2" number="18.3">
 <h2>
-<span class="header-section-number">17.3</span> <code>dplyr</code> の参考文献<a class="anchor" aria-label="anchor" href="#dplyr-%E3%81%AE%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.3</span> <code>dplyr</code> の参考文献<a class="anchor" aria-label="anchor" href="#dplyr-%E3%81%AE%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><i class="fas fa-link"></i></a>
 </h2>
 <p>より詳しい説明は、教科書の該当箇所を見てください。</p>
 <ul>
 <li><a href="https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro">R for Data Science, Part II Explore</a></li>
 <li><a href="https://r4ds.hadley.nz/transform">R for Data Science (2e), Transform</a></li>
 </ul>
-<div id="rstudio-primers-対話型の演習問題" class="section level3" number="17.3.1">
+<div id="rstudio-primers-対話型の演習問題" class="section level3" number="18.3.1">
 <h3>
-<span class="header-section-number">17.3.1</span> RStudio Primers: 対話型の演習問題<a class="anchor" aria-label="anchor" href="#rstudio-primers-%E5%AF%BE%E8%A9%B1%E5%9E%8B%E3%81%AE%E6%BC%94%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.3.1</span> RStudio Primers: 対話型の演習問題<a class="anchor" aria-label="anchor" href="#rstudio-primers-%E5%AF%BE%E8%A9%B1%E5%9E%8B%E3%81%AE%E6%BC%94%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fas fa-link"></i></a>
 </h3>
 <ol start="2" style="list-style-type: decimal">
 <li>Work with Data – <a href="https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro">r4ds: Wrangle, I</a>
@@ -599,14 +600,14 @@
 </ul>
 </div>
 </div>
-<div id="例から学ぶ-dplyr-ii---gapminder" class="section level2" number="17.4">
+<div id="例から学ぶ-dplyr-ii---gapminder" class="section level2" number="18.4">
 <h2>
-<span class="header-section-number">17.4</span> 例から学ぶ <code>dplyr</code> II - <code>gapminder</code><a class="anchor" aria-label="anchor" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-ii---gapminder"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.4</span> 例から学ぶ <code>dplyr</code> II - <code>gapminder</code><a class="anchor" aria-label="anchor" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-ii---gapminder"><i class="fas fa-link"></i></a>
 </h2>
 <p><code>gapminder</code> というパッケージのデータを使って、<code>dplyr</code> を学びます。この次の章で、<code>ggplot2</code> を使った視覚化について学びますが、この章で学んでいる変形は、<code>ggplot2</code> で、視覚化する準備のために、する場合も多いので、ここでも、<code>ggplot2</code> を使います。</p>
-<div id="ggplot2-概要" class="section level3" number="17.4.1">
+<div id="ggplot2-概要" class="section level3" number="18.4.1">
 <h3>
-<span class="header-section-number">17.4.1</span> <code>ggplot2</code> <a href="https://ggplot2.tidyverse.org">概要</a><a class="anchor" aria-label="anchor" href="#ggplot2-%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.4.1</span> <code>ggplot2</code> <a href="https://ggplot2.tidyverse.org">概要</a><a class="anchor" aria-label="anchor" href="#ggplot2-%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
 </h3>
 <p>次のような形式で使います。</p>
 <p><strong>例1 散布図</strong></p>
@@ -618,9 +619,9 @@
 <p><strong>テンプレート</strong></p>
 <pre><code>ggplot(data = &lt;DATA&gt;) + 
   &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))</code></pre>
-<div id="gapminder-と-r-package-gapminder" class="section level4" number="17.4.1.1">
+<div id="gapminder-と-r-package-gapminder" class="section level4" number="18.4.1.1">
 <h4>
-<span class="header-section-number">17.4.1.1</span> Gapminder と R Package <code>gapminder</code><a class="anchor" aria-label="anchor" href="#gapminder-%E3%81%A8-r-package-gapminder"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.4.1.1</span> Gapminder と R Package <code>gapminder</code><a class="anchor" aria-label="anchor" href="#gapminder-%E3%81%A8-r-package-gapminder"><i class="fas fa-link"></i></a>
 </h4>
 <blockquote>
 <p>Gapminder は オラ ロスリング（Ola Rosling） と アンナ ロスリング（Anna Rosling Rönnlund）と ハンス ロスリング（Hans Rosling）が設立した組織です。</p>
@@ -672,9 +673,9 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/WDI/">WDI</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="r-package-gapminder-data" class="section level4" number="17.4.1.2">
+<div id="r-package-gapminder-data" class="section level4" number="18.4.1.2">
 <h4>
-<span class="header-section-number">17.4.1.2</span> R Package <code>gapminder</code> data<a class="anchor" aria-label="anchor" href="#r-package-gapminder-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.4.1.2</span> R Package <code>gapminder</code> data<a class="anchor" aria-label="anchor" href="#r-package-gapminder-data"><i class="fas fa-link"></i></a>
 </h4>
 <p>We will use a <code>tidyverse</code> function <code>slice</code> replacing <code>head</code>. Check <code>slice</code> in the search window under the Help tab on the bottom right pane.</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
@@ -723,13 +724,13 @@
 <span><span class="co">#&gt;  Max.   :82.60   Max.   :1.319e+09   Max.   :113523.1  </span></span>
 <span><span class="co">#&gt; </span></span></code></pre></div>
 </div>
-<div id="dplyr-の応用" class="section level4" number="17.4.1.3">
+<div id="dplyr-の応用" class="section level4" number="18.4.1.3">
 <h4>
-<span class="header-section-number">17.4.1.3</span> <code>dplyr</code> の応用<a class="anchor" aria-label="anchor" href="#dplyr-%E3%81%AE%E5%BF%9C%E7%94%A8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.4.1.3</span> <code>dplyr</code> の応用<a class="anchor" aria-label="anchor" href="#dplyr-%E3%81%AE%E5%BF%9C%E7%94%A8"><i class="fas fa-link"></i></a>
 </h4>
-<div id="filter" class="section level5" number="17.4.1.3.1">
+<div id="filter" class="section level5" number="18.4.1.3.1">
 <h5>
-<span class="header-section-number">17.4.1.3.1</span> <code>filter</code><a class="anchor" aria-label="anchor" href="#filter"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.4.1.3.1</span> <code>filter</code><a class="anchor" aria-label="anchor" href="#filter"><i class="fas fa-link"></i></a>
 </h5>
 <p>一番上に、国名（country）に、アフガニスタン（Afghanistan） がありましたから、aアフガニスタンのデータを選び、平均寿命（lifeExp: Life Expectancy）の折線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。</p>
 <p><code>filter(country == "Afghanistan")</code></p>
@@ -866,9 +867,9 @@
 </div>
 </div>
 </div>
-<div id="練習-3" class="section level3" number="17.4.2">
+<div id="練習-3" class="section level3" number="18.4.2">
 <h3>
-<span class="header-section-number">17.4.2</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.4.2</span> 練習<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92-3"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li>平均寿命 <code>lifeExp</code> を人口 <code>pop</code> や、一人当たりの GDP <code>gdpPercap</code> に変えて、試してみてください。</li>
@@ -882,9 +883,9 @@
 <li>興味のある国をいくつか選んで、三つの指標について調べてみてください。</li>
 </ol>
 </div>
-<div id="group_by-と-summarize" class="section level3" number="17.4.3">
+<div id="group_by-と-summarize" class="section level3" number="18.4.3">
 <h3>
-<span class="header-section-number">17.4.3</span> <code>group_by</code> と <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-%E3%81%A8-summarize"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.4.3</span> <code>group_by</code> と <code>summarize</code><a class="anchor" aria-label="anchor" href="#group_by-%E3%81%A8-summarize"><i class="fas fa-link"></i></a>
 </h3>
 <p>データには大陸（<code>continent</code> ）という変数があります。幾つの大陸があり、それぞれの大陸のいくつ国のデータがこのデータには入っているでしょうか。</p>
 <p>それぞれの大陸ごとの2007年の平均寿命の平均と中央値と最大、最小を求めてみましょう。</p>
@@ -904,9 +905,9 @@
 <span><span class="co">#&gt; # ℹ 1 more variable: min_lifeExp &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 </div>
-<div id="練習問題" class="section level2" number="17.5">
+<div id="練習問題" class="section level2" number="18.5">
 <h2>
-<span class="header-section-number">17.5</span> 練習問題<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.5</span> 練習問題<a class="anchor" aria-label="anchor" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong>R Markdown and <code>dplyr</code></strong></p>
 <ul>
@@ -946,48 +947,48 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></div>
-<div class="next"><a href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></div>
+<div class="prev"><a href="tidyverse.html"><span class="header-section-number">17</span> Tidyverse</a></div>
+<div class="next"><a href="visualize.html"><span class="header-section-number">19</span> 視覚化（Visualize）</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#transform"><span class="header-section-number">17</span> 変形（Transform）</a></li>
+<li><a class="nav-link" href="#transform"><span class="header-section-number">18</span> 変形（Transform）</a></li>
 <li>
-<a class="nav-link" href="#dplyr-%E6%A6%82%E8%A6%81"><span class="header-section-number">17.1</span> dplyr 概要</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#select-%E5%90%8D%E5%89%8D%E3%81%A8%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E9%81%B8%E6%8A%9E"><span class="header-section-number">17.1.1</span> select: 名前とタイプによって、列（変数）を選択</a></li>
-<li><a class="nav-link" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><span class="header-section-number">17.1.2</span> filter: 列の値の条件に適合した行の選択</a></li>
-<li><a class="nav-link" href="#arrange"><span class="header-section-number">17.1.3</span> arrange</a></li>
-<li><a class="nav-link" href="#mutate"><span class="header-section-number">17.1.4</span> mutate</a></li>
-<li><a class="nav-link" href="#group_by"><span class="header-section-number">17.1.5</span> group_by</a></li>
-<li><a class="nav-link" href="#summarise-or-summarize"><span class="header-section-number">17.1.6</span> summarise or summarize</a></li>
-<li><a class="nav-link" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><span class="header-section-number">17.1.7</span> パイプ（Pipe）%&gt;% |&gt;</a></li>
+<a class="nav-link" href="#dplyr-%E6%A6%82%E8%A6%81"><span class="header-section-number">18.1</span> dplyr 概要</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#select-%E5%90%8D%E5%89%8D%E3%81%A8%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E9%81%B8%E6%8A%9E"><span class="header-section-number">18.1.1</span> select: 名前とタイプによって、列（変数）を選択</a></li>
+<li><a class="nav-link" href="#filter-%E5%88%97%E3%81%AE%E5%80%A4%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AB%E9%81%A9%E5%90%88%E3%81%97%E3%81%9F%E8%A1%8C%E3%81%AE%E9%81%B8%E6%8A%9E"><span class="header-section-number">18.1.2</span> filter: 列の値の条件に適合した行の選択</a></li>
+<li><a class="nav-link" href="#arrange"><span class="header-section-number">18.1.3</span> arrange</a></li>
+<li><a class="nav-link" href="#mutate"><span class="header-section-number">18.1.4</span> mutate</a></li>
+<li><a class="nav-link" href="#group_by"><span class="header-section-number">18.1.5</span> group_by</a></li>
+<li><a class="nav-link" href="#summarise-or-summarize"><span class="header-section-number">18.1.6</span> summarise or summarize</a></li>
+<li><a class="nav-link" href="#%E3%83%91%E3%82%A4%E3%83%97pipe"><span class="header-section-number">18.1.7</span> パイプ（Pipe）%&gt;% |&gt;</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-i"><span class="header-section-number">17.2</span> 例から学ぶ dplyr I</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-iris"><span class="header-section-number">17.2.1</span> Data iris</a></li>
-<li><a class="nav-link" href="#select-%E5%88%97%E3%81%AE%E6%8A%BD%E5%87%BA"><span class="header-section-number">17.2.2</span> select 列の抽出</a></li>
-<li><a class="nav-link" href="#select-1---%E7%AC%AC-1-2-5-%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA"><span class="header-section-number">17.2.3</span> select 1 - 第 1, 2, 5 列を抽出</a></li>
-<li><a class="nav-link" href="#select-2---species-%E5%88%97%E4%BB%A5%E5%A4%96"><span class="header-section-number">17.2.4</span> select 2 - Species 列以外</a></li>
-<li><a class="nav-link" href="#select-3---%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA%E3%81%99%E3%82%8B%E3%81%A8%E3%81%A8%E3%82%82%E3%81%AB%E5%88%97%E5%90%8D%E3%82%82%E5%A4%89%E6%9B%B4"><span class="header-section-number">17.2.5</span> select 3 - 列を抽出するとともに列名も変更</a></li>
-<li><a class="nav-link" href="#select-4---%E5%88%97%E9%A0%86%E3%81%AE%E5%A4%89%E6%9B%B4"><span class="header-section-number">17.2.6</span> select 4 - 列順の変更</a></li>
-<li><a class="nav-link" href="#filter---%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E6%8A%BD%E5%87%BA"><span class="header-section-number">17.2.7</span> filter - 値による抽出</a></li>
-<li><a class="nav-link" href="#arrange---%E6%98%87%E9%A0%86%E9%99%8D%E9%A0%86"><span class="header-section-number">17.2.8</span> arrange - 昇順、降順</a></li>
-<li><a class="nav-link" href="#mutate---rank%E9%9A%8E%E7%B4%9A"><span class="header-section-number">17.2.9</span> mutate - rank（階級）</a></li>
-<li><a class="nav-link" href="#group_by-and-summarize"><span class="header-section-number">17.2.10</span> group_by and summarize</a></li>
+<a class="nav-link" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-i"><span class="header-section-number">18.2</span> 例から学ぶ dplyr I</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-iris"><span class="header-section-number">18.2.1</span> Data iris</a></li>
+<li><a class="nav-link" href="#select-%E5%88%97%E3%81%AE%E6%8A%BD%E5%87%BA"><span class="header-section-number">18.2.2</span> select 列の抽出</a></li>
+<li><a class="nav-link" href="#select-1---%E7%AC%AC-1-2-5-%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA"><span class="header-section-number">18.2.3</span> select 1 - 第 1, 2, 5 列を抽出</a></li>
+<li><a class="nav-link" href="#select-2---species-%E5%88%97%E4%BB%A5%E5%A4%96"><span class="header-section-number">18.2.4</span> select 2 - Species 列以外</a></li>
+<li><a class="nav-link" href="#select-3---%E5%88%97%E3%82%92%E6%8A%BD%E5%87%BA%E3%81%99%E3%82%8B%E3%81%A8%E3%81%A8%E3%82%82%E3%81%AB%E5%88%97%E5%90%8D%E3%82%82%E5%A4%89%E6%9B%B4"><span class="header-section-number">18.2.5</span> select 3 - 列を抽出するとともに列名も変更</a></li>
+<li><a class="nav-link" href="#select-4---%E5%88%97%E9%A0%86%E3%81%AE%E5%A4%89%E6%9B%B4"><span class="header-section-number">18.2.6</span> select 4 - 列順の変更</a></li>
+<li><a class="nav-link" href="#filter---%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E6%8A%BD%E5%87%BA"><span class="header-section-number">18.2.7</span> filter - 値による抽出</a></li>
+<li><a class="nav-link" href="#arrange---%E6%98%87%E9%A0%86%E9%99%8D%E9%A0%86"><span class="header-section-number">18.2.8</span> arrange - 昇順、降順</a></li>
+<li><a class="nav-link" href="#mutate---rank%E9%9A%8E%E7%B4%9A"><span class="header-section-number">18.2.9</span> mutate - rank（階級）</a></li>
+<li><a class="nav-link" href="#group_by-and-summarize"><span class="header-section-number">18.2.10</span> group_by and summarize</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#dplyr-%E3%81%AE%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="header-section-number">17.3</span> dplyr の参考文献</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#rstudio-primers-%E5%AF%BE%E8%A9%B1%E5%9E%8B%E3%81%AE%E6%BC%94%E7%BF%92%E5%95%8F%E9%A1%8C"><span class="header-section-number">17.3.1</span> RStudio Primers: 対話型の演習問題</a></li></ul>
+<a class="nav-link" href="#dplyr-%E3%81%AE%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="header-section-number">18.3</span> dplyr の参考文献</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#rstudio-primers-%E5%AF%BE%E8%A9%B1%E5%9E%8B%E3%81%AE%E6%BC%94%E7%BF%92%E5%95%8F%E9%A1%8C"><span class="header-section-number">18.3.1</span> RStudio Primers: 対話型の演習問題</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-ii---gapminder"><span class="header-section-number">17.4</span> 例から学ぶ dplyr II - gapminder</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#ggplot2-%E6%A6%82%E8%A6%81"><span class="header-section-number">17.4.1</span> ggplot2 概要</a></li>
-<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-3"><span class="header-section-number">17.4.2</span> 練習</a></li>
-<li><a class="nav-link" href="#group_by-%E3%81%A8-summarize"><span class="header-section-number">17.4.3</span> group_by と summarize</a></li>
+<a class="nav-link" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-dplyr-ii---gapminder"><span class="header-section-number">18.4</span> 例から学ぶ dplyr II - gapminder</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ggplot2-%E6%A6%82%E8%A6%81"><span class="header-section-number">18.4.1</span> ggplot2 概要</a></li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92-3"><span class="header-section-number">18.4.2</span> 練習</a></li>
+<li><a class="nav-link" href="#group_by-%E3%81%A8-summarize"><span class="header-section-number">18.4.3</span> group_by と summarize</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><span class="header-section-number">17.5</span> 練習問題</a></li>
+<li><a class="nav-link" href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><span class="header-section-number">18.5</span> 練習問題</a></li>
 </ul>
 
       <div class="book-extra">

@@ -47,7 +47,7 @@ Let us look at two charts.
 df0 %>% ggplot(aes(Petal.Width, Petal.Length)) + geom_point()
 ```
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 
 
@@ -56,7 +56,7 @@ df0 %>% ggplot(aes(Petal.Width, Petal.Length)) + geom_point()
 df0 %>% ggplot(aes(Petal.Width, Petal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE)
 ```
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-4-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 
 
@@ -65,7 +65,7 @@ df0 %>% ggplot(aes(Petal.Width, Petal.Length)) + geom_point() + geom_smooth(meth
 df0 %>% ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 ```
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 
 
@@ -74,7 +74,7 @@ df0 %>% ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 df0 %>% ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE)
 ```
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 
 
@@ -96,7 +96,7 @@ df0 %>% lm(Petal.Length ~ Petal.Width, .)
 
 ## Formula: $\text{Petal.Length} = 2.224 + 1.600\cdot \text{Petal.Width}$
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-8-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 
 
@@ -118,7 +118,7 @@ df0 %>% lm(Sepal.Length ~ Sepal.Width, .)
 
 ## Formula: $\text{Sepal.Length} = 3.093 + 1.103\cdot \text{Sepal.Width}$
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 
 
@@ -201,7 +201,7 @@ data %>% lm(y~x, .) %>% summary()
 
 
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-13-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 
 
@@ -221,7 +221,7 @@ augment(mod1) %>% ggplot() + geom_point(aes(x,y)) + geom_smooth(aes(x,y), formul
 
 
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-15-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 
 
@@ -403,7 +403,7 @@ as_tibble(iris) %>% filter(Species == "versicolor") %>% select(-5) %>% cor()
 as_tibble(iris) %>% filter(Species == "virginica") %>% ggplot(aes(Sepal.Length, Petal.Length)) + geom_point() + geom_smooth(method = "lm", formula = y~x, se = FALSE)
 ```
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 
 
@@ -465,7 +465,7 @@ wdi_lifeExp %>% filter(country == "World") %>% drop_na(lifeExp) %>%
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-31-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-31-1.png" width="672" />
 
 
 
@@ -543,7 +543,7 @@ wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "
 
 
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-36-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-36-1.png" width="672" />
 
 
 
@@ -555,7 +555,7 @@ wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "
   ggplot(aes(year, lifeExp, color = country)) + geom_point(aes(shape = country)) + geom_smooth(formula = y~x, method = "lm", se = FALSE)
 ```
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-37-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-37-1.png" width="672" />
 
 
 Need to work
@@ -890,13 +890,13 @@ wdi_world %>% ggplot(aes(education, lifeExp)) + geom_point() + geom_smooth(formu
 #> (`geom_point()`).
 ```
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-47-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-47-1.png" width="672" />
 
 ```r
 wdi_world %>% filter(income != "Aggregates") %>% drop_na(education, lifeExp) %>% ggplot(aes(education, lifeExp)) + geom_point() + geom_smooth(formula = y ~ x, method = "lm", se=FALSE)
 ```
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-48-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-48-1.png" width="672" />
 
 
 ```r
@@ -910,14 +910,14 @@ wdi_world_el %>% ggplot(aes(education)) + geom_histogram()
 #> `binwidth`.
 ```
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-50-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-50-1.png" width="672" />
 
 
 ```r
 wdi_world_el %>% filter(year==2020) %>% ggplot(aes(x = income, y = education, fill = income)) + geom_boxplot()
 ```
 
-![](28-modeling_files/figure-epub3/unnamed-chunk-51-1.png)<!-- -->
+<img src="28-modeling_files/figure-html/unnamed-chunk-51-1.png" width="672" />
 
 
 ```r

@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 27 e-Stat | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 28 e-Stat | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="27.1 API の使い方  27.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
+<meta name="description" content="28.1 API の使い方  28.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 27 e-Stat | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 28 e-Stat | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/estat.html">
-<meta property="og:description" content="27.1 API の使い方  27.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
+<meta property="og:description" content="28.1 API の使い方  28.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 27 e-Stat | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="27.1 API の使い方  27.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
+<meta name="twitter:title" content="Chapter 28 e-Stat | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="28.1 API の使い方  28.1.1 はじめての e-Stat with API はじめて、R の etatapi を使って、e-Stat のデータを取得する方法を簡単に説明します。  初期設定 パッケージの、estatapi が、e-Stat のデータを取得するためのものです。tidyverse は基本的な解析をおこなうため、showtext と showtext_auto()...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -80,29 +80,30 @@
 <li><a class="" href="un-site.html"><span class="header-section-number">9</span> United Nations（国際連合）</a></li>
 <li><a class="" href="owid-site.html"><span class="header-section-number">10</span> Our World in Data</a></li>
 <li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
-<li><a class="" href="other-site.html"><span class="header-section-number">12</span> その他のサイト</a></li>
+<li><a class="" href="sdgs-site.html"><span class="header-section-number">12</span> SDGs</a></li>
+<li><a class="" href="other-site.html"><span class="header-section-number">13</span> その他のサイト</a></li>
 <li class="book-part">PART II BASICS</li>
-<li><a class="" href="ronrstudio.html"><span class="header-section-number">13</span> R Studio で R</a></li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">14</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">15</span> R の基礎</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">16</span> Tidyverse</a></li>
-<li><a class="" href="transform.html"><span class="header-section-number">17</span> 変形（Transform）</a></li>
-<li><a class="" href="visualize.html"><span class="header-section-number">18</span> 視覚化（Visualize）</a></li>
-<li><a class="" href="import.html"><span class="header-section-number">19</span> Import</a></li>
-<li><a class="" href="modeling.html"><span class="header-section-number">20</span> Modeling</a></li>
-<li><a class="" href="communicate.html"><span class="header-section-number">21</span> Communicate</a></li>
-<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">22</span> 復習</a></li>
+<li><a class="" href="ronrstudio.html"><span class="header-section-number">14</span> R Studio で R</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">15</span> R Markdown</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">16</span> R の基礎</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">17</span> Tidyverse</a></li>
+<li><a class="" href="transform.html"><span class="header-section-number">18</span> 変形（Transform）</a></li>
+<li><a class="" href="visualize.html"><span class="header-section-number">19</span> 視覚化（Visualize）</a></li>
+<li><a class="" href="import.html"><span class="header-section-number">20</span> Import</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">21</span> Modeling</a></li>
+<li><a class="" href="communicate.html"><span class="header-section-number">22</span> Communicate</a></li>
+<li><a class="" href="aboutfirstexample.html"><span class="header-section-number">23</span> 復習</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
-<li><a class="" href="publicdata.html"><span class="header-section-number">23</span> Public Data の分析</a></li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">24</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">25</span> UN Data（国際連合データ）</a></li>
-<li><a class="" href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></li>
-<li><a class="active" href="estat.html"><span class="header-section-number">27</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></li>
+<li><a class="" href="publicdata.html"><span class="header-section-number">24</span> Public Data の分析</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">25</span> World Bank</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">26</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">27</span> Our World in Data</a></li>
+<li><a class="active" href="estat.html"><span class="header-section-number">28</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">29</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">29</span> 探索的データ解析</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">30</span> 探索的データ解析</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">30</span> Example 1</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">31</span> Example 1</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -115,17 +116,17 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estat" class="section level1" number="27">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estat" class="section level1" number="28">
 <h1>
-<span class="header-section-number">27</span> e-Stat<a class="anchor" aria-label="anchor" href="#estat"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28</span> e-Stat<a class="anchor" aria-label="anchor" href="#estat"><i class="fas fa-link"></i></a>
 </h1>
-<div id="api-の使い方" class="section level2" number="27.1">
+<div id="api-の使い方" class="section level2" number="28.1">
 <h2>
-<span class="header-section-number">27.1</span> API の使い方<a class="anchor" aria-label="anchor" href="#api-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.1</span> API の使い方<a class="anchor" aria-label="anchor" href="#api-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9"><i class="fas fa-link"></i></a>
 </h2>
-<div id="はじめての-e-stat-with-api" class="section level3" number="27.1.1">
+<div id="はじめての-e-stat-with-api" class="section level3" number="28.1.1">
 <h3>
-<span class="header-section-number">27.1.1</span> はじめての e-Stat with API<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE-e-stat-with-api"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.1.1</span> はじめての e-Stat with API<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE-e-stat-with-api"><i class="fas fa-link"></i></a>
 </h3>
 <p>はじめて、R の <code>etatapi</code> を使って、e-Stat のデータを取得する方法を簡単に説明します。</p>
 </div>
@@ -153,9 +154,9 @@
 <span><span class="co">#&gt; このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません。</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="e-stat-登録とアプリケーションidの取得" class="section level3" number="27.1.2">
+<div id="e-stat-登録とアプリケーションidの取得" class="section level3" number="28.1.2">
 <h3>
-<span class="header-section-number">27.1.2</span> e-Stat 登録と、アプリケーションIDの取得<a class="anchor" aria-label="anchor" href="#e-stat-%E7%99%BB%E9%8C%B2%E3%81%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E5%8F%96%E5%BE%97"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.1.2</span> e-Stat 登録と、アプリケーションIDの取得<a class="anchor" aria-label="anchor" href="#e-stat-%E7%99%BB%E9%8C%B2%E3%81%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E5%8F%96%E5%BE%97"><i class="fas fa-link"></i></a>
 </h3>
 <p>e-Stat API を利用するには、appId が必要です。</p>
 <ol style="list-style-type: decimal">
@@ -184,20 +185,20 @@
 </ul>
 </div>
 </div>
-<div id="estatapi-利用概要-1" class="section level2" number="27.2">
+<div id="estatapi-利用概要-1" class="section level2" number="28.2">
 <h2>
-<span class="header-section-number">27.2</span> <code>estatapi</code> 利用概要<a class="anchor" aria-label="anchor" href="#estatapi-%E5%88%A9%E7%94%A8%E6%A6%82%E8%A6%81-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.2</span> <code>estatapi</code> 利用概要<a class="anchor" aria-label="anchor" href="#estatapi-%E5%88%A9%E7%94%A8%E6%A6%82%E8%A6%81-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>CRAN <code>estatspi</code> URL: <a href="https://CRAN.R-project.org/package=estatapi" class="uri">https://CRAN.R-project.org/package=estatapi</a></p>
-<div id="アプリケーションidの設定-1" class="section level3" number="27.2.1">
+<div id="アプリケーションidの設定-1" class="section level3" number="28.2.1">
 <h3>
-<span class="header-section-number">27.2.1</span> アプリケーションIDの設定<a class="anchor" aria-label="anchor" href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E8%A8%AD%E5%AE%9A-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.2.1</span> アプリケーションIDの設定<a class="anchor" aria-label="anchor" href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E8%A8%AD%E5%AE%9A-1"><i class="fas fa-link"></i></a>
 </h3>
 <pre><code>appId &lt;- " " # 私のものは、英数40文字</code></pre>
 </div>
-<div id="統計表情報取得estat_getstatslist" class="section level3" number="27.2.2">
+<div id="統計表情報取得estat_getstatslist" class="section level3" number="28.2.2">
 <h3>
-<span class="header-section-number">27.2.2</span> 統計表情報取得（estat_getStatsList()）<a class="anchor" aria-label="anchor" href="#%E7%B5%B1%E8%A8%88%E8%A1%A8%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getstatslist"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.2.2</span> 統計表情報取得（estat_getStatsList()）<a class="anchor" aria-label="anchor" href="#%E7%B5%B1%E8%A8%88%E8%A1%A8%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getstatslist"><i class="fas fa-link"></i></a>
 </h3>
 <p>提供されている統計表を検索します。この関数は、結果をtbl_df（dplyrのdata.frame。data.frameとほぼ同じように扱える）として返します。</p>
 <p>STAT_NAMEやGOV_ORGは人間が読みやすい形式のラベルになっていますが、 プログラム中で扱う場合はコードのままの方が都合がいいこともあります。そのときは.use_label = FALSEを指定してください。</p>
@@ -278,9 +279,9 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; #   TABLE_NAME &lt;chr&gt;, TABLE_EXPLANATION &lt;chr&gt;</span></span></code></pre></div>
 <p>statsDataID=0003410379</p>
 </div>
-<div id="メタ情報取得estat_getmetainfo" class="section level3" number="27.2.3">
+<div id="メタ情報取得estat_getmetainfo" class="section level3" number="28.2.3">
 <h3>
-<span class="header-section-number">27.2.3</span> メタ情報取得（estat_getMetaInfo()）<a class="anchor" aria-label="anchor" href="#%E3%83%A1%E3%82%BF%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getmetainfo"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.2.3</span> メタ情報取得（estat_getMetaInfo()）<a class="anchor" aria-label="anchor" href="#%E3%83%A1%E3%82%BF%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getmetainfo"><i class="fas fa-link"></i></a>
 </h3>
 <p>統計データのメタ情報を取得します。この関数は、結果をlistとして返します。listの各要素が、それぞれのデータ項目についてのメタ情報を含んだtbl_dfになっています。</p>
 <pre><code>meta_info &lt;- estat_getMetaInfo(appId = appId, statsDataId = "")</code></pre>
@@ -318,9 +319,9 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; 2 110     男      1       </span></span>
 <span><span class="co">#&gt; 3 120     女      1</span></span></code></pre></div>
 </div>
-<div id="統計データ取得estat_getstatsdata" class="section level3" number="27.2.4">
+<div id="統計データ取得estat_getstatsdata" class="section level3" number="28.2.4">
 <h3>
-<span class="header-section-number">27.2.4</span> 統計データ取得（estat_getStatsData()）<a class="anchor" aria-label="anchor" href="#%E7%B5%B1%E8%A8%88%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97estat_getstatsdata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.2.4</span> 統計データ取得（estat_getStatsData()）<a class="anchor" aria-label="anchor" href="#%E7%B5%B1%E8%A8%88%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97estat_getstatsdata"><i class="fas fa-link"></i></a>
 </h3>
 <p>統計データを取得します。この関数は、結果をメタ情報と紐づけてtbl_dfとして返します。</p>
 <p>必ず指定しなくてはいけないのはappIdとstatsDataIdだけですが、それだけだとデータがかなり大きくなって取得に時間がかかります。cdCat01（分類事項01）などを指定して必要な項目だけに絞ることをおすすめします。他に絞り込みに指定できるパラメータについては公式ドキュメントを参照してください。</p>
@@ -534,25 +535,25 @@ statsDataAPI=0004001640</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="owid.html"><span class="header-section-number">26</span> Our World in Data</a></div>
-<div class="next"><a href="others.html"><span class="header-section-number">28</span> その他のデータベース</a></div>
+<div class="prev"><a href="owid.html"><span class="header-section-number">27</span> Our World in Data</a></div>
+<div class="next"><a href="others.html"><span class="header-section-number">29</span> その他のデータベース</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#estat"><span class="header-section-number">27</span> e-Stat</a></li>
+<li><a class="nav-link" href="#estat"><span class="header-section-number">28</span> e-Stat</a></li>
 <li>
-<a class="nav-link" href="#api-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9"><span class="header-section-number">27.1</span> API の使い方</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE-e-stat-with-api"><span class="header-section-number">27.1.1</span> はじめての e-Stat with API</a></li>
+<a class="nav-link" href="#api-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9"><span class="header-section-number">28.1</span> API の使い方</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE-e-stat-with-api"><span class="header-section-number">28.1.1</span> はじめての e-Stat with API</a></li>
 <li><a class="nav-link" href="#%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A">初期設定</a></li>
-<li><a class="nav-link" href="#e-stat-%E7%99%BB%E9%8C%B2%E3%81%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E5%8F%96%E5%BE%97"><span class="header-section-number">27.1.2</span> e-Stat 登録と、アプリケーションIDの取得</a></li>
+<li><a class="nav-link" href="#e-stat-%E7%99%BB%E9%8C%B2%E3%81%A8%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E5%8F%96%E5%BE%97"><span class="header-section-number">28.1.2</span> e-Stat 登録と、アプリケーションIDの取得</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#estatapi-%E5%88%A9%E7%94%A8%E6%A6%82%E8%A6%81-1"><span class="header-section-number">27.2</span> estatapi 利用概要</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E8%A8%AD%E5%AE%9A-1"><span class="header-section-number">27.2.1</span> アプリケーションIDの設定</a></li>
-<li><a class="nav-link" href="#%E7%B5%B1%E8%A8%88%E8%A1%A8%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getstatslist"><span class="header-section-number">27.2.2</span> 統計表情報取得（estat_getStatsList()）</a></li>
-<li><a class="nav-link" href="#%E3%83%A1%E3%82%BF%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getmetainfo"><span class="header-section-number">27.2.3</span> メタ情報取得（estat_getMetaInfo()）</a></li>
-<li><a class="nav-link" href="#%E7%B5%B1%E8%A8%88%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97estat_getstatsdata"><span class="header-section-number">27.2.4</span> 統計データ取得（estat_getStatsData()）</a></li>
+<a class="nav-link" href="#estatapi-%E5%88%A9%E7%94%A8%E6%A6%82%E8%A6%81-1"><span class="header-section-number">28.2</span> estatapi 利用概要</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id%E3%81%AE%E8%A8%AD%E5%AE%9A-1"><span class="header-section-number">28.2.1</span> アプリケーションIDの設定</a></li>
+<li><a class="nav-link" href="#%E7%B5%B1%E8%A8%88%E8%A1%A8%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getstatslist"><span class="header-section-number">28.2.2</span> 統計表情報取得（estat_getStatsList()）</a></li>
+<li><a class="nav-link" href="#%E3%83%A1%E3%82%BF%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97estat_getmetainfo"><span class="header-section-number">28.2.3</span> メタ情報取得（estat_getMetaInfo()）</a></li>
+<li><a class="nav-link" href="#%E7%B5%B1%E8%A8%88%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97estat_getstatsdata"><span class="header-section-number">28.2.4</span> 統計データ取得（estat_getStatsData()）</a></li>
 </ul>
 </li>
 </ul>
