@@ -4,23 +4,23 @@
 
 RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。
 
-1. まず、R Studio を起動します。
+1.  まず、R Studio を起動します。
 
-2. 上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory を決めて、名前をつけます。その名前が、プロジェクト名になります。
+2.  上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory を決めて、名前をつけます。その名前が、プロジェクト名になります。
 
-  - Directory（フォルダー）を指定してその名前をつけて、プロジェクトを作成します。
-  - Directory が階層に分かれているときは、どこに作成するかを選択してから、名前をつけて、作成します。
-  
-3. 一旦、R Studio を終了してみましょう。
+-   Directory（フォルダー）を指定してその名前をつけて、プロジェクトを作成します。
+-   Directory が階層に分かれているときは、どこに作成するかを選択してから、名前をつけて、作成します。
 
-4. プロジェクトの起動には、いくつかの方法があります。
+3.  一旦、R Studio を終了してみましょう。
 
-  - まず、R Studio を起動。一つしかプロジェクトがない場合は、そのプロジェクトが起動すると思います、。上に、プロジェクト名が掲載されていれば、問題ありません。
-  - File から、Open Project を選択し、起動したい、プロジェクトの Directory（フォルダー）を選択して起動します。
-  - File から、Recent Project（最近使ったプロジェクト）を選択すると、プロジェクト名が表示されますから、選択すると起動することができます。
-  - コンピュータのプロジェクト入っているディレクトリー（フォルダー）をさがし、そこに、プロジェクト名.Rproj とあるものを見つけて、それを開くと、そのプロジェクトが起動します。
-  
-5. 作業後は、保存しますかと聞かれますから、保存して終了してください。
+4.  プロジェクトの起動には、いくつかの方法があります。
+
+-   まず、R Studio を起動。一つしかプロジェクトがない場合は、そのプロジェクトが起動すると思います、。上に、プロジェクト名が掲載されていれば、問題ありません。
+-   File から、Open Project を選択し、起動したい、プロジェクトの Directory（フォルダー）を選択して起動します。
+-   File から、Recent Project（最近使ったプロジェクト）を選択すると、プロジェクト名が表示されますから、選択すると起動することができます。
+-   コンピュータのプロジェクト入っているディレクトリー（フォルダー）をさがし、そこに、プロジェクト名.Rproj とあるものを見つけて、それを開くと、そのプロジェクトが起動します。
+
+5.  作業後は、保存しますかと聞かれますから、保存して終了してください。
 
 ## コンソールで実行 - Run in Console
 
@@ -28,12 +28,12 @@ RStudio で R を利用する場合には、プロジェクトを作成するこ
 
 ### 最初の四つ
 
-下の、四つを、一つずつ、一番下の、> マークの次に書き（または、コピー・ペーストして）Return または、Enter キーを押してください。実行結果が、その下に出ます。最後の、`plot(cars)` は、`cars` というデータの、散布図が右下の、Plots タブに表示されます。
+下の、四つを、一つずつ、一番下の、\> マークの次に書き（または、コピー・ペーストして）Return または、Enter キーを押してください。実行結果が、その下に出ます。最後の、`plot(cars)` は、`cars` というデータの、散布図が右下の、Plots タブに表示されます。
 
-* `head(cars)`
-* `str(cars)`
-* `summary(cars)`
-* `plot(cars)`
+-   `head(cars)`
+-   `str(cars)`
+-   `summary(cars)`
+-   `plot(cars)`
 
 エラーが表示されたら、もう一度、スペルを確認して、入力してみてください。
 
@@ -76,6 +76,7 @@ summary(cars)
 #>  3rd Qu.:19.0   3rd Qu.: 56.00  
 #>  Max.   :25.0   Max.   :120.00
 ```
+
 `cars` データの概要（summary）が表示されます。各列（変数）について、最小値（Minimum）、小さい方から、4分の1を切り捨てたときの最小の値（1st Quadrant）、中央値（Median）、平均（Mean）、大きい方から、4分の1を切り捨てたときの最大の値（3rd Quadrant）、最大値（Maximum）が表示されます。
 
 
@@ -93,27 +94,25 @@ plot(cars)
 
 コンソールで次のそれぞれを、試してみてください。
 
-* `df <- cars`
+-   `df <- cars`
 
 `df` に、`cars` をアサインします。すなわち、`df` が、`cars` の内容に置き換わります。`cars` はデータですが、データを含む、オブジェクトの名前を設定するためにも使います。オブジェクト名は。英文字から始まれば、かなりの自由度がありますが、わたしは、英文字と数字と `_`（underscore） 程度しか使わないようにしています。
 
-
-* `head(df)`
+-   `head(df)`
 
 `head(df)` は、`head(cars)` と同じ出力が得られます。
 
-* `View(cars)`
+-   `View(cars)`
 
 左上の、窓枠が開き、`cars` というデータ の内容が表示されます。列名のところには、三角形も表示され、それを用いると、大きい順、小さい順などに、並び替えることも可能です。また、フィルター機能も使えます。
 
-* `?cars`
+-   `?cars`
 
-右下の、窓枠の　Help タブに、`cars` の情報が表示されます。Help タブにある、虫眼鏡がついた、検索窓（search window）に、`cars` といれても、同じ結果が得られます。
-内容を確認してください。
+右下の、窓枠の　Help タブに、`cars` の情報が表示されます。Help タブにある、虫眼鏡がついた、検索窓（search window）に、`cars` といれても、同じ結果が得られます。 内容を確認してください。
 
 一番上には `cars {datasets}` とありますが、これは、`datasets` というパッケージの、`cars` だという意味です。そこで、`datasets` を調べてみましょう。
 
-* `?datasets`
+-   `?datasets`
 
 "The R Datasets Package" だと書かれていて、さらに、
 
@@ -123,12 +122,11 @@ This package contains a variety of datasets. For a complete list, use library(he
 
 とありますから、`library(help = "datasets")` をコンソールに入力してみてください。
 
-* `library(help = "datasets")`
+-   `library(help = "datasets")`
 
 左上の窓枠に、リストが表示されます。古いデータばかりですが、例として使うには、十分すぎるぐらいの、数のデータがあります。これらは、Toy Data（おもちゃのデータ）と呼ばれることもあります。
 
 `cars` も見つかりましたか。
-
 
 ### おすすめ
 
@@ -146,9 +144,9 @@ RStudio を終了して、もう一度起動すると、日本語に戻ってい
 
 ### 練習
 
-1. `head(cars, 10L)` は何が出力されますか。`head(cars, n=10L)` と同じですか。
-2. `?head` または、Help の検索窓に `head` と入力して、説明を見てみてください。`head(cars, n=10L)` などについて、書いてありましたか。他には、どのようなことが分かりましたか。
-3. `datasets` のデータのいくつかについて、そのデータの help や、`head`, `str`, `summary` などを使ってみてください。これらで表示できない場合はありますか。データについては、最初に、これら、三つを試してみることをお勧めします。わかったことをメモしておくと良いでしょう。`datasets` のリストをみるには、`library(help = "datasets")` でしたね。
+1.  `head(cars, 10L)` は何が出力されますか。`head(cars, n=10L)` と同じですか。
+2.  `?head` または、Help の検索窓に `head` と入力して、説明を見てみてください。`head(cars, n=10L)` などについて、書いてありましたか。他には、どのようなことが分かりましたか。
+3.  `datasets` のデータのいくつかについて、そのデータの help や、`head`, `str`, `summary` などを使ってみてください。これらで表示できない場合はありますか。データについては、最初に、これら、三つを試してみることをお勧めします。わかったことをメモしておくと良いでしょう。`datasets` のリストをみるには、`library(help = "datasets")` でしたね。
 
 ## RStudio について
 
@@ -156,10 +154,12 @@ RStudio は多くの機能を持っています。
 
 ### 四つの窓枠とタブ Four Panes and Tabs
 
-* 左上（Top Left）: スクリプトや文書、データなどの編集（Source Editor）
-* 右上（Top Right）: 環境変数（Environment）, 履歴（History） など（etc.）
-* 左下（Bottom Left）: コードの実行・実行結果などを表示するコンソール（Console）, コンピュータシステムの端末（Terminal）, 文書の機械語翻訳（Render）, 背後での作業（Background Jobs）
-* 右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation^[Viewerへの表示を使っており、Presentationへの表示を使っておらず不明]）
+-   左上（Top Left）: スクリプトや文書、データなどの編集（Source Editor）
+-   右上（Top Right）: 環境変数（Environment）, 履歴（History） など（etc.）
+-   左下（Bottom Left）: コードの実行・実行結果などを表示するコンソール（Console）, コンピュータシステムの端末（Terminal）, 文書の機械語翻訳（Render）, 背後での作業（Background Jobs）
+-   右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation[^23-rbasics-1]）
+
+[^23-rbasics-1]: Viewerへの表示を使っており、Presentationへの表示を使っておらず不明
 
 ## R Script 実行記録
 
@@ -167,14 +167,14 @@ R Script を使って、コードを実行すると、その記録を残すこ�
 
 ### R Script の作成
 
-* RStudio の上のメニュー・バーからFile > New File > R Script を選択します。
-* File > Save As で、名前をつけて保存します。{file_name}.R が作成されます。
-  - 右下の、Files から、ファイルを確認してください。
-* `head(cars)`, `str(cars)`, `summary(cars)`, `plot(cars)` などと改行をしながらコードを書きます。
-* 実行するには、カーソルの場所で Ctrl+Shift+Enter (Win) または Cmd+Shift+Enter (Mac) とすると、カーソルのある行か、その下の行で、最初のコードが実行されます。
-  - R Script エディターの上にある、Run ボタンを押しても、同様に実行されます。
-  - Run ボタンの右の、Source ボタンを押すと、そのスクリプトの、最初からすべてが実行されます。
-* 最後には保存しておきましょう。たとえば、`myfirstscript` などとすると、File のところに、`myfirstscript.R` というファイルができていることを確認できます。
+-   RStudio の上のメニュー・バーからFile \> New File \> R Script を選択します。
+-   File \> Save As で、名前をつけて保存します。{file_name}.R が作成されます。
+    -   右下の、Files から、ファイルを確認してください。
+-   `head(cars)`, `str(cars)`, `summary(cars)`, `plot(cars)` などと改行をしながらコードを書きます。
+-   実行するには、カーソルの場所で Ctrl+Shift+Enter (Win) または Cmd+Shift+Enter (Mac) とすると、カーソルのある行か、その下の行で、最初のコードが実行されます。
+    -   R Script エディターの上にある、Run ボタンを押しても、同様に実行されます。
+    -   Run ボタンの右の、Source ボタンを押すと、そのスクリプトの、最初からすべてが実行されます。
+-   最後には保存しておきましょう。たとえば、`myfirstscript` などとすると、File のところに、`myfirstscript.R` というファイルができていることを確認できます。
 
 ### R Script による実行
 
@@ -182,6 +182,7 @@ R Script を使って、コードを実行すると、その記録を残すこ�
 
 それぞれ、どのようなことをしているでしょうか。
 
+詳細を説明すると、時間もかかりますから、必要になったときに、少しずつ説明していきます。ここでは、スクリプトを使って、実行するという、二つ目の方法に慣れていただければ十分です。
 
 #### スクリプト1: `basics.R`
 
@@ -495,39 +496,37 @@ plot(df_confirmed$date, df_confirmed$cases, type = "h",
 
 上の、`coronavirus.R` について
 
-1. `COUNTRY <- "Japan"` の Japan を他の国に変えてみましょう。
-2. `start_date <- as.Date("2022-07-01")` の日付を、他の日付に変えてみましょう。
-3. `df_confirmed$cases` と `df_death$cases` についてどんなことがわかりますか。
-4. 発見や、問いがあれば、書き出してみましょう。
-
+1.  `COUNTRY <- "Japan"` の Japan を他の国に変えてみましょう。
+2.  `start_date <- as.Date("2022-07-01")` の日付を、他の日付に変えてみましょう。
+3.  `df_confirmed$cases` と `df_death$cases` についてどんなことがわかりますか。
+4.  発見や、問いがあれば、書き出してみましょう。
 
 ### Tips
 
 キーボード・ショートカットと言われる、さまざまな機能があります。
 
-* 上のメニュー・バー： Help > Keyboard Short Cut Help 確認してみてください。
-* 右下の窓枠: Files タブから、ファイルの確認ができます。
-
+-   上のメニュー・バー： Help \> Keyboard Short Cut Help 確認してみてください。
+-   右下の窓枠: Files タブから、ファイルの確認ができます。
 
 ## パッケージ - Packages
 
-> R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool > Install Packages in the top menu bar of R Studio. https://en.wikipedia.org/wiki/R_package
+> R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool \> Install Packages in the top menu bar of R Studio. <https://en.wikipedia.org/wiki/R_package>
 
-> Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool > Install Packages からインストールできます。
+> Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool \> Install Packages からインストールできます。
 
 ### パッケージのインストール
 
 いずれ使いますので、まずは、三つのパッケージをインストールしてみましょう。
 
-* `tidyverse`
-* `rmarkdown`
-* `tinytex`
+-   `tidyverse`
+-   `rmarkdown`
+-   `tinytex`
 
 インストール方法はいくつかあります。
 
 一つ目は、上のメニューバーの Tool から、Install Packages ... を選択します。そして、パッケージーズにインストールしたい、パッケージ名を入力します。そのパッケージ名が下にも出れば、Install ボタンを押してください。入力した名前の下にパッケージ名が出ない場合は、スペルが間違っている可能性がありますから、確認して、入れ直してください。
 
-Console に、`install.packages("tidyverse")` などと表示され、たくさんメッセージが出ます。終了すると、> のマークがでます。
+Console に、`install.packages("tidyverse")` などと表示され、たくさんメッセージが出ます。終了すると、\> のマークがでます。
 
 二つ目は、`install.packages("tidyverse")` のような書式で書いて、Console に入れる方法です。
 
@@ -535,9 +534,9 @@ Console に、`install.packages("tidyverse")` などと表示され、たくさ�
 
 この Packages タブにある、ものが、すでに、インストールされているパッケージです。そのなかで、`base` や、`datasets` などいくつかに、チェックがついていると思いますが、それらは、ロードされていて、いつでも、使える状態になっていることを意味しています。ロードは、たとえば、`library(tidyverse)` のようにしますが、それは、いずれもう一度説明します。
 
-インストールは一回だけ。ときどき、Tools > Check for Package Update をつかって、Update しておくと良いでしょう。
+インストールは一回だけ。ときどき、Tools \> Check for Package Update をつかって、Update しておくと良いでしょう。
 
-:::{.rmdnote}
+::: rmdnote
 パッケージのインストールで問題が生じることがあります。特に、Windows の日本語システムの場合です。（4.3.2 R Studio の インストール の下に書いてある部分を参照してください。）
 
 回避方法もいくつかあるようですが、混乱をさけるため、その場合は、Posit Cloud（旧：RStudio Cloud）を使うと良いでしょう。それを見越して、最初は、Posit Cloud ではじめることを、わたしはお薦めしています。自分のコンピュータで、R が RStudio 上で問題なく動いていても、Cloud 上にアカウントを持っていて、実行できることは有効ですし、全員が、同じ環境で作業できることもたいせつなことです。他にも、すぐ、Cheat Sheets（早見表）や、Posit Primers という練習問題（Tutorial）を利用できたり、プロジェクトを共有したりなど、さまざまなメリットがあります。
@@ -549,20 +548,18 @@ Package によっては、Source から Compile するかと聞いてくる場�
 
 同じパッケージをもう一度、インストールしたり、または、関連するパッケージがあるような場合、R をリスタートするかと聞いてくることがあります。特に問題が起こらなければ、No で構いません。ただ、エラーが起こって、それに関連して、特別なパッケージをインストールする必要がある場合がありますが、そのときは、Yes としてください。
 
+## 練習問題 Posit Primers
 
-
-## 練習問題 Posit Primers 
-
-Posit Primers https://posit.cloud/learn/primers
+Posit Primers <https://posit.cloud/learn/primers>
 
 教科書 ["R for Data Science"](https://r4ds.had.co.nz) は、`tidyverse` パッケージを中心に、データサイエンスについて解説したものですが、Posit Primers は、演習問題をしながら、教科書の内容を理解できるように構成されています。
 
 Posit Cloud からは、左のメニュー（隠れている場合は左上の3本線をクリックして表示させて）から選ぶことができます。そうでない場合は、直接、上のリンクから、利用してください。
 
-### 最初の演習　The Basics – r4ds: Explore, I
+### 最初の演習　The Basics -- r4ds: Explore, I
 
-* [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
-* [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
+-   [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+-   [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
 
 ぜひこれら二つの演習問題を、トライしてください。解説を読んでいただけでは、データサイエンスは身につきません。
 
@@ -570,20 +567,34 @@ Posit Cloud からは、左のメニュー（隠れている場合は左上の3�
 
 一番目は、すでに紹介した、教科書です。二番目は、この文書を作成している、Bookdown というパッケージのサイトですが、そこに、たくさんの本が、無償で公開されています。素晴らしい本がたくさん含まれています。
 
-* R For Data Science, by H. Wickham: https://r4ds.had.co.nz
-  - Introduction: https://r4ds.had.co.nz/explore-intro.html#explore-intro
-* Bookdown: https://bookdown.org, [Archive](https://bookdown.org/home/archive/)
+-   R For Data Science, by H. Wickham: <https://r4ds.had.co.nz>
+    -   Introduction: <https://r4ds.had.co.nz/explore-intro.html#explore-intro>
+-   Bookdown: <https://bookdown.org>, [Archive](https://bookdown.org/home/archive/)
 
 下の一番目は、R 入門を、２時限の講義でしたときのものです。二番目と三番目は、講義で使ったものを、まとめたものです。教科書のようには、できていませんが、参考になる部分もあるかと思いますので、紹介しておきます。
 
-* [Introducton to R](https://ds-sl.github.io/intro2r/intro2r.nb.html)
-* [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
-* [Data Analysis for Researchers 2021](https://icu-hsuzuki.github.io/da4r2021/)
+-   [Introduction to R](https://ds-sl.github.io/intro2r/intro2r.nb.html)
+-   [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
+-   [Data Analysis for Researchers 2021](https://icu-hsuzuki.github.io/da4r2021/)
 
 ## YouTube Video - getstarted
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9uQmMZoG74g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9uQmMZoG74g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 
-* ファイル：https://ds-sl.github.io/intro2r/getstarted.html
+</iframe>
 
+-   ファイル：<https://ds-sl.github.io/intro2r/getstarted.html>
 
+## まとめと復習
+
+ここでは、詳細までは理解していただかなくて結構ですが、基本事項をまとめておきます。
+
+1.  R Studio で R を使うときには、まず、Project を作成し、その中で行う。
+
+2.  コンソール（Console）に、入力して実行させる方法と、スクリプト（R Script）から実行する方法がある。もう一つ、RMarkdown の章で紹介した、RMarkdown の中で、実行する方法があります。
+
+3.  データを簡単にみる三つの命令、head(), str(), summary() を紹介しました。他にも、View() でデータを見たり、Help を使って、調べる方法を紹介しました。
+
+4.  パッケージによって、便利なさまざまな拡張機能を利用するために、そのインストール方法を紹介しました。
+
+5.  対話型の練習問題集、Posit Primers の紹介をしました。

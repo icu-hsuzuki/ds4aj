@@ -198,7 +198,7 @@ google-colab-で-r
 参考-2
 cocalc-で-r-と-rmarkdown
 rmarkdown
-reproducible-and-literate-programming
+再現可能性とプログラムの文書化
 目的問いなど
 データについて
 コードについて
@@ -234,6 +234,7 @@ tips
 最初の演習-the-basics-r4ds-explore-i
 参考文献-references
 youtube-video---getstarted
+まとめと復習
 tidyverse
 look-at-the-data
 several-ways-to-view-the-data.

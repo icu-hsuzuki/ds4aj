@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 15 R Markdown | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためののツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の Quarto という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R...">
+<meta name="description" content="データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためのツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の Quarto という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 15 R Markdown | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/rmarkdown.html">
-<meta property="og:description" content="データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためののツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の Quarto という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R...">
+<meta property="og:description" content="データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためのツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の Quarto という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 15 R Markdown | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためののツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の Quarto という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R...">
+<meta name="twitter:description" content="データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためのツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の Quarto という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -120,13 +120,14 @@
 <h1>
 <span class="header-section-number">15</span> R Markdown<a class="anchor" aria-label="anchor" href="#rmarkdown"><i class="fas fa-link"></i></a>
 </h1>
-<p>データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためののツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の <a href="https://quarto.org">Quarto</a> という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R Markdown を知っていれば、簡単に、乗り換えることができまし、R Markdwon も今後ともサポートされるとのことですので、ここでは、R Markdown について書き、後ほど、別立てで、Quarto について書いていくことにします。</p>
-<div id="reproducible-and-literate-programming" class="section level2" number="15.1">
+<p>データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためのツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の <a href="https://quarto.org">Quarto</a> という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R Markdown を知っていれば、簡単に、乗り換えることができまし、R Markdwon も今後ともサポートされるとのことですので、ここでは、R Markdown について書き、後ほど、別立てで、Quarto について書いていくことにします。</p>
+<div id="再現可能性とプログラムの文書化" class="section level2" number="15.1">
 <h2>
-<span class="header-section-number">15.1</span> Reproducible and Literate Programming<a class="anchor" aria-label="anchor" href="#reproducible-and-literate-programming"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.1</span> 再現可能性とプログラムの文書化<a class="anchor" aria-label="anchor" href="#%E5%86%8D%E7%8F%BE%E5%8F%AF%E8%83%BD%E6%80%A7%E3%81%A8%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E6%96%87%E6%9B%B8%E5%8C%96"><i class="fas fa-link"></i></a>
 </h2>
 <p>データサイエンスは、サイエンス（科学）ということばもついていますが、特に、根拠に基づいた（evidence based）とか、データに基づいた（data based）ということばを使うときには、なおさら、再現可能性（reproducibility）や、コードの内容の説明などのコミュニケーションにも注力する必要があります。このことを心がけて、データサイエンスを学んでいきましょう。</p>
 <p>表題にある、“Reproducible and Literate Programming” は、Reproducible （再現可能）かつ、Literate　な（理解できるように記述した）Program（プログラム・コード）を共有することをたいせつにしましょうということです。</p>
+<p>注：<em>Literate Programming の訳は「文芸的プログラミング」とか「文学的プログラミング」が使われているようですが、読んで理解できるということですから、文書化ぐらいがいいかなと思っています。より適切な訳があれば、今後変更していきたいと思います。</em></p>
 <div id="目的問いなど" class="section level3" number="15.1.1">
 <h3>
 <span class="header-section-number">15.1.1</span> 目的、問いなど<a class="anchor" aria-label="anchor" href="#%E7%9B%AE%E7%9A%84%E5%95%8F%E3%81%84%E3%81%AA%E3%81%A9"><i class="fas fa-link"></i></a>
@@ -291,7 +292,7 @@ Linux: Use system package manager</code></pre>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#rmarkdown"><span class="header-section-number">15</span> R Markdown</a></li>
 <li>
-<a class="nav-link" href="#reproducible-and-literate-programming"><span class="header-section-number">15.1</span> Reproducible and Literate Programming</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#%E5%86%8D%E7%8F%BE%E5%8F%AF%E8%83%BD%E6%80%A7%E3%81%A8%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E6%96%87%E6%9B%B8%E5%8C%96"><span class="header-section-number">15.1</span> 再現可能性とプログラムの文書化</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#%E7%9B%AE%E7%9A%84%E5%95%8F%E3%81%84%E3%81%AA%E3%81%A9"><span class="header-section-number">15.1.1</span> 目的、問いなど</a></li>
 <li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">15.1.2</span> データについて</a></li>
 <li><a class="nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">15.1.3</span> コードについて</a></li>
