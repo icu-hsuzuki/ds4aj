@@ -66,21 +66,106 @@ class(tbl_iris)
 
 ### データを見てみよう
 
-#### いくつかの方法
+#### 復習
 
-The `View` command opens up a window to show the contents of the data, and you can also use the filter.
+すでに、いくつかの関数を学んでいますから、それを使ってみてみましょう。`head`, `str`, `summary` でした。
+
+##### `head` : データの頭の部分
+
+
+```r
+head(df_iris)
+#>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+#> 1          5.1         3.5          1.4         0.2  setosa
+#> 2          4.9         3.0          1.4         0.2  setosa
+#> 3          4.7         3.2          1.3         0.2  setosa
+#> 4          4.6         3.1          1.5         0.2  setosa
+#> 5          5.0         3.6          1.4         0.2  setosa
+#> 6          5.4         3.9          1.7         0.4  setosa
+```
+
+データの最初の6行（head）が表示されました。
+
+##### `str` : データの構造（structure）
+
+
+```r
+str(df_iris)
+#> 'data.frame':	150 obs. of  5 variables:
+#>  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+#>  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+#>  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+#>  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+#>  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
+```
+
+全体の構造（structure）の概略が表示されました。5つの変数、Sepal.Lengh（萼（がく）長）, Sepal.Width（萼幅）, Petal.Length（花弁長）, Petal.Width（花弁幅）, Species（種別） について、150 の データ（observations）が含まれており、Species は、三つの Factor になっているということがわかります。Factor については、後ほど学びますが、三つに分類されているという意味で、ここでは、あやめの種類、setosa, versicolor, virginica となっています。三つ目は見えていないかもしれません。
+
+##### `summary`: データの概要
+
+
+```r
+summary(df_iris)
+#>   Sepal.Length    Sepal.Width     Petal.Length  
+#>  Min.   :4.300   Min.   :2.000   Min.   :1.000  
+#>  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  
+#>  Median :5.800   Median :3.000   Median :4.350  
+#>  Mean   :5.843   Mean   :3.057   Mean   :3.758  
+#>  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  
+#>  Max.   :7.900   Max.   :4.400   Max.   :6.900  
+#>   Petal.Width          Species  
+#>  Min.   :0.100   setosa    :50  
+#>  1st Qu.:0.300   versicolor:50  
+#>  Median :1.300   virginica :50  
+#>  Mean   :1.199                  
+#>  3rd Qu.:1.800                  
+#>  Max.   :2.500
+```
+
+それぞれの最小値（Min. Minimum）、第一四分位（1st Qu. First Quartile 小さい方から、4分の1を切り捨てたときの最小の値）、中央値（Median）、平均（Mean）、第三四分位（3rd Qu. Third Quartile、大きい方から、4分の1を切り捨てたときの最大の値）最大値（Max. Maximum）が、書かれており、各種それぞれ50個のデータからなっていることがわかります。
+
+さらに、`plot`、`View`、`help` についても学びました。
+
+##### plot: 散布図
+
+
+```r
+plot(df_iris$Sepal.Width, df_iris$Sepal.Length)
+```
+
+<img src="24-tidyverse_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+
+何を x 軸、何を y 軸 の値とするかを指定します。それは、df_iris\$Sepal.Width で、df_iris の、Sepal.Width の列、df_iris\$Sepal.Length で、df_iris の Sepal.Length の列の値を指定しています。
+
+##### View: データテーブルの表示
 
 
 ```r
 View(df_iris)
 ```
 
-The following simple command also shows the data.
+`View(df_iris)` を、Console に入れると、データテーブルが開きます。順番の並び替えもできるようになっています。
+
+R Studio では、右上の窓に、Environment タブがありますが、そこに、df_iris があると思いますから、それを、クリックすると、同じ、データテーブルが表示されます。
+
+##### help: ヘルプ
 
 
 ```r
-df_iris
+help(iris)
 ```
+
+`help(iris)` を、Console に入れるか、または、右下の窓枠の Help に、`iris` と入れると、説明などが出ます。
+
+ここまでは、`tidyverse` を使わずにもできることですが、これからは、`tidyverse` の関数を紹介していきます。
+
+### dplyr 変形
+
+ここでは、head と、str に対応する、二種類の関数を紹介するにとどめますが、次の、章の中心的トピックです。
+
+#### slice: 行を切り取る
+
+`head` を一般化したものです。`slice`, `slice_head`, `slice_tail`, `slice_max`, `slice_min`, `slice_sample` とあります。
 
 
 ```
@@ -108,9 +193,7 @@ df_iris
 #> 10  setosa
 ```
 
-`%>%` is called a pipe command, and we use it often.
-
-The output within R Notebook is a tibble style. Try the same command in Console.
+`|>` は、パイプ（pipe）コマンドと言われるもので、`tidyverse` では、`%>%` もほぼ同じ機能ですが、R 4.0 以降には、含まれていますので、`tidyverse` なしでも使えますから、こちらを使うようにします。最初の 10 行を切り出すという意味で、パイプを使わないときは、一つ前のものが、最初の 変数（argument）となりますから、下のものでも同じです。
 
 
 ```r
@@ -145,9 +228,61 @@ slice(df_iris, 1:10)
 #>  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
-#### Data Structure
+1から10のベクトルです。ということは、1:10 の部分をいろいろと変えれば、さまざまな部分を取り出すことができます。詳細は、Help 検索窓で、で、`slice` と調べてください。下も同じ結果を出力します。
 
-Let us look at the structure of the data. You can try `str(df_iris)` on Console or by adding a code chunk in R Notebook introducing later.
+
+```r
+df_iris |> slice_head(n=10)
+#>    Sepal.Length Sepal.Width Petal.Length Petal.Width
+#> 1           5.1         3.5          1.4         0.2
+#> 2           4.9         3.0          1.4         0.2
+#> 3           4.7         3.2          1.3         0.2
+#> 4           4.6         3.1          1.5         0.2
+#> 5           5.0         3.6          1.4         0.2
+#> 6           5.4         3.9          1.7         0.4
+#> 7           4.6         3.4          1.4         0.3
+#> 8           5.0         3.4          1.5         0.2
+#> 9           4.4         2.9          1.4         0.2
+#> 10          4.9         3.1          1.5         0.1
+#>    Species
+#> 1   setosa
+#> 2   setosa
+#> 3   setosa
+#> 4   setosa
+#> 5   setosa
+#> 6   setosa
+#> 7   setosa
+#> 8   setosa
+#> 9   setosa
+#> 10  setosa
+```
+
+
+```r
+df_iris |> slice_max(order_by = Sepal.Length, n=7)
+#>   Sepal.Length Sepal.Width Petal.Length Petal.Width
+#> 1          7.9         3.8          6.4         2.0
+#> 2          7.7         3.8          6.7         2.2
+#> 3          7.7         2.6          6.9         2.3
+#> 4          7.7         2.8          6.7         2.0
+#> 5          7.7         3.0          6.1         2.3
+#> 6          7.6         3.0          6.6         2.1
+#> 7          7.4         2.8          6.1         1.9
+#>     Species
+#> 1 virginica
+#> 2 virginica
+#> 3 virginica
+#> 4 virginica
+#> 5 virginica
+#> 6 virginica
+#> 7 virginica
+```
+
+Sepal.Length の値を大きい方から順に並べて、最初の7つを選択するというものです。
+
+#### glimpse: データの構造
+
+`str` の改良版です。他の、tidyverse の関数と一緒に使うこともできます。
 
 
 ```r
@@ -161,11 +296,29 @@ glimpse(df_iris)
 #> $ Species      <fct> setosa, setosa, setosa, setosa, setos…
 ```
 
-There are six types of data in R; Double, Integer, Character, Logical, Raw, and Complex. In this course, we use only the first four.
 
-The names after \$ are column names. If you call `df_iris$Species`, you have the Species column. Species is in the 5th column, `typeof(df_iris[[5]])` does the same as the next.
+```r
+df_iris |> glimpse() 
+#> Rows: 150
+#> Columns: 5
+#> $ Sepal.Length <dbl> 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.…
+#> $ Sepal.Width  <dbl> 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.…
+#> $ Petal.Length <dbl> 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.…
+#> $ Petal.Width  <dbl> 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.…
+#> $ Species      <fct> setosa, setosa, setosa, setosa, setos…
+```
 
-``` df_iris[2,4] = `0.2`` is the fourth entry of Sepal.Width.
+`str(df_iris)` では num （数値データ）と表示されましたが、ここでは、もう少し詳R の 6個のデータタイプ Double（連続データ）, Integer（整数値データ）, Character（文字データ）, Logical（論理値データ）, Raw（素データ）, Complex（複素数データ） が表示されます。最初の四種類が主要なものと考えてください。
+
+データの列を指定するときは、データ名のあとに、ドルマークをつけ、列名を加えます。`df_iris$Sepal.Width` などです。 これは、一列目ですから、 `typeof(df_iris[[1]])` とすることもできます。2行目の1列目というときは、次のようにします。
+
+`` df_iris[2,1] = 4.9 `` is the fourth entry of Sepal.Width.
+
+
+```r
+typeof(df_iris$Sepal.Width)
+#> [1] "double"
+```
 
 
 ```r
@@ -179,7 +332,7 @@ class(df_iris$Species)
 #> [1] "factor"
 ```
 
-For `factors = fct` see [the R Document](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor) or an explanation in [Factor in R: Categorical Variable & Continuous Variables](https://www.guru99.com/r-factor-categorical-continuous.html).
+ファクター `factors = fct` については [the R Document](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor) または、[Factor in R: Categorical Variable & Continuous Variables](https://www.guru99.com/r-factor-categorical-continuous.html) をみてください。必要になったときに、説明します。
 
 
 ```r
@@ -189,31 +342,192 @@ class(df_iris$Sepal.Length)
 #> [1] "numeric"
 ```
 
-**Q1.** What are the differences of `df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` above?
+#### ggplot2: グラフの描画
 
-**Q2.** What are the differences of`df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` in the console?
-
-#### Summary of the Data
-
-The following is very convenient to get the summary information of a data.
+`plot` の拡張ですが、`tidyverse` パッケージ群の核をなすものでもあります。詳細は、視覚化で扱います。
 
 
 ```r
-summary(df_iris)
-#>   Sepal.Length    Sepal.Width     Petal.Length  
-#>  Min.   :4.300   Min.   :2.000   Min.   :1.000  
-#>  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  
-#>  Median :5.800   Median :3.000   Median :4.350  
-#>  Mean   :5.843   Mean   :3.057   Mean   :3.758  
-#>  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  
-#>  Max.   :7.900   Max.   :4.400   Max.   :6.900  
-#>   Petal.Width          Species  
-#>  Min.   :0.100   setosa    :50  
-#>  1st Qu.:0.300   versicolor:50  
-#>  Median :1.300   virginica :50  
-#>  Mean   :1.199                  
-#>  3rd Qu.:1.800                  
-#>  Max.   :2.500
+df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 ```
 
-Minimum, 1st Quadrant (25%), Median, Mean, 3rd Quadrant (75%), Maximum, and the count of each factor.
+<img src="24-tidyverse_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+
+さまざまな描画が可能ですが、一番、一般的な、散布図、`plot` に対応するものを書きました。`ggplot` の中の、`aes` （aesthetic）の部分に、x 軸、y 軸に対応する変数（列名）を書きます。種類（Species）ごとに色を変える場合には、`color = Species` とします。
+
+
+```r
+df_iris |> ggplot(aes(Sepal.Width, Sepal.Length, color = Species)) +
+  geom_point()
+```
+
+<img src="24-tidyverse_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+
+さらに、点の大きさを、Petal.Width によって変える場合には次のように、`size = Petal.Width` を加えます。
+
+
+```r
+df_iris |> 
+  ggplot(aes(Sepal.Width, Sepal.Length, color = Species, 
+             size = Petal.Width)) +
+  geom_point()
+```
+
+<img src="24-tidyverse_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+
+少しずつ学んでいきましょう。
+
+## WDI のデータ
+
+以下の説明では、世界開発指標（World Development Indicator）の実際のデータも使って説明していきます。例として使うデータを取得して、上で学んだことの復習もかねて、簡単にみておきたいと思います。
+
+すでに、`tidyverse` は読み込んでありますから、その場合は、`WDI` パッケージを読み込むだけで十分です。
+
+
+```r
+library(tidyverse)
+library(WDI)
+```
+
+WDI の使い方は、世界銀行の部分で紹介しますが、はじめてのデータサイエンスの例でも紹介したように、データコードを利用して、データを読み込みます。ここでは、出生時の平均寿命と、一人当たりの　GDP と、総人口のデータを使います。
+
+-   SP.DYN.LE00.IN: Life expectancy at birth, total (years) 出生時の平均寿命
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) 一人当たりの　GDP
+-   SP.POP.TOTL: Population, total 総人口
+
+次のコードで読み込みます。
+
+
+```r
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
+```
+
+
+
+
+```
+#> Rows: 16758 Columns: 7
+#> ── Column specification ────────────────────────────────────
+#> Delimiter: ","
+#> chr (3): country, iso2c, iso3c
+#> dbl (4): year, lifeExp, pop, gdpPercap
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+注：WDI のサイトは、頻繁に、保守をしているため、時々、データをダウンロードできないことがあります。そのときは、すでに、ダウンロードしてものがわたしの GitHub [サイト]("https://github.com/icu-hsuzuki/ds4aj/blob/main/data/wdi.csv")にありますから、そこから次のコードで読み込んでください。
+
+最初の10行をみてみましょう。
+
+
+```r
+df_wdi %>% slice(1:10)
+#> # A tibble: 10 × 7
+#>    country     iso2c iso3c  year lifeExp      pop gdpPercap
+#>    <chr>       <chr> <chr> <dbl>   <dbl>    <dbl>     <dbl>
+#>  1 Afghanistan AF    AFG    1960    32.5  8622466        NA
+#>  2 Afghanistan AF    AFG    1961    33.1  8790140        NA
+#>  3 Afghanistan AF    AFG    1962    33.5  8969047        NA
+#>  4 Afghanistan AF    AFG    1963    34.0  9157465        NA
+#>  5 Afghanistan AF    AFG    1964    34.5  9355514        NA
+#>  6 Afghanistan AF    AFG    1965    35.0  9565147        NA
+#>  7 Afghanistan AF    AFG    1966    35.5  9783147        NA
+#>  8 Afghanistan AF    AFG    1967    35.9 10010030        NA
+#>  9 Afghanistan AF    AFG    1968    36.4 10247780        NA
+#> 10 Afghanistan AF    AFG    1969    36.9 10494489        NA
+```
+
+
+```r
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+```
+
+すこし、追加情報を付加したものも取得しておきます。
+
+
+
+
+```
+#> Rows: 16758 Columns: 15
+#> ── Column specification ────────────────────────────────────
+#> Delimiter: ","
+#> chr  (7): country, iso2c, iso3c, region, capital, income...
+#> dbl  (6): year, lifeExp, pop, gdpPercap, longitude, lati...
+#> lgl  (1): status
+#> date (1): lastupdated
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+
+```r
+df_wdi_extra
+#> # A tibble: 16,758 × 15
+#>    country     iso2c iso3c  year status lastupdated lifeExp
+#>    <chr>       <chr> <chr> <dbl> <lgl>  <date>        <dbl>
+#>  1 Afghanistan AF    AFG    2014 NA     2023-07-25     62.5
+#>  2 Afghanistan AF    AFG    2012 NA     2023-07-25     61.9
+#>  3 Afghanistan AF    AFG    2009 NA     2023-07-25     60.4
+#>  4 Afghanistan AF    AFG    2013 NA     2023-07-25     62.4
+#>  5 Afghanistan AF    AFG    1971 NA     2023-07-25     37.9
+#>  6 Afghanistan AF    AFG    2015 NA     2023-07-25     62.7
+#>  7 Afghanistan AF    AFG    1969 NA     2023-07-25     36.9
+#>  8 Afghanistan AF    AFG    2010 NA     2023-07-25     60.9
+#>  9 Afghanistan AF    AFG    2011 NA     2023-07-25     61.4
+#> 10 Afghanistan AF    AFG    2008 NA     2023-07-25     59.9
+#> # ℹ 16,748 more rows
+#> # ℹ 8 more variables: pop <dbl>, gdpPercap <dbl>,
+#> #   region <chr>, capital <chr>, longitude <dbl>,
+#> #   latitude <dbl>, income <chr>, lending <chr>
+```
+
+違いはわかりましたか。同じような変数についてのデータですが、WDI からダウンロードした実際のデータの場合には、練習用のデータとは、違った困難がいくつもあります。それを、少しず見ていきながら、現実世界のデータを扱えるようにしていきましょう。
+
+`glimpse` を使ってみてるとどのような違いがわかりますか。
+
+
+```r
+df_wdi |> glimpse()
+#> Rows: 16,758
+#> Columns: 7
+#> $ country   <chr> "Afghanistan", "Afghanistan", "Afghanist…
+#> $ iso2c     <chr> "AF", "AF", "AF", "AF", "AF", "AF", "AF"…
+#> $ iso3c     <chr> "AFG", "AFG", "AFG", "AFG", "AFG", "AFG"…
+#> $ year      <dbl> 1960, 1961, 1962, 1963, 1964, 1965, 1966…
+#> $ lifeExp   <dbl> 32.535, 33.068, 33.547, 34.016, 34.494, …
+#> $ pop       <dbl> 8622466, 8790140, 8969047, 9157465, 9355…
+#> $ gdpPercap <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+```
+
+
+```r
+df_wdi_extra |> glimpse()
+#> Rows: 16,758
+#> Columns: 15
+#> $ country     <chr> "Afghanistan", "Afghanistan", "Afghani…
+#> $ iso2c       <chr> "AF", "AF", "AF", "AF", "AF", "AF", "A…
+#> $ iso3c       <chr> "AFG", "AFG", "AFG", "AFG", "AFG", "AF…
+#> $ year        <dbl> 2014, 2012, 2009, 2013, 1971, 2015, 19…
+#> $ status      <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+#> $ lastupdated <date> 2023-07-25, 2023-07-25, 2023-07-25, 2…
+#> $ lifeExp     <dbl> 62.545, 61.923, 60.364, 62.417, 37.923…
+#> $ pop         <dbl> 32716210, 30466479, 27385307, 31541209…
+#> $ gdpPercap   <dbl> 602.5166, 596.4424, 512.4090, 608.3863…
+#> $ region      <chr> "South Asia", "South Asia", "South Asi…
+#> $ capital     <chr> "Kabul", "Kabul", "Kabul", "Kabul", "K…
+#> $ longitude   <dbl> 69.1761, 69.1761, 69.1761, 69.1761, 69…
+#> $ latitude    <dbl> 34.5228, 34.5228, 34.5228, 34.5228, 34…
+#> $ income      <chr> "Low income", "Low income", "Low incom…
+#> $ lending     <chr> "IDA", "IDA", "IDA", "IDA", "IDA", "ID…
+```
+
+列の数が違いますね。どちらも行は、16,758行です。こんなに多いものは、表で見ていても、よくわかりません。これらを扱う方法を少しずつ学んでいきます。

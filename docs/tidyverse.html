@@ -174,16 +174,102 @@
 <h3>
 <span class="header-section-number">17.2.1</span> データを見てみよう<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E8%A6%8B%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86"><i class="fas fa-link"></i></a>
 </h3>
-<div id="いくつかの方法" class="section level4" number="17.2.1.1">
+<div id="復習" class="section level4" number="17.2.1.1">
 <h4>
-<span class="header-section-number">17.2.1.1</span> いくつかの方法<a class="anchor" aria-label="anchor" href="#%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE%E6%96%B9%E6%B3%95"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.1.1</span> 復習<a class="anchor" aria-label="anchor" href="#%E5%BE%A9%E7%BF%92"><i class="fas fa-link"></i></a>
 </h4>
-<p>The <code>View</code> command opens up a window to show the contents of the data, and you can also use the filter.</p>
+<p>すでに、いくつかの関数を学んでいますから、それを使ってみてみましょう。<code>head</code>, <code>str</code>, <code>summary</code> でした。</p>
+<div id="head-データの頭の部分" class="section level5" number="17.2.1.1.1">
+<h5>
+<span class="header-section-number">17.2.1.1.1</span> <code>head</code> : データの頭の部分<a class="anchor" aria-label="anchor" href="#head-%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%A0%AD%E3%81%AE%E9%83%A8%E5%88%86"><i class="fas fa-link"></i></a>
+</h5>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span></code></pre></div>
-<p>The following simple command also shows the data.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span><span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span></span>
+<span><span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span></span>
+<span><span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span></span>
+<span><span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></span></code></pre></div>
+<p>データの最初の6行（head）が表示されました。</p>
+</div>
+<div id="str-データの構造structure" class="section level5" number="17.2.1.1.2">
+<h5>
+<span class="header-section-number">17.2.1.1.2</span> <code>str</code> : データの構造（structure）<a class="anchor" aria-label="anchor" href="#str-%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%A7%8B%E9%80%A0structure"><i class="fas fa-link"></i></a>
+</h5>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_iris</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    150 obs. of  5 variables:</span></span>
+<span><span class="co">#&gt;  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...</span></span>
+<span><span class="co">#&gt;  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...</span></span>
+<span><span class="co">#&gt;  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...</span></span>
+<span><span class="co">#&gt;  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...</span></span>
+<span><span class="co">#&gt;  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
+<p>全体の構造（structure）の概略が表示されました。5つの変数、Sepal.Lengh（萼（がく）長）, Sepal.Width（萼幅）, Petal.Length（花弁長）, Petal.Width（花弁幅）, Species（種別） について、150 の データ（observations）が含まれており、Species は、三つの Factor になっているということがわかります。Factor については、後ほど学びますが、三つに分類されているという意味で、ここでは、あやめの種類、setosa, versicolor, virginica となっています。三つ目は見えていないかもしれません。</p>
+</div>
+<div id="summary-データの概要" class="section level5" number="17.2.1.1.3">
+<h5>
+<span class="header-section-number">17.2.1.1.3</span> <code>summary</code>: データの概要<a class="anchor" aria-label="anchor" href="#summary-%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%A6%82%E8%A6%81"><i class="fas fa-link"></i></a>
+</h5>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length    Sepal.Width     Petal.Length  </span></span>
+<span><span class="co">#&gt;  Min.   :4.300   Min.   :2.000   Min.   :1.000  </span></span>
+<span><span class="co">#&gt;  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  </span></span>
+<span><span class="co">#&gt;  Median :5.800   Median :3.000   Median :4.350  </span></span>
+<span><span class="co">#&gt;  Mean   :5.843   Mean   :3.057   Mean   :3.758  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  </span></span>
+<span><span class="co">#&gt;  Max.   :7.900   Max.   :4.400   Max.   :6.900  </span></span>
+<span><span class="co">#&gt;   Petal.Width          Species  </span></span>
+<span><span class="co">#&gt;  Min.   :0.100   setosa    :50  </span></span>
+<span><span class="co">#&gt;  1st Qu.:0.300   versicolor:50  </span></span>
+<span><span class="co">#&gt;  Median :1.300   virginica :50  </span></span>
+<span><span class="co">#&gt;  Mean   :1.199                  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:1.800                  </span></span>
+<span><span class="co">#&gt;  Max.   :2.500</span></span></code></pre></div>
+<p>それぞれの最小値（Min. Minimum）、第一四分位（1st Qu. First Quartile 小さい方から、4分の1を切り捨てたときの最小の値）、中央値（Median）、平均（Mean）、第三四分位（3rd Qu. Third Quartile、大きい方から、4分の1を切り捨てたときの最大の値）最大値（Max. Maximum）が、書かれており、各種それぞれ50個のデータからなっていることがわかります。</p>
+<p>さらに、<code>plot</code>、<code>View</code>、<code>help</code> についても学びました。</p>
+</div>
+<div id="plot-散布図" class="section level5" number="17.2.1.1.4">
+<h5>
+<span class="header-section-number">17.2.1.1.4</span> plot: 散布図<a class="anchor" aria-label="anchor" href="#plot-%E6%95%A3%E5%B8%83%E5%9B%B3"><i class="fas fa-link"></i></a>
+</h5>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Sepal.Width</span>, <span class="va">df_iris</span><span class="op">$</span><span class="va">Sepal.Length</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="24-tidyverse_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
+<p>何を x 軸、何を y 軸 の値とするかを指定します。それは、df_iris$Sepal.Width で、df_iris の、Sepal.Width の列、df_iris$Sepal.Length で、df_iris の Sepal.Length の列の値を指定しています。</p>
+</div>
+<div id="view-データテーブルの表示" class="section level5" number="17.2.1.1.5">
+<h5>
+<span class="header-section-number">17.2.1.1.5</span> View: データテーブルの表示<a class="anchor" aria-label="anchor" href="#view-%E3%83%87%E3%83%BC%E3%82%BF%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E8%A1%A8%E7%A4%BA"><i class="fas fa-link"></i></a>
+</h5>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span></code></pre></div>
+<p><code>View(df_iris)</code> を、Console に入れると、データテーブルが開きます。順番の並び替えもできるようになっています。</p>
+<p>R Studio では、右上の窓に、Environment タブがありますが、そこに、df_iris があると思いますから、それを、クリックすると、同じ、データテーブルが表示されます。</p>
+</div>
+<div id="help-ヘルプ" class="section level5" number="17.2.1.1.6">
+<h5>
+<span class="header-section-number">17.2.1.1.6</span> help: ヘルプ<a class="anchor" aria-label="anchor" href="#help-%E3%83%98%E3%83%AB%E3%83%97"><i class="fas fa-link"></i></a>
+</h5>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code></pre></div>
+<p><code><a href="https://rdrr.io/r/datasets/iris.html">help(iris)</a></code> を、Console に入れるか、または、右下の窓枠の Help に、<code>iris</code> と入れると、説明などが出ます。</p>
+<p>ここまでは、<code>tidyverse</code> を使わずにもできることですが、これからは、<code>tidyverse</code> の関数を紹介していきます。</p>
+</div>
+</div>
+</div>
+<div id="dplyr-変形" class="section level3" number="17.2.2">
+<h3>
+<span class="header-section-number">17.2.2</span> dplyr 変形<a class="anchor" aria-label="anchor" href="#dplyr-%E5%A4%89%E5%BD%A2"><i class="fas fa-link"></i></a>
+</h3>
+<p>ここでは、head と、str に対応する、二種類の関数を紹介するにとどめますが、次の、章の中心的トピックです。</p>
+<div id="slice-行を切り取る" class="section level4" number="17.2.2.1">
+<h4>
+<span class="header-section-number">17.2.2.1</span> slice: 行を切り取る<a class="anchor" aria-label="anchor" href="#slice-%E8%A1%8C%E3%82%92%E5%88%87%E3%82%8A%E5%8F%96%E3%82%8B"><i class="fas fa-link"></i></a>
+</h4>
+<p><code>head</code> を一般化したものです。<code>slice</code>, <code>slice_head</code>, <code>slice_tail</code>, <code>slice_max</code>, <code>slice_min</code>, <code>slice_sample</code> とあります。</p>
 <pre><code>#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width
 #&gt; 1           5.1         3.5          1.4         0.2
 #&gt; 2           4.9         3.0          1.4         0.2
@@ -206,9 +292,8 @@
 #&gt; 8   setosa
 #&gt; 9   setosa
 #&gt; 10  setosa</code></pre>
-<p><code>%&gt;%</code> is called a pipe command, and we use it often.</p>
-<p>The output within R Notebook is a tibble style. Try the same command in Console.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<p><code>|&gt;</code> は、パイプ（pipe）コマンドと言われるもので、<code>tidyverse</code> では、<code>%&gt;%</code> もほぼ同じ機能ですが、R 4.0 以降には、含まれていますので、<code>tidyverse</code> なしでも使えますから、こちらを使うようにします。最初の 10 行を切り出すという意味で、パイプを使わないときは、一つ前のものが、最初の 変数（argument）となりますから、下のものでも同じです。</p>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="va">df_iris</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
 <span><span class="co">#&gt; 1           5.1         3.5          1.4         0.2</span></span>
@@ -232,16 +317,60 @@
 <span><span class="co">#&gt; 8   setosa</span></span>
 <span><span class="co">#&gt; 9   setosa</span></span>
 <span><span class="co">#&gt; 10  setosa</span></span></code></pre></div>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
+<p>1から10のベクトルです。ということは、1:10 の部分をいろいろと変えれば、さまざまな部分を取り出すことができます。詳細は、Help 検索窓で、で、<code>slice</code> と調べてください。下も同じ結果を出力します。</p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
+<span><span class="co">#&gt; 1           5.1         3.5          1.4         0.2</span></span>
+<span><span class="co">#&gt; 2           4.9         3.0          1.4         0.2</span></span>
+<span><span class="co">#&gt; 3           4.7         3.2          1.3         0.2</span></span>
+<span><span class="co">#&gt; 4           4.6         3.1          1.5         0.2</span></span>
+<span><span class="co">#&gt; 5           5.0         3.6          1.4         0.2</span></span>
+<span><span class="co">#&gt; 6           5.4         3.9          1.7         0.4</span></span>
+<span><span class="co">#&gt; 7           4.6         3.4          1.4         0.3</span></span>
+<span><span class="co">#&gt; 8           5.0         3.4          1.5         0.2</span></span>
+<span><span class="co">#&gt; 9           4.4         2.9          1.4         0.2</span></span>
+<span><span class="co">#&gt; 10          4.9         3.1          1.5         0.1</span></span>
+<span><span class="co">#&gt;    Species</span></span>
+<span><span class="co">#&gt; 1   setosa</span></span>
+<span><span class="co">#&gt; 2   setosa</span></span>
+<span><span class="co">#&gt; 3   setosa</span></span>
+<span><span class="co">#&gt; 4   setosa</span></span>
+<span><span class="co">#&gt; 5   setosa</span></span>
+<span><span class="co">#&gt; 6   setosa</span></span>
+<span><span class="co">#&gt; 7   setosa</span></span>
+<span><span class="co">#&gt; 8   setosa</span></span>
+<span><span class="co">#&gt; 9   setosa</span></span>
+<span><span class="co">#&gt; 10  setosa</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span>order_by <span class="op">=</span> <span class="va">Sepal.Length</span>, n<span class="op">=</span><span class="fl">7</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width</span></span>
+<span><span class="co">#&gt; 1          7.9         3.8          6.4         2.0</span></span>
+<span><span class="co">#&gt; 2          7.7         3.8          6.7         2.2</span></span>
+<span><span class="co">#&gt; 3          7.7         2.6          6.9         2.3</span></span>
+<span><span class="co">#&gt; 4          7.7         2.8          6.7         2.0</span></span>
+<span><span class="co">#&gt; 5          7.7         3.0          6.1         2.3</span></span>
+<span><span class="co">#&gt; 6          7.6         3.0          6.6         2.1</span></span>
+<span><span class="co">#&gt; 7          7.4         2.8          6.1         1.9</span></span>
+<span><span class="co">#&gt;     Species</span></span>
+<span><span class="co">#&gt; 1 virginica</span></span>
+<span><span class="co">#&gt; 2 virginica</span></span>
+<span><span class="co">#&gt; 3 virginica</span></span>
+<span><span class="co">#&gt; 4 virginica</span></span>
+<span><span class="co">#&gt; 5 virginica</span></span>
+<span><span class="co">#&gt; 6 virginica</span></span>
+<span><span class="co">#&gt; 7 virginica</span></span></code></pre></div>
+<p>Sepal.Length の値を大きい方から順に並べて、最初の7つを選択するというものです。</p>
 </div>
-<div id="data-structure" class="section level4" number="17.2.1.2">
+<div id="glimpse-データの構造" class="section level4" number="17.2.2.2">
 <h4>
-<span class="header-section-number">17.2.1.2</span> Data Structure<a class="anchor" aria-label="anchor" href="#data-structure"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.2.2</span> glimpse: データの構造<a class="anchor" aria-label="anchor" href="#glimpse-%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%A7%8B%E9%80%A0"><i class="fas fa-link"></i></a>
 </h4>
-<p>Let us look at the structure of the data. You can try <code>str(df_iris)</code> on Console or by adding a code chunk in R Notebook introducing later.</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<p><code>str</code> の改良版です。他の、tidyverse の関数と一緒に使うこともできます。</p>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 150</span></span>
 <span><span class="co">#&gt; Columns: 5</span></span>
@@ -250,49 +379,174 @@
 <span><span class="co">#&gt; $ Petal.Length &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.…</span></span>
 <span><span class="co">#&gt; $ Petal.Width  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.…</span></span>
 <span><span class="co">#&gt; $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setos…</span></span></code></pre></div>
-<p>There are six types of data in R; Double, Integer, Character, Logical, Raw, and Complex. In this course, we use only the first four.</p>
-<p>The names after $ are column names. If you call <code>df_iris$Species</code>, you have the Species column. Species is in the 5th column, <code>typeof(df_iris[[5]])</code> does the same as the next.</p>
-<p>`<code>df_iris[2,4] = `0.2</code> is the fourth entry of Sepal.Width.</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; Rows: 150</span></span>
+<span><span class="co">#&gt; Columns: 5</span></span>
+<span><span class="co">#&gt; $ Sepal.Length &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.…</span></span>
+<span><span class="co">#&gt; $ Sepal.Width  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.…</span></span>
+<span><span class="co">#&gt; $ Petal.Length &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.…</span></span>
+<span><span class="co">#&gt; $ Petal.Width  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.…</span></span>
+<span><span class="co">#&gt; $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setos…</span></span></code></pre></div>
+<p><code>str(df_iris)</code> では num （数値データ）と表示されましたが、ここでは、もう少し詳R の 6個のデータタイプ Double（連続データ）, Integer（整数値データ）, Character（文字データ）, Logical（論理値データ）, Raw（素データ）, Complex（複素数データ） が表示されます。最初の四種類が主要なものと考えてください。</p>
+<p>データの列を指定するときは、データ名のあとに、ドルマークをつけ、列名を加えます。<code>df_iris$Sepal.Width</code> などです。 これは、一列目ですから、 <code>typeof(df_iris[[1]])</code> とすることもできます。2行目の1列目というときは、次のようにします。</p>
+<p><code>df_iris[2,1] = 4.9</code> is the fourth entry of Sepal.Width.</p>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Sepal.Width</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "double"</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "integer"</span></span></code></pre></div>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "factor"</span></span></code></pre></div>
-<p>For <code>factors = fct</code> see <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor">the R Document</a> or an explanation in <a href="https://www.guru99.com/r-factor-categorical-continuous.html">Factor in R: Categorical Variable &amp; Continuous Variables</a>.</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<p>ファクター <code>factors = fct</code> については <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor">the R Document</a> または、<a href="https://www.guru99.com/r-factor-categorical-continuous.html">Factor in R: Categorical Variable &amp; Continuous Variables</a> をみてください。必要になったときに、説明します。</p>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Sepal.Length</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "double"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">$</span><span class="va">Sepal.Length</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
-<p><strong>Q1.</strong> What are the differences of <code>df_iris</code>, <code>slice(df_iris, 1:10)</code> and <code>glimpse(df_iris)</code> above?</p>
-<p><strong>Q2.</strong> What are the differences of<code>df_iris</code>, <code>slice(df_iris, 1:10)</code> and <code>glimpse(df_iris)</code> in the console?</p>
 </div>
-<div id="summary-of-the-data" class="section level4" number="17.2.1.3">
+<div id="ggplot2-グラフの描画" class="section level4" number="17.2.2.3">
 <h4>
-<span class="header-section-number">17.2.1.3</span> Summary of the Data<a class="anchor" aria-label="anchor" href="#summary-of-the-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.2.3</span> ggplot2: グラフの描画<a class="anchor" aria-label="anchor" href="#ggplot2-%E3%82%B0%E3%83%A9%E3%83%95%E3%81%AE%E6%8F%8F%E7%94%BB"><i class="fas fa-link"></i></a>
 </h4>
-<p>The following is very convenient to get the summary information of a data.</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Sepal.Length    Sepal.Width     Petal.Length  </span></span>
-<span><span class="co">#&gt;  Min.   :4.300   Min.   :2.000   Min.   :1.000  </span></span>
-<span><span class="co">#&gt;  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  </span></span>
-<span><span class="co">#&gt;  Median :5.800   Median :3.000   Median :4.350  </span></span>
-<span><span class="co">#&gt;  Mean   :5.843   Mean   :3.057   Mean   :3.758  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  </span></span>
-<span><span class="co">#&gt;  Max.   :7.900   Max.   :4.400   Max.   :6.900  </span></span>
-<span><span class="co">#&gt;   Petal.Width          Species  </span></span>
-<span><span class="co">#&gt;  Min.   :0.100   setosa    :50  </span></span>
-<span><span class="co">#&gt;  1st Qu.:0.300   versicolor:50  </span></span>
-<span><span class="co">#&gt;  Median :1.300   virginica :50  </span></span>
-<span><span class="co">#&gt;  Mean   :1.199                  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:1.800                  </span></span>
-<span><span class="co">#&gt;  Max.   :2.500</span></span></code></pre></div>
-<p>Minimum, 1st Quadrant (25%), Median, Mean, 3rd Quadrant (75%), Maximum, and the count of each factor.</p>
+<p><code>plot</code> の拡張ですが、<code>tidyverse</code> パッケージ群の核をなすものでもあります。詳細は、視覚化で扱います。</p>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Sepal.Width</span>, <span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="24-tidyverse_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
+<p>さまざまな描画が可能ですが、一番、一般的な、散布図、<code>plot</code> に対応するものを書きました。<code>ggplot</code> の中の、<code>aes</code> （aesthetic）の部分に、x 軸、y 軸に対応する変数（列名）を書きます。種類（Species）ごとに色を変える場合には、<code>color = Species</code> とします。</p>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Sepal.Width</span>, <span class="va">Sepal.Length</span>, color <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="24-tidyverse_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
+<p>さらに、点の大きさを、Petal.Width によって変える場合には次のように、<code>size = Petal.Width</code> を加えます。</p>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Sepal.Width</span>, <span class="va">Sepal.Length</span>, color <span class="op">=</span> <span class="va">Species</span>, </span>
+<span>             size <span class="op">=</span> <span class="va">Petal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="24-tidyverse_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
+<p>少しずつ学んでいきましょう。</p>
+</div>
+</div>
+</div>
+<div id="wdi-のデータ" class="section level2" number="17.3">
+<h2>
+<span class="header-section-number">17.3</span> WDI のデータ<a class="anchor" aria-label="anchor" href="#wdi-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
+</h2>
+<p>以下の説明では、世界開発指標（World Development Indicator）の実際のデータも使って説明していきます。例として使うデータを取得して、上で学んだことの復習もかねて、簡単にみておきたいと思います。</p>
+<p>すでに、<code>tidyverse</code> は読み込んでありますから、その場合は、<code>WDI</code> パッケージを読み込むだけで十分です。</p>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/WDI/">WDI</a></span><span class="op">)</span></span></code></pre></div>
+<p>WDI の使い方は、世界銀行の部分で紹介しますが、はじめてのデータサイエンスの例でも紹介したように、データコードを利用して、データを読み込みます。ここでは、出生時の平均寿命と、一人当たりの　GDP と、総人口のデータを使います。</p>
+<ul>
+<li>SP.DYN.LE00.IN: Life expectancy at birth, total (years) 出生時の平均寿命</li>
+<li>NY.GDP.PCAP.KD: GDP per capita (constant 2015 US$) 一人当たりの　GDP</li>
+<li>SP.POP.TOTL: Population, total 総人口</li>
+</ul>
+<p>次のコードで読み込みます。</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span></span>
+<span>  country <span class="op">=</span> <span class="st">"all"</span>, </span>
+<span>  indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>lifeExp <span class="op">=</span> <span class="st">"SP.DYN.LE00.IN"</span>, pop <span class="op">=</span> <span class="st">"SP.POP.TOTL"</span>, gdpPercap <span class="op">=</span> <span class="st">"NY.GDP.PCAP.KD"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; Rows: 16758 Columns: 7
+#&gt; ── Column specification ────────────────────────────────────
+#&gt; Delimiter: ","
+#&gt; chr (3): country, iso2c, iso3c
+#&gt; dbl (4): year, lifeExp, pop, gdpPercap
+#&gt; 
+#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
+#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p>注：WDI のサイトは、頻繁に、保守をしているため、時々、データをダウンロードできないことがあります。そのときは、すでに、ダウンロードしてものがわたしの GitHub <a href="%22https://github.com/icu-hsuzuki/ds4aj/blob/main/data/wdi.csv%22">サイト</a>にありますから、そこから次のコードで読み込んでください。</p>
+<p>最初の10行をみてみましょう。</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 7</span></span>
+<span><span class="co">#&gt;    country     iso2c iso3c  year lifeExp      pop gdpPercap</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 Afghanistan AF    AFG    1960    32.5  8622466        NA</span></span>
+<span><span class="co">#&gt;  2 Afghanistan AF    AFG    1961    33.1  8790140        NA</span></span>
+<span><span class="co">#&gt;  3 Afghanistan AF    AFG    1962    33.5  8969047        NA</span></span>
+<span><span class="co">#&gt;  4 Afghanistan AF    AFG    1963    34.0  9157465        NA</span></span>
+<span><span class="co">#&gt;  5 Afghanistan AF    AFG    1964    34.5  9355514        NA</span></span>
+<span><span class="co">#&gt;  6 Afghanistan AF    AFG    1965    35.0  9565147        NA</span></span>
+<span><span class="co">#&gt;  7 Afghanistan AF    AFG    1966    35.5  9783147        NA</span></span>
+<span><span class="co">#&gt;  8 Afghanistan AF    AFG    1967    35.9 10010030        NA</span></span>
+<span><span class="co">#&gt;  9 Afghanistan AF    AFG    1968    36.4 10247780        NA</span></span>
+<span><span class="co">#&gt; 10 Afghanistan AF    AFG    1969    36.9 10494489        NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi_extra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/WDI/reference/WDI.html">WDI</a></span><span class="op">(</span></span>
+<span>  country <span class="op">=</span> <span class="st">"all"</span>, </span>
+<span>  indicator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>lifeExp <span class="op">=</span> <span class="st">"SP.DYN.LE00.IN"</span>, pop <span class="op">=</span> <span class="st">"SP.POP.TOTL"</span>, gdpPercap <span class="op">=</span> <span class="st">"NY.GDP.PCAP.KD"</span><span class="op">)</span>, </span>
+<span>  extra <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>すこし、追加情報を付加したものも取得しておきます。</p>
+<pre><code>#&gt; Rows: 16758 Columns: 15
+#&gt; ── Column specification ────────────────────────────────────
+#&gt; Delimiter: ","
+#&gt; chr  (7): country, iso2c, iso3c, region, capital, income...
+#&gt; dbl  (6): year, lifeExp, pop, gdpPercap, longitude, lati...
+#&gt; lgl  (1): status
+#&gt; date (1): lastupdated
+#&gt; 
+#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
+#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi_extra</span></span>
+<span><span class="co">#&gt; # A tibble: 16,758 × 15</span></span>
+<span><span class="co">#&gt;    country     iso2c iso3c  year status lastupdated lifeExp</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;lgl&gt;  &lt;date&gt;        &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 Afghanistan AF    AFG    2014 NA     2023-07-25     62.5</span></span>
+<span><span class="co">#&gt;  2 Afghanistan AF    AFG    2012 NA     2023-07-25     61.9</span></span>
+<span><span class="co">#&gt;  3 Afghanistan AF    AFG    2009 NA     2023-07-25     60.4</span></span>
+<span><span class="co">#&gt;  4 Afghanistan AF    AFG    2013 NA     2023-07-25     62.4</span></span>
+<span><span class="co">#&gt;  5 Afghanistan AF    AFG    1971 NA     2023-07-25     37.9</span></span>
+<span><span class="co">#&gt;  6 Afghanistan AF    AFG    2015 NA     2023-07-25     62.7</span></span>
+<span><span class="co">#&gt;  7 Afghanistan AF    AFG    1969 NA     2023-07-25     36.9</span></span>
+<span><span class="co">#&gt;  8 Afghanistan AF    AFG    2010 NA     2023-07-25     60.9</span></span>
+<span><span class="co">#&gt;  9 Afghanistan AF    AFG    2011 NA     2023-07-25     61.4</span></span>
+<span><span class="co">#&gt; 10 Afghanistan AF    AFG    2008 NA     2023-07-25     59.9</span></span>
+<span><span class="co">#&gt; # ℹ 16,748 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 8 more variables: pop &lt;dbl&gt;, gdpPercap &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   region &lt;chr&gt;, capital &lt;chr&gt;, longitude &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   latitude &lt;dbl&gt;, income &lt;chr&gt;, lending &lt;chr&gt;</span></span></code></pre></div>
+<p>違いはわかりましたか。同じような変数についてのデータですが、WDI からダウンロードした実際のデータの場合には、練習用のデータとは、違った困難がいくつもあります。それを、少しず見ていきながら、現実世界のデータを扱えるようにしていきましょう。</p>
+<p><code>glimpse</code> を使ってみてるとどのような違いがわかりますか。</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 16,758</span></span>
+<span><span class="co">#&gt; Columns: 7</span></span>
+<span><span class="co">#&gt; $ country   &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghanist…</span></span>
+<span><span class="co">#&gt; $ iso2c     &lt;chr&gt; "AF", "AF", "AF", "AF", "AF", "AF", "AF"…</span></span>
+<span><span class="co">#&gt; $ iso3c     &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG"…</span></span>
+<span><span class="co">#&gt; $ year      &lt;dbl&gt; 1960, 1961, 1962, 1963, 1964, 1965, 1966…</span></span>
+<span><span class="co">#&gt; $ lifeExp   &lt;dbl&gt; 32.535, 33.068, 33.547, 34.016, 34.494, …</span></span>
+<span><span class="co">#&gt; $ pop       &lt;dbl&gt; 8622466, 8790140, 8969047, 9157465, 9355…</span></span>
+<span><span class="co">#&gt; $ gdpPercap &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi_extra</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 16,758</span></span>
+<span><span class="co">#&gt; Columns: 15</span></span>
+<span><span class="co">#&gt; $ country     &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghani…</span></span>
+<span><span class="co">#&gt; $ iso2c       &lt;chr&gt; "AF", "AF", "AF", "AF", "AF", "AF", "A…</span></span>
+<span><span class="co">#&gt; $ iso3c       &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AF…</span></span>
+<span><span class="co">#&gt; $ year        &lt;dbl&gt; 2014, 2012, 2009, 2013, 1971, 2015, 19…</span></span>
+<span><span class="co">#&gt; $ status      &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span></span>
+<span><span class="co">#&gt; $ lastupdated &lt;date&gt; 2023-07-25, 2023-07-25, 2023-07-25, 2…</span></span>
+<span><span class="co">#&gt; $ lifeExp     &lt;dbl&gt; 62.545, 61.923, 60.364, 62.417, 37.923…</span></span>
+<span><span class="co">#&gt; $ pop         &lt;dbl&gt; 32716210, 30466479, 27385307, 31541209…</span></span>
+<span><span class="co">#&gt; $ gdpPercap   &lt;dbl&gt; 602.5166, 596.4424, 512.4090, 608.3863…</span></span>
+<span><span class="co">#&gt; $ region      &lt;chr&gt; "South Asia", "South Asia", "South Asi…</span></span>
+<span><span class="co">#&gt; $ capital     &lt;chr&gt; "Kabul", "Kabul", "Kabul", "Kabul", "K…</span></span>
+<span><span class="co">#&gt; $ longitude   &lt;dbl&gt; 69.1761, 69.1761, 69.1761, 69.1761, 69…</span></span>
+<span><span class="co">#&gt; $ latitude    &lt;dbl&gt; 34.5228, 34.5228, 34.5228, 34.5228, 34…</span></span>
+<span><span class="co">#&gt; $ income      &lt;chr&gt; "Low income", "Low income", "Low incom…</span></span>
+<span><span class="co">#&gt; $ lending     &lt;chr&gt; "IDA", "IDA", "IDA", "IDA", "IDA", "ID…</span></span></code></pre></div>
+<p>列の数が違いますね。どちらも行は、16,758行です。こんなに多いものは、表で見ていても、よくわかりません。これらを扱う方法を少しずつ学んでいきます。</p>
 
-</div>
-</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -304,8 +558,12 @@
 <li><a class="nav-link" href="#tidyverse"><span class="header-section-number">17</span> Tidyverse</a></li>
 <li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB-1"><span class="header-section-number">17.1</span> はじめに</a></li>
 <li>
-<a class="nav-link" href="#%E3%81%82%E3%82%84%E3%82%81iris%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">17.2</span> あやめ（iris）のデータ</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E8%A6%8B%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86"><span class="header-section-number">17.2.1</span> データを見てみよう</a></li></ul>
+<a class="nav-link" href="#%E3%81%82%E3%82%84%E3%82%81iris%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">17.2</span> あやめ（iris）のデータ</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E8%A6%8B%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86"><span class="header-section-number">17.2.1</span> データを見てみよう</a></li>
+<li><a class="nav-link" href="#dplyr-%E5%A4%89%E5%BD%A2"><span class="header-section-number">17.2.2</span> dplyr 変形</a></li>
+</ul>
 </li>
+<li><a class="nav-link" href="#wdi-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">17.3</span> WDI のデータ</a></li>
 </ul>
 
       <div class="book-extra">

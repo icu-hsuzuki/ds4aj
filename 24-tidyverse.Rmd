@@ -49,27 +49,77 @@ class(tbl_iris)
 
 ### データを見てみよう
 
-#### いくつかの方法
+#### 復習
 
-The `View` command opens up a window to show the contents of the data, and you can also use the filter.
+すでに、いくつかの関数を学んでいますから、それを使ってみてみましょう。`head`, `str`, `summary` でした。
 
-```{r viewiris, eval = FALSE}
+##### `head` : データの頭の部分
+
+```{r}
+head(df_iris)
+```
+
+データの最初の6行（head）が表示されました。
+
+##### `str` : データの構造（structure）
+
+```{r}
+str(df_iris)
+```
+
+全体の構造（structure）の概略が表示されました。5つの変数、Sepal.Lengh（萼（がく）長）, Sepal.Width（萼幅）, Petal.Length（花弁長）, Petal.Width（花弁幅）, Species（種別） について、150 の データ（observations）が含まれており、Species は、三つの Factor になっているということがわかります。Factor については、後ほど学びますが、三つに分類されているという意味で、ここでは、あやめの種類、setosa, versicolor, virginica となっています。三つ目は見えていないかもしれません。
+
+##### `summary`: データの概要
+
+```{r}
+summary(df_iris)
+```
+
+それぞれの最小値（Min. Minimum）、第一四分位（1st Qu. First Quartile 小さい方から、4分の1を切り捨てたときの最小の値）、中央値（Median）、平均（Mean）、第三四分位（3rd Qu. Third Quartile、大きい方から、4分の1を切り捨てたときの最大の値）最大値（Max. Maximum）が、書かれており、各種それぞれ50個のデータからなっていることがわかります。
+
+さらに、`plot`、`View`、`help` についても学びました。
+
+##### plot: 散布図
+
+```{r}
+plot(df_iris$Sepal.Width, df_iris$Sepal.Length)
+```
+
+何を x 軸、何を y 軸 の値とするかを指定します。それは、df_iris\$Sepal.Width で、df_iris の、Sepal.Width の列、df_iris\$Sepal.Length で、df_iris の Sepal.Length の列の値を指定しています。
+
+##### View: データテーブルの表示
+
+```{r eval = FALSE}
 View(df_iris)
 ```
 
-The following simple command also shows the data.
+`View(df_iris)` を、Console に入れると、データテーブルが開きます。順番の並び替えもできるようになっています。
 
-```{r dfiris, eval=FALSE}
-df_iris
+R Studio では、右上の窓に、Environment タブがありますが、そこに、df_iris があると思いますから、それを、クリックすると、同じ、データテーブルが表示されます。
+
+##### help: ヘルプ
+
+```{r eval = FALSE}
+help(iris)
 ```
+
+`help(iris)` を、Console に入れるか、または、右下の窓枠の Help に、`iris` と入れると、説明などが出ます。
+
+ここまでは、`tidyverse` を使わずにもできることですが、これからは、`tidyverse` の関数を紹介していきます。
+
+### dplyr 変形
+
+ここでは、head と、str に対応する、二種類の関数を紹介するにとどめますが、次の、章の中心的トピックです。
+
+#### slice: 行を切り取る
+
+`head` を一般化したものです。`slice`, `slice_head`, `slice_tail`, `slice_max`, `slice_min`, `slice_sample` とあります。
 
 ```{r echo=FALSE, eval=TRUE}
-df_iris %>% slice(1:10)
+df_iris |> slice(1:10)
 ```
 
-`%>%` is called a pipe command, and we use it often.
-
-The output within R Notebook is a tibble style. Try the same command in Console.
+`|>` は、パイプ（pipe）コマンドと言われるもので、`tidyverse` では、`%>%` もほぼ同じ機能ですが、R 4.0 以降には、含まれていますので、`tidyverse` なしでも使えますから、こちらを使うようにします。最初の 10 行を切り出すという意味で、パイプを使わないときは、一つ前のものが、最初の 変数（argument）となりますから、下のものでも同じです。
 
 ```{r slice10iris}
 slice(df_iris, 1:10)
@@ -79,19 +129,39 @@ slice(df_iris, 1:10)
 1:10
 ```
 
-#### Data Structure
+1から10のベクトルです。ということは、1:10 の部分をいろいろと変えれば、さまざまな部分を取り出すことができます。詳細は、Help 検索窓で、で、`slice` と調べてください。下も同じ結果を出力します。
 
-Let us look at the structure of the data. You can try `str(df_iris)` on Console or by adding a code chunk in R Notebook introducing later.
+```{r}
+df_iris |> slice_head(n=10)
+```
+
+```{r}
+df_iris |> slice_max(order_by = Sepal.Length, n=7)
+```
+
+Sepal.Length の値を大きい方から順に並べて、最初の7つを選択するというものです。
+
+#### glimpse: データの構造
+
+`str` の改良版です。他の、tidyverse の関数と一緒に使うこともできます。
 
 ```{r glimpse:eiris}
 glimpse(df_iris)
 ```
 
-There are six types of data in R; Double, Integer, Character, Logical, Raw, and Complex. In this course, we use only the first four.
+```{r glimpse:eiris5}
+df_iris |> glimpse() 
+```
 
-The names after \$ are column names. If you call `df_iris$Species`, you have the Species column. Species is in the 5th column, `typeof(df_iris[[5]])` does the same as the next.
+`str(df_iris)` では num （数値データ）と表示されましたが、ここでは、もう少し詳R の 6個のデータタイプ Double（連続データ）, Integer（整数値データ）, Character（文字データ）, Logical（論理値データ）, Raw（素データ）, Complex（複素数データ） が表示されます。最初の四種類が主要なものと考えてください。
 
-``` df_iris[2,4] = ``r df_iris[2,4] ``` is the fourth entry of Sepal.Width.
+データの列を指定するときは、データ名のあとに、ドルマークをつけ、列名を加えます。`df_iris$Sepal.Width` などです。 これは、一列目ですから、 `typeof(df_iris[[1]])` とすることもできます。2行目の1列目というときは、次のようにします。
+
+`` df_iris[2,1] = `r df_iris[2,1]` `` is the fourth entry of Sepal.Width.
+
+```{r}
+typeof(df_iris$Sepal.Width)
+```
 
 ```{r}
 typeof(df_iris$Species)
@@ -101,23 +171,122 @@ typeof(df_iris$Species)
 class(df_iris$Species)
 ```
 
-For `factors = fct` see [the R Document](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor) or an explanation in [Factor in R: Categorical Variable & Continuous Variables](https://www.guru99.com/r-factor-categorical-continuous.html).
+ファクター `factors = fct` については [the R Document](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor) または、[Factor in R: Categorical Variable & Continuous Variables](https://www.guru99.com/r-factor-categorical-continuous.html) をみてください。必要になったときに、説明します。
 
 ```{r}
 typeof(df_iris$Sepal.Length)
 class(df_iris$Sepal.Length)
 ```
 
-**Q1.** What are the differences of `df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` above?
+#### ggplot2: グラフの描画
 
-**Q2.** What are the differences of`df_iris`, `slice(df_iris, 1:10)` and `glimpse(df_iris)` in the console?
-
-#### Summary of the Data
-
-The following is very convenient to get the summary information of a data.
+`plot` の拡張ですが、`tidyverse` パッケージ群の核をなすものでもあります。詳細は、視覚化で扱います。
 
 ```{r}
-summary(df_iris)
+df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 ```
 
-Minimum, 1st Quadrant (25%), Median, Mean, 3rd Quadrant (75%), Maximum, and the count of each factor.
+さまざまな描画が可能ですが、一番、一般的な、散布図、`plot` に対応するものを書きました。`ggplot` の中の、`aes` （aesthetic）の部分に、x 軸、y 軸に対応する変数（列名）を書きます。種類（Species）ごとに色を変える場合には、`color = Species` とします。
+
+```{r}
+df_iris |> ggplot(aes(Sepal.Width, Sepal.Length, color = Species)) +
+  geom_point()
+```
+
+さらに、点の大きさを、Petal.Width によって変える場合には次のように、`size = Petal.Width` を加えます。
+
+```{r}
+df_iris |> 
+  ggplot(aes(Sepal.Width, Sepal.Length, color = Species, 
+             size = Petal.Width)) +
+  geom_point()
+```
+
+少しずつ学んでいきましょう。
+
+## WDI のデータ
+
+以下の説明では、世界開発指標（World Development Indicator）の実際のデータも使って説明していきます。例として使うデータを取得して、上で学んだことの復習もかねて、簡単にみておきたいと思います。
+
+すでに、`tidyverse` は読み込んでありますから、その場合は、`WDI` パッケージを読み込むだけで十分です。
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI の使い方は、世界銀行の部分で紹介しますが、はじめてのデータサイエンスの例でも紹介したように、データコードを利用して、データを読み込みます。ここでは、出生時の平均寿命と、一人当たりの　GDP と、総人口のデータを使います。
+
+-   SP.DYN.LE00.IN: Life expectancy at birth, total (years) 出生時の平均寿命
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) 一人当たりの　GDP
+-   SP.POP.TOTL: Population, total 総人口
+
+次のコードで読み込みます。
+
+```{r eval=FALSE}
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
+```
+
+```{r echo=FALSE, eval=FALSE}
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
+write_csv(df_wdi, "./data/wdi.csv")
+```
+
+```{r echo=FALSE, eval=TRUE}
+df_wdi <- read_csv("./data/wdi.csv")
+```
+
+注：WDI のサイトは、頻繁に、保守をしているため、時々、データをダウンロードできないことがあります。そのときは、すでに、ダウンロードしてものがわたしの GitHub [サイト]("https://github.com/icu-hsuzuki/ds4aj/blob/main/data/wdi.csv")にありますから、そこから次のコードで読み込んでください。
+
+最初の10行をみてみましょう。
+
+```{r}
+df_wdi %>% slice(1:10)
+```
+
+```{r eval=FALSE}
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+```
+
+すこし、追加情報を付加したものも取得しておきます。
+
+```{r eval=FALSE, echo=FALSE}
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+write_csv(df_wdi_extra, "./data/wdi_extra.csv")
+```
+
+```{r eval=TRUE, echo=FALSE}
+df_wdi_extra <- read_csv("./data/wdi_extra.csv")
+```
+
+```{r}
+df_wdi_extra
+```
+
+違いはわかりましたか。同じような変数についてのデータですが、WDI からダウンロードした実際のデータの場合には、練習用のデータとは、違った困難がいくつもあります。それを、少しず見ていきながら、現実世界のデータを扱えるようにしていきましょう。
+
+`glimpse` を使ってみてるとどのような違いがわかりますか。
+
+```{r}
+df_wdi |> glimpse()
+```
+
+```{r}
+df_wdi_extra |> glimpse()
+```
+
+列の数が違いますね。どちらも行は、16,758行です。こんなに多いものは、表で見ていても、よくわかりません。これらを扱う方法を少しずつ学んでいきます。
