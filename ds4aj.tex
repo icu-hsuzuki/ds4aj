@@ -3904,14 +3904,16 @@ Google アカウントをお持ちの方は多いと思うので、Google colab 
 \hypertarget{rmarkdown}{%
 \chapter{R Markdown}\label{rmarkdown}}
 
-データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためののツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の \href{https://quarto.org}{Quarto} という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R Markdown を知っていれば、簡単に、乗り換えることができまし、R Markdwon も今後ともサポートされるとのことですので、ここでは、R Markdown について書き、後ほど、別立てで、Quarto について書いていくことにします。
+データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためのツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の \href{https://quarto.org}{Quarto} という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R Markdown を知っていれば、簡単に、乗り換えることができまし、R Markdwon も今後ともサポートされるとのことですので、ここでは、R Markdown について書き、後ほど、別立てで、Quarto について書いていくことにします。
 
-\hypertarget{reproducible-and-literate-programming}{%
-\section{Reproducible and Literate Programming}\label{reproducible-and-literate-programming}}
+\hypertarget{ux518dux73feux53efux80fdux6027ux3068ux30d7ux30edux30b0ux30e9ux30e0ux306eux6587ux66f8ux5316}{%
+\section{再現可能性とプログラムの文書化}\label{ux518dux73feux53efux80fdux6027ux3068ux30d7ux30edux30b0ux30e9ux30e0ux306eux6587ux66f8ux5316}}
 
 データサイエンスは、サイエンス（科学）ということばもついていますが、特に、根拠に基づいた（evidence based）とか、データに基づいた（data based）ということばを使うときには、なおさら、再現可能性（reproducibility）や、コードの内容の説明などのコミュニケーションにも注力する必要があります。このことを心がけて、データサイエンスを学んでいきましょう。
 
 表題にある、``Reproducible and Literate Programming'' は、Reproducible （再現可能）かつ、Literate　な（理解できるように記述した）Program（プログラム・コード）を共有することをたいせつにしましょうということです。
+
+注：\emph{Literate Programming の訳は「文芸的プログラミング」とか「文学的プログラミング」が使われているようですが、読んで理解できるということですから、文書化ぐらいがいいかなと思っています。より適切な訳があれば、今後変更していきたいと思います。}
 
 \hypertarget{ux76eeux7684ux554fux3044ux306aux3069}{%
 \subsection{目的、問いなど}\label{ux76eeux7684ux554fux3044ux306aux3069}}
@@ -4104,7 +4106,7 @@ RMarkdown では、\texttt{tinytex} パッケージというとても素晴ら�
 注：矢内勇生さんの\href{https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf}{サイト}には、詳細な説明があります。
 
 \hypertarget{rbasics}{%
-\chapter{R の基礎}\label{rbasics}}
+\chapter{R のはじめかた}\label{rbasics}}
 
 \hypertarget{ux30d7ux30edux30b8ux30a7ux30afux30c8---project}{%
 \section{プロジェクト - Project}\label{ux30d7ux30edux30b8ux30a7ux30afux30c8---project}}
@@ -4223,7 +4225,7 @@ RStudio で R を利用する場合には、プロジェクトを作成するこ
 \end{Highlighting}
 \end{Shaded}
 
-\texttt{cars} データの概要（summary）が表示されます。各列（変数）について、最小値（Minimum）、小さい方から、4分の1を切り捨てたときの最小の値（1st Quadrant）、中央値（Median）、平均（Mean）、大きい方から、4分の1を切り捨てたときの最大の値（3rd Quadrant）、最大値（Maximum）が表示されます。
+\texttt{cars} データの概要（summary）が表示されます。各列（変数）について、最小値（Minimum）、小さい方から、4分の1を切り捨てたときの最小の値（1st Quartile）、中央値（Median）、平均（Mean）、大きい方から、4分の1を切り捨てたときの最大の値（3rd Quartile）、最大値（Maximum）が表示されます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4391,6 +4393,8 @@ R Script を使って、コードを実行すると、その記録を残すこ�
 新しく、R Script を作成し、この下の、コード（ハイライトされている部分）をコピー・ペーストして、保存し、実行してみてください。
 
 それぞれ、どのようなことをしているでしょうか。
+
+詳細を説明すると、時間もかかりますから、必要になったときに、少しずつ説明していきます。ここでは、スクリプトを使って、実行するという、二つ目の方法に慣れていただければ十分です。
 
 \hypertarget{ux30b9ux30afux30eaux30d7ux30c81-basics.r}{%
 \subsubsection{\texorpdfstring{スクリプト1: \texttt{basics.R}}{スクリプト1: basics.R}}\label{ux30b9ux30afux30eaux30d7ux30c81-basics.r}}
@@ -4832,7 +4836,7 @@ Posit Cloud からは、左のメニュー（隠れている場合は左上の3�
 \begin{itemize}
 \tightlist
 \item
-  \href{https://ds-sl.github.io/intro2r/intro2r.nb.html}{Introducton to R}
+  \href{https://ds-sl.github.io/intro2r/intro2r.nb.html}{Introduction to R}
 \item
   \href{https://icu-hsuzuki.github.io/da4r2022/}{Data Analysis for Researchers 2022}
 \item
@@ -4848,14 +4852,49 @@ Posit Cloud からは、左のメニュー（隠れている場合は左上の3�
   ファイル：\url{https://ds-sl.github.io/intro2r/getstarted.html}
 \end{itemize}
 
+\hypertarget{ux307eux3068ux3081ux3068ux5fa9ux7fd2}{%
+\section{まとめと復習}\label{ux307eux3068ux3081ux3068ux5fa9ux7fd2}}
+
+ここでは、詳細までは理解していただかなくて結構ですが、基本事項をまとめておきます。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  R Studio で R を使うときには、まず、Project を作成し、その中で行う。
+\item
+  コンソール（Console）に、入力して実行させる方法と、スクリプト（R Script）から実行する方法がある。もう一つ、RMarkdown の章で紹介した、RMarkdown の中で、実行する方法があります。
+\item
+  データを簡単にみる三つの命令、head(), str(), summary() を紹介しました。他にも、View() でデータを見たり、Help を使って、調べる方法を紹介しました。
+\item
+  パッケージによって、便利なさまざまな拡張機能を利用するために、そのインストール方法を紹介しました。
+\item
+  対話型の練習問題集、Posit Primers の紹介をしました。
+\end{enumerate}
+
 \hypertarget{tidyverse}{%
 \chapter{Tidyverse}\label{tidyverse}}
 
-R Basics について説明しました。R に最初に読み込まれる、\texttt{base} の基本を学びましが、ここでは、核となる \texttt{tidyverse} というパッケージについてその基本を学びます。
+\hypertarget{ux306fux3058ux3081ux306b-1}{%
+\section{はじめに}\label{ux306fux3058ux3081ux306b-1}}
+
+R のはじめかたについて少し説明しました。R を起動させると、最初に \texttt{base} などいくつかのパッケージが自動的に読み込まれますが、その基本の基本を紹介したということです。ここでは、第二部で学ぶことの、核となる \texttt{tidyverse} というパッケージ群についてその基本を学びます。
 
 サイト：\url{https://www.tidyverse.org}
 
-タイトルに日本語を使う場合があるときは、\texttt{install.packages(\textquotesingle{}showtext\textquotesingle{})} で、\texttt{showtext} パッケージをインストールして、下のように設定してください。
+R は、さまざまな分野で、統計分析に利用されてきたこともあり、それぞれの分析でよく使われる関数（functions, 小さなプログラム）を集めたパッケージが作られ、それぞれの分野で使われてきました。まさに、痒いところに手が届く、さまざまなパッケージが存在します。他方、さまざまな人たちが開発を続けてきたために、統一性がない、保守の継続性が十分ではない、異なるパッケージに同じ名前の関数があるなどの問題も生じてきたように思います。
+
+さらに、それぞれの分野での、統計分析だけではなく、学際分野としてのデータサイエンスでの利用、AI への応用などにも使われるようになったこと、さらに、データサイエンスでは、特に可視化が重要で、その部分の基本が、幾何表現の文法（Grammar of Graphics）を踏まえた \texttt{ggplot2} パッケージのによって、確立したことから、統一した思想のもとで、構築されたのが、\texttt{tidyverse} パッケージ群です。さまざまな改善によって、プログラミング言語としても、十分なレベルの言語となっていると思います。
+
+一連の \texttt{tidyverse} パッケージ群の開発が、R 自体にも影響を与え、R の起動時に読み込まれるようになったものもあります。
+
+パッケージ群と呼びましたが、たくさんのパッケージが全体として、\texttt{tidyverse} と呼ばれ、\texttt{tidyverse} をインストールすると、\texttt{tidyverse} パッケージ群のパッケージがすべてインストールされます。
+
+それを、\texttt{library(tidyverse)} などで、ロード（使えるようにするために）すると、\texttt{tidyverse} パッケージ群の主要なパッケージがみな、読み込まれます。ただ、こちらは、「主要な」ものだけですので、\texttt{tidyverse} パッケージ群 のパッケージでも、後ほど、個別に読み込む必要があるものもありますので、注意してください。
+
+\hypertarget{ux3042ux3084ux3081irisux306eux30c7ux30fcux30bf}{%
+\section{あやめ（iris）のデータ}\label{ux3042ux3084ux3081irisux306eux30c7ux30fcux30bf}}
+
+利用するデータ、特に、その変数（列）名に日本語（中国語・韓国語など）を使う場合には、\texttt{install.packages(\textquotesingle{}showtext\textquotesingle{})} で、\texttt{showtext} パッケージをインストールして、下のように設定ます。標準的には、最初の行 \texttt{library(tidyverse)} だけで十分です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4877,17 +4916,28 @@ R Basics について説明しました。R に最初に読み込まれる、\te
 \end{Highlighting}
 \end{Shaded}
 
-Let us assign the \texttt{iris} data in the pre-installed package \texttt{datasets} to \texttt{df\_iris}. You can give any name starting from an alphabet, though there are some rules.
+以下では、R の起動時に読み込まれる、 \texttt{datasets} パッケージの中の、\texttt{iris} データを使います。以前には、同じパッケージに含まれる、\texttt{cars} を使いました。まず、このデータに、\texttt{ds\_iris} という名前をつけて使うことにします。これは、アサインと言い、\texttt{\textless{}-} を使います。半角で入力します。
+
+備考：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Help の Keyboard Shortcuts Help をみると、さまざまなキーボードショートカットが書かれています。\texttt{\textless{}-} は、Windows では、\texttt{Alt\ +\ -} 、Mac では、\texttt{Option\ +\ -} で、入力することもできます。\texttt{Alt\ +\ -} などは、\texttt{Alt} キーを推しながら、\texttt{-}　キーを押すという意味です。
+\item
+  \texttt{df\_iris\ \textless{}-\ iris} でも問題ないと思います。下にようにするのは、すでに、\texttt{iris} という変数を使っているかもしれないので、\texttt{datasets} パッケージの \texttt{iris} を使うという意味です。
+\end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris }\OtherTok{\textless{}{-}}\NormalTok{ datasets}\SpecialCharTok{::}\NormalTok{iris}
+\NormalTok{df\_iris }\OtherTok{\textless{}{-}}\NormalTok{ datasets}\SpecialCharTok{::}\NormalTok{iris }
 \FunctionTok{class}\NormalTok{(df\_iris)}
 \CommentTok{\#\textgreater{} [1] "data.frame"}
 \end{Highlighting}
 \end{Shaded}
 
-The class of data \texttt{iris} is \texttt{data.frame}, the basic data class of R. You can assign the same data as a \texttt{tibble}, the data class of \texttt{tidyverse} as follows.
+あやめのデータ \texttt{iris} は \texttt{data.frame} というクラスであることがわかります。\texttt{tidyverse} には、\texttt{tibble} というデータのクラス（\texttt{data.frame} のサブクラス）もあります。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4897,21 +4947,93 @@ The class of data \texttt{iris} is \texttt{data.frame}, the basic data class of 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  \texttt{df\_iris\ \textless{}-\ iris} can replace \texttt{df\_iris\ \textless{}-\ datasets::iris} because the package \texttt{datasets} is installed and attached as default. Since you may have other data called \texttt{iris} included in a different package or you may have changed \texttt{iris} before, it is safer to specify the package's name with the data's name.
-\item
-  Within R Notebook or in Console, you may get different output, and \texttt{tf\_iris} and \texttt{tbl\_iris} behave differently. It is because of the default settings of R Markdown.
-\end{itemize}
+\texttt{df\_iris} と \texttt{tbl\_iris} で出力が変わる場合もありますが、今のところは、あまり気にせず、\texttt{df\_iris} を使っていきたいと思います。
 
-\hypertarget{look-at-the-data}{%
-\subsection{Look at the data}\label{look-at-the-data}}
+\hypertarget{ux30c7ux30fcux30bfux3092ux898bux3066ux307fux3088ux3046}{%
+\subsection{データを見てみよう}\label{ux30c7ux30fcux30bfux3092ux898bux3066ux307fux3088ux3046}}
 
-\hypertarget{several-ways-to-view-the-data.}{%
-\subsubsection{Several ways to view the data.}\label{several-ways-to-view-the-data.}}
+\hypertarget{ux5fa9ux7fd2}{%
+\subsubsection{復習}\label{ux5fa9ux7fd2}}
 
-The \texttt{View} command opens up a window to show the contents of the data, and you can also use the filter.
+すでに、いくつかの関数を学んでいますから、それを使ってみてみましょう。\texttt{head}, \texttt{str}, \texttt{summary} でした。
+
+\hypertarget{head-ux30c7ux30fcux30bfux306eux982dux306eux90e8ux5206}{%
+\paragraph{\texorpdfstring{\texttt{head} : データの頭の部分}{head : データの頭の部分}}\label{head-ux30c7ux30fcux30bfux306eux982dux306eux90e8ux5206}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(df\_iris)}
+\CommentTok{\#\textgreater{}   Sepal.Length Sepal.Width Petal.Length Petal.Width Species}
+\CommentTok{\#\textgreater{} 1          5.1         3.5          1.4         0.2  setosa}
+\CommentTok{\#\textgreater{} 2          4.9         3.0          1.4         0.2  setosa}
+\CommentTok{\#\textgreater{} 3          4.7         3.2          1.3         0.2  setosa}
+\CommentTok{\#\textgreater{} 4          4.6         3.1          1.5         0.2  setosa}
+\CommentTok{\#\textgreater{} 5          5.0         3.6          1.4         0.2  setosa}
+\CommentTok{\#\textgreater{} 6          5.4         3.9          1.7         0.4  setosa}
+\end{Highlighting}
+\end{Shaded}
+
+データの最初の6行（head）が表示されました。
+
+\hypertarget{str-ux30c7ux30fcux30bfux306eux69cbux9020structure}{%
+\paragraph{\texorpdfstring{\texttt{str} : データの構造（structure）}{str : データの構造（structure）}}\label{str-ux30c7ux30fcux30bfux306eux69cbux9020structure}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(df\_iris)}
+\CommentTok{\#\textgreater{} \textquotesingle{}data.frame\textquotesingle{}:    150 obs. of  5 variables:}
+\CommentTok{\#\textgreater{}  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...}
+\CommentTok{\#\textgreater{}  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...}
+\CommentTok{\#\textgreater{}  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...}
+\CommentTok{\#\textgreater{}  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...}
+\CommentTok{\#\textgreater{}  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...}
+\end{Highlighting}
+\end{Shaded}
+
+全体の構造（structure）の概略が表示されました。5つの変数、Sepal.Lengh（萼（がく）長）, Sepal.Width（萼幅）, Petal.Length（花弁長）, Petal.Width（花弁幅）, Species（種別） について、150 の データ（observations）が含まれており、Species は、三つの Factor になっているということがわかります。Factor については、後ほど学びますが、三つに分類されているという意味で、ここでは、あやめの種類、setosa, versicolor, virginica となっています。三つ目は見えていないかもしれません。
+
+\hypertarget{summary-ux30c7ux30fcux30bfux306eux6982ux8981}{%
+\paragraph{\texorpdfstring{\texttt{summary}: データの概要}{summary: データの概要}}\label{summary-ux30c7ux30fcux30bfux306eux6982ux8981}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(df\_iris)}
+\CommentTok{\#\textgreater{}   Sepal.Length    Sepal.Width     Petal.Length  }
+\CommentTok{\#\textgreater{}  Min.   :4.300   Min.   :2.000   Min.   :1.000  }
+\CommentTok{\#\textgreater{}  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  }
+\CommentTok{\#\textgreater{}  Median :5.800   Median :3.000   Median :4.350  }
+\CommentTok{\#\textgreater{}  Mean   :5.843   Mean   :3.057   Mean   :3.758  }
+\CommentTok{\#\textgreater{}  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  }
+\CommentTok{\#\textgreater{}  Max.   :7.900   Max.   :4.400   Max.   :6.900  }
+\CommentTok{\#\textgreater{}   Petal.Width          Species  }
+\CommentTok{\#\textgreater{}  Min.   :0.100   setosa    :50  }
+\CommentTok{\#\textgreater{}  1st Qu.:0.300   versicolor:50  }
+\CommentTok{\#\textgreater{}  Median :1.300   virginica :50  }
+\CommentTok{\#\textgreater{}  Mean   :1.199                  }
+\CommentTok{\#\textgreater{}  3rd Qu.:1.800                  }
+\CommentTok{\#\textgreater{}  Max.   :2.500}
+\end{Highlighting}
+\end{Shaded}
+
+それぞれの最小値（Min. Minimum）、第一四分位（1st Qu. First Quartile 小さい方から、4分の1を切り捨てたときの最小の値）、中央値（Median）、平均（Mean）、第三四分位（3rd Qu. Third Quartile、大きい方から、4分の1を切り捨てたときの最大の値）最大値（Max. Maximum）が、書かれており、各種それぞれ50個のデータからなっていることがわかります。
+
+さらに、\texttt{plot}、\texttt{View}、\texttt{help} についても学びました。
+
+\hypertarget{plot-ux6563ux5e03ux56f3}{%
+\paragraph{plot: 散布図}\label{plot-ux6563ux5e03ux56f3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(df\_iris}\SpecialCharTok{$}\NormalTok{Sepal.Width, df\_iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+何を x 軸、何を y 軸 の値とするかを指定します。それは、df\_iris\$Sepal.Width で、df\_iris の、Sepal.Width の列、df\_iris\$Sepal.Length で、df\_iris の Sepal.Length の列の値を指定しています。
+
+\hypertarget{view-ux30c7ux30fcux30bfux30c6ux30fcux30d6ux30ebux306eux8868ux793a}{%
+\paragraph{View: データテーブルの表示}\label{view-ux30c7ux30fcux30bfux30c6ux30fcux30d6ux30ebux306eux8868ux793a}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4919,13 +5041,32 @@ The \texttt{View} command opens up a window to show the contents of the data, an
 \end{Highlighting}
 \end{Shaded}
 
-The following simple command also shows the data.
+\texttt{View(df\_iris)} を、Console に入れると、データテーブルが開きます。順番の並び替えもできるようになっています。
+
+R Studio では、右上の窓に、Environment タブがありますが、そこに、df\_iris があると思いますから、それを、クリックすると、同じ、データテーブルが表示されます。
+
+\hypertarget{help-ux30d8ux30ebux30d7}{%
+\paragraph{help: ヘルプ}\label{help-ux30d8ux30ebux30d7}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris}
+\FunctionTok{help}\NormalTok{(iris)}
 \end{Highlighting}
 \end{Shaded}
+
+\texttt{help(iris)} を、Console に入れるか、または、右下の窓枠の Help に、\texttt{iris} と入れると、説明などが出ます。
+
+ここまでは、\texttt{tidyverse} を使わずにもできることですが、これからは、\texttt{tidyverse} の関数を紹介していきます。
+
+\hypertarget{dplyr-ux5909ux5f62}{%
+\subsection{dplyr 変形}\label{dplyr-ux5909ux5f62}}
+
+ここでは、head と、str に対応する、二種類の関数を紹介するにとどめますが、次の、章の中心的トピックです。
+
+\hypertarget{slice-ux884cux3092ux5207ux308aux53d6ux308b}{%
+\subsubsection{slice: 行を切り取る}\label{slice-ux884cux3092ux5207ux308aux53d6ux308b}}
+
+\texttt{head} を一般化したものです。\texttt{slice}, \texttt{slice\_head}, \texttt{slice\_tail}, \texttt{slice\_max}, \texttt{slice\_min}, \texttt{slice\_sample} とあります。
 
 \begin{verbatim}
 #>    Sepal.Length Sepal.Width Petal.Length Petal.Width
@@ -4952,9 +5093,7 @@ The following simple command also shows the data.
 #> 10  setosa
 \end{verbatim}
 
-\texttt{\%\textgreater{}\%} is called a pipe command, and we use it often.
-
-The output within R Notebook is a tibble style. Try the same command in Console.
+\texttt{\textbar{}\textgreater{}} は、パイプ（pipe）コマンドと言われるもので、\texttt{tidyverse} では、\texttt{\%\textgreater{}\%} もほぼ同じ機能ですが、R 4.0 以降には、含まれていますので、\texttt{tidyverse} なしでも使えますから、こちらを使うようにします。最初の 10 行を切り出すという意味で、パイプを使わないときは、一つ前のものが、最初の 変数（argument）となりますから、下のものでも同じです。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4991,10 +5130,64 @@ The output within R Notebook is a tibble style. Try the same command in Console.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{data-structure}{%
-\subsubsection{Data Structure}\label{data-structure}}
+1から10のベクトルです。ということは、1:10 の部分をいろいろと変えれば、さまざまな部分を取り出すことができます。詳細は、Help 検索窓で、で、\texttt{slice} と調べてください。下も同じ結果を出力します。
 
-Let us look at the structure of the data. You can try \texttt{str(df\_iris)} on Console or by adding a code chunk in R Notebook introducing later.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris }\SpecialCharTok{|\textgreater{}} \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n=}\DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{}    Sepal.Length Sepal.Width Petal.Length Petal.Width}
+\CommentTok{\#\textgreater{} 1           5.1         3.5          1.4         0.2}
+\CommentTok{\#\textgreater{} 2           4.9         3.0          1.4         0.2}
+\CommentTok{\#\textgreater{} 3           4.7         3.2          1.3         0.2}
+\CommentTok{\#\textgreater{} 4           4.6         3.1          1.5         0.2}
+\CommentTok{\#\textgreater{} 5           5.0         3.6          1.4         0.2}
+\CommentTok{\#\textgreater{} 6           5.4         3.9          1.7         0.4}
+\CommentTok{\#\textgreater{} 7           4.6         3.4          1.4         0.3}
+\CommentTok{\#\textgreater{} 8           5.0         3.4          1.5         0.2}
+\CommentTok{\#\textgreater{} 9           4.4         2.9          1.4         0.2}
+\CommentTok{\#\textgreater{} 10          4.9         3.1          1.5         0.1}
+\CommentTok{\#\textgreater{}    Species}
+\CommentTok{\#\textgreater{} 1   setosa}
+\CommentTok{\#\textgreater{} 2   setosa}
+\CommentTok{\#\textgreater{} 3   setosa}
+\CommentTok{\#\textgreater{} 4   setosa}
+\CommentTok{\#\textgreater{} 5   setosa}
+\CommentTok{\#\textgreater{} 6   setosa}
+\CommentTok{\#\textgreater{} 7   setosa}
+\CommentTok{\#\textgreater{} 8   setosa}
+\CommentTok{\#\textgreater{} 9   setosa}
+\CommentTok{\#\textgreater{} 10  setosa}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris }\SpecialCharTok{|\textgreater{}} \FunctionTok{slice\_max}\NormalTok{(}\AttributeTok{order\_by =}\NormalTok{ Sepal.Length, }\AttributeTok{n=}\DecValTok{7}\NormalTok{)}
+\CommentTok{\#\textgreater{}   Sepal.Length Sepal.Width Petal.Length Petal.Width}
+\CommentTok{\#\textgreater{} 1          7.9         3.8          6.4         2.0}
+\CommentTok{\#\textgreater{} 2          7.7         3.8          6.7         2.2}
+\CommentTok{\#\textgreater{} 3          7.7         2.6          6.9         2.3}
+\CommentTok{\#\textgreater{} 4          7.7         2.8          6.7         2.0}
+\CommentTok{\#\textgreater{} 5          7.7         3.0          6.1         2.3}
+\CommentTok{\#\textgreater{} 6          7.6         3.0          6.6         2.1}
+\CommentTok{\#\textgreater{} 7          7.4         2.8          6.1         1.9}
+\CommentTok{\#\textgreater{}     Species}
+\CommentTok{\#\textgreater{} 1 virginica}
+\CommentTok{\#\textgreater{} 2 virginica}
+\CommentTok{\#\textgreater{} 3 virginica}
+\CommentTok{\#\textgreater{} 4 virginica}
+\CommentTok{\#\textgreater{} 5 virginica}
+\CommentTok{\#\textgreater{} 6 virginica}
+\CommentTok{\#\textgreater{} 7 virginica}
+\end{Highlighting}
+\end{Shaded}
+
+Sepal.Length の値を大きい方から順に並べて、最初の7つを選択するというものです。
+
+\hypertarget{glimpse-ux30c7ux30fcux30bfux306eux69cbux9020}{%
+\subsubsection{glimpse: データの構造}\label{glimpse-ux30c7ux30fcux30bfux306eux69cbux9020}}
+
+\texttt{str} の改良版です。他の、tidyverse の関数と一緒に使うこともできます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5009,11 +5202,31 @@ Let us look at the structure of the data. You can try \texttt{str(df\_iris)} on 
 \end{Highlighting}
 \end{Shaded}
 
-There are six types of data in R; Double, Integer, Character, Logical, Raw, and Complex. In this course, we use only the first four.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris }\SpecialCharTok{|\textgreater{}} \FunctionTok{glimpse}\NormalTok{() }
+\CommentTok{\#\textgreater{} Rows: 150}
+\CommentTok{\#\textgreater{} Columns: 5}
+\CommentTok{\#\textgreater{} $ Sepal.Length \textless{}dbl\textgreater{} 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ Sepal.Width  \textless{}dbl\textgreater{} 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ Petal.Length \textless{}dbl\textgreater{} 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ Petal.Width  \textless{}dbl\textgreater{} 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ Species      \textless{}fct\textgreater{} setosa, setosa, setosa, setosa, setos\textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
 
-The names after \$ are column names. If you call \texttt{df\_iris\$Species}, you have the Species column. Species is in the 5th column, \texttt{typeof(df\_iris{[}{[}5{]}{]})} does the same as the next.
+\texttt{str(df\_iris)} では num （数値データ）と表示されましたが、ここでは、もう少し詳R の 6個のデータタイプ Double（連続データ）, Integer（整数値データ）, Character（文字データ）, Logical（論理値データ）, Raw（素データ）, Complex（複素数データ） が表示されます。最初の四種類が主要なものと考えてください。
 
-`\texttt{df\_iris{[}2,4{]}\ =\ \textasciigrave{}0.2} is the fourth entry of Sepal.Width.
+データの列を指定するときは、データ名のあとに、ドルマークをつけ、列名を加えます。\texttt{df\_iris\$Sepal.Width} などです。 これは、一列目ですから、 \texttt{typeof(df\_iris{[}{[}1{]}{]})} とすることもできます。2行目の1列目というときは、次のようにします。
+
+\texttt{df\_iris{[}2,1{]}\ =\ 4.9} is the fourth entry of Sepal.Width.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(df\_iris}\SpecialCharTok{$}\NormalTok{Sepal.Width)}
+\CommentTok{\#\textgreater{} [1] "double"}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5029,7 +5242,7 @@ The names after \$ are column names. If you call \texttt{df\_iris\$Species}, you
 \end{Highlighting}
 \end{Shaded}
 
-For \texttt{factors\ =\ fct} see \href{https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor}{the R Document} or an explanation in \href{https://www.guru99.com/r-factor-categorical-continuous.html}{Factor in R: Categorical Variable \& Continuous Variables}.
+ファクター \texttt{factors\ =\ fct} については \href{https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/factor}{the R Document} または、\href{https://www.guru99.com/r-factor-categorical-continuous.html}{Factor in R: Categorical Variable \& Continuous Variables} をみてください。必要になったときに、説明します。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5040,36 +5253,207 @@ For \texttt{factors\ =\ fct} see \href{https://www.rdocumentation.org/packages/b
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Q1.} What are the differences of \texttt{df\_iris}, \texttt{slice(df\_iris,\ 1:10)} and \texttt{glimpse(df\_iris)} above?
+\hypertarget{ggplot2-ux30b0ux30e9ux30d5ux306eux63cfux753b}{%
+\subsubsection{ggplot2: グラフの描画}\label{ggplot2-ux30b0ux30e9ux30d5ux306eux63cfux753b}}
 
-\textbf{Q2.} What are the differences of\texttt{df\_iris}, \texttt{slice(df\_iris,\ 1:10)} and \texttt{glimpse(df\_iris)} in the console?
-
-\hypertarget{summary-of-the-data}{%
-\subsubsection{Summary of the Data}\label{summary-of-the-data}}
-
-The following is very convenient to get the summary information of a data.
+\texttt{plot} の拡張ですが、\texttt{tidyverse} パッケージ群の核をなすものでもあります。詳細は、視覚化で扱います。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{summary}\NormalTok{(df\_iris)}
-\CommentTok{\#\textgreater{}   Sepal.Length    Sepal.Width     Petal.Length  }
-\CommentTok{\#\textgreater{}  Min.   :4.300   Min.   :2.000   Min.   :1.000  }
-\CommentTok{\#\textgreater{}  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  }
-\CommentTok{\#\textgreater{}  Median :5.800   Median :3.000   Median :4.350  }
-\CommentTok{\#\textgreater{}  Mean   :5.843   Mean   :3.057   Mean   :3.758  }
-\CommentTok{\#\textgreater{}  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100  }
-\CommentTok{\#\textgreater{}  Max.   :7.900   Max.   :4.400   Max.   :6.900  }
-\CommentTok{\#\textgreater{}   Petal.Width          Species  }
-\CommentTok{\#\textgreater{}  Min.   :0.100   setosa    :50  }
-\CommentTok{\#\textgreater{}  1st Qu.:0.300   versicolor:50  }
-\CommentTok{\#\textgreater{}  Median :1.300   virginica :50  }
-\CommentTok{\#\textgreater{}  Mean   :1.199                  }
-\CommentTok{\#\textgreater{}  3rd Qu.:1.800                  }
-\CommentTok{\#\textgreater{}  Max.   :2.500}
+\NormalTok{df\_iris }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Width, Sepal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-Minimum, 1st Quadrant (25\%), Median, Mean, 3rd Quadrant (75\%), Maximum, and the count of each factor.
+\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+さまざまな描画が可能ですが、一番、一般的な、散布図、\texttt{plot} に対応するものを書きました。\texttt{ggplot} の中の、\texttt{aes} （aesthetic）の部分に、x 軸、y 軸に対応する変数（列名）を書きます。種類（Species）ごとに色を変える場合には、\texttt{color\ =\ Species} とします。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Width, Sepal.Length, }\AttributeTok{color =}\NormalTok{ Species)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+さらに、点の大きさを、Petal.Width によって変える場合には次のように、\texttt{size\ =\ Petal.Width} を加えます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Width, Sepal.Length, }\AttributeTok{color =}\NormalTok{ Species, }
+             \AttributeTok{size =}\NormalTok{ Petal.Width)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+少しずつ学んでいきましょう。
+
+\hypertarget{wdi-ux306eux30c7ux30fcux30bf}{%
+\section{WDI のデータ}\label{wdi-ux306eux30c7ux30fcux30bf}}
+
+以下の説明では、世界開発指標（World Development Indicator）の実際のデータも使って説明していきます。例として使うデータを取得して、上で学んだことの復習もかねて、簡単にみておきたいと思います。
+
+すでに、\texttt{tidyverse} は読み込んでありますから、その場合は、\texttt{WDI} パッケージを読み込むだけで十分です。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(WDI)}
+\end{Highlighting}
+\end{Shaded}
+
+WDI の使い方は、世界銀行の部分で紹介しますが、はじめてのデータサイエンスの例でも紹介したように、データコードを利用して、データを読み込みます。ここでは、出生時の平均寿命と、一人当たりの　GDP と、総人口のデータを使います。
+
+\begin{itemize}
+\tightlist
+\item
+  SP.DYN.LE00.IN: Life expectancy at birth, total (years) 出生時の平均寿命
+\item
+  NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) 一人当たりの　GDP
+\item
+  SP.POP.TOTL: Population, total 総人口
+\end{itemize}
+
+次のコードで読み込みます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}
+  \AttributeTok{country =} \StringTok{"all"}\NormalTok{, }
+  \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{lifeExp =} \StringTok{"SP.DYN.LE00.IN"}\NormalTok{, }\AttributeTok{pop =} \StringTok{"SP.POP.TOTL"}\NormalTok{, }\AttributeTok{gdpPercap =} \StringTok{"NY.GDP.PCAP.KD"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+#> Rows: 16758 Columns: 7
+#> -- Column specification ------------------------------------
+#> Delimiter: ","
+#> chr (3): country, iso2c, iso3c
+#> dbl (4): year, lifeExp, pop, gdpPercap
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+注：WDI のサイトは、頻繁に、保守をしているため、時々、データをダウンロードできないことがあります。そのときは、すでに、ダウンロードしてものがわたしの GitHub \href{\%22https://github.com/icu-hsuzuki/ds4aj/blob/main/data/wdi.csv\%22}{サイト}にありますから、そこから次のコードで読み込んでください。
+
+最初の10行をみてみましょう。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{slice}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{} \# A tibble: 10 x 7}
+\CommentTok{\#\textgreater{}    country     iso2c iso3c  year lifeExp      pop gdpPercap}
+\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}       \textless{}chr\textgreater{} \textless{}chr\textgreater{} \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1 Afghanistan AF    AFG    1960    32.5  8622466        NA}
+\CommentTok{\#\textgreater{}  2 Afghanistan AF    AFG    1961    33.1  8790140        NA}
+\CommentTok{\#\textgreater{}  3 Afghanistan AF    AFG    1962    33.5  8969047        NA}
+\CommentTok{\#\textgreater{}  4 Afghanistan AF    AFG    1963    34.0  9157465        NA}
+\CommentTok{\#\textgreater{}  5 Afghanistan AF    AFG    1964    34.5  9355514        NA}
+\CommentTok{\#\textgreater{}  6 Afghanistan AF    AFG    1965    35.0  9565147        NA}
+\CommentTok{\#\textgreater{}  7 Afghanistan AF    AFG    1966    35.5  9783147        NA}
+\CommentTok{\#\textgreater{}  8 Afghanistan AF    AFG    1967    35.9 10010030        NA}
+\CommentTok{\#\textgreater{}  9 Afghanistan AF    AFG    1968    36.4 10247780        NA}
+\CommentTok{\#\textgreater{} 10 Afghanistan AF    AFG    1969    36.9 10494489        NA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}
+  \AttributeTok{country =} \StringTok{"all"}\NormalTok{, }
+  \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{lifeExp =} \StringTok{"SP.DYN.LE00.IN"}\NormalTok{, }\AttributeTok{pop =} \StringTok{"SP.POP.TOTL"}\NormalTok{, }\AttributeTok{gdpPercap =} \StringTok{"NY.GDP.PCAP.KD"}\NormalTok{), }
+  \AttributeTok{extra =} \ConstantTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+すこし、追加情報を付加したものも取得しておきます。
+
+\begin{verbatim}
+#> Rows: 16758 Columns: 15
+#> -- Column specification ------------------------------------
+#> Delimiter: ","
+#> chr  (7): country, iso2c, iso3c, region, capital, income...
+#> dbl  (6): year, lifeExp, pop, gdpPercap, longitude, lati...
+#> lgl  (1): status
+#> date (1): lastupdated
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra}
+\CommentTok{\#\textgreater{} \# A tibble: 16,758 x 15}
+\CommentTok{\#\textgreater{}    country     iso2c iso3c  year status lastupdated lifeExp}
+\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}       \textless{}chr\textgreater{} \textless{}chr\textgreater{} \textless{}dbl\textgreater{} \textless{}lgl\textgreater{}  \textless{}date\textgreater{}        \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1 Afghanistan AF    AFG    2014 NA     2023{-}07{-}25     62.5}
+\CommentTok{\#\textgreater{}  2 Afghanistan AF    AFG    2012 NA     2023{-}07{-}25     61.9}
+\CommentTok{\#\textgreater{}  3 Afghanistan AF    AFG    2009 NA     2023{-}07{-}25     60.4}
+\CommentTok{\#\textgreater{}  4 Afghanistan AF    AFG    2013 NA     2023{-}07{-}25     62.4}
+\CommentTok{\#\textgreater{}  5 Afghanistan AF    AFG    1971 NA     2023{-}07{-}25     37.9}
+\CommentTok{\#\textgreater{}  6 Afghanistan AF    AFG    2015 NA     2023{-}07{-}25     62.7}
+\CommentTok{\#\textgreater{}  7 Afghanistan AF    AFG    1969 NA     2023{-}07{-}25     36.9}
+\CommentTok{\#\textgreater{}  8 Afghanistan AF    AFG    2010 NA     2023{-}07{-}25     60.9}
+\CommentTok{\#\textgreater{}  9 Afghanistan AF    AFG    2011 NA     2023{-}07{-}25     61.4}
+\CommentTok{\#\textgreater{} 10 Afghanistan AF    AFG    2008 NA     2023{-}07{-}25     59.9}
+\CommentTok{\#\textgreater{} \# i 16,748 more rows}
+\CommentTok{\#\textgreater{} \# i 8 more variables: pop \textless{}dbl\textgreater{}, gdpPercap \textless{}dbl\textgreater{},}
+\CommentTok{\#\textgreater{} \#   region \textless{}chr\textgreater{}, capital \textless{}chr\textgreater{}, longitude \textless{}dbl\textgreater{},}
+\CommentTok{\#\textgreater{} \#   latitude \textless{}dbl\textgreater{}, income \textless{}chr\textgreater{}, lending \textless{}chr\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+違いはわかりましたか。同じような変数についてのデータですが、WDI からダウンロードした実際のデータの場合には、練習用のデータとは、違った困難がいくつもあります。それを、少しず見ていきながら、現実世界のデータを扱えるようにしていきましょう。
+
+\texttt{glimpse} を使ってみてるとどのような違いがわかりますか。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi }\SpecialCharTok{|\textgreater{}} \FunctionTok{glimpse}\NormalTok{()}
+\CommentTok{\#\textgreater{} Rows: 16,758}
+\CommentTok{\#\textgreater{} Columns: 7}
+\CommentTok{\#\textgreater{} $ country   \textless{}chr\textgreater{} "Afghanistan", "Afghanistan", "Afghanist\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ iso2c     \textless{}chr\textgreater{} "AF", "AF", "AF", "AF", "AF", "AF", "AF"\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ iso3c     \textless{}chr\textgreater{} "AFG", "AFG", "AFG", "AFG", "AFG", "AFG"\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ year      \textless{}dbl\textgreater{} 1960, 1961, 1962, 1963, 1964, 1965, 1966\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ lifeExp   \textless{}dbl\textgreater{} 32.535, 33.068, 33.547, 34.016, 34.494, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ pop       \textless{}dbl\textgreater{} 8622466, 8790140, 8969047, 9157465, 9355\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gdpPercap \textless{}dbl\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, \textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{glimpse}\NormalTok{()}
+\CommentTok{\#\textgreater{} Rows: 16,758}
+\CommentTok{\#\textgreater{} Columns: 15}
+\CommentTok{\#\textgreater{} $ country     \textless{}chr\textgreater{} "Afghanistan", "Afghanistan", "Afghani\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ iso2c       \textless{}chr\textgreater{} "AF", "AF", "AF", "AF", "AF", "AF", "A\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ iso3c       \textless{}chr\textgreater{} "AFG", "AFG", "AFG", "AFG", "AFG", "AF\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ year        \textless{}dbl\textgreater{} 2014, 2012, 2009, 2013, 1971, 2015, 19\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ status      \textless{}lgl\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ lastupdated \textless{}date\textgreater{} 2023{-}07{-}25, 2023{-}07{-}25, 2023{-}07{-}25, 2\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ lifeExp     \textless{}dbl\textgreater{} 62.545, 61.923, 60.364, 62.417, 37.923\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ pop         \textless{}dbl\textgreater{} 32716210, 30466479, 27385307, 31541209\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gdpPercap   \textless{}dbl\textgreater{} 602.5166, 596.4424, 512.4090, 608.3863\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ region      \textless{}chr\textgreater{} "South Asia", "South Asia", "South Asi\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ capital     \textless{}chr\textgreater{} "Kabul", "Kabul", "Kabul", "Kabul", "K\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ longitude   \textless{}dbl\textgreater{} 69.1761, 69.1761, 69.1761, 69.1761, 69\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ latitude    \textless{}dbl\textgreater{} 34.5228, 34.5228, 34.5228, 34.5228, 34\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ income      \textless{}chr\textgreater{} "Low income", "Low income", "Low incom\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ lending     \textless{}chr\textgreater{} "IDA", "IDA", "IDA", "IDA", "IDA", "ID\textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+列の数が違いますね。どちらも行は、16,758行です。こんなに多いものは、表で見ていても、よくわかりません。これらを扱う方法を少しずつ学んでいきます。
 
 \hypertarget{transform}{%
 \chapter{変形（Transform）}\label{transform}}
