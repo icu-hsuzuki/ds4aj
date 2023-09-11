@@ -407,7 +407,6 @@ Counrtry List のところの、日本にチェックを入れると、Japan と
 
 </iframe>
 ```
-
 ### 例2 GDP per Cap vs CO2 per Cap in Log-Log
 
 今度は、日本語でも、英語でも良いですが、一人当たりの GDP を X 軸に、一人当たりの、CO2 排出量を Y 軸にとり、対数にして、表示してみましょう。

@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 15 R Markdown | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="15.1 Reproducible and Literate Programming データサイエンスは、サイエンス（科学）ということばもついていますが、特に、根拠に基づいた（evidence based）とか、データに基づいた（data...">
+<meta name="description" content="データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためののツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の Quarto という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 15 R Markdown | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/rmarkdown.html">
-<meta property="og:description" content="15.1 Reproducible and Literate Programming データサイエンスは、サイエンス（科学）ということばもついていますが、特に、根拠に基づいた（evidence based）とか、データに基づいた（data...">
+<meta property="og:description" content="データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためののツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の Quarto という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 15 R Markdown | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="15.1 Reproducible and Literate Programming データサイエンスは、サイエンス（科学）ということばもついていますが、特に、根拠に基づいた（evidence based）とか、データに基づいた（data...">
+<meta name="twitter:description" content="データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためののツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の Quarto という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -82,7 +82,7 @@
 <li><a class="" href="estat-site.html"><span class="header-section-number">11</span> e-Stat 日本の政府統計</a></li>
 <li><a class="" href="sdgs-site.html"><span class="header-section-number">12</span> SDGs</a></li>
 <li><a class="" href="other-site.html"><span class="header-section-number">13</span> その他のサイト</a></li>
-<li class="book-part">PART II BASICS</li>
+<li class="book-part">第二部 R の基礎</li>
 <li><a class="" href="ronrstudio.html"><span class="header-section-number">14</span> R Studio で R</a></li>
 <li><a class="active" href="rmarkdown.html"><span class="header-section-number">15</span> R Markdown</a></li>
 <li><a class="" href="rbasics.html"><span class="header-section-number">16</span> R の基礎</a></li>
@@ -120,6 +120,7 @@
 <h1>
 <span class="header-section-number">15</span> R Markdown<a class="anchor" aria-label="anchor" href="#rmarkdown"><i class="fas fa-link"></i></a>
 </h1>
+<p>データサイエンスを実際に行っていくときには、再現性のためにも記録が大切ですが、そのためののツールである、R Markdown にいついて説明します。2022年頃から、R だけでなく、Python や　Julia など複数の言語上で利用する目的で、R Markdown の後継の <a href="https://quarto.org">Quarto</a> という新しいシステムも使われています。少しずつ、Quarto についても紹介していきますが、R Markdown を知っていれば、簡単に、乗り換えることができまし、R Markdwon も今後ともサポートされるとのことですので、ここでは、R Markdown について書き、後ほど、別立てで、Quarto について書いていくことにします。</p>
 <div id="reproducible-and-literate-programming" class="section level2" number="15.1">
 <h2>
 <span class="header-section-number">15.1</span> Reproducible and Literate Programming<a class="anchor" aria-label="anchor" href="#reproducible-and-literate-programming"><i class="fas fa-link"></i></a>
@@ -323,7 +324,7 @@ Linux: Use system package manager</code></pre>
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-09.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hirosi Suzuki）. It was last built on 2023-09-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
