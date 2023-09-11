@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 17 Tidyverse | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hirosi Suzuki）">
-<meta name="description" content="R Basics について説明しました。R に最初に読み込まれる、base の基本を学びましが、ここでは、核となる tidyverse というパッケージについてその基本を学びます。 サイト：https://www.tidyverse.org タイトルに日本語を使う場合があるときは、install.packages('showtext') で、showtext...">
+<meta name="description" content="17.1 はじめに R のはじめかたについて少し説明しました。R を起動させると、最初に base などいくつかのパッケージが自動的に読み込まれますが、その基本の基本を紹介したということです。ここでは、第二部で学ぶことの、核となる tidyverse というパッケージ群についてその基本を学びます。 サイト：https://www.tidyverse.org R...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 17 Tidyverse | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/tidyverse.html">
-<meta property="og:description" content="R Basics について説明しました。R に最初に読み込まれる、base の基本を学びましが、ここでは、核となる tidyverse というパッケージについてその基本を学びます。 サイト：https://www.tidyverse.org タイトルに日本語を使う場合があるときは、install.packages('showtext') で、showtext...">
+<meta property="og:description" content="17.1 はじめに R のはじめかたについて少し説明しました。R を起動させると、最初に base などいくつかのパッケージが自動的に読み込まれますが、その基本の基本を紹介したということです。ここでは、第二部で学ぶことの、核となる tidyverse というパッケージ群についてその基本を学びます。 サイト：https://www.tidyverse.org R...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 17 Tidyverse | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="R Basics について説明しました。R に最初に読み込まれる、base の基本を学びましが、ここでは、核となる tidyverse というパッケージについてその基本を学びます。 サイト：https://www.tidyverse.org タイトルに日本語を使う場合があるときは、install.packages('showtext') で、showtext...">
+<meta name="twitter:description" content="17.1 はじめに R のはじめかたについて少し説明しました。R を起動させると、最初に base などいくつかのパッケージが自動的に読み込まれますが、その基本の基本を紹介したということです。ここでは、第二部で学ぶことの、核となる tidyverse というパッケージ群についてその基本を学びます。 サイト：https://www.tidyverse.org R...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -120,9 +120,23 @@
 <h1>
 <span class="header-section-number">17</span> Tidyverse<a class="anchor" aria-label="anchor" href="#tidyverse"><i class="fas fa-link"></i></a>
 </h1>
-<p>R Basics について説明しました。R に最初に読み込まれる、<code>base</code> の基本を学びましが、ここでは、核となる <code>tidyverse</code> というパッケージについてその基本を学びます。</p>
+<div id="はじめに-1" class="section level2" number="17.1">
+<h2>
+<span class="header-section-number">17.1</span> はじめに<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>R のはじめかたについて少し説明しました。R を起動させると、最初に <code>base</code> などいくつかのパッケージが自動的に読み込まれますが、その基本の基本を紹介したということです。ここでは、第二部で学ぶことの、核となる <code>tidyverse</code> というパッケージ群についてその基本を学びます。</p>
 <p>サイト：<a href="https://www.tidyverse.org" class="uri">https://www.tidyverse.org</a></p>
-<p>タイトルに日本語を使う場合があるときは、<code>install.packages('showtext')</code> で、<code>showtext</code> パッケージをインストールして、下のように設定してください。</p>
+<p>R は、さまざまな分野で、統計分析に利用されてきたこともあり、それぞれの分析でよく使われる関数（functions, 小さなプログラム）を集めたパッケージが作られ、それぞれの分野で使われてきました。まさに、痒いところに手が届く、さまざまなパッケージが存在します。他方、さまざまな人たちが開発を続けてきたために、統一性がない、保守の継続性が十分ではない、異なるパッケージに同じ名前の関数があるなどの問題も生じてきたように思います。</p>
+<p>さらに、それぞれの分野での、統計分析だけではなく、学際分野としてのデータサイエンスでの利用、AI への応用などにも使われるようになったこと、さらに、データサイエンスでは、特に可視化が重要で、その部分の基本が、幾何表現の文法（Grammar of Graphics）を踏まえた <code>ggplot2</code> パッケージのによって、確立したことから、統一した思想のもとで、構築されたのが、<code>tidyverse</code> パッケージ群です。さまざまな改善によって、プログラミング言語としても、十分なレベルの言語となっていると思います。</p>
+<p>一連の <code>tidyverse</code> パッケージ群の開発が、R 自体にも影響を与え、R の起動時に読み込まれるようになったものもあります。</p>
+<p>パッケージ群と呼びましたが、たくさんのパッケージが全体として、<code>tidyverse</code> と呼ばれ、<code>tidyverse</code> をインストールすると、<code>tidyverse</code> パッケージ群のパッケージがすべてインストールされます。</p>
+<p>それを、<code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> などで、ロード（使えるようにするために）すると、<code>tidyverse</code> パッケージ群の主要なパッケージがみな、読み込まれます。ただ、こちらは、「主要な」ものだけですので、<code>tidyverse</code> パッケージ群 のパッケージでも、後ほど、個別に読み込む必要があるものもありますので、注意してください。</p>
+</div>
+<div id="あやめirisのデータ" class="section level2" number="17.2">
+<h2>
+<span class="header-section-number">17.2</span> あやめ（iris）のデータ<a class="anchor" aria-label="anchor" href="#%E3%81%82%E3%82%84%E3%82%81iris%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
+</h2>
+<p>利用するデータ、特に、その変数（列）名に日本語（中国語・韓国語など）を使う場合には、<code>install.packages('showtext')</code> で、<code>showtext</code> パッケージをインストールして、下のように設定ます。標準的には、最初の行 <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> だけで十分です。</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
@@ -139,28 +153,30 @@
 <span><span class="co">#&gt; Loading required package: sysfonts</span></span>
 <span><span class="co">#&gt; Loading required package: showtextdb</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>Let us assign the <code>iris</code> data in the pre-installed package <code>datasets</code> to <code>df_iris</code>. You can give any name starting from an alphabet, though there are some rules.</p>
+<p>以下では、R の起動時に読み込まれる、 <code>datasets</code> パッケージの中の、<code>iris</code> データを使います。以前には、同じパッケージに含まれる、<code>cars</code> を使いました。まず、このデータに、<code>ds_iris</code> という名前をつけて使うことにします。これは、アサインと言い、<code>&lt;-</code> を使います。半角で入力します。</p>
+<p>備考：</p>
+<ol style="list-style-type: decimal">
+<li>Help の Keyboard Shortcuts Help をみると、さまざまなキーボードショートカットが書かれています。<code>&lt;-</code> は、Windows では、<code>Alt + -</code> 、Mac では、<code>Option + -</code> で、入力することもできます。<code>Alt + -</code> などは、<code>Alt</code> キーを推しながら、<code>-</code>　キーを押すという意味です。</li>
+<li>
+<code>df_iris &lt;- iris</code> でも問題ないと思います。下にようにするのは、すでに、<code>iris</code> という変数を使っているかもしれないので、<code>datasets</code> パッケージの <code>iris</code> を使うという意味です。</li>
+</ol>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">&lt;-</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span></span>
+<code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">&lt;-</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "data.frame"</span></span></code></pre></div>
-<p>The class of data <code>iris</code> is <code>data.frame</code>, the basic data class of R. You can assign the same data as a <code>tibble</code>, the data class of <code>tidyverse</code> as follows.</p>
+<p>あやめのデータ <code>iris</code> は <code>data.frame</code> というクラスであることがわかります。<code>tidyverse</code> には、<code>tibble</code> というデータのクラス（<code>data.frame</code> のサブクラス）もあります。</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tbl_iris</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/iris.html">iris</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">tbl_iris</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></span></code></pre></div>
-<ul>
-<li>
-<code>df_iris &lt;- iris</code> can replace <code>df_iris &lt;- datasets::iris</code> because the package <code>datasets</code> is installed and attached as default. Since you may have other data called <code>iris</code> included in a different package or you may have changed <code>iris</code> before, it is safer to specify the package’s name with the data’s name.</li>
-<li>Within R Notebook or in Console, you may get different output, and <code>tf_iris</code> and <code>tbl_iris</code> behave differently. It is because of the default settings of R Markdown.</li>
-</ul>
-<div id="look-at-the-data" class="section level3" number="17.0.1">
+<p><code>df_iris</code> と <code>tbl_iris</code> で出力が変わる場合もありますが、今のところは、あまり気にせず、<code>df_iris</code> を使っていきたいと思います。</p>
+<div id="データを見てみよう" class="section level3" number="17.2.1">
 <h3>
-<span class="header-section-number">17.0.1</span> Look at the data<a class="anchor" aria-label="anchor" href="#look-at-the-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.1</span> データを見てみよう<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E8%A6%8B%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86"><i class="fas fa-link"></i></a>
 </h3>
-<div id="several-ways-to-view-the-data." class="section level4" number="17.0.1.1">
+<div id="いくつかの方法" class="section level4" number="17.2.1.1">
 <h4>
-<span class="header-section-number">17.0.1.1</span> Several ways to view the data.<a class="anchor" aria-label="anchor" href="#several-ways-to-view-the-data."><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.1.1</span> いくつかの方法<a class="anchor" aria-label="anchor" href="#%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE%E6%96%B9%E6%B3%95"><i class="fas fa-link"></i></a>
 </h4>
 <p>The <code>View</code> command opens up a window to show the contents of the data, and you can also use the filter.</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
@@ -220,9 +236,9 @@
 <code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
 </div>
-<div id="data-structure" class="section level4" number="17.0.1.2">
+<div id="data-structure" class="section level4" number="17.2.1.2">
 <h4>
-<span class="header-section-number">17.0.1.2</span> Data Structure<a class="anchor" aria-label="anchor" href="#data-structure"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.1.2</span> Data Structure<a class="anchor" aria-label="anchor" href="#data-structure"><i class="fas fa-link"></i></a>
 </h4>
 <p>Let us look at the structure of the data. You can try <code>str(df_iris)</code> on Console or by adding a code chunk in R Notebook introducing later.</p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
@@ -252,9 +268,9 @@
 <p><strong>Q1.</strong> What are the differences of <code>df_iris</code>, <code>slice(df_iris, 1:10)</code> and <code>glimpse(df_iris)</code> above?</p>
 <p><strong>Q2.</strong> What are the differences of<code>df_iris</code>, <code>slice(df_iris, 1:10)</code> and <code>glimpse(df_iris)</code> in the console?</p>
 </div>
-<div id="summary-of-the-data" class="section level4" number="17.0.1.3">
+<div id="summary-of-the-data" class="section level4" number="17.2.1.3">
 <h4>
-<span class="header-section-number">17.0.1.3</span> Summary of the Data<a class="anchor" aria-label="anchor" href="#summary-of-the-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.1.3</span> Summary of the Data<a class="anchor" aria-label="anchor" href="#summary-of-the-data"><i class="fas fa-link"></i></a>
 </h4>
 <p>The following is very convenient to get the summary information of a data.</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
@@ -278,14 +294,19 @@
 </div>
 </div>
 </div>
+</div>
   <div class="chapter-nav">
 <div class="prev"><a href="rbasics.html"><span class="header-section-number">16</span> R のはじめかた</a></div>
 <div class="next"><a href="transform.html"><span class="header-section-number">18</span> 変形（Transform）</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li>
-<a class="nav-link" href="#tidyverse"><span class="header-section-number">17</span> Tidyverse</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#look-at-the-data"><span class="header-section-number">17.0.1</span> Look at the data</a></li></ul>
-</li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#tidyverse"><span class="header-section-number">17</span> Tidyverse</a></li>
+<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB-1"><span class="header-section-number">17.1</span> はじめに</a></li>
+<li>
+<a class="nav-link" href="#%E3%81%82%E3%82%84%E3%82%81iris%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF"><span class="header-section-number">17.2</span> あやめ（iris）のデータ</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E8%A6%8B%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86"><span class="header-section-number">17.2.1</span> データを見てみよう</a></li></ul>
+</li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
