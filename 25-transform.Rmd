@@ -1,6 +1,6 @@
 # 変形（Transform） {#transform}
 
-> ここでは、`tidyverse` パッケージを構成する `dplyr` パッケージを用いて、データを変形することを学びます。変形とは、例えば、データのなかのある条件を満たす行や列を抽出したり、特定の列を修正したり、データの中のいくつかの列に含まれる情報をもとに計算して、新たな列を作ったり、グループに分けたり、順番を入れ替えたりといったことです。データを集約したり、グラフを作成するときにも、必要不可欠な作業です。
+> ここでは、`tidyverse` パッケージを構成する `dplyr` パッケージを用いて、データを変形することを学びます。変形とは、例えば、データのなかのある条件を満たす行や列を抽出（取り出）したり、特定の列を修正したり、データの中のいくつかの列に含まれる情報をもとに計算して、新たな列を作ったり、グループに分けたり、順番を入れ替えたりといったことです。データを集約し（まとめ）たり、グラフを作成するときにも、必要不可欠な作業です。
 >
 > `dplyr` パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、`tidyverse` パッケージを構成する `tidyr` パッケージ による変形も、後ほど扱います。
 
@@ -17,26 +17,32 @@ library(tidyverse)
 -   `select()` 変数をその名前によって選択 - 列の選択に対応します。
 -   `filter()` ケースをその値によって選択 - 行の選択に対応します。
 -   `mutate()` 新しい変数を既存の値を使って定義します - 新しい列を作成することに対応しています。
--   `summarise()` たくさんの値を一つの値に集約します - 代表値（平均、メディアンなど）を求めることに対応します。
+-   `summarise()`[^25-transform-1] たくさんの値を一つの値に集約します - 代表値（平均、メディアンなど）を求めることに対応します。
 -   `arrange()` 行の順序を変更します。
 -   `group_by()` グループを指定した表に変換します。
+
+[^25-transform-1]: `summarize()` とつづりをアメリカ式にしても問題ありません。他にも、さまざまな用語は、アメリカ式の綴りでも、イギリス式でも、問題ないようになっています。
 
 さらに詳しく知りたい場合は Console（コンソールに）vignette("dplyr") と入れるか、[こちら](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) を参照してください。上では、一つの表について述べていますが、二つの表の扱い方は、Console（コンソール）に vignette("two-table") と入れるか、[こちら](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html) を参照してください。二つの表の扱いについては、後から説明します。
 
 `dplyr` を初めて使われる場合には、まず [R for data science (2e) Transform](https://r4ds.hadley.nz/transform) を学ばれることをお勧めします。以下も、このサイトに沿った説明をします。
 
+b
+
 ### [`select`](https://dplyr.tidyverse.org/reference/select.html): 名前とタイプによって、列（変数）を選択
 
-| 補助関数      | 条件                   | 例                                            |
-|---------------|------------------------|-----------------------------------------------|
-| \-            | 列の排除               | select(babynames, -prop)                      |
-| :             | 列の範囲               | select(babynames, year:n)                     |
-| contains()    | 指定文字列を含         | select(babynames, contains("n"))              |
-| ends_with()   | 指定文字列で終わる     | select(babynames, ends_with("n"))             |
-| matches()     | 正規表現に適合         | select(babynames, matches("n"))               |
-| num_range()   | 末尾の指定数値範囲     | Not applicable with babynames                 |
-| one_of()      | 指定した名前に含まれる | select(babynames, one_of(c("sex", "gender"))) |
-| starts_with() | 指定文字列で始まる     | select(babynames, starts_with("n"))           |
+| 補助関数      | 条件                   | 例                                                    |
+|-----------------|----------------------|-------------------------------------|
+| \-            | 列の排除               | select(iris, -Species)                                |
+| :             | 列の範囲               | select(iris, 1:4)                                     |
+| contains()    | 指定文字列を含         | select(iris, contains("Width"))                       |
+| ends_with()   | 指定文字列で終わる     | select(iris, ends_with("th"))                         |
+| matches()     | 正規表現に適合         | select(iris, matches("S"))                            |
+| num_range()   | 末尾の指定数値範囲     | Not applicable with iris                              |
+| one_of()      | 指定した名前に含まれる | select(iris, one_of(c("Sepal.Width", "Petal.Width"))) |
+| starts_with() | 指定文字列で始まる     | select(iris, starts_with("Petal"))                    |
+
+「正規表現」という言葉が登場します。検索などでは基本的なものですので、ネット上で調べてください。適切に動作するかを、チェックする、正規表現チェッカーもあります。参照：[Wikipedia](https://ja.wikipedia.org/wiki/正規表現)
 
 ### [`filter`](https://dplyr.tidyverse.org/reference/filter.html): 列の値の条件に適合した行の選択
 
@@ -51,6 +57,8 @@ library(tidyverse)
 | is.na()    | 値が NA である x | is.na(x)  |
 | !is.na()   | 値が NA でない x | !is.na(x) |
 
+NA は、not available 値が存在しないという意味です。欠損値のことで、`df_wdi` などには、一番上に、NA が出てきます。欠損値の扱いも、データサイエンスにおいてはとても大切です。
+
 ### [`arrange`](https://dplyr.tidyverse.org/reference/arrange.html)
 
 `arrange()` では、選択した列の値によって、行を並び替えます。
@@ -61,17 +69,19 @@ library(tidyverse)
 
 新しい列を作成または、既存の列を修正、削除します。
 
-以下は便利な補助関数の例です。
+以下は便利な補助関数の例です。Help を参照してください。利用するときに、少しずつ説明していきます。ある程度慣れてきたら、どのようなことができるかを把握しておくことは、助けになります。
 
--   +, -, log(), etc., for their usual mathematical meanings
+-   +, -, log(), など：通常の数学記号を表します。
 
--   lead(), lag()
+-   `lead()`, `lag()`：`lead` は次の値、`lag` は一つ前の値です。
 
--   dense_rank(), min_rank(), percent_rank(), row_number(), cume_dist(), ntile()
+-   `dense_rank()`, `min_rank()`, `percent_rank()`, `row_number()`, `cume_dist()`, ntile(): `rank` は、階級、順序を決めます。`base::rank` もあります。基本的に、同じ値があったときに、どのように順序を決めるかがそれぞれによって異なります。
 
--   cumsum(), cummean(), cummin(), cummax(), cumany(), cumall()
+-   `cumsum()`, `cummean()`, `cummin()`, `cummax(),` `cumany()`, `cumall()`: cum は、cumulative（累計）ですから、`cumsum` は累計、`cummean()` は、その値までの平均（小計）、`cummin()` は、その値までの最小、`cummax()` その値までの最大、 `cumany()`, `cumall()` は、Help を参照してください。
 
--   na_if(), coalesce()\### `group_by()` and `summarise()`
+-   `na_if()`, `coalesce()`: `na_if(x,y)` は、x の中で、y と等しいものは、NA に置き換え、`coalesce()` は、最初の欠損していない値を返します。
+
+### `group_by()` and `summarise()`
 
 ### [`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)
 
@@ -79,7 +89,7 @@ library(tidyverse)
 
 ### [`summarise` or `summarize`](https://dplyr.tidyverse.org/reference/summarise.html)
 
-値の集約 (summarize) に利用します。グループ化された表の場合には、そのグループごとに、値を集約します。
+値の集約 (summarize) または、集計に利用します。グループ化された表の場合には、そのグループごとに、値を集約します。
 
 #### 集約のための関数
 
@@ -93,15 +103,17 @@ library(tidyverse)
 
 4.  個数 - `n_distinct(x),` `n()` （引数なし：表またはグループのサイズ）
 
-5.  論理値の数または割合 - sum(!is.na(x)), mean(y == 0)
+5.  論理値の数または割合 - `sum(!is.na(x)), mean(y == 0)`
 
 条件文で値を指定することも可能です。
 
--   if_else(), recode(), case_when()
+-   `if_else()`, `recode()`, case_when()
+
+注: *quantile（分位数） と quartile（四分位数）：分位数はデータセットを任意の個数の等しい部分に分割するための値を示し、四分位数はデータセットを4つの等しい部分に分割するための特定の値。*
 
 ### パイプ（Pipe）`%>%` `|>`
 
-[`pipes`](https://r4ds.hadley.nz/workflow-style.html#sec-pipes) in R for Data Science.
+[`pipes`](https://r4ds.hadley.nz/workflow-style.html#sec-pipes) in R は、すでに説明してましたが、ここにまとめておきます。
 
 `%>%` は、`tidyverse` パッケージで、関数のチェーン化を行うために使用されるパイプ演算子ですが、R 4.1 以降は、`|>` が、R に組み込まれた、ネイティブなパイプライン演算子になっています。`tidyverse` を使っているときは、どちらを使うことも可能ですが、`|>` を使うことをお勧めします。R の versoin を確認するには、コンソール（Console）で、`R.Version()` または、`R.version$version.string` とします。
 
@@ -117,24 +129,24 @@ library(tidyverse)
 
 R 起動時に読み込まれる、`datasets` の中の、`iris` （あやめのデータ）を使い、いくつかの例を示します。`iris` は、何もしなくてもそのまま使えますが、もし、下の結果と違う場合には、すでに、`iris` を使い、変形などをしている可能性がありますから、そのときは、下のコードを実行してください。
 
-```{r eval=FALSE}
-iris <- datasets::iris
+```{r}
+df_iris <- datasets::iris
 ```
 
 確認します。
 
 ```{r}
-head(iris)
+head(df_iris)
 ```
 
 ```{r}
-str(iris)
+str(df_iris)
 ```
 
-`iris` データは、名前のついた5個の変数（列）Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, Species があり、それぞれ、150の値（observations (obs.) 観察値）からなっています。5番目の Species は、三つのレベルのファクター（factor）setosa, versicolor ともう一つ virginica からなっていることがわかります。`unique` は、ベクトル型の変数（今の場合は、`iris` の `Species` という列）の中の異なる値を抽出します。ファクター（factor）は、ある分け方がされているという意味です。いずれ説明します。
+`df_iris` データは、名前のついた5個の変数（列）Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, Species があり、それぞれ、150の値（observations (obs.) 観察値）からなっています。5番目の Species は、三つのレベルのファクター（factor）setosa, versicolor ともう一つ virginica からなっていることがわかります。`unique` は、ベクトル型の変数（今の場合は、`iris` の `Species` という列）の中の異なる値を抽出します。ファクター（factor）は、ある分け方がされているという意味です。いずれ説明します。
 
 ```{r}
-unique(iris$Species)
+unique(df_iris$Species)
 ```
 
 ### `select` 列の抽出
@@ -142,30 +154,30 @@ unique(iris$Species)
 ### `select` 1 - 第 1, 2, 5 列を抽出
 
 ```{r}
-head(select(iris, c(1,2,5)))
+head(select(df_iris, c(1,2,5)))
 ```
 
 第1列、第2列、第5列を、`c(1,2,5)` で表しています。列名で指定することもできます。
 
-`head(select(iris, c(1,2,5)))` としてありますから、その最初の6行を表示していますが、新しい変数を割り当ててはいませんから、`iris` 自体は変更されていません。
+`head(select(df_iris, c(1,2,5)))` としてありますから、その最初の6行を表示していますが、新しい変数を割り当ててはいませんから、`df_iris` 自体は変更されていません。
 
 ```{r}
-head(iris)
+head(df_iris)
 ```
 
-第1列、第2列、第5列を選んだものを、あとから使いたいときは、新しい名前をつける必要があります。以下同様ですが、この場合だけ、df\_`iris125` という名前（object name）をつけておきましょう。
+第1列、第2列、第5列を選んだものを、あとから使いたいときは、新しい名前をつける必要があります。以下同様ですが、この場合だけ、`df_iris125` という名前（object name）をつけておきましょう。
 
 ```{r}
-df_iris125 <- select(iris, c(1,2,5))
+df_iris125 <- select(df_iris, c(1,2,5))
 head(df_iris125)
 ```
 
 #### パイプ（Pipe） `|>` を使ったコード
 
-最初の例では `head(select(iris, c(1,2,5)))` としました。`head` の引数として、 `select(iris, c(1,2,5))` を使ったからです。しかし、慣れてくると、順番に関数を適用することを表現するには、 パイプを使うのも便利です。パイプでは、直前の出力が次の関数の第一引数として引き継がれるというルールになっています。以下のようになります。
+最初の例では `head(select(df_iris, c(1,2,5)))` としました。`head` の引数として、 `select(df_iris, c(1,2,5))` を使ったからです。しかし、慣れてくると、順番に関数を適用することを表現するには、 パイプを使うのも便利です。パイプでは、直前の出力が次の関数の第一引数として引き継がれるというルールになっています。以下のようになります。
 
 ```{r}
-iris |> select(c(1,2,5)) |> head()
+df_iris |> select(c(1,2,5)) |> head()
 ```
 
 より、詳しく知りたい場合には、Help に `|>` と入れて説明を読んでください。
@@ -177,7 +189,7 @@ In the following, we use pipes.
 列名の前に、`-` ハイフン（半角）をつけると、その列以外を抽出します。
 
 ```{r}
-select(iris, -Species) |> head()
+select(df_iris, -Species) |> head()
 ```
 
 ### `select` 3 - 列を抽出するとともに列名も変更
@@ -185,34 +197,41 @@ select(iris, -Species) |> head()
 新しい列名 = 現在の列名 という形式で、列名を変更することも可能です。
 
 ```{r}
-select(iris, sl = Sepal.Length, sw = Sepal.Width, sp = Species) |> 
+select(df_iris, sl = Sepal.Length, sw = Sepal.Width, sp = Species) |> 
   head()
 ```
 
 ### `select` 4 - 列順の変更
 
 ```{r}
-select(iris, c(5,3,4,1,2)) %>% head()
+select(df_iris, c(5,3,4,1,2)) |> head()
 ```
 
 #### 備考
 
-1.  上の、`select`\` の 補助関数（helper functions）にも書きましたように、他にも様々な方法で、列を抽出することが可能です。たくさんの列がある、表に出会ったら、ぜひ使ってください。
+1.  上の、`select` の 補助関数（helper functions）にも書きましたように、他にも様々な方法で、列を抽出することが可能です。たくさんの列がある表に出会ったら、ぜひ使ってください。
+2.  最初は、それほど大きなデータ（表）を扱うことは少ないかもしれませんが、それでも、上で紹介した、列の名前を変更したり、列の順序を変更するなどは、有益です。使いやすく、見やすい形に変えてから、作業をすることはおすすめです。
 
 ### `filter` - 値による抽出
 
 Species の列の値が、virginica であるものだけを抽出します。`==` とイコールが二つであることと、文字列の場合には、半角の引用符（double quote）でくくります。'verginica' でも同じです。（列名に空白や、特殊記号が含まれているときには、back tick と呼ばれる、反対向きの引用符で括ります。あとからその必要が生じたときに説明します。）
 
 ```{r}
-filter(iris, Species == "virginica") %>% head()
+filter(df_iris, Species == "virginica") %>% head()
 ```
+
+#### 備考　
+
+-   `filter` は特に重要ですが、もう少し複雑なデータ（表）を例にとって、後ほど説明します。
+
+-   上にも少し書いた、正規表現を使えるようになると、かなり複雑な条件での、抽出も可能になります。
 
 ### `arrange` - 昇順、降順
 
 次の例では、Sepal.Length の値の、昇順（小さい順）にし、同じ値の中では、Spepal.Width の降順（大きい順 （desc は descending order からとったもの）にします。Sepal.Length の値が、4.4 の部分の、Sepal.Width の値をみてください。
 
 ```{r}
-arrange(iris, Sepal.Length, desc(Sepal.Width)) %>% head()
+arrange(df_iris, Sepal.Length, desc(Sepal.Width)) %>% head()
 ```
 
 ### `mutate` - rank（階級）
@@ -220,20 +239,21 @@ arrange(iris, Sepal.Length, desc(Sepal.Width)) %>% head()
 小さい順に順序付けて新しい列を作成し、その順序で表示します。順序付も様々な種類があります。ここでは、同じ値のときには、同じ階級にしています。下の出力を右の方を見てください。1, 2, 2, 2, 5, ... となっています。
 
 ```{r}
-iris |> mutate(sl_rank = min_rank(Sepal.Length)) |> 
+df_iris |> mutate(sl_rank = min_rank(Sepal.Length)) |> 
   arrange(sl_rank) |> head()
 ```
 
 #### 備考
 
 1.  パイプを紹介したときにも書きましたが、改行は、`|>` のあとでしてください。
+2.  `mutate` は、新しい列を加えるだけでなく、既存の列を修正するためにも使うことができます。修正した、データを使うときは、同じ名前のオブジェクトに `->` で、アサインすることも、可能ですが、新しい名前をつけて、新しいオブジェクトとして活用することをお勧めします。
 
 ### `group_by` and `summarize`
 
 グループにわけて、グループごとに、平均を求めています。
 
 ```{r}
-iris |> 
+df_iris |> 
   group_by(Species) |>
   summarize(sl = mean(Sepal.Length), sw = mean(Sepal.Width), 
   pl = mean(Petal.Length), pw = mean(Petal.Width))
@@ -261,34 +281,220 @@ iris |>
 -   [Isolating Data with dplyr](https://rstudio.cloud/learn/primers/2.2)
 -   [Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3)
 
-## 例から学ぶ `dplyr` II - `gapminder`
+## 例から学ぶ `dplyr` II
 
-`gapminder` というパッケージのデータを使って、`dplyr` を学びます。この次の章で、`ggplot2` を使った視覚化について学びますが、この章で学んでいる変形は、`ggplot2` で、視覚化する準備のために、する場合も多いので、ここでも、`ggplot2` を使います。
+### df_wdi, df_wdi_extra
 
-### `ggplot2` [概要](https://ggplot2.tidyverse.org)
+前の章の `Tidyverse` で読み込み、概観した、世界開発指標（World Development Indicators）のデータを使います。[参照：WDI のデータ](https://icu-hsuzuki.github.io/ds4aj/tidyverse.html#wdi-のデータ)
 
-次のような形式で使います。
-
-**例1 散布図**
-
-```         
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy))
+```{r}
+library(tidyverse)
+library(WDI)
 ```
 
-**例2 箱ひげ図**
+WDI の使い方は、世界銀行の部分で紹介しますが、はじめてのデータサイエンスの例でも紹介したように、データコードを利用して、データを読み込みます。ここでは、出生時の平均寿命と、一人当たりの　GDP と、総人口のデータを使います。
 
-```         
-ggplot(data = mpg) + 
-  geom_boxplot(mapping = aes(x = class, y = hwy))
+-   SP.DYN.LE00.IN: Life expectancy at birth, total (years) 出生時の平均寿命
+-   SP.POP.TOTL: Population, total 総人口
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) 一人当たりの　GDP
+
+次のコードで読み込みます。
+
+```{r eval=FALSE}
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
 ```
 
-**テンプレート**
-
-```         
-ggplot(data = <DATA>) + 
-  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+```{r echo=FALSE, eval=FALSE}
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
+write_csv(df_wdi, "./data/wdi.csv")
 ```
+
+```{r echo=FALSE, eval=TRUE}
+df_wdi <- read_csv("./data/wdi.csv")
+```
+
+```{r eval=FALSE}
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+```
+
+すこし、追加情報を付加したものも取得しておきます。
+
+```{r eval=FALSE, echo=FALSE}
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+write_csv(df_wdi_extra, "./data/wdi_extra.csv")
+```
+
+```{r eval=TRUE, echo=FALSE}
+df_wdi_extra <- read_csv("./data/wdi_extra.csv")
+```
+
+```{r}
+df_wdi_extra
+```
+
+### `ggplot2`
+
+また、前の章の `Tidyverse` の説明で、あやめ（iris）のデータを使って、視覚化の説明を、散布図を使って、少ししました。参照：[ggplot2 グラフの描画](https://icu-hsuzuki.github.io/ds4aj/tidyverse.html#ggplot2-グラフの描画)
+
+詳細は、次の、視覚化のところで説明しますが、視覚化のためには、データの変形、整理が必要であることを、理解していただくために、散布図と、箱ひげ図の基本的な場合のみ、以下のような形式で利用します。
+
+**例1 散布図（scatter plot）**
+
+```{r}
+df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
+```
+
+```{r}
+df_iris |> ggplot(aes(Sepal.Width, Sepal.Length, color = Species)) +
+  geom_point()
+```
+
+**例2 箱ひげ図（boxplot）**
+
+```{r}
+df_iris |> ggplot(aes(Sepal.Width, Species)) +
+  geom_boxplot()
+```
+
+各、種類（Species）ごとに、Sepal.Width（萼（がく）幅）が、どのように分布しているかを示しています。真ん中の太い線が、中央値（median）、箱が、第一四分位（Q1）から第三四分位（Q3）、線と点で表される外れ値も、どのような基準か定められています。(IQR = Q3-Q1, 線は、Q3+1.5$\times$ IQR 以下に入っている実際の値までと、Q1-1.5 $\times$ IQR 以上に入っている実際の値まで。それらに入っていないものが外れ値)。
+
+現時点では、分布を示すグラフだと理解してください。
+
+**例3 折線グラフ（line graph）**
+
+WDI は時系列データですから、折れ線グラフも使います。後ほど紹介しますが、
+
+```{<DATA> |> ggplot(aes(year, lifeExp)) + geom_line()}
+```
+
+と言った感じです。
+
+まずは、失敗例から。次のコードでグラフが描けるでしょうか。
+
+```{r}
+df_wdi |> ggplot(aes(year, lifeExp)) + geom_line()
+```
+
+### `dplyr` の応用
+
+##### `filter`
+
+一番上に、国名（country）に、アフガニスタン（Afghanistan） がありましたから、aアフガニスタンのデータを選び、平均寿命（lifeExp: Life Expectancy）の折線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。
+
+`filter(country == "Afghanistan")`
+
+特定の値のデータを抽出するには、`==` を使うのでした。二つの `=` ですから、間違わないでください。
+
+```{r}
+df_wdi |> filter(country == "Afghanistan")
+```
+
+確認できましたか。
+
+折線グラフを書きます。この場合は、GEOM は、`geom_line` です。
+
+```{r}
+df_wdi |> filter(country == "Afghanistan") %>%
+  ggplot(aes(x = year, y = lifeExp)) + geom_line()
+```
+
+アフガニスタンでは 1952年 の誕生時の平均寿命（life expectancy at birth）は　30歳以下 （28.8歳）でした。2007年でも50歳以下（48.8 歳）のようですね。改善されていることも確かです。
+
+アフガニスタンと日本両方を抽出してみましょう。そのときは、 `country %in% c("Afghanistan", "Japan")`　とします。
+
+```{r}
+df_wdi %>% filter(country %in% c("Afghanistan", "Japan"))
+```
+
+グラフにしてみましょう。今度は、区別のため、`color = country` を追加します。すると、線が違う色で表示されます。詳しくは、視覚化を参照してください。
+
+```{r}
+df_wdi %>% filter(country %in% c("Afghanistan", "Japan")) %>%
+  ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
+```
+
+どのような発見がありますか。かならず書き留めておいてください。
+
+他の国についても調べるときは、国のリストがあるとよいので、 `unique(df_gm$country)` とすると、リストが得られます。`distinct(country)` で、異なる国を選択してから、その部分をベクトルとして出力することもできます。
+
+```{r}
+df_wdi %>% distinct(country) %>% pull()
+```
+
+このデータには 142 の国のデータがあることがわかりました。
+
+BRICs を選んでみるとどうなるでしょうか。最近は、BRICS として、South Africa を加えることが増えてきているようです。
+
+```{r}
+df_wdi %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
+  ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
+```
+
+ロシアが含まれていないことがわかります。ロシアは、以前は、ソビエト社会主義連邦でしたから、国が変化したものは含まれていないのかもしれません。上の国のリストで見てもありませんね。2007年より新しいデータ、ロシアなども含むデータなど、実際のデータでも見てみたいですね。それは、また後ほど。
+
+### 練習
+
+1.  平均寿命 `lifeExp` を人口 `pop` や、一人当たりの GDP `gdpPercap` に変えて、試してみてください。
+2.  ASEAN （東南アジア諸国連合）ではどうでしょうか。
+
+-   Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore.
+
+-   このうち幾つの国がこのデータに含まれていますか。
+
+3.  興味のある国をいくつか選んで、三つの指標について調べてみてください。
+
+### `group_by` と `summarize`
+
+データには大陸（`continent` ）という変数があります。幾つの大陸があり、それぞれの大陸のいくつ国のデータがこのデータには入っているでしょうか。
+
+それぞれの大陸ごとの2007年の平均寿命の平均と中央値と最大、最小を求めてみましょう。
+
+```{r}
+df_wdi_extra %>% filter(year == 2007) %>% 
+  group_by(income) %>% 
+  summarize(mean_lifeExp = mean(lifeExp), median_lifeExp = median(lifeExp), max_lifeExp = max(lifeExp), min_lifeExp = min(lifeExp), .groups = "keep")
+```
+
+## 練習問題
+
+**R Markdown and `dplyr`**
+
+-   Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. `a2_123456.nb.html`)
+    1.  create an R Notebook using the R Notebook Template in Moodle, save as `a2_123456.Rmd`,
+    2.  write your name and ID and the contents,
+    3.  run each code block,
+    4.  preview to create `a2_123456.nb.html`,
+    5.  submit `a2_123456.nb.html` to Moodle.
+
+1.  Pick data from the built-in datasets besides `cars`. (`library(help = "datasets")` or go to the site [The R Datasets Package](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html))
+
+    -   Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)
+    -   Use `head()`, `str()`, ..., and create at least one chart using `ggplot2` - Code Chunk.
+        -   Don't forget to add `library(tidyverse)` in the first code chunk.
+    -   An observation of the chart - in your own words.
+
+2.  Load `gapminder` by `library(gapminder)`.
+
+    -   Choose `pop` or `gdpPercap`, or both, one country in the data, a group of countries in the data.
+    -   Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
+    -   Study the data as you like.
+    -   Observations and difficulties encountered.
+
+演習
 
 #### Gapminder と R Package `gapminder`
 
@@ -327,124 +533,4 @@ library(gapminder)
 library(WDI)
 ```
 
-#### R Package `gapminder` data
-
-We will use a `tidyverse` function `slice` replacing `head`. Check `slice` in the search window under the Help tab on the bottom right pane.
-
-```{r cache=TRUE}
-df_gm <- gapminder
-df_gm
-```
-
-```{r}
-glimpse(df_gm)
-```
-
-```{r}
-summary(df_gm)
-```
-
-#### `dplyr` の応用
-
-##### `filter`
-
-一番上に、国名（country）に、アフガニスタン（Afghanistan） がありましたから、aアフガニスタンのデータを選び、平均寿命（lifeExp: Life Expectancy）の折線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。
-
-`filter(country == "Afghanistan")`
-
-特定の値のデータを抽出するには、`==` を使うのでした。二つの `=` ですから、間違わないでください。
-
-```{r}
-df_gm %>% filter(country == "Afghanistan")
-```
-
-確認できましたか。
-
-折線グラフを書きます。この場合は、GEOM は、`geom_line` です。
-
-```{r}
-df_gm %>% filter(country == "Afghanistan") %>%
-  ggplot(aes(x = year, y = lifeExp)) + geom_line()
-```
-
-アフガニスタンでは 1952年 の誕生時の平均寿命（life expectancy at birth）は　30歳以下 （28.8歳）でした。2007年でも50歳以下（48.8 歳）のようですね。改善されていることも確かです。
-
-アフガニスタンと日本両方を抽出してみましょう。そのときは、 `country %in% c("Afghanistan", "Japan")`　とします。
-
-```{r}
-df_gm %>% filter(country %in% c("Afghanistan", "Japan"))
-```
-
-グラフにしてみましょう。今度は、区別のため、`color = country` を追加します。すると、線が違う色で表示されます。詳しくは、視覚化を参照してください。
-
-```{r}
-df_gm %>% filter(country %in% c("Afghanistan", "Japan")) %>%
-  ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
-```
-
-どのような発見がありますか。かならず書き留めておいてください。
-
-他の国についても調べるときは、国のリストがあるとよいので、 `unique(df_gm$country)` とすると、リストが得られます。`distinct(country)` で、異なる国を選択してから、その部分をベクトルとして出力することもできます。
-
-```{r}
-df_gm %>% distinct(country) %>% pull()
-```
-
-このデータには 142 の国のデータがあることがわかりました。
-
-BRICs を選んでみるとどうなるでしょうか。最近は、BRICS として、South Africa を加えることが増えてきているようです。
-
-```{r}
-df_gm %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
-  ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
-```
-
-ロシアが含まれていないことがわかります。ロシアは、以前は、ソビエト社会主義連邦でしたから、国が変化したものは含まれていないのかもしれません。上の国のリストで見てもありませんね。2007年より新しいデータ、ロシアなども含むデータなど、実際のデータでも見てみたいですね。それは、また後ほど。
-
-### 練習
-
-1.  平均寿命 `lifeExp` を人口 `pop` や、一人当たりの GDP `gdpPercap` に変えて、試してみてください。
-2.  ASEAN （東南アジア諸国連合）ではどうでしょうか。
-
--   Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore.
-
--   このうち幾つの国がこのデータに含まれていますか。
-
-3.  興味のある国をいくつか選んで、三つの指標について調べてみてください。
-
-### `group_by` と `summarize`
-
-データには大陸（`continent` ）という変数があります。幾つの大陸があり、それぞれの大陸のいくつ国のデータがこのデータには入っているでしょうか。
-
-それぞれの大陸ごとの2007年の平均寿命の平均と中央値と最大、最小を求めてみましょう。
-
-```{r}
-df_gm %>% filter(year == 2007) %>% 
-  group_by(continent) %>% 
-  summarize(mean_lifeExp = mean(lifeExp), median_lifeExp = median(lifeExp), max_lifeExp = max(lifeExp), min_lifeExp = min(lifeExp), .groups = "keep")
-```
-
-## 練習問題
-
-**R Markdown and `dplyr`**
-
--   Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. `a2_123456.nb.html`)
-    1.  create an R Notebook using the R Notebook Template in Moodle, save as `a2_123456.Rmd`,
-    2.  write your name and ID and the contents,
-    3.  run each code block,
-    4.  preview to create `a2_123456.nb.html`,
-    5.  submit `a2_123456.nb.html` to Moodle.
-
-1.  Pick data from the built-in datasets besides `cars`. (`library(help = "datasets")` or go to the site [The R Datasets Package](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html))
-
-    -   Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)
-    -   Use `head()`, `str()`, ..., and create at least one chart using `ggplot2` - Code Chunk.
-        -   Don't forget to add `library(tidyverse)` in the first code chunk.
-    -   An observation of the chart - in your own words.
-
-2.  Load `gapminder` by `library(gapminder)`.
-
-    -   Choose `pop` or `gdpPercap`, or both, one country in the data, a group of countries in the data.
-    -   Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
-    -   Study the data as you like.
-    -   Observations and difficulties encountered.
+#### 

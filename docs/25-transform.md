@@ -1,6 +1,6 @@
 # 変形（Transform） {#transform}
 
-> ここでは、`tidyverse` パッケージを構成する `dplyr` パッケージを用いて、データを変形することを学びます。変形とは、例えば、データのなかのある条件を満たす行や列を抽出したり、特定の列を修正したり、データの中のいくつかの列に含まれる情報をもとに計算して、新たな列を作ったり、グループに分けたり、順番を入れ替えたりといったことです。データを集約したり、グラフを作成するときにも、必要不可欠な作業です。
+> ここでは、`tidyverse` パッケージを構成する `dplyr` パッケージを用いて、データを変形することを学びます。変形とは、例えば、データのなかのある条件を満たす行や列を抽出（取り出）したり、特定の列を修正したり、データの中のいくつかの列に含まれる情報をもとに計算して、新たな列を作ったり、グループに分けたり、順番を入れ替えたりといったことです。データを集約し（まとめ）たり、グラフを作成するときにも、必要不可欠な作業です。
 >
 > `dplyr` パッケージを用いて、二つのデータを結合することなども可能ですが、それは、あとから扱います。これも、`tidyverse` パッケージを構成する `tidyr` パッケージ による変形も、後ほど扱います。
 
@@ -28,26 +28,32 @@ library(tidyverse)
 -   `select()` 変数をその名前によって選択 - 列の選択に対応します。
 -   `filter()` ケースをその値によって選択 - 行の選択に対応します。
 -   `mutate()` 新しい変数を既存の値を使って定義します - 新しい列を作成することに対応しています。
--   `summarise()` たくさんの値を一つの値に集約します - 代表値（平均、メディアンなど）を求めることに対応します。
+-   `summarise()`[^25-transform-1] たくさんの値を一つの値に集約します - 代表値（平均、メディアンなど）を求めることに対応します。
 -   `arrange()` 行の順序を変更します。
 -   `group_by()` グループを指定した表に変換します。
+
+[^25-transform-1]: `summarize()` とつづりをアメリカ式にしても問題ありません。他にも、さまざまな用語は、アメリカ式の綴りでも、イギリス式でも、問題ないようになっています。
 
 さらに詳しく知りたい場合は Console（コンソールに）vignette("dplyr") と入れるか、[こちら](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) を参照してください。上では、一つの表について述べていますが、二つの表の扱い方は、Console（コンソール）に vignette("two-table") と入れるか、[こちら](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html) を参照してください。二つの表の扱いについては、後から説明します。
 
 `dplyr` を初めて使われる場合には、まず [R for data science (2e) Transform](https://r4ds.hadley.nz/transform) を学ばれることをお勧めします。以下も、このサイトに沿った説明をします。
 
+b
+
 ### [`select`](https://dplyr.tidyverse.org/reference/select.html): 名前とタイプによって、列（変数）を選択
 
-| 補助関数      | 条件                   | 例                                            |
-|---------------|------------------------|-----------------------------------------------|
-| \-            | 列の排除               | select(babynames, -prop)                      |
-| :             | 列の範囲               | select(babynames, year:n)                     |
-| contains()    | 指定文字列を含         | select(babynames, contains("n"))              |
-| ends_with()   | 指定文字列で終わる     | select(babynames, ends_with("n"))             |
-| matches()     | 正規表現に適合         | select(babynames, matches("n"))               |
-| num_range()   | 末尾の指定数値範囲     | Not applicable with babynames                 |
-| one_of()      | 指定した名前に含まれる | select(babynames, one_of(c("sex", "gender"))) |
-| starts_with() | 指定文字列で始まる     | select(babynames, starts_with("n"))           |
+| 補助関数      | 条件                   | 例                                                    |
+|-----------------|----------------------|-------------------------------------|
+| \-            | 列の排除               | select(iris, -Species)                                |
+| :             | 列の範囲               | select(iris, 1:4)                                     |
+| contains()    | 指定文字列を含         | select(iris, contains("Width"))                       |
+| ends_with()   | 指定文字列で終わる     | select(iris, ends_with("th"))                         |
+| matches()     | 正規表現に適合         | select(iris, matches("S"))                            |
+| num_range()   | 末尾の指定数値範囲     | Not applicable with iris                              |
+| one_of()      | 指定した名前に含まれる | select(iris, one_of(c("Sepal.Width", "Petal.Width"))) |
+| starts_with() | 指定文字列で始まる     | select(iris, starts_with("Petal"))                    |
+
+「正規表現」という言葉が登場します。検索などでは基本的なものですので、ネット上で調べてください。適切に動作するかを、チェックする、正規表現チェッカーもあります。参照：[Wikipedia](https://ja.wikipedia.org/wiki/正規表現)
 
 ### [`filter`](https://dplyr.tidyverse.org/reference/filter.html): 列の値の条件に適合した行の選択
 
@@ -62,6 +68,8 @@ library(tidyverse)
 | is.na()    | 値が NA である x | is.na(x)  |
 | !is.na()   | 値が NA でない x | !is.na(x) |
 
+NA は、not available 値が存在しないという意味です。欠損値のことで、`df_wdi` などには、一番上に、NA が出てきます。欠損値の扱いも、データサイエンスにおいてはとても大切です。
+
 ### [`arrange`](https://dplyr.tidyverse.org/reference/arrange.html)
 
 `arrange()` では、選択した列の値によって、行を並び替えます。
@@ -72,17 +80,19 @@ library(tidyverse)
 
 新しい列を作成または、既存の列を修正、削除します。
 
-以下は便利な補助関数の例です。
+以下は便利な補助関数の例です。Help を参照してください。利用するときに、少しずつ説明していきます。ある程度慣れてきたら、どのようなことができるかを把握しておくことは、助けになります。
 
--   +, -, log(), etc., for their usual mathematical meanings
+-   +, -, log(), など：通常の数学記号を表します。
 
--   lead(), lag()
+-   `lead()`, `lag()`：`lead` は次の値、`lag` は一つ前の値です。
 
--   dense_rank(), min_rank(), percent_rank(), row_number(), cume_dist(), ntile()
+-   `dense_rank()`, `min_rank()`, `percent_rank()`, `row_number()`, `cume_dist()`, ntile(): `rank` は、階級、順序を決めます。`base::rank` もあります。基本的に、同じ値があったときに、どのように順序を決めるかがそれぞれによって異なります。
 
--   cumsum(), cummean(), cummin(), cummax(), cumany(), cumall()
+-   `cumsum()`, `cummean()`, `cummin()`, `cummax(),` `cumany()`, `cumall()`: cum は、cumulative（累計）ですから、`cumsum` は累計、`cummean()` は、その値までの平均（小計）、`cummin()` は、その値までの最小、`cummax()` その値までの最大、 `cumany()`, `cumall()` は、Help を参照してください。
 
--   na_if(), coalesce()\### `group_by()` and `summarise()`
+-   `na_if()`, `coalesce()`: `na_if(x,y)` は、x の中で、y と等しいものは、NA に置き換え、`coalesce()` は、最初の欠損していない値を返します。
+
+### `group_by()` and `summarise()`
 
 ### [`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)
 
@@ -90,7 +100,7 @@ library(tidyverse)
 
 ### [`summarise` or `summarize`](https://dplyr.tidyverse.org/reference/summarise.html)
 
-値の集約 (summarize) に利用します。グループ化された表の場合には、そのグループごとに、値を集約します。
+値の集約 (summarize) または、集計に利用します。グループ化された表の場合には、そのグループごとに、値を集約します。
 
 #### 集約のための関数
 
@@ -104,15 +114,17 @@ library(tidyverse)
 
 4.  個数 - `n_distinct(x),` `n()` （引数なし：表またはグループのサイズ）
 
-5.  論理値の数または割合 - sum(!is.na(x)), mean(y == 0)
+5.  論理値の数または割合 - `sum(!is.na(x)), mean(y == 0)`
 
 条件文で値を指定することも可能です。
 
--   if_else(), recode(), case_when()
+-   `if_else()`, `recode()`, case_when()
+
+注: *quantile（分位数） と quartile（四分位数）：分位数はデータセットを任意の個数の等しい部分に分割するための値を示し、四分位数はデータセットを4つの等しい部分に分割するための特定の値。*
 
 ### パイプ（Pipe）`%>%` `|>`
 
-[`pipes`](https://r4ds.hadley.nz/workflow-style.html#sec-pipes) in R for Data Science.
+[`pipes`](https://r4ds.hadley.nz/workflow-style.html#sec-pipes) in R は、すでに説明してましたが、ここにまとめておきます。
 
 `%>%` は、`tidyverse` パッケージで、関数のチェーン化を行うために使用されるパイプ演算子ですが、R 4.1 以降は、`|>` が、R に組み込まれた、ネイティブなパイプライン演算子になっています。`tidyverse` を使っているときは、どちらを使うことも可能ですが、`|>` を使うことをお勧めします。R の versoin を確認するには、コンソール（Console）で、`R.Version()` または、`R.version$version.string` とします。
 
@@ -130,14 +142,14 @@ R 起動時に読み込まれる、`datasets` の中の、`iris` （あやめの
 
 
 ```r
-iris <- datasets::iris
+df_iris <- datasets::iris
 ```
 
 確認します。
 
 
 ```r
-head(iris)
+head(df_iris)
 #>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 #> 1          5.1         3.5          1.4         0.2  setosa
 #> 2          4.9         3.0          1.4         0.2  setosa
@@ -149,7 +161,7 @@ head(iris)
 
 
 ```r
-str(iris)
+str(df_iris)
 #> 'data.frame':	150 obs. of  5 variables:
 #>  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 #>  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
@@ -158,11 +170,11 @@ str(iris)
 #>  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
-`iris` データは、名前のついた5個の変数（列）Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, Species があり、それぞれ、150の値（observations (obs.) 観察値）からなっています。5番目の Species は、三つのレベルのファクター（factor）setosa, versicolor ともう一つ virginica からなっていることがわかります。`unique` は、ベクトル型の変数（今の場合は、`iris` の `Species` という列）の中の異なる値を抽出します。ファクター（factor）は、ある分け方がされているという意味です。いずれ説明します。
+`df_iris` データは、名前のついた5個の変数（列）Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, Species があり、それぞれ、150の値（observations (obs.) 観察値）からなっています。5番目の Species は、三つのレベルのファクター（factor）setosa, versicolor ともう一つ virginica からなっていることがわかります。`unique` は、ベクトル型の変数（今の場合は、`iris` の `Species` という列）の中の異なる値を抽出します。ファクター（factor）は、ある分け方がされているという意味です。いずれ説明します。
 
 
 ```r
-unique(iris$Species)
+unique(df_iris$Species)
 #> [1] setosa     versicolor virginica 
 #> Levels: setosa versicolor virginica
 ```
@@ -173,7 +185,7 @@ unique(iris$Species)
 
 
 ```r
-head(select(iris, c(1,2,5)))
+head(select(df_iris, c(1,2,5)))
 #>   Sepal.Length Sepal.Width Species
 #> 1          5.1         3.5  setosa
 #> 2          4.9         3.0  setosa
@@ -185,11 +197,11 @@ head(select(iris, c(1,2,5)))
 
 第1列、第2列、第5列を、`c(1,2,5)` で表しています。列名で指定することもできます。
 
-`head(select(iris, c(1,2,5)))` としてありますから、その最初の6行を表示していますが、新しい変数を割り当ててはいませんから、`iris` 自体は変更されていません。
+`head(select(df_iris, c(1,2,5)))` としてありますから、その最初の6行を表示していますが、新しい変数を割り当ててはいませんから、`df_iris` 自体は変更されていません。
 
 
 ```r
-head(iris)
+head(df_iris)
 #>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 #> 1          5.1         3.5          1.4         0.2  setosa
 #> 2          4.9         3.0          1.4         0.2  setosa
@@ -199,11 +211,11 @@ head(iris)
 #> 6          5.4         3.9          1.7         0.4  setosa
 ```
 
-第1列、第2列、第5列を選んだものを、あとから使いたいときは、新しい名前をつける必要があります。以下同様ですが、この場合だけ、df\_`iris125` という名前（object name）をつけておきましょう。
+第1列、第2列、第5列を選んだものを、あとから使いたいときは、新しい名前をつける必要があります。以下同様ですが、この場合だけ、`df_iris125` という名前（object name）をつけておきましょう。
 
 
 ```r
-df_iris125 <- select(iris, c(1,2,5))
+df_iris125 <- select(df_iris, c(1,2,5))
 head(df_iris125)
 #>   Sepal.Length Sepal.Width Species
 #> 1          5.1         3.5  setosa
@@ -216,11 +228,11 @@ head(df_iris125)
 
 #### パイプ（Pipe） `|>` を使ったコード
 
-最初の例では `head(select(iris, c(1,2,5)))` としました。`head` の引数として、 `select(iris, c(1,2,5))` を使ったからです。しかし、慣れてくると、順番に関数を適用することを表現するには、 パイプを使うのも便利です。パイプでは、直前の出力が次の関数の第一引数として引き継がれるというルールになっています。以下のようになります。
+最初の例では `head(select(df_iris, c(1,2,5)))` としました。`head` の引数として、 `select(df_iris, c(1,2,5))` を使ったからです。しかし、慣れてくると、順番に関数を適用することを表現するには、 パイプを使うのも便利です。パイプでは、直前の出力が次の関数の第一引数として引き継がれるというルールになっています。以下のようになります。
 
 
 ```r
-iris |> select(c(1,2,5)) |> head()
+df_iris |> select(c(1,2,5)) |> head()
 #>   Sepal.Length Sepal.Width Species
 #> 1          5.1         3.5  setosa
 #> 2          4.9         3.0  setosa
@@ -240,7 +252,7 @@ In the following, we use pipes.
 
 
 ```r
-select(iris, -Species) |> head()
+select(df_iris, -Species) |> head()
 #>   Sepal.Length Sepal.Width Petal.Length Petal.Width
 #> 1          5.1         3.5          1.4         0.2
 #> 2          4.9         3.0          1.4         0.2
@@ -256,7 +268,7 @@ select(iris, -Species) |> head()
 
 
 ```r
-select(iris, sl = Sepal.Length, sw = Sepal.Width, sp = Species) |> 
+select(df_iris, sl = Sepal.Length, sw = Sepal.Width, sp = Species) |> 
   head()
 #>    sl  sw     sp
 #> 1 5.1 3.5 setosa
@@ -271,7 +283,7 @@ select(iris, sl = Sepal.Length, sw = Sepal.Width, sp = Species) |>
 
 
 ```r
-select(iris, c(5,3,4,1,2)) %>% head()
+select(df_iris, c(5,3,4,1,2)) |> head()
 #>   Species Petal.Length Petal.Width Sepal.Length Sepal.Width
 #> 1  setosa          1.4         0.2          5.1         3.5
 #> 2  setosa          1.4         0.2          4.9         3.0
@@ -283,7 +295,8 @@ select(iris, c(5,3,4,1,2)) %>% head()
 
 #### 備考
 
-1.  上の、`select`\` の 補助関数（helper functions）にも書きましたように、他にも様々な方法で、列を抽出することが可能です。たくさんの列がある、表に出会ったら、ぜひ使ってください。
+1.  上の、`select` の 補助関数（helper functions）にも書きましたように、他にも様々な方法で、列を抽出することが可能です。たくさんの列がある表に出会ったら、ぜひ使ってください。
+2.  最初は、それほど大きなデータ（表）を扱うことは少ないかもしれませんが、それでも、上で紹介した、列の名前を変更したり、列の順序を変更するなどは、有益です。使いやすく、見やすい形に変えてから、作業をすることはおすすめです。
 
 ### `filter` - 値による抽出
 
@@ -291,7 +304,7 @@ Species の列の値が、virginica であるものだけを抽出します。`=
 
 
 ```r
-filter(iris, Species == "virginica") %>% head()
+filter(df_iris, Species == "virginica") %>% head()
 #>   Sepal.Length Sepal.Width Petal.Length Petal.Width
 #> 1          6.3         3.3          6.0         2.5
 #> 2          5.8         2.7          5.1         1.9
@@ -308,13 +321,19 @@ filter(iris, Species == "virginica") %>% head()
 #> 6 virginica
 ```
 
+#### 備考　
+
+-   `filter` は特に重要ですが、もう少し複雑なデータ（表）を例にとって、後ほど説明します。
+
+-   上にも少し書いた、正規表現を使えるようになると、かなり複雑な条件での、抽出も可能になります。
+
 ### `arrange` - 昇順、降順
 
 次の例では、Sepal.Length の値の、昇順（小さい順）にし、同じ値の中では、Spepal.Width の降順（大きい順 （desc は descending order からとったもの）にします。Sepal.Length の値が、4.4 の部分の、Sepal.Width の値をみてください。
 
 
 ```r
-arrange(iris, Sepal.Length, desc(Sepal.Width)) %>% head()
+arrange(df_iris, Sepal.Length, desc(Sepal.Width)) %>% head()
 #>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 #> 1          4.3         3.0          1.1         0.1  setosa
 #> 2          4.4         3.2          1.3         0.2  setosa
@@ -330,7 +349,7 @@ arrange(iris, Sepal.Length, desc(Sepal.Width)) %>% head()
 
 
 ```r
-iris |> mutate(sl_rank = min_rank(Sepal.Length)) |> 
+df_iris |> mutate(sl_rank = min_rank(Sepal.Length)) |> 
   arrange(sl_rank) |> head()
 #>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 #> 1          4.3         3.0          1.1         0.1  setosa
@@ -351,6 +370,7 @@ iris |> mutate(sl_rank = min_rank(Sepal.Length)) |>
 #### 備考
 
 1.  パイプを紹介したときにも書きましたが、改行は、`|>` のあとでしてください。
+2.  `mutate` は、新しい列を加えるだけでなく、既存の列を修正するためにも使うことができます。修正した、データを使うときは、同じ名前のオブジェクトに `->` で、アサインすることも、可能ですが、新しい名前をつけて、新しいオブジェクトとして活用することをお勧めします。
 
 ### `group_by` and `summarize`
 
@@ -358,7 +378,7 @@ iris |> mutate(sl_rank = min_rank(Sepal.Length)) |>
 
 
 ```r
-iris |> 
+df_iris |> 
   group_by(Species) |>
   summarize(sl = mean(Sepal.Length), sw = mean(Sepal.Width), 
   pl = mean(Petal.Length), pw = mean(Petal.Width))
@@ -392,34 +412,584 @@ iris |>
 -   [Isolating Data with dplyr](https://rstudio.cloud/learn/primers/2.2)
 -   [Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3)
 
-## 例から学ぶ `dplyr` II - `gapminder`
+## 例から学ぶ `dplyr` II
 
-`gapminder` というパッケージのデータを使って、`dplyr` を学びます。この次の章で、`ggplot2` を使った視覚化について学びますが、この章で学んでいる変形は、`ggplot2` で、視覚化する準備のために、する場合も多いので、ここでも、`ggplot2` を使います。
+### df_wdi, df_wdi_extra
 
-### `ggplot2` [概要](https://ggplot2.tidyverse.org)
+前の章の `Tidyverse` で読み込み、概観した、世界開発指標（World Development Indicators）のデータを使います。[参照：WDI のデータ](https://icu-hsuzuki.github.io/ds4aj/tidyverse.html#wdi-のデータ)
 
-次のような形式で使います。
 
-**例1 散布図**
-
-```         
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy))
+```r
+library(tidyverse)
+library(WDI)
 ```
 
-**例2 箱ひげ図**
+WDI の使い方は、世界銀行の部分で紹介しますが、はじめてのデータサイエンスの例でも紹介したように、データコードを利用して、データを読み込みます。ここでは、出生時の平均寿命と、一人当たりの　GDP と、総人口のデータを使います。
 
-```         
-ggplot(data = mpg) + 
-  geom_boxplot(mapping = aes(x = class, y = hwy))
+-   SP.DYN.LE00.IN: Life expectancy at birth, total (years) 出生時の平均寿命
+-   SP.POP.TOTL: Population, total 総人口
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) 一人当たりの　GDP
+
+次のコードで読み込みます。
+
+
+```r
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
 ```
 
-**テンプレート**
 
-```         
-ggplot(data = <DATA>) + 
-  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+
+
 ```
+#> Rows: 16758 Columns: 7
+#> ── Column specification ────────────────────────────────────
+#> Delimiter: ","
+#> chr (3): country, iso2c, iso3c
+#> dbl (4): year, lifeExp, pop, gdpPercap
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+
+```r
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+```
+
+すこし、追加情報を付加したものも取得しておきます。
+
+
+
+
+```
+#> Rows: 16758 Columns: 15
+#> ── Column specification ────────────────────────────────────
+#> Delimiter: ","
+#> chr  (7): country, iso2c, iso3c, region, capital, income...
+#> dbl  (6): year, lifeExp, pop, gdpPercap, longitude, lati...
+#> lgl  (1): status
+#> date (1): lastupdated
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+
+```r
+df_wdi_extra
+#> # A tibble: 16,758 × 15
+#>    country     iso2c iso3c  year status lastupdated lifeExp
+#>    <chr>       <chr> <chr> <dbl> <lgl>  <date>        <dbl>
+#>  1 Afghanistan AF    AFG    2014 NA     2023-07-25     62.5
+#>  2 Afghanistan AF    AFG    2012 NA     2023-07-25     61.9
+#>  3 Afghanistan AF    AFG    2009 NA     2023-07-25     60.4
+#>  4 Afghanistan AF    AFG    2013 NA     2023-07-25     62.4
+#>  5 Afghanistan AF    AFG    1971 NA     2023-07-25     37.9
+#>  6 Afghanistan AF    AFG    2015 NA     2023-07-25     62.7
+#>  7 Afghanistan AF    AFG    1969 NA     2023-07-25     36.9
+#>  8 Afghanistan AF    AFG    2010 NA     2023-07-25     60.9
+#>  9 Afghanistan AF    AFG    2011 NA     2023-07-25     61.4
+#> 10 Afghanistan AF    AFG    2008 NA     2023-07-25     59.9
+#> # ℹ 16,748 more rows
+#> # ℹ 8 more variables: pop <dbl>, gdpPercap <dbl>,
+#> #   region <chr>, capital <chr>, longitude <dbl>,
+#> #   latitude <dbl>, income <chr>, lending <chr>
+```
+
+### `ggplot2`
+
+また、前の章の `Tidyverse` の説明で、あやめ（iris）のデータを使って、視覚化の説明を、散布図を使って、少ししました。参照：[ggplot2 グラフの描画](https://icu-hsuzuki.github.io/ds4aj/tidyverse.html#ggplot2-グラフの描画)
+
+詳細は、次の、視覚化のところで説明しますが、視覚化のためには、データの変形、整理が必要であることを、理解していただくために、散布図と、箱ひげ図の基本的な場合のみ、以下のような形式で利用します。
+
+**例1 散布図（scatter plot）**
+
+
+```r
+df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
+```
+
+<img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+
+
+```r
+df_iris |> ggplot(aes(Sepal.Width, Sepal.Length, color = Species)) +
+  geom_point()
+```
+
+<img src="25-transform_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+
+**例2 箱ひげ図（boxplot）**
+
+
+```r
+df_iris |> ggplot(aes(Sepal.Width, Species)) +
+  geom_boxplot()
+```
+
+<img src="25-transform_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+
+各、種類（Species）ごとに、Sepal.Width（萼（がく）幅）が、どのように分布しているかを示しています。真ん中の太い線が、中央値（median）、箱が、第一四分位（Q1）から第三四分位（Q3）、線と点で表される外れ値も、どのような基準か定められています。(IQR = Q3-Q1, 線は、Q3+1.5$\times$ IQR 以下に入っている実際の値までと、Q1-1.5 $\times$ IQR 以上に入っている実際の値まで。それらに入っていないものが外れ値)。
+
+現時点では、分布を示すグラフだと理解してください。
+
+**例3 折線グラフ（line graph）**
+
+WDI は時系列データですから、折れ線グラフも使います。後ほど紹介しますが、
+
+```{<DATA> |> ggplot(aes(year, lifeExp)) + geom_line()}
+```
+
+と言った感じです。
+
+まずは、失敗例から。次のコードでグラフが描けるでしょうか。
+
+
+```r
+df_wdi |> ggplot(aes(year, lifeExp)) + geom_line()
+#> Warning: Removed 266 rows containing missing values
+#> (`geom_line()`).
+```
+
+<img src="25-transform_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+
+### `dplyr` の応用
+
+##### `filter`
+
+一番上に、国名（country）に、アフガニスタン（Afghanistan） がありましたから、aアフガニスタンのデータを選び、平均寿命（lifeExp: Life Expectancy）の折線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。
+
+`filter(country == "Afghanistan")`
+
+特定の値のデータを抽出するには、`==` を使うのでした。二つの `=` ですから、間違わないでください。
+
+
+```r
+df_wdi |> filter(country == "Afghanistan")
+#> # A tibble: 63 × 7
+#>    country     iso2c iso3c  year lifeExp      pop gdpPercap
+#>    <chr>       <chr> <chr> <dbl>   <dbl>    <dbl>     <dbl>
+#>  1 Afghanistan AF    AFG    1960    32.5  8622466        NA
+#>  2 Afghanistan AF    AFG    1961    33.1  8790140        NA
+#>  3 Afghanistan AF    AFG    1962    33.5  8969047        NA
+#>  4 Afghanistan AF    AFG    1963    34.0  9157465        NA
+#>  5 Afghanistan AF    AFG    1964    34.5  9355514        NA
+#>  6 Afghanistan AF    AFG    1965    35.0  9565147        NA
+#>  7 Afghanistan AF    AFG    1966    35.5  9783147        NA
+#>  8 Afghanistan AF    AFG    1967    35.9 10010030        NA
+#>  9 Afghanistan AF    AFG    1968    36.4 10247780        NA
+#> 10 Afghanistan AF    AFG    1969    36.9 10494489        NA
+#> # ℹ 53 more rows
+```
+
+確認できましたか。
+
+折線グラフを書きます。この場合は、GEOM は、`geom_line` です。
+
+
+```r
+df_wdi |> filter(country == "Afghanistan") %>%
+  ggplot(aes(x = year, y = lifeExp)) + geom_line()
+#> Warning: Removed 1 row containing missing values
+#> (`geom_line()`).
+```
+
+<img src="25-transform_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+
+アフガニスタンでは 1952年 の誕生時の平均寿命（life expectancy at birth）は　30歳以下 （28.8歳）でした。2007年でも50歳以下（48.8 歳）のようですね。改善されていることも確かです。
+
+アフガニスタンと日本両方を抽出してみましょう。そのときは、 `country %in% c("Afghanistan", "Japan")`　とします。
+
+
+```r
+df_wdi %>% filter(country %in% c("Afghanistan", "Japan"))
+#> # A tibble: 126 × 7
+#>    country     iso2c iso3c  year lifeExp      pop gdpPercap
+#>    <chr>       <chr> <chr> <dbl>   <dbl>    <dbl>     <dbl>
+#>  1 Afghanistan AF    AFG    1960    32.5  8622466        NA
+#>  2 Afghanistan AF    AFG    1961    33.1  8790140        NA
+#>  3 Afghanistan AF    AFG    1962    33.5  8969047        NA
+#>  4 Afghanistan AF    AFG    1963    34.0  9157465        NA
+#>  5 Afghanistan AF    AFG    1964    34.5  9355514        NA
+#>  6 Afghanistan AF    AFG    1965    35.0  9565147        NA
+#>  7 Afghanistan AF    AFG    1966    35.5  9783147        NA
+#>  8 Afghanistan AF    AFG    1967    35.9 10010030        NA
+#>  9 Afghanistan AF    AFG    1968    36.4 10247780        NA
+#> 10 Afghanistan AF    AFG    1969    36.9 10494489        NA
+#> # ℹ 116 more rows
+```
+
+グラフにしてみましょう。今度は、区別のため、`color = country` を追加します。すると、線が違う色で表示されます。詳しくは、視覚化を参照してください。
+
+
+```r
+df_wdi %>% filter(country %in% c("Afghanistan", "Japan")) %>%
+  ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
+#> Warning: Removed 2 rows containing missing values
+#> (`geom_line()`).
+```
+
+<img src="25-transform_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+
+どのような発見がありますか。かならず書き留めておいてください。
+
+他の国についても調べるときは、国のリストがあるとよいので、 `unique(df_gm$country)` とすると、リストが得られます。`distinct(country)` で、異なる国を選択してから、その部分をベクトルとして出力することもできます。
+
+
+```r
+df_wdi %>% distinct(country) %>% pull()
+#>   [1] "Afghanistan"                                         
+#>   [2] "Africa Eastern and Southern"                         
+#>   [3] "Africa Western and Central"                          
+#>   [4] "Albania"                                             
+#>   [5] "Algeria"                                             
+#>   [6] "American Samoa"                                      
+#>   [7] "Andorra"                                             
+#>   [8] "Angola"                                              
+#>   [9] "Antigua and Barbuda"                                 
+#>  [10] "Arab World"                                          
+#>  [11] "Argentina"                                           
+#>  [12] "Armenia"                                             
+#>  [13] "Aruba"                                               
+#>  [14] "Australia"                                           
+#>  [15] "Austria"                                             
+#>  [16] "Azerbaijan"                                          
+#>  [17] "Bahamas, The"                                        
+#>  [18] "Bahrain"                                             
+#>  [19] "Bangladesh"                                          
+#>  [20] "Barbados"                                            
+#>  [21] "Belarus"                                             
+#>  [22] "Belgium"                                             
+#>  [23] "Belize"                                              
+#>  [24] "Benin"                                               
+#>  [25] "Bermuda"                                             
+#>  [26] "Bhutan"                                              
+#>  [27] "Bolivia"                                             
+#>  [28] "Bosnia and Herzegovina"                              
+#>  [29] "Botswana"                                            
+#>  [30] "Brazil"                                              
+#>  [31] "British Virgin Islands"                              
+#>  [32] "Brunei Darussalam"                                   
+#>  [33] "Bulgaria"                                            
+#>  [34] "Burkina Faso"                                        
+#>  [35] "Burundi"                                             
+#>  [36] "Cabo Verde"                                          
+#>  [37] "Cambodia"                                            
+#>  [38] "Cameroon"                                            
+#>  [39] "Canada"                                              
+#>  [40] "Caribbean small states"                              
+#>  [41] "Cayman Islands"                                      
+#>  [42] "Central African Republic"                            
+#>  [43] "Central Europe and the Baltics"                      
+#>  [44] "Chad"                                                
+#>  [45] "Channel Islands"                                     
+#>  [46] "Chile"                                               
+#>  [47] "China"                                               
+#>  [48] "Colombia"                                            
+#>  [49] "Comoros"                                             
+#>  [50] "Congo, Dem. Rep."                                    
+#>  [51] "Congo, Rep."                                         
+#>  [52] "Costa Rica"                                          
+#>  [53] "Cote d'Ivoire"                                       
+#>  [54] "Croatia"                                             
+#>  [55] "Cuba"                                                
+#>  [56] "Curacao"                                             
+#>  [57] "Cyprus"                                              
+#>  [58] "Czechia"                                             
+#>  [59] "Denmark"                                             
+#>  [60] "Djibouti"                                            
+#>  [61] "Dominica"                                            
+#>  [62] "Dominican Republic"                                  
+#>  [63] "Early-demographic dividend"                          
+#>  [64] "East Asia & Pacific"                                 
+#>  [65] "East Asia & Pacific (excluding high income)"         
+#>  [66] "East Asia & Pacific (IDA & IBRD countries)"          
+#>  [67] "Ecuador"                                             
+#>  [68] "Egypt, Arab Rep."                                    
+#>  [69] "El Salvador"                                         
+#>  [70] "Equatorial Guinea"                                   
+#>  [71] "Eritrea"                                             
+#>  [72] "Estonia"                                             
+#>  [73] "Eswatini"                                            
+#>  [74] "Ethiopia"                                            
+#>  [75] "Euro area"                                           
+#>  [76] "Europe & Central Asia"                               
+#>  [77] "Europe & Central Asia (excluding high income)"       
+#>  [78] "Europe & Central Asia (IDA & IBRD countries)"        
+#>  [79] "European Union"                                      
+#>  [80] "Faroe Islands"                                       
+#>  [81] "Fiji"                                                
+#>  [82] "Finland"                                             
+#>  [83] "Fragile and conflict affected situations"            
+#>  [84] "France"                                              
+#>  [85] "French Polynesia"                                    
+#>  [86] "Gabon"                                               
+#>  [87] "Gambia, The"                                         
+#>  [88] "Georgia"                                             
+#>  [89] "Germany"                                             
+#>  [90] "Ghana"                                               
+#>  [91] "Gibraltar"                                           
+#>  [92] "Greece"                                              
+#>  [93] "Greenland"                                           
+#>  [94] "Grenada"                                             
+#>  [95] "Guam"                                                
+#>  [96] "Guatemala"                                           
+#>  [97] "Guinea"                                              
+#>  [98] "Guinea-Bissau"                                       
+#>  [99] "Guyana"                                              
+#> [100] "Haiti"                                               
+#> [101] "Heavily indebted poor countries (HIPC)"              
+#> [102] "High income"                                         
+#> [103] "Honduras"                                            
+#> [104] "Hong Kong SAR, China"                                
+#> [105] "Hungary"                                             
+#> [106] "IBRD only"                                           
+#> [107] "Iceland"                                             
+#> [108] "IDA & IBRD total"                                    
+#> [109] "IDA blend"                                           
+#> [110] "IDA only"                                            
+#> [111] "IDA total"                                           
+#> [112] "India"                                               
+#> [113] "Indonesia"                                           
+#> [114] "Iran, Islamic Rep."                                  
+#> [115] "Iraq"                                                
+#> [116] "Ireland"                                             
+#> [117] "Isle of Man"                                         
+#> [118] "Israel"                                              
+#> [119] "Italy"                                               
+#> [120] "Jamaica"                                             
+#> [121] "Japan"                                               
+#> [122] "Jordan"                                              
+#> [123] "Kazakhstan"                                          
+#> [124] "Kenya"                                               
+#> [125] "Kiribati"                                            
+#> [126] "Korea, Dem. People's Rep."                           
+#> [127] "Korea, Rep."                                         
+#> [128] "Kosovo"                                              
+#> [129] "Kuwait"                                              
+#> [130] "Kyrgyz Republic"                                     
+#> [131] "Lao PDR"                                             
+#> [132] "Late-demographic dividend"                           
+#> [133] "Latin America & Caribbean"                           
+#> [134] "Latin America & Caribbean (excluding high income)"   
+#> [135] "Latin America & the Caribbean (IDA & IBRD countries)"
+#> [136] "Latvia"                                              
+#> [137] "Least developed countries: UN classification"        
+#> [138] "Lebanon"                                             
+#> [139] "Lesotho"                                             
+#> [140] "Liberia"                                             
+#> [141] "Libya"                                               
+#> [142] "Liechtenstein"                                       
+#> [143] "Lithuania"                                           
+#> [144] "Low & middle income"                                 
+#> [145] "Low income"                                          
+#> [146] "Lower middle income"                                 
+#> [147] "Luxembourg"                                          
+#> [148] "Macao SAR, China"                                    
+#> [149] "Madagascar"                                          
+#> [150] "Malawi"                                              
+#> [151] "Malaysia"                                            
+#> [152] "Maldives"                                            
+#> [153] "Mali"                                                
+#> [154] "Malta"                                               
+#> [155] "Marshall Islands"                                    
+#> [156] "Mauritania"                                          
+#> [157] "Mauritius"                                           
+#> [158] "Mexico"                                              
+#> [159] "Micronesia, Fed. Sts."                               
+#> [160] "Middle East & North Africa"                          
+#> [161] "Middle East & North Africa (excluding high income)"  
+#> [162] "Middle East & North Africa (IDA & IBRD countries)"   
+#> [163] "Middle income"                                       
+#> [164] "Moldova"                                             
+#> [165] "Monaco"                                              
+#> [166] "Mongolia"                                            
+#> [167] "Montenegro"                                          
+#> [168] "Morocco"                                             
+#> [169] "Mozambique"                                          
+#> [170] "Myanmar"                                             
+#> [171] "Namibia"                                             
+#> [172] "Nauru"                                               
+#> [173] "Nepal"                                               
+#> [174] "Netherlands"                                         
+#> [175] "New Caledonia"                                       
+#> [176] "New Zealand"                                         
+#> [177] "Nicaragua"                                           
+#> [178] "Niger"                                               
+#> [179] "Nigeria"                                             
+#> [180] "North America"                                       
+#> [181] "North Macedonia"                                     
+#> [182] "Northern Mariana Islands"                            
+#> [183] "Norway"                                              
+#> [184] "Not classified"                                      
+#> [185] "OECD members"                                        
+#> [186] "Oman"                                                
+#> [187] "Other small states"                                  
+#> [188] "Pacific island small states"                         
+#> [189] "Pakistan"                                            
+#> [190] "Palau"                                               
+#> [191] "Panama"                                              
+#> [192] "Papua New Guinea"                                    
+#> [193] "Paraguay"                                            
+#> [194] "Peru"                                                
+#> [195] "Philippines"                                         
+#> [196] "Poland"                                              
+#> [197] "Portugal"                                            
+#> [198] "Post-demographic dividend"                           
+#> [199] "Pre-demographic dividend"                            
+#> [200] "Puerto Rico"                                         
+#> [201] "Qatar"                                               
+#> [202] "Romania"                                             
+#> [203] "Russian Federation"                                  
+#> [204] "Rwanda"                                              
+#> [205] "Samoa"                                               
+#> [206] "San Marino"                                          
+#> [207] "Sao Tome and Principe"                               
+#> [208] "Saudi Arabia"                                        
+#> [209] "Senegal"                                             
+#> [210] "Serbia"                                              
+#> [211] "Seychelles"                                          
+#> [212] "Sierra Leone"                                        
+#> [213] "Singapore"                                           
+#> [214] "Sint Maarten (Dutch part)"                           
+#> [215] "Slovak Republic"                                     
+#> [216] "Slovenia"                                            
+#> [217] "Small states"                                        
+#> [218] "Solomon Islands"                                     
+#> [219] "Somalia"                                             
+#> [220] "South Africa"                                        
+#> [221] "South Asia"                                          
+#> [222] "South Asia (IDA & IBRD)"                             
+#> [223] "South Sudan"                                         
+#> [224] "Spain"                                               
+#> [225] "Sri Lanka"                                           
+#> [226] "St. Kitts and Nevis"                                 
+#> [227] "St. Lucia"                                           
+#> [228] "St. Martin (French part)"                            
+#> [229] "St. Vincent and the Grenadines"                      
+#> [230] "Sub-Saharan Africa"                                  
+#> [231] "Sub-Saharan Africa (excluding high income)"          
+#> [232] "Sub-Saharan Africa (IDA & IBRD countries)"           
+#> [233] "Sudan"                                               
+#> [234] "Suriname"                                            
+#> [235] "Sweden"                                              
+#> [236] "Switzerland"                                         
+#> [237] "Syrian Arab Republic"                                
+#> [238] "Tajikistan"                                          
+#> [239] "Tanzania"                                            
+#> [240] "Thailand"                                            
+#> [241] "Timor-Leste"                                         
+#> [242] "Togo"                                                
+#> [243] "Tonga"                                               
+#> [244] "Trinidad and Tobago"                                 
+#> [245] "Tunisia"                                             
+#> [246] "Turkiye"                                             
+#> [247] "Turkmenistan"                                        
+#> [248] "Turks and Caicos Islands"                            
+#> [249] "Tuvalu"                                              
+#> [250] "Uganda"                                              
+#> [251] "Ukraine"                                             
+#> [252] "United Arab Emirates"                                
+#> [253] "United Kingdom"                                      
+#> [254] "United States"                                       
+#> [255] "Upper middle income"                                 
+#> [256] "Uruguay"                                             
+#> [257] "Uzbekistan"                                          
+#> [258] "Vanuatu"                                             
+#> [259] "Venezuela, RB"                                       
+#> [260] "Vietnam"                                             
+#> [261] "Virgin Islands (U.S.)"                               
+#> [262] "West Bank and Gaza"                                  
+#> [263] "World"                                               
+#> [264] "Yemen, Rep."                                         
+#> [265] "Zambia"                                              
+#> [266] "Zimbabwe"
+```
+
+このデータには 142 の国のデータがあることがわかりました。
+
+BRICs を選んでみるとどうなるでしょうか。最近は、BRICS として、South Africa を加えることが増えてきているようです。
+
+
+```r
+df_wdi %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
+  ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
+#> Warning: Removed 3 rows containing missing values
+#> (`geom_line()`).
+```
+
+<img src="25-transform_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+
+ロシアが含まれていないことがわかります。ロシアは、以前は、ソビエト社会主義連邦でしたから、国が変化したものは含まれていないのかもしれません。上の国のリストで見てもありませんね。2007年より新しいデータ、ロシアなども含むデータなど、実際のデータでも見てみたいですね。それは、また後ほど。
+
+### 練習
+
+1.  平均寿命 `lifeExp` を人口 `pop` や、一人当たりの GDP `gdpPercap` に変えて、試してみてください。
+2.  ASEAN （東南アジア諸国連合）ではどうでしょうか。
+
+-   Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore.
+
+-   このうち幾つの国がこのデータに含まれていますか。
+
+3.  興味のある国をいくつか選んで、三つの指標について調べてみてください。
+
+### `group_by` と `summarize`
+
+データには大陸（`continent` ）という変数があります。幾つの大陸があり、それぞれの大陸のいくつ国のデータがこのデータには入っているでしょうか。
+
+それぞれの大陸ごとの2007年の平均寿命の平均と中央値と最大、最小を求めてみましょう。
+
+
+```r
+df_wdi_extra %>% filter(year == 2007) %>% 
+  group_by(income) %>% 
+  summarize(mean_lifeExp = mean(lifeExp), median_lifeExp = median(lifeExp), max_lifeExp = max(lifeExp), min_lifeExp = min(lifeExp), .groups = "keep")
+#> # A tibble: 7 × 5
+#> # Groups:   income [7]
+#>   income mean_lifeExp median_lifeExp max_lifeExp min_lifeExp
+#>   <chr>         <dbl>          <dbl>       <dbl>       <dbl>
+#> 1 Aggre…         67.6           69.2        80.1        53.3
+#> 2 High …         NA             NA          NA          NA  
+#> 3 Low i…         56.9           55.4        73.7        47.4
+#> 4 Lower…         64.4           65.9        77.1        43.1
+#> 5 Not c…         73.1           73.1        73.1        73.1
+#> 6 Upper…         NA             NA          NA          NA  
+#> 7 <NA>           NA             NA          NA          NA
+```
+
+## 練習問題
+
+**R Markdown and `dplyr`**
+
+-   Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. `a2_123456.nb.html`)
+    1.  create an R Notebook using the R Notebook Template in Moodle, save as `a2_123456.Rmd`,
+    2.  write your name and ID and the contents,
+    3.  run each code block,
+    4.  preview to create `a2_123456.nb.html`,
+    5.  submit `a2_123456.nb.html` to Moodle.
+
+1.  Pick data from the built-in datasets besides `cars`. (`library(help = "datasets")` or go to the site [The R Datasets Package](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html))
+
+    -   Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)
+    -   Use `head()`, `str()`, ..., and create at least one chart using `ggplot2` - Code Chunk.
+        -   Don't forget to add `library(tidyverse)` in the first code chunk.
+    -   An observation of the chart - in your own words.
+
+2.  Load `gapminder` by `library(gapminder)`.
+
+    -   Choose `pop` or `gdpPercap`, or both, one country in the data, a group of countries in the data.
+    -   Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
+    -   Study the data as you like.
+    -   Observations and difficulties encountered.
+
+演習
 
 #### Gapminder と R Package `gapminder`
 
@@ -459,289 +1029,4 @@ library(gapminder)
 library(WDI)
 ```
 
-#### R Package `gapminder` data
-
-We will use a `tidyverse` function `slice` replacing `head`. Check `slice` in the search window under the Help tab on the bottom right pane.
-
-
-```r
-df_gm <- gapminder
-df_gm
-#> # A tibble: 1,704 × 6
-#>    country     continent  year lifeExp      pop gdpPercap
-#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-#>  1 Afghanistan Asia       1952    28.8  8425333      779.
-#>  2 Afghanistan Asia       1957    30.3  9240934      821.
-#>  3 Afghanistan Asia       1962    32.0 10267083      853.
-#>  4 Afghanistan Asia       1967    34.0 11537966      836.
-#>  5 Afghanistan Asia       1972    36.1 13079460      740.
-#>  6 Afghanistan Asia       1977    38.4 14880372      786.
-#>  7 Afghanistan Asia       1982    39.9 12881816      978.
-#>  8 Afghanistan Asia       1987    40.8 13867957      852.
-#>  9 Afghanistan Asia       1992    41.7 16317921      649.
-#> 10 Afghanistan Asia       1997    41.8 22227415      635.
-#> # ℹ 1,694 more rows
-```
-
-
-```r
-glimpse(df_gm)
-#> Rows: 1,704
-#> Columns: 6
-#> $ country   <fct> "Afghanistan", "Afghanistan", "Afghanist…
-#> $ continent <fct> Asia, Asia, Asia, Asia, Asia, Asia, Asia…
-#> $ year      <int> 1952, 1957, 1962, 1967, 1972, 1977, 1982…
-#> $ lifeExp   <dbl> 28.801, 30.332, 31.997, 34.020, 36.088, …
-#> $ pop       <int> 8425333, 9240934, 10267083, 11537966, 13…
-#> $ gdpPercap <dbl> 779.4453, 820.8530, 853.1007, 836.1971, …
-```
-
-
-```r
-summary(df_gm)
-#>         country        continent        year     
-#>  Afghanistan:  12   Africa  :624   Min.   :1952  
-#>  Albania    :  12   Americas:300   1st Qu.:1966  
-#>  Algeria    :  12   Asia    :396   Median :1980  
-#>  Angola     :  12   Europe  :360   Mean   :1980  
-#>  Argentina  :  12   Oceania : 24   3rd Qu.:1993  
-#>  Australia  :  12                  Max.   :2007  
-#>  (Other)    :1632                                
-#>     lifeExp           pop              gdpPercap       
-#>  Min.   :23.60   Min.   :6.001e+04   Min.   :   241.2  
-#>  1st Qu.:48.20   1st Qu.:2.794e+06   1st Qu.:  1202.1  
-#>  Median :60.71   Median :7.024e+06   Median :  3531.8  
-#>  Mean   :59.47   Mean   :2.960e+07   Mean   :  7215.3  
-#>  3rd Qu.:70.85   3rd Qu.:1.959e+07   3rd Qu.:  9325.5  
-#>  Max.   :82.60   Max.   :1.319e+09   Max.   :113523.1  
-#> 
-```
-
-#### `dplyr` の応用
-
-##### `filter`
-
-一番上に、国名（country）に、アフガニスタン（Afghanistan） がありましたから、aアフガニスタンのデータを選び、平均寿命（lifeExp: Life Expectancy）の折線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。
-
-`filter(country == "Afghanistan")`
-
-特定の値のデータを抽出するには、`==` を使うのでした。二つの `=` ですから、間違わないでください。
-
-
-```r
-df_gm %>% filter(country == "Afghanistan")
-#> # A tibble: 12 × 6
-#>    country     continent  year lifeExp      pop gdpPercap
-#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-#>  1 Afghanistan Asia       1952    28.8  8425333      779.
-#>  2 Afghanistan Asia       1957    30.3  9240934      821.
-#>  3 Afghanistan Asia       1962    32.0 10267083      853.
-#>  4 Afghanistan Asia       1967    34.0 11537966      836.
-#>  5 Afghanistan Asia       1972    36.1 13079460      740.
-#>  6 Afghanistan Asia       1977    38.4 14880372      786.
-#>  7 Afghanistan Asia       1982    39.9 12881816      978.
-#>  8 Afghanistan Asia       1987    40.8 13867957      852.
-#>  9 Afghanistan Asia       1992    41.7 16317921      649.
-#> 10 Afghanistan Asia       1997    41.8 22227415      635.
-#> 11 Afghanistan Asia       2002    42.1 25268405      727.
-#> 12 Afghanistan Asia       2007    43.8 31889923      975.
-```
-
-確認できましたか。
-
-折線グラフを書きます。この場合は、GEOM は、`geom_line` です。
-
-
-```r
-df_gm %>% filter(country == "Afghanistan") %>%
-  ggplot(aes(x = year, y = lifeExp)) + geom_line()
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-21-1.png" width="672" />
-
-アフガニスタンでは 1952年 の誕生時の平均寿命（life expectancy at birth）は　30歳以下 （28.8歳）でした。2007年でも50歳以下（48.8 歳）のようですね。改善されていることも確かです。
-
-アフガニスタンと日本両方を抽出してみましょう。そのときは、 `country %in% c("Afghanistan", "Japan")`　とします。
-
-
-```r
-df_gm %>% filter(country %in% c("Afghanistan", "Japan"))
-#> # A tibble: 24 × 6
-#>    country     continent  year lifeExp      pop gdpPercap
-#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-#>  1 Afghanistan Asia       1952    28.8  8425333      779.
-#>  2 Afghanistan Asia       1957    30.3  9240934      821.
-#>  3 Afghanistan Asia       1962    32.0 10267083      853.
-#>  4 Afghanistan Asia       1967    34.0 11537966      836.
-#>  5 Afghanistan Asia       1972    36.1 13079460      740.
-#>  6 Afghanistan Asia       1977    38.4 14880372      786.
-#>  7 Afghanistan Asia       1982    39.9 12881816      978.
-#>  8 Afghanistan Asia       1987    40.8 13867957      852.
-#>  9 Afghanistan Asia       1992    41.7 16317921      649.
-#> 10 Afghanistan Asia       1997    41.8 22227415      635.
-#> # ℹ 14 more rows
-```
-
-グラフにしてみましょう。今度は、区別のため、`color = country` を追加します。すると、線が違う色で表示されます。詳しくは、視覚化を参照してください。
-
-
-```r
-df_gm %>% filter(country %in% c("Afghanistan", "Japan")) %>%
-  ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-23-1.png" width="672" />
-
-どのような発見がありますか。かならず書き留めておいてください。
-
-他の国についても調べるときは、国のリストがあるとよいので、 `unique(df_gm$country)` とすると、リストが得られます。`distinct(country)` で、異なる国を選択してから、その部分をベクトルとして出力することもできます。
-
-
-```r
-df_gm %>% distinct(country) %>% pull()
-#>   [1] Afghanistan              Albania                 
-#>   [3] Algeria                  Angola                  
-#>   [5] Argentina                Australia               
-#>   [7] Austria                  Bahrain                 
-#>   [9] Bangladesh               Belgium                 
-#>  [11] Benin                    Bolivia                 
-#>  [13] Bosnia and Herzegovina   Botswana                
-#>  [15] Brazil                   Bulgaria                
-#>  [17] Burkina Faso             Burundi                 
-#>  [19] Cambodia                 Cameroon                
-#>  [21] Canada                   Central African Republic
-#>  [23] Chad                     Chile                   
-#>  [25] China                    Colombia                
-#>  [27] Comoros                  Congo, Dem. Rep.        
-#>  [29] Congo, Rep.              Costa Rica              
-#>  [31] Cote d'Ivoire            Croatia                 
-#>  [33] Cuba                     Czech Republic          
-#>  [35] Denmark                  Djibouti                
-#>  [37] Dominican Republic       Ecuador                 
-#>  [39] Egypt                    El Salvador             
-#>  [41] Equatorial Guinea        Eritrea                 
-#>  [43] Ethiopia                 Finland                 
-#>  [45] France                   Gabon                   
-#>  [47] Gambia                   Germany                 
-#>  [49] Ghana                    Greece                  
-#>  [51] Guatemala                Guinea                  
-#>  [53] Guinea-Bissau            Haiti                   
-#>  [55] Honduras                 Hong Kong, China        
-#>  [57] Hungary                  Iceland                 
-#>  [59] India                    Indonesia               
-#>  [61] Iran                     Iraq                    
-#>  [63] Ireland                  Israel                  
-#>  [65] Italy                    Jamaica                 
-#>  [67] Japan                    Jordan                  
-#>  [69] Kenya                    Korea, Dem. Rep.        
-#>  [71] Korea, Rep.              Kuwait                  
-#>  [73] Lebanon                  Lesotho                 
-#>  [75] Liberia                  Libya                   
-#>  [77] Madagascar               Malawi                  
-#>  [79] Malaysia                 Mali                    
-#>  [81] Mauritania               Mauritius               
-#>  [83] Mexico                   Mongolia                
-#>  [85] Montenegro               Morocco                 
-#>  [87] Mozambique               Myanmar                 
-#>  [89] Namibia                  Nepal                   
-#>  [91] Netherlands              New Zealand             
-#>  [93] Nicaragua                Niger                   
-#>  [95] Nigeria                  Norway                  
-#>  [97] Oman                     Pakistan                
-#>  [99] Panama                   Paraguay                
-#> [101] Peru                     Philippines             
-#> [103] Poland                   Portugal                
-#> [105] Puerto Rico              Reunion                 
-#> [107] Romania                  Rwanda                  
-#> [109] Sao Tome and Principe    Saudi Arabia            
-#> [111] Senegal                  Serbia                  
-#> [113] Sierra Leone             Singapore               
-#> [115] Slovak Republic          Slovenia                
-#> [117] Somalia                  South Africa            
-#> [119] Spain                    Sri Lanka               
-#> [121] Sudan                    Swaziland               
-#> [123] Sweden                   Switzerland             
-#> [125] Syria                    Taiwan                  
-#> [127] Tanzania                 Thailand                
-#> [129] Togo                     Trinidad and Tobago     
-#> [131] Tunisia                  Turkey                  
-#> [133] Uganda                   United Kingdom          
-#> [135] United States            Uruguay                 
-#> [137] Venezuela                Vietnam                 
-#> [139] West Bank and Gaza       Yemen, Rep.             
-#> [141] Zambia                   Zimbabwe                
-#> 142 Levels: Afghanistan Albania Algeria Angola ... Zimbabwe
-```
-
-このデータには 142 の国のデータがあることがわかりました。
-
-BRICs を選んでみるとどうなるでしょうか。最近は、BRICS として、South Africa を加えることが増えてきているようです。
-
-
-```r
-df_gm %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
-  ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672" />
-
-ロシアが含まれていないことがわかります。ロシアは、以前は、ソビエト社会主義連邦でしたから、国が変化したものは含まれていないのかもしれません。上の国のリストで見てもありませんね。2007年より新しいデータ、ロシアなども含むデータなど、実際のデータでも見てみたいですね。それは、また後ほど。
-
-### 練習
-
-1.  平均寿命 `lifeExp` を人口 `pop` や、一人当たりの GDP `gdpPercap` に変えて、試してみてください。
-2.  ASEAN （東南アジア諸国連合）ではどうでしょうか。
-
--   Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore.
-
--   このうち幾つの国がこのデータに含まれていますか。
-
-3.  興味のある国をいくつか選んで、三つの指標について調べてみてください。
-
-### `group_by` と `summarize`
-
-データには大陸（`continent` ）という変数があります。幾つの大陸があり、それぞれの大陸のいくつ国のデータがこのデータには入っているでしょうか。
-
-それぞれの大陸ごとの2007年の平均寿命の平均と中央値と最大、最小を求めてみましょう。
-
-
-```r
-df_gm %>% filter(year == 2007) %>% 
-  group_by(continent) %>% 
-  summarize(mean_lifeExp = mean(lifeExp), median_lifeExp = median(lifeExp), max_lifeExp = max(lifeExp), min_lifeExp = min(lifeExp), .groups = "keep")
-#> # A tibble: 5 × 5
-#> # Groups:   continent [5]
-#>   continent mean_lifeExp median_lifeExp max_lifeExp
-#>   <fct>            <dbl>          <dbl>       <dbl>
-#> 1 Africa            54.8           52.9        76.4
-#> 2 Americas          73.6           72.9        80.7
-#> 3 Asia              70.7           72.4        82.6
-#> 4 Europe            77.6           78.6        81.8
-#> 5 Oceania           80.7           80.7        81.2
-#> # ℹ 1 more variable: min_lifeExp <dbl>
-```
-
-## 練習問題
-
-**R Markdown and `dplyr`**
-
--   Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. `a2_123456.nb.html`)
-    1.  create an R Notebook using the R Notebook Template in Moodle, save as `a2_123456.Rmd`,
-    2.  write your name and ID and the contents,
-    3.  run each code block,
-    4.  preview to create `a2_123456.nb.html`,
-    5.  submit `a2_123456.nb.html` to Moodle.
-
-1.  Pick data from the built-in datasets besides `cars`. (`library(help = "datasets")` or go to the site [The R Datasets Package](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html))
-
-    -   Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)
-    -   Use `head()`, `str()`, ..., and create at least one chart using `ggplot2` - Code Chunk.
-        -   Don't forget to add `library(tidyverse)` in the first code chunk.
-    -   An observation of the chart - in your own words.
-
-2.  Load `gapminder` by `library(gapminder)`.
-
-    -   Choose `pop` or `gdpPercap`, or both, one country in the data, a group of countries in the data.
-    -   Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
-    -   Study the data as you like.
-    -   Observations and difficulties encountered.
+#### 

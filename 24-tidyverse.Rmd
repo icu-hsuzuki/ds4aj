@@ -218,8 +218,8 @@ library(WDI)
 WDI の使い方は、世界銀行の部分で紹介しますが、はじめてのデータサイエンスの例でも紹介したように、データコードを利用して、データを読み込みます。ここでは、出生時の平均寿命と、一人当たりの　GDP と、総人口のデータを使います。
 
 -   SP.DYN.LE00.IN: Life expectancy at birth, total (years) 出生時の平均寿命
--   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) 一人当たりの　GDP
 -   SP.POP.TOTL: Population, total 総人口
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) 一人当たりの　GDP
 
 次のコードで読み込みます。
 
