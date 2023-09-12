@@ -84,7 +84,7 @@ summary(cars)
 plot(cars)
 ```
 
-<img src="23-rbasics_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+![](23-rbasics_files/figure-epub3/unnamed-chunk-4-1.png)<!-- -->
 
 右下の、窓枠の、Plots に、上のグラフ（散布図）が表示されると思います。Export と書いてある、プルダウンメニューがあり、そこから、画像として保存することも、可能です。
 

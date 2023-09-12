@@ -1,6 +1,6 @@
 --- 
 title: "データサイエンスをはじめましょう   \n- Data Science for All -"
-author: "鈴木寛（Hirosi Suzuki）"
+author: "鈴木寛（Hiroshi Suzuki）"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: bxjsbook #or bxjsreport
