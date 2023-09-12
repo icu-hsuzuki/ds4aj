@@ -135,7 +135,7 @@
 </h3>
 <p>パッケージの、<code>estatapi</code> が、e-Stat のデータを取得するためのものです。<code>tidyverse</code> は基本的な解析をおこなうため、<code>showtext</code> と <code><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto()</a></code> は、グラフなどに、日本語が含まれる場合の文字化けを防ぐためのものです。</p>
 <p>インストールされていないパッケージがありましたら、上のメニューの Tools &gt; Install Packages から、インストールしてください。</p>
-<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb378"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
 <span><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
@@ -203,7 +203,7 @@
 <p>提供されている統計表を検索します。この関数は、結果をtbl_df（dplyrのdata.frame。data.frameとほぼ同じように扱える）として返します。</p>
 <p>STAT_NAMEやGOV_ORGは人間が読みやすい形式のラベルになっていますが、 プログラム中で扱う場合はコードのままの方が都合がいいこともあります。そのときは.use_label = FALSEを指定してください。</p>
 <pre><code>estat_getStatsList(appId = appId, searchWord = "")</code></pre>
-<div class="sourceCode" id="cb352"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsList.html">estat_getStatsList</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, searchWord <span class="op">=</span> <span class="st">"人口推計"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 478 × 21</span></span>
 <span><span class="co">#&gt;    `@id`      STAT_NAME GOV_ORG STATISTICS_NAME TITLE CYCLE</span></span>
@@ -225,7 +225,7 @@
 <span><span class="co">#&gt; #   OVERALL_TOTAL_NUMBER &lt;chr&gt;, UPDATED_DATE &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   TABULATION_CATEGORY &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   TABULATION_SUB_CATEGORY1 &lt;chr&gt;, DESCRIPTION &lt;chr&gt;, …</span></span></code></pre></div>
-<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb382"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsList.html">estat_getStatsList</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, searchWord <span class="op">=</span> <span class="st">"外国人人口"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 38 × 22</span></span>
 <span><span class="co">#&gt;    `@id`      STAT_NAME GOV_ORG STATISTICS_NAME  TITLE CYCLE</span></span>
@@ -249,7 +249,7 @@
 <span><span class="co">#&gt; #   TABULATION_SUB_CATEGORY1 &lt;chr&gt;, DESCRIPTION &lt;chr&gt;, …</span></span></code></pre></div>
 <p>statsDataAPI=0003448219
 statsDataAPI=0004001640</p>
-<div class="sourceCode" id="cb354"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsList.html">estat_getStatsList</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, searchWord <span class="op">=</span> <span class="st">"国勢調査 時系列データ 男女，年齢，配偶関係"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 16 × 19</span></span>
 <span><span class="co">#&gt;    `@id`      STAT_NAME GOV_ORG STATISTICS_NAME  TITLE CYCLE</span></span>
@@ -285,7 +285,7 @@ statsDataAPI=0004001640</p>
 </h3>
 <p>統計データのメタ情報を取得します。この関数は、結果をlistとして返します。listの各要素が、それぞれのデータ項目についてのメタ情報を含んだtbl_dfになっています。</p>
 <pre><code>meta_info &lt;- estat_getMetaInfo(appId = appId, statsDataId = "")</code></pre>
-<div class="sourceCode" id="cb356"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">meta_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getMetaInfo.html">estat_getMetaInfo</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, statsDataId <span class="op">=</span> <span class="st">"0003410379"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">meta_info</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 5</span></span>
@@ -310,7 +310,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt;  $ .names: tibble [4 × 2] (S3: tbl_df/tbl/data.frame)</span></span>
 <span><span class="co">#&gt;   ..$ id  : chr [1:4] "tab" "cat01" "area" "time"</span></span>
 <span><span class="co">#&gt;   ..$ name: chr [1:4] "表章項目" "男女_時系列" "地域_時系列" "時間軸（調査年）"</span></span></code></pre></div>
-<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">meta_info</span><span class="op">$</span><span class="va">cat01</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
 <span><span class="co">#&gt;   `@code` `@name` `@level`</span></span>
@@ -329,10 +329,10 @@ statsDataAPI=0004001640</p>
   appId = appId,
   statsDataId = "",
   cdCat01 = c("",""))</code></pre>
-<div class="sourceCode" id="cb359"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsData.html">estat_getStatsData</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, statsDataId <span class="op">=</span> <span class="st">"0003410379"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Fetching record 1-4200... (total: 4200 records)</span></span></code></pre></div>
-<div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop</span></span>
 <span><span class="co">#&gt; # A tibble: 4,200 × 11</span></span>
 <span><span class="co">#&gt;    tab_code 表章項目 cat01_code 男女_時系列 area_code</span></span>
@@ -351,7 +351,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; # ℹ 6 more variables: 地域_時系列 &lt;chr&gt;, time_code &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   `時間軸（調査年）` &lt;chr&gt;, unit &lt;chr&gt;, value &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   annotation &lt;chr&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb361"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsData.html">estat_getStatsData</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, statsDataId <span class="op">=</span> <span class="st">"0003448219"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Fetching record 1-87... (total: 87 records)</span></span>
 <span><span class="va">estat_pop_alien</span></span>
@@ -373,7 +373,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; #   人口 &lt;chr&gt;, area_code &lt;chr&gt;, 全国 &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   time_code &lt;chr&gt;, `時間軸（年間）` &lt;chr&gt;, unit &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   value &lt;dbl&gt;, annotation &lt;chr&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsData.html">estat_getStatsData</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, statsDataId <span class="op">=</span> <span class="st">"0004001640"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Fetching record 1-87... (total: 87 records)</span></span>
 <span><span class="va">estat_pop_alien2</span></span>
@@ -396,7 +396,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; #   time_code &lt;chr&gt;, `時間軸（年間）` &lt;chr&gt;, unit &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   value &lt;dbl&gt;, annotation &lt;chr&gt;</span></span></code></pre></div>
 <p>0003445244</p>
-<div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsData.html">estat_getStatsData</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, lang <span class="op">=</span> <span class="st">"E"</span>, statsDataId <span class="op">=</span> <span class="st">"0003445244"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Fetching record 1-100000... (total: 100215 records)</span></span>
 <span><span class="co">#&gt; Fetching record 100001-100215... (total: 100215 records)</span></span>
@@ -419,7 +419,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; #   `Japan, Prefectures, Municipalities` &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   time_code &lt;chr&gt;, Time &lt;chr&gt;, unit &lt;chr&gt;, value &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   annotation &lt;chr&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien0</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">Nationality</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "Total"                                               </span></span>
 <span><span class="co">#&gt;  [2] "Foreigner"                                           </span></span>
@@ -438,7 +438,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; [15] "Others"                                              </span></span>
 <span><span class="co">#&gt; [16] "Japanese"                                            </span></span>
 <span><span class="co">#&gt; [17] "Nationality not reported"</span></span></code></pre></div>
-<div class="sourceCode" id="cb365"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2020</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://yutannihilation.github.io/estatapi/reference/estat_getStatsData.html">estat_getStatsData</a></span><span class="op">(</span>appId <span class="op">=</span> <span class="va">appId</span>, statsDataId <span class="op">=</span> <span class="st">"0003445244"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Fetching record 1-100000... (total: 100215 records)</span></span>
 <span><span class="co">#&gt; Fetching record 100001-100215... (total: 100215 records)</span></span>
@@ -461,7 +461,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; #   `全国，都道府県，市区町村` &lt;chr&gt;, time_code &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   `時間軸（年次）` &lt;chr&gt;, unit &lt;chr&gt;, value &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   annotation &lt;chr&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb395"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2020</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">国籍</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "総数"                      </span></span>
 <span><span class="co">#&gt;  [2] "外国人"                    </span></span>
@@ -480,10 +480,10 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; [15] "その他"                    </span></span>
 <span><span class="co">#&gt; [16] "日本人"                    </span></span>
 <span><span class="co">#&gt; [17] "日本人・外国人の別「不詳」"</span></span></code></pre></div>
-<div class="sourceCode" id="cb367"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2020</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">男女</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "総数" "男"   "女"</span></span></code></pre></div>
-<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb397"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">estat_pop_alien2020</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "tab_code"                 "表章事項"                </span></span>
 <span><span class="co">#&gt;  [3] "cat01_code"               "男女"                    </span></span>
@@ -492,7 +492,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt;  [9] "time_code"                "時間軸（年次）"          </span></span>
 <span><span class="co">#&gt; [11] "unit"                     "value"                   </span></span>
 <span><span class="co">#&gt; [13] "annotation"</span></span></code></pre></div>
-<div class="sourceCode" id="cb369"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2020</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">`全国，都道府県，市区町村`</span> <span class="op">==</span> <span class="st">"全国"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">男女</span> <span class="op">==</span> <span class="st">"総数"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -518,7 +518,7 @@ statsDataAPI=0004001640</p>
 <span><span class="co">#&gt; 14 ペルー                         41034</span></span>
 <span><span class="co">#&gt; 15 インド                         27915</span></span>
 <span><span class="co">#&gt; 16 イギリス                       13590</span></span></code></pre></div>
-<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb399"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estat_pop_alien2020</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">`全国，都道府県，市区町村`</span> <span class="op">==</span> <span class="st">"全国"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">男女</span> <span class="op">!=</span> <span class="st">"総数"</span><span class="op">)</span> <span class="op">|&gt;</span></span>

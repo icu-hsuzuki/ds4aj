@@ -200,6 +200,8 @@ ggplot(data = iris, aes(y = Species, x = Sepal.Length)) +
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
+各、種類（Species）ごとに、Sepal.Width（萼（がく）幅）が、どのように分布しているかを示しています。真ん中の太い線が、中央値（median）、箱が、第一四分位（Q1）から第三四分位（Q3）、線と点で表される外れ値も、どのような基準か定められています。(IQR = Q3-Q1, 線は、Q3+1.5$\times$ IQR 以下に入っている実際の値までと、Q1-1.5 $\times$ IQR 以上に入っている実際の値まで。それらに入っていないものが外れ値)。
+
 color を指定すると、枠に色がつき、fill を指定すると、箱の中が塗り潰されます。
 
 
@@ -310,6 +312,118 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
+## 例から学ぶ ggplot2`,` II
+
+### df_wdi, df_wdi_extra
+
+前の章の `Tidyverse` で読み込み、概観した、世界開発指標（World Development Indicators）のデータを使います。[参照：WDI のデータ](https://icu-hsuzuki.github.io/ds4aj/tidyverse.html#wdi-のデータ)
+
+
+```r
+library(tidyverse)
+library(WDI)
+```
+
+WDI の使い方は、世界銀行の部分で紹介しますが、はじめてのデータサイエンスの例でも紹介したように、データコードを利用して、データを読み込みます。ここでは、出生時の平均寿命と、一人当たりの　GDP と、総人口のデータを使います。
+
+-   SP.DYN.LE00.IN: Life expectancy at birth, total (years) 出生時の平均寿命
+-   SP.POP.TOTL: Population, total 総人口
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) 一人当たりの　GDP
+
+次のコードで読み込みます。
+
+
+```r
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
+```
+
+
+
+
+```
+#> Rows: 16758 Columns: 7
+#> ── Column specification ────────────────────────────────────
+#> Delimiter: ","
+#> chr (3): country, iso2c, iso3c
+#> dbl (4): year, lifeExp, pop, gdpPercap
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+
+```r
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+```
+
+すこし、追加情報を付加したものも取得しておきます。
+
+
+
+
+```
+#> Rows: 16758 Columns: 15
+#> ── Column specification ────────────────────────────────────
+#> Delimiter: ","
+#> chr  (7): country, iso2c, iso3c, region, capital, income...
+#> dbl  (6): year, lifeExp, pop, gdpPercap, longitude, lati...
+#> lgl  (1): status
+#> date (1): lastupdated
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+
+```r
+df_wdi_extra
+#> # A tibble: 16,758 × 15
+#>    country     iso2c iso3c  year status lastupdated lifeExp
+#>    <chr>       <chr> <chr> <dbl> <lgl>  <date>        <dbl>
+#>  1 Afghanistan AF    AFG    2014 NA     2023-07-25     62.5
+#>  2 Afghanistan AF    AFG    2012 NA     2023-07-25     61.9
+#>  3 Afghanistan AF    AFG    2009 NA     2023-07-25     60.4
+#>  4 Afghanistan AF    AFG    2013 NA     2023-07-25     62.4
+#>  5 Afghanistan AF    AFG    1971 NA     2023-07-25     37.9
+#>  6 Afghanistan AF    AFG    2015 NA     2023-07-25     62.7
+#>  7 Afghanistan AF    AFG    1969 NA     2023-07-25     36.9
+#>  8 Afghanistan AF    AFG    2010 NA     2023-07-25     60.9
+#>  9 Afghanistan AF    AFG    2011 NA     2023-07-25     61.4
+#> 10 Afghanistan AF    AFG    2008 NA     2023-07-25     59.9
+#> # ℹ 16,748 more rows
+#> # ℹ 8 more variables: pop <dbl>, gdpPercap <dbl>,
+#> #   region <chr>, capital <chr>, longitude <dbl>,
+#> #   latitude <dbl>, income <chr>, lending <chr>
+```
+
+### 
+
+**例3 折線グラフ（line graph）**
+
+WDI は時系列データですから、折れ線グラフも使います。後ほど紹介しますが、
+
+`{<DATA> |> ggplot(aes(year, lifeExp)) + geom_line()}`
+
+と言った感じです。
+
+まずは、失敗例から。次のコードでグラフが描けるでしょうか。
+
+
+```r
+df_wdi |> ggplot(aes(year, lifeExp)) + geom_line()
+#> Warning: Removed 266 rows containing missing values
+#> (`geom_line()`).
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+
 ## 例　パッケージ Gapminder を使って
 
 
@@ -385,7 +499,7 @@ You will encounter similar failures. We list three of them.
 ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-35-1.png" width="672" />
 
 There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, .... Can you tell how many years are in the data? The following command shows different years in the data.
 
@@ -403,7 +517,7 @@ You can guess it from the data summary above. Can you imagine how many countries
 ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_line()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-37-1.png" width="672" />
 
 Now, you can guess the reason why you had this output. This is often called a saw-tooth.
 
@@ -414,7 +528,7 @@ ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_boxplot()
 #> ℹ did you forget `aes(group = ...)`?
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-38-1.png" width="672" />
 
 Can you see what the problem is? The `year` is a numerical variable in integer.
 
@@ -431,7 +545,7 @@ The following looks better.
 ggplot(df_gm, aes(y = lifeExp, group = year)) + geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-40-1.png" width="672" />
 
 ##### Box Plot
 
@@ -440,7 +554,7 @@ ggplot(df_gm, aes(y = lifeExp, group = year)) + geom_boxplot()
 ggplot(df_gm, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-41-1.png" width="672" />
 
 You can use `fill` and `color` for the box plot. Try and check the difference.
 
@@ -451,7 +565,7 @@ df_gm %>% filter(year %in% c(1952, 1987, 2007)) %>%
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-42-1.png" width="672" />
 
 The following are examples of line graphs. Please see the differences.
 
@@ -468,7 +582,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent)) +
   geom_line()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-44-1.png" width="672" />
 
 
 ```r
@@ -476,7 +590,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent, linetyp
   geom_line()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-45-1.png" width="672" />
 
 
 ```r
@@ -485,7 +599,7 @@ df_lifeExp %>% ggplot() +
   geom_line(aes(x = year, y = median_lifeExp, linetype = continent))
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-37-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-46-1.png" width="672" />
 
 ### Original Data? WDI?
 

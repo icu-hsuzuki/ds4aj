@@ -242,7 +242,7 @@ write_csv(df_wdi, "./data/wdi.csv")
 df_wdi <- read_csv("./data/wdi.csv")
 ```
 
-注：WDI のサイトは、頻繁に、保守をしているため、時々、データをダウンロードできないことがあります。そのときは、すでに、ダウンロードしてものがわたしの GitHub [サイト]("https://github.com/icu-hsuzuki/ds4aj/blob/main/data/wdi.csv")にありますから、そこから次のコードで読み込んでください。
+注：WDI のサイトは、頻繁に、保守をしているため、時々、データをダウンロードできないことがあります。そのときは、すでに、ダウンロードしてものがわたしの GitHub [サイト](%22https://github.com/icu-hsuzuki/ds4aj/blob/main/data/wdi.csv%22)にありますから、そこから次のコードで読み込んでください。
 
 最初の10行をみてみましょう。
 

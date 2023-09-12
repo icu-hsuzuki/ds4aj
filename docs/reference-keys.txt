@@ -257,7 +257,6 @@ select-名前とタイプによって列変数を選択
 filter-列の値の条件に適合した行の選択
 arrange
 mutate
-group_by-and-summarise
 group_by
 summarise-or-summarize
 集約のための関数
@@ -302,6 +301,9 @@ tidyverse-の読み込み
 箱ひげ図-boxplot
 ヒストグラム-histogram
 線形モデル-data-modeling
+例から学ぶ-ggplot2-ii
+df_wdi-df_wdi_extra-1
+section-1
 例-パッケージ-gapminder-を使って
 tidyverseggplot
 first-try---with-failures

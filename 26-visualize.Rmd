@@ -144,6 +144,8 @@ ggplot(data = iris, aes(y = Species, x = Sepal.Length)) +
   geom_boxplot()
 ```
 
+各、種類（Species）ごとに、Sepal.Width（萼（がく）幅）が、どのように分布しているかを示しています。真ん中の太い線が、中央値（median）、箱が、第一四分位（Q1）から第三四分位（Q3）、線と点で表される外れ値も、どのような基準か定められています。(IQR = Q3-Q1, 線は、Q3+1.5$\times$ IQR 以下に入っている実際の値までと、Q1-1.5 $\times$ IQR 以上に入っている実際の値まで。それらに入っていないものが外れ値)。
+
 color を指定すると、枠に色がつき、fill を指定すると、箱の中が塗り潰されます。
 
 ```{r}
@@ -218,6 +220,87 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() +
   geom_smooth()
+```
+
+## 例から学ぶ ggplot2`,` II
+
+### df_wdi, df_wdi_extra
+
+前の章の `Tidyverse` で読み込み、概観した、世界開発指標（World Development Indicators）のデータを使います。[参照：WDI のデータ](https://icu-hsuzuki.github.io/ds4aj/tidyverse.html#wdi-のデータ)
+
+```{r}
+library(tidyverse)
+library(WDI)
+```
+
+WDI の使い方は、世界銀行の部分で紹介しますが、はじめてのデータサイエンスの例でも紹介したように、データコードを利用して、データを読み込みます。ここでは、出生時の平均寿命と、一人当たりの　GDP と、総人口のデータを使います。
+
+-   SP.DYN.LE00.IN: Life expectancy at birth, total (years) 出生時の平均寿命
+-   SP.POP.TOTL: Population, total 総人口
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) 一人当たりの　GDP
+
+次のコードで読み込みます。
+
+```{r eval=FALSE}
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
+```
+
+```{r echo=FALSE, eval=FALSE}
+df_wdi <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+)
+write_csv(df_wdi, "./data/wdi.csv")
+```
+
+```{r echo=FALSE, eval=TRUE}
+df_wdi <- read_csv("./data/wdi.csv")
+```
+
+```{r eval=FALSE}
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+```
+
+すこし、追加情報を付加したものも取得しておきます。
+
+```{r eval=FALSE, echo=FALSE}
+df_wdi_extra <- WDI(
+  country = "all", 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  extra = TRUE
+)
+write_csv(df_wdi_extra, "./data/wdi_extra.csv")
+```
+
+```{r eval=TRUE, echo=FALSE}
+df_wdi_extra <- read_csv("./data/wdi_extra.csv")
+```
+
+```{r}
+df_wdi_extra
+```
+
+### 
+
+**例3 折線グラフ（line graph）**
+
+WDI は時系列データですから、折れ線グラフも使います。後ほど紹介しますが、
+
+`{<DATA> |> ggplot(aes(year, lifeExp)) + geom_line()}`
+
+と言った感じです。
+
+まずは、失敗例から。次のコードでグラフが描けるでしょうか。
+
+```{r}
+df_wdi |> ggplot(aes(year, lifeExp)) + geom_line()
 ```
 
 ## 例　パッケージ Gapminder を使って

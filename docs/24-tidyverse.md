@@ -419,7 +419,7 @@ df_wdi <- WDI(
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
-注：WDI のサイトは、頻繁に、保守をしているため、時々、データをダウンロードできないことがあります。そのときは、すでに、ダウンロードしてものがわたしの GitHub [サイト]("https://github.com/icu-hsuzuki/ds4aj/blob/main/data/wdi.csv")にありますから、そこから次のコードで読み込んでください。
+注：WDI のサイトは、頻繁に、保守をしているため、時々、データをダウンロードできないことがあります。そのときは、すでに、ダウンロードしてものがわたしの GitHub [サイト](%22https://github.com/icu-hsuzuki/ds4aj/blob/main/data/wdi.csv%22)にありますから、そこから次のコードで読み込んでください。
 
 最初の10行をみてみましょう。
 

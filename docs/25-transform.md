@@ -1,3 +1,7 @@
+---
+---
+---
+
 # 変形（Transform） {#transform}
 
 > ここでは、`tidyverse` パッケージを構成する `dplyr` パッケージを用いて、データを変形することを学びます。変形とは、例えば、データのなかのある条件を満たす行や列を抽出（取り出）したり、特定の列を修正したり、データの中のいくつかの列に含まれる情報をもとに計算して、新たな列を作ったり、グループに分けたり、順番を入れ替えたりといったことです。データを集約し（まとめ）たり、グラフを作成するときにも、必要不可欠な作業です。
@@ -43,7 +47,7 @@ b
 ### [`select`](https://dplyr.tidyverse.org/reference/select.html): 名前とタイプによって、列（変数）を選択
 
 | 補助関数      | 条件                   | 例                                                    |
-|-----------------|----------------------|-------------------------------------|
+|-----------------|-----------------|-------------------------------------|
 | \-            | 列の排除               | select(iris, -Species)                                |
 | :             | 列の範囲               | select(iris, 1:4)                                     |
 | contains()    | 指定文字列を含         | select(iris, contains("Width"))                       |
@@ -92,8 +96,6 @@ NA は、not available 値が存在しないという意味です。欠損値の
 
 -   `na_if()`, `coalesce()`: `na_if(x,y)` は、x の中で、y と等しいものは、NA に置き換え、`coalesce()` は、最初の欠損していない値を返します。
 
-### `group_by()` and `summarise()`
-
 ### [`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)
 
 指定した列の値によって表全体をグループ化した表を作成します。表自体が変形されるわけではありませんから、注意してください。次の、`summarize` と合わせて利用すると便利です。
@@ -124,7 +126,7 @@ NA は、not available 値が存在しないという意味です。欠損値の
 
 ### パイプ（Pipe）`%>%` `|>`
 
-[`pipes`](https://r4ds.hadley.nz/workflow-style.html#sec-pipes) in R は、すでに説明してましたが、ここにまとめておきます。
+`pipe` in R は、すでに説明してましたが、ここにまとめておきます。
 
 `%>%` は、`tidyverse` パッケージで、関数のチェーン化を行うために使用されるパイプ演算子ですが、R 4.1 以降は、`|>` が、R に組み込まれた、ネイティブなパイプライン演算子になっています。`tidyverse` を使っているときは、どちらを使うことも可能ですが、`|>` を使うことをお勧めします。R の versoin を確認するには、コンソール（Console）で、`R.Version()` または、`R.version$version.string` とします。
 
@@ -134,7 +136,7 @@ NA は、not available 値が存在しないという意味です。欠損値の
 
 2.  実際には、`tidyverse` の `%>%` と、R に組み込まれた `|>` とは多少異なるようです。こちらの[記事](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/)をご覧ください。本書では、`|>` を使いますが、注意が必要な場合は、コメントします。
 
-## 例から学ぶ `dplyr` I
+## 例から学ぶ `dplyr,` I
 
 ### Data `iris`
 
@@ -232,7 +234,7 @@ head(df_iris125)
 
 
 ```r
-df_iris |> select(c(1,2,5)) |> head()
+df_iris |> select(1,2,5) |> head()
 #>   Sepal.Length Sepal.Width Species
 #> 1          5.1         3.5  setosa
 #> 2          4.9         3.0  setosa
@@ -242,7 +244,7 @@ df_iris |> select(c(1,2,5)) |> head()
 #> 6          5.4         3.9  setosa
 ```
 
-より、詳しく知りたい場合には、Help に `|>` と入れて説明を読んでください。
+もちろん、`select(c(1,2,5)`) でも同じ結果が得られます。より、詳しく知りたい場合には、Help に `|>` と入れて説明を読んでください。
 
 In the following, we use pipes.
 
@@ -295,7 +297,7 @@ select(df_iris, c(5,3,4,1,2)) |> head()
 
 #### 備考
 
-1.  上の、`select` の 補助関数（helper functions）にも書きましたように、他にも様々な方法で、列を抽出することが可能です。たくさんの列がある表に出会ったら、ぜひ使ってください。
+1.  上の、`select` の 補助関数（helper functions）にも書きましたように、他にも様々な方法で、列を抽出することが可能です。たくさんの列がある表に出会ったら、ぜひ活用してください。
 2.  最初は、それほど大きなデータ（表）を扱うことは少ないかもしれませんが、それでも、上で紹介した、列の名前を変更したり、列の順序を変更するなどは、有益です。使いやすく、見やすい形に変えてから、作業をすることはおすすめです。
 
 ### `filter` - 値による抽出
@@ -412,7 +414,7 @@ df_iris |>
 -   [Isolating Data with dplyr](https://rstudio.cloud/learn/primers/2.2)
 -   [Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3)
 
-## 例から学ぶ `dplyr` II
+## 例から学ぶ `dplyr,` II
 
 ### df_wdi, df_wdi_extra
 
@@ -526,45 +528,483 @@ df_iris |> ggplot(aes(Sepal.Width, Sepal.Length, color = Species)) +
 
 <img src="25-transform_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
-**例2 箱ひげ図（boxplot）**
-
-
-```r
-df_iris |> ggplot(aes(Sepal.Width, Species)) +
-  geom_boxplot()
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-27-1.png" width="672" />
-
-各、種類（Species）ごとに、Sepal.Width（萼（がく）幅）が、どのように分布しているかを示しています。真ん中の太い線が、中央値（median）、箱が、第一四分位（Q1）から第三四分位（Q3）、線と点で表される外れ値も、どのような基準か定められています。(IQR = Q3-Q1, 線は、Q3+1.5$\times$ IQR 以下に入っている実際の値までと、Q1-1.5 $\times$ IQR 以上に入っている実際の値まで。それらに入っていないものが外れ値)。
-
-現時点では、分布を示すグラフだと理解してください。
-
-**例3 折線グラフ（line graph）**
-
-WDI は時系列データですから、折れ線グラフも使います。後ほど紹介しますが、
-
-```{<DATA> |> ggplot(aes(year, lifeExp)) + geom_line()}
-```
-
-と言った感じです。
-
-まずは、失敗例から。次のコードでグラフが描けるでしょうか。
-
-
-```r
-df_wdi |> ggplot(aes(year, lifeExp)) + geom_line()
-#> Warning: Removed 266 rows containing missing values
-#> (`geom_line()`).
-```
-
-<img src="25-transform_files/figure-html/unnamed-chunk-28-1.png" width="672" />
-
 ### `dplyr` の応用
 
-##### `filter`
+すべて、`dplyr` というわけではありませんが、データを理解していきたいと思います。
 
-一番上に、国名（country）に、アフガニスタン（Afghanistan） がありましたから、aアフガニスタンのデータを選び、平均寿命（lifeExp: Life Expectancy）の折線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。
+二つのデータ `df_wdi` と `df_wdi_extra` がありました。この違いをまずは見ていきましょう。`colnames` は、列名が並んだもの（ベクトル）を出力します。
+
+
+```r
+df_wdi |> colnames()
+#> [1] "country"   "iso2c"     "iso3c"     "year"     
+#> [5] "lifeExp"   "pop"       "gdpPercap"
+```
+
+
+```r
+df_wdi_extra |> colnames()
+#>  [1] "country"     "iso2c"       "iso3c"       "year"       
+#>  [5] "status"      "lastupdated" "lifeExp"     "pop"        
+#>  [9] "gdpPercap"   "region"      "capital"     "longitude"  
+#> [13] "latitude"    "income"      "lending"
+```
+
+`df_wdi_extra` の一部が、`df_wdi` のようです。
+
+ここからは、しばらく、`df_wdi_extra` をみていきます。`range` は、最小、最大を見るのに使います。`df_wdi_extra$year` は、`df_wdi_extra` の `year` の列を取り出したもの（ベクトルといいます）です。
+
+
+```r
+range(df_wdi_extra$year)
+#> [1] 1960 2022
+```
+
+`unique` を使って、その列で相異なるものをすべてリストすることもできます。
+
+
+```r
+unique(df_wdi_extra$income)
+#> [1] "Low income"          "Aggregates"         
+#> [3] "Upper middle income" "Lower middle income"
+#> [5] "High income"         NA                   
+#> [7] "Not classified"
+```
+
+Aggregates とか、Not classified とか、NA は何を表しているのでしょうか。あとで見てみましょう。Google Public Data Explorer を使ったときに、Income Level というものがありました。覚えていますか。
+
+**参考：[The World by Income and Region](https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html)**
+
+
+```r
+unique(df_wdi_extra$region)
+#> [1] "South Asia"                
+#> [2] "Aggregates"                
+#> [3] "Europe & Central Asia"     
+#> [4] "Middle East & North Africa"
+#> [5] "East Asia & Pacific"       
+#> [6] "Sub-Saharan Africa"        
+#> [7] "Latin America & Caribbean" 
+#> [8] "North America"             
+#> [9] NA
+```
+
+これらは、あとで使いますから、残しておきましょう。そこで、country, iso2c, year, liefExp, pop, gdpPercap, income, region だけを取り出します。列を選択するので、`select` を使います。
+
+
+```r
+df_wdi3 <- df_wdi_extra |> select(country, iso2c, year, lifeExp, pop, gdpPercap, income, region)
+df_wdi3
+#> # A tibble: 16,758 × 8
+#>    country     iso2c  year lifeExp      pop gdpPercap income
+#>    <chr>       <chr> <dbl>   <dbl>    <dbl>     <dbl> <chr> 
+#>  1 Afghanistan AF     2014    62.5 32716210      603. Low i…
+#>  2 Afghanistan AF     2012    61.9 30466479      596. Low i…
+#>  3 Afghanistan AF     2009    60.4 27385307      512. Low i…
+#>  4 Afghanistan AF     2013    62.4 31541209      608. Low i…
+#>  5 Afghanistan AF     1971    37.9 11015857       NA  Low i…
+#>  6 Afghanistan AF     2015    62.7 33753499      592. Low i…
+#>  7 Afghanistan AF     1969    36.9 10494489       NA  Low i…
+#>  8 Afghanistan AF     2010    60.9 28189672      569. Low i…
+#>  9 Afghanistan AF     2011    61.4 29249157      551. Low i…
+#> 10 Afghanistan AF     2008    59.9 26427199      437. Low i…
+#> # ℹ 16,748 more rows
+#> # ℹ 1 more variable: region <chr>
+```
+
+何列目かを指定することもできます。今回は少し多いので大変ですが。
+
+
+```r
+df_wdi_extra |> select(1,2,4,7,8,9,10,14)
+#> # A tibble: 16,758 × 8
+#>    country     iso2c  year lifeExp      pop gdpPercap region
+#>    <chr>       <chr> <dbl>   <dbl>    <dbl>     <dbl> <chr> 
+#>  1 Afghanistan AF     2014    62.5 32716210      603. South…
+#>  2 Afghanistan AF     2012    61.9 30466479      596. South…
+#>  3 Afghanistan AF     2009    60.4 27385307      512. South…
+#>  4 Afghanistan AF     2013    62.4 31541209      608. South…
+#>  5 Afghanistan AF     1971    37.9 11015857       NA  South…
+#>  6 Afghanistan AF     2015    62.7 33753499      592. South…
+#>  7 Afghanistan AF     1969    36.9 10494489       NA  South…
+#>  8 Afghanistan AF     2010    60.9 28189672      569. South…
+#>  9 Afghanistan AF     2011    61.4 29249157      551. South…
+#> 10 Afghanistan AF     2008    59.9 26427199      437. South…
+#> # ℹ 16,748 more rows
+#> # ℹ 1 more variable: income <chr>
+```
+
+Aggregates は何を意味しているのかみてみましょう。filter で、その行だけを取り出します。
+
+
+```r
+df_wdi3 |> filter(income == "Aggregates")
+#> # A tibble: 2,646 × 8
+#>    country       iso2c  year lifeExp    pop gdpPercap income
+#>    <chr>         <chr> <dbl>   <dbl>  <dbl>     <dbl> <chr> 
+#>  1 Africa Easte… ZH     1989    50.7 3.01e8     1367. Aggre…
+#>  2 Africa Easte… ZH     1990    50.6 3.10e8     1329. Aggre…
+#>  3 Africa Easte… ZH     1973    47.7 1.88e8     1450. Aggre…
+#>  4 Africa Easte… ZH     1974    47.6 1.94e8     1491. Aggre…
+#>  5 Africa Easte… ZH     1977    48.6 2.11e8     1448. Aggre…
+#>  6 Africa Easte… ZH     1978    48.8 2.17e8     1421. Aggre…
+#>  7 Africa Easte… ZH     1972    46.9 1.83e8     1429. Aggre…
+#>  8 Africa Easte… ZH     1987    50.1 2.84e8     1352. Aggre…
+#>  9 Africa Easte… ZH     1975    47.8 1.99e8     1473. Aggre…
+#> 10 Africa Easte… ZH     1976    48.3 2.05e8     1472. Aggre…
+#> # ℹ 2,636 more rows
+#> # ℹ 1 more variable: region <chr>
+```
+
+どうも、国ではなく、地域のようです。確認しておきましょう。unique を使って、
+
+
+```r
+unique(filter(df_wdi3, income == "Aggregates")$country)
+#>  [1] "Africa Eastern and Southern"                         
+#>  [2] "Africa Western and Central"                          
+#>  [3] "Arab World"                                          
+#>  [4] "Caribbean small states"                              
+#>  [5] "Central Europe and the Baltics"                      
+#>  [6] "Early-demographic dividend"                          
+#>  [7] "East Asia & Pacific"                                 
+#>  [8] "East Asia & Pacific (excluding high income)"         
+#>  [9] "East Asia & Pacific (IDA & IBRD countries)"          
+#> [10] "Euro area"                                           
+#> [11] "Europe & Central Asia"                               
+#> [12] "Europe & Central Asia (excluding high income)"       
+#> [13] "Europe & Central Asia (IDA & IBRD countries)"        
+#> [14] "European Union"                                      
+#> [15] "Fragile and conflict affected situations"            
+#> [16] "Heavily indebted poor countries (HIPC)"              
+#> [17] "IBRD only"                                           
+#> [18] "IDA & IBRD total"                                    
+#> [19] "IDA blend"                                           
+#> [20] "IDA only"                                            
+#> [21] "IDA total"                                           
+#> [22] "Late-demographic dividend"                           
+#> [23] "Latin America & Caribbean (excluding high income)"   
+#> [24] "Latin America & the Caribbean (IDA & IBRD countries)"
+#> [25] "Least developed countries: UN classification"        
+#> [26] "Low & middle income"                                 
+#> [27] "Middle East & North Africa"                          
+#> [28] "Middle East & North Africa (excluding high income)"  
+#> [29] "Middle East & North Africa (IDA & IBRD countries)"   
+#> [30] "Middle income"                                       
+#> [31] "North America"                                       
+#> [32] "OECD members"                                        
+#> [33] "Other small states"                                  
+#> [34] "Pacific island small states"                         
+#> [35] "Post-demographic dividend"                           
+#> [36] "Pre-demographic dividend"                            
+#> [37] "Small states"                                        
+#> [38] "South Asia"                                          
+#> [39] "South Asia (IDA & IBRD)"                             
+#> [40] "Sub-Saharan Africa (excluding high income)"          
+#> [41] "Sub-Saharan Africa (IDA & IBRD countries)"           
+#> [42] "World"
+```
+
+とする手もありますが、パイプを使うときは、そのまま、country で異なるものを取り出した表にした方が簡単なので、`distinct` を使って、次のようにすることもできます。
+
+
+```r
+df_wdi3 |> filter(income == "Aggregates") |> distinct(country)
+#> # A tibble: 42 × 1
+#>    country                                    
+#>    <chr>                                      
+#>  1 Africa Eastern and Southern                
+#>  2 Africa Western and Central                 
+#>  3 Arab World                                 
+#>  4 Caribbean small states                     
+#>  5 Central Europe and the Baltics             
+#>  6 Early-demographic dividend                 
+#>  7 East Asia & Pacific                        
+#>  8 East Asia & Pacific (excluding high income)
+#>  9 East Asia & Pacific (IDA & IBRD countries) 
+#> 10 Euro area                                  
+#> # ℹ 32 more rows
+```
+
+unique を使った場合と同じ表示にしたければ、最後に　`pull()` を付け加えて、その列だけを、並べて（ベクトル）表示することも可能です。
+
+
+```r
+df_wdi3 |> filter(income == "Aggregates") |> distinct(country) |> pull()
+#>  [1] "Africa Eastern and Southern"                         
+#>  [2] "Africa Western and Central"                          
+#>  [3] "Arab World"                                          
+#>  [4] "Caribbean small states"                              
+#>  [5] "Central Europe and the Baltics"                      
+#>  [6] "Early-demographic dividend"                          
+#>  [7] "East Asia & Pacific"                                 
+#>  [8] "East Asia & Pacific (excluding high income)"         
+#>  [9] "East Asia & Pacific (IDA & IBRD countries)"          
+#> [10] "Euro area"                                           
+#> [11] "Europe & Central Asia"                               
+#> [12] "Europe & Central Asia (excluding high income)"       
+#> [13] "Europe & Central Asia (IDA & IBRD countries)"        
+#> [14] "European Union"                                      
+#> [15] "Fragile and conflict affected situations"            
+#> [16] "Heavily indebted poor countries (HIPC)"              
+#> [17] "IBRD only"                                           
+#> [18] "IDA & IBRD total"                                    
+#> [19] "IDA blend"                                           
+#> [20] "IDA only"                                            
+#> [21] "IDA total"                                           
+#> [22] "Late-demographic dividend"                           
+#> [23] "Latin America & Caribbean (excluding high income)"   
+#> [24] "Latin America & the Caribbean (IDA & IBRD countries)"
+#> [25] "Least developed countries: UN classification"        
+#> [26] "Low & middle income"                                 
+#> [27] "Middle East & North Africa"                          
+#> [28] "Middle East & North Africa (excluding high income)"  
+#> [29] "Middle East & North Africa (IDA & IBRD countries)"   
+#> [30] "Middle income"                                       
+#> [31] "North America"                                       
+#> [32] "OECD members"                                        
+#> [33] "Other small states"                                  
+#> [34] "Pacific island small states"                         
+#> [35] "Post-demographic dividend"                           
+#> [36] "Pre-demographic dividend"                            
+#> [37] "Small states"                                        
+#> [38] "South Asia"                                          
+#> [39] "South Asia (IDA & IBRD)"                             
+#> [40] "Sub-Saharan Africa (excluding high income)"          
+#> [41] "Sub-Saharan Africa (IDA & IBRD countries)"           
+#> [42] "World"
+```
+
+unclassified と、NA もみておきましょう。まず、Aggregates 以外を見たいので、等しくないは、`!=` を使います。
+
+
+```r
+df_wdi3 |> filter(income != "Aggregates") |> distinct(income) 
+#> # A tibble: 5 × 1
+#>   income             
+#>   <chr>              
+#> 1 Low income         
+#> 2 Upper middle income
+#> 3 Lower middle income
+#> 4 High income        
+#> 5 Not classified
+```
+
+NA もなくなりましたから、あとは、Not classified ですね。
+
+
+```r
+df_wdi3 |> filter(income != "Aggregates") |> 
+  filter(income == "Not classified") |> distinct(country) 
+#> # A tibble: 1 × 1
+#>   country      
+#>   <chr>        
+#> 1 Venezuela, RB
+```
+
+ベネズエラ（Venezuela, RB）は、経済が安定していないので、このようになるようです。これは、残しておいて、Aggregates でないものだけ選択しましょう。通常の、country のみですから、`df_wdi3c` としておきます。
+
+
+```r
+df_wdi3c <- df_wdi3 |> filter(income != "Aggregates") 
+df_wdi3c
+#> # A tibble: 13,608 × 8
+#>    country     iso2c  year lifeExp      pop gdpPercap income
+#>    <chr>       <chr> <dbl>   <dbl>    <dbl>     <dbl> <chr> 
+#>  1 Afghanistan AF     2014    62.5 32716210      603. Low i…
+#>  2 Afghanistan AF     2012    61.9 30466479      596. Low i…
+#>  3 Afghanistan AF     2009    60.4 27385307      512. Low i…
+#>  4 Afghanistan AF     2013    62.4 31541209      608. Low i…
+#>  5 Afghanistan AF     1971    37.9 11015857       NA  Low i…
+#>  6 Afghanistan AF     2015    62.7 33753499      592. Low i…
+#>  7 Afghanistan AF     1969    36.9 10494489       NA  Low i…
+#>  8 Afghanistan AF     2010    60.9 28189672      569. Low i…
+#>  9 Afghanistan AF     2011    61.4 29249157      551. Low i…
+#> 10 Afghanistan AF     2008    59.9 26427199      437. Low i…
+#> # ℹ 13,598 more rows
+#> # ℹ 1 more variable: region <chr>
+```
+
+散布図を書いてみましょう。
+
+
+```r
+df_wdi3c |> ggplot(aes(gdpPercap, lifeExp)) + geom_point()
+#> Warning: Removed 3998 rows containing missing values
+#> (`geom_point()`).
+```
+
+<img src="25-transform_files/figure-html/unnamed-chunk-41-1.png" width="672" />
+
+一応、なにか描けましたが、どうも、すごく点の数が多いですね。それと、欠損値もたくさんあるようです。また、gdpPercap でみると、値が小さいところに固まってあるようです。
+
+まずは、すべての年について、値を使っていますから、2022 年に限ってみましょう。
+
+
+```r
+df_wdi3c |> filter(year == "2022") |>
+  ggplot(aes(gdpPercap, lifeExp)) + geom_point()
+#> Warning: Removed 216 rows containing missing values
+#> (`geom_point()`).
+```
+
+<img src="25-transform_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+
+どうも、何も現れません。2021 年ならどうでしょうか。
+
+
+```r
+df_wdi3c |> filter(year == 2021) |>
+  ggplot(aes(gdpPercap, lifeExp)) + geom_point()
+#> Warning: Removed 22 rows containing missing values
+#> (`geom_point()`).
+```
+
+<img src="25-transform_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+
+データがない国もあるようですが、どうやら表示されました。データがない国は、削除しておいたり region を 色で表したり、人口を、点の大きさで表したり、gdpPercap を log10 をとって、値を修正して表すなども可能ですが、それは、可視化の項目で学びます。
+
+
+```r
+df_wdi3c |> filter(year == 2021) |> drop_na(lifeExp, gdpPercap) |>
+  ggplot(aes(gdpPercap, lifeExp, color = region, size = pop)) + 
+  geom_point() + scale_x_log10()
+```
+
+<img src="25-transform_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+
+こうしてみると、gdpPercap が大きい国ほど、lifeExp も大きい傾向があることも見えますね。
+
+ここまでは、`select` と、`filter` を使ってきましたが、`arrange`、`mutate`、`group_by` や、`summarize` も使ってみましょう。
+
+まず、gdpPercap は一人当たりの GDP でしたから、この値に、pop 人口をかければ、原理的には、GDP が得られることになります。（さまざまな基準がありますから、詳細は、調べてください。）順番を、入れ替えて、year の次に、gdp がくるようにしておきます。他にも、year の後に置くようにとの指示もできます。Help で確認してください。例も載っています。また、掛け算は、\* を使います。これを、df_wdi4c としておきましょう。また、year が順番になっていないのが気になりますから、大きい順に並べ替えておきましょう。
+
+
+```r
+df_wdi4c <- df_wdi3c |> mutate(gdp = pop*gdpPercap) |> 
+  select(1,2,3,9,4,5,6,7,8) |> arrange(country, desc(year))
+df_wdi4c
+#> # A tibble: 13,608 × 9
+#>    country     iso2c  year      gdp lifeExp    pop gdpPercap
+#>    <chr>       <chr> <dbl>    <dbl>   <dbl>  <dbl>     <dbl>
+#>  1 Afghanistan AF     2022 NA          NA   4.11e7       NA 
+#>  2 Afghanistan AF     2021  1.71e10    62.0 4.01e7      426.
+#>  3 Afghanistan AF     2020  2.16e10    62.6 3.90e7      553.
+#>  4 Afghanistan AF     2019  2.21e10    63.6 3.78e7      584.
+#>  5 Afghanistan AF     2018  2.12e10    63.1 3.67e7      579.
+#>  6 Afghanistan AF     2017  2.10e10    63.0 3.56e7      589.
+#>  7 Afghanistan AF     2016  2.05e10    63.1 3.46e7      590.
+#>  8 Afghanistan AF     2015  2.00e10    62.7 3.38e7      592.
+#>  9 Afghanistan AF     2014  1.97e10    62.5 3.27e7      603.
+#> 10 Afghanistan AF     2013  1.92e10    62.4 3.15e7      608.
+#> # ℹ 13,598 more rows
+#> # ℹ 2 more variables: income <chr>, region <chr>
+```
+
+
+```r
+df_wdi3c |> mutate(gdp = pop*gdpPercap, .after = year) |> 
+  arrange(country, desc(year))
+#> # A tibble: 13,608 × 9
+#>    country     iso2c  year      gdp lifeExp    pop gdpPercap
+#>    <chr>       <chr> <dbl>    <dbl>   <dbl>  <dbl>     <dbl>
+#>  1 Afghanistan AF     2022 NA          NA   4.11e7       NA 
+#>  2 Afghanistan AF     2021  1.71e10    62.0 4.01e7      426.
+#>  3 Afghanistan AF     2020  2.16e10    62.6 3.90e7      553.
+#>  4 Afghanistan AF     2019  2.21e10    63.6 3.78e7      584.
+#>  5 Afghanistan AF     2018  2.12e10    63.1 3.67e7      579.
+#>  6 Afghanistan AF     2017  2.10e10    63.0 3.56e7      589.
+#>  7 Afghanistan AF     2016  2.05e10    63.1 3.46e7      590.
+#>  8 Afghanistan AF     2015  2.00e10    62.7 3.38e7      592.
+#>  9 Afghanistan AF     2014  1.97e10    62.5 3.27e7      603.
+#> 10 Afghanistan AF     2013  1.92e10    62.4 3.15e7      608.
+#> # ℹ 13,598 more rows
+#> # ℹ 2 more variables: income <chr>, region <chr>
+```
+
+2022 年のデータはあまりないようですから、2021 年の GDP の大きい順に並べてみましょう。gdp が　2.052946e13 などと書かれているのは、指数表示（Scientific Notation）で、e3 は、1000 千、e6 は、1,000,000 百万、e9 は、1,000,000,000 千億、e12 は、1,000,000,000,000 超です。つまり、アメリカの GDP は、だいたい、20兆ドル、日本は、4.5兆ドルと言ったところです。
+
+
+```r
+df_wdi4c |> filter(year == 2021) |> arrange(desc(gdp))
+#> # A tibble: 216 × 9
+#>    country      iso2c  year     gdp lifeExp    pop gdpPercap
+#>    <chr>        <chr> <dbl>   <dbl>   <dbl>  <dbl>     <dbl>
+#>  1 United Stat… US     2021 2.05e13    76.3 3.32e8    61830.
+#>  2 China        CN     2021 1.59e13    78.2 1.41e9    11223.
+#>  3 Japan        JP     2021 4.46e12    84.4 1.26e8    35508.
+#>  4 Germany      DE     2021 3.55e12    80.9 8.32e7    42726.
+#>  5 United King… GB     2021 3.04e12    80.7 6.70e7    45334.
+#>  6 India        IN     2021 2.76e12    67.2 1.41e9     1962.
+#>  7 France       FR     2021 2.58e12    82.3 6.77e7    38046.
+#>  8 Italy        IT     2021 1.87e12    82.8 5.91e7    31601.
+#>  9 Brazil       BR     2021 1.85e12    72.8 2.14e8     8622.
+#> 10 Korea, Rep.  KR     2021 1.69e12    83.5 5.17e7    32731.
+#> # ℹ 206 more rows
+#> # ℹ 2 more variables: income <chr>, region <chr>
+```
+
+地域ごとの平均寿命を求めてみましょう。
+
+
+```r
+df_wdi4c |> drop_na(lifeExp) |> 
+  group_by(region) |> summarize(lifeexpregion = mean(lifeExp)) |>
+  arrange(desc(lifeexpregion))
+#> # A tibble: 7 × 2
+#>   region                     lifeexpregion
+#>   <chr>                              <dbl>
+#> 1 North America                       75.6
+#> 2 Europe & Central Asia               72.2
+#> 3 Latin America & Caribbean           68.3
+#> 4 Middle East & North Africa          66.2
+#> 5 East Asia & Pacific                 66.0
+#> 6 South Asia                          58.1
+#> 7 Sub-Saharan Africa                  52.1
+```
+
+income でも計算してみましょう。
+
+
+```r
+df_wdi4c |> drop_na(lifeExp) |> 
+  group_by(income) |> summarize(lifeexpincome = mean(lifeExp)) |>
+  arrange(desc(lifeexpincome))
+#> # A tibble: 5 × 2
+#>   income              lifeexpincome
+#>   <chr>                       <dbl>
+#> 1 High income                  73.4
+#> 2 Not classified               69.2
+#> 3 Upper middle income          66.4
+#> 4 Lower middle income          58.8
+#> 5 Low income                   50.1
+```
+
+ある年の値がないためにグラフがかけない場合もあります。各指標の年毎のデータがどれぐらいあるかみてみましょう。`is.na(x)` は、x が NA なら TRUE （値は 1）、x が NA でなければ、FALSE（値は 0）を返します。`!is.na(x)` はその否定ですから、逆になります。そこで、たとえば、`sum(!is.na(gdp))` は、gdp という列（年毎にグループ分けした）の中の、NA ではないものがいくつあるか数えることになります。sum は summation で、合計です。
+
+
+```r
+df_wdi4c |> group_by(year) |> 
+  summarize(gdp_n = sum(!is.na(gdp)), lifeExp_n = sum(!is.na(lifeExp)), pop_n = sum(!is.na(pop)), gdpPercap_n = sum(!is.na(gdpPercap))) |> arrange(desc(year))
+#> # A tibble: 63 × 5
+#>     year gdp_n lifeExp_n pop_n gdpPercap_n
+#>    <dbl> <int>     <int> <int>       <int>
+#>  1  2022   185         0   216         185
+#>  2  2021   201       208   216         201
+#>  3  2020   206       208   216         206
+#>  4  2019   206       208   216         206
+#>  5  2018   206       208   216         206
+#>  6  2017   206       209   216         206
+#>  7  2016   206       209   216         206
+#>  8  2015   209       209   216         209
+#>  9  2014   207       209   216         207
+#> 10  2013   207       209   216         207
+#> # ℹ 53 more rows
+```
+
+### `filter`
+
+一番上に、国名（country）に、アフガニスタン（Afghanistan） がありましたから、aアフガニスタンのデータを選び、平均寿命（lifeExp: Life Expectancy）の折線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。フ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。
 
 `filter(country == "Afghanistan")`
 
@@ -601,7 +1041,7 @@ df_wdi |> filter(country == "Afghanistan") %>%
 #> (`geom_line()`).
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 
 アフガニスタンでは 1952年 の誕生時の平均寿命（life expectancy at birth）は　30歳以下 （28.8歳）でした。2007年でも50歳以下（48.8 歳）のようですね。改善されていることも確かです。
 
@@ -636,7 +1076,7 @@ df_wdi %>% filter(country %in% c("Afghanistan", "Japan")) %>%
 #> (`geom_line()`).
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-54-1.png" width="672" />
 
 どのような発見がありますか。かならず書き留めておいてください。
 
@@ -925,7 +1365,7 @@ df_wdi %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
 #> (`geom_line()`).
 ```
 
-<img src="25-transform_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+<img src="25-transform_files/figure-html/unnamed-chunk-56-1.png" width="672" />
 
 ロシアが含まれていないことがわかります。ロシアは、以前は、ソビエト社会主義連邦でしたから、国が変化したものは含まれていないのかもしれません。上の国のリストで見てもありませんね。2007年より新しいデータ、ロシアなども含むデータなど、実際のデータでも見てみたいですね。それは、また後ほど。
 
