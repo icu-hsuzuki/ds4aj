@@ -1,5 +1,51 @@
 # その他のデータベース {#others}
 
+## 国際機関
+
+### **国連児童基金**（UNICEF：United Nations Children's Fund）
+
+https://data.unicef.org
+
+## 世界の国の政府機関
+
+### 米国：DATA.GOV
+
+The Home of the U.S. Government's Open Data: <https://data.gov/>
+
+### 米国国勢調査：United States Census Bureau
+
+Explore Census Data: <https://data.census.gov>
+
+### 中国：National Bureaus of Statistics of China
+
+### <http://www.stats.gov.cn/english/>
+
+### 英国：Find Open Data: data.gov.uk
+
+<https://www.data.gov.uk>
+
+### 英国データサービス：UK Data Service
+
+<https://ukdataservice.ac.uk>
+
+### 欧州連合（EU）: The official portal for European data
+
+<https://data.europa.eu/en>
+
+### 韓国：Statistics Korea
+
+<https://kostat.go.kr/anse/>
+
+## ClinicalTrials.gov
+
+ClinicalTrials.gov is a place to learn about clinical studies from around the world.
+
+<https://clinicaltrials.gov/>
+
+## Harvard Dataverse
+
+<https://dataverse.harvard.edu/>
+
 ## Kagle
 
 -   Kagle Home: <https://www.kaggle.com>
@@ -157,3 +203,7 @@ df_gm %>% slice(1:10)
 ```
 
 さて、このデータは、どのようにして集めているのでしょうか。WDI のデータと同じでしょうか。
+
+## 
+
+## 

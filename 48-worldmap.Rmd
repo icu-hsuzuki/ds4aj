@@ -1,0 +1,372 @@
+# 地図 Choropleth Maps {#worldmap}
+
+この章では、`ggplot2` を使って、情報付きの地図を生成する方法を学ぶ。
+
+最も基本的な `data.frame` を用い `geom_map` または `geom_polygon` で地図を書くことも可能だが、最近は、`simple feature (sf)` 形式のデータを使って `ggplot2` の `geom_sf` を用いて地図を描くことで、複雑なものを扱えるようになってきている。
+
+本書のテーマからも、ある情報を加えた地図は有効だと思われるので、紹介を試みる。
+
+## 準備
+
+```{r}
+library(tidyverse)
+library(sf)
+library(showtext)
+showtext_auto()
+```
+
+WDI パッケージの、WDIcache() に含まれる、収入の多寡を表す `income` レベルと iso2c コードをまず用いる。
+
+```{r}
+wdi_cache <- read_rds("./data/wdi_cache.RData")
+```
+
+```{r}
+wdi_cache$country %>% as_tibble() %>% glimpse()
+```
+
+```{r}
+wdi_income <- wdi_cache$country %>% 
+  filter(region != "Aggregates") %>%
+  select(iso2c, income) %>% 
+  drop_na(iso2c) %>%
+  mutate(income = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) 
+glimpse(wdi_income)
+```
+
+### `geom_sf`
+
+See also, `coord_sf`, `geom_sf_label`, `geom_sf_text`, `stat_sf`.
+
+> This set of geom, stat, and coord are used to visualise simple feature (sf) objects. For simple plots, you will only need geom_sf() as it uses stat_sf() and adds coord_sf() for you. geom_sf() is an unusual geom because it will draw different geometric objects depending on what simple features are present in the data: you can get points, lines, or polygons. For text and labels, you can use geom_sf_text() and geom_sf_label().
+>
+> この geom、stat、および coord のセットは、Simple Feature (sf) 形式のデータを視覚化するために使用されます。単純なプロットでは、stat_sf() を使用し、coord_sf() を追加するので、geom_sf() だけが必要です。geom_sf() は、データにどのような単純な特徴が存在するかによって異なる幾何オブジェクトを描画するので、珍しい geom です。テキストとラベルについては、geom_sf_text() と geom_sf_label() が使用可能です。
+
+```         
+geom_sf(
+  mapping = aes(),
+  data = NULL,
+  stat = "sf",
+  position = "identity",
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE,
+  ...
+)
+```
+
+## Natural Earth Data
+
+<https://www.naturalearthdata.com>
+
+このサイトで、データを提供しています。
+
+Manual: <https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth.pdf>
+
+### `ne_countries`
+
+```{r}
+library(rnaturalearth)
+library(rnaturalearthdata)
+```
+
+```         
+ne_countries(
+  scale = 110,
+  type = "countries",
+  continent = NULL,
+  country = NULL,
+  geounit = NULL,
+  sovereignty = NULL,
+  returnclass = c("sp", "sf")
+)
+```
+
+#### Arguments
+
+-   scale: scale of map to return, one of 110, 50, 10 or 'small', 'medium', 'large'
+-   type: country type, one of 'countries', 'map_units', 'sovereignty', 'tiny_countries'
+-   continent: a character vector of continent names to get countries from.
+-   country: a character vector of country names.
+-   geounit: a character vector of geounit names.
+-   sovereignty: a character vector of sovereignty names.
+-   returnclass: 'sp' default or 'sf' for Simple Features
+
+#### 例
+
+There are three scales. Add `returnclass = "sf"` as an option to obtain data in `sf` format.
+
+```{r}
+ne_countries(scale = "large", returnclass = "sf") %>%
+  ggplot() +   geom_sf()
+```
+
+```{r}
+ne_countries(scale = "small", returnclass = "sf") %>%
+  ggplot() +   geom_sf()
+```
+
+We will use `medium` scale data in the following.
+
+```{r}
+ne_world <- ne_countries(scale = "medium", returnclass = "sf")
+```
+
+```{r}
+glimpse(ne_world)
+```
+
+The last column is the geometry which contains map data in multi-polygon format.
+
+```{r}
+ne_world %>% ggplot() + geom_sf()
+```
+
+This map data comes with various information.
+
+```{r}
+ne_world %>% ggplot() + geom_sf(aes(fill = income_grp))
+```
+
+You can specify a 'continent', a 'region_un', a 'subregion' or 'region_wb'.
+
+```{r}
+ne_world %>% as_tibble() %>% distinct(continent) %>% pull()
+```
+
+```{r}
+ne_world %>% as_tibble() %>% distinct(region_un) %>% pull()
+```
+
+```{r}
+ne_world %>% as_tibble() %>% distinct(subregion) %>% pull()
+```
+
+```{r}
+ne_world %>% as_tibble() %>% distinct(region_wb) %>% pull()
+```
+
+```{r}
+ne_world %>% filter(subregion == "South-Eastern Asia") %>%
+  ggplot() +   geom_sf(aes(fill = iso_a2))
+```
+
+```{r}
+ne_world %>% filter(continent == 'Africa') %>%
+  ggplot() +   geom_sf(aes(fill = subregion))
+```
+
+#### `type` argument
+
+```{r}
+ne_countries(type = "countries", country = c("Japan", "South Korea", "North Korea", "China", "Taiwan", "Mongolia"), scale = "medium", returnclass = "sf") %>%
+  ggplot() + geom_sf(aes(fill = economy))
+```
+
+### `ne_states`
+
+Get natural earth world state (admin level 1) polygons
+
+**Description**: returns state polygons (administrative level 1) for specified countries
+
+#### Usage
+
+```         
+ne_states(
+  country = NULL,
+  geounit = NULL,
+  iso_a2 = NULL,
+  spdf = NULL,
+  returnclass = c("sp", "sf")
+)
+```
+
+### Arguments
+
+-   country: a character vector of country names.
+
+-   geounit: a character vector of geounit names.
+
+-   iso_a2: a character vector of iso_a2 country codes
+
+-   spdf: an optional alternative states map
+
+-   returnclass: 'sp' default or 'sf' for Simple Features
+
+### Value
+
+-   SpatialPolygons DataFrame or sf
+
+```{r}
+ne_world_admin1 <- ne_states(returnclass = "sf")
+```
+
+```{r}
+glimpse(ne_world_admin1)
+```
+
+```{r}
+ne_world_admin1 %>% as_tibble() %>% 
+  filter(iso_a2 != "-1") %>% arrange(admin) %>%
+  distinct(iso_a2, admin)
+```
+
+```{r}
+country <- "Japan"
+ne_world_admin1 %>% filter(admin == country) %>% 
+  ggplot() + geom_sf()
+```
+
+```{r}
+iso2s <- c("IN","PK","BD","LK")
+ne_world_admin1 %>% filter(iso_a2 %in% iso2s) %>% 
+  ggplot() +   geom_sf(aes(fill = admin))
+```
+
+```{r}
+regions <- c("Tohoku")
+ne_world_admin1 %>% filter(region %in% regions) %>% 
+  ggplot() + geom_sf(aes(fill = name_local))
+```
+
+```{r}
+ne_world_admin1 %>% filter(iso_a2 == "JP") %>%
+  ggplot() +   geom_sf(aes(fill = region))
+```
+
+```{r}
+ne_world_admin1 %>% as_tibble() %>% filter(admin %in% "Japan") %>% 
+  select(name_local, region) %>% filter(is.na(region))
+```
+
+```{r}
+ne_world_admin1 %>% mutate(region = case_when(
+  name_local == "佐賀県" ~ "Kyushu",
+  name_local == "長崎県" ~ "Kyushu",
+  TRUE ~ region)) %>%
+  as_tibble() %>% filter(admin %in% "Japan") %>% 
+  select(name_local, region) %>% filter(is.na(region))
+```
+
+```{r}
+ne_world_admin1 %>% mutate(region = case_when(
+  name_local == "佐賀県" ~ "Kyushu",
+  name_local == "長崎県" ~ "Kyushu",
+  TRUE ~ region)) %>%
+  filter(iso_a2 == "JP") %>%
+  ggplot() +   geom_sf(aes(fill = region))
+```
+
+## `geodata` Package
+
+-   URL: <https://gadm.org>
+-   `geodata`: Download Geographic Data
+-   Functions for downloading of geographic data for use in spatial analysis and mapping. The package facilitates access to climate, crops, elevation, land use, soil, species occurrence, accessibility, administrative boundaries and other data.
+-   Package Link: <https://CRAN.R-project.org/package=geodata>
+-   Manual: <https://cran.r-project.org/web/packages/geodata/geodata.pdf>
+
+```{r}
+library(geodata)
+```
+
+```{r}
+world(resolution=5, level=0, path = "./data")
+```
+
+```{r}
+world5 <- readRDS("./data/gadm/gadm36_adm0_r5_pk.rds")
+world5 %>% as_tibble() %>% glimpse()
+```
+
+```{r}
+world5 %>% st_as_sf() %>% ggplot() + geom_sf()
+```
+
+```{r}
+world5 %>% 
+  st_as_sf() %>% filter(GID_0 == "JPN") %>% 
+  ggplot() + geom_sf()
+```
+
+```{r}
+world(resolution=1, level=0, path = "./data") %>%
+  st_as_sf() %>% ggplot() + geom_sf()
+```
+
+```{r}
+world(path = "./data") %>%
+  st_as_sf() %>% ggplot() + geom_sf()
+```
+
+```{r}
+world(resolution=1, level=0, path = "./data") %>%
+  st_as_sf() %>% filter(NAME_0 == "Japan") %>%
+  ggplot() + geom_sf()
+```
+
+```{r}
+world(resolution=1, level=0, path = "./data") %>%
+  st_as_sf() %>% filter(NAME_0 %in% c("India","Pakistan", "Bangladesh" , "Sri Lanka")) %>%
+  ggplot() + geom_sf(aes(fill = GID_0))
+```
+
+```{r}
+world5_df <- st_as_sf(world5) %>% 
+  st_set_crs("+proj=longlat +datum=WGS84") %>% 
+  st_transform(., "+proj=robin")
+
+ggplot() +
+  geom_sf(data = world5_df)
+```
+
+### `gadm` Administrative boundaries
+
+-   Get administrative boundaries for any country in the world. Data are read from files that are down- loaded if necessary.
+-   Usage: `gadm(country, level=1, path, version="latest", resolution=1, ...)`
+-   Arguments
+    -   country: character. Three-letter ISO code or full country name. If you provide multiple names they are all downloaded and rbind-ed together
+    -   level: numeric. The level of administrative subdivision requested. (starting with 0 for country, then 1 for the first level of subdivision)
+    -   path: character. Path for storing the downloaded data. See geodata_path
+    -   version: character. Either "latest" or GADM version number (can be "3.6", "4.0" or "4.1")
+    -   resolution: integer indicating the level of detail. Only for version 4.1. It should be either 1 (high) or 2 (low)
+
+```{r}
+gadm0 <- gadm("JPN", level = 0, path = "./data/")
+```
+
+```{r}
+gadm0 %>% st_as_sf() %>% 
+  ggplot() + geom_sf()
+```
+
+```{r}
+gadm1 <- gadm("JPN", level = 1, path = "./data/") %>% st_as_sf()
+gadm1 %>% glimpse()
+```
+
+```{r}
+gadm1 %>% 
+  ggplot() + geom_sf(aes(fill = NAME_1)) + theme(legend.position = "none")
+```
+
+```{r}
+gadm2 <- gadm("JPN", level = 2, path = "./data/") %>% st_as_sf()
+gadm2 %>% glimpse()
+```
+
+```{r}
+gadm2 %>% filter(NL_NAME_1 %in% c("埼玉県", "群馬県", "栃木県", "茨城県", "千葉県", "神奈川県", "東京都")) %>% 
+  ggplot() + geom_sf(aes(fill = NAME_1)) + 
+  ylim(34.7,37.2) + xlim(138.2,141) + 
+  theme(legend.position = "none")
+```
+
+## 参考文献
+
+-   Data Visualization for International Relations: Chapter 7 Choropleth Maps: <https://bookdown.org/alhdzsz/data_viz_ir/maps.html>
+
+-   R Graphics Cookbook: 13.18 Creating a Choropleth Map: https://r-graphics.org/recipe-miscgraph-choropleth
+
+-   Geocomputation with R：First Edition in [bookdown サイト](https://bookdown.org/robinlovelace/geocompr/)
+
+    -   日本語翻訳版（<http://124.219.182.167/geo/>）
