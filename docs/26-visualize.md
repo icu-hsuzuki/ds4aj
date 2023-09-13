@@ -55,7 +55,7 @@ df_iris <- datasets::iris
 df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
 
 さまざまな描画が可能ですが、一番、一般的な、散布図、`plot` に対応するものです。`ggplot` の中の、`aes` （aesthetic）の部分に、x 軸、y 軸に対応する変数（列名）を書きます。
 
@@ -87,7 +87,7 @@ df_iris |> ggplot(aes(Sepal.Width, Sepal.Length, color = Species)) +
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-4-1.png)<!-- -->
 
 さらに、点の大きさを、Petal.Width によって変える場合には次のように、`size = Petal.Width` を加えます。
 
@@ -99,7 +99,7 @@ df_iris |>
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
 
 ここでは、散布図でしたから、`geom_point()` を使いましたが、これを他のものに変えていくと、さまざまなグラフが描けるようになっています。
 
@@ -125,7 +125,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
 
 ### ラベル [Labels](https://ggplot2.tidyverse.org/reference/labs.html)
 
@@ -144,7 +144,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   labs(title = "Scatter Plot of Sepal Data of Iris", x = "Sepal Length", y = "Sepal Width")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
 
 
 ```r
@@ -153,7 +153,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   labs(title = "菖蒲の萼の長さと幅についての散布図", x = "萼の長さ", y = "萼の幅")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-8-1.png)<!-- -->
 
 このように、日本語をタイトルや、ラベルに使うことも可能ですが、以後は、データに日本語が含まれていない場合には、そのまま表示します。
 
@@ -167,7 +167,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) 
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
 
 ### 形状 [Shapes](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)
 
@@ -179,7 +179,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, shape = Species)) 
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
 
 色と、形、両方を同時に使うことも可能です。
 
@@ -189,7 +189,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, s
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-11-1.png)<!-- -->
 
 ## 箱ひげ図 [Boxplot](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)
 
@@ -209,7 +209,7 @@ ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-12-1.png)<!-- -->
 
 
 ```r
@@ -217,7 +217,7 @@ ggplot(data = df_iris, aes(y = Species, x = Sepal.Length)) +
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-13-1.png)<!-- -->
 
 各、種類（Species）ごとに、Sepal.Width（萼（がく）幅）が、どのように分布しているかを示しています。真ん中の太い線が、中央値（median）、箱が、第一四分位（Q1）から第三四分位（Q3）、線と点で表される外れ値も、どのような基準か定められています。(IQR = Q3-Q1, 線は、Q3+1.5$\times$ IQR 以下に入っている実際の値までと、Q1-1.5 $\times$ IQR 以上に入っている実際の値まで。それらに入っていないものが外れ値)。
 
@@ -229,7 +229,7 @@ ggplot(data = df_iris, aes(x = Species, y = Sepal.Length, color = Species)) +
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
 
 
 ```r
@@ -237,7 +237,7 @@ ggplot(data = df_iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-15-1.png)<!-- -->
 
 ### ヒストグラム [Histogram](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
 
@@ -255,7 +255,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
 #> `binwidth`.
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-16-1.png)<!-- -->
 
 枠（bins）を幾つに分けるか、または枠の幅を指定するようにとのメッセージが表示されます。
 
@@ -269,7 +269,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_histogram(bins = 10)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-17-1.png)<!-- -->
 
 
 ```r
@@ -277,7 +277,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_histogram(binwidth = 1)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-18-1.png)<!-- -->
 
 頻度多角形（geom_freqpoly()）を使うと以下のようになります。Species ごとに比べたり、色をつけたりもできます。
 
@@ -289,7 +289,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
 #> `binwidth`.
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-19-1.png)<!-- -->
 
 
 ```r
@@ -297,7 +297,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, color = Species)) +
   geom_freqpoly(bins = 10)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-20-1.png)<!-- -->
 
 滑らかな曲線にするときは、density plot を使います。alpha は透明度で 0 から 1 の値で指定します。数が小さい方が薄くなります。color で線の色もあわせて設定することも可能です。いろいろと試してみてください。
 
@@ -307,7 +307,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, fill = Species)) +
   geom_density(alpha = 0.5)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-21-1.png)<!-- -->
 
 ### 線形モデル Data Modeling
 
@@ -320,7 +320,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-22-1.png)<!-- -->
 
 
 ```r
@@ -329,7 +329,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_smooth()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-23-1.png)<!-- -->
 
 ## 例から学ぶ ggplot2`,` I
 
@@ -383,14 +383,14 @@ glimpse(df_mpg)
 ggplot(data = df_mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-26-1.png)<!-- -->
 
 
 ```r
 ggplot(data = df_mpg) + geom_boxplot(mapping = aes(x = class, y = hwy))
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-27-1.png)<!-- -->
 
 1.  `data = df_mpg` でデータを指定します。
 
@@ -513,7 +513,7 @@ df_wdi |> ggplot(aes(year, lifeExp)) + geom_line()
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-36-1.png)<!-- -->
 
 何が起こっているかわかりますか。これは、鋸の刃グラフ（saw-tooth chart）と言われる標準的な失敗例です。
 
@@ -526,7 +526,7 @@ ggplot(df_wdi, aes(x = year, y = lifeExp)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-37-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-37-1.png)<!-- -->
 
 これも期待した箱ひげ図にはなっていません。年は、カテゴリーではなく、数値データですね。
 
@@ -545,7 +545,7 @@ ggplot(df_wdi, aes(y = lifeExp, group = year)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-39-1.png)<!-- -->
 
 ##### Box Plot
 
@@ -556,7 +556,7 @@ ggplot(df_wdi, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-40-1.png)<!-- -->
 
 とはいえ、数が多すぎますね。色もつけてみましょう。塗りつぶしは、fill 枠の線に色をつけるのは、color ですから、ここでは、fill を使います。
 
@@ -570,7 +570,7 @@ df_wdi_extra |> filter(income != "Aggregates") |>
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-41-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-41-1.png)<!-- -->
 
 折線グラフの例としては次のようなものがあります。
 
@@ -589,7 +589,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region)) +
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-43-1.png)<!-- -->
 
 
 ```r
@@ -599,7 +599,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region, linetype =
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-44-1.png)<!-- -->
 
 
 ```r
@@ -610,7 +610,7 @@ df_lifeExp %>% ggplot() +
 #> Removed 243 rows containing missing values (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+![](26-visualize_files/figure-epub3/unnamed-chunk-45-1.png)<!-- -->
 
 #### WDI
 

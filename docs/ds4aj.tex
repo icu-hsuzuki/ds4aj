@@ -150,7 +150,7 @@
 \title{データサイエンスをはじめましょう\\
 - Data Science for All -}
 \author{鈴木寛（Hiroshi Suzuki）}
-\date{2023-09-12}
+\date{2023-09-13}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -4106,7 +4106,32 @@ RMarkdown では、\texttt{tinytex} パッケージというとても素晴ら�
 注：矢内勇生さんの\href{https://yukiyanai.github.io/jp/resources/docs/install-R_windows.pdf}{サイト}には、詳細な説明があります。
 
 \hypertarget{rbasics}{%
-\chapter{R のはじめかた}\label{rbasics}}
+\chapter{base R}\label{rbasics}}
+
+\hypertarget{ux306fux3058ux3081ux306b-1}{%
+\section{はじめに}\label{ux306fux3058ux3081ux306b-1}}
+
+R を使って、データサイエンスをはじめる最初のステップについて説明します。また、R を起動すると、同時に読み込まれる、base と呼ばれるパッケージについても簡単に解説します。
+
+本書では、Tidyverse と呼ばれるパッケージ群を主として使いますが、基礎を支えるのは、base ですので、Tidyverse でデータサイエンスをするため、最低限知っておいていただきたい、base についての説明という感じでしょうか。
+
+R Project に基本文書がありますが、100ページを越しますので、参考程度にしていただくのがよいかと思います。
+
+リンク：
+
+\begin{itemize}
+\item
+  \href{https://cran.r-project.org/}{An Introduction to R} Manual にあります。下に日本語版へのリンクもあります。
+\item
+  \href{https://rstudio.github.io/cheatsheets/base-r.pdf}{CheatSheet base R} 早見表\footnote{CheatSheet は、直訳は、カンニング・ペーパーです。ここでは、もう少し品のよさそうな、早見表ということばを使いました。}。検索すると日本語版も見つかると思います。
+
+  \begin{itemize}
+  \item
+    \href{https://posit.co/resources/cheatsheets/}{Posit CheatSheets}: Posit co の提供する公式早見表
+  \item
+    \href{https://rstudio.github.io/cheatsheets/contributed-cheatsheets.html}{Contributed CheatSheet at Posit}: Posit co のサイトからリンクのある早見表
+  \end{itemize}
+\end{itemize}
 
 \hypertarget{ux30d7ux30edux30b8ux30a7ux30afux30c8---project}{%
 \section{プロジェクト - Project}\label{ux30d7ux30edux30b8ux30a7ux30afux30c8---project}}
@@ -4874,8 +4899,8 @@ Posit Cloud からは、左のメニュー（隠れている場合は左上の3�
 \hypertarget{tidyverse}{%
 \chapter{Tidyverse}\label{tidyverse}}
 
-\hypertarget{ux306fux3058ux3081ux306b-1}{%
-\section{はじめに}\label{ux306fux3058ux3081ux306b-1}}
+\hypertarget{ux306fux3058ux3081ux306b-2}{%
+\section{はじめに}\label{ux306fux3058ux3081ux306b-2}}
 
 R のはじめかたについて少し説明しました。R を起動させると、最初に \texttt{base} などいくつかのパッケージが自動的に読み込まれますが、その基本の基本を紹介したということです。ここでは、第二部で学ぶことの、核となる \texttt{tidyverse} というパッケージ群についてその基本を学びます。
 
@@ -7183,13 +7208,15 @@ Gapminder は オラ ロスリング（Ola Rosling） と アンナ ロスリン
 \hypertarget{section}{%
 \subsubsection{}\label{section}}
 
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \hypertarget{visualize}{%
 \chapter{視覚化（Visualize）}\label{visualize}}
 
 \hypertarget{ux57faux672cux7684ux306aux3053ux3068}{%
 \section{基本的なこと}\label{ux57faux672cux7684ux306aux3053ux3068}}
 
-R では、簡単に、グラフを描画できますが、質の高いグラフを作成するには、\texttt{ggplot2} パッケージを用いたものが標準となっています。\texttt{ggplot2} は、\texttt{tidyverse} パッケージの一部ですので、\texttt{tidyverse} パッケージをインストール、使えるように、\texttt{library(tidyverse)} として読み込んであれば、そのまま使うことができます。
+R では、追加パッケージを使わなくても、簡単に、グラフを描画できますが、質の高いグラフを作成するには、\texttt{ggplot2} パッケージを用いたものが標準となっています。\texttt{ggplot2} は、\texttt{tidyverse} パッケージの一部ですので、\texttt{tidyverse} パッケージをインストール、使えるように、\texttt{library(tidyverse)} として読み込んであれば、そのまま使うことができます。
 
 サイト：\url{https://ggplot2.tidyverse.org} パッケージサイト：\url{https://CRAN.R-project.org/package=ggplot2}
 
@@ -7197,9 +7224,9 @@ R では、簡単に、グラフを描画できますが、質の高いグラフ
 \subsection{ggplot2 概要}\label{ggplot2-ux6982ux8981}}
 
 \begin{quote}
-ggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+ggplot2 is a system for declaratively creating graphics, based on \emph{The Grammar of Graphics}. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
 
-ggplot2は、グラフィックスの生成に関する「Grammar of Graphics（グラフィックスの文法）」に基づいて、宣言的にグラフを作成するためのシステムです。データを提供し、変数を視覚的要素にマッピングする方法や、どのようなグラフィカルな基本要素を使用するかをggplot2に伝えると、詳細な部分はggplot2 が処理してくれます。
+ggplot2は、グラフィックスの生成に関する「Grammar of Graphics（グラフィックスの文法）」に基づいて、一つ一つの要素を定めていくことによって、グラフを作成するシステムです。データを提供し、変数を視覚的要素にマッピングする方法や、どのようなグラフィカルな基本要素を使用するかをggplot2に伝えると、詳細な部分はggplot2 が処理してくれます。
 \end{quote}
 
 \hypertarget{ux57faux672cux7684ux306aux4f8b}{%
@@ -7208,7 +7235,7 @@ ggplot2は、グラフィックスの生成に関する「Grammar of Graphics（
 \hypertarget{tidyverse-ux306eux8aadux307fux8fbcux307f}{%
 \subsubsection{\texorpdfstring{\texttt{tidyverse} の読み込み}{tidyverse の読み込み}}\label{tidyverse-ux306eux8aadux307fux8fbcux307f}}
 
-タイトルに日本語を使う場合があるときは、\texttt{install.packages(\textquotesingle{}showtext\textquotesingle{})} で、\texttt{showtext} パッケージをインストールして、下のように設定してください。
+タイトルや、列名などにに日本語を使う場合があるときは、\texttt{install.packages(\textquotesingle{}showtext\textquotesingle{})} で、\texttt{showtext} パッケージをインストールして、下のように設定してください。そうでない場合は、最初の行 \texttt{library(tidyverse)} だけで他は不要です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7230,62 +7257,72 @@ ggplot2は、グラフィックスの生成に関する「Grammar of Graphics（
 \end{Highlighting}
 \end{Shaded}
 
-\texttt{ggplot2} に含まれている、\texttt{mpg} データを使って、簡単な、散布図と、箱ひげ図を描いてみます。\texttt{mpg} の変数などについては、Help で調べてください。
+\hypertarget{ux5fa9ux7fd2-1}{%
+\subsubsection{復習}\label{ux5fa9ux7fd2-1}}
+
+Tidyverse の章で、\href{https://icu-hsuzuki.github.io/ds4aj/tidyverse.html\#ggplot2-グラフの描画}{紹介した例}の復習から始めましょう。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{str}\NormalTok{(mpg)}
-\CommentTok{\#\textgreater{} tibble [234 x 11] (S3: tbl\_df/tbl/data.frame)}
-\CommentTok{\#\textgreater{}  $ manufacturer: chr [1:234] "audi" "audi" "audi" "audi" ...}
-\CommentTok{\#\textgreater{}  $ model       : chr [1:234] "a4" "a4" "a4" "a4" ...}
-\CommentTok{\#\textgreater{}  $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...}
-\CommentTok{\#\textgreater{}  $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...}
-\CommentTok{\#\textgreater{}  $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...}
-\CommentTok{\#\textgreater{}  $ trans       : chr [1:234] "auto(l5)" "manual(m5)" "manual(m6)" "auto(av)" ...}
-\CommentTok{\#\textgreater{}  $ drv         : chr [1:234] "f" "f" "f" "f" ...}
-\CommentTok{\#\textgreater{}  $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...}
-\CommentTok{\#\textgreater{}  $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...}
-\CommentTok{\#\textgreater{}  $ fl          : chr [1:234] "p" "p" "p" "p" ...}
-\CommentTok{\#\textgreater{}  $ class       : chr [1:234] "compact" "compact" "compact" "compact" ...}
+\NormalTok{df\_iris }\OtherTok{\textless{}{-}}\NormalTok{ datasets}\SpecialCharTok{::}\NormalTok{iris}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mpg) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ displ, }\AttributeTok{y =}\NormalTok{ hwy))}
+\NormalTok{df\_iris }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Width, Sepal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{26-visualize_files/figure-latex/unnamed-chunk-3-1.pdf}
 
+さまざまな描画が可能ですが、一番、一般的な、散布図、\texttt{plot} に対応するものです。\texttt{ggplot} の中の、\texttt{aes} （aesthetic）の部分に、x 軸、y 軸に対応する変数（列名）を書きます。
+
+\texttt{\textless{}DATA\textgreater{}\ \textbar{}\textgreater{}\ ggplot(aes(\textless{}変数\ x\ の列名\textgreater{},\ \textless{}変数\ y\ の列名\textgreater{}))\ +\ geom\_point()}
+
+もっと明示的に
+
+\texttt{\textless{}DATA\textgreater{}\ \textbar{}\textgreater{}\ ggplot(aes(x\ =\ \textless{}変数\ x\ の列名\textgreater{},\ y\ =\ \textless{}変数\ y\ の列名\textgreater{}))\ +\ geom\_point()}
+
+さらには
+
+\texttt{\textless{}DATA\textgreater{}\ \textbar{}\textgreater{}\ ggplot(mapping\ =\ aes(x\ =\ \textless{}変数\ x\ の列名\textgreater{},\ y\ =\ \textless{}変数\ y\ の列名\textgreater{}))\ +\ geom\_point()}
+
+パイプを使わず
+
+\texttt{ggplot(\textless{}DATA\textgreater{},\ aes(x\ =\ \textless{}変数\ x\ の列名\textgreater{},\ y\ =\ \textless{}変数\ y\ の列名\textgreater{}))\ +\ geom\_point()}
+
+や、さらに、詳しく
+
+\texttt{ggplot(data\ =\ \textless{}DATA\textgreater{},\ mapping\ =\ aes(x\ =\ \textless{}変数\ x\ の列名\textgreater{},\ y\ =\ \textless{}変数\ y\ の列名\textgreater{}))\ +\ geom\_point()}
+
+も可能です。
+
+種類（Species）ごとに色を変える場合には、\texttt{color\ =\ Species} とします。
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mpg) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ class, }\AttributeTok{y =}\NormalTok{ hwy))}
+\NormalTok{df\_iris }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Width, Sepal.Length, }\AttributeTok{color =}\NormalTok{ Species)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{26-visualize_files/figure-latex/unnamed-chunk-4-1.pdf}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  \texttt{data\ =\ mpg} でデータを指定します。
-\item
-  どのようなグラフにするか、幾何関数（Geometric Function）を指定します。散布図では、\texttt{geom\_pont()} 、箱ひげ図では、\texttt{geom\_boxplot()} です。
-\item
-  x 軸、y 軸などに対応する変数の写像（mapping）を指定します。
+さらに、点の大きさを、Petal.Width によって変える場合には次のように、\texttt{size\ =\ Petal.Width} を加えます。
 
-  \begin{itemize}
-  \item
-    散布図では、\texttt{dspl} （displacemnt エンジンの排気量（単位 リットル））を x 軸に、\texttt{hwy} 高速道路で１ガロンで走れる距離（単位 マイル）を y 軸に割り当てています。
-  \item
-    箱ひげ図では、\texttt{class} 車の型式を、x 軸に、\texttt{hwy} 高速道路で１ガロンで走れる距離（単位 マイル）を y 軸に割り当てています。
-  \end{itemize}
-\end{enumerate}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Width, Sepal.Length, }\AttributeTok{color =}\NormalTok{ Species, }
+             \AttributeTok{size =}\NormalTok{ Petal.Width)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
 
-記号的に書くと、下のようになっています。
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-5-1.pdf}
 
-\texttt{ggplot(data\ =\ \textless{}DATA\textgreater{})\ +\ \textless{}GEOM\_FUNCTION\textgreater{}(mapping\ =\ aes(\textless{}MAPPINGS\textgreater{}))}
+ここでは、散布図でしたから、\texttt{geom\_point()} を使いましたが、これを他のものに変えていくと、さまざまなグラフが描けるようになっています。
 
 \hypertarget{ux6563ux5e03ux56f3scatter-plot}{%
 \section{散布図（Scatter Plot）}\label{ux6563ux5e03ux56f3scatter-plot}}
@@ -7306,12 +7343,12 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-5-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-6-1.pdf}
 
 \hypertarget{ux30e9ux30d9ux30eb-labels}{%
 \subsection{\texorpdfstring{ラベル \href{https://ggplot2.tidyverse.org/reference/labs.html}{Labels}}{ラベル Labels}}\label{ux30e9ux30d9ux30eb-labels}}
@@ -7326,23 +7363,23 @@ ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Scatter Plot of Sepal Data of Iris"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Sepal Length"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Sepal Width"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-6-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-7-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"菖蒲の萼の長さと幅についての散布図"}\NormalTok{, }\AttributeTok{x =} \StringTok{"萼の長さ"}\NormalTok{, }\AttributeTok{y =} \StringTok{"萼の幅"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-7-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-8-1.pdf}
 
 このように、日本語をタイトルや、ラベルに使うことも可能ですが、以後は、データに日本語が含まれていない場合には、そのまま表示します。
 
@@ -7353,12 +7390,12 @@ ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width, }\AttributeTok{color =}\NormalTok{ Species)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width, }\AttributeTok{color =}\NormalTok{ Species)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-8-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-9-1.pdf}
 
 \hypertarget{ux5f62ux72b6-shapes}{%
 \subsection{\texorpdfstring{形状 \href{https://ggplot2.tidyverse.org/articles/ggplot2-specs.html}{Shapes}}{形状 Shapes}}\label{ux5f62ux72b6-shapes}}
@@ -7367,23 +7404,23 @@ ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width, }\AttributeTok{shape =}\NormalTok{ Species)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-9-1.pdf}
-
-色と、形、両方を同時に使うことも可能です。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width, }\AttributeTok{color =}\NormalTok{ Species, }\AttributeTok{shape =}\NormalTok{ Species)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width, }\AttributeTok{shape =}\NormalTok{ Species)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{26-visualize_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+色と、形、両方を同時に使うことも可能です。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width, }\AttributeTok{color =}\NormalTok{ Species, }\AttributeTok{shape =}\NormalTok{ Species)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-11-1.pdf}
 
 \hypertarget{ux7bb1ux3072ux3052ux56f3-boxplot}{%
 \section{\texorpdfstring{箱ひげ図 \href{https://ggplot2.tidyverse.org/reference/geom_boxplot.html}{Boxplot}}{箱ひげ図 Boxplot}}\label{ux7bb1ux3072ux3052ux56f3-boxplot}}
@@ -7400,21 +7437,21 @@ Transcript ボタンから、スクリプトを表示することもできます
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Species, }\AttributeTok{y =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_boxplot}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-11-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ Species, }\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Species, }\AttributeTok{y =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
   \FunctionTok{geom\_boxplot}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{26-visualize_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ Species, }\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-13-1.pdf}
 
 各、種類（Species）ごとに、Sepal.Width（萼（がく）幅）が、どのように分布しているかを示しています。真ん中の太い線が、中央値（median）、箱が、第一四分位（Q1）から第三四分位（Q3）、線と点で表される外れ値も、どのような基準か定められています。(IQR = Q3-Q1, 線は、Q3+1.5\(\times\) IQR 以下に入っている実際の値までと、Q1-1.5 \(\times\) IQR 以上に入っている実際の値まで。それらに入っていないものが外れ値)。
 
@@ -7422,21 +7459,21 @@ color を指定すると、枠に色がつき、fill を指定すると、箱の
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Species, }\AttributeTok{y =}\NormalTok{ Sepal.Length, }\AttributeTok{color =}\NormalTok{ Species)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_boxplot}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-13-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Species, }\AttributeTok{y =}\NormalTok{ Sepal.Length, }\AttributeTok{fill =}\NormalTok{ Species)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Species, }\AttributeTok{y =}\NormalTok{ Sepal.Length, }\AttributeTok{color =}\NormalTok{ Species)) }\SpecialCharTok{+}
   \FunctionTok{geom\_boxplot}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{26-visualize_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Species, }\AttributeTok{y =}\NormalTok{ Sepal.Length, }\AttributeTok{fill =}\NormalTok{ Species)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-15-1.pdf}
 
 \hypertarget{ux30d2ux30b9ux30c8ux30b0ux30e9ux30e0-histogram}{%
 \subsection{\texorpdfstring{ヒストグラム \href{https://ggplot2.tidyverse.org/reference/geom_histogram.html}{Histogram}}{ヒストグラム Histogram}}\label{ux30d2ux30b9ux30c8ux30b0ux30e9ux30e0-histogram}}
@@ -7449,14 +7486,14 @@ Visualize the distribution of a single continuous variable by dividing the x axi
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
   \FunctionTok{geom\_histogram}\NormalTok{()}
 \CommentTok{\#\textgreater{} \textasciigrave{}stat\_bin()\textasciigrave{} using \textasciigrave{}bins = 30\textasciigrave{}. Pick better value with}
 \CommentTok{\#\textgreater{} \textasciigrave{}binwidth\textasciigrave{}.}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-15-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-16-1.pdf}
 
 枠（bins）を幾つに分けるか、または枠の幅を指定するようにとのメッセージが表示されます。
 
@@ -7466,54 +7503,54 @@ Visualize the distribution of a single continuous variable by dividing the x axi
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
   \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins =} \DecValTok{10}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-16-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{26-visualize_files/figure-latex/unnamed-chunk-17-1.pdf}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-18-1.pdf}
+
 頻度多角形（geom\_freqpoly()）を使うと以下のようになります。Species ごとに比べたり、色をつけたりもできます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length)) }\SpecialCharTok{+}
   \FunctionTok{geom\_freqpoly}\NormalTok{()}
 \CommentTok{\#\textgreater{} \textasciigrave{}stat\_bin()\textasciigrave{} using \textasciigrave{}bins = 30\textasciigrave{}. Pick better value with}
 \CommentTok{\#\textgreater{} \textasciigrave{}binwidth\textasciigrave{}.}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-18-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-19-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{color =}\NormalTok{ Species)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{color =}\NormalTok{ Species)) }\SpecialCharTok{+}
   \FunctionTok{geom\_freqpoly}\NormalTok{(}\AttributeTok{bins =} \DecValTok{10}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-19-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-20-1.pdf}
 
 滑らかな曲線にするときは、density plot を使います。alpha は透明度で 0 から 1 の値で指定します。数が小さい方が薄くなります。color で線の色もあわせて設定することも可能です。いろいろと試してみてください。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{fill =}\NormalTok{ Species)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{fill =}\NormalTok{ Species)) }\SpecialCharTok{+}
   \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-20-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-21-1.pdf}
 
 \hypertarget{ux7ddaux5f62ux30e2ux30c7ux30eb-data-modeling}{%
 \subsection{線形モデル Data Modeling}\label{ux7ddaux5f62ux30e2ux30c7ux30eb-data-modeling}}
@@ -7522,23 +7559,111 @@ Visualize the distribution of a single continuous variable by dividing the x axi
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-21-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-22-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{geom\_smooth}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-22-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\hypertarget{ux4f8bux304bux3089ux5b66ux3076-ggplot2-i}{%
+\section{\texorpdfstring{例から学ぶ ggplot2\texttt{,} I}{例から学ぶ ggplot2, I}}\label{ux4f8bux304bux3089ux5b66ux3076-ggplot2-i}}
+
+\hypertarget{mpg-ux3092ux4f7fux3063ux3066}{%
+\subsubsection{mpg を使って}\label{mpg-ux3092ux4f7fux3063ux3066}}
+
+\texttt{ggplot2} に含まれている、\texttt{mpg}（Fuel economy data from 1999 to 2008 for 38 popular models of cars - 1999年から2008年の38の型式の車の年燃費）データを使って、簡単な、散布図と、箱ひげ図を描いてみます。\texttt{mpg} の変数などについては、Help で調べてください。
+
+manufacturer は、メーカー名、model は、型式、disp は、排気量（単位：リットル）、year は年式、cyl は、気筒数、trans は、オートマかマニュアルか、drv は、f が前輪駆動、r は後輪駆動、4 は四輪駆動、cty は街中での燃費（１ガロンで何マイル走るか）、hwy は高速道路での燃費（１ガロンで何マイル走るか）、fl 燃料の種類、class タイプ
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_mpg }\OtherTok{\textless{}{-}}\NormalTok{ ggplot2}\SpecialCharTok{::}\NormalTok{mpg}
+\NormalTok{df\_mpg}
+\CommentTok{\#\textgreater{} \# A tibble: 234 x 11}
+\CommentTok{\#\textgreater{}    manufacturer model    displ  year   cyl trans drv     cty}
+\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}        \textless{}chr\textgreater{}    \textless{}dbl\textgreater{} \textless{}int\textgreater{} \textless{}int\textgreater{} \textless{}chr\textgreater{} \textless{}chr\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\textgreater{}  1 audi         a4         1.8  1999     4 auto\textasciitilde{} f        18}
+\CommentTok{\#\textgreater{}  2 audi         a4         1.8  1999     4 manu\textasciitilde{} f        21}
+\CommentTok{\#\textgreater{}  3 audi         a4         2    2008     4 manu\textasciitilde{} f        20}
+\CommentTok{\#\textgreater{}  4 audi         a4         2    2008     4 auto\textasciitilde{} f        21}
+\CommentTok{\#\textgreater{}  5 audi         a4         2.8  1999     6 auto\textasciitilde{} f        16}
+\CommentTok{\#\textgreater{}  6 audi         a4         2.8  1999     6 manu\textasciitilde{} f        18}
+\CommentTok{\#\textgreater{}  7 audi         a4         3.1  2008     6 auto\textasciitilde{} f        18}
+\CommentTok{\#\textgreater{}  8 audi         a4 quat\textasciitilde{}   1.8  1999     4 manu\textasciitilde{} 4        18}
+\CommentTok{\#\textgreater{}  9 audi         a4 quat\textasciitilde{}   1.8  1999     4 auto\textasciitilde{} 4        16}
+\CommentTok{\#\textgreater{} 10 audi         a4 quat\textasciitilde{}   2    2008     4 manu\textasciitilde{} 4        20}
+\CommentTok{\#\textgreater{} \# i 224 more rows}
+\CommentTok{\#\textgreater{} \# i 3 more variables: hwy \textless{}int\textgreater{}, fl \textless{}chr\textgreater{}, class \textless{}chr\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(df\_mpg)}
+\CommentTok{\#\textgreater{} Rows: 234}
+\CommentTok{\#\textgreater{} Columns: 11}
+\CommentTok{\#\textgreater{} $ manufacturer \textless{}chr\textgreater{} "audi", "audi", "audi", "audi", "audi\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ model        \textless{}chr\textgreater{} "a4", "a4", "a4", "a4", "a4", "a4", "\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ displ        \textless{}dbl\textgreater{} 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ year         \textless{}int\textgreater{} 1999, 1999, 2008, 2008, 1999, 1999, 2\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ cyl          \textless{}int\textgreater{} 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ trans        \textless{}chr\textgreater{} "auto(l5)", "manual(m5)", "manual(m6)\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ drv          \textless{}chr\textgreater{} "f", "f", "f", "f", "f", "f", "f", "4\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ cty          \textless{}int\textgreater{} 18, 21, 20, 21, 16, 18, 18, 18, 16, 2\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ hwy          \textless{}int\textgreater{} 29, 29, 31, 30, 26, 26, 27, 26, 25, 2\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ fl           \textless{}chr\textgreater{} "p", "p", "p", "p", "p", "p", "p", "p\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ class        \textless{}chr\textgreater{} "compact", "compact", "compact", "com\textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_mpg) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ displ, }\AttributeTok{y =}\NormalTok{ hwy))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-26-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_mpg) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ class, }\AttributeTok{y =}\NormalTok{ hwy))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \texttt{data\ =\ df\_mpg} でデータを指定します。
+\item
+  どのようなグラフにするか、幾何関数（Geometric Function）を指定します。散布図では、\texttt{geom\_pont()} 、箱ひげ図では、\texttt{geom\_boxplot()} などです。
+\item
+  x 軸、y 軸などに対応する変数の写像（mapping）を指定します。
+
+  \begin{itemize}
+  \item
+    散布図では、\texttt{dspl} （displacemnt エンジンの排気量（単位 リットル））を x 軸に、\texttt{hwy} 高速道路で１ガロンで走れる距離（単位 マイル）を y 軸に割り当てています。
+  \item
+    箱ひげ図では、\texttt{class} 車の型式を、x 軸に、\texttt{hwy} 高速道路で１ガロンで走れる距離（単位 マイル）を y 軸に割り当てています。
+  \end{itemize}
+\end{enumerate}
+
+記号的に書くと、下のようになっています。
+
+\texttt{ggplot(data\ =\ \textless{}DATA\textgreater{})\ +\ \textless{}GEOM\_FUNCTION\textgreater{}(mapping\ =\ aes(\textless{}MAPPINGS\textgreater{}))}
 
 \hypertarget{ux4f8bux304bux3089ux5b66ux3076-ggplot2-ii}{%
 \section{\texorpdfstring{例から学ぶ ggplot2\texttt{,} II}{例から学ぶ ggplot2, II}}\label{ux4f8bux304bux3089ux5b66ux3076-ggplot2-ii}}
@@ -7616,35 +7741,33 @@ WDI の使い方は、世界銀行の部分で紹介しますが、はじめて�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_wdi\_extra}
-\CommentTok{\#\textgreater{} \# A tibble: 16,758 x 15}
-\CommentTok{\#\textgreater{}    country     iso2c iso3c  year status lastupdated lifeExp}
-\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}       \textless{}chr\textgreater{} \textless{}chr\textgreater{} \textless{}dbl\textgreater{} \textless{}lgl\textgreater{}  \textless{}date\textgreater{}        \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{}  1 Afghanistan AF    AFG    2014 NA     2023{-}07{-}25     62.5}
-\CommentTok{\#\textgreater{}  2 Afghanistan AF    AFG    2012 NA     2023{-}07{-}25     61.9}
-\CommentTok{\#\textgreater{}  3 Afghanistan AF    AFG    2009 NA     2023{-}07{-}25     60.4}
-\CommentTok{\#\textgreater{}  4 Afghanistan AF    AFG    2013 NA     2023{-}07{-}25     62.4}
-\CommentTok{\#\textgreater{}  5 Afghanistan AF    AFG    1971 NA     2023{-}07{-}25     37.9}
-\CommentTok{\#\textgreater{}  6 Afghanistan AF    AFG    2015 NA     2023{-}07{-}25     62.7}
-\CommentTok{\#\textgreater{}  7 Afghanistan AF    AFG    1969 NA     2023{-}07{-}25     36.9}
-\CommentTok{\#\textgreater{}  8 Afghanistan AF    AFG    2010 NA     2023{-}07{-}25     60.9}
-\CommentTok{\#\textgreater{}  9 Afghanistan AF    AFG    2011 NA     2023{-}07{-}25     61.4}
-\CommentTok{\#\textgreater{} 10 Afghanistan AF    AFG    2008 NA     2023{-}07{-}25     59.9}
+\NormalTok{df\_wdi}
+\CommentTok{\#\textgreater{} \# A tibble: 16,758 x 7}
+\CommentTok{\#\textgreater{}    country     iso2c iso3c  year lifeExp      pop gdpPercap}
+\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}       \textless{}chr\textgreater{} \textless{}chr\textgreater{} \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1 Afghanistan AF    AFG    1960    32.5  8622466        NA}
+\CommentTok{\#\textgreater{}  2 Afghanistan AF    AFG    1961    33.1  8790140        NA}
+\CommentTok{\#\textgreater{}  3 Afghanistan AF    AFG    1962    33.5  8969047        NA}
+\CommentTok{\#\textgreater{}  4 Afghanistan AF    AFG    1963    34.0  9157465        NA}
+\CommentTok{\#\textgreater{}  5 Afghanistan AF    AFG    1964    34.5  9355514        NA}
+\CommentTok{\#\textgreater{}  6 Afghanistan AF    AFG    1965    35.0  9565147        NA}
+\CommentTok{\#\textgreater{}  7 Afghanistan AF    AFG    1966    35.5  9783147        NA}
+\CommentTok{\#\textgreater{}  8 Afghanistan AF    AFG    1967    35.9 10010030        NA}
+\CommentTok{\#\textgreater{}  9 Afghanistan AF    AFG    1968    36.4 10247780        NA}
+\CommentTok{\#\textgreater{} 10 Afghanistan AF    AFG    1969    36.9 10494489        NA}
 \CommentTok{\#\textgreater{} \# i 16,748 more rows}
-\CommentTok{\#\textgreater{} \# i 8 more variables: pop \textless{}dbl\textgreater{}, gdpPercap \textless{}dbl\textgreater{},}
-\CommentTok{\#\textgreater{} \#   region \textless{}chr\textgreater{}, capital \textless{}chr\textgreater{}, longitude \textless{}dbl\textgreater{},}
-\CommentTok{\#\textgreater{} \#   latitude \textless{}dbl\textgreater{}, income \textless{}chr\textgreater{}, lending \textless{}chr\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
 
 \hypertarget{section-1}{%
 \subsection{}\label{section-1}}
 
-\textbf{例3 折線グラフ（line graph）}
+\hypertarget{ux6298ux7ddaux30b0ux30e9ux30d5line-graph}{%
+\subsection{\texorpdfstring{\textbf{折線グラフ（line graph）}}{折線グラフ（line graph）}}\label{ux6298ux7ddaux30b0ux30e9ux30d5line-graph}}
 
 WDI は時系列データですから、折れ線グラフも使います。後ほど紹介しますが、
 
-\texttt{\{\textless{}DATA\textgreater{}\ \textbar{}\textgreater{}\ ggplot(aes(year,\ lifeExp))\ +\ geom\_line()\}}
+\texttt{\textless{}DATA\textgreater{}\ \textbar{}\textgreater{}\ ggplot(aes(year,\ lifeExp))\ +\ geom\_line()}
 
 と言った感じです。
 
@@ -7658,181 +7781,98 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-31-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-36-1.pdf}
 
-\hypertarget{ux4f8b-ux30d1ux30c3ux30b1ux30fcux30b8-gapminder-ux3092ux4f7fux3063ux3066}{%
-\section{例　パッケージ Gapminder を使って}\label{ux4f8b-ux30d1ux30c3ux30b1ux30fcux30b8-gapminder-ux3092ux4f7fux3063ux3066}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(tidyverse)}
-\FunctionTok{library}\NormalTok{(gapminder)}
-\FunctionTok{library}\NormalTok{(WDI)}
-\end{Highlighting}
-\end{Shaded}
-
-すでに、\texttt{dplyr} をつかった変形で確認しましたが、簡単に、データを見ておきましょう。
+何が起こっているかわかりますか。これは、鋸の刃グラフ（saw-tooth chart）と言われる標準的な失敗例です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_gm }\OtherTok{\textless{}{-}}\NormalTok{ gapminder}
-\NormalTok{df\_gm }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{slice}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
-\CommentTok{\#\textgreater{} \# A tibble: 10 x 6}
-\CommentTok{\#\textgreater{}    country     continent  year lifeExp      pop gdpPercap}
-\CommentTok{\#\textgreater{}    \textless{}fct\textgreater{}       \textless{}fct\textgreater{}     \textless{}int\textgreater{}   \textless{}dbl\textgreater{}    \textless{}int\textgreater{}     \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{}  1 Afghanistan Asia       1952    28.8  8425333      779.}
-\CommentTok{\#\textgreater{}  2 Afghanistan Asia       1957    30.3  9240934      821.}
-\CommentTok{\#\textgreater{}  3 Afghanistan Asia       1962    32.0 10267083      853.}
-\CommentTok{\#\textgreater{}  4 Afghanistan Asia       1967    34.0 11537966      836.}
-\CommentTok{\#\textgreater{}  5 Afghanistan Asia       1972    36.1 13079460      740.}
-\CommentTok{\#\textgreater{}  6 Afghanistan Asia       1977    38.4 14880372      786.}
-\CommentTok{\#\textgreater{}  7 Afghanistan Asia       1982    39.9 12881816      978.}
-\CommentTok{\#\textgreater{}  8 Afghanistan Asia       1987    40.8 13867957      852.}
-\CommentTok{\#\textgreater{}  9 Afghanistan Asia       1992    41.7 16317921      649.}
-\CommentTok{\#\textgreater{} 10 Afghanistan Asia       1997    41.8 22227415      635.}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{glimpse}\NormalTok{(df\_gm)}
-\CommentTok{\#\textgreater{} Rows: 1,704}
-\CommentTok{\#\textgreater{} Columns: 6}
-\CommentTok{\#\textgreater{} $ country   \textless{}fct\textgreater{} "Afghanistan", "Afghanistan", "Afghanist\textasciitilde{}}
-\CommentTok{\#\textgreater{} $ continent \textless{}fct\textgreater{} Asia, Asia, Asia, Asia, Asia, Asia, Asia\textasciitilde{}}
-\CommentTok{\#\textgreater{} $ year      \textless{}int\textgreater{} 1952, 1957, 1962, 1967, 1972, 1977, 1982\textasciitilde{}}
-\CommentTok{\#\textgreater{} $ lifeExp   \textless{}dbl\textgreater{} 28.801, 30.332, 31.997, 34.020, 36.088, \textasciitilde{}}
-\CommentTok{\#\textgreater{} $ pop       \textless{}int\textgreater{} 8425333, 9240934, 10267083, 11537966, 13\textasciitilde{}}
-\CommentTok{\#\textgreater{} $ gdpPercap \textless{}dbl\textgreater{} 779.4453, 820.8530, 853.1007, 836.1971, \textasciitilde{}}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{summary}\NormalTok{(df\_gm)}
-\CommentTok{\#\textgreater{}         country        continent        year     }
-\CommentTok{\#\textgreater{}  Afghanistan:  12   Africa  :624   Min.   :1952  }
-\CommentTok{\#\textgreater{}  Albania    :  12   Americas:300   1st Qu.:1966  }
-\CommentTok{\#\textgreater{}  Algeria    :  12   Asia    :396   Median :1980  }
-\CommentTok{\#\textgreater{}  Angola     :  12   Europe  :360   Mean   :1980  }
-\CommentTok{\#\textgreater{}  Argentina  :  12   Oceania : 24   3rd Qu.:1993  }
-\CommentTok{\#\textgreater{}  Australia  :  12                  Max.   :2007  }
-\CommentTok{\#\textgreater{}  (Other)    :1632                                }
-\CommentTok{\#\textgreater{}     lifeExp           pop              gdpPercap       }
-\CommentTok{\#\textgreater{}  Min.   :23.60   Min.   :6.001e+04   Min.   :   241.2  }
-\CommentTok{\#\textgreater{}  1st Qu.:48.20   1st Qu.:2.794e+06   1st Qu.:  1202.1  }
-\CommentTok{\#\textgreater{}  Median :60.71   Median :7.024e+06   Median :  3531.8  }
-\CommentTok{\#\textgreater{}  Mean   :59.47   Mean   :2.960e+07   Mean   :  7215.3  }
-\CommentTok{\#\textgreater{}  3rd Qu.:70.85   3rd Qu.:1.959e+07   3rd Qu.:  9325.5  }
-\CommentTok{\#\textgreater{}  Max.   :82.60   Max.   :1.319e+09   Max.   :113523.1  }
-\CommentTok{\#\textgreater{} }
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{tidyverseggplot}{%
-\subsubsection{Tidyverse::ggplot}\label{tidyverseggplot}}
-
-\hypertarget{first-try---with-failures}{%
-\paragraph{First Try - with failures}\label{first-try---with-failures}}
-
-You will encounter similar failures. We list three of them.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(df\_gm, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-35-1.pdf}
-
-There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, \ldots. Can you tell how many years are in the data? The following command shows different years in the data.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{unique}\NormalTok{(df\_gm}\SpecialCharTok{$}\NormalTok{year)}
-\CommentTok{\#\textgreater{}  [1] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002}
-\CommentTok{\#\textgreater{} [12] 2007}
-\end{Highlighting}
-\end{Shaded}
-
-You can guess it from the data summary above. Can you imagine how many countries are in the data? 142? Anyhow, too many points are on each year.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(df\_gm, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{()}
+\FunctionTok{ggplot}\NormalTok{(df\_wdi, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
+\CommentTok{\#\textgreater{} Warning: Continuous x aesthetic}
+\CommentTok{\#\textgreater{} i did you forget \textasciigrave{}aes(group = ...)\textasciigrave{}?}
+\CommentTok{\#\textgreater{} Warning: Removed 892 rows containing non{-}finite values}
+\CommentTok{\#\textgreater{} (\textasciigrave{}stat\_boxplot()\textasciigrave{}).}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{26-visualize_files/figure-latex/unnamed-chunk-37-1.pdf}
 
-Now, you can guess the reason why you had this output. This is often called a saw-tooth.
+これも期待した箱ひげ図にはなっていません。年は、カテゴリーではなく、数値データですね。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(df\_gm, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
-\CommentTok{\#\textgreater{} Warning: Continuous x aesthetic}
-\CommentTok{\#\textgreater{} i did you forget \textasciigrave{}aes(group = ...)\textasciigrave{}?}
+\FunctionTok{typeof}\NormalTok{(}\FunctionTok{pull}\NormalTok{(df\_wdi, year)) }\CommentTok{\# same as typeof(df$year)}
+\CommentTok{\#\textgreater{} [1] "double"}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-38-1.pdf}
-
-Can you see what the problem is? The \texttt{year} is a numerical variable in integer.
+次のようにすると少しマシになります。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{typeof}\NormalTok{(}\FunctionTok{pull}\NormalTok{(df\_gm, year)) }\CommentTok{\# same as typeof(df$year)}
-\CommentTok{\#\textgreater{} [1] "integer"}
+\FunctionTok{ggplot}\NormalTok{(df\_wdi, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ lifeExp, }\AttributeTok{group =}\NormalTok{ year)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
+\CommentTok{\#\textgreater{} Warning: Removed 892 rows containing non{-}finite values}
+\CommentTok{\#\textgreater{} (\textasciigrave{}stat\_boxplot()\textasciigrave{}).}
 \end{Highlighting}
 \end{Shaded}
 
-The following looks better.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(df\_gm, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ lifeExp, }\AttributeTok{group =}\NormalTok{ year)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-40-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-39-1.pdf}
 
 \hypertarget{box-plot}{%
 \paragraph{Box Plot}\label{box-plot}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(df\_gm, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{as\_factor}\NormalTok{(year), }\AttributeTok{y =}\NormalTok{ lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
+\FunctionTok{ggplot}\NormalTok{(df\_wdi, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{as\_factor}\NormalTok{(year), }\AttributeTok{y =}\NormalTok{ lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
+\CommentTok{\#\textgreater{} Warning: Removed 892 rows containing non{-}finite values}
+\CommentTok{\#\textgreater{} (\textasciigrave{}stat\_boxplot()\textasciigrave{}).}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-40-1.pdf}
+
+とはいえ、数が多すぎますね。色もつけてみましょう。塗りつぶしは、fill 枠の線に色をつけるのは、color ですから、ここでは、fill を使います。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{filter}\NormalTok{(year }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{1960}\NormalTok{, }\DecValTok{1980}\NormalTok{, }\DecValTok{2000}\NormalTok{, }\DecValTok{2020}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{as\_factor}\NormalTok{(year), }\AttributeTok{y =}\NormalTok{ lifeExp, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{()}
+\CommentTok{\#\textgreater{} Warning: Removed 37 rows containing non{-}finite values}
+\CommentTok{\#\textgreater{} (\textasciigrave{}stat\_boxplot()\textasciigrave{}).}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{26-visualize_files/figure-latex/unnamed-chunk-41-1.pdf}
 
-You can use \texttt{fill} and \texttt{color} for the box plot. Try and check the difference.
+折線グラフの例としては次のようなものがあります。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_gm }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(year }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{1952}\NormalTok{, }\DecValTok{1987}\NormalTok{, }\DecValTok{2007}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{as\_factor}\NormalTok{(year), }\AttributeTok{y =}\NormalTok{ lifeExp, }\AttributeTok{fill =}\NormalTok{ continent)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_boxplot}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-42-1.pdf}
-
-The following are examples of line graphs. Please see the differences.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df\_lifeExp }\OtherTok{\textless{}{-}}\NormalTok{ df\_gm }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{group\_by}\NormalTok{(continent, year) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{df\_lifeExp }\OtherTok{\textless{}{-}}\NormalTok{ df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(region }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}  
+  \FunctionTok{group\_by}\NormalTok{(region, year) }\SpecialCharTok{|\textgreater{}}
   \FunctionTok{summarize}\NormalTok{(}\AttributeTok{mean\_lifeExp =} \FunctionTok{mean}\NormalTok{(lifeExp), }\AttributeTok{median\_lifeExp =} \FunctionTok{median}\NormalTok{(lifeExp), }\AttributeTok{max\_lifeExp =} \FunctionTok{max}\NormalTok{(lifeExp), }\AttributeTok{min\_lifeExp =} \FunctionTok{min}\NormalTok{(lifeExp), }\AttributeTok{.groups =} \StringTok{"keep"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ mean\_lifeExp, }\AttributeTok{color =}\NormalTok{ continent)) }\SpecialCharTok{+}
+\NormalTok{df\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ mean\_lifeExp, }\AttributeTok{color =}\NormalTok{ region)) }\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{()}
+\CommentTok{\#\textgreater{} Warning: Removed 243 rows containing missing values}
+\CommentTok{\#\textgreater{} (\textasciigrave{}geom\_line()\textasciigrave{}).}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-43-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ mean\_lifeExp, }\AttributeTok{color =}\NormalTok{ region, }\AttributeTok{linetype =}\NormalTok{ region)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{()}
+\CommentTok{\#\textgreater{} Warning: Removed 243 rows containing missing values}
+\CommentTok{\#\textgreater{} (\textasciigrave{}geom\_line()\textasciigrave{}).}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7840,44 +7880,15 @@ The following are examples of line graphs. Please see the differences.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ mean\_lifeExp, }\AttributeTok{color =}\NormalTok{ continent, }\AttributeTok{linetype =}\NormalTok{ continent)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_line}\NormalTok{()}
+\NormalTok{df\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ mean\_lifeExp, }\AttributeTok{color =}\NormalTok{ region)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ median\_lifeExp, }\AttributeTok{linetype =}\NormalTok{ region))}
+\CommentTok{\#\textgreater{} Warning: Removed 243 rows containing missing values (\textasciigrave{}geom\_line()\textasciigrave{}).}
+\CommentTok{\#\textgreater{} Removed 243 rows containing missing values (\textasciigrave{}geom\_line()\textasciigrave{}).}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{26-visualize_files/figure-latex/unnamed-chunk-45-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ mean\_lifeExp, }\AttributeTok{color =}\NormalTok{ continent)) }\SpecialCharTok{+} 
-  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ median\_lifeExp, }\AttributeTok{linetype =}\NormalTok{ continent))}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-46-1.pdf}
-
-\hypertarget{original-data-wdi}{%
-\subsection{Original Data? WDI?}\label{original-data-wdi}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df\_gm }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{slice}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
-\CommentTok{\#\textgreater{} \# A tibble: 10 x 6}
-\CommentTok{\#\textgreater{}    country     continent  year lifeExp      pop gdpPercap}
-\CommentTok{\#\textgreater{}    \textless{}fct\textgreater{}       \textless{}fct\textgreater{}     \textless{}int\textgreater{}   \textless{}dbl\textgreater{}    \textless{}int\textgreater{}     \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{}  1 Afghanistan Asia       1952    28.8  8425333      779.}
-\CommentTok{\#\textgreater{}  2 Afghanistan Asia       1957    30.3  9240934      821.}
-\CommentTok{\#\textgreater{}  3 Afghanistan Asia       1962    32.0 10267083      853.}
-\CommentTok{\#\textgreater{}  4 Afghanistan Asia       1967    34.0 11537966      836.}
-\CommentTok{\#\textgreater{}  5 Afghanistan Asia       1972    36.1 13079460      740.}
-\CommentTok{\#\textgreater{}  6 Afghanistan Asia       1977    38.4 14880372      786.}
-\CommentTok{\#\textgreater{}  7 Afghanistan Asia       1982    39.9 12881816      978.}
-\CommentTok{\#\textgreater{}  8 Afghanistan Asia       1987    40.8 13867957      852.}
-\CommentTok{\#\textgreater{}  9 Afghanistan Asia       1992    41.7 16317921      649.}
-\CommentTok{\#\textgreater{} 10 Afghanistan Asia       1997    41.8 22227415      635.}
-\end{Highlighting}
-\end{Shaded}
 
 \hypertarget{wdi-1}{%
 \subsubsection{WDI}\label{wdi-1}}
@@ -12931,8 +12942,251 @@ estat_getStatsData(
 \hypertarget{others}{%
 \chapter{その他のデータベース}\label{others}}
 
+\hypertarget{ux56fdux969bux6a5fux95a2}{%
+\section{国際機関}\label{ux56fdux969bux6a5fux95a2}}
+
+\hypertarget{ux56fdux9023ux5150ux7ae5ux57faux91d1unicefunited-nations-childrens-fund}{%
+\subsection{\texorpdfstring{\textbf{国連児童基金}（UNICEF：United Nations Children's Fund）}{国連児童基金（UNICEF：United Nations Children's Fund）}}\label{ux56fdux9023ux5150ux7ae5ux57faux91d1unicefunited-nations-childrens-fund}}
+
+\url{https://data.unicef.org}
+
+\hypertarget{ux4e16ux754cux306eux56fdux306eux653fux5e9cux6a5fux95a2}{%
+\section{世界の国の政府機関}\label{ux4e16ux754cux306eux56fdux306eux653fux5e9cux6a5fux95a2}}
+
+\hypertarget{ux7c73ux56fddata.gov}{%
+\subsection{米国：DATA.GOV}\label{ux7c73ux56fddata.gov}}
+
+The Home of the U.S. Government's Open Data: \url{https://data.gov/}
+
+\hypertarget{ux7c73ux56fdux56fdux52e2ux8abfux67fbunited-states-census-bureau}{%
+\subsection{米国国勢調査：United States Census Bureau}\label{ux7c73ux56fdux56fdux52e2ux8abfux67fbunited-states-census-bureau}}
+
+Explore Census Data: \url{https://data.census.gov}
+
+\hypertarget{ux4e2dux56fdnational-bureaus-of-statistics-of-china}{%
+\subsection{中国：National Bureaus of Statistics of China}\label{ux4e2dux56fdnational-bureaus-of-statistics-of-china}}
+
+\hypertarget{httpwww.stats.gov.cnenglish}{%
+\subsection{\texorpdfstring{\url{http://www.stats.gov.cn/english/}}{http://www.stats.gov.cn/english/}}\label{httpwww.stats.gov.cnenglish}}
+
+\hypertarget{ux82f1ux56fdfind-open-data-data.gov.uk}{%
+\subsection{英国：Find Open Data: data.gov.uk}\label{ux82f1ux56fdfind-open-data-data.gov.uk}}
+
+\url{https://www.data.gov.uk}
+
+\hypertarget{ux82f1ux56fdux30c7ux30fcux30bfux30b5ux30fcux30d3ux30b9uk-data-service}{%
+\subsection{英国データサービス：UK Data Service}\label{ux82f1ux56fdux30c7ux30fcux30bfux30b5ux30fcux30d3ux30b9uk-data-service}}
+
+\url{https://ukdataservice.ac.uk}
+
+\hypertarget{ux6b27ux5ddeux9023ux5408eu-the-official-portal-for-european-data}{%
+\subsection{欧州連合（EU）: The official portal for European data}\label{ux6b27ux5ddeux9023ux5408eu-the-official-portal-for-european-data}}
+
+\url{https://data.europa.eu/en}
+
+\hypertarget{ux97d3ux56fdstatistics-korea}{%
+\subsection{韓国：Statistics Korea}\label{ux97d3ux56fdstatistics-korea}}
+
+\url{https://kostat.go.kr/anse/}
+
+\hypertarget{clinicaltrials.gov}{%
+\section{ClinicalTrials.gov}\label{clinicaltrials.gov}}
+
+ClinicalTrials.gov is a place to learn about clinical studies from around the world.
+
+\url{https://clinicaltrials.gov/}
+
+\hypertarget{harvard-dataverse}{%
+\section{Harvard Dataverse}\label{harvard-dataverse}}
+
+\url{https://dataverse.harvard.edu/}
+
 \hypertarget{kagle}{%
 \section{Kagle}\label{kagle}}
+
+\begin{itemize}
+\item
+  Kagle Home: \url{https://www.kaggle.com}
+\item
+  Kagle Datasets: \url{https://www.kaggle.com/datasets}
+\end{itemize}
+
+\hypertarget{gapminder-1}{%
+\section{Gapminder}\label{gapminder-1}}
+
+\hypertarget{ux30d1ux30c3ux30b1ux30fcux30b8-gapminder-ux3092ux4f7fux3063ux3066}{%
+\subsection{パッケージ Gapminder を使って}\label{ux30d1ux30c3ux30b1ux30fcux30b8-gapminder-ux3092ux4f7fux3063ux3066}}
+
+\begin{itemize}
+\item
+  gapminder: Data from Gapminder: \url{https://cran.r-project.org/web/packages/gapminder/index.html}
+\item
+  Gapminder Data: \url{https://www.gapminder.org/data/}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(gapminder)}
+\end{Highlighting}
+\end{Shaded}
+
+すでに、\texttt{dplyr} をつかった変形で確認しましたが、簡単に、データを見ておきましょう。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_gm }\OtherTok{\textless{}{-}}\NormalTok{ gapminder}
+\NormalTok{df\_gm }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{slice}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{} \# A tibble: 10 x 6}
+\CommentTok{\#\textgreater{}    country     continent  year lifeExp      pop gdpPercap}
+\CommentTok{\#\textgreater{}    \textless{}fct\textgreater{}       \textless{}fct\textgreater{}     \textless{}int\textgreater{}   \textless{}dbl\textgreater{}    \textless{}int\textgreater{}     \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1 Afghanistan Asia       1952    28.8  8425333      779.}
+\CommentTok{\#\textgreater{}  2 Afghanistan Asia       1957    30.3  9240934      821.}
+\CommentTok{\#\textgreater{}  3 Afghanistan Asia       1962    32.0 10267083      853.}
+\CommentTok{\#\textgreater{}  4 Afghanistan Asia       1967    34.0 11537966      836.}
+\CommentTok{\#\textgreater{}  5 Afghanistan Asia       1972    36.1 13079460      740.}
+\CommentTok{\#\textgreater{}  6 Afghanistan Asia       1977    38.4 14880372      786.}
+\CommentTok{\#\textgreater{}  7 Afghanistan Asia       1982    39.9 12881816      978.}
+\CommentTok{\#\textgreater{}  8 Afghanistan Asia       1987    40.8 13867957      852.}
+\CommentTok{\#\textgreater{}  9 Afghanistan Asia       1992    41.7 16317921      649.}
+\CommentTok{\#\textgreater{} 10 Afghanistan Asia       1997    41.8 22227415      635.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(df\_gm)}
+\CommentTok{\#\textgreater{} Rows: 1,704}
+\CommentTok{\#\textgreater{} Columns: 6}
+\CommentTok{\#\textgreater{} $ country   \textless{}fct\textgreater{} "Afghanistan", "Afghanistan", "Afghanist\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ continent \textless{}fct\textgreater{} Asia, Asia, Asia, Asia, Asia, Asia, Asia\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ year      \textless{}int\textgreater{} 1952, 1957, 1962, 1967, 1972, 1977, 1982\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ lifeExp   \textless{}dbl\textgreater{} 28.801, 30.332, 31.997, 34.020, 36.088, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ pop       \textless{}int\textgreater{} 8425333, 9240934, 10267083, 11537966, 13\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gdpPercap \textless{}dbl\textgreater{} 779.4453, 820.8530, 853.1007, 836.1971, \textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(df\_gm)}
+\CommentTok{\#\textgreater{}         country        continent        year     }
+\CommentTok{\#\textgreater{}  Afghanistan:  12   Africa  :624   Min.   :1952  }
+\CommentTok{\#\textgreater{}  Albania    :  12   Americas:300   1st Qu.:1966  }
+\CommentTok{\#\textgreater{}  Algeria    :  12   Asia    :396   Median :1980  }
+\CommentTok{\#\textgreater{}  Angola     :  12   Europe  :360   Mean   :1980  }
+\CommentTok{\#\textgreater{}  Argentina  :  12   Oceania : 24   3rd Qu.:1993  }
+\CommentTok{\#\textgreater{}  Australia  :  12                  Max.   :2007  }
+\CommentTok{\#\textgreater{}  (Other)    :1632                                }
+\CommentTok{\#\textgreater{}     lifeExp           pop              gdpPercap       }
+\CommentTok{\#\textgreater{}  Min.   :23.60   Min.   :6.001e+04   Min.   :   241.2  }
+\CommentTok{\#\textgreater{}  1st Qu.:48.20   1st Qu.:2.794e+06   1st Qu.:  1202.1  }
+\CommentTok{\#\textgreater{}  Median :60.71   Median :7.024e+06   Median :  3531.8  }
+\CommentTok{\#\textgreater{}  Mean   :59.47   Mean   :2.960e+07   Mean   :  7215.3  }
+\CommentTok{\#\textgreater{}  3rd Qu.:70.85   3rd Qu.:1.959e+07   3rd Qu.:  9325.5  }
+\CommentTok{\#\textgreater{}  Max.   :82.60   Max.   :1.319e+09   Max.   :113523.1  }
+\CommentTok{\#\textgreater{} }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{unique}\NormalTok{(df\_gm}\SpecialCharTok{$}\NormalTok{year)}
+\CommentTok{\#\textgreater{}  [1] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002}
+\CommentTok{\#\textgreater{} [12] 2007}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{box-plot-1}{%
+\paragraph{Box Plot}\label{box-plot-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_gm, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{as\_factor}\NormalTok{(year), }\AttributeTok{y =}\NormalTok{ lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{39-others_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\texttt{fill} や \texttt{color} を追加してみましょう。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_gm }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(year }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{1952}\NormalTok{, }\DecValTok{1987}\NormalTok{, }\DecValTok{2007}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{as\_factor}\NormalTok{(year), }\AttributeTok{y =}\NormalTok{ lifeExp, }\AttributeTok{fill =}\NormalTok{ continent)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{39-others_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+折れ線グラフの例です。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_lifeExp }\OtherTok{\textless{}{-}}\NormalTok{ df\_gm }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(continent, year) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{mean\_lifeExp =} \FunctionTok{mean}\NormalTok{(lifeExp), }\AttributeTok{median\_lifeExp =} \FunctionTok{median}\NormalTok{(lifeExp), }\AttributeTok{max\_lifeExp =} \FunctionTok{max}\NormalTok{(lifeExp), }\AttributeTok{min\_lifeExp =} \FunctionTok{min}\NormalTok{(lifeExp), }\AttributeTok{.groups =} \StringTok{"keep"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ mean\_lifeExp, }\AttributeTok{color =}\NormalTok{ continent)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{39-others_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ mean\_lifeExp, }\AttributeTok{color =}\NormalTok{ continent, }\AttributeTok{linetype =}\NormalTok{ continent)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{39-others_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ mean\_lifeExp, }\AttributeTok{color =}\NormalTok{ continent)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ median\_lifeExp, }\AttributeTok{linetype =}\NormalTok{ continent))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{39-others_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\hypertarget{original-data-wdi}{%
+\subsection{Original Data? WDI?}\label{original-data-wdi}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_gm }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{slice}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{} \# A tibble: 10 x 6}
+\CommentTok{\#\textgreater{}    country     continent  year lifeExp      pop gdpPercap}
+\CommentTok{\#\textgreater{}    \textless{}fct\textgreater{}       \textless{}fct\textgreater{}     \textless{}int\textgreater{}   \textless{}dbl\textgreater{}    \textless{}int\textgreater{}     \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1 Afghanistan Asia       1952    28.8  8425333      779.}
+\CommentTok{\#\textgreater{}  2 Afghanistan Asia       1957    30.3  9240934      821.}
+\CommentTok{\#\textgreater{}  3 Afghanistan Asia       1962    32.0 10267083      853.}
+\CommentTok{\#\textgreater{}  4 Afghanistan Asia       1967    34.0 11537966      836.}
+\CommentTok{\#\textgreater{}  5 Afghanistan Asia       1972    36.1 13079460      740.}
+\CommentTok{\#\textgreater{}  6 Afghanistan Asia       1977    38.4 14880372      786.}
+\CommentTok{\#\textgreater{}  7 Afghanistan Asia       1982    39.9 12881816      978.}
+\CommentTok{\#\textgreater{}  8 Afghanistan Asia       1987    40.8 13867957      852.}
+\CommentTok{\#\textgreater{}  9 Afghanistan Asia       1992    41.7 16317921      649.}
+\CommentTok{\#\textgreater{} 10 Afghanistan Asia       1997    41.8 22227415      635.}
+\end{Highlighting}
+\end{Shaded}
+
+さて、このデータは、どのようにして集めているのでしょうか。WDI のデータと同じでしょうか。
+
+\hypertarget{section-2}{%
+\section{}\label{section-2}}
+
+\hypertarget{section-3}{%
+\section{}\label{section-3}}
 
 \hypertarget{part-part-iv-eda}{%
 \part{PART IV EDA}\label{part-part-iv-eda}}
@@ -13206,6 +13460,899 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \CommentTok{\#\textgreater{} F{-}statistic:  1614 on 1 and 174 DF,  p{-}value: \textless{} 2.2e{-}16}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{worldmap}{%
+\chapter{地図 Choropleth Maps}\label{worldmap}}
+
+この章では、\texttt{ggplot2} を使って、情報付きの地図を生成する方法を学ぶ。
+
+最も基本的な \texttt{data.frame} を用い \texttt{geom\_map} または \texttt{geom\_polygon} で地図を書くことも可能だが、最近は、\texttt{simple\ feature\ (sf)} 形式のデータを使って \texttt{ggplot2} の \texttt{geom\_sf} を用いて地図を描くことで、複雑なものを扱えるようになってきている。
+
+本書のテーマからも、ある情報を加えた地図は有効だと思われるので、紹介を試みる。
+
+\hypertarget{ux6e96ux5099}{%
+\section{準備}\label{ux6e96ux5099}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
+\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
+\CommentTok{\#\textgreater{} v ggplot2   3.4.2     v tibble    3.2.1}
+\CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
+\CommentTok{\#\textgreater{} v purrr     1.0.1     }
+\CommentTok{\#\textgreater{} {-}{-} Conflicts {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-} tidyverse\_conflicts() {-}{-}}
+\CommentTok{\#\textgreater{} x dplyr::filter() masks stats::filter()}
+\CommentTok{\#\textgreater{} x dplyr::lag()    masks stats::lag()}
+\CommentTok{\#\textgreater{} i Use the conflicted package (\textless{}http://conflicted.r{-}lib.org/\textgreater{}) to force all conflicts to become errors}
+\FunctionTok{library}\NormalTok{(sf)}
+\CommentTok{\#\textgreater{} Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf\_use\_s2()}
+\CommentTok{\#\textgreater{} is TRUE}
+\FunctionTok{library}\NormalTok{(showtext)}
+\CommentTok{\#\textgreater{} Loading required package: sysfonts}
+\CommentTok{\#\textgreater{} Loading required package: showtextdb}
+\FunctionTok{showtext\_auto}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+WDI パッケージの、WDIcache() に含まれる、収入の多寡を表す \texttt{income} レベルと iso2c コードをまず用いる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wdi\_cache }\OtherTok{\textless{}{-}} \FunctionTok{read\_rds}\NormalTok{(}\StringTok{"./data/wdi\_cache.RData"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wdi\_cache}\SpecialCharTok{$}\NormalTok{country }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{glimpse}\NormalTok{()}
+\CommentTok{\#\textgreater{} Rows: 299}
+\CommentTok{\#\textgreater{} Columns: 9}
+\CommentTok{\#\textgreater{} $ iso3c     \textless{}chr\textgreater{} "ABW", "AFE", "AFG", "AFR", "AFW", "AGO"\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ iso2c     \textless{}chr\textgreater{} "AW", "ZH", "AF", "A9", "ZI", "AO", "AL"\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ country   \textless{}chr\textgreater{} "Aruba", "Africa Eastern and Southern", \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ region    \textless{}chr\textgreater{} "Latin America \& Caribbean", "Aggregates\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ capital   \textless{}chr\textgreater{} "Oranjestad", "", "Kabul", "", "", "Luan\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ longitude \textless{}chr\textgreater{} "{-}70.0167", "", "69.1761", "", "", "13.2\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ latitude  \textless{}chr\textgreater{} "12.5167", "", "34.5228", "", "", "{-}8.81\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ income    \textless{}chr\textgreater{} "High income", "Aggregates", "Low income\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ lending   \textless{}chr\textgreater{} "Not classified", "Aggregates", "IDA", "\textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wdi\_income }\OtherTok{\textless{}{-}}\NormalTok{ wdi\_cache}\SpecialCharTok{$}\NormalTok{country }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(region }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(iso2c, income) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{drop\_na}\NormalTok{(iso2c) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{income =} \FunctionTok{factor}\NormalTok{(income, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"High income"}\NormalTok{, }\StringTok{"Upper middle income"}\NormalTok{, }\StringTok{"Lower middle income"}\NormalTok{, }\StringTok{"Low income"}\NormalTok{, }\StringTok{"Not classified"}\NormalTok{, }\ConstantTok{NA}\NormalTok{))) }
+\FunctionTok{glimpse}\NormalTok{(wdi\_income)}
+\CommentTok{\#\textgreater{} Rows: 218}
+\CommentTok{\#\textgreater{} Columns: 2}
+\CommentTok{\#\textgreater{} $ iso2c  \textless{}chr\textgreater{} "AW", "AF", "AO", "AL", "AD", "AE", "AR", "\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ income \textless{}fct\textgreater{} High income, Low income, Lower middle incom\textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{geom_sf}{%
+\subsection{\texorpdfstring{\texttt{geom\_sf}}{geom\_sf}}\label{geom_sf}}
+
+See also, \texttt{coord\_sf}, \texttt{geom\_sf\_label}, \texttt{geom\_sf\_text}, \texttt{stat\_sf}.
+
+\begin{quote}
+This set of geom, stat, and coord are used to visualise simple feature (sf) objects. For simple plots, you will only need geom\_sf() as it uses stat\_sf() and adds coord\_sf() for you. geom\_sf() is an unusual geom because it will draw different geometric objects depending on what simple features are present in the data: you can get points, lines, or polygons. For text and labels, you can use geom\_sf\_text() and geom\_sf\_label().
+
+この geom、stat、および coord のセットは、Simple Feature (sf) 形式のデータを視覚化するために使用されます。単純なプロットでは、stat\_sf() を使用し、coord\_sf() を追加するので、geom\_sf() だけが必要です。geom\_sf() は、データにどのような単純な特徴が存在するかによって異なる幾何オブジェクトを描画するので、珍しい geom です。テキストとラベルについては、geom\_sf\_text() と geom\_sf\_label() が使用可能です。
+\end{quote}
+
+\begin{verbatim}
+geom_sf(
+  mapping = aes(),
+  data = NULL,
+  stat = "sf",
+  position = "identity",
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE,
+  ...
+)
+\end{verbatim}
+
+\hypertarget{natural-earth-data}{%
+\section{Natural Earth Data}\label{natural-earth-data}}
+
+\url{https://www.naturalearthdata.com}
+
+このサイトで、データを提供しています。
+
+Manual: \url{https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth.pdf}
+
+\hypertarget{ne_countries}{%
+\subsection{\texorpdfstring{\texttt{ne\_countries}}{ne\_countries}}\label{ne_countries}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rnaturalearth)}
+\FunctionTok{library}\NormalTok{(rnaturalearthdata)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Attaching package: \textquotesingle{}rnaturalearthdata\textquotesingle{}}
+\CommentTok{\#\textgreater{} The following object is masked from \textquotesingle{}package:rnaturalearth\textquotesingle{}:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     countries110}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ne_countries(
+  scale = 110,
+  type = "countries",
+  continent = NULL,
+  country = NULL,
+  geounit = NULL,
+  sovereignty = NULL,
+  returnclass = c("sp", "sf")
+)
+\end{verbatim}
+
+\hypertarget{arguments}{%
+\subsubsection{Arguments}\label{arguments}}
+
+\begin{itemize}
+\tightlist
+\item
+  scale: scale of map to return, one of 110, 50, 10 or `small', `medium', `large'
+\item
+  type: country type, one of `countries', `map\_units', `sovereignty', `tiny\_countries'
+\item
+  continent: a character vector of continent names to get countries from.
+\item
+  country: a character vector of country names.
+\item
+  geounit: a character vector of geounit names.
+\item
+  sovereignty: a character vector of sovereignty names.
+\item
+  returnclass: `sp' default or `sf' for Simple Features
+\end{itemize}
+
+\hypertarget{ux4f8b-1}{%
+\subsubsection{例}\label{ux4f8b-1}}
+
+There are three scales. Add \texttt{returnclass\ =\ "sf"} as an option to obtain data in \texttt{sf} format.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ne\_countries}\NormalTok{(}\AttributeTok{scale =} \StringTok{"large"}\NormalTok{, }\AttributeTok{returnclass =} \StringTok{"sf"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}   \FunctionTok{geom\_sf}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ne\_countries}\NormalTok{(}\AttributeTok{scale =} \StringTok{"small"}\NormalTok{, }\AttributeTok{returnclass =} \StringTok{"sf"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}   \FunctionTok{geom\_sf}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+We will use \texttt{medium} scale data in the following.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world }\OtherTok{\textless{}{-}} \FunctionTok{ne\_countries}\NormalTok{(}\AttributeTok{scale =} \StringTok{"medium"}\NormalTok{, }\AttributeTok{returnclass =} \StringTok{"sf"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(ne\_world)}
+\CommentTok{\#\textgreater{} Rows: 241}
+\CommentTok{\#\textgreater{} Columns: 64}
+\CommentTok{\#\textgreater{} $ scalerank  \textless{}int\textgreater{} 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 3, 1, 5, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ featurecla \textless{}chr\textgreater{} "Admin{-}0 country", "Admin{-}0 country", "\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ labelrank  \textless{}dbl\textgreater{} 5, 3, 3, 6, 6, 6, 6, 4, 2, 6, 4, 4, 5, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ sovereignt \textless{}chr\textgreater{} "Netherlands", "Afghanistan", "Angola",\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ sov\_a3     \textless{}chr\textgreater{} "NL1", "AFG", "AGO", "GB1", "ALB", "FI1\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ adm0\_dif   \textless{}dbl\textgreater{} 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ level      \textless{}dbl\textgreater{} 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ type       \textless{}chr\textgreater{} "Country", "Sovereign country", "Sovere\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ admin      \textless{}chr\textgreater{} "Aruba", "Afghanistan", "Angola", "Angu\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ adm0\_a3    \textless{}chr\textgreater{} "ABW", "AFG", "AGO", "AIA", "ALB", "ALD\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ geou\_dif   \textless{}dbl\textgreater{} 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ geounit    \textless{}chr\textgreater{} "Aruba", "Afghanistan", "Angola", "Angu\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gu\_a3      \textless{}chr\textgreater{} "ABW", "AFG", "AGO", "AIA", "ALB", "ALD\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ su\_dif     \textless{}dbl\textgreater{} 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ subunit    \textless{}chr\textgreater{} "Aruba", "Afghanistan", "Angola", "Angu\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ su\_a3      \textless{}chr\textgreater{} "ABW", "AFG", "AGO", "AIA", "ALB", "ALD\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ brk\_diff   \textless{}dbl\textgreater{} 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name       \textless{}chr\textgreater{} "Aruba", "Afghanistan", "Angola", "Angu\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_long  \textless{}chr\textgreater{} "Aruba", "Afghanistan", "Angola", "Angu\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ brk\_a3     \textless{}chr\textgreater{} "ABW", "AFG", "AGO", "AIA", "ALB", "ALD\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ brk\_name   \textless{}chr\textgreater{} "Aruba", "Afghanistan", "Angola", "Angu\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ brk\_group  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ abbrev     \textless{}chr\textgreater{} "Aruba", "Afg.", "Ang.", "Ang.", "Alb."\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ postal     \textless{}chr\textgreater{} "AW", "AF", "AO", "AI", "AL", "AI", "AN\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ formal\_en  \textless{}chr\textgreater{} "Aruba", "Islamic State of Afghanistan"\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ formal\_fr  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ note\_adm0  \textless{}chr\textgreater{} "Neth.", NA, NA, "U.K.", NA, "Fin.", NA\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ note\_brk   \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_sort  \textless{}chr\textgreater{} "Aruba", "Afghanistan", "Angola", "Angu\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_alt   \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ mapcolor7  \textless{}dbl\textgreater{} 4, 5, 3, 6, 1, 4, 1, 2, 3, 3, 4, 4, 1, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ mapcolor8  \textless{}dbl\textgreater{} 2, 6, 2, 6, 4, 1, 4, 1, 1, 1, 5, 5, 2, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ mapcolor9  \textless{}dbl\textgreater{} 2, 8, 6, 6, 1, 4, 1, 3, 3, 2, 1, 1, 2, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ mapcolor13 \textless{}dbl\textgreater{} 9, 7, 1, 3, 6, 6, 8, 3, 13, 10, 1, NA, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ pop\_est    \textless{}dbl\textgreater{} 103065, 28400000, 12799293, 14436, 3639\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gdp\_md\_est \textless{}dbl\textgreater{} 2258.0, 22270.0, 110300.0, 108.9, 21810\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ pop\_year   \textless{}dbl\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ lastcensus \textless{}dbl\textgreater{} 2010, 1979, 1970, NA, 2001, NA, 1989, 2\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gdp\_year   \textless{}dbl\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ economy    \textless{}chr\textgreater{} "6. Developing region", "7. Least devel\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ income\_grp \textless{}chr\textgreater{} "2. High income: nonOECD", "5. Low inco\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ wikipedia  \textless{}dbl\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ fips\_10    \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ iso\_a2     \textless{}chr\textgreater{} "AW", "AF", "AO", "AI", "AL", "AX", "AD\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ iso\_a3     \textless{}chr\textgreater{} "ABW", "AFG", "AGO", "AIA", "ALB", "ALA\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ iso\_n3     \textless{}chr\textgreater{} "533", "004", "024", "660", "008", "248\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ un\_a3      \textless{}chr\textgreater{} "533", "004", "024", "660", "008", "248\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ wb\_a2      \textless{}chr\textgreater{} "AW", "AF", "AO", NA, "AL", NA, "AD", "\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ wb\_a3      \textless{}chr\textgreater{} "ABW", "AFG", "AGO", NA, "ALB", NA, "AD\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ woe\_id     \textless{}dbl\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ adm0\_a3\_is \textless{}chr\textgreater{} "ABW", "AFG", "AGO", "AIA", "ALB", "ALA\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ adm0\_a3\_us \textless{}chr\textgreater{} "ABW", "AFG", "AGO", "AIA", "ALB", "ALD\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ adm0\_a3\_un \textless{}dbl\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ adm0\_a3\_wb \textless{}dbl\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ continent  \textless{}chr\textgreater{} "North America", "Asia", "Africa", "Nor\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ region\_un  \textless{}chr\textgreater{} "Americas", "Asia", "Africa", "Americas\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ subregion  \textless{}chr\textgreater{} "Caribbean", "Southern Asia", "Middle A\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ region\_wb  \textless{}chr\textgreater{} "Latin America \& Caribbean", "South Asi\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_len   \textless{}dbl\textgreater{} 5, 11, 6, 8, 7, 5, 7, 20, 9, 7, 14, 10,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ long\_len   \textless{}dbl\textgreater{} 5, 11, 6, 8, 7, 13, 7, 20, 9, 7, 14, 10\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ abbrev\_len \textless{}dbl\textgreater{} 5, 4, 4, 4, 4, 5, 4, 6, 4, 4, 9, 4, 7, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ tiny       \textless{}dbl\textgreater{} 4, NA, NA, NA, NA, 5, 5, NA, NA, NA, 3,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ homepart   \textless{}dbl\textgreater{} NA, 1, 1, NA, 1, NA, 1, 1, 1, 1, NA, 1,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ geometry   \textless{}MULTIPOLYGON [°]\textgreater{} MULTIPOLYGON ((({-}69.89912 \textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+The last column is the geometry which contains map data in multi-polygon format.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+This map data comes with various information.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ income\_grp))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+You can specify a `continent', a `region\_un', a `subregion' or `region\_wb'.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{distinct}\NormalTok{(continent) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pull}\NormalTok{()}
+\CommentTok{\#\textgreater{} [1] "North America"           "Asia"                   }
+\CommentTok{\#\textgreater{} [3] "Africa"                  "Europe"                 }
+\CommentTok{\#\textgreater{} [5] "South America"           "Oceania"                }
+\CommentTok{\#\textgreater{} [7] "Antarctica"              "Seven seas (open ocean)"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{distinct}\NormalTok{(region\_un) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pull}\NormalTok{()}
+\CommentTok{\#\textgreater{} [1] "Americas"                "Asia"                   }
+\CommentTok{\#\textgreater{} [3] "Africa"                  "Europe"                 }
+\CommentTok{\#\textgreater{} [5] "Oceania"                 "Antarctica"             }
+\CommentTok{\#\textgreater{} [7] "Seven seas (open ocean)"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{distinct}\NormalTok{(subregion) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pull}\NormalTok{()}
+\CommentTok{\#\textgreater{}  [1] "Caribbean"                 "Southern Asia"            }
+\CommentTok{\#\textgreater{}  [3] "Middle Africa"             "Southern Europe"          }
+\CommentTok{\#\textgreater{}  [5] "Northern Europe"           "Western Asia"             }
+\CommentTok{\#\textgreater{}  [7] "South America"             "Polynesia"                }
+\CommentTok{\#\textgreater{}  [9] "Antarctica"                "Australia and New Zealand"}
+\CommentTok{\#\textgreater{} [11] "Seven seas (open ocean)"   "Western Europe"           }
+\CommentTok{\#\textgreater{} [13] "Eastern Africa"            "Western Africa"           }
+\CommentTok{\#\textgreater{} [15] "Eastern Europe"            "Central America"          }
+\CommentTok{\#\textgreater{} [17] "Northern America"          "South{-}Eastern Asia"       }
+\CommentTok{\#\textgreater{} [19] "Southern Africa"           "Eastern Asia"             }
+\CommentTok{\#\textgreater{} [21] "Northern Africa"           "Melanesia"                }
+\CommentTok{\#\textgreater{} [23] "Micronesia"                "Central Asia"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{distinct}\NormalTok{(region\_wb) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pull}\NormalTok{()}
+\CommentTok{\#\textgreater{} [1] "Latin America \& Caribbean" }
+\CommentTok{\#\textgreater{} [2] "South Asia"                }
+\CommentTok{\#\textgreater{} [3] "Sub{-}Saharan Africa"        }
+\CommentTok{\#\textgreater{} [4] "Europe \& Central Asia"     }
+\CommentTok{\#\textgreater{} [5] "Middle East \& North Africa"}
+\CommentTok{\#\textgreater{} [6] "East Asia \& Pacific"       }
+\CommentTok{\#\textgreater{} [7] "Antarctica"                }
+\CommentTok{\#\textgreater{} [8] "North America"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(subregion }\SpecialCharTok{==} \StringTok{"South{-}Eastern Asia"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}   \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ iso\_a2))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(continent }\SpecialCharTok{==} \StringTok{\textquotesingle{}Africa\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}   \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ subregion))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\hypertarget{type-argument}{%
+\subsubsection{\texorpdfstring{\texttt{type} argument}{type argument}}\label{type-argument}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ne\_countries}\NormalTok{(}\AttributeTok{type =} \StringTok{"countries"}\NormalTok{, }\AttributeTok{country =} \FunctionTok{c}\NormalTok{(}\StringTok{"Japan"}\NormalTok{, }\StringTok{"South Korea"}\NormalTok{, }\StringTok{"North Korea"}\NormalTok{, }\StringTok{"China"}\NormalTok{, }\StringTok{"Taiwan"}\NormalTok{, }\StringTok{"Mongolia"}\NormalTok{), }\AttributeTok{scale =} \StringTok{"medium"}\NormalTok{, }\AttributeTok{returnclass =} \StringTok{"sf"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ economy))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\hypertarget{ne_states}{%
+\subsection{\texorpdfstring{\texttt{ne\_states}}{ne\_states}}\label{ne_states}}
+
+Get natural earth world state (admin level 1) polygons
+
+\textbf{Description}: returns state polygons (administrative level 1) for specified countries
+
+\hypertarget{usage}{%
+\subsubsection{Usage}\label{usage}}
+
+\begin{verbatim}
+ne_states(
+  country = NULL,
+  geounit = NULL,
+  iso_a2 = NULL,
+  spdf = NULL,
+  returnclass = c("sp", "sf")
+)
+\end{verbatim}
+
+\hypertarget{arguments-1}{%
+\subsection{Arguments}\label{arguments-1}}
+
+\begin{itemize}
+\item
+  country: a character vector of country names.
+\item
+  geounit: a character vector of geounit names.
+\item
+  iso\_a2: a character vector of iso\_a2 country codes
+\item
+  spdf: an optional alternative states map
+\item
+  returnclass: `sp' default or `sf' for Simple Features
+\end{itemize}
+
+\hypertarget{value}{%
+\subsection{Value}\label{value}}
+
+\begin{itemize}
+\tightlist
+\item
+  SpatialPolygons DataFrame or sf
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world\_admin1 }\OtherTok{\textless{}{-}} \FunctionTok{ne\_states}\NormalTok{(}\AttributeTok{returnclass =} \StringTok{"sf"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(ne\_world\_admin1)}
+\CommentTok{\#\textgreater{} Rows: 4,596}
+\CommentTok{\#\textgreater{} Columns: 122}
+\CommentTok{\#\textgreater{} $ featurecla \textless{}chr\textgreater{} "Admin{-}1 states provinces lakes", "Admi\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ scalerank  \textless{}int\textgreater{} 3, 6, 2, 6, 3, 4, 4, 3, 4, 3, 4, 3, 3, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ adm1\_code  \textless{}chr\textgreater{} "ARG{-}1309", "URY{-}8", "IDN{-}1185", "MYS{-}1\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ diss\_me    \textless{}int\textgreater{} 1309, 8, 1185, 1186, 2694, 1936, 1937, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ iso\_3166\_2 \textless{}chr\textgreater{} "AR{-}E", "UY{-}PA", "ID{-}KI", "MY{-}12", "CL{-}\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ wikipedia  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ iso\_a2     \textless{}chr\textgreater{} "AR", "UY", "ID", "MY", "CL", "BO", "BO\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ adm0\_sr    \textless{}int\textgreater{} 1, 1, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name       \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "Kalimantan T\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_alt   \textless{}chr\textgreater{} "Entre{-}Rios", NA, "Kaltim", "North Born\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_local \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ type       \textless{}chr\textgreater{} "Provincia", "Departamento", "Propinsi"\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ type\_en    \textless{}chr\textgreater{} "Province", "Department", "Province", "\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ code\_local \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ code\_hasc  \textless{}chr\textgreater{} "AR.ER", "UY.PA", "ID.KI", "MY.SA", "CL\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ note       \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ hasc\_maybe \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, "BO.OR|\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ region     \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ region\_cod \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ provnum\_ne \textless{}int\textgreater{} 10, 19, 15, 1, 0, 8, 7, 0, 1, 20006, 8,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gadm\_level \textless{}int\textgreater{} 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ check\_me   \textless{}int\textgreater{} 20, 0, 20, 20, 20, 0, 0, 20, 10, 20, 10\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ datarank   \textless{}int\textgreater{} 3, 8, 1, 6, 3, 8, 6, 3, 6, 3, 5, 3, 3, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ abbrev     \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ postal     \textless{}chr\textgreater{} "ER", "PA", "KI", "SA", NA, "LP", "OR",\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ area\_sqkm  \textless{}int\textgreater{} 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ sameascity \textless{}int\textgreater{} {-}99, {-}99, {-}99, {-}99, 7, 6, 6, {-}99, {-}99, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ labelrank  \textless{}int\textgreater{} 3, 6, 2, 6, 7, 6, 6, 3, 4, 6, 7, 6, 3, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_len   \textless{}int\textgreater{} 10, 8, 16, 5, 18, 6, 5, 8, 6, 11, 5, 5,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ mapcolor9  \textless{}int\textgreater{} 3, 2, 6, 3, 5, 2, 2, 5, 2, 5, 4, 3, 3, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ mapcolor13 \textless{}int\textgreater{} 13, 10, 11, 6, 9, 3, 3, 9, 3, 9, 11, 13\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ fips       \textless{}chr\textgreater{} "AR08", "UY11", "ID14", "MY16", NA, "BL\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ fips\_alt   \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, "BL05",\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ woe\_id     \textless{}int\textgreater{} 2344682, 2347650, 2345723, 2346310, 560\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ woe\_label  \textless{}chr\textgreater{} "Entre Rios, AR, Argentina", "PaysandÃº\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ woe\_name   \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "Kalimantan T\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ latitude   \textless{}dbl\textgreater{} {-}32.02750, {-}32.09330, 1.28915, 5.31115,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ longitude  \textless{}dbl\textgreater{} {-}59.28240, {-}57.22400, 116.35400, 117.09\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ sov\_a3     \textless{}chr\textgreater{} "ARG", "URY", "IDN", "MYS", "CHL", "BOL\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ adm0\_a3    \textless{}chr\textgreater{} "ARG", "URY", "IDN", "MYS", "CHL", "BOL\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ adm0\_label \textless{}int\textgreater{} 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ admin      \textless{}chr\textgreater{} "Argentina", "Uruguay", "Indonesia", "M\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ geonunit   \textless{}chr\textgreater{} "Argentina", "Uruguay", "Indonesia", "M\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gu\_a3      \textless{}chr\textgreater{} "ARG", "URY", "IDN", "MYS", "CHL", "BOL\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gn\_id      \textless{}int\textgreater{} 3434137, 3441242, 1641897, 1733039, 669\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gn\_name    \textless{}chr\textgreater{} "Provincia de Entre Rios", "Departament\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gns\_id     \textless{}int\textgreater{} {-}988655, {-}908097, {-}2680740, {-}2405166, 1\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gns\_name   \textless{}chr\textgreater{} "Entre Rios", "Paysandu, Departamento d\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gn\_level   \textless{}int\textgreater{} 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gn\_region  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gn\_a1\_code \textless{}chr\textgreater{} "AR.08", "UY.11", "ID.14", "MY.16", "CL\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ region\_sub \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ sub\_code   \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gns\_level  \textless{}int\textgreater{} 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gns\_lang   \textless{}chr\textgreater{} "khm", "fra", "ind", "fil", "ara", "kor\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gns\_adm1   \textless{}chr\textgreater{} "AR08", "UY11", "ID14", "MY16", "CI16",\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ gns\_region \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ min\_label  \textless{}dbl\textgreater{} 6.0, 8.0, 5.0, 7.0, 6.0, 6.6, 6.6, 6.0,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ max\_label  \textless{}dbl\textgreater{} 11.0, 11.0, 10.1, 11.0, 11.0, 11.0, 11.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ min\_zoom   \textless{}dbl\textgreater{} 6.0, 8.0, 4.6, 7.0, 6.0, 6.6, 6.6, 6.0,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ wikidataid \textless{}chr\textgreater{} "Q44762", "Q16576", "Q3899", "Q179029",\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_ar    \textless{}chr\textgreater{} "إنتري ريوس", "إدارة بايساندو", "كالمنت\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_bn    \textless{}chr\textgreater{} "এন্ত্রে রিও প্রদেশ", "পেসান্ডো বিভাগ", "পূর্\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_de    \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "Ostkalimanta\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_en    \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "East Kaliman\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_es    \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "Kalimantan O\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_fr    \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "Kalimantan o\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_el    \textless{}chr\textgreater{} "Έντρε Ρίος", "Παϊσαντού", "Ανατολικό Κ\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_hi    \textless{}chr\textgreater{} "एन्ट्रे रियोस", "पयसंदु विभाग", "पूर्व कालिमंत\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_hu    \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "Kelet{-}Kalima\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_id    \textless{}chr\textgreater{} "Entre Ríos", "Departemen Paysandú", "K\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_it    \textless{}chr\textgreater{} "Entre Ríos", "dipartimento di Paysandú\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_ja    \textless{}chr\textgreater{} "エントレ・リオス州", "パイサンドゥ県",\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_ko    \textless{}chr\textgreater{} "엔트레리오스", "파이산두", "동칼리만탄\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_nl    \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "Oost{-}Kaliman\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_pl    \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "Borneo Wscho\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_pt    \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "Kalimantan O\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_ru    \textless{}chr\textgreater{} "Энтре{-}Риос", "Пайсанду", "Восточный Ка\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_sv    \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "Kalimantan T\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_tr    \textless{}chr\textgreater{} "Entre Ríos eyaleti", "Paysandu Departm\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_vi    \textless{}chr\textgreater{} "Entre Ríos", "Paysandú", "Đông Kaliman\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_zh    \textless{}chr\textgreater{} "恩特雷里奥斯省", "派桑杜省", "东加里曼\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ ne\_id      \textless{}dbl\textgreater{} 1159309789, 1159307733, 1159310009, 115\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_he    \textless{}chr\textgreater{} "אנטרה ריוס", "פאיסאנדו", "מזרח קלימנטא\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_uk    \textless{}chr\textgreater{} "Ентре{-}Ріос", "Пайсанду", "Східний Калі\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_ur    \textless{}chr\textgreater{} "صوبہ انترے ریوس", "پایساندو محکمہ", "م\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_fa    \textless{}chr\textgreater{} "ایالت انتره ریوز", "بخش پایساندو", "کا\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ name\_zht   \textless{}chr\textgreater{} "恩特雷里奥斯省", "派桑杜省", "東加里曼\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_ISO \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_US  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_FR  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_RU  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_ES  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_CN  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_TW  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_IN  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_NP  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_PK  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_DE  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_GB  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_BR  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_IL  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_PS  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_SA  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_EG  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_MA  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_PT  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_AR  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_JP  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_KO  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_VN  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_TR  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_ID  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_PL  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_GR  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_IT  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_NL  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_SE  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_BD  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_UA  \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ FCLASS\_TLC \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ geometry   \textless{}MULTIPOLYGON [°]\textgreater{} MULTIPOLYGON ((({-}58.20011 \textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world\_admin1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(iso\_a2 }\SpecialCharTok{!=} \StringTok{"{-}1"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(admin) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{distinct}\NormalTok{(iso\_a2, admin)}
+\CommentTok{\#\textgreater{} \# A tibble: 243 x 2}
+\CommentTok{\#\textgreater{}    iso\_a2 admin              }
+\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}  \textless{}chr\textgreater{}              }
+\CommentTok{\#\textgreater{}  1 AF     Afghanistan        }
+\CommentTok{\#\textgreater{}  2 AX     Aland              }
+\CommentTok{\#\textgreater{}  3 AL     Albania            }
+\CommentTok{\#\textgreater{}  4 DZ     Algeria            }
+\CommentTok{\#\textgreater{}  5 AS     American Samoa     }
+\CommentTok{\#\textgreater{}  6 AD     Andorra            }
+\CommentTok{\#\textgreater{}  7 AO     Angola             }
+\CommentTok{\#\textgreater{}  8 AI     Anguilla           }
+\CommentTok{\#\textgreater{}  9 AQ     Antarctica         }
+\CommentTok{\#\textgreater{} 10 AG     Antigua and Barbuda}
+\CommentTok{\#\textgreater{} \# i 233 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{country }\OtherTok{\textless{}{-}} \StringTok{"Japan"}
+\NormalTok{ne\_world\_admin1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(admin }\SpecialCharTok{==}\NormalTok{ country) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-22-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iso2s }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"IN"}\NormalTok{,}\StringTok{"PK"}\NormalTok{,}\StringTok{"BD"}\NormalTok{,}\StringTok{"LK"}\NormalTok{)}
+\NormalTok{ne\_world\_admin1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(iso\_a2 }\SpecialCharTok{\%in\%}\NormalTok{ iso2s) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}   \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ admin))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{regions }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Tohoku"}\NormalTok{)}
+\NormalTok{ne\_world\_admin1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(region }\SpecialCharTok{\%in\%}\NormalTok{ regions) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ name\_local))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world\_admin1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(iso\_a2 }\SpecialCharTok{==} \StringTok{"JP"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}   \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ region))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world\_admin1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(admin }\SpecialCharTok{\%in\%} \StringTok{"Japan"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(name\_local, region) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(region))}
+\CommentTok{\#\textgreater{} \# A tibble: 2 x 2}
+\CommentTok{\#\textgreater{}   name\_local region}
+\CommentTok{\#\textgreater{}   \textless{}chr\textgreater{}      \textless{}chr\textgreater{} }
+\CommentTok{\#\textgreater{} 1 佐賀県     \textless{}NA\textgreater{}  }
+\CommentTok{\#\textgreater{} 2 長崎県     \textless{}NA\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world\_admin1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{region =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{  name\_local }\SpecialCharTok{==} \StringTok{"佐賀県"} \SpecialCharTok{\textasciitilde{}} \StringTok{"Kyushu"}\NormalTok{,}
+\NormalTok{  name\_local }\SpecialCharTok{==} \StringTok{"長崎県"} \SpecialCharTok{\textasciitilde{}} \StringTok{"Kyushu"}\NormalTok{,}
+  \ConstantTok{TRUE} \SpecialCharTok{\textasciitilde{}}\NormalTok{ region)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(admin }\SpecialCharTok{\%in\%} \StringTok{"Japan"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(name\_local, region) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(region))}
+\CommentTok{\#\textgreater{} \# A tibble: 0 x 2}
+\CommentTok{\#\textgreater{} \# i 2 variables: name\_local \textless{}chr\textgreater{}, region \textless{}chr\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne\_world\_admin1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{region =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{  name\_local }\SpecialCharTok{==} \StringTok{"佐賀県"} \SpecialCharTok{\textasciitilde{}} \StringTok{"Kyushu"}\NormalTok{,}
+\NormalTok{  name\_local }\SpecialCharTok{==} \StringTok{"長崎県"} \SpecialCharTok{\textasciitilde{}} \StringTok{"Kyushu"}\NormalTok{,}
+  \ConstantTok{TRUE} \SpecialCharTok{\textasciitilde{}}\NormalTok{ region)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(iso\_a2 }\SpecialCharTok{==} \StringTok{"JP"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}   \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ region))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+\hypertarget{geodata-package}{%
+\section{\texorpdfstring{\texttt{geodata} Package}{geodata Package}}\label{geodata-package}}
+
+\begin{itemize}
+\tightlist
+\item
+  URL: \url{https://gadm.org}
+\item
+  \texttt{geodata}: Download Geographic Data
+\item
+  Functions for downloading of geographic data for use in spatial analysis and mapping. The package facilitates access to climate, crops, elevation, land use, soil, species occurrence, accessibility, administrative boundaries and other data.
+\item
+  Package Link: \url{https://CRAN.R-project.org/package=geodata}
+\item
+  Manual: \url{https://cran.r-project.org/web/packages/geodata/geodata.pdf}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(geodata)}
+\CommentTok{\#\textgreater{} Loading required package: terra}
+\CommentTok{\#\textgreater{} terra 1.7.29}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Attaching package: \textquotesingle{}terra\textquotesingle{}}
+\CommentTok{\#\textgreater{} The following object is masked from \textquotesingle{}package:tidyr\textquotesingle{}:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     extract}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{world}\NormalTok{(}\AttributeTok{resolution=}\DecValTok{5}\NormalTok{, }\AttributeTok{level=}\DecValTok{0}\NormalTok{, }\AttributeTok{path =} \StringTok{"./data"}\NormalTok{)}
+\CommentTok{\#\textgreater{}  class       : SpatVector }
+\CommentTok{\#\textgreater{}  geometry    : polygons }
+\CommentTok{\#\textgreater{}  dimensions  : 231, 2  (geometries, attributes)}
+\CommentTok{\#\textgreater{}  extent      : {-}180, 180, {-}90, 83.65625  (xmin, xmax, ymin, ymax)}
+\CommentTok{\#\textgreater{}  coord. ref. : +proj=longlat +datum=WGS84 +no\_defs }
+\CommentTok{\#\textgreater{}  names       : GID\_0      NAME\_0}
+\CommentTok{\#\textgreater{}  type        : \textless{}chr\textgreater{}       \textless{}chr\textgreater{}}
+\CommentTok{\#\textgreater{}  values      :   ABW       Aruba}
+\CommentTok{\#\textgreater{}                  AFG Afghanistan}
+\CommentTok{\#\textgreater{}                  AGO      Angola}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{world5 }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"./data/gadm/gadm36\_adm0\_r5\_pk.rds"}\NormalTok{)}
+\NormalTok{world5 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{glimpse}\NormalTok{()}
+\CommentTok{\#\textgreater{} Rows: 231}
+\CommentTok{\#\textgreater{} Columns: 2}
+\CommentTok{\#\textgreater{} $ GID\_0  \textless{}chr\textgreater{} "ABW", "AFG", "AGO", "ALA", "ALB", "AND", "\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ NAME\_0 \textless{}chr\textgreater{} "Aruba", "Afghanistan", "Angola", "Åland", \textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{world5 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{st\_as\_sf}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-32-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{world5 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{st\_as\_sf}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(GID\_0 }\SpecialCharTok{==} \StringTok{"JPN"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-33-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{world}\NormalTok{(}\AttributeTok{resolution=}\DecValTok{1}\NormalTok{, }\AttributeTok{level=}\DecValTok{0}\NormalTok{, }\AttributeTok{path =} \StringTok{"./data"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{st\_as\_sf}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-34-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{world}\NormalTok{(}\AttributeTok{path =} \StringTok{"./data"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{st\_as\_sf}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-35-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{world}\NormalTok{(}\AttributeTok{resolution=}\DecValTok{1}\NormalTok{, }\AttributeTok{level=}\DecValTok{0}\NormalTok{, }\AttributeTok{path =} \StringTok{"./data"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{st\_as\_sf}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(NAME\_0 }\SpecialCharTok{==} \StringTok{"Japan"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-36-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{world}\NormalTok{(}\AttributeTok{resolution=}\DecValTok{1}\NormalTok{, }\AttributeTok{level=}\DecValTok{0}\NormalTok{, }\AttributeTok{path =} \StringTok{"./data"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{st\_as\_sf}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(NAME\_0 }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"India"}\NormalTok{,}\StringTok{"Pakistan"}\NormalTok{, }\StringTok{"Bangladesh"}\NormalTok{ , }\StringTok{"Sri Lanka"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ GID\_0))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-37-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{world5\_df }\OtherTok{\textless{}{-}} \FunctionTok{st\_as\_sf}\NormalTok{(world5) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{st\_set\_crs}\NormalTok{(}\StringTok{"+proj=longlat +datum=WGS84"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{st\_transform}\NormalTok{(., }\StringTok{"+proj=robin"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ world5\_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-38-1.pdf}
+
+\hypertarget{gadm-administrative-boundaries}{%
+\subsection{\texorpdfstring{\texttt{gadm} Administrative boundaries}{gadm Administrative boundaries}}\label{gadm-administrative-boundaries}}
+
+\begin{itemize}
+\tightlist
+\item
+  Get administrative boundaries for any country in the world. Data are read from files that are down- loaded if necessary.
+\item
+  Usage: \texttt{gadm(country,\ level=1,\ path,\ version="latest",\ resolution=1,\ ...)}
+\item
+  Arguments
+
+  \begin{itemize}
+  \tightlist
+  \item
+    country: character. Three-letter ISO code or full country name. If you provide multiple names they are all downloaded and rbind-ed together
+  \item
+    level: numeric. The level of administrative subdivision requested. (starting with 0 for country, then 1 for the first level of subdivision)
+  \item
+    path: character. Path for storing the downloaded data. See geodata\_path
+  \item
+    version: character. Either ``latest'' or GADM version number (can be ``3.6'', ``4.0'' or ``4.1'')
+  \item
+    resolution: integer indicating the level of detail. Only for version 4.1. It should be either 1 (high) or 2 (low)
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gadm0 }\OtherTok{\textless{}{-}} \FunctionTok{gadm}\NormalTok{(}\StringTok{"JPN"}\NormalTok{, }\AttributeTok{level =} \DecValTok{0}\NormalTok{, }\AttributeTok{path =} \StringTok{"./data/"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gadm0 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{st\_as\_sf}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-40-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gadm1 }\OtherTok{\textless{}{-}} \FunctionTok{gadm}\NormalTok{(}\StringTok{"JPN"}\NormalTok{, }\AttributeTok{level =} \DecValTok{1}\NormalTok{, }\AttributeTok{path =} \StringTok{"./data/"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{st\_as\_sf}\NormalTok{()}
+\NormalTok{gadm1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{glimpse}\NormalTok{()}
+\CommentTok{\#\textgreater{} Rows: 47}
+\CommentTok{\#\textgreater{} Columns: 12}
+\CommentTok{\#\textgreater{} $ GID\_1     \textless{}chr\textgreater{} "JPN.1\_1", "JPN.2\_1", "JPN.3\_1", "JPN.4\_\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ GID\_0     \textless{}chr\textgreater{} "JPN", "JPN", "JPN", "JPN", "JPN", "JPN"\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ COUNTRY   \textless{}chr\textgreater{} "Japan", "Japan", "Japan", "Japan", "Jap\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ NAME\_1    \textless{}chr\textgreater{} "Aichi", "Akita", "Aomori", "Chiba", "Eh\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ VARNAME\_1 \textless{}chr\textgreater{} "Aiti", NA, NA, "Tiba|Tsiba", NA, "Hukui\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ NL\_NAME\_1 \textless{}chr\textgreater{} "愛知県", "秋田県", "青森県", "千葉県", \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ TYPE\_1    \textless{}chr\textgreater{} "Ken", "Ken", "Ken", "Ken", "Ken", "Ken"\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ ENGTYPE\_1 \textless{}chr\textgreater{} "Prefecture", "Prefecture", "Prefecture"\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ CC\_1      \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ HASC\_1    \textless{}chr\textgreater{} "JP.AI", "JP.AK", "JP.AO", "JP.CH", "JP.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ ISO\_1     \textless{}chr\textgreater{} "JP{-}23", "JP{-}05", "JP{-}02", "JP{-}12", "JP{-}\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ geometry  \textless{}GEOMETRY [°]\textgreater{} MULTIPOLYGON (((137.0974 34...,\textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gadm1 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ NAME\_1)) }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-42-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gadm2 }\OtherTok{\textless{}{-}} \FunctionTok{gadm}\NormalTok{(}\StringTok{"JPN"}\NormalTok{, }\AttributeTok{level =} \DecValTok{2}\NormalTok{, }\AttributeTok{path =} \StringTok{"./data/"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{st\_as\_sf}\NormalTok{()}
+\NormalTok{gadm2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{glimpse}\NormalTok{()}
+\CommentTok{\#\textgreater{} Rows: 1,811}
+\CommentTok{\#\textgreater{} Columns: 14}
+\CommentTok{\#\textgreater{} $ GID\_2     \textless{}chr\textgreater{} "JPN.1.1\_1", "JPN.1.2\_1", "JPN.1.3\_1", "\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ GID\_0     \textless{}chr\textgreater{} "JPN", "JPN", "JPN", "JPN", "JPN", "JPN"\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ COUNTRY   \textless{}chr\textgreater{} "Japan", "Japan", "Japan", "Japan", "Jap\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ GID\_1     \textless{}chr\textgreater{} "JPN.1\_1", "JPN.1\_1", "JPN.1\_1", "JPN.1\_\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ NAME\_1    \textless{}chr\textgreater{} "Aichi", "Aichi", "Aichi", "Aichi", "Aic\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ NL\_NAME\_1 \textless{}chr\textgreater{} "愛知県", "愛知県", "愛知県", "愛知県", \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ NAME\_2    \textless{}chr\textgreater{} "Agui", "Aisai", "Anjō", "Chiryū", "Chit\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ VARNAME\_2 \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ NL\_NAME\_2 \textless{}chr\textgreater{} "阿久比町", "愛西市", "安城市", "知立市"\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ TYPE\_2    \textless{}chr\textgreater{} "Machi", "Shi", "Shi", "Shi", "Shi", "Ma\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ ENGTYPE\_2 \textless{}chr\textgreater{} "Town", "City", "City", "City", "City", \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ CC\_2      \textless{}chr\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, \textasciitilde{}}
+\CommentTok{\#\textgreater{} $ HASC\_2    \textless{}chr\textgreater{} NA, NA, NA, NA, "JP.AI.CG", NA, NA, "JP.\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ geometry  \textless{}GEOMETRY [°]\textgreater{} POLYGON ((136.8802 34.94398...,\textasciitilde{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gadm2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(NL\_NAME\_1 }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"埼玉県"}\NormalTok{, }\StringTok{"群馬県"}\NormalTok{, }\StringTok{"栃木県"}\NormalTok{, }\StringTok{"茨城県"}\NormalTok{, }\StringTok{"千葉県"}\NormalTok{, }\StringTok{"神奈川県"}\NormalTok{, }\StringTok{"東京都"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ NAME\_1)) }\SpecialCharTok{+} 
+  \FunctionTok{ylim}\NormalTok{(}\FloatTok{34.7}\NormalTok{,}\FloatTok{37.2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{xlim}\NormalTok{(}\FloatTok{138.2}\NormalTok{,}\DecValTok{141}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{48-worldmap_files/figure-latex/unnamed-chunk-44-1.pdf}
+
+\hypertarget{ux53c2ux8003ux6587ux732e-2}{%
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e-2}}
+
+\begin{itemize}
+\item
+  Data Visualization for International Relations: Chapter 7 Choropleth Maps: \url{https://bookdown.org/alhdzsz/data_viz_ir/maps.html}
+\item
+  R Graphics Cookbook: 13.18 Creating a Choropleth Map: \url{https://r-graphics.org/recipe-miscgraph-choropleth}
+\item
+  Geocomputation with R：First Edition in \href{https://bookdown.org/robinlovelace/geocompr/}{bookdown サイト}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    日本語翻訳版（\url{http://124.219.182.167/geo/}）
+  \end{itemize}
+\end{itemize}
 
 \hypertarget{part-part-v-examples}{%
 \part{PART V EXAMPLES}\label{part-part-v-examples}}
@@ -14129,8 +15276,8 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 
 This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports; for example, a math equation \(a^2 + b^2 = c^2\).
 
-\hypertarget{usage}{%
-\subsection{Usage}\label{usage}}
+\hypertarget{usage-1}{%
+\subsection{Usage}\label{usage-1}}
 
 Each \textbf{bookdown} chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter \emph{must} start with a first-level heading: \texttt{\#\ A\ good\ chapter}, and can contain one (and only one) first-level heading.
 

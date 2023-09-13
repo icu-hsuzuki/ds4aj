@@ -540,7 +540,7 @@ df_gdp |> filter(country == "Japan") |>
   ggplot(aes(x = year, y = gdp)) + geom_line()
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-12-1.png)<!-- -->
 
 ```         
 df_gdp |> filter(country == "Japan") |>
@@ -574,7 +574,7 @@ Warning: [38;5;238mRemoved 1 row containing missing values
 df_gdp |> drop_na(gdp) |> ggplot(aes(x = year)) + geom_bar()
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-13-1.png)<!-- -->
 
 ```         
 df_gdp |> drop_na(gdp) |> ggplot(aes(x = year)) + geom_bar()
@@ -649,7 +649,7 @@ df_gdp |> filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) |>
 #> (`geom_line()`).
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-16-1.png)<!-- -->
 
 ```         
 df_gdp |> filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "GB", "FR")) |>
@@ -675,7 +675,7 @@ df_gdp |>
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-17-1.png)<!-- -->
 
 まず、下の部分が新しいですが、ここでは、年毎にグループにして、その上で、新しい `dgp_ratio` という名前の列を追加し、その gdp の値を、gdp 合計で割っています。すなわち、世界の、GDP における割合が計算されています。
 
@@ -707,7 +707,7 @@ df_gdp |>
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-18-1.png)<!-- -->
 
 これらは、世界全体の GPT における割合です。
 
@@ -730,7 +730,7 @@ df_gdp |> drop_na(gdp) |>
 #> `binwidth`.
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-19-1.png)<!-- -->
 
 小さいところに集中していることがわかりますが、`scale_x_log10()` を加え、対数軸をとってみます。
 
@@ -747,7 +747,7 @@ df_gdp |> drop_na(gdp) |>
 #> `binwidth`.
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-20-1.png)<!-- -->
 
 幅を変更したり、分ける個数を変更するには `binwidth = 0.5` や、`bins = 20` を、`geom_histogram()` のかっこの中に入れます。
 
@@ -762,7 +762,7 @@ df_gdp |> drop_na(gdp) |>
   ggplot(aes(gdp)) + geom_density() + scale_x_log10()
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-21-1.png)<!-- -->
 
 ##### Fig 8. 2021年の世界の国のGDPの分布（４）
 
@@ -775,7 +775,7 @@ df_gdp |> drop_na(gdp) |>
   ggplot(aes(gdp, fill = factor(year))) + geom_density(alpha = 0.4) + scale_x_log10()
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-22-1.png)<!-- -->
 
 ##### Fig 9. 2021年の世界の国のGDPの分布（５）
 
@@ -789,7 +789,7 @@ df_gdp |> drop_na(gdp) |>
   geom_density() + scale_x_log10() + facet_wrap(~year)
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-23-1.png)<!-- -->
 
 ##### Fig 10. 地域ごとの GDP の分布
 
@@ -804,7 +804,7 @@ df_gdp |> drop_na(gdp) |> filter(region != "Aggregates") |>
   theme(legend.position = "none")
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-24-1.png)<!-- -->
 
 ##### Fig 11. 収入の多寡による分類ごとの GDP 分布
 
@@ -818,7 +818,7 @@ df_gdp |> drop_na(gdp) |> filter(region != "Aggregates") |>
   theme(legend.position = "none")
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
 
 これからも、いろいろなことがわかりますね。
 
@@ -874,7 +874,7 @@ map_gdp |> mutate(income_level = factor(income, levels = c("High income", "Upper
 #> income_level), : Ignoring unknown aesthetics: x and y
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-27-1.png)<!-- -->
 
 ##### Fig 13. GDP による色分け地図
 
@@ -887,7 +887,7 @@ map_gdp |>
 #> fill = gdp), : Ignoring unknown aesthetics: x and y
 ```
 
-<img src="30-about-firstexample_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+![](30-about-firstexample_files/figure-epub3/unnamed-chunk-28-1.png)<!-- -->
 
 ### 練習
 

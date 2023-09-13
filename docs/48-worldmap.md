@@ -141,7 +141,7 @@ ne_countries(scale = "large", returnclass = "sf") %>%
   ggplot() +   geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
 
 
 ```r
@@ -149,7 +149,7 @@ ne_countries(scale = "small", returnclass = "sf") %>%
   ggplot() +   geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
 
 We will use `medium` scale data in the following.
 
@@ -236,7 +236,7 @@ The last column is the geometry which contains map data in multi-polygon format.
 ne_world %>% ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
 
 This map data comes with various information.
 
@@ -245,7 +245,7 @@ This map data comes with various information.
 ne_world %>% ggplot() + geom_sf(aes(fill = income_grp))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-11-1.png)<!-- -->
 
 You can specify a 'continent', a 'region_un', a 'subregion' or 'region_wb'.
 
@@ -303,7 +303,7 @@ ne_world %>% filter(subregion == "South-Eastern Asia") %>%
   ggplot() +   geom_sf(aes(fill = iso_a2))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-16-1.png)<!-- -->
 
 
 ```r
@@ -311,7 +311,7 @@ ne_world %>% filter(continent == 'Africa') %>%
   ggplot() +   geom_sf(aes(fill = subregion))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-17-1.png)<!-- -->
 
 #### `type` argument
 
@@ -321,7 +321,7 @@ ne_countries(type = "countries", country = c("Japan", "South Korea", "North Kore
   ggplot() + geom_sf(aes(fill = economy))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-18-1.png)<!-- -->
 
 ### `ne_states`
 
@@ -519,7 +519,7 @@ ne_world_admin1 %>% filter(admin == country) %>%
   ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-22-1.png)<!-- -->
 
 
 ```r
@@ -528,7 +528,7 @@ ne_world_admin1 %>% filter(iso_a2 %in% iso2s) %>%
   ggplot() +   geom_sf(aes(fill = admin))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-23-1.png)<!-- -->
 
 
 ```r
@@ -537,7 +537,7 @@ ne_world_admin1 %>% filter(region %in% regions) %>%
   ggplot() + geom_sf(aes(fill = name_local))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-24-1.png)<!-- -->
 
 
 ```r
@@ -545,7 +545,7 @@ ne_world_admin1 %>% filter(iso_a2 == "JP") %>%
   ggplot() +   geom_sf(aes(fill = region))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
 
 
 ```r
@@ -580,7 +580,7 @@ ne_world_admin1 %>% mutate(region = case_when(
   ggplot() +   geom_sf(aes(fill = region))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-28-1.png)<!-- -->
 
 ## `geodata` Package
 
@@ -632,7 +632,7 @@ world5 %>% as_tibble() %>% glimpse()
 world5 %>% st_as_sf() %>% ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-32-1.png)<!-- -->
 
 
 ```r
@@ -641,7 +641,7 @@ world5 %>%
   ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-33-1.png)<!-- -->
 
 
 ```r
@@ -649,7 +649,7 @@ world(resolution=1, level=0, path = "./data") %>%
   st_as_sf() %>% ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-34-1.png)<!-- -->
 
 
 ```r
@@ -657,7 +657,7 @@ world(path = "./data") %>%
   st_as_sf() %>% ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-35-1.png)<!-- -->
 
 
 ```r
@@ -666,7 +666,7 @@ world(resolution=1, level=0, path = "./data") %>%
   ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-36-1.png)<!-- -->
 
 
 ```r
@@ -675,7 +675,7 @@ world(resolution=1, level=0, path = "./data") %>%
   ggplot() + geom_sf(aes(fill = GID_0))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-37-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-37-1.png)<!-- -->
 
 
 ```r
@@ -687,7 +687,7 @@ ggplot() +
   geom_sf(data = world5_df)
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-38-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-38-1.png)<!-- -->
 
 ### `gadm` Administrative boundaries
 
@@ -711,7 +711,7 @@ gadm0 %>% st_as_sf() %>%
   ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-40-1.png)<!-- -->
 
 
 ```r
@@ -739,7 +739,7 @@ gadm1 %>%
   ggplot() + geom_sf(aes(fill = NAME_1)) + theme(legend.position = "none")
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-42-1.png)<!-- -->
 
 
 ```r
@@ -771,7 +771,7 @@ gadm2 %>% filter(NL_NAME_1 %in% c("埼玉県", "群馬県", "栃木県", "茨城
   theme(legend.position = "none")
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-44-1.png)<!-- -->
 
 ## 参考文献
 

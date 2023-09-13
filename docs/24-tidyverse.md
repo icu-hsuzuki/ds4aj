@@ -133,7 +133,7 @@ summary(df_iris)
 plot(df_iris$Sepal.Width, df_iris$Sepal.Length)
 ```
 
-<img src="24-tidyverse_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+![](24-tidyverse_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
 
 何を x 軸、何を y 軸 の値とするかを指定します。それは、df_iris\$Sepal.Width で、df_iris の、Sepal.Width の列、df_iris\$Sepal.Length で、df_iris の Sepal.Length の列の値を指定しています。
 
@@ -351,7 +351,7 @@ class(df_iris$Sepal.Length)
 df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 ```
 
-<img src="24-tidyverse_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+![](24-tidyverse_files/figure-epub3/unnamed-chunk-17-1.png)<!-- -->
 
 さまざまな描画が可能ですが、一番、一般的な、散布図、`plot` に対応するものを書きました。`ggplot` の中の、`aes` （aesthetic）の部分に、x 軸、y 軸に対応する変数（列名）を書きます。種類（Species）ごとに色を変える場合には、`color = Species` とします。
 
@@ -361,7 +361,7 @@ df_iris |> ggplot(aes(Sepal.Width, Sepal.Length, color = Species)) +
   geom_point()
 ```
 
-<img src="24-tidyverse_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+![](24-tidyverse_files/figure-epub3/unnamed-chunk-18-1.png)<!-- -->
 
 さらに、点の大きさを、Petal.Width によって変える場合には次のように、`size = Petal.Width` を加えます。
 
@@ -373,7 +373,7 @@ df_iris |>
   geom_point()
 ```
 
-<img src="24-tidyverse_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+![](24-tidyverse_files/figure-epub3/unnamed-chunk-19-1.png)<!-- -->
 
 少しずつ学んでいきましょう。
 
