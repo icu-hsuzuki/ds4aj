@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 29 その他のデータベース | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hiroshi Suzuki）">
-<meta name="description" content="29.1 Kagle">
+<meta name="description" content="29.1 Kagle Kagle Home: https://www.kaggle.com Kagle Datasets: https://www.kaggle.com/datasets  29.2 Gapminder  29.2.1 パッケージ Gapminder を使って gapminder: Data from Gapminder:...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="Chapter 29 その他のデータベース | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/others.html">
-<meta property="og:description" content="29.1 Kagle">
+<meta property="og:description" content="29.1 Kagle Kagle Home: https://www.kaggle.com Kagle Datasets: https://www.kaggle.com/datasets  29.2 Gapminder  29.2.1 パッケージ Gapminder を使って gapminder: Data from Gapminder:...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 29 その他のデータベース | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="29.1 Kagle">
+<meta name="twitter:description" content="29.1 Kagle Kagle Home: https://www.kaggle.com Kagle Datasets: https://www.kaggle.com/datasets  29.2 Gapminder  29.2.1 パッケージ Gapminder を使って gapminder: Data from Gapminder:...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -85,7 +85,7 @@
 <li class="book-part">第二部 R の基礎</li>
 <li><a class="" href="ronrstudio.html"><span class="header-section-number">14</span> R Studio で R</a></li>
 <li><a class="" href="rmarkdown.html"><span class="header-section-number">15</span> R Markdown</a></li>
-<li><a class="" href="rbasics.html"><span class="header-section-number">16</span> R のはじめかた</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">16</span> base R</a></li>
 <li><a class="" href="tidyverse.html"><span class="header-section-number">17</span> Tidyverse</a></li>
 <li><a class="" href="transform.html"><span class="header-section-number">18</span> 変形（Transform）</a></li>
 <li><a class="" href="visualize.html"><span class="header-section-number">19</span> 視覚化（Visualize）</a></li>
@@ -124,7 +124,130 @@
 <h2>
 <span class="header-section-number">29.1</span> Kagle<a class="anchor" aria-label="anchor" href="#kagle"><i class="fas fa-link"></i></a>
 </h2>
+<ul>
+<li><p>Kagle Home: <a href="https://www.kaggle.com" class="uri">https://www.kaggle.com</a></p></li>
+<li><p>Kagle Datasets: <a href="https://www.kaggle.com/datasets" class="uri">https://www.kaggle.com/datasets</a></p></li>
+</ul>
+</div>
+<div id="gapminder-1" class="section level2" number="29.2">
+<h2>
+<span class="header-section-number">29.2</span> Gapminder<a class="anchor" aria-label="anchor" href="#gapminder-1"><i class="fas fa-link"></i></a>
+</h2>
+<div id="パッケージ-gapminder-を使って" class="section level3" number="29.2.1">
+<h3>
+<span class="header-section-number">29.2.1</span> パッケージ Gapminder を使って<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8-gapminder-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><p>gapminder: Data from Gapminder: <a href="https://cran.r-project.org/web/packages/gapminder/index.html" class="uri">https://cran.r-project.org/web/packages/gapminder/index.html</a></p></li>
+<li><p>Gapminder Data: <a href="https://www.gapminder.org/data/" class="uri">https://www.gapminder.org/data/</a></p></li>
+</ul>
+<div class="sourceCode" id="cb397"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></span></code></pre></div>
+<p>すでに、<code>dplyr</code> をつかった変形で確認しましたが、簡単に、データを見ておきましょう。</p>
+<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_gm</span> <span class="op">&lt;-</span> <span class="va">gapminder</span></span>
+<span><span class="va">df_gm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 6</span></span>
+<span><span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span><span class="co">#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span><span class="co">#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
+<span><span class="co">#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
+<span><span class="co">#&gt;  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
+<span><span class="co">#&gt;  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
+<span><span class="co">#&gt;  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
+<span><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
+<span><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
+<span><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">df_gm</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 1,704</span></span>
+<span><span class="co">#&gt; Columns: 6</span></span>
+<span><span class="co">#&gt; $ country   &lt;fct&gt; "Afghanistan", "Afghanistan", "Afghanist…</span></span>
+<span><span class="co">#&gt; $ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia…</span></span>
+<span><span class="co">#&gt; $ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982…</span></span>
+<span><span class="co">#&gt; $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, …</span></span>
+<span><span class="co">#&gt; $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13…</span></span>
+<span><span class="co">#&gt; $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">df_gm</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         country        continent        year     </span></span>
+<span><span class="co">#&gt;  Afghanistan:  12   Africa  :624   Min.   :1952  </span></span>
+<span><span class="co">#&gt;  Albania    :  12   Americas:300   1st Qu.:1966  </span></span>
+<span><span class="co">#&gt;  Algeria    :  12   Asia    :396   Median :1980  </span></span>
+<span><span class="co">#&gt;  Angola     :  12   Europe  :360   Mean   :1980  </span></span>
+<span><span class="co">#&gt;  Argentina  :  12   Oceania : 24   3rd Qu.:1993  </span></span>
+<span><span class="co">#&gt;  Australia  :  12                  Max.   :2007  </span></span>
+<span><span class="co">#&gt;  (Other)    :1632                                </span></span>
+<span><span class="co">#&gt;     lifeExp           pop              gdpPercap       </span></span>
+<span><span class="co">#&gt;  Min.   :23.60   Min.   :6.001e+04   Min.   :   241.2  </span></span>
+<span><span class="co">#&gt;  1st Qu.:48.20   1st Qu.:2.794e+06   1st Qu.:  1202.1  </span></span>
+<span><span class="co">#&gt;  Median :60.71   Median :7.024e+06   Median :  3531.8  </span></span>
+<span><span class="co">#&gt;  Mean   :59.47   Mean   :2.960e+07   Mean   :  7215.3  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:70.85   3rd Qu.:1.959e+07   3rd Qu.:  9325.5  </span></span>
+<span><span class="co">#&gt;  Max.   :82.60   Max.   :1.319e+09   Max.   :113523.1  </span></span>
+<span><span class="co">#&gt; </span></span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">df_gm</span><span class="op">$</span><span class="va">year</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002</span></span>
+<span><span class="co">#&gt; [12] 2007</span></span></code></pre></div>
+<div id="box-plot-1" class="section level5" number="29.2.1.0.1">
+<h5>
+<span class="header-section-number">29.2.1.0.1</span> Box Plot<a class="anchor" aria-label="anchor" href="#box-plot-1"><i class="fas fa-link"></i></a>
+</h5>
+<div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df_gm</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="39-others_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
+<p><code>fill</code> や <code>color</code> を追加してみましょう。</p>
+<div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_gm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1952</span>, <span class="fl">1987</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, fill <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="39-others_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
+<p>折れ線グラフの例です。</p>
+<div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op">&lt;-</span> <span class="va">df_gm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, median_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, max_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, min_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"keep"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="39-others_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
+<div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span>, linetype <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="39-others_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
+<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">median_lifeExp</span>, linetype <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="39-others_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+</div>
+</div>
+<div id="original-data-wdi" class="section level3" number="29.2.2">
+<h3>
+<span class="header-section-number">29.2.2</span> Original Data? WDI?<a class="anchor" aria-label="anchor" href="#original-data-wdi"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb408"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_gm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 6</span></span>
+<span><span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span><span class="co">#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span><span class="co">#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
+<span><span class="co">#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
+<span><span class="co">#&gt;  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
+<span><span class="co">#&gt;  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
+<span><span class="co">#&gt;  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
+<span><span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
+<span><span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
+<span><span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span></code></pre></div>
+<p>さて、このデータは、どのようにして集めているのでしょうか。WDI のデータと同じでしょうか。</p>
 
+</div>
 </div>
 </div>
 
@@ -138,6 +261,12 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#others"><span class="header-section-number">29</span> その他のデータベース</a></li>
 <li><a class="nav-link" href="#kagle"><span class="header-section-number">29.1</span> Kagle</a></li>
+<li>
+<a class="nav-link" href="#gapminder-1"><span class="header-section-number">29.2</span> Gapminder</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8-gapminder-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6"><span class="header-section-number">29.2.1</span> パッケージ Gapminder を使って</a></li>
+<li><a class="nav-link" href="#original-data-wdi"><span class="header-section-number">29.2.2</span> Original Data? WDI?</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">
@@ -156,7 +285,7 @@
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-12.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

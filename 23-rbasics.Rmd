@@ -1,4 +1,24 @@
-# R のはじめかた {#rbasics}
+# base R {#rbasics}
+
+## はじめに
+
+R を使って、データサイエンスをはじめる最初のステップについて説明します。また、R を起動すると、同時に読み込まれる、base と呼ばれるパッケージについても簡単に解説します。
+
+本書では、Tidyverse と呼ばれるパッケージ群を主として使いますが、基礎を支えるのは、base ですので、Tidyverse でデータサイエンスをするため、最低限知っておいていただきたい、base についての説明という感じでしょうか。
+
+R Project に基本文書がありますが、100ページを越しますので、参考程度にしていただくのがよいかと思います。
+
+リンク：
+
+-   [An Introduction to R](https://cran.r-project.org/) Manual にあります。下に日本語版へのリンクもあります。
+
+-   [CheatSheet base R](https://rstudio.github.io/cheatsheets/base-r.pdf) 早見表[^23-rbasics-1]。検索すると日本語版も見つかると思います。
+
+    -   [Posit CheatSheets](https://posit.co/resources/cheatsheets/): Posit co の提供する公式早見表
+
+    -   [Contributed CheatSheet at Posit](https://rstudio.github.io/cheatsheets/contributed-cheatsheets.html): Posit co のサイトからリンクのある早見表
+
+[^23-rbasics-1]: CheatSheet は、直訳は、カンニング・ペーパーです。ここでは、もう少し品のよさそうな、早見表ということばを使いました。
 
 ## プロジェクト - Project
 
@@ -134,9 +154,9 @@ RStudio は多くの機能を持っています。
 -   左上（Top Left）: スクリプトや文書、データなどの編集（Source Editor）
 -   右上（Top Right）: 環境変数（Environment）, 履歴（History） など（etc.）
 -   左下（Bottom Left）: コードの実行・実行結果などを表示するコンソール（Console）, コンピュータシステムの端末（Terminal）, 文書の機械語翻訳（Render）, 背後での作業（Background Jobs）
--   右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation[^23-rbasics-1]）
+-   右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation[^23-rbasics-2]）
 
-[^23-rbasics-1]: Viewerへの表示を使っており、Presentationへの表示を使っておらず不明
+[^23-rbasics-2]: Viewerへの表示を使っており、Presentationへの表示を使っておらず不明
 
 ## R Script 実行記録
 

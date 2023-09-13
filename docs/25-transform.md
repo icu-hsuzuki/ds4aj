@@ -518,7 +518,7 @@ df_wdi_extra
 df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 ```
 
-![](25-transform_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
+<img src="25-transform_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 
 ```r
@@ -526,7 +526,7 @@ df_iris |> ggplot(aes(Sepal.Width, Sepal.Length, color = Species)) +
   geom_point()
 ```
 
-![](25-transform_files/figure-epub3/unnamed-chunk-26-1.png)<!-- -->
+<img src="25-transform_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
 ### `dplyr` の応用
 
@@ -834,7 +834,7 @@ df_wdi3c |> ggplot(aes(gdpPercap, lifeExp)) + geom_point()
 #> (`geom_point()`).
 ```
 
-![](25-transform_files/figure-epub3/unnamed-chunk-41-1.png)<!-- -->
+<img src="25-transform_files/figure-html/unnamed-chunk-41-1.png" width="672" />
 
 一応、なにか描けましたが、どうも、すごく点の数が多いですね。それと、欠損値もたくさんあるようです。また、gdpPercap でみると、値が小さいところに固まってあるようです。
 
@@ -848,7 +848,7 @@ df_wdi3c |> filter(year == "2022") |>
 #> (`geom_point()`).
 ```
 
-![](25-transform_files/figure-epub3/unnamed-chunk-42-1.png)<!-- -->
+<img src="25-transform_files/figure-html/unnamed-chunk-42-1.png" width="672" />
 
 どうも、何も現れません。2021 年ならどうでしょうか。
 
@@ -860,7 +860,7 @@ df_wdi3c |> filter(year == 2021) |>
 #> (`geom_point()`).
 ```
 
-![](25-transform_files/figure-epub3/unnamed-chunk-43-1.png)<!-- -->
+<img src="25-transform_files/figure-html/unnamed-chunk-43-1.png" width="672" />
 
 データがない国もあるようですが、どうやら表示されました。データがない国は、削除しておいたり region を 色で表したり、人口を、点の大きさで表したり、gdpPercap を log10 をとって、値を修正して表すなども可能ですが、それは、可視化の項目で学びます。
 
@@ -871,7 +871,7 @@ df_wdi3c |> filter(year == 2021) |> drop_na(lifeExp, gdpPercap) |>
   geom_point() + scale_x_log10()
 ```
 
-![](25-transform_files/figure-epub3/unnamed-chunk-44-1.png)<!-- -->
+<img src="25-transform_files/figure-html/unnamed-chunk-44-1.png" width="672" />
 
 こうしてみると、gdpPercap が大きい国ほど、lifeExp も大きい傾向があることも見えますね。
 
@@ -1041,7 +1041,7 @@ df_wdi |> filter(country == "Afghanistan") %>%
 #> (`geom_line()`).
 ```
 
-![](25-transform_files/figure-epub3/unnamed-chunk-52-1.png)<!-- -->
+<img src="25-transform_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 
 アフガニスタンでは 1952年 の誕生時の平均寿命（life expectancy at birth）は　30歳以下 （28.8歳）でした。2007年でも50歳以下（48.8 歳）のようですね。改善されていることも確かです。
 
@@ -1076,7 +1076,7 @@ df_wdi %>% filter(country %in% c("Afghanistan", "Japan")) %>%
 #> (`geom_line()`).
 ```
 
-![](25-transform_files/figure-epub3/unnamed-chunk-54-1.png)<!-- -->
+<img src="25-transform_files/figure-html/unnamed-chunk-54-1.png" width="672" />
 
 どのような発見がありますか。かならず書き留めておいてください。
 
@@ -1365,7 +1365,7 @@ df_wdi %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
 #> (`geom_line()`).
 ```
 
-![](25-transform_files/figure-epub3/unnamed-chunk-56-1.png)<!-- -->
+<img src="25-transform_files/figure-html/unnamed-chunk-56-1.png" width="672" />
 
 ロシアが含まれていないことがわかります。ロシアは、以前は、ソビエト社会主義連邦でしたから、国が変化したものは含まれていないのかもしれません。上の国のリストで見てもありませんね。2007年より新しいデータ、ロシアなども含むデータなど、実際のデータでも見てみたいですね。それは、また後ほど。
 

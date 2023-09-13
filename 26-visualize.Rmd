@@ -1,22 +1,26 @@
+---
+---
+---
+
 # 視覚化（Visualize） {#visualize}
 
 ## 基本的なこと
 
-R では、簡単に、グラフを描画できますが、質の高いグラフを作成するには、`ggplot2` パッケージを用いたものが標準となっています。`ggplot2` は、`tidyverse` パッケージの一部ですので、`tidyverse` パッケージをインストール、使えるように、`library(tidyverse)` として読み込んであれば、そのまま使うことができます。
+R では、追加パッケージを使わなくても、簡単に、グラフを描画できますが、質の高いグラフを作成するには、`ggplot2` パッケージを用いたものが標準となっています。`ggplot2` は、`tidyverse` パッケージの一部ですので、`tidyverse` パッケージをインストール、使えるように、`library(tidyverse)` として読み込んであれば、そのまま使うことができます。
 
 サイト：<https://ggplot2.tidyverse.org> パッケージサイト：<https://CRAN.R-project.org/package=ggplot2>
 
 ### ggplot2 概要
 
-> ggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+> ggplot2 is a system for declaratively creating graphics, based on *The Grammar of Graphics*. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
 >
-> ggplot2は、グラフィックスの生成に関する「Grammar of Graphics（グラフィックスの文法）」に基づいて、宣言的にグラフを作成するためのシステムです。データを提供し、変数を視覚的要素にマッピングする方法や、どのようなグラフィカルな基本要素を使用するかをggplot2に伝えると、詳細な部分はggplot2 が処理してくれます。
+> ggplot2は、グラフィックスの生成に関する「Grammar of Graphics（グラフィックスの文法）」に基づいて、一つ一つの要素を定めていくことによって、グラフを作成するシステムです。データを提供し、変数を視覚的要素にマッピングする方法や、どのようなグラフィカルな基本要素を使用するかをggplot2に伝えると、詳細な部分はggplot2 が処理してくれます。
 
 ### 基本的な例
 
 #### `tidyverse` の読み込み
 
-タイトルに日本語を使う場合があるときは、`install.packages('showtext')` で、`showtext` パッケージをインストールして、下のように設定してください。
+タイトルや、列名などにに日本語を使う場合があるときは、`install.packages('showtext')` で、`showtext` パッケージをインストールして、下のように設定してください。そうでない場合は、最初の行 `library(tidyverse)` だけで他は不要です。
 
 ```{r}
 library(tidyverse)
@@ -24,33 +28,57 @@ library(showtext)
 showtext_auto()
 ```
 
-`ggplot2` に含まれている、`mpg` データを使って、簡単な、散布図と、箱ひげ図を描いてみます。`mpg` の変数などについては、Help で調べてください。
+#### 復習
+
+Tidyverse の章で、[紹介した例](https://icu-hsuzuki.github.io/ds4aj/tidyverse.html#ggplot2-グラフの描画)の復習から始めましょう。
 
 ```{r}
-str(mpg)
+df_iris <- datasets::iris
 ```
 
 ```{r}
-ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 ```
+
+さまざまな描画が可能ですが、一番、一般的な、散布図、`plot` に対応するものです。`ggplot` の中の、`aes` （aesthetic）の部分に、x 軸、y 軸に対応する変数（列名）を書きます。
+
+| `<DATA> |> ggplot(aes(<変数 x の列名>, <変数 y の列名>)) + geom_point()`
+
+もっと明示的に
+
+| `<DATA> |> ggplot(aes(x = <変数 x の列名>, y = <変数 y の列名>)) + geom_point()`
+
+さらには
+
+| `<DATA> |> ggplot(mapping = aes(x = <変数 x の列名>, y = <変数 y の列名>)) + geom_point()`
+
+パイプを使わず
+
+| `ggplot(<DATA>, aes(x = <変数 x の列名>, y = <変数 y の列名>)) + geom_point()`
+
+や、さらに、詳しく
+
+| `ggplot(data = <DATA>, mapping = aes(x = <変数 x の列名>, y = <変数 y の列名>)) + geom_point()`
+
+も可能です。
+
+種類（Species）ごとに色を変える場合には、`color = Species` とします。
 
 ```{r}
-ggplot(data = mpg) + geom_boxplot(mapping = aes(x = class, y = hwy))
+df_iris |> ggplot(aes(Sepal.Width, Sepal.Length, color = Species)) +
+  geom_point()
 ```
 
-1.  `data = mpg` でデータを指定します。
+さらに、点の大きさを、Petal.Width によって変える場合には次のように、`size = Petal.Width` を加えます。
 
-2.  どのようなグラフにするか、幾何関数（Geometric Function）を指定します。散布図では、`geom_pont()` 、箱ひげ図では、`geom_boxplot()` です。
+```{r}
+df_iris |> 
+  ggplot(aes(Sepal.Width, Sepal.Length, color = Species, 
+             size = Petal.Width)) +
+  geom_point()
+```
 
-3.  x 軸、y 軸などに対応する変数の写像（mapping）を指定します。
-
-    -   散布図では、`dspl` （displacemnt エンジンの排気量（単位 リットル））を x 軸に、`hwy` 高速道路で１ガロンで走れる距離（単位 マイル）を y 軸に割り当てています。
-
-    -   箱ひげ図では、`class` 車の型式を、x 軸に、`hwy` 高速道路で１ガロンで走れる距離（単位 マイル）を y 軸に割り当てています。
-
-記号的に書くと、下のようになっています。
-
-`ggplot(data = <DATA>) + <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))`
+ここでは、散布図でしたから、`geom_point()` を使いましたが、これを他のものに変えていくと、さまざまなグラフが描けるようになっています。
 
 ## 散布図（Scatter Plot）
 
@@ -69,7 +97,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 変形（Transform）のときにつかった、`iris` データを使います。
 
 ```{r message=FALSE, warning=FALSE, comment=FALSE}
-ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
 ```
 
@@ -84,13 +112,13 @@ ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
 ```
 
 ```{r}
-ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() + 
   labs(title = "Scatter Plot of Sepal Data of Iris", x = "Sepal Length", y = "Sepal Width")
 ```
 
 ```{r}
-ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() + 
   labs(title = "菖蒲の萼の長さと幅についての散布図", x = "萼の長さ", y = "萼の幅")
 ```
@@ -102,7 +130,7 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 菖蒲（iris）のデータは、Species 列に、三種類の菖蒲の名前が含まれていました。それぞれに、違う色で表示してみましょう。それには、x 軸、y 軸に対応する変数を指定したように、`color = Species` と指定します。
 
 ```{r}
-ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
   geom_point()
 ```
 
@@ -111,14 +139,14 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
 色ではなく、形で Species を区別することも可能です。
 
 ```{r}
-ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, shape = Species)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, shape = Species)) +
   geom_point()
 ```
 
 色と、形、両方を同時に使うことも可能です。
 
 ```{r}
-ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species)) +
   geom_point()
 ```
 
@@ -135,12 +163,12 @@ Transcript ボタンから、スクリプトを表示することもできます
 例のように、それぞれのグループごとに箱ひげ図を表示することもできますが、その場合は、文字データや、離散的な数値データ（いくつかの飛び飛びの値をとる変数）を使います。x と y を入れ替えれば、横向きになります。
 
 ```{r}
-ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
+ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot()
 ```
 
 ```{r}
-ggplot(data = iris, aes(y = Species, x = Sepal.Length)) +
+ggplot(data = df_iris, aes(y = Species, x = Sepal.Length)) +
   geom_boxplot()
 ```
 
@@ -149,12 +177,12 @@ ggplot(data = iris, aes(y = Species, x = Sepal.Length)) +
 color を指定すると、枠に色がつき、fill を指定すると、箱の中が塗り潰されます。
 
 ```{r}
-ggplot(data = iris, aes(x = Species, y = Sepal.Length, color = Species)) +
+ggplot(data = df_iris, aes(x = Species, y = Sepal.Length, color = Species)) +
   geom_boxplot()
 ```
 
 ```{r}
-ggplot(data = iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+ggplot(data = df_iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
   geom_boxplot()
 ```
 
@@ -167,7 +195,7 @@ Visualize the distribution of a single continuous variable by dividing the x axi
 説明ビデオです。<https://vimeo.com/221607341>
 
 ```{r}
-ggplot(data = iris, aes(x = Sepal.Length)) +
+ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_histogram()
 ```
 
@@ -178,31 +206,31 @@ ggplot(data = iris, aes(x = Sepal.Length)) +
 最初の例では、枠の個数を（初期設定では30になっているものを）10個とし、二つ目の例では、幅を1にしています。
 
 ```{r}
-ggplot(data = iris, aes(x = Sepal.Length)) +
+ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_histogram(bins = 10)
 ```
 
 ```{r}
-ggplot(data = iris, aes(x = Sepal.Length)) +
+ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_histogram(binwidth = 1)
 ```
 
 頻度多角形（geom_freqpoly()）を使うと以下のようになります。Species ごとに比べたり、色をつけたりもできます。
 
 ```{r}
-ggplot(data = iris, aes(x = Sepal.Length)) +
+ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_freqpoly()
 ```
 
 ```{r}
-ggplot(data = iris, aes(x = Sepal.Length, color = Species)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, color = Species)) +
   geom_freqpoly(bins = 10)
 ```
 
 滑らかな曲線にするときは、density plot を使います。alpha は透明度で 0 から 1 の値で指定します。数が小さい方が薄くなります。color で線の色もあわせて設定することも可能です。いろいろと試してみてください。
 
 ```{r}
-ggplot(data = iris, aes(x = Sepal.Length, fill = Species)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, fill = Species)) +
   geom_density(alpha = 0.5)
 ```
 
@@ -211,16 +239,55 @@ ggplot(data = iris, aes(x = Sepal.Length, fill = Species)) +
 回帰直線を加えたり、他の近似曲線を加えることも可能です。グラフとしても直感的理解を助けますが、統計的な扱いについては、Modeling で説明します。
 
 ```{r, message=FALSE, warning=FALSE}
-ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() +
   geom_smooth()
 ```
+
+## 例から学ぶ ggplot2`,` I
+
+#### mpg を使って
+
+`ggplot2` に含まれている、`mpg`（Fuel economy data from 1999 to 2008 for 38 popular models of cars - 1999年から2008年の38の型式の車の年燃費）データを使って、簡単な、散布図と、箱ひげ図を描いてみます。`mpg` の変数などについては、Help で調べてください。
+
+manufacturer は、メーカー名、model は、型式、disp は、排気量（単位：リットル）、year は年式、cyl は、気筒数、trans は、オートマかマニュアルか、drv は、f が前輪駆動、r は後輪駆動、4 は四輪駆動、cty は街中での燃費（１ガロンで何マイル走るか）、hwy は高速道路での燃費（１ガロンで何マイル走るか）、fl 燃料の種類、class タイプ
+
+```{r}
+df_mpg <- ggplot2::mpg
+df_mpg
+```
+
+```{r}
+glimpse(df_mpg)
+```
+
+```{r}
+ggplot(data = df_mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+```{r}
+ggplot(data = df_mpg) + geom_boxplot(mapping = aes(x = class, y = hwy))
+```
+
+1.  `data = df_mpg` でデータを指定します。
+
+2.  どのようなグラフにするか、幾何関数（Geometric Function）を指定します。散布図では、`geom_pont()` 、箱ひげ図では、`geom_boxplot()` などです。
+
+3.  x 軸、y 軸などに対応する変数の写像（mapping）を指定します。
+
+    -   散布図では、`dspl` （displacemnt エンジンの排気量（単位 リットル））を x 軸に、`hwy` 高速道路で１ガロンで走れる距離（単位 マイル）を y 軸に割り当てています。
+
+    -   箱ひげ図では、`class` 車の型式を、x 軸に、`hwy` 高速道路で１ガロンで走れる距離（単位 マイル）を y 軸に割り当てています。
+
+記号的に書くと、下のようになっています。
+
+`ggplot(data = <DATA>) + <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))`
 
 ## 例から学ぶ ggplot2`,` II
 
@@ -284,16 +351,16 @@ df_wdi_extra <- read_csv("./data/wdi_extra.csv")
 ```
 
 ```{r}
-df_wdi_extra
+df_wdi
 ```
 
 ### 
 
-**例3 折線グラフ（line graph）**
+### **折線グラフ（line graph）**
 
 WDI は時系列データですから、折れ線グラフも使います。後ほど紹介しますが、
 
-`{<DATA> |> ggplot(aes(year, lifeExp)) + geom_line()}`
+| `<DATA> |> ggplot(aes(year, lifeExp)) + geom_line()`
 
 と言った感じです。
 
@@ -303,111 +370,61 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 df_wdi |> ggplot(aes(year, lifeExp)) + geom_line()
 ```
 
-## 例　パッケージ Gapminder を使って
-
-```{r packages, message=FALSE}
-library(tidyverse)
-library(gapminder)
-library(WDI)
-```
-
-すでに、`dplyr` をつかった変形で確認しましたが、簡単に、データを見ておきましょう。
-
-```{r cache=TRUE}
-df_gm <- gapminder
-df_gm %>% slice(1:10)
-```
+何が起こっているかわかりますか。これは、鋸の刃グラフ（saw-tooth chart）と言われる標準的な失敗例です。
 
 ```{r}
-glimpse(df_gm)
+ggplot(df_wdi, aes(x = year, y = lifeExp)) + geom_boxplot()
 ```
 
+これも期待した箱ひげ図にはなっていません。年は、カテゴリーではなく、数値データですね。
+
 ```{r}
-summary(df_gm)
+typeof(pull(df_wdi, year)) # same as typeof(df$year)
 ```
 
-#### Tidyverse::ggplot
-
-##### First Try - with failures
-
-You will encounter similar failures. We list three of them.
+次のようにすると少しマシになります。
 
 ```{r}
-ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_point()
-```
-
-There are lots of data in each year: 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, .... Can you tell how many years are in the data? The following command shows different years in the data.
-
-```{r}
-unique(df_gm$year)
-```
-
-You can guess it from the data summary above. Can you imagine how many countries are in the data? 142? Anyhow, too many points are on each year.
-
-```{r}
-ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_line()
-```
-
-Now, you can guess the reason why you had this output. This is often called a saw-tooth.
-
-```{r}
-ggplot(df_gm, aes(x = year, y = lifeExp)) + geom_boxplot()
-```
-
-Can you see what the problem is? The `year` is a numerical variable in integer.
-
-```{r}
-typeof(pull(df_gm, year)) # same as typeof(df$year)
-```
-
-The following looks better.
-
-```{r}
-ggplot(df_gm, aes(y = lifeExp, group = year)) + geom_boxplot()
+ggplot(df_wdi, aes(y = lifeExp, group = year)) + geom_boxplot()
 ```
 
 ##### Box Plot
 
 ```{r}
-ggplot(df_gm, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
+ggplot(df_wdi, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
 ```
 
-You can use `fill` and `color` for the box plot. Try and check the difference.
+とはいえ、数が多すぎますね。色もつけてみましょう。塗りつぶしは、fill 枠の線に色をつけるのは、color ですから、ここでは、fill を使います。
 
 ```{r}
-df_gm %>% filter(year %in% c(1952, 1987, 2007)) %>%
-  ggplot(aes(x=as_factor(year), y = lifeExp, fill = continent)) +
+df_wdi_extra |> filter(income != "Aggregates") |> 
+  filter(year %in% c(1960, 1980, 2000, 2020)) |>
+  ggplot(aes(x=as_factor(year), y = lifeExp, fill = income)) +
   geom_boxplot()
 ```
 
-The following are examples of line graphs. Please see the differences.
+折線グラフの例としては次のようなものがあります。
 
 ```{r}
-df_lifeExp <- df_gm %>% 
-  group_by(continent, year) %>% 
+df_lifeExp <- df_wdi_extra |> filter(region != "Aggregates") |>  
+  group_by(region, year) |>
   summarize(mean_lifeExp = mean(lifeExp), median_lifeExp = median(lifeExp), max_lifeExp = max(lifeExp), min_lifeExp = min(lifeExp), .groups = "keep")
 ```
 
 ```{r}
-df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent)) +
+df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region)) +
   geom_line()
 ```
 
 ```{r}
-df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent, linetype = continent)) +
+df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region, linetype = region)) +
   geom_line()
 ```
 
 ```{r}
 df_lifeExp %>% ggplot() +
-  geom_line(aes(x = year, y = mean_lifeExp, color = continent)) + 
-  geom_line(aes(x = year, y = median_lifeExp, linetype = continent))
-```
-
-### Original Data? WDI?
-
-```{r}
-df_gm %>% slice(1:10)
+  geom_line(aes(x = year, y = mean_lifeExp, color = region)) + 
+  geom_line(aes(x = year, y = median_lifeExp, linetype = region))
 ```
 
 #### WDI

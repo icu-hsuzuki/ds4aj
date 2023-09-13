@@ -1,6 +1,7 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
+thm:tri
 introduction
 データサイエンスとは
 なぜデータサイエンスが最近注目されているのか
@@ -211,6 +212,7 @@ youtube-video---rmarkdown
 rmarkdown-で-pdf-を作成するときの注意
 tinytex-によるインストール方法
 rbasics
+はじめに-1
 プロジェクト---project
 コンソールで実行---run-in-console
 最初の四つ
@@ -235,7 +237,7 @@ tips
 youtube-video---getstarted
 まとめと復習
 tidyverse
-はじめに-1
+はじめに-2
 あやめirisのデータ
 データを見てみよう
 復習
@@ -293,6 +295,7 @@ visualize
 ggplot2-概要
 基本的な例
 tidyverse-の読み込み
+復習-1
 散布図scatter-plot
 ラベル-labels
 色付き-colors
@@ -300,14 +303,13 @@ tidyverse-の読み込み
 箱ひげ図-boxplot
 ヒストグラム-histogram
 線形モデル-data-modeling
+例から学ぶ-ggplot2-i
+mpg-を使って
 例から学ぶ-ggplot2-ii
 df_wdi-df_wdi_extra-1
 section-1
-例-パッケージ-gapminder-を使って
-tidyverseggplot
-first-try---with-failures
+折線グラフline-graph
 box-plot
-original-data-wdi
 wdi-1
 コメント
 参考文献-1
@@ -443,6 +445,10 @@ estatapi-利用概要-1
 統計データ取得estat_getstatsdata
 others
 kagle
+gapminder-1
+パッケージ-gapminder-を使って
+box-plot-1
+original-data-wdi
 intro2eda
 探索的データ解析-edaとは
 探索的データ解析-eda-の一例

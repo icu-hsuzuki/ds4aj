@@ -1,3 +1,85 @@
 # その他のデータベース {#others}
 
 ## Kagle
+
+-   Kagle Home: <https://www.kaggle.com>
+
+-   Kagle Datasets: <https://www.kaggle.com/datasets>
+
+## Gapminder
+
+### パッケージ Gapminder を使って
+
+-   gapminder: Data from Gapminder: <https://cran.r-project.org/web/packages/gapminder/index.html>
+
+-   Gapminder Data: <https://www.gapminder.org/data/>
+
+```{r packages, message=FALSE}
+library(tidyverse)
+library(gapminder)
+```
+
+すでに、`dplyr` をつかった変形で確認しましたが、簡単に、データを見ておきましょう。
+
+```{r cache=TRUE}
+df_gm <- gapminder
+df_gm %>% slice(1:10)
+```
+
+```{r}
+glimpse(df_gm)
+```
+
+```{r}
+summary(df_gm)
+```
+
+```{r}
+unique(df_gm$year)
+```
+
+##### Box Plot
+
+```{r}
+ggplot(df_gm, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
+```
+
+`fill` や `color` を追加してみましょう。
+
+```{r}
+df_gm %>% filter(year %in% c(1952, 1987, 2007)) %>%
+  ggplot(aes(x=as_factor(year), y = lifeExp, fill = continent)) +
+  geom_boxplot()
+```
+
+折れ線グラフの例です。
+
+```{r}
+df_lifeExp <- df_gm %>% 
+  group_by(continent, year) %>% 
+  summarize(mean_lifeExp = mean(lifeExp), median_lifeExp = median(lifeExp), max_lifeExp = max(lifeExp), min_lifeExp = min(lifeExp), .groups = "keep")
+```
+
+```{r}
+df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent)) +
+  geom_line()
+```
+
+```{r}
+df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent, linetype = continent)) +
+  geom_line()
+```
+
+```{r}
+df_lifeExp %>% ggplot() +
+  geom_line(aes(x = year, y = mean_lifeExp, color = continent)) + 
+  geom_line(aes(x = year, y = median_lifeExp, linetype = continent))
+```
+
+### Original Data? WDI?
+
+```{r}
+df_gm %>% slice(1:10)
+```
+
+さて、このデータは、どのようにして集めているのでしょうか。WDI のデータと同じでしょうか。
