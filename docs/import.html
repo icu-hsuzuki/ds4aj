@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 20 Import | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 20 データ読み込み（Import） | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hiroshi Suzuki）">
-<meta name="description" content="20.1 Setup library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔ readr   2.1.4 #&gt; ✔ forcats  1.0.0   ✔ stringr  1.5.0 #&gt; ✔ ggplot2  3.4.2   ✔...">
+<meta name="description" content="20.1 はじめに データの読み込みは、データサイエンスの最初のステップです。しかし、データを読み込む時に、その後の、データの整形・変形、さらには、視覚化について、ある程度の理解をしているかどうかで、変わってきますので、順番を、Tidyverse での、dplyr をつかった変形と、ggplot2 を使った視覚化のあとにしました。...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 20 Import | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 20 データ読み込み（Import） | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/import.html">
-<meta property="og:description" content="20.1 Setup library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔ readr   2.1.4 #&gt; ✔ forcats  1.0.0   ✔ stringr  1.5.0 #&gt; ✔ ggplot2  3.4.2   ✔...">
+<meta property="og:description" content="20.1 はじめに データの読み込みは、データサイエンスの最初のステップです。しかし、データを読み込む時に、その後の、データの整形・変形、さらには、視覚化について、ある程度の理解をしているかどうかで、変わってきますので、順番を、Tidyverse での、dplyr をつかった変形と、ggplot2 を使った視覚化のあとにしました。...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 20 Import | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content="20.1 Setup library(tidyverse) #&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ── #&gt; ✔ dplyr   1.1.2   ✔ readr   2.1.4 #&gt; ✔ forcats  1.0.0   ✔ stringr  1.5.0 #&gt; ✔ ggplot2  3.4.2   ✔...">
+<meta name="twitter:title" content="Chapter 20 データ読み込み（Import） | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content="20.1 はじめに データの読み込みは、データサイエンスの最初のステップです。しかし、データを読み込む時に、その後の、データの整形・変形、さらには、視覚化について、ある程度の理解をしているかどうかで、変わってきますので、順番を、Tidyverse での、dplyr をつかった変形と、ggplot2 を使った視覚化のあとにしました。...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -89,7 +89,7 @@
 <li><a class="" href="tidyverse.html"><span class="header-section-number">17</span> Tidyverse</a></li>
 <li><a class="" href="transform.html"><span class="header-section-number">18</span> 変形（Transform）</a></li>
 <li><a class="" href="visualize.html"><span class="header-section-number">19</span> 視覚化（Visualize）</a></li>
-<li><a class="active" href="import.html"><span class="header-section-number">20</span> Import</a></li>
+<li><a class="active" href="import.html"><span class="header-section-number">20</span> データ読み込み（Import）</a></li>
 <li><a class="" href="modeling.html"><span class="header-section-number">21</span> Modeling</a></li>
 <li><a class="" href="communicate.html"><span class="header-section-number">22</span> Communicate</a></li>
 <li><a class="" href="aboutfirstexample.html"><span class="header-section-number">23</span> 復習</a></li>
@@ -119,12 +119,24 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="import" class="section level1" number="20">
 <h1>
-<span class="header-section-number">20</span> Import<a class="anchor" aria-label="anchor" href="#import"><i class="fas fa-link"></i></a>
+<span class="header-section-number">20</span> データ読み込み（Import）<a class="anchor" aria-label="anchor" href="#import"><i class="fas fa-link"></i></a>
 </h1>
-<div id="setup" class="section level2" number="20.1">
+<div id="はじめに-3" class="section level2" number="20.1">
 <h2>
-<span class="header-section-number">20.1</span> Setup<a class="anchor" aria-label="anchor" href="#setup"><i class="fas fa-link"></i></a>
+<span class="header-section-number">20.1</span> はじめに<a class="anchor" aria-label="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB-3"><i class="fas fa-link"></i></a>
 </h2>
+<p>データの読み込みは、データサイエンスの最初のステップです。しかし、データを読み込む時に、その後の、データの整形・変形、さらには、視覚化について、ある程度の理解をしているかどうかで、変わってきますので、順番を、Tidyverse での、dplyr をつかった変形と、ggplot2 を使った視覚化のあとにしました。</p>
+<p>個々のデータの読み込みは、それぞれのサイトに特徴的なこともありますし、R のパッケージ（API: Application Programing Interface を用いたプログラム群）を用いて読み込む場合などによって、異なりますので、それは、第三部で扱いたいと思います。</p>
+</div>
+<div id="概略" class="section level2" number="20.2">
+<h2>
+<span class="header-section-number">20.2</span> 概略<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E7%95%A5"><i class="fas fa-link"></i></a>
+</h2>
+<p>まずは、基本を確認しましょう。</p>
+<p>すでに、WDI パッケージを用いて、データを読み込みましが。同様に、他にも、それぞれのサイトが、コンピュータで直接データを取得できるようにするために、提供している、API（Application Programing Interface）を用いたパッケージが存在します。十分な質のものが提供されている場合は、それを使うのが適切だと思います。</p>
+<p>そのような パッケージが提供されていない場合には、データファイルを取得して読み込むことになります。この場合にも、データファイルの URL（universal resource locator）から直接取り込むことができる場合と、一旦、自分のコンピュータにダウンロードして、それから、読み込む場合とがあります。</p>
+<p>再現性（reproducibility）を考えると、URL から、直接読み込む方がよいと思いますが、そうはいかない場合、また、自分で作成した、データファイルもあるでしょうから、その場合は、コンピュータから読み込むことになります。</p>
+<p>データの形式はさまざまでが、オープンデータでは、CSV（comma separated values) 形式のテキストデータ<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Separator 分離記号として、comma（カンマ）以外（space （スペース）、tab（タブ）,&lt;/p&gt;&lt;p&gt;bar（縦棒）など）を用いる場合もありますが、それらは、ほとんど問題なく、CSV の場合と同様に読み込めます。これらについては、簡単に言及します。&lt;/p&gt;"><sup>21</sup></a>か、MicroSoft の Excel 形式のデジタルデータのどちらかを提供している場合がほとんどです。ですから、どちらの形式のファイルなのかを確認することが必要です。</p>
 <div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
@@ -141,36 +153,103 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/WDI/">WDI</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/piersyork/owidR">owidR</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">wid</span><span class="op">)</span></span></code></pre></div>
+<p>上で説明した三つの方法を簡単にまとめておきます。</p>
+<div id="テキストファイルcsv-などの読み込み" class="section level3" number="20.2.1">
+<h3>
+<span class="header-section-number">20.2.1</span> テキストファイル（CSV など）の読み込み<a class="anchor" aria-label="anchor" href="#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%ABcsv-%E3%81%AA%E3%81%A9%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<p><code>readr</code> パッケージで読み込みます。<code>tidyverse</code> パッケージ群に含まれる基本パッケージなので、<code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> としてあれば使えます。データ間の分離記号の種類によって使う関数が異なります。</p>
+<ul>
+<li><p><a href="https://readr.tidyverse.org/reference/read_delim.html"><code>read_csv()</code></a>: comma-separated values (CSV) - カンマの場合</p></li>
+<li><p><a href="https://readr.tidyverse.org/reference/read_delim.html"><code>read_tsv()</code></a>: tab-separated values (TSV) - タブの場合</p></li>
+<li><p><a href="https://readr.tidyverse.org/reference/read_delim.html"><code>read_csv2()</code></a>: semicolon-separated values with <code>,</code> as the decimal mark - セミコロン; の場合で、少数点に カンマが使われている場合（ヨーロッパでよく使われています）</p></li>
+<li><p><a href="https://readr.tidyverse.org/reference/read_delim.html"><code>read_delim()</code></a>: delimited files (CSV and TSV are important special cases) - 分離記号を指定する場合</p></li>
+<li><p><a href="https://readr.tidyverse.org/reference/read_fwf.html"><code>read_fwf()</code></a>: fixed-width files - 固定幅でデータが並んでいる場合</p></li>
+<li><p><a href="https://readr.tidyverse.org/reference/read_table.html"><code>read_table()</code></a>: whitespace-separated files - 空白が分離記号に使われている場合</p></li>
+<li><p><a href="https://readr.tidyverse.org/reference/read_log.html"><code>read_log()</code></a>: web log files - ログファイルを読み込む場合</p></li>
+<li><p>例：<code>df_name &lt;- read_csv("./data/datafile.csv")</code></p></li>
+</ul>
+</li>
+<li><p>詳細は、<a href="https://readr.tidyverse.org">readr サイト</a> を参照してください。サイトには、Data Importing CheatSheet もあります。</p></li>
+</ul>
 </div>
-<div id="eda-by-r-studio-step-3---importing-data" class="section level2" number="20.2">
-<h2>
-<span class="header-section-number">20.2</span> EDA by R Studio: Step 3 - Importing Data<a class="anchor" aria-label="anchor" href="#eda-by-r-studio-step-3---importing-data"><i class="fas fa-link"></i></a>
-</h2>
-<p>Assign a name you can recall easily when you import data. You may need to reload the data with options.</p>
-<p>3.1. Use a package:</p>
+<div id="excel-ファイルの読み込み" class="section level3" number="20.2.2">
+<h3>
+<span class="header-section-number">20.2.2</span> Excel ファイルの読み込み<a class="anchor" aria-label="anchor" href="#excel-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li>WDI, wir, eurostat, etc/</li>
-<li>`wdi_shortname &lt;- WDI(indicator = “indicator’s name”, … )</li>
-<li>Store the data and use it: <code>write_csv(wdi_shortname, "./data/wdi_shortname.csv")</code>
+<li>
+<p>readxl パッケージで読み込みます。<code>tidyverse</code> パッケージ群に含まれていますから、新たに、インストールする必要はありませんが、基本パッケージではないので、<code><a href="https://readxl.tidyverse.org">library(readxl)</a></code> としてから使います。</p>
+<ul>
+<li><p>例：<code>df_name &lt;- read_excel("./data/datafile.xlsx")</code></p></li>
+<li><p>Excel ファイルには、xls 形式と、xlsx 形式があります。どちらも、read_excel で読み込むことが可能ですが、それぞれの形式に特化した <code>read_xls</code> と <code>read_xlsx</code> も用意されています。</p></li>
+<li><p>Excel ファイルには、複数のシートが含まれる場合があります。そのときには、シートを、何番目のシートか（例：<code>sheet = 2</code>）、または、シート名を指定（例：sheet = “name”）して読み込みます。</p></li>
+<li><p>シートの一部を読み込むような場合もあり、その場合は、指定が必要です。Help や、リンク、または、後から示す例を参照してください。</p></li>
+</ul>
 </li>
-<li><code>wdi_shortname &lt;- read_csv("./data/wdi_shortname.csv")</code></li>
+<li><p>詳細は、<a href="https://readxl.tidyverse.org">readxl サイト</a> を参照してください。サイトには、Data Importing CheatSheet もあります。</p></li>
 </ul>
-<p>3.2. Use <code>readr</code> to read from <code>data</code>, your data folder</p>
+</div>
+<div id="データのダウンロード" class="section level3" number="20.2.3">
+<h3>
+<span class="header-section-number">20.2.3</span> データのダウンロード<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li><code>df1_shortname &lt;- read_csv("./data/file_name.csv")</code></li>
+<li><p>データの URL がわかっている場合は、直接、データを取り込んだり、data ディレクトリ（フォルダー）にダウンロードすることができます。ダウンロードしたら、テキストファイルか、Excel ファイルかによって、上で説明した方法を使って読み込んでください。</p></li>
+<li><p>圧縮ファイルになっている場合もあります。圧縮ファイルも R 起動時に読み込まれる util パッケージで解凍できますが、基本的に、コンピュータのプログラムを使いますから、ファイルをダブルクリックするなどして、解凍する場合と同じです。</p></li>
+<li>
+<p>CSV のようなテキストふぁいると、Excel ファイルのようなデジタルファイルで少しだけ異なります。下に例を書きます。いずれも、data ディレクトリ（フォルダー）に保存しています。詳しくは、<code>download.file</code> の Help を参照してください。</p>
+<ul>
+<li><p>テキストファイル（CSV）：<code>download.file(url = "URL", destfile = "./data/file_name.csv")</code></p></li>
+<li>
+<p>デジタルファイル（Excel）：<code>download.file(url = "URL", destfile = "./data/file_name.xlsx", mode = "wb")</code></p>
+<ul>
+<li>
+<code>mode = "wb"</code> デジタルファイルの指定です。Mac の場合には、リソースファイルと呼ばれる不可視ファイルを使っているので、この設定がなくても、読み込めるようです。</li>
 </ul>
-<p>3.3. Use <code>readr</code> to read using the url of the data</p>
-<ul>
-<li><code>df2_shortname &lt;- read_csv("url_of_the_data")</code></li>
-<li>Store the data and use it: <code>write_csv(df2_shortname, "./data/df2_shortname.csv")</code>
 </li>
-<li><code>df2_shortname &lt;- read_csv("./data/df2_shortname.csv")</code></li>
 </ul>
-<p>3.5. Use <code>readxl</code> to read Excel data. Add <code><a href="https://readxl.tidyverse.org">library(readxl)</a></code> in the setup and run.</p>
+</li>
+<li>
+<p>URL がわかっている、CSV ファイルの場合には、直接、readr でも読み込むことができます。</p>
 <ul>
-<li><code>df4 &lt;- read_excel("./data/file_name.xlsx", sheet = 1)</code></li>
+<li>例：<code>df_name &lt;- read_csv(URL)</code>
+</li>
 </ul>
-<p>References: Cheat Sheet - <code>readr</code>, <a href="https://readr.tidyverse.org">readr</a>, <a href="https://readxl.tidyverse.org">readxl</a></p>
+</li>
+<li>
+<p>URL がわかっていて、read_csv などで読み込んだ場合も、保存しておくことをお勧めします。</p>
+<ul>
+<li><p>保存：<code>write_csv(df_name, "./data/df_name.csv")</code></p></li>
+<li><p>読み込み：<code>df_name &lt;- read_csv("./data/df_name.csv")</code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="パッケージの利用" class="section level3" number="20.2.4">
+<h3>
+<span class="header-section-number">20.2.4</span> パッケージの利用<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E5%88%A9%E7%94%A8"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<code>WDI</code>, <code>wir</code>, <code>eurostat</code>, <code>estatapi</code> など
+<ul>
+<li>例：<code>wdi_shortname &lt;- WDI(indicator = "indicator's name")</code>
+</li>
+</ul>
+</li>
+<li>毎回、読み込むのは時間もかかりますし、サイト負荷も増えますから、data ディレクトリ（フォルダ）に書き込み、そこから、読み込むのが適切です。
+<ul>
+<li>保存：<code>write_csv(wdi_shortname, "./data/wdi_shortname.csv")</code>
+</li>
+<li>読み込み：<code>wdi_shortname &lt;- read_csv("./data/wdi_shortname.csv")</code>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="tidyr" class="section level2" number="20.3">
 <h2>
@@ -360,7 +439,8 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html">percent_format</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Figure 1. Global income and wealth inequality, 2021"</span>,</span>
 <span>       x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="st">"Share of total income or wealth"</span>, fill <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
-<p><img src="27-import_files/figure-html/unnamed-chunk-11-1.png" width="672"><strong>Interpretation</strong>: The global bottom 50% captures 8.5% of total income measured at Purchasing Power Parity (PPP). The global bottom 50% owns 2% of wealth (at Purchasing Power Parity). The global top 10% owns 76% of total Household wealth and captures 52% of total income in 2021. Note that top wealth holders are not necessarily top income holders. Incomes are measured after the operation of pension and unemployment systems and before taxes and transfers.<br><strong>Sources and series</strong>: wir2022.wid.world/methodology.</p>
+<div class="inline-figure"><img src="27-import_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
+<p><strong>Interpretation</strong>: The global bottom 50% captures 8.5% of total income measured at Purchasing Power Parity (PPP). The global bottom 50% owns 2% of wealth (at Purchasing Power Parity). The global top 10% owns 76% of total Household wealth and captures 52% of total income in 2021. Note that top wealth holders are not necessarily top income holders. Incomes are measured after the operation of pension and unemployment systems and before taxes and transfers.<br><strong>Sources and series</strong>: wir2022.wid.world/methodology.</p>
 <p>The next F2 is similar to F1.</p>
 </div>
 <div id="f2-the-poorest-half-lags-behind-bottom-50-middle-40-and-top-10-income-shares-across-the-world-in-2021" class="section level2" number="20.10">
@@ -407,8 +487,7 @@
 <h2>
 <span class="header-section-number">20.11</span> Pivot data from long to wide:<a class="anchor" aria-label="anchor" href="#pivot-data-from-long-to-wide"><i class="fas fa-link"></i></a>
 </h2>
-<p><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html"><code>pivot_wider()</code></a>
-In Console: vignette(“pivot”)</p>
+<p><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html"><code>pivot_wider()</code></a> In Console: vignette(“pivot”)</p>
 <pre><code>pivot_wider(data, 
   names_from = &lt;name of the column (or columns) to get the name of the output column&gt;,
   values_from = &lt;name of the column to get the value of the output&gt;) </code></pre>
@@ -1129,15 +1208,23 @@ In Console: vignette(“pivot”)</p>
 
 </div>
 </div>
+
   <div class="chapter-nav">
 <div class="prev"><a href="visualize.html"><span class="header-section-number">19</span> 視覚化（Visualize）</a></div>
 <div class="next"><a href="modeling.html"><span class="header-section-number">21</span> Modeling</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#import"><span class="header-section-number">20</span> Import</a></li>
-<li><a class="nav-link" href="#setup"><span class="header-section-number">20.1</span> Setup</a></li>
-<li><a class="nav-link" href="#eda-by-r-studio-step-3---importing-data"><span class="header-section-number">20.2</span> EDA by R Studio: Step 3 - Importing Data</a></li>
+<li><a class="nav-link" href="#import"><span class="header-section-number">20</span> データ読み込み（Import）</a></li>
+<li><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB-3"><span class="header-section-number">20.1</span> はじめに</a></li>
+<li>
+<a class="nav-link" href="#%E6%A6%82%E7%95%A5"><span class="header-section-number">20.2</span> 概略</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%ABcsv-%E3%81%AA%E3%81%A9%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF"><span class="header-section-number">20.2.1</span> テキストファイル（CSV など）の読み込み</a></li>
+<li><a class="nav-link" href="#excel-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF"><span class="header-section-number">20.2.2</span> Excel ファイルの読み込み</a></li>
+<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><span class="header-section-number">20.2.3</span> データのダウンロード</a></li>
+<li><a class="nav-link" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E5%88%A9%E7%94%A8"><span class="header-section-number">20.2.4</span> パッケージの利用</a></li>
+</ul>
+</li>
 <li><a class="nav-link" href="#tidyr"><span class="header-section-number">20.3</span> tidyr</a></li>
 <li>
 <a class="nav-link" href="#reviews-and-previews"><span class="header-section-number">20.4</span> Reviews and Previews</a><ul class="nav navbar-nav">
@@ -1201,7 +1288,7 @@ In Console: vignette(“pivot”)</p>
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-13.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-15.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

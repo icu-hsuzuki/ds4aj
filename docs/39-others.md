@@ -135,7 +135,7 @@ unique(df_gm$year)
 ggplot(df_gm, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
 ```
 
-![](39-others_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
+<img src="39-others_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 `fill` や `color` を追加してみましょう。
 
@@ -146,7 +146,7 @@ df_gm %>% filter(year %in% c(1952, 1987, 2007)) %>%
   geom_boxplot()
 ```
 
-![](39-others_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
+<img src="39-others_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 折れ線グラフの例です。
 
@@ -163,7 +163,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent)) +
   geom_line()
 ```
 
-![](39-others_files/figure-epub3/unnamed-chunk-8-1.png)<!-- -->
+<img src="39-others_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 
 ```r
@@ -171,7 +171,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = continent, linetyp
   geom_line()
 ```
 
-![](39-others_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
+<img src="39-others_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 
 ```r
@@ -180,7 +180,7 @@ df_lifeExp %>% ggplot() +
   geom_line(aes(x = year, y = median_lifeExp, linetype = continent))
 ```
 
-![](39-others_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
+<img src="39-others_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 ### Original Data? WDI?
 

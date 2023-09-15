@@ -1,6 +1,26 @@
-# Import {#import}
+# データ読み込み（Import） {#import}
 
-## Setup
+## はじめに
+
+データの読み込みは、データサイエンスの最初のステップです。しかし、データを読み込む時に、その後の、データの整形・変形、さらには、視覚化について、ある程度の理解をしているかどうかで、変わってきますので、順番を、Tidyverse での、dplyr をつかった変形と、ggplot2 を使った視覚化のあとにしました。
+
+個々のデータの読み込みは、それぞれのサイトに特徴的なこともありますし、R のパッケージ（API: Application Programing Interface を用いたプログラム群）を用いて読み込む場合などによって、異なりますので、それは、第三部で扱いたいと思います。
+
+## 概略
+
+まずは、基本を確認しましょう。
+
+すでに、WDI パッケージを用いて、データを読み込みましが。同様に、他にも、それぞれのサイトが、コンピュータで直接データを取得できるようにするために、提供している、API（Application Programing Interface）を用いたパッケージが存在します。十分な質のものが提供されている場合は、それを使うのが適切だと思います。
+
+そのような パッケージが提供されていない場合には、データファイルを取得して読み込むことになります。この場合にも、データファイルの URL（universal resource locator）から直接取り込むことができる場合と、一旦、自分のコンピュータにダウンロードして、それから、読み込む場合とがあります。
+
+再現性（reproducibility）を考えると、URL から、直接読み込む方がよいと思いますが、そうはいかない場合、また、自分で作成した、データファイルもあるでしょうから、その場合は、コンピュータから読み込むことになります。
+
+データの形式はさまざまでが、オープンデータでは、CSV（comma separated values) 形式のテキストデータ[^27-import-1]か、MicroSoft の Excel 形式のデジタルデータのどちらかを提供している場合がほとんどです。ですから、どちらの形式のファイルなのかを確認することが必要です。
+
+[^27-import-1]: Separator 分離記号として、comma（カンマ）以外（space （スペース）、tab（タブ）,
+
+    bar（縦棒）など）を用いる場合もありますが、それらは、ほとんど問題なく、CSV の場合と同様に読み込めます。これらについては、簡単に言及します。
 
 
 ```r
@@ -21,33 +41,75 @@ library(owidR)
 library(wid)
 ```
 
-## EDA by R Studio: Step 3 - Importing Data
+上で説明した三つの方法を簡単にまとめておきます。
 
-Assign a name you can recall easily when you import data. You may need to reload the data with options.
+### テキストファイル（CSV など）の読み込み
 
-3.1. Use a package:
+-   `readr` パッケージで読み込みます。`tidyverse` パッケージ群に含まれる基本パッケージなので、`library(tidyverse)` としてあれば使えます。データ間の分離記号の種類によって使う関数が異なります。
 
-  * WDI, wir, eurostat, etc/
-  * `wdi_shortname <- WDI(indicator = "indicator's name", ... )
-  * Store the data and use it: `write_csv(wdi_shortname, "./data/wdi_shortname.csv")`
-  * `wdi_shortname <- read_csv("./data/wdi_shortname.csv")`
-  
-3.2. Use `readr` to read from `data`, your data folder
+    -   [`read_csv()`](https://readr.tidyverse.org/reference/read_delim.html): comma-separated values (CSV) - カンマの場合
 
-  * `df1_shortname <- read_csv("./data/file_name.csv")`
+    -   [`read_tsv()`](https://readr.tidyverse.org/reference/read_delim.html): tab-separated values (TSV) - タブの場合
 
+    -   [`read_csv2()`](https://readr.tidyverse.org/reference/read_delim.html): semicolon-separated values with `,` as the decimal mark - セミコロン; の場合で、少数点に カンマが使われている場合（ヨーロッパでよく使われています）
 
-3.3. Use `readr` to read using the url of the data
+    -   [`read_delim()`](https://readr.tidyverse.org/reference/read_delim.html): delimited files (CSV and TSV are important special cases) - 分離記号を指定する場合
 
-  * `df2_shortname <- read_csv("url_of_the_data")`
-  * Store the data and use it: `write_csv(df2_shortname, "./data/df2_shortname.csv")`
-  * `df2_shortname <- read_csv("./data/df2_shortname.csv")`
-  
-3.5. Use `readxl` to read Excel data. Add `library(readxl)` in the setup and run.
+    -   [`read_fwf()`](https://readr.tidyverse.org/reference/read_fwf.html): fixed-width files - 固定幅でデータが並んでいる場合
 
-  * `df4 <- read_excel("./data/file_name.xlsx", sheet = 1)`
-  
-References: Cheat Sheet - `readr`, [readr](https://readr.tidyverse.org), [readxl](https://readxl.tidyverse.org)
+    -   [`read_table()`](https://readr.tidyverse.org/reference/read_table.html): whitespace-separated files - 空白が分離記号に使われている場合
+
+    -   [`read_log()`](https://readr.tidyverse.org/reference/read_log.html): web log files - ログファイルを読み込む場合
+
+    -   例：`df_name <- read_csv("./data/datafile.csv")`
+
+-   詳細は、[readr サイト](https://readr.tidyverse.org) を参照してください。サイトには、Data Importing CheatSheet もあります。
+
+### Excel ファイルの読み込み
+
+-   readxl パッケージで読み込みます。`tidyverse` パッケージ群に含まれていますから、新たに、インストールする必要はありませんが、基本パッケージではないので、`library(readxl)` としてから使います。
+
+    -   例：`df_name <- read_excel("./data/datafile.xlsx")`
+
+    -   Excel ファイルには、xls 形式と、xlsx 形式があります。どちらも、read_excel で読み込むことが可能ですが、それぞれの形式に特化した `read_xls` と `read_xlsx` も用意されています。
+
+    -   Excel ファイルには、複数のシートが含まれる場合があります。そのときには、シートを、何番目のシートか（例：`sheet = 2`）、または、シート名を指定（例：sheet = "name"）して読み込みます。
+
+    -   シートの一部を読み込むような場合もあり、その場合は、指定が必要です。Help や、リンク、または、後から示す例を参照してください。
+
+-   詳細は、[readxl サイト](https://readxl.tidyverse.org) を参照してください。サイトには、Data Importing CheatSheet もあります。
+
+### データのダウンロード
+
+-   データの URL がわかっている場合は、直接、データを取り込んだり、data ディレクトリ（フォルダー）にダウンロードすることができます。ダウンロードしたら、テキストファイルか、Excel ファイルかによって、上で説明した方法を使って読み込んでください。
+
+-   圧縮ファイルになっている場合もあります。圧縮ファイルも R 起動時に読み込まれる util パッケージで解凍できますが、基本的に、コンピュータのプログラムを使いますから、ファイルをダブルクリックするなどして、解凍する場合と同じです。
+
+-   CSV のようなテキストふぁいると、Excel ファイルのようなデジタルファイルで少しだけ異なります。下に例を書きます。いずれも、data ディレクトリ（フォルダー）に保存しています。詳しくは、`download.file` の Help を参照してください。
+
+    -   テキストファイル（CSV）：`download.file(url = "URL", destfile = "./data/file_name.csv")`
+
+    -   デジタルファイル（Excel）：`download.file(url = "URL", destfile = "./data/file_name.xlsx", mode = "wb")`
+
+        -   `mode = "wb"` デジタルファイルの指定です。Mac の場合には、リソースファイルと呼ばれる不可視ファイルを使っているので、この設定がなくても、読み込めるようです。
+
+-   URL がわかっている、CSV ファイルの場合には、直接、readr でも読み込むことができます。
+
+    -   例：`df_name <- read_csv(URL)`
+
+-   URL がわかっていて、read_csv などで読み込んだ場合も、保存しておくことをお勧めします。
+
+    -   保存：`write_csv(df_name, "./data/df_name.csv")`
+
+    -   読み込み：`df_name <- read_csv("./data/df_name.csv")`
+
+### パッケージの利用
+
+-   `WDI`, `wir`, `eurostat`, `estatapi` など
+    -   例：`wdi_shortname <- WDI(indicator = "indicator's name")`
+-   毎回、読み込むのは時間もかかりますし、サイト負荷も増えますから、data ディレクトリ（フォルダ）に書き込み、そこから、読み込むのが適切です。
+    -   保存：`write_csv(wdi_shortname, "./data/wdi_shortname.csv")`
+    -   読み込み：`wdi_shortname <- read_csv("./data/wdi_shortname.csv")`
 
 ## tidyr
 
@@ -57,10 +119,10 @@ References: Cheat Sheet - `readr`, [readr](https://readr.tidyverse.org), [readxl
 
 ### Example: World Inequility Report - WIR2022
 
-* World Inequality Report: https://wir2022.wid.world/
-* Executive Summary: https://wir2022.wid.world/executive-summary/
-* Methodology: https://wir2022.wid.world/methodology/
-* Data URL: https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx
+-   World Inequality Report: <https://wir2022.wid.world/>
+-   Executive Summary: <https://wir2022.wid.world/executive-summary/>
+-   Methodology: <https://wir2022.wid.world/methodology/>
+-   Data URL: <https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx>
 
 
 ```r
@@ -89,8 +151,7 @@ excel_sheets("./data/WIR2022s.xlsx")
 
 Recall that we added `mode = "wb"` because Excel files are binary files, not text files such as CSV files.
 
-When we use Excel files, we see `...1`, `...2`, `...3`, etc., as column names. These are columns with no column names in the original Excel file, and `R` assigned column names automatically. 
-
+When we use Excel files, we see `...1`, `...2`, `...3`, etc., as column names. These are columns with no column names in the original Excel file, and `R` assigned column names automatically.
 
 ### F1: Global income and wealth inequality, 2021
 
@@ -121,56 +182,51 @@ The table above is nothing terrible; however, if we have it in the following for
 ```
 
 
-
-
 ```r
 df_f1_rev %>%
   ggplot(aes(x = cat, y = value, fill = group)) +
   geom_col(position = "dodge")
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
+<img src="27-import_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
-We apply the `pivot_longer` function of the `tidyr` package, to transform the first table into the second. 
+We apply the `pivot_longer` function of the `tidyr` package, to transform the first table into the second.
 
 ## References of `tidyr`
 
-* Textbook: [R for Data Science,Tidy Data](https://r4ds.had.co.nz/tidy-data.html#tidy-data)
+-   Textbook: [R for Data Science,Tidy Data](https://r4ds.had.co.nz/tidy-data.html#tidy-data)
 
 ### RStudio Primers: See References in Moodle at the bottom
 
-4. Tidy Your Data -- [r4ds: Wrangle, II](https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro)
-  - [Reshape Data - a bit old](https://rstudio.cloud/learn/primers/4.1)
-  - [Separate and Unite](https://rstudio.cloud/learn/primers/4.2) 
-  - [Join Data Sets](https://rstudio.cloud/learn/primers/4.3)
+4.  Tidy Your Data -- [r4ds: Wrangle, II](https://r4ds.had.co.nz/wrangle-intro.html#wrangle-intro)
+
+-   [Reshape Data - a bit old](https://rstudio.cloud/learn/primers/4.1)
+-   [Separate and Unite](https://rstudio.cloud/learn/primers/4.2)
+-   [Join Data Sets](https://rstudio.cloud/learn/primers/4.3)
 
 The first component, 'Reshape Data' deals with `pivot_longer` and `pivot_wider`. However, it uses an older version of these functions calls `gather` and `spread`.
 
 ## Variables, values, and observations: Definitions
 
-* A **variable** is a quantity, quality, or property that you can measure.
-* A **value** is the state of a variable when you measure it. The value of a variable may change from measurement to measurement.
-* An **observation** or **case** is a set of measurements made under similar conditions (you usually make all of the measurements in an observation at the same time and on the same object). An observation will contain several values, each associated with a different variable. I’ll sometimes refer to an observation as a case or data point.
-* **Tabular data** is a table of values, each associated with a variable and an observation. Tabular data is tidy if each value is placed in its own cell, each variable in its own column, and each observation in its own row.
-* So far, all of the data that you’ve seen has been tidy. In real-life, most data isn’t tidy, so we’ll come back to these ideas again in Data Wrangling.
-
-
+-   A **variable** is a quantity, quality, or property that you can measure.
+-   A **value** is the state of a variable when you measure it. The value of a variable may change from measurement to measurement.
+-   An **observation** or **case** is a set of measurements made under similar conditions (you usually make all of the measurements in an observation at the same time and on the same object). An observation will contain several values, each associated with a different variable. I'll sometimes refer to an observation as a case or data point.
+-   **Tabular data** is a table of values, each associated with a variable and an observation. Tabular data is tidy if each value is placed in its own cell, each variable in its own column, and each observation in its own row.
+-   So far, all of the data that you've seen has been tidy. In real-life, most data isn't tidy, so we'll come back to these ideas again in Data Wrangling.
 
 ## Tidy Data
 
-> “Data comes in many formats, but R prefers just one: tidy data.” — Garrett Grolemund
+> "Data comes in many formats, but R prefers just one: tidy data." --- Garrett Grolemund
 
 Data can come in a variety of formats, but one format is easier to use in R than the others. This format is known as tidy data. A data set is tidy if:
 
-1. Each variable is in its own column
-2. Each observation is in its own row
-3. Each value is in its own cell (this follows from #1 and #2)
+1.  Each variable is in its own column
+2.  Each observation is in its own row
+3.  Each value is in its own cell (this follows from #1 and #2)
 
-> “Tidy data sets are all alike; but every messy data set is messy in its own way.” — Hadley Wickham
+> "Tidy data sets are all alike; but every messy data set is messy in its own way." --- Hadley Wickham
 
-> “all happy families are all alike; each unhappy family is unhappy in its own way” - Tolstoy's Anna Karenina
-
-
+> "all happy families are all alike; each unhappy family is unhappy in its own way" - Tolstoy's Anna Karenina
 
 ## `tidyr` Basics
 
@@ -178,14 +234,12 @@ Let us look at the figure in [R4DS](https://r4ds.hadley.nz/images/tidy-1.png).
 
 <img src="./data/tidy-1.png" width="100%" />
 
-1. Each variable is in its own column
-2. Each observation is in its own row
-
-
+1.  Each variable is in its own column
+2.  Each observation is in its own row
 
 ## Pivot data from wide to long: [`pivot_longer()`](https://tidyr.tidyverse.org/reference/pivot_longer.html)
 
-```
+```         
 pivot_longer(data, cols = <columns to pivot into longer format>,
   names_to = <name of the new character column>, # e.g. "group", "category", "class"
   values_to = <name of the column the values of cells go to>) # e.g. "value", "n"
@@ -228,7 +282,7 @@ df_f1_rev %>%
   geom_col(position = "dodge")
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-9-1.png)<!-- -->
+<img src="27-import_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 Let us add the value as a label, change the y-axis to percent, and add the title. The interpretation and source are from the original
 
@@ -245,13 +299,11 @@ df_f1_rev %>% filter(group != "Top 1%") %>%
        x = "", y = "Share of total income or wealth", fill = "")
 ```
 
+<img src="27-import_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
-
-![](27-import_files/figure-epub3/unnamed-chunk-11-1.png)<!-- -->
-**Interpretation**: The global bottom 50% captures 8.5% of total income measured at Purchasing Power Parity (PPP). The global bottom 50% owns 2% of wealth (at Purchasing Power Parity). The global top 10% owns 76% of total Household wealth and captures 52% of total income in 2021. Note that top wealth holders are not necessarily top income holders. Incomes are measured after the operation of pension and unemployment systems and before taxes and transfers.  
+**Interpretation**: The global bottom 50% captures 8.5% of total income measured at Purchasing Power Parity (PPP). The global bottom 50% owns 2% of wealth (at Purchasing Power Parity). The global top 10% owns 76% of total Household wealth and captures 52% of total income in 2021. Note that top wealth holders are not necessarily top income holders. Incomes are measured after the operation of pension and unemployment systems and before taxes and transfers.\
 **Sources and series**: wir2022.wid.world/methodology.
 
-  
 The next F2 is similar to F1.
 
 ## F2: The poorest half lags behind: Bottom 50%, middle 40% and top 10% income shares across the world in 2021
@@ -274,8 +326,6 @@ df_f2
 ```
 
 
-
-
 ```r
 df_f2 %>% pivot_longer(cols = 3:5, names_to = "group", values_to = "value")
 #> # A tibble: 24 × 4
@@ -295,30 +345,23 @@ df_f2 %>% pivot_longer(cols = 3:5, names_to = "group", values_to = "value")
 ```
 
 
-
-
 ```r
 df_f2 %>% pivot_longer(cols = 3:5, names_to = "group", values_to = "value") %>%
   ggplot(aes(x = iso, y = value, fill = group)) +
   geom_col(position = "dodge")
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-14-1.png)<!-- -->
+<img src="27-import_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
+## Pivot data from long to wide:
 
+[`pivot_wider()`](https://tidyr.tidyverse.org/reference/pivot_wider.html) In Console: vignette("pivot")
 
-## Pivot data from long to wide: 
-[`pivot_wider()`](https://tidyr.tidyverse.org/reference/pivot_wider.html)
-In Console: vignette("pivot") 
-
-```
+```         
 pivot_wider(data, 
   names_from = <name of the column (or columns) to get the name of the output column>,
   values_from = <name of the column to get the value of the output>) 
 ```
-
-
-
 
 
 ```
@@ -338,27 +381,24 @@ pivot_wider(data,
 #> # ℹ 14 more rows
 ```
 
-```
+```         
 pivot_wider(data, names_from = group, values_from = value) 
 ```
-
-
 
 ## Practice: F4 and F13
 
 F4 and F13 are similar. Please use `pivot_longer` to tidy the data and create charts.
 
-* **References**: https://ds-sl.github.io/data-analysis/wir2022.nb.html
+-   **References**: <https://ds-sl.github.io/data-analysis/wir2022.nb.html>
 
 ### Done Last Week
 
-* F12: Female share in global labor incomes, 1990-2020
-* F14: Global carbon inequality, 2019. Group contribution to world emissions (%)
+-   F12: Female share in global labor incomes, 1990-2020
+-   F14: Global carbon inequality, 2019. Group contribution to world emissions (%)
 
 The next is an example of the world map.
 
 ## F3: Top 10/Bottom 50 income gaps across the world, 2021
-
 
 
 ```r
@@ -380,17 +420,13 @@ df_f3
 #> # ℹ 167 more rows
 ```
 
-
-
 ## F3: Top 10/Bottom 50 income gaps across the world, 2021 - Original
 
 <img src="./data/F3.png" width="100%" />
 
+-   To 10 / Bottom 50 ratio has 5 classes: 5-12, 12-13, 13-16, 16-19, 19-140
 
-
-* To 10 / Bottom 50 ratio has 5 classes: 5-12, 12-13, 13-16, 16-19, 19-140
-
-* Let us look at the range and distribution of the values in `T10B50`.
+-   Let us look at the range and distribution of the values in `T10B50`.
 
 
 ```r
@@ -400,17 +436,13 @@ df_f3$T10B50 %>% summary()
 ```
 
 
-
-
 ```r
 df_f3 %>% ggplot() + geom_histogram(aes(T10B50))
 #> `stat_bin()` using `bins = 30`. Pick better value with
 #> `binwidth`.
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-19-1.png)<!-- -->
-
-
+<img src="27-import_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 
 ```r
@@ -456,8 +488,6 @@ df_f3 %>%
 ```
 
 
-
-
 ```r
 world_map <- map_data("world")
 df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50,breaks = c(5, 12, 13, 16, 19,140), 
@@ -467,7 +497,7 @@ df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50,breaks = c(5, 12, 13, 16,
   expand_limits(x = world_map$long, y = world_map$lat)
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-22-1.png)<!-- -->
+<img src="27-import_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 We observe that we have missing data from several countries. One common problem is the description of the country names varies in different data; in this case, the country names of `map_data()` and those of `wir2022`. There are several ways to edit country names. Here is one of them.
 
@@ -490,8 +520,6 @@ world_map_wir$region[world_map_wir$region=="Syria"]<- "Syrian Arab Republic"
 world_map_wir$region[world_map_wir$region=="Trinidad"]<- "Trinidad and Tobago"
 world_map_wir$region[world_map_wir$region=="Tobago"]<- "Trinidad and Tobago"
 ```
-  
-
 
 
 ```r
@@ -503,11 +531,9 @@ df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` =
     expand_limits(x = world_map_wir$long, y = world_map_wir$lat)
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-24-1.png)<!-- -->
+<img src="27-import_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
-
-Now it is much better. 
-
+Now it is much better.
 
 
 ```r
@@ -518,9 +544,7 @@ df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` =
   coord_map("orthographic", orientation = c(25, 60, 0))
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
-
-
+<img src="27-import_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 
 ```r
@@ -531,10 +555,7 @@ df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` =
   coord_map("orthographic", orientation = c(15, -80, 0))
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-26-1.png)<!-- -->
-
-
-
+<img src="27-import_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
 
 ```r
@@ -545,7 +566,7 @@ df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` =
   expand_limits(x = world_map_wir$long, y = world_map_wir$lat)
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-27-1.png)<!-- -->
+<img src="27-import_files/figure-html/unnamed-chunk-27-1.png" width="672" />
 
 Finally, change colors and change labels.
 
@@ -565,9 +586,7 @@ df_f3 %>%
   scale_fill_brewer(palette='YlOrRd')
 ```
 
-
-
-![](27-import_files/figure-epub3/unnamed-chunk-29-1.png)<!-- -->
+<img src="27-import_files/figure-html/unnamed-chunk-29-1.png" width="672" />
 
 We could not treat the data of three. We can check by using `anti_join`.
 
@@ -584,28 +603,28 @@ df_f3 %>% anti_join(world_map_wir, by = c("Country" = "region"))
 
 **Filtering joins**
 
-* `anti_join(x,y, ...)`: return all rows from x without a match in y.
-* `semi_join(x,y, ...)`: return all rows from x with a match in y.
+-   `anti_join(x,y, ...)`: return all rows from x without a match in y.
+-   `semi_join(x,y, ...)`: return all rows from x with a match in y.
 
 Check `dplyr` cheat sheet, and Posit Primers Tidy Data.
 
-
-
 ## Remaining Charts
 
-* F5: Global income inequality: T10/B50 ratio, 1820-2020 - fit curve
-* F9: Average annual wealth growth rate, 1995-2021 - fit curve + alpha
-* F7: Global income inequality, 1820-2020 - pivot + fit curve
-* F10: The share of wealth owned by the global 0.1% and billionaires, 2021 - pivot + fit curve
+-   F5: Global income inequality: T10/B50 ratio, 1820-2020 - fit curve
 
+-   F9: Average annual wealth growth rate, 1995-2021 - fit curve + alpha
 
-* F6: Global income inequality: Between vs. Within country inequality (Theil index), 1820-2020 - pivot + area
+-   F7: Global income inequality, 1820-2020 - pivot + fit curve
 
-* F11: Top 1% vs bottom 50% wealth shares in Western Europe and the US, 1910-2020 - pivot name_sep + fit curve
-* F8: The rise of private versus the decline of public wealth in rich countries, 1970-2020 - rename + pivot + pivot + fit curve
+-   F10: The share of wealth owned by the global 0.1% and billionaires, 2021 - pivot + fit curve
 
-* F15: Per capita emissions acriss the world, 2019 - add row names + dodge
+-   F6: Global income inequality: Between vs. Within country inequality (Theil index), 1820-2020 - pivot + area
 
+-   F11: Top 1% vs bottom 50% wealth shares in Western Europe and the US, 1910-2020 - pivot name_sep + fit curve
+
+-   F8: The rise of private versus the decline of public wealth in rich countries, 1970-2020 - rename + pivot + pivot + fit curve
+
+-   F15: Per capita emissions acriss the world, 2019 - add row names + dodge
 
 We will discuss `geom_smooth` and `stat_smooth` in Chapter \@ref(model) applied to F5, F9, F7, F10.
 
@@ -631,17 +650,13 @@ We will discuss `geom_smooth` and `stat_smooth` in Chapter \@ref(model) applied 
 ```
 
 
-
-
 ```r
 df_f5 %>% ggplot(aes(x = y, y = t10b50)) + geom_line() + geom_smooth(span=0.25, se=FALSE)
 #> `geom_smooth()` using method = 'loess' and formula = 'y ~
 #> x'
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-31-1.png)<!-- -->
-
-
+<img src="27-import_files/figure-html/unnamed-chunk-31-1.png" width="672" />
 
 ## F9: Average annual wealth growth rate, 1995-2021 - fit curve + alpha
 
@@ -665,8 +680,6 @@ df_f9 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F9"); df_f9
 ```
 
 
-
-
 ```r
 df_f9 %>% 
   ggplot(aes(x = p, y = `Wealth growth 1995-2021`)) + geom_smooth(span = 0.30, se = FALSE)
@@ -674,9 +687,7 @@ df_f9 %>%
 #> x'
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-32-1.png)<!-- -->
-
-
+<img src="27-import_files/figure-html/unnamed-chunk-32-1.png" width="672" />
 
 ## F7: Global income inequality, 1820-2020 - pivot + fit curve
 
@@ -700,8 +711,6 @@ df_f7 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F7"); df_f7
 ```
 
 
-
-
 ```r
 df_f7 %>% 
   pivot_longer(cols = 2:4, names_to = "type", values_to = "value") %>%
@@ -709,9 +718,7 @@ df_f7 %>%
   stat_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE)
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-33-1.png)<!-- -->
-
-
+<img src="27-import_files/figure-html/unnamed-chunk-33-1.png" width="672" />
 
 ## F10: The share of wealth owned by the global 0.1% and billionaires, 2021 - pivot + fit curve
 
@@ -739,8 +746,6 @@ df_f10 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F10"); df_f10
 ```
 
 
-
-
 ```r
 df_f10 %>% 
   select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
@@ -762,8 +767,6 @@ df_f10 %>%
 ```
 
 
-
-
 ```r
 df_f10 %>% 
   select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
@@ -772,9 +775,7 @@ df_f10 %>%
   stat_smooth(aes(x = year, y = value, color = group), formula = y~x, method = "loess", span = 0.25, se = FALSE)
 ```
 
-![](27-import_files/figure-epub3/unnamed-chunk-35-1.png)<!-- -->
-
-
+<img src="27-import_files/figure-html/unnamed-chunk-35-1.png" width="672" />
 
 ## F6: Global income inequality: Between vs. Within country inequality (Theil index), 1820-2020 - pivot + area
 
@@ -797,8 +798,6 @@ df_f6 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F6"); df_f6
 #> 9  2020                        0.320                   0.680
 #> # ℹ abbreviated name: ¹​`Within-country inequality`
 ```
-
-
 
 
 ```r
@@ -826,13 +825,7 @@ df_f6 %>% select(year = "...1", 2:3) %>%
                                 of global inequality", width = 20), size = 3)
 ```
 
-
-
-
-![](27-import_files/figure-epub3/unnamed-chunk-37-1.png)<!-- -->
-
-
-
+<img src="27-import_files/figure-html/unnamed-chunk-37-1.png" width="672" />
 
 ## F11: Top 1% vs bottom 50% wealth shares in Western Europe and the US, 1910-2020 - pivot name_sep + fit curve
 
@@ -856,7 +849,7 @@ df_f11 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F11"); df_f11
 #> 12  2020 0.0149   0.354  0.0576  0.219
 ```
 
-We want to separate 'US', 'EU' and 'bot50', 'top10', and 'top1'. To apply `names_sep = "_"`, we first changed the name of columns. 
+We want to separate 'US', 'EU' and 'bot50', 'top10', and 'top1'. To apply `names_sep = "_"`, we first changed the name of columns.
 
 
 ```r
@@ -879,9 +872,6 @@ df_f11 %>%
         different speeds after a historical decline. The bottom 50% has always been 
                                 extremely low.", width = 30), size = 3)
 ```
-
-
-
 
 ### Step 1.
 
@@ -906,9 +896,7 @@ df_f11 %>% rename(!year, US_bot50 = USbot50, US_top1 = UStop1,
 #> 12  2020  0.0149    0.354   0.0576   0.219
 ```
 
-
-
-### Step 2. 
+### Step 2.
 
 
 ```r
@@ -918,9 +906,7 @@ df_f11 %>%
   pivot_longer(!year, names_to = c("group",".value"), names_sep = "_")
 ```
 
-
-
-### Step 2. 
+### Step 2.
 
 
 ```
@@ -940,8 +926,6 @@ df_f11 %>%
 #> # ℹ 14 more rows
 ```
 
-
-
 ### Step 3.
 
 
@@ -953,8 +937,6 @@ df_f11 %>%
                names_sep = "_") %>%
   pivot_longer(3:4, names_to = "type", values_to = "value") 
 ```
-
-
 
 ### Step 3.
 
@@ -976,12 +958,9 @@ df_f11 %>%
 #> # ℹ 38 more rows
 ```
 
+<img src="27-import_files/figure-html/unnamed-chunk-44-1.png" width="672" />
 
-
-![](27-import_files/figure-epub3/unnamed-chunk-44-1.png)<!-- -->
-
-
-The following is similar to the previous example. 
+The following is similar to the previous example.
 
 ## F8: The rise of private versus the decline of public wealth in rich countries, 1970-2020 - rename + pivot + pivot + fit curve
 
@@ -1011,8 +990,6 @@ df_f8 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F8"); df_f8
 ```
 
 
-
-
 ```r
 df_f8 %>% 
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
@@ -1033,8 +1010,6 @@ df_f8 %>%
        x = "", y = "wealth as as % of national income", color = "", type = "")
 ```
 
-
-
 ### Step 1
 
 
@@ -1048,10 +1023,6 @@ df_f8 %>%
          Norway_public = Norway, Norway_private = 'Norway (private)',
          USA_public = USA, USA_private = 'USA (private)') 
 ```
-
-
-
-
 
 
 ```
@@ -1077,11 +1048,6 @@ df_f8 %>%
 #> #   USA_private <dbl>
 ```
 
-
-
-
-
-
 ### Step 2.
 
 
@@ -1096,9 +1062,6 @@ df_f8 %>%
          USA_public = USA, USA_private = 'USA (private)') %>%
   pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") 
 ```
-
-
-
 
 
 ```
@@ -1118,8 +1081,6 @@ df_f8 %>%
 #> # ℹ 347 more rows
 ```
 
-
-
 ### Step 3.
 
 
@@ -1135,9 +1096,6 @@ df_f8 %>%
   pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") %>%
   pivot_longer(3:4, names_to = "type", values_to = "value")
 ```
-
-
-
 
 
 ```
@@ -1156,8 +1114,6 @@ df_f8 %>%
 #> 10  1970 Japan   private 3.09 
 #> # ℹ 704 more rows
 ```
-
-
 
 ### Step 3. Final Step
 
@@ -1182,12 +1138,7 @@ df_f8 %>%
        x = "", y = "wealth as as % of national income", color = "", type = "")
 ```
 
-
-
-
-![](27-import_files/figure-epub3/unnamed-chunk-53-1.png)<!-- -->
-
-
+<img src="27-import_files/figure-html/unnamed-chunk-53-1.png" width="672" />
 
 ## F15: Per capita emissions acriss the world, 2019 - add row names + dodge
 
@@ -1211,8 +1162,6 @@ df_f15 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F15"); df_f15
 ```
 
 
-
-
 ```r
 df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
   select(region, group, tcap) %>%
@@ -1223,12 +1172,8 @@ df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
        x = "", y = "tonnes of CO2e per person per year", fill = "")
 ```
 
-
-
-
-![](27-import_files/figure-epub3/unnamed-chunk-55-1.png)<!-- -->
+<img src="27-import_files/figure-html/unnamed-chunk-55-1.png" width="672" />
 
 Review one by one, referring to the following.
 
-
-**References**: https://ds-sl.github.io/data-analysis/wir2022.nb.html
+**References**: <https://ds-sl.github.io/data-analysis/wir2022.nb.html>

@@ -1,6 +1,7 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
+thm:tri
 introduction
 データサイエンスとは
 なぜデータサイエンスが最近注目されているのか
@@ -315,8 +316,12 @@ wdi-1
 練習-4
 posit-primers-httpsposit.cloudlearnprimers
 import
-setup
-eda-by-r-studio-step-3---importing-data
+はじめに-3
+概略
+テキストファイルcsv-などの読み込み
+excel-ファイルの読み込み
+データのダウンロード
+パッケージの利用
 tidyr
 reviews-and-previews
 example-world-inequility-report---wir2022
