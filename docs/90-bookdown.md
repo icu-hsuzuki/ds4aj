@@ -85,7 +85,7 @@ plot(pressure, type = 'b', pch = 19)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="90-bookdown_files/figure-epub3/nice-fig-1.png" alt="Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases." width="80%" />
+<img src="90-bookdown_files/figure-html/nice-fig-1.png" alt="Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases." width="80%" />
 <p class="caption">(\#fig:nice-fig)Here is a nice figure!</p>
 </div>
 
@@ -186,13 +186,13 @@ You can use **markdown** inside a block.
 
 ```r
 head(beaver1, n = 5)
-#>   day time  temp activ
-#> 1 346  840 36.33     0
-#> 2 346  850 36.34     0
-#> 3 346  900 36.35     0
-#> 4 346  910 36.42     0
-#> 5 346  920 36.55     0
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["day"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["time"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["temp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["activ"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"346","2":"840","3":"36.33","4":"0","_rn_":"1"},{"1":"346","2":"850","3":"36.34","4":"0","_rn_":"2"},{"1":"346","2":"900","3":"36.35","4":"0","_rn_":"3"},{"1":"346","2":"910","3":"36.42","4":"0","_rn_":"4"},{"1":"346","2":"920","3":"36.55","4":"0","_rn_":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 :::
 

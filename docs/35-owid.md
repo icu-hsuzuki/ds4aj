@@ -1,1 +1,3 @@
 # Our World in Data {#owid}
+
+ここでは、R Package owid を用いた例をあげる
