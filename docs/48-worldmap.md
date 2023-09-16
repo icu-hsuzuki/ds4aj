@@ -146,7 +146,7 @@ ne_countries(scale = "large", returnclass = "sf") %>%
   ggplot() +   geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
 
 
 ```r
@@ -154,7 +154,7 @@ ne_countries(scale = "small", returnclass = "sf") %>%
   ggplot() +   geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-7-1.png)<!-- -->
 
 We will use `medium` scale data in the following.
 
@@ -241,7 +241,7 @@ The last column is the geometry which contains map data in multi-polygon format.
 ne_world %>% ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
 
 This map data comes with various information.
 
@@ -250,7 +250,7 @@ This map data comes with various information.
 ne_world %>% ggplot() + geom_sf(aes(fill = income_grp))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-11-1.png)<!-- -->
 
 You can specify a 'continent', a 'region_un', a 'subregion' or 'region_wb'.
 
@@ -308,7 +308,7 @@ ne_world %>% filter(subregion == "South-Eastern Asia") %>%
   ggplot() +   geom_sf(aes(fill = iso_a2))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-16-1.png)<!-- -->
 
 
 ```r
@@ -316,7 +316,7 @@ ne_world %>% filter(continent == 'Africa') %>%
   ggplot() +   geom_sf(aes(fill = subregion))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-17-1.png)<!-- -->
 
 #### `type` argument
 
@@ -326,7 +326,7 @@ ne_countries(type = "countries", country = c("Japan", "South Korea", "North Kore
   ggplot() + geom_sf(aes(fill = economy))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-18-1.png)<!-- -->
 
 ### `ne_states`
 
@@ -501,13 +501,21 @@ glimpse(ne_world_admin1)
 ne_world_admin1 %>% as_tibble() %>% 
   filter(iso_a2 != "-1") %>% arrange(admin) %>%
   distinct(iso_a2, admin)
+#> # A tibble: 243 × 2
+#>    iso_a2 admin              
+#>    <chr>  <chr>              
+#>  1 AF     Afghanistan        
+#>  2 AX     Aland              
+#>  3 AL     Albania            
+#>  4 DZ     Algeria            
+#>  5 AS     American Samoa     
+#>  6 AD     Andorra            
+#>  7 AO     Angola             
+#>  8 AI     Anguilla           
+#>  9 AQ     Antarctica         
+#> 10 AG     Antigua and Barbuda
+#> # ℹ 233 more rows
 ```
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["iso_a2"],"name":[1],"type":["chr"],"align":["left"]},{"label":["admin"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"AF","2":"Afghanistan"},{"1":"AX","2":"Aland"},{"1":"AL","2":"Albania"},{"1":"DZ","2":"Algeria"},{"1":"AS","2":"American Samoa"},{"1":"AD","2":"Andorra"},{"1":"AO","2":"Angola"},{"1":"AI","2":"Anguilla"},{"1":"AQ","2":"Antarctica"},{"1":"AG","2":"Antigua and Barbuda"},{"1":"AR","2":"Argentina"},{"1":"AM","2":"Armenia"},{"1":"AW","2":"Aruba"},{"1":"AU","2":"Ashmore and Cartier Islands"},{"1":"AU","2":"Australia"},{"1":"AT","2":"Austria"},{"1":"AZ","2":"Azerbaijan"},{"1":"BH","2":"Bahrain"},{"1":"BD","2":"Bangladesh"},{"1":"BB","2":"Barbados"},{"1":"BY","2":"Belarus"},{"1":"BE","2":"Belgium"},{"1":"BZ","2":"Belize"},{"1":"BJ","2":"Benin"},{"1":"BM","2":"Bermuda"},{"1":"BT","2":"Bhutan"},{"1":"BO","2":"Bolivia"},{"1":"BA","2":"Bosnia and Herzegovina"},{"1":"BW","2":"Botswana"},{"1":"BR","2":"Brazil"},{"1":"IO","2":"British Indian Ocean Territory"},{"1":"VG","2":"British Virgin Islands"},{"1":"BN","2":"Brunei"},{"1":"BG","2":"Bulgaria"},{"1":"BF","2":"Burkina Faso"},{"1":"BI","2":"Burundi"},{"1":"KH","2":"Cambodia"},{"1":"CM","2":"Cameroon"},{"1":"CA","2":"Canada"},{"1":"CV","2":"Cape Verde"},{"1":"NL","2":"Caribbean Netherlands"},{"1":"KY","2":"Cayman Islands"},{"1":"CF","2":"Central African Republic"},{"1":"TD","2":"Chad"},{"1":"CL","2":"Chile"},{"1":"CN","2":"China"},{"1":"CO","2":"Colombia"},{"1":"KM","2":"Comoros"},{"1":"CK","2":"Cook Islands"},{"1":"CR","2":"Costa Rica"},{"1":"HR","2":"Croatia"},{"1":"CU","2":"Cuba"},{"1":"CW","2":"Curaçao"},{"1":"CY","2":"Cyprus"},{"1":"CZ","2":"Czech Republic"},{"1":"CD","2":"Democratic Republic of the Congo"},{"1":"DK","2":"Denmark"},{"1":"DJ","2":"Djibouti"},{"1":"DM","2":"Dominica"},{"1":"DO","2":"Dominican Republic"},{"1":"TL","2":"East Timor"},{"1":"EC","2":"Ecuador"},{"1":"EG","2":"Egypt"},{"1":"SV","2":"El Salvador"},{"1":"GQ","2":"Equatorial Guinea"},{"1":"ER","2":"Eritrea"},{"1":"EE","2":"Estonia"},{"1":"ET","2":"Ethiopia"},{"1":"FK","2":"Falkland Islands"},{"1":"FO","2":"Faroe Islands"},{"1":"FM","2":"Federated States of Micronesia"},{"1":"FJ","2":"Fiji"},{"1":"FI","2":"Finland"},{"1":"FR","2":"France"},{"1":"PF","2":"French Polynesia"},{"1":"TF","2":"French Southern and Antarctic Lands"},{"1":"GA","2":"Gabon"},{"1":"GM","2":"Gambia"},{"1":"PS","2":"Gaza Strip"},{"1":"GE","2":"Georgia"},{"1":"DE","2":"Germany"},{"1":"GH","2":"Ghana"},{"1":"GI","2":"Gibraltar"},{"1":"GR","2":"Greece"},{"1":"GL","2":"Greenland"},{"1":"GD","2":"Grenada"},{"1":"GU","2":"Guam"},{"1":"GT","2":"Guatemala"},{"1":"GG","2":"Guernsey"},{"1":"GN","2":"Guinea"},{"1":"GW","2":"Guinea Bissau"},{"1":"GY","2":"Guyana"},{"1":"HT","2":"Haiti"},{"1":"HM","2":"Heard Island and McDonald Islands"},{"1":"HN","2":"Honduras"},{"1":"HK","2":"Hong Kong S.A.R."},{"1":"HU","2":"Hungary"},{"1":"IS","2":"Iceland"},{"1":"IN","2":"India"},{"1":"ID","2":"Indonesia"},{"1":"IR","2":"Iran"},{"1":"IQ","2":"Iraq"},{"1":"IE","2":"Ireland"},{"1":"IM","2":"Isle of Man"},{"1":"IL","2":"Israel"},{"1":"IT","2":"Italy"},{"1":"CI","2":"Ivory Coast"},{"1":"JM","2":"Jamaica"},{"1":"JP","2":"Japan"},{"1":"JE","2":"Jersey"},{"1":"JO","2":"Jordan"},{"1":"KZ","2":"Kazakhstan"},{"1":"KE","2":"Kenya"},{"1":"KI","2":"Kiribati"},{"1":"XK","2":"Kosovo"},{"1":"KW","2":"Kuwait"},{"1":"KG","2":"Kyrgyzstan"},{"1":"LA","2":"Laos"},{"1":"LV","2":"Latvia"},{"1":"LB","2":"Lebanon"},{"1":"LS","2":"Lesotho"},{"1":"LR","2":"Liberia"},{"1":"LY","2":"Libya"},{"1":"LI","2":"Liechtenstein"},{"1":"LT","2":"Lithuania"},{"1":"LU","2":"Luxembourg"},{"1":"MO","2":"Macau S.A.R"},{"1":"MK","2":"Macedonia"},{"1":"MG","2":"Madagascar"},{"1":"MW","2":"Malawi"},{"1":"MY","2":"Malaysia"},{"1":"MV","2":"Maldives"},{"1":"ML","2":"Mali"},{"1":"MT","2":"Malta"},{"1":"MH","2":"Marshall Islands"},{"1":"MR","2":"Mauritania"},{"1":"MU","2":"Mauritius"},{"1":"MX","2":"Mexico"},{"1":"MD","2":"Moldova"},{"1":"MC","2":"Monaco"},{"1":"MN","2":"Mongolia"},{"1":"ME","2":"Montenegro"},{"1":"MS","2":"Montserrat"},{"1":"MA","2":"Morocco"},{"1":"MZ","2":"Mozambique"},{"1":"MM","2":"Myanmar"},{"1":"__NA__","2":"Namibia"},{"1":"NR","2":"Nauru"},{"1":"NP","2":"Nepal"},{"1":"NL","2":"Netherlands"},{"1":"NC","2":"New Caledonia"},{"1":"NZ","2":"New Zealand"},{"1":"TK","2":"New Zealand"},{"1":"NI","2":"Nicaragua"},{"1":"NE","2":"Niger"},{"1":"NG","2":"Nigeria"},{"1":"NU","2":"Niue"},{"1":"NF","2":"Norfolk Island"},{"1":"KP","2":"North Korea"},{"1":"MP","2":"Northern Mariana Islands"},{"1":"NO","2":"Norway"},{"1":"OM","2":"Oman"},{"1":"PK","2":"Pakistan"},{"1":"PW","2":"Palau"},{"1":"PA","2":"Panama"},{"1":"PG","2":"Papua New Guinea"},{"1":"PY","2":"Paraguay"},{"1":"PE","2":"Peru"},{"1":"PH","2":"Philippines"},{"1":"PN","2":"Pitcairn Islands"},{"1":"PL","2":"Poland"},{"1":"PT","2":"Portugal"},{"1":"PR","2":"Puerto Rico"},{"1":"QA","2":"Qatar"},{"1":"RS","2":"Republic of Serbia"},{"1":"CG","2":"Republic of the Congo"},{"1":"RO","2":"Romania"},{"1":"RU","2":"Russia"},{"1":"RW","2":"Rwanda"},{"1":"SS","2":"S. Sudan"},{"1":"BL","2":"Saint Barthelemy"},{"1":"SH","2":"Saint Helena"},{"1":"KN","2":"Saint Kitts and Nevis"},{"1":"LC","2":"Saint Lucia"},{"1":"MF","2":"Saint Martin"},{"1":"PM","2":"Saint Pierre and Miquelon"},{"1":"VC","2":"Saint Vincent and the Grenadines"},{"1":"WS","2":"Samoa"},{"1":"SM","2":"San Marino"},{"1":"ST","2":"Sao Tome and Principe"},{"1":"SA","2":"Saudi Arabia"},{"1":"SN","2":"Senegal"},{"1":"SC","2":"Seychelles"},{"1":"SL","2":"Sierra Leone"},{"1":"SG","2":"Singapore"},{"1":"SX","2":"Sint Maarten"},{"1":"SK","2":"Slovakia"},{"1":"SI","2":"Slovenia"},{"1":"SB","2":"Solomon Islands"},{"1":"SO","2":"Somalia"},{"1":"ZA","2":"South Africa"},{"1":"GS","2":"South Georgia and the Islands"},{"1":"KR","2":"South Korea"},{"1":"ES","2":"Spain"},{"1":"LK","2":"Sri Lanka"},{"1":"SD","2":"Sudan"},{"1":"SR","2":"Suriname"},{"1":"SZ","2":"Swaziland"},{"1":"SE","2":"Sweden"},{"1":"CH","2":"Switzerland"},{"1":"SY","2":"Syria"},{"1":"TW","2":"Taiwan"},{"1":"TJ","2":"Tajikistan"},{"1":"TH","2":"Thailand"},{"1":"BS","2":"The Bahamas"},{"1":"TG","2":"Togo"},{"1":"TO","2":"Tonga"},{"1":"TT","2":"Trinidad and Tobago"},{"1":"TN","2":"Tunisia"},{"1":"TR","2":"Turkey"},{"1":"TM","2":"Turkmenistan"},{"1":"TC","2":"Turks and Caicos Islands"},{"1":"TV","2":"Tuvalu"},{"1":"UG","2":"Uganda"},{"1":"UA","2":"Ukraine"},{"1":"AE","2":"United Arab Emirates"},{"1":"GB","2":"United Kingdom"},{"1":"TZ","2":"United Republic of Tanzania"},{"1":"UM","2":"United States Minor Outlying Islands"},{"1":"VI","2":"United States Virgin Islands"},{"1":"US","2":"United States of America"},{"1":"UY","2":"Uruguay"},{"1":"UZ","2":"Uzbekistan"},{"1":"VU","2":"Vanuatu"},{"1":"VA","2":"Vatican"},{"1":"VE","2":"Venezuela"},{"1":"VN","2":"Vietnam"},{"1":"WF","2":"Wallis and Futuna"},{"1":"PS","2":"West Bank"},{"1":"EH","2":"Western Sahara"},{"1":"YE","2":"Yemen"},{"1":"ZM","2":"Zambia"},{"1":"ZW","2":"Zimbabwe"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
 
 
 ```r
@@ -516,7 +524,7 @@ ne_world_admin1 %>% filter(admin == country) %>%
   ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-22-1.png)<!-- -->
 
 
 ```r
@@ -525,7 +533,7 @@ ne_world_admin1 %>% filter(iso_a2 %in% iso2s) %>%
   ggplot() +   geom_sf(aes(fill = admin))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-23-1.png)<!-- -->
 
 
 ```r
@@ -534,7 +542,7 @@ ne_world_admin1 %>% filter(region %in% regions) %>%
   ggplot() + geom_sf(aes(fill = name_local))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-24-1.png)<!-- -->
 
 
 ```r
@@ -542,19 +550,18 @@ ne_world_admin1 %>% filter(iso_a2 == "JP") %>%
   ggplot() +   geom_sf(aes(fill = region))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-25-1.png)<!-- -->
 
 
 ```r
 ne_world_admin1 %>% as_tibble() %>% filter(admin %in% "Japan") %>% 
   select(name_local, region) %>% filter(is.na(region))
+#> # A tibble: 2 × 2
+#>   name_local region
+#>   <chr>      <chr> 
+#> 1 佐賀県     <NA>  
+#> 2 長崎県     <NA>
 ```
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["name_local"],"name":[1],"type":["chr"],"align":["left"]},{"label":["region"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"佐賀県","2":"NA"},{"1":"長崎県","2":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
 
 
 ```r
@@ -564,13 +571,9 @@ ne_world_admin1 %>% mutate(region = case_when(
   TRUE ~ region)) %>%
   as_tibble() %>% filter(admin %in% "Japan") %>% 
   select(name_local, region) %>% filter(is.na(region))
+#> # A tibble: 0 × 2
+#> # ℹ 2 variables: name_local <chr>, region <chr>
 ```
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["name_local"],"name":[1],"type":["chr"],"align":["left"]},{"label":["region"],"name":[2],"type":["chr"],"align":["left"]}],"data":[],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
 
 
 ```r
@@ -582,7 +585,7 @@ ne_world_admin1 %>% mutate(region = case_when(
   ggplot() +   geom_sf(aes(fill = region))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-28-1.png)<!-- -->
 
 ## `geodata` Package
 
@@ -634,7 +637,7 @@ world5 %>% as_tibble() %>% glimpse()
 world5 %>% st_as_sf() %>% ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-32-1.png)<!-- -->
 
 
 ```r
@@ -643,7 +646,7 @@ world5 %>%
   ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-33-1.png)<!-- -->
 
 
 ```r
@@ -651,7 +654,7 @@ world(resolution=1, level=0, path = "./data") %>%
   st_as_sf() %>% ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-34-1.png)<!-- -->
 
 
 ```r
@@ -659,7 +662,7 @@ world(path = "./data") %>%
   st_as_sf() %>% ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-35-1.png)<!-- -->
 
 
 ```r
@@ -668,7 +671,7 @@ world(resolution=1, level=0, path = "./data") %>%
   ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-36-1.png)<!-- -->
 
 
 ```r
@@ -677,7 +680,7 @@ world(resolution=1, level=0, path = "./data") %>%
   ggplot() + geom_sf(aes(fill = GID_0))
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-37-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-37-1.png)<!-- -->
 
 
 ```r
@@ -689,7 +692,7 @@ ggplot() +
   geom_sf(data = world5_df)
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-38-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-38-1.png)<!-- -->
 
 ### `gadm` Administrative boundaries
 
@@ -713,7 +716,7 @@ gadm0 %>% st_as_sf() %>%
   ggplot() + geom_sf()
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-40-1.png)<!-- -->
 
 
 ```r
@@ -741,7 +744,7 @@ gadm1 %>%
   ggplot() + geom_sf(aes(fill = NAME_1)) + theme(legend.position = "none")
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-42-1.png)<!-- -->
 
 
 ```r
@@ -773,7 +776,7 @@ gadm2 %>% filter(NL_NAME_1 %in% c("埼玉県", "群馬県", "栃木県", "茨城
   theme(legend.position = "none")
 ```
 
-<img src="48-worldmap_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+![](48-worldmap_files/figure-epub3/unnamed-chunk-44-1.png)<!-- -->
 
 ## 参考文献
 
