@@ -518,22 +518,228 @@ The first component, 'Reshape Data' deals with `pivot_longer` and `pivot_wider`.
 
 ## 二つの表の結合
 
+最初に紹介した、世界開発指標（WDI）は、同じ規格でデータを提供してくれていますし、WDI パッケージを使えば、いくつもの指標について同時に入手することもできます。そのようなデータベースに、広範囲の 1400以上の分野からの指標が提供され、毎年定められたときに、更新してくれています。その意味でも、初心者にはとても親切なデータベースです。
+
+しかし、一般的に、データサイエンスにおいては、2つの異なる出処（ソース）のデータを一つにまとめて行うことで、世界が広がり、独自の、データサイエンスが始められるとも言えます。
+
+ここでは、そのための基本的な手法を学びます。変形のところで少し書きましたが、Tidyverse パッケージ群の、dplyr パッケージでは、一つのデータ表の変形だけではなく、2つ以上のデータ表も扱えます。基本的には、2つのデータ表を一つにすることができれば、それに3つ目のデータ表を加えていけば良いので、2つの場合を説明ます。
+
+整理されたデータ表（tidy data）について上に書きましたが、それぞれのデータ表は、整理されているものとして話を進めます。すでに、上で、unite の説明をしてありますから、参考にしてください。
+
 この部分は、Two Table Verbs として、dplyr の機能にある部分ですが、ここで紹介します。
 
+-   R for Datascience (2ed) Joins: <https://r4ds.hadley.nz/joins#introduction>
 -   Two Table Verbs: <https://dplyr.tidyverse.org/articles/two-table.html>
 -   Vignette: <https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html>
+-   早見表（p.2）Cheat sheet: <https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf>
 
 ### 三種類の結合
 
--   Mutating joins, which add new variables to one table from matching rows in another.
+-   融合結合：適合するものを他から読み込む：Mutating joins, which add new variables to one table from matching rows in another.
 
--   Filtering joins, which filter observations from one table based on whether or not they match an observation in the other table.
+-   抽出結合：同一のもの相異なるものを抽出：Filtering joins, which filter observations from one table based on whether or not they match an observation in the other table.
 
--   Set operations, which combine the observations in the data sets as if they were set elements.
+-   集合算結合：データ集合として結合：Set operations, which combine the observations in the data sets as if they were set elements.
 
-### Filtering joins
+### 融合結合（mutating joins）
+
+いずれの場合にも両方の表に共通の key を定め、key を媒介として結合する。たとえば、a 列が共通なら、by = "a", a, b 列が共通に存在する場合は、by = c("a", "b") とし、x の a と、y の c, x の b と y の d が対応する場合は、by = c("a" = "c", "b" = "d') などとする。共通するものが明らかな場合は、省略することも可能。
+
+-   left_join(x,y): x をもとに、y を加える
+
+    -   例：left_join(x,y, by = "a")
+
+    -   b, c 列も共通の場合は、b.1, b,2, c.1, c.2 などとなる。必要なものだけにして結合したほうが安全である。
+
+-   right_join(x,y): y をもとに、x を加える
+
+-   full_join(x,y): x も y も含める
+
+### 抽出結合（Filtering joins）
 
 -   anti_join()
-    -   anti_join(x,y, ...): return all rows from x without a match in y.
+    -   anti_join(x,y, ...): x の行で、y に含まれないもの（return all rows from x without a match in y.）
 -   semi_join()
-    -   semi_join(x,y, ...): return all rows from x with a match in y. Check dplyr cheat sheet, and Posit Primers Tidy Data.
+    -   semi_join(x,y, ...): x の行で、y に含まれるもの（return all rows from x with a match in y.）
+
+### 集合算結合（Set joins）
+
+-   `intersect(x, y)`: return only observations in both `x` and `y`
+-   `union(x, y)`: return unique observations in `x` and `y`
+-   `setdiff(x, y)`: return observations in `x`, but not in `y`.
+
+### 例
+
+以下では、三種類の結合の例を見てみます。Data Transformation with dplyr の早見表の 2ページ目の例も参照してください。
+
+
+```r
+(df_1 <- tibble(A = c('a','b','c'), B = c('t','u','v'), C = c(1,2,3)))
+#> # A tibble: 3 × 3
+#>   A     B         C
+#>   <chr> <chr> <dbl>
+#> 1 a     t         1
+#> 2 b     u         2
+#> 3 c     v         3
+```
+
+
+```r
+(df_2 <- tibble(A = c('a','b','c'), F = c('t','u','w'), G = c(3,2,1)))
+#> # A tibble: 3 × 3
+#>   A     F         G
+#>   <chr> <chr> <dbl>
+#> 1 a     t         3
+#> 2 b     u         2
+#> 3 c     w         1
+```
+
+
+```r
+(df_3 <- tibble(A = c('a','C','d'), B = c('t','u','w'), C = c(1,3,4)))
+#> # A tibble: 3 × 3
+#>   A     B         C
+#>   <chr> <chr> <dbl>
+#> 1 a     t         1
+#> 2 C     u         3
+#> 3 d     w         4
+```
+
+df_1, df_2 では、A 列は共通ですから、何も指定しないと、by = 'A' を仮定して結合します。
+
+
+```r
+left_join(df_1, df_2)
+#> Joining with `by = join_by(A)`
+#> # A tibble: 3 × 5
+#>   A     B         C F         G
+#>   <chr> <chr> <dbl> <chr> <dbl>
+#> 1 a     t         1 t         3
+#> 2 b     u         2 u         2
+#> 3 c     v         3 w         1
+```
+
+
+```r
+left_join(df_1, df_2, by = "A")
+#> # A tibble: 3 × 5
+#>   A     B         C F         G
+#>   <chr> <chr> <dbl> <chr> <dbl>
+#> 1 a     t         1 t         3
+#> 2 b     u         2 u         2
+#> 3 c     v         3 w         1
+```
+
+by = c("A", "B"="F") としましたが、B と F では一致していない箇所があります。そこで、一致していない場所は、左側の表 df_1 はそのまま C 列を読み込みますが、右側の表 df_2 は、その部分を NA にして読み込んでいません。つまり、一致した行のみ読み込んでいます。
+
+
+```r
+left_join(df_1, df_2, by = c("A", "B"="F"))
+#> # A tibble: 3 × 4
+#>   A     B         C     G
+#>   <chr> <chr> <dbl> <dbl>
+#> 1 a     t         1     3
+#> 2 b     u         2     2
+#> 3 c     v         3    NA
+```
+
+A 列も一致していますが、それは指定していないので、それは別と考えて、A.x, A.y と列名を別にして、かつ左側の表をもとにして読み込んでいます。
+
+
+```r
+left_join(df_1, df_2, by = c("B"="F"))
+#> # A tibble: 3 × 5
+#>   A.x   B         C A.y       G
+#>   <chr> <chr> <dbl> <chr> <dbl>
+#> 1 a     t         1 a         3
+#> 2 b     u         2 b         2
+#> 3 c     v         3 <NA>     NA
+```
+
+roght_join ですから、今度は、右側の表 df_2 をもとにして読み込みます。B 列には、F 列が入っています。
+
+
+```r
+right_join(df_1, df_2, by = c("A", "B"="F"))
+#> # A tibble: 3 × 4
+#>   A     B         C     G
+#>   <chr> <chr> <dbl> <dbl>
+#> 1 a     t         1     3
+#> 2 b     u         2     2
+#> 3 c     w        NA     1
+```
+
+左側の表 df_1 と 右側の表 df_2 が一致していない行は、B と F の値によって分けて、読み込んでいます。
+
+
+```r
+full_join(df_1, df_2, by = c("A", "B"="F"))
+#> # A tibble: 4 × 4
+#>   A     B         C     G
+#>   <chr> <chr> <dbl> <dbl>
+#> 1 a     t         1     3
+#> 2 b     u         2     2
+#> 3 c     v         3    NA
+#> 4 c     w        NA     1
+```
+
+左側の表と一致しないものに入れ替えています。たとえば、a, b, c は、右側の行でも、t, u, v であるべきときに、違っている部分をチェックするようなときにも使えます。
+
+
+```r
+anti_join(df_1, df_2, by = c("A", "B" = "F"))
+#> # A tibble: 1 × 3
+#>   A     B         C
+#>   <chr> <chr> <dbl>
+#> 1 c     v         3
+```
+
+anti_join とは逆に、一致しているもののみ取り出します。
+
+
+```r
+semi_join(df_1, df_2, by = c("A", "B" = "F"))
+#> # A tibble: 2 × 3
+#>   A     B         C
+#>   <chr> <chr> <dbl>
+#> 1 a     t         1
+#> 2 b     u         2
+```
+
+集合算では、同じ列について、intersect は共通な部分を取り出します。
+
+
+```r
+intersect(df_1, df_3)
+#> # A tibble: 1 × 3
+#>   A     B         C
+#>   <chr> <chr> <dbl>
+#> 1 a     t         1
+```
+
+union は、和集合ですから、すべてを含むものを作成します。
+
+
+```r
+union(df_1, df_3)
+#> # A tibble: 5 × 3
+#>   A     B         C
+#>   <chr> <chr> <dbl>
+#> 1 a     t         1
+#> 2 b     u         2
+#> 3 c     v         3
+#> 4 C     u         3
+#> 5 d     w         4
+```
+
+setdiff は差集合ですから、df_1 に入っていて、df_3 には入っていないものを取り出します。
+
+
+```r
+setdiff(df_1, df_3)
+#> # A tibble: 2 × 3
+#>   A     B         C
+#>   <chr> <chr> <dbl>
+#> 1 b     u         2
+#> 2 c     v         3
+```

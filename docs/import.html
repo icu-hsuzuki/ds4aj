@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="20.1 はじめに データの読み込みは、データサイエンスの最初のステップです。しかし、データを読み込む時に、その後の、データの整形・変形、さらには、視覚化について、ある程度の理解をしているかどうかで、変わってきますので、順番を、Tidyverse での、dplyr をつかった変形と、ggplot2 を使った視覚化のあとにしました。...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -90,8 +90,8 @@
 <li><a class="" href="transform.html"><span class="header-section-number">18</span> 変形（Transform）</a></li>
 <li><a class="" href="visualize.html"><span class="header-section-number">19</span> 視覚化（Visualize）</a></li>
 <li><a class="active" href="import.html"><span class="header-section-number">20</span> データ読み込み（Import）</a></li>
-<li><a class="" href="modeling.html"><span class="header-section-number">21</span> Modeling</a></li>
-<li><a class="" href="communicate.html"><span class="header-section-number">22</span> Communicate</a></li>
+<li><a class="" href="modeling.html"><span class="header-section-number">21</span> 数理モデル（Modeling）</a></li>
+<li><a class="" href="communicate.html"><span class="header-section-number">22</span> 情報共有（Communicate）</a></li>
 <li><a class="" href="aboutfirstexample.html"><span class="header-section-number">23</span> 復習</a></li>
 <li class="book-part">PART III INSTITUTIONAL DATA</li>
 <li><a class="" href="publicdata.html"><span class="header-section-number">24</span> Public Data の分析</a></li>
@@ -614,11 +614,19 @@
 <h2>
 <span class="header-section-number">20.5</span> 二つの表の結合<a class="anchor" aria-label="anchor" href="#%E4%BA%8C%E3%81%A4%E3%81%AE%E8%A1%A8%E3%81%AE%E7%B5%90%E5%90%88"><i class="fas fa-link"></i></a>
 </h2>
+<p>最初に紹介した、世界開発指標（WDI）は、同じ規格でデータを提供してくれていますし、WDI パッケージを使えば、いくつもの指標について同時に入手することもできます。そのようなデータベースに、広範囲の 1400以上の分野からの指標が提供され、毎年定められたときに、更新してくれています。その意味でも、初心者にはとても親切なデータベースです。</p>
+<p>しかし、一般的に、データサイエンスにおいては、2つの異なる出処（ソース）のデータを一つにまとめて行うことで、世界が広がり、独自の、データサイエンスが始められるとも言えます。</p>
+<p>ここでは、そのための基本的な手法を学びます。変形のところで少し書きましたが、Tidyverse パッケージ群の、dplyr パッケージでは、一つのデータ表の変形だけではなく、2つ以上のデータ表も扱えます。基本的には、2つのデータ表を一つにすることができれば、それに3つ目のデータ表を加えていけば良いので、2つの場合を説明ます。</p>
+<p>整理されたデータ表（tidy data）について上に書きましたが、それぞれのデータ表は、整理されているものとして話を進めます。すでに、上で、unite の説明をしてありますから、参考にしてください。</p>
 <p>この部分は、Two Table Verbs として、dplyr の機能にある部分ですが、ここで紹介します。</p>
 <ul>
+<li>R for Datascience (2ed) Joins: <a href="https://r4ds.hadley.nz/joins#introduction" class="uri">https://r4ds.hadley.nz/joins#introduction</a>
+</li>
 <li>Two Table Verbs: <a href="https://dplyr.tidyverse.org/articles/two-table.html" class="uri">https://dplyr.tidyverse.org/articles/two-table.html</a>
 </li>
 <li>Vignette: <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html" class="uri">https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html</a>
+</li>
+<li>早見表（p.2）Cheat sheet: <a href="https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf" class="uri">https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf</a>
 </li>
 </ul>
 <div id="三種類の結合" class="section level3" number="20.5.1">
@@ -626,34 +634,193 @@
 <span class="header-section-number">20.5.1</span> 三種類の結合<a class="anchor" aria-label="anchor" href="#%E4%B8%89%E7%A8%AE%E9%A1%9E%E3%81%AE%E7%B5%90%E5%90%88"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
-<li><p>Mutating joins, which add new variables to one table from matching rows in another.</p></li>
-<li><p>Filtering joins, which filter observations from one table based on whether or not they match an observation in the other table.</p></li>
-<li><p>Set operations, which combine the observations in the data sets as if they were set elements.</p></li>
+<li><p>融合結合：適合するものを他から読み込む：Mutating joins, which add new variables to one table from matching rows in another.</p></li>
+<li><p>抽出結合：同一のもの相異なるものを抽出：Filtering joins, which filter observations from one table based on whether or not they match an observation in the other table.</p></li>
+<li><p>集合算結合：データ集合として結合：Set operations, which combine the observations in the data sets as if they were set elements.</p></li>
 </ul>
 </div>
-<div id="filtering-joins" class="section level3" number="20.5.2">
+<div id="融合結合mutating-joins" class="section level3" number="20.5.2">
 <h3>
-<span class="header-section-number">20.5.2</span> Filtering joins<a class="anchor" aria-label="anchor" href="#filtering-joins"><i class="fas fa-link"></i></a>
+<span class="header-section-number">20.5.2</span> 融合結合（mutating joins）<a class="anchor" aria-label="anchor" href="#%E8%9E%8D%E5%90%88%E7%B5%90%E5%90%88mutating-joins"><i class="fas fa-link"></i></a>
+</h3>
+<p>いずれの場合にも両方の表に共通の key を定め、key を媒介として結合する。たとえば、a 列が共通なら、by = “a”, a, b 列が共通に存在する場合は、by = c(“a”, “b”) とし、x の a と、y の c, x の b と y の d が対応する場合は、by = c(“a” = “c”, “b” = “d’) などとする。共通するものが明らかな場合は、省略することも可能。</p>
+<ul>
+<li>
+<p>left_join(x,y): x をもとに、y を加える</p>
+<ul>
+<li><p>例：left_join(x,y, by = “a”)</p></li>
+<li><p>b, c 列も共通の場合は、b.1, b,2, c.1, c.2 などとなる。必要なものだけにして結合したほうが安全である。</p></li>
+</ul>
+</li>
+<li><p>right_join(x,y): y をもとに、x を加える</p></li>
+<li><p>full_join(x,y): x も y も含める</p></li>
+</ul>
+</div>
+<div id="抽出結合filtering-joins" class="section level3" number="20.5.3">
+<h3>
+<span class="header-section-number">20.5.3</span> 抽出結合（Filtering joins）<a class="anchor" aria-label="anchor" href="#%E6%8A%BD%E5%87%BA%E7%B5%90%E5%90%88filtering-joins"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>anti_join()
 <ul>
-<li>anti_join(x,y, …): return all rows from x without a match in y.</li>
+<li>anti_join(x,y, …): x の行で、y に含まれないもの（return all rows from x without a match in y.）</li>
 </ul>
 </li>
 <li>semi_join()
 <ul>
-<li>semi_join(x,y, …): return all rows from x with a match in y. Check dplyr cheat sheet, and Posit Primers Tidy Data.</li>
+<li>semi_join(x,y, …): x の行で、y に含まれるもの（return all rows from x with a match in y.）</li>
 </ul>
 </li>
 </ul>
+</div>
+<div id="集合算結合set-joins" class="section level3" number="20.5.4">
+<h3>
+<span class="header-section-number">20.5.4</span> 集合算結合（Set joins）<a class="anchor" aria-label="anchor" href="#%E9%9B%86%E5%90%88%E7%AE%97%E7%B5%90%E5%90%88set-joins"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<code>intersect(x, y)</code>: return only observations in both <code>x</code> and <code>y</code>
+</li>
+<li>
+<code>union(x, y)</code>: return unique observations in <code>x</code> and <code>y</code>
+</li>
+<li>
+<code>setdiff(x, y)</code>: return observations in <code>x</code>, but not in <code>y</code>.</li>
+</ul>
+</div>
+<div id="例-1" class="section level3" number="20.5.5">
+<h3>
+<span class="header-section-number">20.5.5</span> 例<a class="anchor" aria-label="anchor" href="#%E4%BE%8B-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>以下では、三種類の結合の例を見てみます。Data Transformation with dplyr の早見表の 2ページ目の例も参照してください。</p>
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">df_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'t'</span>,<span class="st">'u'</span>,<span class="st">'v'</span><span class="op">)</span>, C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
+<span><span class="co">#&gt;   A     B         C</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         1</span></span>
+<span><span class="co">#&gt; 2 b     u         2</span></span>
+<span><span class="co">#&gt; 3 c     v         3</span></span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">df_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span><span class="op">)</span>, F <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'t'</span>,<span class="st">'u'</span>,<span class="st">'w'</span><span class="op">)</span>, G <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
+<span><span class="co">#&gt;   A     F         G</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         3</span></span>
+<span><span class="co">#&gt; 2 b     u         2</span></span>
+<span><span class="co">#&gt; 3 c     w         1</span></span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">df_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>,<span class="st">'C'</span>,<span class="st">'d'</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'t'</span>,<span class="st">'u'</span>,<span class="st">'w'</span><span class="op">)</span>, C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
+<span><span class="co">#&gt;   A     B         C</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         1</span></span>
+<span><span class="co">#&gt; 2 C     u         3</span></span>
+<span><span class="co">#&gt; 3 d     w         4</span></span></code></pre></div>
+<p>df_1, df_2 では、A 列は共通ですから、何も指定しないと、by = ‘A’ を仮定して結合します。</p>
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Joining with `by = join_by(A)`</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 5</span></span>
+<span><span class="co">#&gt;   A     B         C F         G</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         1 t         3</span></span>
+<span><span class="co">#&gt; 2 b     u         2 u         2</span></span>
+<span><span class="co">#&gt; 3 c     v         3 w         1</span></span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 5</span></span>
+<span><span class="co">#&gt;   A     B         C F         G</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         1 t         3</span></span>
+<span><span class="co">#&gt; 2 b     u         2 u         2</span></span>
+<span><span class="co">#&gt; 3 c     v         3 w         1</span></span></code></pre></div>
+<p>by = c(“A”, “B”=“F”) としましたが、B と F では一致していない箇所があります。そこで、一致していない場所は、左側の表 df_1 はそのまま C 列を読み込みますが、右側の表 df_2 は、その部分を NA にして読み込んでいません。つまり、一致した行のみ読み込んでいます。</p>
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 4</span></span>
+<span><span class="co">#&gt;   A     B         C     G</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         1     3</span></span>
+<span><span class="co">#&gt; 2 b     u         2     2</span></span>
+<span><span class="co">#&gt; 3 c     v         3    NA</span></span></code></pre></div>
+<p>A 列も一致していますが、それは指定していないので、それは別と考えて、A.x, A.y と列名を別にして、かつ左側の表をもとにして読み込んでいます。</p>
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 5</span></span>
+<span><span class="co">#&gt;   A.x   B         C A.y       G</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         1 a         3</span></span>
+<span><span class="co">#&gt; 2 b     u         2 b         2</span></span>
+<span><span class="co">#&gt; 3 c     v         3 &lt;NA&gt;     NA</span></span></code></pre></div>
+<p>roght_join ですから、今度は、右側の表 df_2 をもとにして読み込みます。B 列には、F 列が入っています。</p>
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 4</span></span>
+<span><span class="co">#&gt;   A     B         C     G</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         1     3</span></span>
+<span><span class="co">#&gt; 2 b     u         2     2</span></span>
+<span><span class="co">#&gt; 3 c     w        NA     1</span></span></code></pre></div>
+<p>左側の表 df_1 と 右側の表 df_2 が一致していない行は、B と F の値によって分けて、読み込んでいます。</p>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 4</span></span>
+<span><span class="co">#&gt;   A     B         C     G</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         1     3</span></span>
+<span><span class="co">#&gt; 2 b     u         2     2</span></span>
+<span><span class="co">#&gt; 3 c     v         3    NA</span></span>
+<span><span class="co">#&gt; 4 c     w        NA     1</span></span></code></pre></div>
+<p>左側の表と一致しないものに入れ替えています。たとえば、a, b, c は、右側の行でも、t, u, v であるべきときに、違っている部分をチェックするようなときにも使えます。</p>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 3</span></span>
+<span><span class="co">#&gt;   A     B         C</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 c     v         3</span></span></code></pre></div>
+<p>anti_join とは逆に、一致しているもののみ取り出します。</p>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span><span class="co">#&gt;   A     B         C</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         1</span></span>
+<span><span class="co">#&gt; 2 b     u         2</span></span></code></pre></div>
+<p>集合算では、同じ列について、intersect は共通な部分を取り出します。</p>
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">intersect</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 3</span></span>
+<span><span class="co">#&gt;   A     B         C</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         1</span></span></code></pre></div>
+<p>union は、和集合ですから、すべてを含むものを作成します。</p>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">union</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 3</span></span>
+<span><span class="co">#&gt;   A     B         C</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a     t         1</span></span>
+<span><span class="co">#&gt; 2 b     u         2</span></span>
+<span><span class="co">#&gt; 3 c     v         3</span></span>
+<span><span class="co">#&gt; 4 C     u         3</span></span>
+<span><span class="co">#&gt; 5 d     w         4</span></span></code></pre></div>
+<p>setdiff は差集合ですから、df_1 に入っていて、df_3 には入っていないものを取り出します。</p>
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">setdiff</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span><span class="co">#&gt;   A     B         C</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 b     u         2</span></span>
+<span><span class="co">#&gt; 2 c     v         3</span></span></code></pre></div>
+
 </div>
 </div>
 </div>
 
   <div class="chapter-nav">
 <div class="prev"><a href="visualize.html"><span class="header-section-number">19</span> 視覚化（Visualize）</a></div>
-<div class="next"><a href="modeling.html"><span class="header-section-number">21</span> Modeling</a></div>
+<div class="next"><a href="modeling.html"><span class="header-section-number">21</span> 数理モデル（Modeling）</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -681,7 +848,10 @@
 <li>
 <a class="nav-link" href="#%E4%BA%8C%E3%81%A4%E3%81%AE%E8%A1%A8%E3%81%AE%E7%B5%90%E5%90%88"><span class="header-section-number">20.5</span> 二つの表の結合</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#%E4%B8%89%E7%A8%AE%E9%A1%9E%E3%81%AE%E7%B5%90%E5%90%88"><span class="header-section-number">20.5.1</span> 三種類の結合</a></li>
-<li><a class="nav-link" href="#filtering-joins"><span class="header-section-number">20.5.2</span> Filtering joins</a></li>
+<li><a class="nav-link" href="#%E8%9E%8D%E5%90%88%E7%B5%90%E5%90%88mutating-joins"><span class="header-section-number">20.5.2</span> 融合結合（mutating joins）</a></li>
+<li><a class="nav-link" href="#%E6%8A%BD%E5%87%BA%E7%B5%90%E5%90%88filtering-joins"><span class="header-section-number">20.5.3</span> 抽出結合（Filtering joins）</a></li>
+<li><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%AE%97%E7%B5%90%E5%90%88set-joins"><span class="header-section-number">20.5.4</span> 集合算結合（Set joins）</a></li>
+<li><a class="nav-link" href="#%E4%BE%8B-1"><span class="header-section-number">20.5.5</span> 例</a></li>
 </ul>
 </li>
 </ul>

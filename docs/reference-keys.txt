@@ -336,7 +336,10 @@ tidyr-による整形の基礎-pivoting
 rstudio-primers-see-references-in-moodle-at-the-bottom
 二つの表の結合
 三種類の結合
-filtering-joins
+融合結合mutating-joins
+抽出結合filtering-joins
+集合算結合set-joins
+例-1
 modeling
 what-is-modeling-in-eda
 linear-model-petal.length-petal.width
@@ -491,7 +494,7 @@ geom_sf
 natural-earth-data
 ne_countries
 arguments
-例-1
+例-2
 type-argument
 ne_states
 usage

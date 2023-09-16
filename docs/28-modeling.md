@@ -1,4 +1,4 @@
-# Modeling {#modeling}
+# 数理モデル（Modeling） {#modeling}
 
 ### Setup {-}
 

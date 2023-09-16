@@ -101,6 +101,11 @@ Manual: <https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth.pdf
 
 ```r
 library(rnaturalearth)
+#> The legacy packages maptools, rgdal, and rgeos, underpinning this package
+#> will retire shortly. Please refer to R-spatial evolution reports on
+#> https://r-spatial.org/r/2023/05/15/evolution4.html for details.
+#> This package is now running under evolution status 0
+#> Support for Spatial objects (`sp`) will be deprecated in {rnaturalearth} and will be removed in a future release of the package. Please use `sf` objects with {rnaturalearth}. For example: `ne_download(returnclass = 'sf')`
 library(rnaturalearthdata)
 #> 
 #> Attaching package: 'rnaturalearthdata'
