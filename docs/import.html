@@ -18,7 +18,8 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -138,7 +139,7 @@
 <p>そのような パッケージが提供されていない場合には、データファイルを取得して読み込むことになります。この場合にも、データファイルの URL（universal resource locator）から直接取り込むことができる場合と、一旦、自分のコンピュータにダウンロードして、それから、読み込む場合とがあります。</p>
 <p>再現性（reproducibility）を考えると、URL から、直接読み込む方がよいと思いますが、そうはいかない場合、また、自分で作成した、データファイルもあるでしょうから、その場合は、コンピュータから読み込むことになります。</p>
 <p>データの形式はさまざまでが、オープンデータでは、CSV（comma separated values) 形式のテキストデータ<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Separator 分離記号として、comma（カンマ）以外（space （スペース）、tab（タブ）,&lt;/p&gt;&lt;p&gt;bar（縦棒）など）を用いる場合もありますが、それらは、ほとんど問題なく、CSV の場合と同様に読み込めます。これらについては、簡単に言及します。&lt;/p&gt;"><sup>21</sup></a>か、MicroSoft の Excel 形式のデジタルデータのどちらかを提供している場合がほとんどです。ですから、どちらの形式のファイルなのかを確認することが必要です。</p>
-<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
 <span><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
@@ -303,72 +304,48 @@
 <span class="header-section-number">20.3.3</span> 整形済みデータと整形済みでないデータ<a class="anchor" aria-label="anchor" href="#%E6%95%B4%E5%BD%A2%E6%B8%88%E3%81%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%81%A8%E6%95%B4%E5%BD%A2%E6%B8%88%E3%81%BF%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>tidyr</code> パッケージには、例がデータとして含まれていますので、table1, table2, table3, table4a, table4b, table5 をまずはみてみましょう。</p>
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">table1</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cases"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"2666","4":"20595360"},{"1":"Brazil","2":"1999","3":"37737","4":"172006362"},{"1":"Brazil","2":"2000","3":"80488","4":"174504898"},{"1":"China","2":"1999","3":"212258","4":"1272915272"},{"1":"China","2":"2000","3":"213766","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">table1</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
-<span><span class="co">#&gt;   country      year  cases population</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan  1999    745   19987071</span></span>
-<span><span class="co">#&gt; 2 Afghanistan  2000   2666   20595360</span></span>
-<span><span class="co">#&gt; 3 Brazil       1999  37737  172006362</span></span>
-<span><span class="co">#&gt; 4 Brazil       2000  80488  174504898</span></span>
-<span><span class="co">#&gt; 5 China        1999 212258 1272915272</span></span>
-<span><span class="co">#&gt; 6 China        2000 213766 1280428583</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">table2</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["type"],"name":[3],"type":["chr"],"align":["left"]},{"label":["count"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"cases","4":"745"},{"1":"Afghanistan","2":"1999","3":"population","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"cases","4":"2666"},{"1":"Afghanistan","2":"2000","3":"population","4":"20595360"},{"1":"Brazil","2":"1999","3":"cases","4":"37737"},{"1":"Brazil","2":"1999","3":"population","4":"172006362"},{"1":"Brazil","2":"2000","3":"cases","4":"80488"},{"1":"Brazil","2":"2000","3":"population","4":"174504898"},{"1":"China","2":"1999","3":"cases","4":"212258"},{"1":"China","2":"1999","3":"population","4":"1272915272"},{"1":"China","2":"2000","3":"cases","4":"213766"},{"1":"China","2":"2000","3":"population","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">table2</span></span>
-<span><span class="co">#&gt; # A tibble: 12 × 4</span></span>
-<span><span class="co">#&gt;    country      year type            count</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 Afghanistan  1999 cases             745</span></span>
-<span><span class="co">#&gt;  2 Afghanistan  1999 population   19987071</span></span>
-<span><span class="co">#&gt;  3 Afghanistan  2000 cases            2666</span></span>
-<span><span class="co">#&gt;  4 Afghanistan  2000 population   20595360</span></span>
-<span><span class="co">#&gt;  5 Brazil       1999 cases           37737</span></span>
-<span><span class="co">#&gt;  6 Brazil       1999 population  172006362</span></span>
-<span><span class="co">#&gt;  7 Brazil       2000 cases           80488</span></span>
-<span><span class="co">#&gt;  8 Brazil       2000 population  174504898</span></span>
-<span><span class="co">#&gt;  9 China        1999 cases          212258</span></span>
-<span><span class="co">#&gt; 10 China        1999 population 1272915272</span></span>
-<span><span class="co">#&gt; 11 China        2000 cases          213766</span></span>
-<span><span class="co">#&gt; 12 China        2000 population 1280428583</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">table3</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["rate"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745/19987071"},{"1":"Afghanistan","2":"2000","3":"2666/20595360"},{"1":"Brazil","2":"1999","3":"37737/172006362"},{"1":"Brazil","2":"2000","3":"80488/174504898"},{"1":"China","2":"1999","3":"212258/1272915272"},{"1":"China","2":"2000","3":"213766/1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">table3</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
-<span><span class="co">#&gt;   country      year rate             </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            </span></span>
-<span><span class="co">#&gt; 1 Afghanistan  1999 745/19987071     </span></span>
-<span><span class="co">#&gt; 2 Afghanistan  2000 2666/20595360    </span></span>
-<span><span class="co">#&gt; 3 Brazil       1999 37737/172006362  </span></span>
-<span><span class="co">#&gt; 4 Brazil       2000 80488/174504898  </span></span>
-<span><span class="co">#&gt; 5 China        1999 212258/1272915272</span></span>
-<span><span class="co">#&gt; 6 China        2000 213766/1280428583</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">table4a</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"745","3":"2666"},{"1":"Brazil","2":"37737","3":"80488"},{"1":"China","2":"212258","3":"213766"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">table4a</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
-<span><span class="co">#&gt;   country     `1999` `2000`</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan    745   2666</span></span>
-<span><span class="co">#&gt; 2 Brazil       37737  80488</span></span>
-<span><span class="co">#&gt; 3 China       212258 213766</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">table4b</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"19987071","3":"20595360"},{"1":"Brazil","2":"172006362","3":"174504898"},{"1":"China","2":"1272915272","3":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">table4b</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
-<span><span class="co">#&gt;   country         `1999`     `2000`</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan   19987071   20595360</span></span>
-<span><span class="co">#&gt; 2 Brazil       172006362  174504898</span></span>
-<span><span class="co">#&gt; 3 China       1272915272 1280428583</span></span></code></pre></div>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">table5</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
-<span><span class="co">#&gt;   country     century year  rate             </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            </span></span>
-<span><span class="co">#&gt; 1 Afghanistan 19      99    745/19987071     </span></span>
-<span><span class="co">#&gt; 2 Afghanistan 20      00    2666/20595360    </span></span>
-<span><span class="co">#&gt; 3 Brazil      19      99    37737/172006362  </span></span>
-<span><span class="co">#&gt; 4 Brazil      20      00    80488/174504898  </span></span>
-<span><span class="co">#&gt; 5 China       19      99    212258/1272915272</span></span>
-<span><span class="co">#&gt; 6 China       20      00    213766/1280428583</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">table5</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["century"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["chr"],"align":["left"]},{"label":["rate"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"19","3":"99","4":"745/19987071"},{"1":"Afghanistan","2":"20","3":"00","4":"2666/20595360"},{"1":"Brazil","2":"19","3":"99","4":"37737/172006362"},{"1":"Brazil","2":"20","3":"00","4":"80488/174504898"},{"1":"China","2":"19","3":"99","4":"212258/1272915272"},{"1":"China","2":"20","3":"00","4":"213766/1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>どうでしょうか。どれが、整形済みか、どれが整形済みでないかわかりましたか。何を持って、整形済みではないとしているのでしょうか。</p>
 <p>ここでは、table1 は整形済み、それ以外は、整形済みでないとして、table1 のように変形するにはどうしたら良いかを考えていきます。</p>
 <p>簡単に理由を書いておきます。</p>
@@ -407,180 +384,135 @@
 <span class="header-section-number">20.3.4.1</span> 例 1: <code>pivot_longer</code><a class="anchor" aria-label="anchor" href="#%E4%BE%8B-1-pivot_longer"><i class="fas fa-link"></i></a>
 </h4>
 <p>年（cols = c(“1999”,“2000”)）を year （names_to = “year”）という列にまとめ、それぞれの値を、values_to = “cases” にします。同時に、年が、連続変数の　dbl ですから、それを離散変数（飛び飛びの値をとる）int（整数に変形します）</p>
-<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">table4a</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
-<span><span class="co">#&gt;   country     `1999` `2000`</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan    745   2666</span></span>
-<span><span class="co">#&gt; 2 Brazil       37737  80488</span></span>
-<span><span class="co">#&gt; 3 China       212258 213766</span></span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">table4a</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"745","3":"2666"},{"1":"Brazil","2":"37737","3":"80488"},{"1":"China","2":"212258","3":"213766"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <pre><code>pivot_longer(data = table4a, cols = c("1999","2000"), 
              names_to = "year", values_to = "cases",
              names_transform = list("year" = as.integer))</code></pre>
-<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">table4a</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1999"</span>,<span class="st">"2000"</span><span class="op">)</span>, </span>
 <span>             names_to <span class="op">=</span> <span class="st">"year"</span>, values_to <span class="op">=</span> <span class="st">"cases"</span>, </span>
-<span>             names_transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"year"</span> <span class="op">=</span> <span class="va">as.integer</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
-<span><span class="co">#&gt;   country      year  cases</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;int&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan  1999    745</span></span>
-<span><span class="co">#&gt; 2 Afghanistan  2000   2666</span></span>
-<span><span class="co">#&gt; 3 Brazil       1999  37737</span></span>
-<span><span class="co">#&gt; 4 Brazil       2000  80488</span></span>
-<span><span class="co">#&gt; 5 China        1999 212258</span></span>
-<span><span class="co">#&gt; 6 China        2000 213766</span></span></code></pre></div>
+<span>             names_transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"year"</span> <span class="op">=</span> <span class="va">as.integer</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["cases"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745"},{"1":"Afghanistan","2":"2000","3":"2666"},{"1":"Brazil","2":"1999","3":"37737"},{"1":"Brazil","2":"2000","3":"80488"},{"1":"China","2":"1999","3":"212258"},{"1":"China","2":"2000","3":"213766"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="例-2-pivot_wider" class="section level4" number="20.3.4.2">
 <h4>
 <span class="header-section-number">20.3.4.2</span> 例 2: <code>pivot_wider</code><a class="anchor" aria-label="anchor" href="#%E4%BE%8B-2-pivot_wider"><i class="fas fa-link"></i></a>
 </h4>
 <p>type （names_from = type）を二種類の変数に分け、値を cases （values_from = count） からとります。</p>
-<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">table2</span></span>
-<span><span class="co">#&gt; # A tibble: 12 × 4</span></span>
-<span><span class="co">#&gt;    country      year type            count</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 Afghanistan  1999 cases             745</span></span>
-<span><span class="co">#&gt;  2 Afghanistan  1999 population   19987071</span></span>
-<span><span class="co">#&gt;  3 Afghanistan  2000 cases            2666</span></span>
-<span><span class="co">#&gt;  4 Afghanistan  2000 population   20595360</span></span>
-<span><span class="co">#&gt;  5 Brazil       1999 cases           37737</span></span>
-<span><span class="co">#&gt;  6 Brazil       1999 population  172006362</span></span>
-<span><span class="co">#&gt;  7 Brazil       2000 cases           80488</span></span>
-<span><span class="co">#&gt;  8 Brazil       2000 population  174504898</span></span>
-<span><span class="co">#&gt;  9 China        1999 cases          212258</span></span>
-<span><span class="co">#&gt; 10 China        1999 population 1272915272</span></span>
-<span><span class="co">#&gt; 11 China        2000 cases          213766</span></span>
-<span><span class="co">#&gt; 12 China        2000 population 1280428583</span></span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">table2</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["type"],"name":[3],"type":["chr"],"align":["left"]},{"label":["count"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"cases","4":"745"},{"1":"Afghanistan","2":"1999","3":"population","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"cases","4":"2666"},{"1":"Afghanistan","2":"2000","3":"population","4":"20595360"},{"1":"Brazil","2":"1999","3":"cases","4":"37737"},{"1":"Brazil","2":"1999","3":"population","4":"172006362"},{"1":"Brazil","2":"2000","3":"cases","4":"80488"},{"1":"Brazil","2":"2000","3":"population","4":"174504898"},{"1":"China","2":"1999","3":"cases","4":"212258"},{"1":"China","2":"1999","3":"population","4":"1272915272"},{"1":"China","2":"2000","3":"cases","4":"213766"},{"1":"China","2":"2000","3":"population","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <pre><code>pivot_wider(data = table2, names_from = type, 
             values_from = count)</code></pre>
-<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">table2</span>, names_from <span class="op">=</span> <span class="va">type</span>, </span>
-<span>            values_from <span class="op">=</span> <span class="va">count</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
-<span><span class="co">#&gt;   country      year  cases population</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan  1999    745   19987071</span></span>
-<span><span class="co">#&gt; 2 Afghanistan  2000   2666   20595360</span></span>
-<span><span class="co">#&gt; 3 Brazil       1999  37737  172006362</span></span>
-<span><span class="co">#&gt; 4 Brazil       2000  80488  174504898</span></span>
-<span><span class="co">#&gt; 5 China        1999 212258 1272915272</span></span>
-<span><span class="co">#&gt; 6 China        2000 213766 1280428583</span></span></code></pre></div>
+<span>            values_from <span class="op">=</span> <span class="va">count</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cases"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"2666","4":"20595360"},{"1":"Brazil","2":"1999","3":"37737","4":"172006362"},{"1":"Brazil","2":"2000","3":"80488","4":"174504898"},{"1":"China","2":"1999","3":"212258","4":"1272915272"},{"1":"China","2":"2000","3":"213766","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="例-3-separate" class="section level4" number="20.3.4.3">
 <h4>
 <span class="header-section-number">20.3.4.3</span> 例 3: <code>separate</code><a class="anchor" aria-label="anchor" href="#%E4%BE%8B-3-separate"><i class="fas fa-link"></i></a>
 </h4>
 <p>分け方はいろいろとありますが、ここでは、“/” で分けることにします。正規表現を使うことでかなり複雑な分離方法も可能です。<a href="https://tidyr.tidyverse.org/reference/separate.html">参照</a></p>
-<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">table3</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
-<span><span class="co">#&gt;   country      year rate             </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            </span></span>
-<span><span class="co">#&gt; 1 Afghanistan  1999 745/19987071     </span></span>
-<span><span class="co">#&gt; 2 Afghanistan  2000 2666/20595360    </span></span>
-<span><span class="co">#&gt; 3 Brazil       1999 37737/172006362  </span></span>
-<span><span class="co">#&gt; 4 Brazil       2000 80488/174504898  </span></span>
-<span><span class="co">#&gt; 5 China        1999 212258/1272915272</span></span>
-<span><span class="co">#&gt; 6 China        2000 213766/1280428583</span></span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">table3</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["rate"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745/19987071"},{"1":"Afghanistan","2":"2000","3":"2666/20595360"},{"1":"Brazil","2":"1999","3":"37737/172006362"},{"1":"Brazil","2":"2000","3":"80488/174504898"},{"1":"China","2":"1999","3":"212258/1272915272"},{"1":"China","2":"2000","3":"213766/1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <pre><code>separate(table3, rate, c("cases", "population"), 
          sep = "/", convert = TRUE)</code></pre>
-<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">table3</span>, <span class="va">rate</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span>, </span>
-<span>         sep <span class="op">=</span> <span class="st">"/"</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
-<span><span class="co">#&gt;   country      year  cases population</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;int&gt;      &lt;int&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan  1999    745   19987071</span></span>
-<span><span class="co">#&gt; 2 Afghanistan  2000   2666   20595360</span></span>
-<span><span class="co">#&gt; 3 Brazil       1999  37737  172006362</span></span>
-<span><span class="co">#&gt; 4 Brazil       2000  80488  174504898</span></span>
-<span><span class="co">#&gt; 5 China        1999 212258 1272915272</span></span>
-<span><span class="co">#&gt; 6 China        2000 213766 1280428583</span></span></code></pre></div>
+<span>         sep <span class="op">=</span> <span class="st">"/"</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cases"],"name":[3],"type":["int"],"align":["right"]},{"label":["population"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"2666","4":"20595360"},{"1":"Brazil","2":"1999","3":"37737","4":"172006362"},{"1":"Brazil","2":"2000","3":"80488","4":"174504898"},{"1":"China","2":"1999","3":"212258","4":"1272915272"},{"1":"China","2":"2000","3":"213766","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="例-4-unite" class="section level4" number="20.3.4.4">
 <h4>
 <span class="header-section-number">20.3.4.4</span> 例 4: <code>unite</code><a class="anchor" aria-label="anchor" href="#%E4%BE%8B-4-unite"><i class="fas fa-link"></i></a>
 </h4>
 <p>結合します。<a href="https://tidyr.tidyverse.org/reference/unite.html">参照</a></p>
-<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">table5</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
-<span><span class="co">#&gt;   country     century year  rate             </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            </span></span>
-<span><span class="co">#&gt; 1 Afghanistan 19      99    745/19987071     </span></span>
-<span><span class="co">#&gt; 2 Afghanistan 20      00    2666/20595360    </span></span>
-<span><span class="co">#&gt; 3 Brazil      19      99    37737/172006362  </span></span>
-<span><span class="co">#&gt; 4 Brazil      20      00    80488/174504898  </span></span>
-<span><span class="co">#&gt; 5 China       19      99    212258/1272915272</span></span>
-<span><span class="co">#&gt; 6 China       20      00    213766/1280428583</span></span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">table5</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["century"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["chr"],"align":["left"]},{"label":["rate"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"19","3":"99","4":"745/19987071"},{"1":"Afghanistan","2":"20","3":"00","4":"2666/20595360"},{"1":"Brazil","2":"19","3":"99","4":"37737/172006362"},{"1":"Brazil","2":"20","3":"00","4":"80488/174504898"},{"1":"China","2":"19","3":"99","4":"212258/1272915272"},{"1":"China","2":"20","3":"00","4":"213766/1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <pre><code>table5 %&gt;% unite(col = "year", century, year, sep = "") %&gt;%
   separate(rate, c("cases", "population"), sep = "/", 
            convert = TRUE) %&gt;%
   mutate(year = as.integer(year), rate = cases / population)</code></pre>
-<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">table5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"year"</span>, <span class="va">century</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">rate</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"/"</span>, </span>
 <span>           convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, rate <span class="op">=</span> <span class="va">cases</span> <span class="op">/</span> <span class="va">population</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
-<span><span class="co">#&gt;   country      year  cases population      rate</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;     &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan  1999    745   19987071 0.0000373</span></span>
-<span><span class="co">#&gt; 2 Afghanistan  2000   2666   20595360 0.000129 </span></span>
-<span><span class="co">#&gt; 3 Brazil       1999  37737  172006362 0.000219 </span></span>
-<span><span class="co">#&gt; 4 Brazil       2000  80488  174504898 0.000461 </span></span>
-<span><span class="co">#&gt; 5 China        1999 212258 1272915272 0.000167 </span></span>
-<span><span class="co">#&gt; 6 China        2000 213766 1280428583 0.000167</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, rate <span class="op">=</span> <span class="va">cases</span> <span class="op">/</span> <span class="va">population</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["cases"],"name":[3],"type":["int"],"align":["right"]},{"label":["population"],"name":[4],"type":["int"],"align":["right"]},{"label":["rate"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745","4":"19987071","5":"0.0000372741"},{"1":"Afghanistan","2":"2000","3":"2666","4":"20595360","5":"0.0001294466"},{"1":"Brazil","2":"1999","3":"37737","4":"172006362","5":"0.0002193930"},{"1":"Brazil","2":"2000","3":"80488","4":"174504898","5":"0.0004612363"},{"1":"China","2":"1999","3":"212258","4":"1272915272","5":"0.0001667495"},{"1":"China","2":"2000","3":"213766","4":"1280428583","5":"0.0001669488"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="例-5-bind_rows" class="section level4" number="20.3.4.5">
 <h4>
 <span class="header-section-number">20.3.4.5</span> 例 5: <a href="https://dplyr.tidyverse.org/reference/bind.html"><code>bind_rows</code></a><a class="anchor" aria-label="anchor" href="#%E4%BE%8B-5-bind_rows"><i class="fas fa-link"></i></a>
 </h4>
 <p>二つの表を結合します。行や列の結合：<a href="https://dplyr.tidyverse.org/reference/bind.html">参照</a></p>
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">table4a</span>; <span class="va">table4b</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"745","3":"2666"},{"1":"Brazil","2":"37737","3":"80488"},{"1":"China","2":"212258","3":"213766"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"19987071","3":"20595360"},{"1":"Brazil","2":"172006362","3":"174504898"},{"1":"China","2":"1272915272","3":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">table4a</span>; <span class="va">table4b</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
-<span><span class="co">#&gt;   country     `1999` `2000`</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan    745   2666</span></span>
-<span><span class="co">#&gt; 2 Brazil       37737  80488</span></span>
-<span><span class="co">#&gt; 3 China       212258 213766</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
-<span><span class="co">#&gt;   country         `1999`     `2000`</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan   19987071   20595360</span></span>
-<span><span class="co">#&gt; 2 Brazil       172006362  174504898</span></span>
-<span><span class="co">#&gt; 3 China       1272915272 1280428583</span></span></code></pre></div>
-<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>cases <span class="op">=</span> <span class="va">table4a</span>, population <span class="op">=</span> <span class="va">table4b</span><span class="op">)</span></span>
-<span><span class="va">tables</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span>.id <span class="op">=</span> <span class="st">"type"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
-<span><span class="co">#&gt;   type       country         `1999`     `2000`</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 cases      Afghanistan        745       2666</span></span>
-<span><span class="co">#&gt; 2 cases      Brazil           37737      80488</span></span>
-<span><span class="co">#&gt; 3 cases      China           212258     213766</span></span>
-<span><span class="co">#&gt; 4 population Afghanistan   19987071   20595360</span></span>
-<span><span class="co">#&gt; 5 population Brazil       172006362  174504898</span></span>
-<span><span class="co">#&gt; 6 population China       1272915272 1280428583</span></span></code></pre></div>
-<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<span><span class="va">tables</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span>.id <span class="op">=</span> <span class="st">"type"</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["country"],"name":[2],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"cases","2":"Afghanistan","3":"745","4":"2666"},{"1":"cases","2":"Brazil","3":"37737","4":"80488"},{"1":"cases","2":"China","3":"212258","4":"213766"},{"1":"population","2":"Afghanistan","3":"19987071","4":"20595360"},{"1":"population","2":"Brazil","3":"172006362","4":"174504898"},{"1":"population","2":"China","3":"1272915272","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>cases <span class="op">=</span> <span class="va">table4a</span>, population <span class="op">=</span> <span class="va">table4b</span><span class="op">)</span></span>
 <span><span class="va">tables</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span>.id <span class="op">=</span> <span class="st">"type"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1999"</span>, <span class="st">"2000"</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="st">"type"</span>, values_from <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
-<span><span class="co">#&gt;   country      year  cases population</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan  1999    745   19987071</span></span>
-<span><span class="co">#&gt; 2 Afghanistan  2000   2666   20595360</span></span>
-<span><span class="co">#&gt; 3 Brazil       1999  37737  172006362</span></span>
-<span><span class="co">#&gt; 4 Brazil       2000  80488  174504898</span></span>
-<span><span class="co">#&gt; 5 China        1999 212258 1272915272</span></span>
-<span><span class="co">#&gt; 6 China        2000 213766 1280428583</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["cases"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"2666","4":"20595360"},{"1":"Brazil","2":"1999","3":"37737","4":"172006362"},{"1":"Brazil","2":"2000","3":"80488","4":"174504898"},{"1":"China","2":"1999","3":"212258","4":"1272915272"},{"1":"China","2":"2000","3":"213766","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </div>
@@ -693,126 +625,115 @@
 <span class="header-section-number">20.5.5</span> 例<a class="anchor" aria-label="anchor" href="#%E4%BE%8B-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>以下では、三種類の結合の例を見てみます。Data Transformation with dplyr の早見表の 2ページ目の例も参照してください。</p>
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">df_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'t'</span>,<span class="st">'u'</span>,<span class="st">'v'</span><span class="op">)</span>, C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1"},{"1":"b","2":"u","3":"2"},{"1":"c","2":"v","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">df_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'t'</span>,<span class="st">'u'</span>,<span class="st">'v'</span><span class="op">)</span>, C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
-<span><span class="co">#&gt;   A     B         C</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         1</span></span>
-<span><span class="co">#&gt; 2 b     u         2</span></span>
-<span><span class="co">#&gt; 3 c     v         3</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">df_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span><span class="op">)</span>, F <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'t'</span>,<span class="st">'u'</span>,<span class="st">'w'</span><span class="op">)</span>, G <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["F"],"name":[2],"type":["chr"],"align":["left"]},{"label":["G"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"3"},{"1":"b","2":"u","3":"2"},{"1":"c","2":"w","3":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">df_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span><span class="op">)</span>, F <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'t'</span>,<span class="st">'u'</span>,<span class="st">'w'</span><span class="op">)</span>, G <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
-<span><span class="co">#&gt;   A     F         G</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         3</span></span>
-<span><span class="co">#&gt; 2 b     u         2</span></span>
-<span><span class="co">#&gt; 3 c     w         1</span></span></code></pre></div>
-<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">df_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>,<span class="st">'C'</span>,<span class="st">'d'</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'t'</span>,<span class="st">'u'</span>,<span class="st">'w'</span><span class="op">)</span>, C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
-<span><span class="co">#&gt;   A     B         C</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         1</span></span>
-<span><span class="co">#&gt; 2 C     u         3</span></span>
-<span><span class="co">#&gt; 3 d     w         4</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">df_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>,<span class="st">'C'</span>,<span class="st">'d'</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'t'</span>,<span class="st">'u'</span>,<span class="st">'w'</span><span class="op">)</span>, C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1"},{"1":"C","2":"u","3":"3"},{"1":"d","2":"w","3":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>df_1, df_2 では、A 列は共通ですから、何も指定しないと、by = ‘A’ を仮定して結合します。</p>
-<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(A)`</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 5</span></span>
-<span><span class="co">#&gt;   A     B         C F         G</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         1 t         3</span></span>
-<span><span class="co">#&gt; 2 b     u         2 u         2</span></span>
-<span><span class="co">#&gt; 3 c     v         3 w         1</span></span></code></pre></div>
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 5</span></span>
-<span><span class="co">#&gt;   A     B         C F         G</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         1 t         3</span></span>
-<span><span class="co">#&gt; 2 b     u         2 u         2</span></span>
-<span><span class="co">#&gt; 3 c     v         3 w         1</span></span></code></pre></div>
+<span><span class="co">#&gt; Joining with `by = join_by(A)`</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[4],"type":["chr"],"align":["left"]},{"label":["G"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"t","5":"3"},{"1":"b","2":"u","3":"2","4":"u","5":"2"},{"1":"c","2":"v","3":"3","4":"w","5":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[4],"type":["chr"],"align":["left"]},{"label":["G"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"t","5":"3"},{"1":"b","2":"u","3":"2","4":"u","5":"2"},{"1":"c","2":"v","3":"3","4":"w","5":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>by = c(“A”, “B”=“F”) としましたが、B と F では一致していない箇所があります。そこで、一致していない場所は、左側の表 df_1 はそのまま C 列を読み込みますが、右側の表 df_2 は、その部分を NA にして読み込んでいません。つまり、一致した行のみ読み込んでいます。</p>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 4</span></span>
-<span><span class="co">#&gt;   A     B         C     G</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         1     3</span></span>
-<span><span class="co">#&gt; 2 b     u         2     2</span></span>
-<span><span class="co">#&gt; 3 c     v         3    NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["G"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"3"},{"1":"b","2":"u","3":"2","4":"2"},{"1":"c","2":"v","3":"3","4":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>A 列も一致していますが、それは指定していないので、それは別と考えて、A.x, A.y と列名を別にして、かつ左側の表をもとにして読み込んでいます。</p>
-<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 5</span></span>
-<span><span class="co">#&gt;   A.x   B         C A.y       G</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         1 a         3</span></span>
-<span><span class="co">#&gt; 2 b     u         2 b         2</span></span>
-<span><span class="co">#&gt; 3 c     v         3 &lt;NA&gt;     NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A.x"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["A.y"],"name":[4],"type":["chr"],"align":["left"]},{"label":["G"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"a","5":"3"},{"1":"b","2":"u","3":"2","4":"b","5":"2"},{"1":"c","2":"v","3":"3","4":"NA","5":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>roght_join ですから、今度は、右側の表 df_2 をもとにして読み込みます。B 列には、F 列が入っています。</p>
-<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 4</span></span>
-<span><span class="co">#&gt;   A     B         C     G</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         1     3</span></span>
-<span><span class="co">#&gt; 2 b     u         2     2</span></span>
-<span><span class="co">#&gt; 3 c     w        NA     1</span></span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["G"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"3"},{"1":"b","2":"u","3":"2","4":"2"},{"1":"c","2":"w","3":"NA","4":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>左側の表 df_1 と 右側の表 df_2 が一致していない行は、B と F の値によって分けて、読み込んでいます。</p>
-<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 4 × 4</span></span>
-<span><span class="co">#&gt;   A     B         C     G</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         1     3</span></span>
-<span><span class="co">#&gt; 2 b     u         2     2</span></span>
-<span><span class="co">#&gt; 3 c     v         3    NA</span></span>
-<span><span class="co">#&gt; 4 c     w        NA     1</span></span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">=</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["G"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"3"},{"1":"b","2":"u","3":"2","4":"2"},{"1":"c","2":"v","3":"3","4":"NA"},{"1":"c","2":"w","3":"NA","4":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>左側の表と一致しないものに入れ替えています。たとえば、a, b, c は、右側の行でも、t, u, v であるべきときに、違っている部分をチェックするようなときにも使えます。</p>
-<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 1 × 3</span></span>
-<span><span class="co">#&gt;   A     B         C</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 c     v         3</span></span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"c","2":"v","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>anti_join とは逆に、一致しているもののみ取り出します。</p>
-<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
-<span><span class="co">#&gt;   A     B         C</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         1</span></span>
-<span><span class="co">#&gt; 2 b     u         2</span></span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1"},{"1":"b","2":"u","3":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>集合算では、同じ列について、intersect は共通な部分を取り出します。</p>
-<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">intersect</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_3</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 1 × 3</span></span>
-<span><span class="co">#&gt;   A     B         C</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         1</span></span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">intersect</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_3</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>union は、和集合ですから、すべてを含むものを作成します。</p>
-<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">union</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_3</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 5 × 3</span></span>
-<span><span class="co">#&gt;   A     B         C</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     t         1</span></span>
-<span><span class="co">#&gt; 2 b     u         2</span></span>
-<span><span class="co">#&gt; 3 c     v         3</span></span>
-<span><span class="co">#&gt; 4 C     u         3</span></span>
-<span><span class="co">#&gt; 5 d     w         4</span></span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">union</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_3</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1"},{"1":"b","2":"u","3":"2"},{"1":"c","2":"v","3":"3"},{"1":"C","2":"u","3":"3"},{"1":"d","2":"w","3":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>setdiff は差集合ですから、df_1 に入っていて、df_3 には入っていないものを取り出します。</p>
-<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">setdiff</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_3</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
-<span><span class="co">#&gt;   A     B         C</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 b     u         2</span></span>
-<span><span class="co">#&gt; 2 c     v         3</span></span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">setdiff</a></span><span class="op">(</span><span class="va">df_1</span>, <span class="va">df_3</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"b","2":"u","3":"2"},{"1":"c","2":"v","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 </div>
 </div>

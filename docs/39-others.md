@@ -187,20 +187,13 @@ df_lifeExp %>% ggplot() +
 
 ```r
 df_gm %>% slice(1:10)
-#> # A tibble: 10 × 6
-#>    country     continent  year lifeExp      pop gdpPercap
-#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-#>  1 Afghanistan Asia       1952    28.8  8425333      779.
-#>  2 Afghanistan Asia       1957    30.3  9240934      821.
-#>  3 Afghanistan Asia       1962    32.0 10267083      853.
-#>  4 Afghanistan Asia       1967    34.0 11537966      836.
-#>  5 Afghanistan Asia       1972    36.1 13079460      740.
-#>  6 Afghanistan Asia       1977    38.4 14880372      786.
-#>  7 Afghanistan Asia       1982    39.9 12881816      978.
-#>  8 Afghanistan Asia       1987    40.8 13867957      852.
-#>  9 Afghanistan Asia       1992    41.7 16317921      649.
-#> 10 Afghanistan Asia       1997    41.8 22227415      635.
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["fct"],"align":["left"]},{"label":["continent"],"name":[2],"type":["fct"],"align":["left"]},{"label":["year"],"name":[3],"type":["int"],"align":["right"]},{"label":["lifeExp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pop"],"name":[5],"type":["int"],"align":["right"]},{"label":["gdpPercap"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"Asia","3":"1952","4":"28.801","5":"8425333","6":"779.4453"},{"1":"Afghanistan","2":"Asia","3":"1957","4":"30.332","5":"9240934","6":"820.8530"},{"1":"Afghanistan","2":"Asia","3":"1962","4":"31.997","5":"10267083","6":"853.1007"},{"1":"Afghanistan","2":"Asia","3":"1967","4":"34.020","5":"11537966","6":"836.1971"},{"1":"Afghanistan","2":"Asia","3":"1972","4":"36.088","5":"13079460","6":"739.9811"},{"1":"Afghanistan","2":"Asia","3":"1977","4":"38.438","5":"14880372","6":"786.1134"},{"1":"Afghanistan","2":"Asia","3":"1982","4":"39.854","5":"12881816","6":"978.0114"},{"1":"Afghanistan","2":"Asia","3":"1987","4":"40.822","5":"13867957","6":"852.3959"},{"1":"Afghanistan","2":"Asia","3":"1992","4":"41.674","5":"16317921","6":"649.3414"},{"1":"Afghanistan","2":"Asia","3":"1997","4":"41.763","5":"22227415","6":"635.3414"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 さて、このデータは、どのようにして集めているのでしょうか。WDI のデータと同じでしょうか。
 
