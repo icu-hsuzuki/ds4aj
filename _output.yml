@@ -3,6 +3,8 @@ bookdown::bs4_book:
   theme:
     primary: "#096B72"
   repo: https://github.com/icu-hsuzuki/ds4aj
+bookdown::html_document:
+  df_print: paged
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
