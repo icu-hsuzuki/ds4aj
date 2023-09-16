@@ -22,7 +22,6 @@
 
 下の図は [R for Data Science](https://r4ds.hadley.nz) に掲載されている図です。よく、表現されていると思います。詳細は、少しずつ説明します。
 
-
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("./data/base.png")
 ```
@@ -37,9 +36,7 @@ knitr::include_graphics("./data/base.png")
 
 世界銀行（World Bank）の、世界開発指標（WDI: World Development Indicators）の一つの、GDP（Gross Domestic Product 国内総生産）のデータから始めます。GDP にも何種類かの尺度がありますが、次のものを見てみます。
 
--   NY.GDP.MKTP.CD: GDP (current US\$)[^03-first-example-1]
-
-[^03-first-example-1]: GDP（Gross Domestic Product）とは、ある国のある期間（通常は1年）における、その国で生産されたすべての最終財・サービスの市場価値の総額を指します。これは国内総生産とも呼ばれます。GDPは、その国の経済力や活力を測る指標の1つとして広く用いられています。WDIのGDP (Current USD)は、各国のGDPを米ドルで表したものであり、通貨の価値が異なっても比較可能な形で国際比較ができます。ただし、GDPはあくまで市場価格を基準としているため、非市場活動や自然災害などの影響を受ける場合がある点に注意が必要です。
+-   NY.GDP.MKTP.CD: GDP (current US\$)
 
 NY.GDP.MKTP.CD は、データコードと言われるもので、世界開発指標（WDI）には、一つづつ決まっています。
 
@@ -411,24 +408,26 @@ df_gnppcap <- WDI(country = "all",
 
 2.  [World Development Indicators](https://datatopics.worldbank.org/world-development-indicators/) のサイトの下にある、Data Themes（テーマ）から自分が調べたいテーマを選び、そのテーマから、データコードを取得して、同様の分析をしてみてください。データがあまりない場合もありますので、ある程度データが多いものを選択することをお勧めします。
 
-
-
 ## WDI の実際のデータを使って
 
 ## Posit Primers - Remaining Tutorials
 
-5. Iterate -- [r4ds: Program](https://r4ds.had.co.nz/program-intro.html#program-intro)
-  - [Introduction to Iteration](https://rstudio.cloud/learn/primers/5.1)
-  - [Map](https://rstudio.cloud/learn/primers/5.2)
-  - [Map Shortcut](https://rstudio.cloud/learn/primers/5.3)
-  - [Multiple Vectors](https://rstudio.cloud/learn/primers/5.3)
-  - [List Columns](https://rstudio.cloud/learn/primers/5.4)
-6. Write Functions -- [r4ds: Program](https://r4ds.had.co.nz/program-intro.html#program-intro)
-  - [Function Basics](https://rstudio.cloud/learn/primers/6.1)
-  - [How to Write a Function](https://rstudio.cloud/learn/primers/6.2)
-  - [Argument Matching](https://rstudio.cloud/learn/primers/6.3)
-  - [Environments and Scoping](https://rstudio.cloud/learn/primers/6.4)
-  - [Control Flow](https://rstudio.cloud/learn/primers/6.5)
-  - [Advanced Control Flow](https://rstudio.cloud/learn/primers/6.6)
-  - [Loops in R](https://rstudio.cloud/learn/primers/6.7)
-8. [Build Interactive Web Apps](https://shiny.rstudio.com/tutorial/?_ga=2.149795838.979535829.1639794069-1104332695.1639233659)
+5.  Iterate -- [r4ds: Program](https://r4ds.had.co.nz/program-intro.html#program-intro)
+
+-   [Introduction to Iteration](https://rstudio.cloud/learn/primers/5.1)
+-   [Map](https://rstudio.cloud/learn/primers/5.2)
+-   [Map Shortcut](https://rstudio.cloud/learn/primers/5.3)
+-   [Multiple Vectors](https://rstudio.cloud/learn/primers/5.3)
+-   [List Columns](https://rstudio.cloud/learn/primers/5.4)
+
+6.  Write Functions -- [r4ds: Program](https://r4ds.had.co.nz/program-intro.html#program-intro)
+
+-   [Function Basics](https://rstudio.cloud/learn/primers/6.1)
+-   [How to Write a Function](https://rstudio.cloud/learn/primers/6.2)
+-   [Argument Matching](https://rstudio.cloud/learn/primers/6.3)
+-   [Environments and Scoping](https://rstudio.cloud/learn/primers/6.4)
+-   [Control Flow](https://rstudio.cloud/learn/primers/6.5)
+-   [Advanced Control Flow](https://rstudio.cloud/learn/primers/6.6)
+-   [Loops in R](https://rstudio.cloud/learn/primers/6.7)
+
+8.  [Build Interactive Web Apps](https://shiny.rstudio.com/tutorial/?_ga=2.149795838.979535829.1639794069-1104332695.1639233659)

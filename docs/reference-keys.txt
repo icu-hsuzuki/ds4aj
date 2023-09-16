@@ -477,8 +477,6 @@ gapminder-1
 パッケージ-gapminder-を使って
 box-plot-1
 original-data-wdi
-section-2
-section-3
 intro2eda
 探索的データ解析-edaとは
 探索的データ解析-eda-の一例
