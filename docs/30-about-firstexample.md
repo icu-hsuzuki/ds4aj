@@ -53,9 +53,9 @@ library(tidyverse)      # tidyverse パッケージを読み込みます
 #> ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
 #> ✔ dplyr     1.1.2     ✔ readr     2.1.4
 #> ✔ forcats   1.0.0     ✔ stringr   1.5.0
-#> ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+#> ✔ ggplot2   3.4.3     ✔ tibble    3.2.1
 #> ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-#> ✔ purrr     1.0.1     
+#> ✔ purrr     1.0.2     
 #> ── Conflicts ────────────────────── tidyverse_conflicts() ──
 #> ✖ dplyr::filter() masks stats::filter()
 #> ✖ dplyr::lag()    masks stats::lag()
@@ -798,21 +798,13 @@ map_gdp <- map_world |>
   mutate(iso2c = iso.alpha(region, n=2)) |> 
   left_join(gdp_short, by = "iso2c") 
 head(map_gdp)
-#>        long      lat group order region subregion iso2c
-#> 1 -69.89912 12.45200     1     1  Aruba      <NA>    AW
-#> 2 -69.89571 12.42300     1     2  Aruba      <NA>    AW
-#> 3 -69.94219 12.43853     1     3  Aruba      <NA>    AW
-#> 4 -70.00415 12.50049     1     4  Aruba      <NA>    AW
-#> 5 -70.06612 12.54697     1     5  Aruba      <NA>    AW
-#> 6 -70.05088 12.59707     1     6  Aruba      <NA>    AW
-#>          gdp      income
-#> 1 3126019385 High income
-#> 2 3126019385 High income
-#> 3 3126019385 High income
-#> 4 3126019385 High income
-#> 5 3126019385 High income
-#> 6 3126019385 High income
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["long"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["lat"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["group"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["order"],"name":[4],"type":["int"],"align":["right"]},{"label":["region"],"name":[5],"type":["chr"],"align":["left"]},{"label":["subregion"],"name":[6],"type":["chr"],"align":["left"]},{"label":["iso2c"],"name":[7],"type":["chr"],"align":["left"]},{"label":["gdp"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["income"],"name":[9],"type":["chr"],"align":["left"]}],"data":[{"1":"-69.89912","2":"12.45200","3":"1","4":"1","5":"Aruba","6":"NA","7":"AW","8":"3126019385","9":"High income","_rn_":"1"},{"1":"-69.89571","2":"12.42300","3":"1","4":"2","5":"Aruba","6":"NA","7":"AW","8":"3126019385","9":"High income","_rn_":"2"},{"1":"-69.94219","2":"12.43853","3":"1","4":"3","5":"Aruba","6":"NA","7":"AW","8":"3126019385","9":"High income","_rn_":"3"},{"1":"-70.00415","2":"12.50049","3":"1","4":"4","5":"Aruba","6":"NA","7":"AW","8":"3126019385","9":"High income","_rn_":"4"},{"1":"-70.06612","2":"12.54697","3":"1","4":"5","5":"Aruba","6":"NA","7":"AW","8":"3126019385","9":"High income","_rn_":"5"},{"1":"-70.05088","2":"12.59707","3":"1","4":"6","5":"Aruba","6":"NA","7":"AW","8":"3126019385","9":"High income","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 ##### Fig 12. Income Level による色分け地図
 

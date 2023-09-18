@@ -341,7 +341,9 @@ rstudio-primers-see-references-in-moodle-at-the-bottom
 集合算結合set-joins
 例-1
 modeling
-what-is-modeling-in-eda
+はじめに-4
+準備setup
+線形モデル入門
 linear-model-petal.length-petal.width
 formula-textpetal.length-2.224-1.600cdot-textpetal.width
 linear-model-sepal.length-sepal.width
@@ -352,10 +354,11 @@ linear-model-basics-y-x
 r-squared
 useful-mathematical-formula
 adjusted-r-squared
-examples-wdi
+世界開発指標wdiからの例
 brics
 government-expenditure-of-gdp
-model-and-linear-regression-quick-reference
+数理モデルに関する参考文献
+モデル概要に現れる数値について
 communicate
 aboutfirstexample
 はじめてのデータサイエンスについて
