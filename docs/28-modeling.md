@@ -52,7 +52,7 @@ library(tidymodels)
 #> ✖ dplyr::lag()      masks stats::lag()
 #> ✖ yardstick::spec() masks readr::spec()
 #> ✖ recipes::step()   masks stats::step()
-#> • Use suppressPackageStartupMessages() to eliminate package startup messages
+#> • Learn how to get started at https://www.tidymodels.org/start/
 ```
 
 Tidymodels パッケージを使いますが、これは、Tidyverse と同様に、一つのパッケージではなく、パッケージ群を表します。また、ここでは、ほんの一部しか使いませんが、一応、後々のために、インストールをし、使えるように `library(tidymodels)` で、読み込んでおいてください。興味のあるかたのために、Tidymodels サイトへのリンクを付けておきます。
@@ -425,13 +425,13 @@ $$
 \end{aligned}
 $$
 
-#### 自由度修正済み決定係数（Adjusted R Squared）
+#### Adjusted R Squared（自由度修正済み決定係数）
 
 $$\text{Adjusted }R^2 = 1- \frac{(1-R^2)(n-1)}{n-k-1}$$ $n$: 行数（観測値の数）number of observations, the number of rows
 
 $k$: number of variables used for prediction
 
-#### Coefficients
+#### Coefficients（係数）
 
 Tidymodels に含まれる、`broom` パッケージの `tody()` 関数を使うと、係数の部分を表として取り出すことができます。
 
@@ -445,7 +445,9 @@ df_iris0 |> lm(Petal.Length ~ Petal.Width, data = _) |> tidy()
 #> 2 Petal.Width     1.60     0.111      14.4 7.57e-26
 ```
 
-#### Significant
+ここに現れる、statistics は t-検定の、値で、p.value が最初に定めた値、たとえば、0.05よりも、小さければ、Intercept や、Petal.Width の係数が、0 である確率は非常に小さいといいます。
+
+#### Other Model Summaries（その他のモデル概要）
 
 Tidymodels に含まれる、`broom` パッケージの `glance()` 関数を使うと、残りの値が表示できます。
 
@@ -460,9 +462,23 @@ df_iris0 |> lm(Petal.Length ~ Petal.Width, data = _) |> glance()
 #> #   deviance <dbl>, df.residual <int>, nobs <int>
 ```
 
+r.squared は、R squared（決定係数）、adj.r.squared は、Adjusted R Squared（自由度修正済み決定係数）、sigma は、Residual Standard Error（残差標準誤差）、statistic は、f 検定の F value（F 値）、p.value は、F 分布の p値です。
+
+最初の2つはすでに説明しました。
+
+$$
+\mbox{statistic} = \frac{SS_{tot} - SS_{res}}{SS_{res}}\cdot \frac{n-(k+1)}{k}
+$$
+
+p値が、定めた値、例えば、0.05 より小さいと、2つの変数が、関係しない確率が非常に小さいということになります。
+
+Correlation Constant （相関係数）
+
+式に現れるように、$R^2 = cor(x,y)^2$　でしたから、相関係数が分かれば、この場合の決定係数はわかることになります。特に、相関係数の大きな変数の対を見つければ、それから計算する、線形モデルは、強いモデルだということになります。
+
 
 ```r
-df_iris0 %>% select(1:4) %>% cor()
+df_iris0 |> select(1:4) |> cor()
 #>              Sepal.Length Sepal.Width Petal.Length
 #> Sepal.Length    1.0000000   0.5538548    0.8284787
 #> Sepal.Width     0.5538548   1.0000000    0.5198023
@@ -475,9 +491,13 @@ df_iris0 %>% select(1:4) %>% cor()
 #> Petal.Width    1.0000000
 ```
 
+その自乗を計算することもできます。
+
+この例では、Sepal.Length と、Petal.Length の相関が最も強いことがわかります。
+
 
 ```r
-cormat <- df_iris0 %>% select(1:4) %>% cor()
+cormat <- df_iris0 |> select(1:4) |> cor()
 cormat*cormat
 #>              Sepal.Length Sepal.Width Petal.Length
 #> Sepal.Length    1.0000000   0.3067552    0.6863769
@@ -498,7 +518,7 @@ df_iris <- datasets::iris
 
 
 ```r
-as_tibble(df_iris) %>% filter(Species == "setosa") %>% select(-5) %>% cor()
+as_tibble(df_iris) |> filter(Species == "setosa") |> select(-5) %>% cor()
 #>              Sepal.Length Sepal.Width Petal.Length
 #> Sepal.Length    1.0000000   0.7425467    0.2671758
 #> Sepal.Width     0.7425467   1.0000000    0.1777000
@@ -513,7 +533,7 @@ as_tibble(df_iris) %>% filter(Species == "setosa") %>% select(-5) %>% cor()
 
 
 ```r
-as_tibble(df_iris) %>% filter(Species == "virginica") %>% select(-5) %>% cor()
+as_tibble(df_iris) |> filter(Species == "virginica") |> select(-5) |> cor()
 #>              Sepal.Length Sepal.Width Petal.Length
 #> Sepal.Length    1.0000000   0.4572278    0.8642247
 #> Sepal.Width     0.4572278   1.0000000    0.4010446
@@ -528,7 +548,7 @@ as_tibble(df_iris) %>% filter(Species == "virginica") %>% select(-5) %>% cor()
 
 
 ```r
-as_tibble(df_iris) %>% filter(Species == "versicolor") %>% select(-5) %>% cor()
+as_tibble(df_iris) |> filter(Species == "versicolor") |> select(-5) |> cor()
 #>              Sepal.Length Sepal.Width Petal.Length
 #> Sepal.Length    1.0000000   0.5259107    0.7540490
 #> Sepal.Width     0.5259107   1.0000000    0.5605221
@@ -543,22 +563,22 @@ as_tibble(df_iris) %>% filter(Species == "versicolor") %>% select(-5) %>% cor()
 
 
 ```r
-as_tibble(df_iris) %>% filter(Species == "virginica") %>% ggplot(aes(Sepal.Length, Petal.Length)) + geom_point() + geom_smooth(method = "lm", formula = y~x, se = FALSE)
+as_tibble(df_iris) |> filter(Species == "virginica") |> ggplot(aes(Sepal.Length, Petal.Length)) + geom_point() + geom_smooth(method = "lm", formula = y~x, se = FALSE)
 ```
 
 ![](28-modeling_files/figure-epub3/unnamed-chunk-32-1.png)<!-- -->
 
 
 ```r
-as_tibble(df_iris) %>% filter(Species == "virginica") %>% lm(Petal.Length ~ Sepal.Length, .) %>% glance() %>% pull(r.squared) %>% sqrt()
+as_tibble(df_iris) |> filter(Species == "virginica") |> lm(Petal.Length ~ Sepal.Length, data = _) |> glance() |> pull(r.squared) |> sqrt()
 #> [1] 0.8642247
 ```
 
-Correlations of the data suggest the possible strength of linear model y \~ x.
+2つの変数の場合には、このように、相関係数を見てみることも、大切です。Correlations of the data suggest the possible strength of linear model y \~ x.
 
 
 ```r
-df_iris %>% select(-5) %>% cor()
+df_iris |> select(-5) |> cor()
 #>              Sepal.Length Sepal.Width Petal.Length
 #> Sepal.Length    1.0000000  -0.1175698    0.8717538
 #> Sepal.Width    -0.1175698   1.0000000   -0.4284401

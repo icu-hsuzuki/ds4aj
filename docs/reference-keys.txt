@@ -352,9 +352,9 @@ linear-model-sepal.length-sepal.width
 モデル概要
 call適用されたモデル
 residuals残差
-自由度修正済み決定係数adjusted-r-squared
-coefficients
-significant
+adjusted-r-squared自由度修正済み決定係数
+coefficients係数
+other-model-summariesその他のモデル概要
 世界開発指標wdiからの例
 brics
 government-expenditure-of-gdp

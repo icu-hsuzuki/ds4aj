@@ -9450,15 +9450,15 @@ Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{augument(
 \end{aligned}
 \]
 
-\hypertarget{ux81eaux7531ux5ea6ux4feeux6b63ux6e08ux307fux6c7aux5b9aux4fc2ux6570adjusted-r-squared}{%
-\subsubsection{自由度修正済み決定係数（Adjusted R Squared）}\label{ux81eaux7531ux5ea6ux4feeux6b63ux6e08ux307fux6c7aux5b9aux4fc2ux6570adjusted-r-squared}}
+\hypertarget{adjusted-r-squaredux81eaux7531ux5ea6ux4feeux6b63ux6e08ux307fux6c7aux5b9aux4fc2ux6570}{%
+\subsubsection{Adjusted R Squared（自由度修正済み決定係数）}\label{adjusted-r-squaredux81eaux7531ux5ea6ux4feeux6b63ux6e08ux307fux6c7aux5b9aux4fc2ux6570}}
 
 \[\text{Adjusted }R^2 = 1- \frac{(1-R^2)(n-1)}{n-k-1}\] \(n\): 行数（観測値の数）number of observations, the number of rows
 
 \(k\): number of variables used for prediction
 
-\hypertarget{coefficients}{%
-\subsubsection{Coefficients}\label{coefficients}}
+\hypertarget{coefficientsux4fc2ux6570}{%
+\subsubsection{Coefficients（係数）}\label{coefficientsux4fc2ux6570}}
 
 Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{tody()} 関数を使うと、係数の部分を表として取り出すことができます。
 
@@ -9473,8 +9473,10 @@ Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{tody()} �
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{significant}{%
-\subsubsection{Significant}\label{significant}}
+ここに現れる、statistics は t-検定の、値で、p.value が最初に定めた値、たとえば、0.05よりも、小さければ、Intercept や、Petal.Width の係数が、0 である確率は非常に小さいといいます。
+
+\hypertarget{other-model-summariesux305dux306eux4ed6ux306eux30e2ux30c7ux30ebux6982ux8981}{%
+\subsubsection{Other Model Summaries（その他のモデル概要）}\label{other-model-summariesux305dux306eux4ed6ux306eux30e2ux30c7ux30ebux6982ux8981}}
 
 Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{glance()} 関数を使うと、残りの値が表示できます。
 
@@ -9490,9 +9492,23 @@ Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{glance()}
 \end{Highlighting}
 \end{Shaded}
 
+r.squared は、R squared（決定係数）、adj.r.squared は、Adjusted R Squared（自由度修正済み決定係数）、sigma は、Residual Standard Error（残差標準誤差）、statistic は、f 検定の F value（F 値）、p.value は、F 分布の p値です。
+
+最初の2つはすでに説明しました。
+
+\[
+\mbox{statistic} = \frac{SS_{tot} - SS_{res}}{SS_{res}}\cdot \frac{n-(k+1)}{k}
+\]
+
+p値が、定めた値、例えば、0.05 より小さいと、2つの変数が、関係しない確率が非常に小さいということになります。
+
+Correlation Constant （相関係数）
+
+式に現れるように、\(R^2 = cor(x,y)^2\)　でしたから、相関係数が分かれば、この場合の決定係数はわかることになります。特に、相関係数の大きな変数の対を見つければ、それから計算する、線形モデルは、強いモデルだということになります。
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris0 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{cor}\NormalTok{()}
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{select}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{cor}\NormalTok{()}
 \CommentTok{\#\textgreater{}              Sepal.Length Sepal.Width Petal.Length}
 \CommentTok{\#\textgreater{} Sepal.Length    1.0000000   0.5538548    0.8284787}
 \CommentTok{\#\textgreater{} Sepal.Width     0.5538548   1.0000000    0.5198023}
@@ -9506,9 +9522,13 @@ Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{glance()}
 \end{Highlighting}
 \end{Shaded}
 
+その自乗を計算することもできます。
+
+この例では、Sepal.Length と、Petal.Length の相関が最も強いことがわかります。
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cormat }\OtherTok{\textless{}{-}}\NormalTok{ df\_iris0 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{cor}\NormalTok{()}
+\NormalTok{cormat }\OtherTok{\textless{}{-}}\NormalTok{ df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{select}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{cor}\NormalTok{()}
 \NormalTok{cormat}\SpecialCharTok{*}\NormalTok{cormat}
 \CommentTok{\#\textgreater{}              Sepal.Length Sepal.Width Petal.Length}
 \CommentTok{\#\textgreater{} Sepal.Length    1.0000000   0.3067552    0.6863769}
@@ -9531,7 +9551,7 @@ Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{glance()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{as\_tibble}\NormalTok{(df\_iris) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Species }\SpecialCharTok{==} \StringTok{"setosa"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{cor}\NormalTok{()}
+\FunctionTok{as\_tibble}\NormalTok{(df\_iris) }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(Species }\SpecialCharTok{==} \StringTok{"setosa"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{cor}\NormalTok{()}
 \CommentTok{\#\textgreater{}              Sepal.Length Sepal.Width Petal.Length}
 \CommentTok{\#\textgreater{} Sepal.Length    1.0000000   0.7425467    0.2671758}
 \CommentTok{\#\textgreater{} Sepal.Width     0.7425467   1.0000000    0.1777000}
@@ -9547,7 +9567,7 @@ Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{glance()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{as\_tibble}\NormalTok{(df\_iris) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Species }\SpecialCharTok{==} \StringTok{"virginica"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{cor}\NormalTok{()}
+\FunctionTok{as\_tibble}\NormalTok{(df\_iris) }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(Species }\SpecialCharTok{==} \StringTok{"virginica"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{cor}\NormalTok{()}
 \CommentTok{\#\textgreater{}              Sepal.Length Sepal.Width Petal.Length}
 \CommentTok{\#\textgreater{} Sepal.Length    1.0000000   0.4572278    0.8642247}
 \CommentTok{\#\textgreater{} Sepal.Width     0.4572278   1.0000000    0.4010446}
@@ -9563,7 +9583,7 @@ Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{glance()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{as\_tibble}\NormalTok{(df\_iris) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Species }\SpecialCharTok{==} \StringTok{"versicolor"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{cor}\NormalTok{()}
+\FunctionTok{as\_tibble}\NormalTok{(df\_iris) }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(Species }\SpecialCharTok{==} \StringTok{"versicolor"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{cor}\NormalTok{()}
 \CommentTok{\#\textgreater{}              Sepal.Length Sepal.Width Petal.Length}
 \CommentTok{\#\textgreater{} Sepal.Length    1.0000000   0.5259107    0.7540490}
 \CommentTok{\#\textgreater{} Sepal.Width     0.5259107   1.0000000    0.5605221}
@@ -9579,7 +9599,7 @@ Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{glance()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{as\_tibble}\NormalTok{(df\_iris) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Species }\SpecialCharTok{==} \StringTok{"virginica"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Length, Petal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{formula =}\NormalTok{ y}\SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{as\_tibble}\NormalTok{(df\_iris) }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(Species }\SpecialCharTok{==} \StringTok{"virginica"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Length, Petal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{formula =}\NormalTok{ y}\SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -9587,16 +9607,16 @@ Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{glance()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{as\_tibble}\NormalTok{(df\_iris) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Species }\SpecialCharTok{==} \StringTok{"virginica"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Sepal.Length, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{glance}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pull}\NormalTok{(r.squared) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{sqrt}\NormalTok{()}
+\FunctionTok{as\_tibble}\NormalTok{(df\_iris) }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(Species }\SpecialCharTok{==} \StringTok{"virginica"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Sepal.Length, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{glance}\NormalTok{() }\SpecialCharTok{|\textgreater{}} \FunctionTok{pull}\NormalTok{(r.squared) }\SpecialCharTok{|\textgreater{}} \FunctionTok{sqrt}\NormalTok{()}
 \CommentTok{\#\textgreater{} [1] 0.8642247}
 \end{Highlighting}
 \end{Shaded}
 
-Correlations of the data suggest the possible strength of linear model y \textasciitilde{} x.
+2つの変数の場合には、このように、相関係数を見てみることも、大切です。Correlations of the data suggest the possible strength of linear model y \textasciitilde{} x.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{cor}\NormalTok{()}
+\NormalTok{df\_iris }\SpecialCharTok{|\textgreater{}} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{cor}\NormalTok{()}
 \CommentTok{\#\textgreater{}              Sepal.Length Sepal.Width Petal.Length}
 \CommentTok{\#\textgreater{} Sepal.Length    1.0000000  {-}0.1175698    0.8717538}
 \CommentTok{\#\textgreater{} Sepal.Width    {-}0.1175698   1.0000000   {-}0.4284401}

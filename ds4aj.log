@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2022.2.28)  18 SEP 2023 20:33
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2022.2.28)  18 SEP 2023 22:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1937,17 +1937,25 @@ File: 28-modeling_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type
 pdf)
 <use 28-modeling_files/figure-latex/unnamed-chunk-15-1.pdf>
 [257] [258] [259] [260] [261] [262]
+Underfull \vbox (badness 3302) detected at line 9582
+ []
+
+[263]
 File: 28-modeling_files/figure-latex/unnamed-chunk-32-1.pdf Graphic file (type 
 pdf)
 <use 28-modeling_files/figure-latex/unnamed-chunk-32-1.pdf>
-[263] [264]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 9637--9637
+
+Underfull \vbox (badness 1902) detected at line 9631
+ []
+
+[264]
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 9657--9657
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 9637--9637
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 9657--9657
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -1955,132 +1963,128 @@ Overfull \hbox (71.11475pt too wide) in paragraph at lines 9637--9637
 File: 28-modeling_files/figure-latex/unnamed-chunk-38-1.pdf Graphic file (type 
 pdf)
 <use 28-modeling_files/figure-latex/unnamed-chunk-38-1.pdf>
-
-Underfull \vbox (badness 10000) detected at line 9673
- []
-
-[265]
+[265] [266]
 File: 28-modeling_files/figure-latex/unnamed-chunk-43-1.pdf Graphic file (type 
 pdf)
 <use 28-modeling_files/figure-latex/unnamed-chunk-43-1.pdf>
-[266]
+[267]
 File: 28-modeling_files/figure-latex/unnamed-chunk-44-1.pdf Graphic file (type 
 pdf)
 <use 28-modeling_files/figure-latex/unnamed-chunk-44-1.pdf>
 
-Underfull \vbox (badness 1325) detected at line 9752
+Underfull \vbox (badness 1325) detected at line 9772
  []
 
-[267]
-Underfull \vbox (badness 1558) detected at line 9829
+[268]
+Underfull \vbox (badness 1558) detected at line 9849
  []
 
-[268] [269]
-Underfull \vbox (badness 10000) detected at line 9980
- []
-
-
-Underfull \vbox (badness 10000) detected at line 9980
- []
-
-[270]
-Underfull \vbox (badness 10000) detected at line 9980
+[269] [270]
+Underfull \vbox (badness 10000) detected at line 10000
  []
 
 
-Underfull \vbox (badness 10000) detected at line 9980
+Underfull \vbox (badness 10000) detected at line 10000
  []
 
 [271]
-Underfull \vbox (badness 10000) detected at line 9980
+Underfull \vbox (badness 10000) detected at line 10000
  []
 
 
-Underfull \vbox (badness 10000) detected at line 9980
+Underfull \vbox (badness 10000) detected at line 10000
  []
 
-[272] [273]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 10014--10014
+[272]
+Underfull \vbox (badness 10000) detected at line 10000
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 10000
+ []
+
+[273] [274]
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 10034--10034
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 10014--10014
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 10034--10034
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
-[274]
+[275]
 File: 28-modeling_files/figure-latex/unnamed-chunk-54-1.pdf Graphic file (type 
 pdf)
 <use 28-modeling_files/figure-latex/unnamed-chunk-54-1.pdf>
 File: 28-modeling_files/figure-latex/unnamed-chunk-55-1.pdf Graphic file (type 
 pdf)
 <use 28-modeling_files/figure-latex/unnamed-chunk-55-1.pdf>
-[275]
+[276]
 File: 28-modeling_files/figure-latex/unnamed-chunk-57-1.pdf Graphic file (type 
 pdf)
 <use 28-modeling_files/figure-latex/unnamed-chunk-57-1.pdf>
 File: 28-modeling_files/figure-latex/unnamed-chunk-58-1.pdf Graphic file (type 
 pdf)
 <use 28-modeling_files/figure-latex/unnamed-chunk-58-1.pdf>
-[276]
-Underfull \vbox (badness 10000) detected at line 10154
+[277]
+Underfull \vbox (badness 10000) detected at line 10174
  []
 
-[277] [278] [279] [280
-
-]
+[278] [279] [280]
 第22章
-[281] [282
+[281
+
+] [282
 
 ]
 第23章
 File: ./data/base.png Graphic file (type bmp)
 <./data/base.png>
 [283] [284] [285] [286] [287]
-Underfull \vbox (badness 10000) detected at line 10786
+Underfull \vbox (badness 10000) detected at line 10806
  []
 
 [288]
-Underfull \vbox (badness 10000) detected at line 10786
+Underfull \vbox (badness 10000) detected at line 10806
  []
 
 
-Underfull \vbox (badness 10000) detected at line 10786
+Underfull \vbox (badness 10000) detected at line 10806
  []
 
 [289]
-Underfull \vbox (badness 10000) detected at line 10786
+Underfull \vbox (badness 10000) detected at line 10806
  []
 
 
-Underfull \vbox (badness 10000) detected at line 10786
+Underfull \vbox (badness 10000) detected at line 10806
  []
 
 [290]
-Underfull \vbox (badness 10000) detected at line 10786
+Underfull \vbox (badness 10000) detected at line 10806
  []
 
 
-Underfull \vbox (badness 10000) detected at line 10786
+Underfull \vbox (badness 10000) detected at line 10806
  []
 
 [291]
-Underfull \vbox (badness 10000) detected at line 10786
+Underfull \vbox (badness 10000) detected at line 10806
  []
 
 
-Underfull \vbox (badness 10000) detected at line 10786
+Underfull \vbox (badness 10000) detected at line 10806
  []
 
 [292]
-Underfull \vbox (badness 10000) detected at line 10786
+Underfull \vbox (badness 10000) detected at line 10806
  []
 
 
-Underfull \vbox (badness 10000) detected at line 10786
+Underfull \vbox (badness 10000) detected at line 10806
  []
 
 [293] [294]
@@ -2088,7 +2092,7 @@ File: 30-about-firstexample_files/figure-latex/unnamed-chunk-12-1.pdf Graphic f
 ile (type pdf)
 <use 30-about-firstexample_files/figure-latex/unnamed-chunk-12-1.pdf>
 
-Underfull \hbox (badness 2158) in paragraph at lines 10868--10869
+Underfull \hbox (badness 2158) in paragraph at lines 10888--10889
 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 ■ \TU/lmss/m/n/10 23.1.2.5.1 Fig 1. \T
 U/HaranoAjiGothic-Medium.otf(0)/b/n/10 日 本 の \TU/lmss/m/n/10 GDP \TU/HaranoAjiG
 othic-Medium.otf(0)/b/n/10 の 経 年 変 化 を 折 線 グ ラ フ  |（\TU/lmss/m/n/10 line graph\
@@ -2104,7 +2108,7 @@ File: 30-about-firstexample_files/figure-latex/unnamed-chunk-16-1.pdf Graphic f
 ile (type pdf)
 <use 30-about-firstexample_files/figure-latex/unnamed-chunk-16-1.pdf>
 
-Overfull \hbox (285.85173pt too wide) in paragraph at lines 10987--10988
+Overfull \hbox (285.85173pt too wide) in paragraph at lines 11007--11008
 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 ■ \TU/lmss/m/n/10 23.1.2.7.4 Fig 3. 20
 21 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 年 時 の \TU/lmss/m/n/10 GDP \TU/Haran
 oAjiGothic-Medium.otf(0)/b/n/10 上 位 \TU/lmss/m/n/10 7 \TU/HaranoAjiGothic-Mediu
@@ -2113,7 +2117,7 @@ m.otf(0)/b/n/10 カ 国 の \TU/lmss/m/n/10 GDP \TU/HaranoAjiGothic-Medium.otf(0
  []
 
 
-Overfull \hbox (23.86475pt too wide) in paragraph at lines 10992--10992
+Overfull \hbox (23.86475pt too wide) in paragraph at lines 11012--11012
 []\TU/lmtt/m/n/10 df_gdp |> filter(iso2c %in% c("US", "CN", "JP", "DE", "IN", "
 GB", "FR")) |>[] 
  []
@@ -2123,7 +2127,7 @@ File: 30-about-firstexample_files/figure-latex/unnamed-chunk-17-1.pdf Graphic f
 ile (type pdf)
 <use 30-about-firstexample_files/figure-latex/unnamed-chunk-17-1.pdf>
 
-Overfull \hbox (219.62813pt too wide) in paragraph at lines 11015--11016
+Overfull \hbox (219.62813pt too wide) in paragraph at lines 11035--11036
 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 ■ \TU/lmss/m/n/10 23.1.2.7.5 Fig 4. \T
 U/HaranoAjiGothic-Medium.otf(0)/b/n/10 世 界 の \TU/lmss/m/n/10 GDP \TU/HaranoAjiG
 othic-Medium.otf(0)/b/n/10 に お け る 割 合  |（１）| [] [] 
@@ -2137,7 +2141,7 @@ File: 30-about-firstexample_files/figure-latex/unnamed-chunk-19-1.pdf Graphic f
 ile (type pdf)
 <use 30-about-firstexample_files/figure-latex/unnamed-chunk-19-1.pdf>
 
-Overfull \hbox (250.38474pt too wide) in paragraph at lines 11074--11075
+Overfull \hbox (250.38474pt too wide) in paragraph at lines 11094--11095
 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 ■ \TU/lmss/m/n/10 23.1.2.7.7 Fig 5. 20
 21 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 年 の 世 界 の 国 の \TU/lmss/m/n/10 GDP \
 TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 の 分 布  |（１）| [] [] 
@@ -2148,7 +2152,7 @@ File: 30-about-firstexample_files/figure-latex/unnamed-chunk-20-1.pdf Graphic f
 ile (type pdf)
 <use 30-about-firstexample_files/figure-latex/unnamed-chunk-20-1.pdf>
 
-Overfull \hbox (250.38474pt too wide) in paragraph at lines 11093--11094
+Overfull \hbox (250.38474pt too wide) in paragraph at lines 11113--11114
 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 ■ \TU/lmss/m/n/10 23.1.2.7.8 Fig 6. 20
 21 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 年 の 世 界 の 国 の \TU/lmss/m/n/10 GDP \
 TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 の 分 布  |（２）| [] [] 
@@ -2174,7 +2178,7 @@ File: 30-about-firstexample_files/figure-latex/unnamed-chunk-25-1.pdf Graphic f
 ile (type pdf)
 <use 30-about-firstexample_files/figure-latex/unnamed-chunk-25-1.pdf>
 
-Overfull \hbox (268.99075pt too wide) in paragraph at lines 11174--11175
+Overfull \hbox (268.99075pt too wide) in paragraph at lines 11194--11195
 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 ■ \TU/lmss/m/n/10 23.1.2.7.13 Fig 11. 
 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 収 入 の 多 寡 に よ る 分 類 ご と の \TU/lmss/m/n
 /10 GDP \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 分 布[] [] 
@@ -2185,7 +2189,7 @@ File: 30-about-firstexample_files/figure-latex/unnamed-chunk-27-1.pdf Graphic f
 ile (type pdf)
 <use 30-about-firstexample_files/figure-latex/unnamed-chunk-27-1.pdf>
 
-Overfull \hbox (235.60545pt too wide) in paragraph at lines 11234--11235
+Overfull \hbox (235.60545pt too wide) in paragraph at lines 11254--11255
 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 ■ \TU/lmss/m/n/10 23.1.2.7.15 Fig 12. 
 Income Level \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 に よ る 色 分 け 地 図[] [] 
  []
@@ -2195,7 +2199,7 @@ File: 30-about-firstexample_files/figure-latex/unnamed-chunk-28-1.pdf Graphic f
 ile (type pdf)
 <use 30-about-firstexample_files/figure-latex/unnamed-chunk-28-1.pdf>
 
-Overfull \hbox (202.59435pt too wide) in paragraph at lines 11249--11250
+Overfull \hbox (202.59435pt too wide) in paragraph at lines 11269--11270
 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 ■ \TU/lmss/m/n/10 23.1.2.7.16 Fig 13. 
 GDP \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 に よ る 色 分 け 地 図[] [] 
  []
@@ -2211,25 +2215,25 @@ GDP \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 に よ る 色 分 け 地 図[] [
 ]
 第25章
 [315]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 11433--11433
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 11453--11453
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 11433--11433
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 11453--11453
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 11454--11454
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 11474--11474
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 11454--11454
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 11474--11474
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -2238,13 +2242,13 @@ File: 32-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type
 pdf)
 <use 32-worldbank_files/figure-latex/unnamed-chunk-8-1.pdf>
 [316]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 11479--11479
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 11499--11499
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 11479--11479
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 11499--11499
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
@@ -2253,71 +2257,71 @@ File: 32-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type
  pdf)
 <use 32-worldbank_files/figure-latex/unnamed-chunk-11-1.pdf>
 [317] [318] [319] [320] [321] [322] [323]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 11832--11832
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 11852--11852
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 11832--11832
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 11852--11852
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [324]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 11869--11869
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 11889--11889
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 11869--11869
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 11889--11889
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [325]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 11913--11913
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 11933--11933
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 11913--11913
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 11933--11933
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 [326]
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 11958--11958
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 11978--11978
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 11958--11958
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 11978--11978
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 
-Overfull \hbox (18.61475pt too wide) in paragraph at lines 12011--12011
+Overfull \hbox (18.61475pt too wide) in paragraph at lines 12031--12031
 []\TU/lmtt/m/n/10 #> i Use []spec()[] to retrieve the full column specification
  for this data.[] 
  []
 
 [327]
-Overfull \hbox (71.11475pt too wide) in paragraph at lines 12011--12011
+Overfull \hbox (71.11475pt too wide) in paragraph at lines 12031--12031
 []\TU/lmtt/m/n/10 #> i Specify the column types or set []show_col_types = FALSE
 [] to quiet this message.[] 
  []
 
 
-Overfull \vbox (0.60999pt too high) detected at line 12052
+Overfull \vbox (0.60999pt too high) detected at line 12072
  []
 
 [328]
-Underfull \vbox (badness 10000) detected at line 12098
+Underfull \vbox (badness 10000) detected at line 12118
  []
 
 [329]
@@ -2329,7 +2333,7 @@ File: 32-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf Graphic file (type
  pdf)
 <use 32-worldbank_files/figure-latex/unnamed-chunk-40-1.pdf>
 [331] [332]
-Overfull \vbox (2.2549pt too high) detected at line 12234
+Overfull \vbox (2.2549pt too high) detected at line 12254
  []
 
 [333] [334]
@@ -2353,7 +2357,7 @@ File: 36-wid_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf)
 File: 36-wid_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf)
 <use 36-wid_files/figure-latex/unnamed-chunk-9-1.pdf>
 [342]
-Overfull \vbox (0.52522pt too high) detected at line 12473
+Overfull \vbox (0.52522pt too high) detected at line 12493
  []
 
 
@@ -2366,7 +2370,7 @@ d top 10% income shares across the world in 2021 \TU/lmr/bx/n/10 343
 File: 36-wid_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type pdf)
 <use 36-wid_files/figure-latex/unnamed-chunk-12-1.pdf>
 [344]
-Overfull \hbox (81.61475pt too wide) in paragraph at lines 12514--12514
+Overfull \hbox (81.61475pt too wide) in paragraph at lines 12534--12534
 []  \TU/lmtt/m/n/10 names_from = <name of the column (or columns) to get the na
 me of the output column>,[] 
  []
@@ -2396,7 +2400,7 @@ File: 36-wid_files/figure-latex/unnamed-chunk-27-1.pdf Graphic file (type pdf)
 <use 36-wid_files/figure-latex/unnamed-chunk-27-1.pdf>
 [352] [353]
 
-LaTeX Warning: Reference `model' on page 354 undefined on input line 12816.
+LaTeX Warning: Reference `model' on page 354 undefined on input line 12836.
 
 File: 36-wid_files/figure-latex/unnamed-chunk-29-1.pdf Graphic file (type pdf)
 <use 36-wid_files/figure-latex/unnamed-chunk-29-1.pdf>
@@ -2410,7 +2414,7 @@ File: 36-wid_files/figure-latex/unnamed-chunk-31-1.pdf Graphic file (type pdf)
 File: 36-wid_files/figure-latex/unnamed-chunk-33-1.pdf Graphic file (type pdf)
 <use 36-wid_files/figure-latex/unnamed-chunk-33-1.pdf>
 [358]
-Overfull \vbox (1.27245pt too high) detected at line 13029
+Overfull \vbox (1.27245pt too high) detected at line 13049
  []
 
 
@@ -2439,7 +2443,7 @@ n/10 363
  []
 
 [363]
-Underfull \vbox (badness 1077) detected at line 13242
+Underfull \vbox (badness 1077) detected at line 13262
  []
 
 [364]
@@ -2460,23 +2464,23 @@ File: 36-wid_files/figure-latex/unnamed-chunk-53-1.pdf Graphic file (type pdf)
 [369
 
 ] [370]
-Underfull \vbox (badness 10000) detected at line 13566
+Underfull \vbox (badness 10000) detected at line 13586
  []
 
 [371] [372] [373]
-Underfull \vbox (badness 10000) detected at line 13722
+Underfull \vbox (badness 10000) detected at line 13742
  []
 
 [374]
-Overfull \vbox (1.09996pt too high) detected at line 13777
+Overfull \vbox (1.09996pt too high) detected at line 13797
  []
 
 [375]
-Underfull \vbox (badness 10000) detected at line 13827
+Underfull \vbox (badness 10000) detected at line 13847
  []
 
 [376]
-Underfull \vbox (badness 10000) detected at line 13900
+Underfull \vbox (badness 10000) detected at line 13920
  []
 
 [377]
@@ -2492,7 +2496,7 @@ File: 39-others_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf
 )
 <use 39-others_files/figure-latex/unnamed-chunk-5-1.pdf>
 
-Overfull \hbox (105.24597pt too wide) in paragraph at lines 14086--14087
+Overfull \hbox (105.24597pt too wide) in paragraph at lines 14106--14107
 \TU/HaranoAjiGothic-Medium.otf(0)/b/n/10 ■ \TU/lmss/m/n/10 30.6.1.0.1 Box Plot[
 ] [] 
  []
@@ -2543,7 +2547,7 @@ File: 41-eda_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type pdf)
 ]
 第32章
 [399] [400] [401]
-Underfull \hbox (badness 5847) in paragraph at lines 14587--14589
+Underfull \hbox (badness 5847) in paragraph at lines 14607--14609
 []\TU/lmr/m/n/10 type: country type, one of ‘countries’, ‘map_units’, ‘sovereig
 nty’,
  []
@@ -2555,7 +2559,7 @@ File: 48-worldmap_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type p
 df)
 <use 48-worldmap_files/figure-latex/unnamed-chunk-7-1.pdf>
 [402]
-Underfull \vbox (badness 10000) detected at line 14701
+Underfull \vbox (badness 10000) detected at line 14721
  []
 
 [403] [404]
@@ -2868,23 +2872,23 @@ Missing character: There is no و (U+0648) in font [lmmono10-italic]:!
 Missing character: There is no ک (U+06A9) in font [lmmono10-italic]:!
 Missing character: There is no ا (U+0627) in font [lmmono10-italic]:!
 [408]
-Underfull \vbox (badness 10000) detected at line 14986
+Underfull \vbox (badness 10000) detected at line 15006
  []
 
 
-Underfull \vbox (badness 10000) detected at line 14986
+Underfull \vbox (badness 10000) detected at line 15006
  []
 
 [409]
-Underfull \vbox (badness 10000) detected at line 14986
+Underfull \vbox (badness 10000) detected at line 15006
  []
 
 
-Underfull \vbox (badness 10000) detected at line 14986
+Underfull \vbox (badness 10000) detected at line 15006
  []
 
 [410]
-Underfull \vbox (badness 10000) detected at line 15008
+Underfull \vbox (badness 10000) detected at line 15028
  []
 
 [411]
@@ -2906,7 +2910,7 @@ File: 48-worldmap_files/figure-latex/unnamed-chunk-28-1.pdf Graphic file (type
 pdf)
 <use 48-worldmap_files/figure-latex/unnamed-chunk-28-1.pdf>
 [414]
-Underfull \vbox (badness 10000) detected at line 15131
+Underfull \vbox (badness 10000) detected at line 15151
  []
 
 [415]
@@ -2935,7 +2939,7 @@ File: 48-worldmap_files/figure-latex/unnamed-chunk-38-1.pdf Graphic file (type
 pdf)
 <use 48-worldmap_files/figure-latex/unnamed-chunk-38-1.pdf>
 
-Overfull \hbox (5.40096pt too wide) in paragraph at lines 15221--15223
+Overfull \hbox (5.40096pt too wide) in paragraph at lines 15241--15243
 []\TU/lmr/m/n/10 Usage: \TU/lmtt/m/n/10 gadm(country, level=1, path, version="l
 atest", resolution=1,
  []
@@ -2974,13 +2978,13 @@ df)
 [435
 
 ] [436]
-Overfull \hbox (55.36475pt too wide) in paragraph at lines 15742--15742
+Overfull \hbox (55.36475pt too wide) in paragraph at lines 15762--15762
 []\TU/lmtt/m/n/10 git config --global user.email "your@email.com" # GitHub  \TU
 /HaranoAjiMincho-Regular.otf(0)/m/n/10 に 登 録 し た メ ー ル ア ド レ  ス [] 
  []
 
 [437] [438]
-Overfull \hbox (60.61475pt too wide) in paragraph at lines 15828--15828
+Overfull \hbox (60.61475pt too wide) in paragraph at lines 15848--15848
 []\TU/lmtt/m/n/10 #  \TU/HaranoAjiMincho-Regular.otf(0)/m/n/10 わ た し の ア カ ウ ン 
 ト の 場 合 に は 、 コ ピ ー し た も の を 貼 り 付 け る と 、 上 の よ う に な り ま す  。 [] 
  []
@@ -2990,7 +2994,7 @@ Overfull \hbox (60.61475pt too wide) in paragraph at lines 15828--15828
 [447
 
 ]
-Overfull \hbox (17.19794pt too wide) in paragraph at lines 16342--16343
+Overfull \hbox (17.19794pt too wide) in paragraph at lines 16362--16363
 []\TU/lmr/m/n/10 Next, reference the labeled heading anywhere in the text using
  \TU/lmtt/m/n/10 \@ref(nice-label)\TU/lmr/m/n/10 ;
  []
@@ -3017,8 +3021,8 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  24051 strings out of 476919
- 541298 string characters out of 5821840
- 1179650 words of memory out of 5000000
+ 541374 string characters out of 5821840
+ 1179675 words of memory out of 5000000
  43590 multiletter control sequences out of 15000+600000
  410137 words of font info for 112 fonts, out of 8000000 for 9000
  1353 hyphenation exceptions out of 8191
