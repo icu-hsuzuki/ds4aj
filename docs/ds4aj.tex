@@ -8993,6 +8993,10 @@ R を使って、モデルについて表示される、数値の意味も説明
 
 数理モデルは、非常に多様なだけでなく（主要な）特徴は、分野ごとに必要度が異なることから、一般論として述べることには限界があります。H. ウィッカム（Hadley Wickham, el. al.）の R for Data Science の標準的な教科書でも、第一版には、基本的なことが含まれていましたが、\href{https://r4ds.hadley.nz}{第二版} には、数理モデルは含まれていません。\href{https://www.tmwr.org}{Tidy Modeling with R} を参照するようにとリンクがついています。
 
+ここでは、オープンデータを用いたデータサイエンス、データ分析を学んでいます。基本的な線形モデルについて紹介しますが、そのモデルが適切かを判断しようとすると、t-検定や、F-検定を適用することが多いのですが、いずれも、正規分布を仮定しています。実際の社会、様々な国や、地域などを比較して検討するときに、そのデータが、正規分布をしているかどうかは、それほど簡単に判断できるわけではありません。また、これも、ある統計的な道具を使って、正規分布に近いことがある程度保証できたとしても、それに、線形モデルを適用して、どの程度適切な結果が得られるか、個人的には判断が難しいと思います。さらに、相関関係やその強さはわかっても、線形モデルなどから、因果関係を導くことはできません。個人的には、線形の関係がみてとれる、程度で、止めておくことが大切ではないかと考えています。安易に、t-検定や、F-検定を用いて、結論を導くのは、差し控えるべきで、ある結果を導くときには、ほかにも、さまざまな根拠をもつことがたいせつだと、個人的には大切だと考えます。
+
+ということで、説明はしますが、自分は、統計がわからないから、データサイエンスはできないなどとは、言ってほしくないと思っています。統計の深い知識がなくても、データの様々な特徴を見て取ることは、可能だと思います。
+
 \hypertarget{ux6e96ux5099setup}{%
 \section{準備（Setup）}\label{ux6e96ux5099setup}}
 
@@ -9026,7 +9030,7 @@ R を使って、モデルについて表示される、数値の意味も説明
 \CommentTok{\#\textgreater{} x dplyr::lag()      masks stats::lag()}
 \CommentTok{\#\textgreater{} x yardstick::spec() masks readr::spec()}
 \CommentTok{\#\textgreater{} x recipes::step()   masks stats::step()}
-\CommentTok{\#\textgreater{} * Use tidymodels\_prefer() to resolve common conflicts.}
+\CommentTok{\#\textgreater{} * Search for functions across packages at https://www.tidymodels.org/find/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -9633,6 +9637,9 @@ Correlation Constant （相関係数）
 \hypertarget{ux4e16ux754cux958bux767aux6307ux6a19wdiux304bux3089ux306eux4f8b}{%
 \section{世界開発指標（WDI）からの例}\label{ux4e16ux754cux958bux767aux6307ux6a19wdiux304bux3089ux306eux4f8b}}
 
+\hypertarget{ux51faux751fux6642ux306eux5e73ux5747ux5bffux547dlife-expectancy-at-birth}{%
+\subsection{出生時の平均寿命（life expectancy at birth）}\label{ux51faux751fux6642ux306eux5e73ux5747ux5bffux547dlife-expectancy-at-birth}}
+
 \begin{itemize}
 \tightlist
 \item
@@ -9658,7 +9665,7 @@ Correlation Constant （相関係数）
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{==} \StringTok{"World"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(lifeExp) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{wdi\_lifeExp }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{==} \StringTok{"World"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{drop\_na}\NormalTok{(lifeExp) }\SpecialCharTok{|\textgreater{}}
   \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
 \CommentTok{\#\textgreater{} \textasciigrave{}geom\_smooth()\textasciigrave{} using formula = \textquotesingle{}y \textasciitilde{} x\textquotesingle{}}
 \end{Highlighting}
@@ -9668,10 +9675,10 @@ Correlation Constant （相関係数）
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(lifeExp }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summary}\NormalTok{()}
+\NormalTok{wdi\_lifeExp }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(lifeExp }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{summary}\NormalTok{()}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Call:}
-\CommentTok{\#\textgreater{} lm(formula = lifeExp \textasciitilde{} year, data = .)}
+\CommentTok{\#\textgreater{} lm(formula = lifeExp \textasciitilde{} year, data = wdi\_lifeExp)}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Residuals:}
 \CommentTok{\#\textgreater{}     Min      1Q  Median      3Q     Max }
@@ -9692,7 +9699,11 @@ Correlation Constant （相関係数）
 \end{Highlighting}
 \end{Shaded}
 
-\[lifeExp \sim -557.4 + 0.3123 \cdot year\] Each year, life expectancy at birth increases approximately 0.3123 years. R-squared of this model is 0.2392, and the model explains 24\%.
+\[lifeExp \sim -557.4 + 0.3123 \cdot year\]
+
+世界の平均寿命は、毎年、ほぼ、0.3123年ほど増加しているという傾向にあるということのようです。ただ、適合度は、0.2392 ですから、あまり良くはありません。これを使って、将来について予測するのは、適切ではないかもしれません。
+
+Each year, life expectancy at birth increases approximately 0.3123 years. R-squared of this model is 0.2392, and the model explains 24\%.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9720,19 +9731,19 @@ Correlation Constant （相関係数）
 \end{Shaded}
 
 \hypertarget{brics}{%
-\section{BRICs}\label{brics}}
+\section{BRICS}\label{brics}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mod\_brics }\OtherTok{\textless{}{-}}\NormalTok{ wdi\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Brazil"}\NormalTok{, }\StringTok{"Russian Federation"}\NormalTok{, }\StringTok{"India"}\NormalTok{, }\StringTok{"China"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(lifeExp) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(lifeExp }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summary}\NormalTok{()}
+\NormalTok{mod\_brics }\OtherTok{\textless{}{-}}\NormalTok{ wdi\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Brazil"}\NormalTok{, }\StringTok{"Russian Federation"}\NormalTok{, }\StringTok{"India"}\NormalTok{, }\StringTok{"China"}\NormalTok{, }\StringTok{"South Africa"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(lifeExp) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(lifeExp }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summary}\NormalTok{()}
 \NormalTok{mod\_brics}\SpecialCharTok{$}\NormalTok{r.squared}
-\CommentTok{\#\textgreater{} [1] 0.5666988}
+\CommentTok{\#\textgreater{} [1] 0.4717945}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Brazil"}\NormalTok{, }\StringTok{"Russian Federation"}\NormalTok{, }\StringTok{"India"}\NormalTok{, }\StringTok{"China"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(lifeExp) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{wdi\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Brazil"}\NormalTok{, }\StringTok{"Russian Federation"}\NormalTok{, }\StringTok{"India"}\NormalTok{, }\StringTok{"China"}\NormalTok{, }\StringTok{"South Africa"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(lifeExp) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ y}\SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -9741,7 +9752,7 @@ Correlation Constant （相関係数）
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Brazil"}\NormalTok{, }\StringTok{"Russian Federation"}\NormalTok{, }\StringTok{"India"}\NormalTok{, }\StringTok{"China"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(lifeExp) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{wdi\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Brazil"}\NormalTok{, }\StringTok{"Russian Federation"}\NormalTok{, }\StringTok{"India"}\NormalTok{, }\StringTok{"China"}\NormalTok{,}\StringTok{"South Africa"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(lifeExp) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year, lifeExp, }\AttributeTok{color =}\NormalTok{ country)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{shape =}\NormalTok{ country)) }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ y}\SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -9756,7 +9767,7 @@ Need to work
   \FunctionTok{lm}\NormalTok{(lifeExp }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year, }\AttributeTok{data =}\NormalTok{ df)}
 \NormalTok{\}}
 
-\NormalTok{by\_country }\OtherTok{\textless{}{-}}\NormalTok{ wdi\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Brazil"}\NormalTok{, }\StringTok{"Russian Federation"}\NormalTok{, }\StringTok{"India"}\NormalTok{, }\StringTok{"China"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(lifeExp) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(country) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{nest}\NormalTok{()}
+\NormalTok{by\_country }\OtherTok{\textless{}{-}}\NormalTok{ wdi\_lifeExp }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Brazil"}\NormalTok{, }\StringTok{"Russian Federation"}\NormalTok{, }\StringTok{"India"}\NormalTok{, }\StringTok{"China"}\NormalTok{,}\StringTok{"South Africa"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(lifeExp) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(country) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{nest}\NormalTok{()}
 
 \NormalTok{by\_country }\OtherTok{\textless{}{-}}\NormalTok{ by\_country }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{model =} \FunctionTok{map}\NormalTok{(data, country\_model))}
@@ -9771,8 +9782,8 @@ Need to work
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{government-expenditure-of-gdp}{%
-\section{Government Expenditure, (\% of GDP)}\label{government-expenditure-of-gdp}}
+\hypertarget{ux653fux5e9cux652fux51faux56fdux5185ux7dcfux751fux7523ux6bd4government-expenditure-of-gdp}{%
+\section{政府支出（国内総生産比）Government Expenditure, (\% of GDP)}\label{ux653fux5e9cux652fux51faux56fdux5185ux7dcfux751fux7523ux6bd4government-expenditure-of-gdp}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10001,17 +10012,17 @@ Need to work
 
 \begin{itemize}
 \item
-  NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$)
+  NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) - 国際総生産
 \item
-  SP.DYN.LE00.IN: Life expectancy at birth, total (years)
+  SP.DYN.LE00.IN: Life expectancy at birth, total (years) - 出生時寿命
 \item
-  SP.POP.TOTL: Population, total
+  SP.POP.TOTL: Population, total - 人口
 \item
-  GB.XPD.RSDV.GD.ZS: Research and development expenditure (\% of GDP) - 2
+  GB.XPD.RSDV.GD.ZS: Research and development expenditure (\% of GDP) - 2 - 研究開発
 \item
-  MS.MIL.XPND.GD.ZS: Military expenditure (\% of GDP) - 6
+  MS.MIL.XPND.GD.ZS: Military expenditure (\% of GDP) - 6 - 軍事費
 \item
-  SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (\% of GDP)
+  SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (\% of GDP) - 教育費
 \end{itemize}
 
 \begin{Shaded}
@@ -10057,7 +10068,18 @@ Need to work
 \end{Highlighting}
 \end{Shaded}
 
-SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government expenditure) SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (\% of GDP) SE.XPD.PRIM.PC.ZS: Government expenditure per student, primary (\% of GDP per capita) MS.MIL.XPND.ZS: Military expenditure (\% of general government expenditure) SE.XPD.TERT.ZS: Expenditure on tertiary education (\% of government expenditure on education)
+SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government expenditure)
+
+\begin{itemize}
+\item
+  SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (\% of GDP)
+\item
+  SE.XPD.PRIM.PC.ZS: Government expenditure per student, primary (\% of GDP per capita)
+\item
+  MS.MIL.XPND.ZS: Military expenditure (\% of general government expenditure)
+\item
+  SE.XPD.TERT.ZS: Expenditure on tertiary education (\% of government expenditure on education)
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10074,7 +10096,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(education, lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x, }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se=}\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{wdi\_world }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(education, lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x, }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se=}\ConstantTok{FALSE}\NormalTok{)}
 \CommentTok{\#\textgreater{} Warning: Removed 4030 rows containing non{-}finite values}
 \CommentTok{\#\textgreater{} (\textasciigrave{}stat\_smooth()\textasciigrave{}).}
 \CommentTok{\#\textgreater{} Warning: Removed 4030 rows containing missing values}
@@ -10086,7 +10108,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(education, lifeExp) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(education, lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x, }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se=}\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{wdi\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{drop\_na}\NormalTok{(education, lifeExp) }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(education, lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x, }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se=}\ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10094,13 +10116,13 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world\_el }\OtherTok{\textless{}{-}}\NormalTok{ wdi\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(country, year, education, lifeExp, gdpPcap, pop, research, military, region, income) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{(education, lifeExp)}
+\NormalTok{wdi\_world\_el }\OtherTok{\textless{}{-}}\NormalTok{ wdi\_world }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(country, year, education, lifeExp, gdpPcap, pop, research, military, region, income) }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{drop\_na}\NormalTok{(education, lifeExp)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world\_el }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(education)) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{()}
+\NormalTok{wdi\_world\_el }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(education)) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{()}
 \CommentTok{\#\textgreater{} \textasciigrave{}stat\_bin()\textasciigrave{} using \textasciigrave{}bins = 30\textasciigrave{}. Pick better value with}
 \CommentTok{\#\textgreater{} \textasciigrave{}binwidth\textasciigrave{}.}
 \end{Highlighting}
@@ -10110,7 +10132,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world\_el }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(year}\SpecialCharTok{==}\DecValTok{2020}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ income, }\AttributeTok{y =}\NormalTok{ education, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
+\NormalTok{wdi\_world\_el }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(year}\SpecialCharTok{==}\DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ income, }\AttributeTok{y =}\NormalTok{ education, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10118,7 +10140,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world\_el }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(year}\SpecialCharTok{==}\DecValTok{2020}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(education))}
+\NormalTok{wdi\_world\_el }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(year}\SpecialCharTok{==}\DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(education))}
 \CommentTok{\#\textgreater{} \# A tibble: 156 x 10}
 \CommentTok{\#\textgreater{}    country    year education lifeExp gdpPcap    pop research}
 \CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}     \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}}
@@ -10140,7 +10162,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world\_el }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(year}\SpecialCharTok{==}\DecValTok{2020}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(education))}
+\NormalTok{wdi\_world\_el }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(year}\SpecialCharTok{==}\DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(education))}
 \CommentTok{\#\textgreater{} \# A tibble: 156 x 10}
 \CommentTok{\#\textgreater{}    country    year education lifeExp gdpPcap    pop research}
 \CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}     \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}}
@@ -10162,10 +10184,11 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world\_el }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(year}\SpecialCharTok{==}\DecValTok{2020}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(gdpPcap }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education, .)}
+\NormalTok{wdi\_world\_el }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(year}\SpecialCharTok{==}\DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(gdpPcap }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education, }\AttributeTok{data =}\NormalTok{ \_)}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Call:}
-\CommentTok{\#\textgreater{} lm(formula = gdpPcap \textasciitilde{} education, data = .)}
+\CommentTok{\#\textgreater{} lm(formula = gdpPcap \textasciitilde{} education, data = filter(wdi\_world\_el, }
+\CommentTok{\#\textgreater{}     year == 2020))}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Coefficients:}
 \CommentTok{\#\textgreater{} (Intercept)    education  }
@@ -10175,7 +10198,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world\_el }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(year}\SpecialCharTok{==}\DecValTok{2020}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(gdpPcap }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{glance}\NormalTok{()}
+\NormalTok{wdi\_world\_el }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(year}\SpecialCharTok{==}\DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(gdpPcap }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{glance}\NormalTok{()}
 \CommentTok{\#\textgreater{} \# A tibble: 1 x 12}
 \CommentTok{\#\textgreater{}   r.squared adj.r.squared  sigma statistic p.value    df}
 \CommentTok{\#\textgreater{}       \textless{}dbl\textgreater{}         \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
@@ -10187,7 +10210,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world\_el }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(lifeExp }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education }\SpecialCharTok{+}\NormalTok{ research }\SpecialCharTok{+}\NormalTok{ military, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{glance}\NormalTok{()}
+\NormalTok{wdi\_world\_el }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(lifeExp }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education }\SpecialCharTok{+}\NormalTok{ research }\SpecialCharTok{+}\NormalTok{ military, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{glance}\NormalTok{()}
 \CommentTok{\#\textgreater{} \# A tibble: 1 x 12}
 \CommentTok{\#\textgreater{}   r.squared adj.r.squared sigma statistic   p.value    df}
 \CommentTok{\#\textgreater{}       \textless{}dbl\textgreater{}         \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
@@ -10199,7 +10222,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world\_el }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(lifeExp }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education }\SpecialCharTok{+}\NormalTok{ research }\SpecialCharTok{+}\NormalTok{ military, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{tidy}\NormalTok{()}
+\NormalTok{wdi\_world\_el }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(lifeExp }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education }\SpecialCharTok{+}\NormalTok{ research }\SpecialCharTok{+}\NormalTok{ military, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{tidy}\NormalTok{()}
 \CommentTok{\#\textgreater{} \# A tibble: 4 x 5}
 \CommentTok{\#\textgreater{}   term        estimate std.error statistic   p.value}
 \CommentTok{\#\textgreater{}   \textless{}chr\textgreater{}          \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}}
@@ -10214,7 +10237,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world\_el }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(gdpPcap }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education }\SpecialCharTok{+}\NormalTok{ research }\SpecialCharTok{+}\NormalTok{ military, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{tidy}\NormalTok{()}
+\NormalTok{wdi\_world\_el }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(gdpPcap }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education }\SpecialCharTok{+}\NormalTok{ research }\SpecialCharTok{+}\NormalTok{ military, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{tidy}\NormalTok{()}
 \CommentTok{\#\textgreater{} \# A tibble: 4 x 5}
 \CommentTok{\#\textgreater{}   term        estimate std.error statistic   p.value}
 \CommentTok{\#\textgreater{}   \textless{}chr\textgreater{}          \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}}
@@ -10227,7 +10250,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wdi\_world\_el }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(gdpPcap }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education }\SpecialCharTok{+}\NormalTok{ research }\SpecialCharTok{+}\NormalTok{ military, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{glance}\NormalTok{()}
+\NormalTok{wdi\_world\_el }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(gdpPcap }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education }\SpecialCharTok{+}\NormalTok{ research }\SpecialCharTok{+}\NormalTok{ military, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{glance}\NormalTok{()}
 \CommentTok{\#\textgreater{} \# A tibble: 1 x 12}
 \CommentTok{\#\textgreater{}   r.squared adj.r.squared  sigma statistic   p.value    df}
 \CommentTok{\#\textgreater{}       \textless{}dbl\textgreater{}         \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
@@ -10276,6 +10299,14 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
     broom: \url{https://cran.r-project.org/web/packages/broom/index.html}
   \item
     Introduction to broom: \url{https://cran.r-project.org/web/packages/broom/vignettes/broom.html}
+  \end{itemize}
+\item
+  統計学の時間
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://bellcurve.jp/statistics/course/}
   \end{itemize}
 \end{itemize}
 

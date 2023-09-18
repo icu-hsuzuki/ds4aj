@@ -20,6 +20,10 @@ R を使って、モデルについて表示される、数値の意味も説明
 
 数理モデルは、非常に多様なだけでなく（主要な）特徴は、分野ごとに必要度が異なることから、一般論として述べることには限界があります。H. ウィッカム（Hadley Wickham, el. al.）の R for Data Science の標準的な教科書でも、第一版には、基本的なことが含まれていましたが、[第二版](https://r4ds.hadley.nz) には、数理モデルは含まれていません。[Tidy Modeling with R](https://www.tmwr.org) を参照するようにとリンクがついています。
 
+ここでは、オープンデータを用いたデータサイエンス、データ分析を学んでいます。基本的な線形モデルについて紹介しますが、そのモデルが適切かを判断しようとすると、t-検定や、F-検定を適用することが多いのですが、いずれも、正規分布を仮定しています。実際の社会、様々な国や、地域などを比較して検討するときに、そのデータが、正規分布をしているかどうかは、それほど簡単に判断できるわけではありません。また、これも、ある統計的な道具を使って、正規分布に近いことがある程度保証できたとしても、それに、線形モデルを適用して、どの程度適切な結果が得られるか、個人的には判断が難しいと思います。さらに、相関関係やその強さはわかっても、線形モデルなどから、因果関係を導くことはできません。個人的には、線形の関係がみてとれる、程度で、止めておくことが大切ではないかと考えています。安易に、t-検定や、F-検定を用いて、結論を導くのは、差し控えるべきで、ある結果を導くときには、ほかにも、さまざまな根拠をもつことがたいせつだと、個人的には大切だと考えます。
+
+ということで、説明はしますが、自分は、統計がわからないから、データサイエンスはできないなどとは、言ってほしくないと思っています。統計の深い知識がなくても、データの様々な特徴を見て取ることは、可能だと思います。
+
 ## 準備（Setup）
 
 
@@ -52,7 +56,7 @@ library(tidymodels)
 #> ✖ dplyr::lag()      masks stats::lag()
 #> ✖ yardstick::spec() masks readr::spec()
 #> ✖ recipes::step()   masks stats::step()
-#> • Learn how to get started at https://www.tidymodels.org/start/
+#> • Use tidymodels_prefer() to resolve common conflicts.
 ```
 
 Tidymodels パッケージを使いますが、これは、Tidyverse と同様に、一つのパッケージではなく、パッケージ群を表します。また、ここでは、ほんの一部しか使いませんが、一応、後々のために、インストールをし、使えるように `library(tidymodels)` で、読み込んでおいてください。興味のあるかたのために、Tidymodels サイトへのリンクを付けておきます。
@@ -593,6 +597,8 @@ df_iris |> select(-5) |> cor()
 
 ## 世界開発指標（WDI）からの例
 
+### 出生時の平均寿命（life expectancy at birth）
+
 -   SP.DYN.LE00.IN: Life expectancy at birth, total (years)
 
 
@@ -616,7 +622,7 @@ wdi_lifeExp <- WDI(indicator = c(lifeExp = "SP.DYN.LE00.IN"))
 
 
 ```r
-wdi_lifeExp %>% filter(country == "World") %>% drop_na(lifeExp) %>%
+wdi_lifeExp |> filter(country == "World") |> drop_na(lifeExp) |>
   ggplot(aes(year, lifeExp)) + geom_point() + geom_smooth(method = "lm", se = FALSE)
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
@@ -625,10 +631,10 @@ wdi_lifeExp %>% filter(country == "World") %>% drop_na(lifeExp) %>%
 
 
 ```r
-wdi_lifeExp %>% lm(lifeExp ~ year, .) %>% summary()
+wdi_lifeExp |> lm(lifeExp ~ year, data = _) |> summary()
 #> 
 #> Call:
-#> lm(formula = lifeExp ~ year, data = .)
+#> lm(formula = lifeExp ~ year, data = wdi_lifeExp)
 #> 
 #> Residuals:
 #>     Min      1Q  Median      3Q     Max 
@@ -648,7 +654,11 @@ wdi_lifeExp %>% lm(lifeExp ~ year, .) %>% summary()
 #> F-statistic:  4928 on 1 and 15864 DF,  p-value: < 2.2e-16
 ```
 
-$$lifeExp \sim -557.4 + 0.3123 \cdot year$$ Each year, life expectancy at birth increases approximately 0.3123 years. R-squared of this model is 0.2392, and the model explains 24%.
+$$lifeExp \sim -557.4 + 0.3123 \cdot year$$
+
+世界の平均寿命は、毎年、ほぼ、0.3123年ほど増加しているという傾向にあるということのようです。ただ、適合度は、0.2392 ですから、あまり良くはありません。これを使って、将来について予測するのは、適切ではないかもしれません。
+
+Each year, life expectancy at birth increases approximately 0.3123 years. R-squared of this model is 0.2392, and the model explains 24%.
 
 
 ```r
@@ -674,18 +684,18 @@ wdi_lifeExp %>% filter(country == "World", year >= 1962, year <= 2019) %>% drop_
 #> F-statistic:  6224 on 1 and 56 DF,  p-value: < 2.2e-16
 ```
 
-## BRICs
+## BRICS
 
 
 ```r
-mod_brics <- wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China")) %>% drop_na(lifeExp) %>% lm(lifeExp ~ year, .) %>% summary()
+mod_brics <- wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) %>% drop_na(lifeExp) %>% lm(lifeExp ~ year, .) %>% summary()
 mod_brics$r.squared
-#> [1] 0.5666988
+#> [1] 0.4717945
 ```
 
 
 ```r
-wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China")) %>% drop_na(lifeExp) %>%
+wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) %>% drop_na(lifeExp) %>%
   ggplot(aes(year, lifeExp)) + geom_point() + geom_smooth(formula = y~x, method = "lm", se = FALSE)
 ```
 
@@ -693,7 +703,7 @@ wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "
 
 
 ```r
-wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China")) %>% drop_na(lifeExp) %>%
+wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China","South Africa")) %>% drop_na(lifeExp) %>%
   ggplot(aes(year, lifeExp, color = country)) + geom_point(aes(shape = country)) + geom_smooth(formula = y~x, method = "lm", se = FALSE)
 ```
 
@@ -707,7 +717,7 @@ country_model <- function(df) {
   lm(lifeExp ~ year, data = df)
 }
 
-by_country <- wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China")) %>% drop_na(lifeExp) %>% group_by(country) %>% nest()
+by_country <- wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China","South Africa")) %>% drop_na(lifeExp) %>% group_by(country) %>% nest()
 
 by_country <- by_country %>% 
   mutate(model = map(data, country_model))
@@ -721,7 +731,7 @@ by_country %>%
   unnest(glance)
 ```
 
-## Government Expenditure, (% of GDP)
+## 政府支出（国内総生産比）Government Expenditure, (% of GDP)
 
 
 ```r
@@ -945,17 +955,17 @@ wdi_cache$series %>% filter(grepl("expenditure", name), grepl("% of GDP", name))
 #> 28                                                                                                               UNESCO Institute for Statistics
 ```
 
--   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$)
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) - 国際総生産
 
--   SP.DYN.LE00.IN: Life expectancy at birth, total (years)
+-   SP.DYN.LE00.IN: Life expectancy at birth, total (years) - 出生時寿命
 
--   SP.POP.TOTL: Population, total
+-   SP.POP.TOTL: Population, total - 人口
 
--   GB.XPD.RSDV.GD.ZS: Research and development expenditure (% of GDP) - 2
+-   GB.XPD.RSDV.GD.ZS: Research and development expenditure (% of GDP) - 2 - 研究開発
 
--   MS.MIL.XPND.GD.ZS: Military expenditure (% of GDP) - 6
+-   MS.MIL.XPND.GD.ZS: Military expenditure (% of GDP) - 6 - 軍事費
 
--   SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (% of GDP)
+-   SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (% of GDP) - 教育費
 
 
 ```r
@@ -1001,7 +1011,15 @@ wdi_world
 #> #   latitude <dbl>, income <chr>, lending <chr>
 ```
 
-SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (% of government expenditure) SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (% of GDP) SE.XPD.PRIM.PC.ZS: Government expenditure per student, primary (% of GDP per capita) MS.MIL.XPND.ZS: Military expenditure (% of general government expenditure) SE.XPD.TERT.ZS: Expenditure on tertiary education (% of government expenditure on education)
+SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (% of government expenditure)
+
+-   SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (% of GDP)
+
+-   SE.XPD.PRIM.PC.ZS: Government expenditure per student, primary (% of GDP per capita)
+
+-   MS.MIL.XPND.ZS: Military expenditure (% of general government expenditure)
+
+-   SE.XPD.TERT.ZS: Expenditure on tertiary education (% of government expenditure on education)
 
 
 ```r
@@ -1017,7 +1035,7 @@ mod_e <- lm(lifeExp ~ education, wdi_world); mod_e
 
 
 ```r
-wdi_world %>% ggplot(aes(education, lifeExp)) + geom_point() + geom_smooth(formula = y ~ x, method = "lm", se=FALSE)
+wdi_world |> ggplot(aes(education, lifeExp)) + geom_point() + geom_smooth(formula = y ~ x, method = "lm", se=FALSE)
 #> Warning: Removed 4030 rows containing non-finite values
 #> (`stat_smooth()`).
 #> Warning: Removed 4030 rows containing missing values
@@ -1028,19 +1046,19 @@ wdi_world %>% ggplot(aes(education, lifeExp)) + geom_point() + geom_smooth(formu
 
 
 ```r
-wdi_world %>% filter(income != "Aggregates") %>% drop_na(education, lifeExp) %>% ggplot(aes(education, lifeExp)) + geom_point() + geom_smooth(formula = y ~ x, method = "lm", se=FALSE)
+wdi_world %>% filter(income != "Aggregates") |> drop_na(education, lifeExp) |> ggplot(aes(education, lifeExp)) + geom_point() + geom_smooth(formula = y ~ x, method = "lm", se=FALSE)
 ```
 
 ![](28-modeling_files/figure-epub3/unnamed-chunk-55-1.png)<!-- -->
 
 
 ```r
-wdi_world_el <- wdi_world %>% select(country, year, education, lifeExp, gdpPcap, pop, research, military, region, income) %>% filter(income != "Aggregates") %>% drop_na(education, lifeExp)
+wdi_world_el <- wdi_world %>% select(country, year, education, lifeExp, gdpPcap, pop, research, military, region, income) |> filter(income != "Aggregates") |> drop_na(education, lifeExp)
 ```
 
 
 ```r
-wdi_world_el %>% ggplot(aes(education)) + geom_histogram()
+wdi_world_el |> ggplot(aes(education)) + geom_histogram()
 #> `stat_bin()` using `bins = 30`. Pick better value with
 #> `binwidth`.
 ```
@@ -1049,14 +1067,14 @@ wdi_world_el %>% ggplot(aes(education)) + geom_histogram()
 
 
 ```r
-wdi_world_el %>% filter(year==2020) %>% ggplot(aes(x = income, y = education, fill = income)) + geom_boxplot()
+wdi_world_el |> filter(year==2020) |> ggplot(aes(x = income, y = education, fill = income)) + geom_boxplot()
 ```
 
 ![](28-modeling_files/figure-epub3/unnamed-chunk-58-1.png)<!-- -->
 
 
 ```r
-wdi_world_el %>% filter(year==2020) %>% arrange(desc(education))
+wdi_world_el |> filter(year==2020) |> arrange(desc(education))
 #> # A tibble: 156 × 10
 #>    country    year education lifeExp gdpPcap    pop research
 #>    <chr>     <dbl>     <dbl>   <dbl>   <dbl>  <dbl>    <dbl>
@@ -1077,7 +1095,7 @@ wdi_world_el %>% filter(year==2020) %>% arrange(desc(education))
 
 
 ```r
-wdi_world_el %>% filter(year==2020) %>% arrange(desc(education))
+wdi_world_el |> filter(year==2020) |> arrange(desc(education))
 #> # A tibble: 156 × 10
 #>    country    year education lifeExp gdpPcap    pop research
 #>    <chr>     <dbl>     <dbl>   <dbl>   <dbl>  <dbl>    <dbl>
@@ -1098,10 +1116,11 @@ wdi_world_el %>% filter(year==2020) %>% arrange(desc(education))
 
 
 ```r
-wdi_world_el %>% filter(year==2020) %>% lm(gdpPcap ~ education, .)
+wdi_world_el |> filter(year==2020) |> lm(gdpPcap ~ education, data = _)
 #> 
 #> Call:
-#> lm(formula = gdpPcap ~ education, data = .)
+#> lm(formula = gdpPcap ~ education, data = filter(wdi_world_el, 
+#>     year == 2020))
 #> 
 #> Coefficients:
 #> (Intercept)    education  
@@ -1110,7 +1129,7 @@ wdi_world_el %>% filter(year==2020) %>% lm(gdpPcap ~ education, .)
 
 
 ```r
-wdi_world_el %>% filter(year==2020) %>% lm(gdpPcap ~ education, .) %>% glance()
+wdi_world_el |> filter(year==2020) |> lm(gdpPcap ~ education, data = _) |> glance()
 #> # A tibble: 1 × 12
 #>   r.squared adj.r.squared  sigma statistic p.value    df
 #>       <dbl>         <dbl>  <dbl>     <dbl>   <dbl> <dbl>
@@ -1121,7 +1140,7 @@ wdi_world_el %>% filter(year==2020) %>% lm(gdpPcap ~ education, .) %>% glance()
 
 
 ```r
-wdi_world_el %>% lm(lifeExp ~ education + research + military, .) %>% glance()
+wdi_world_el |> lm(lifeExp ~ education + research + military, data = _) |> glance()
 #> # A tibble: 1 × 12
 #>   r.squared adj.r.squared sigma statistic   p.value    df
 #>       <dbl>         <dbl> <dbl>     <dbl>     <dbl> <dbl>
@@ -1132,7 +1151,7 @@ wdi_world_el %>% lm(lifeExp ~ education + research + military, .) %>% glance()
 
 
 ```r
-wdi_world_el %>% lm(lifeExp ~ education + research + military, .) %>% tidy()
+wdi_world_el |> lm(lifeExp ~ education + research + military, data = _) |> tidy()
 #> # A tibble: 4 × 5
 #>   term        estimate std.error statistic   p.value
 #>   <chr>          <dbl>     <dbl>     <dbl>     <dbl>
@@ -1146,7 +1165,7 @@ $$lifeExp \sim 70.22 + 0.08\cdot education + 3.84 \cdot research - 0.07 \cdot mi
 
 
 ```r
-wdi_world_el %>% lm(gdpPcap ~ education + research + military, .) %>% tidy()
+wdi_world_el |> lm(gdpPcap ~ education + research + military, data = _) |> tidy()
 #> # A tibble: 4 × 5
 #>   term        estimate std.error statistic   p.value
 #>   <chr>          <dbl>     <dbl>     <dbl>     <dbl>
@@ -1158,7 +1177,7 @@ wdi_world_el %>% lm(gdpPcap ~ education + research + military, .) %>% tidy()
 
 
 ```r
-wdi_world_el %>% lm(gdpPcap ~ education + research + military, .) %>% glance()
+wdi_world_el |> lm(gdpPcap ~ education + research + military, data = _) |> glance()
 #> # A tibble: 1 × 12
 #>   r.squared adj.r.squared  sigma statistic   p.value    df
 #>       <dbl>         <dbl>  <dbl>     <dbl>     <dbl> <dbl>
@@ -1189,6 +1208,8 @@ mod_r <- lm(lifeExp ~ research, wdi_world); mod_e
     -   <https://www.tidymodels.org>
     -   broom: <https://cran.r-project.org/web/packages/broom/index.html>
     -   Introduction to broom: <https://cran.r-project.org/web/packages/broom/vignettes/broom.html>
+-   統計学の時間
+    -   <https://bellcurve.jp/statistics/course/>
 
 ### モデル概要に現れる数値について
 
