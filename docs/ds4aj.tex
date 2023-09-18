@@ -745,7 +745,7 @@ R には、WDI のデータを取得する R のツール（パッケージ）\t
 \FunctionTok{Sys.setenv}\NormalTok{(}\AttributeTok{LANG =} \StringTok{"en"}\NormalTok{) }\CommentTok{\# 言語を英語に}
 \FunctionTok{library}\NormalTok{(tidyverse)      }\CommentTok{\# tidyverse パッケージを読み込みます}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -4927,7 +4927,7 @@ R は、さまざまな分野で、統計分析に利用されてきたことも
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -5499,7 +5499,7 @@ WDI の使い方は、世界銀行の部分で紹介しますが、はじめて�
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -7241,7 +7241,7 @@ ggplot2は、グラフィックスの生成に関する「Grammar of Graphics（
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -8063,7 +8063,7 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -8983,13 +8983,15 @@ setdiff は差集合ですから、df\_1 に入っていて、df\_3 には入っ
 
 ここでは、もう少し一般的な分布に関して使われる、数理モデルについて学びます。その中でも、基本的な、二変数に関する、線形モデルについてすこし、ていねいにみていきたいと思います。
 
-簡単にいうと、X と Y という変数があったときに、X が増えると、Y も増えるとか、X が増加すると、Y は減少するという傾向をみたり、それが、どの程度、直線的に、増加、減少しているかを、\(X = b + m\cdot X\) と、直線の方程式で近似し、それが、どの程度、実際のデータに近いかを表すというようなことです。
+簡単にいうと、X と Y という変数があったときに、X が増えると、Y も増えるとか、減るとか、X が増加すると、Y も増加するとか、減少するとかいう傾向をみたり、それが、どの程度、直線的に、増加、減少しているかを、\(Y = b + m\cdot X\) と、直線の方程式で近似し（おおまかに表し）、それが、どの程度、実際のデータに近いかを表現する（あらわす数値をあたえる）というようなことです。
 
-R では、\(b\)（Y 切片）は、intercept（切片）として表示され、\(m\)（直線の傾き）は、slope（傾き）として表示されます。
+Y を X の関数で表す（X を定めると、Y を計算することができる）とも表現され、X を独立変数（independent variable）、Y を従属変数（dependent variable）と呼びます。むろん、X と Y の役割を逆にすることも可能なので、便宜的な名前です。また、統計学では、Y を目的変数（response variable）、X を説明変数（explanatory variable）と呼ぶ呼び方もされます。ただ、これらは、X によって、Y が定まるという、因果関係を表すという考え方が背景にあるのですが、傾向や関係性を見るという観点からは、これらの名前を使うことを避けたほうがよいとも言えますので、ここでは、独立変数、従属変数、説明変数、目的変数という言い方は、できるだけ避けたいと思います。
 
-R を使って、モデルについて表示される、数値の意味も説明したいと思います。
+R では、\(b\)（Y 切片）は、intercept（切片）として表示され、\(m\)（直線の傾き）は、（変数　X に関する）slope（傾き）として表示されます。
 
-数理モデルは、非常に多様なだけでなく（主要な）特徴は、分野ごとに必要度が異なることから、一般論として述べることには限界があります。H. ウィッカム（Hadley Wickham, el. al.）の R for Data Science の標準的な教科書でも、第一版には、基本的なことが含まれていましたが、\href{https://r4ds.hadley.nz}{第二版} では、数理モデルは含まれていません。\href{https://www.tmwr.org}{Tidy Modeling with R} を参照するようにとリンクがついています。
+R を使って、モデルについて表示される、数値の意味も説明したいと思います。数式での表現も書きますが、式を正確に覚えたりするよりも、大まかな意味を理解することを心がけてください。
+
+数理モデルは、非常に多様なだけでなく（主要な）特徴は、分野ごとに必要度が異なることから、一般論として述べることには限界があります。H. ウィッカム（Hadley Wickham, el. al.）の R for Data Science の標準的な教科書でも、第一版には、基本的なことが含まれていましたが、\href{https://r4ds.hadley.nz}{第二版} には、数理モデルは含まれていません。\href{https://www.tmwr.org}{Tidy Modeling with R} を参照するようにとリンクがついています。
 
 \hypertarget{ux6e96ux5099setup}{%
 \section{準備（Setup）}\label{ux6e96ux5099setup}}
@@ -8998,7 +9000,7 @@ R を使って、モデルについて表示される、数値の意味も説明
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -9013,7 +9015,7 @@ R を使って、モデルについて表示される、数値の意味も説明
 \CommentTok{\#\textgreater{} {-}{-} Attaching packages {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-} tidymodels 1.1.1 {-}{-}}
 \CommentTok{\#\textgreater{} v broom        1.0.5     v rsample      1.2.0}
 \CommentTok{\#\textgreater{} v dials        1.2.0     v tune         1.1.2}
-\CommentTok{\#\textgreater{} v infer        1.0.4     v workflows    1.1.3}
+\CommentTok{\#\textgreater{} v infer        1.0.5     v workflows    1.1.3}
 \CommentTok{\#\textgreater{} v modeldata    1.2.0     v workflowsets 1.0.1}
 \CommentTok{\#\textgreater{} v parsnip      1.1.1     v yardstick    1.2.0}
 \CommentTok{\#\textgreater{} v recipes      1.0.8     }
@@ -9024,11 +9026,11 @@ R を使って、モデルについて表示される、数値の意味も説明
 \CommentTok{\#\textgreater{} x dplyr::lag()      masks stats::lag()}
 \CommentTok{\#\textgreater{} x yardstick::spec() masks readr::spec()}
 \CommentTok{\#\textgreater{} x recipes::step()   masks stats::step()}
-\CommentTok{\#\textgreater{} * Dig deeper into tidy modeling with R at https://www.tmwr.org}
+\CommentTok{\#\textgreater{} * Use tidymodels\_prefer() to resolve common conflicts.}
 \end{Highlighting}
 \end{Shaded}
 
-Tidymodels を使いますが、これは、Tidyverse と同様に、一つのパッケージではなく、パッケージ群を表します。また、ここでは、ほんの一部しか使いませんが、一応、後々のために、インストールをし、使えるように \texttt{library(tidymodels)} で、読み込んでおいてください。
+Tidymodels パッケージを使いますが、これは、Tidyverse と同様に、一つのパッケージではなく、パッケージ群を表します。また、ここでは、ほんの一部しか使いませんが、一応、後々のために、インストールをし、使えるように \texttt{library(tidymodels)} で、読み込んでおいてください。興味のあるかたのために、Tidymodels サイトへのリンクを付けておきます。
 
 \begin{itemize}
 \tightlist
@@ -9051,7 +9053,7 @@ Tidymodels を使いますが、これは、Tidyverse と同様に、一つの�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris0 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Petal.Width, Petal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Petal.Width, Petal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -9059,19 +9061,19 @@ Tidymodels を使いますが、これは、Tidyverse と同様に、一つの�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris0 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Width, Sepal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Width, Sepal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{28-modeling_files/figure-latex/unnamed-chunk-4-1.pdf}
 
-どちらも、幅（はなびらの幅や、がくの幅）が大きくなると、長さ（はなびらの長さや、がくの長さ）が大きくなる傾向があるように見えます。しかし、はなびらの散布図は、それが明らかにみてとれるだけでなく、ある直線にそって増加しているように見えます。がくの散布図では、その傾向が明らかではなく、直線にそって増加しているとまでは言えないように見えます。
+どちらも、幅（はなびらの幅や、がくの幅）が大きくなると、長さ（はなびらの長さや、がくの長さ）が大きくなる傾向があるように見えます。それは、なんとなく直感的にも自然ですよね。種類が同じ植物のはなびらや、がくの形は、だいたい同じ（相似形にちかい）と思われるからです。（直感はとてもたいせつです。直感とあわないことがあれば、立ち止まって考えて見るようにしてください。）しかし、はなびらの散布図は、それが明らかにみてとれるだけでなく、ある直線にそって（または直線的に）増加しているように見えます。がくの散布図では、その傾向が明らかではなく（ぼんやりとしていて）、直線にそって増加しているとまでは言えないように見えます。
 
-すこし、違った、見方をする方もおられるかもしれません。それを、数値的に表現するのが、線形モデルを使った表現です。まずは、それぞれに、増加傾向をあらわす直線を描いてみましょう。これは、ある一定の方法で描いたものですが、いまは、大体、そんなものだと考えてくださって構いません。
+すこし、違った、見方をする方もおられるかもしれません。定義を明確にすることで、合意ができるように、それを、数値的に表現するのが、線形モデルを使った表現です。まずは、それぞれに、増加傾向をあらわす直線を描いてみましょう。これは、ある一定の方法で描いたもので、歴史的背景から、回帰直線（regression line）と呼ばれすが、いまは、大体、そんなものだと考えてくださって構いません。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris0 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Petal.Width, Petal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method=}\StringTok{"lm"}\NormalTok{,}\AttributeTok{formula=}\NormalTok{y}\SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\AttributeTok{se=}\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Petal.Width, Petal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method=}\StringTok{"lm"}\NormalTok{,}\AttributeTok{formula=}\NormalTok{y}\SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\AttributeTok{se=}\ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -9079,23 +9081,28 @@ Tidymodels を使いますが、これは、Tidyverse と同様に、一つの�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris0 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Width, Sepal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method=}\StringTok{"lm"}\NormalTok{,}\AttributeTok{formula=}\NormalTok{y}\SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\AttributeTok{se=}\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Sepal.Width, Sepal.Length)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method=}\StringTok{"lm"}\NormalTok{,}\AttributeTok{formula=}\NormalTok{y}\SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\AttributeTok{se=}\ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{28-modeling_files/figure-latex/unnamed-chunk-6-1.pdf}
 
-たしかに、この二つの散布図と、直線を見ると、幅が増加すると長さも増加する傾向にあるようです。そこで、今度は、直線に近い、増加傾向にあると仮定して、適切な直線の方程式を求めてみます。それは、次のようにして求めることができます。
+たしかに、この二つの散布図と、直線を見ると、それぞれ（はなびらや、がくの）幅が増加すると長さも増加する傾向にあるようです。そこで、今度は、直線に近い、増加傾向にあると仮定して、適切な直線の方程式を求めてみます。それは、次のようにして求めることができます。
+
+\hypertarget{ux7ddaux5f62ux30e2ux30c7ux30ebux306eux4f8blinear-models-by-examples}{%
+\subsection{線形モデルの例（Linear Models by Examples）}\label{ux7ddaux5f62ux30e2ux30c7ux30ebux306eux4f8blinear-models-by-examples}}
 
 \hypertarget{linear-model-petal.length-petal.width}{%
-\section{Linear Model: Petal.Length \textasciitilde{} Petal.Width}\label{linear-model-petal.length-petal.width}}
+\subsubsection{Linear Model: Petal.Length \textasciitilde{} Petal.Width}\label{linear-model-petal.length-petal.width}}
+
+はなびらの長さを、はなびらの幅を変数とする、直線の方程式で近似してみます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris0 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Petal.Width, .)}
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Petal.Width, }\AttributeTok{data =}\NormalTok{ \_)}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Call:}
-\CommentTok{\#\textgreater{} lm(formula = Petal.Length \textasciitilde{} Petal.Width, data = .)}
+\CommentTok{\#\textgreater{} lm(formula = Petal.Length \textasciitilde{} Petal.Width, data = df\_iris0)}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Coefficients:}
 \CommentTok{\#\textgreater{} (Intercept)  Petal.Width  }
@@ -9103,20 +9110,27 @@ Tidymodels を使いますが、これは、Tidyverse と同様に、一つの�
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{formula-textpetal.length-2.224-1.600cdot-textpetal.width}{%
-\section{\texorpdfstring{Formula: \(\text{Petal.Length} = 2.224 + 1.600\cdot \text{Petal.Width}\)}{Formula: \textbackslash text\{Petal.Length\} = 2.224 + 1.600\textbackslash cdot \textbackslash text\{Petal.Width\}}}\label{formula-textpetal.length-2.224-1.600cdot-textpetal.width}}
+Call の部分は、「このような（X を Petal.Width として、Y を Petal.Length の一次式、すなわち、\(Y = b + m\cdot X\) と表わそうと）線形モデルで考えると」といった、意味です。
+
+Coefficients は、係数の意味です。次に、(Intercept) が、2.224、Petal.Width が 1.600 とありますから、1.600 が 一次式で表したときの Petal.Width の係数で、式で書くと次のようになります。
+
+Formula: \(\text{Petal.Length} = 2.224 + 1.600\cdot \text{Petal.Width}\)
+
+Petal.Width の範囲が限られていますから、Y 切片は確認できませんが、だいたい見当が付きますし、傾きは、X が 1 大きくなると、Y がどれぐらい大きくなるかという数ですから、だいたい、見当がつきますね。
 
 \includegraphics{28-modeling_files/figure-latex/unnamed-chunk-8-1.pdf}
 
 \hypertarget{linear-model-sepal.length-sepal.width}{%
-\section{Linear Model: Sepal.Length \textasciitilde{} Sepal.Width}\label{linear-model-sepal.length-sepal.width}}
+\subsubsection{Linear Model: Sepal.Length \textasciitilde{} Sepal.Width}\label{linear-model-sepal.length-sepal.width}}
+
+がくの長さを、がくの幅を変数とする、直線の方程式で近似してみます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris0 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(Sepal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Sepal.Width, .)}
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(Sepal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Sepal.Width, }\AttributeTok{data =}\NormalTok{ \_)}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Call:}
-\CommentTok{\#\textgreater{} lm(formula = Sepal.Length \textasciitilde{} Sepal.Width, data = .)}
+\CommentTok{\#\textgreater{} lm(formula = Sepal.Length \textasciitilde{} Sepal.Width, data = df\_iris0)}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Coefficients:}
 \CommentTok{\#\textgreater{} (Intercept)  Sepal.Width  }
@@ -9124,20 +9138,35 @@ Tidymodels を使いますが、これは、Tidyverse と同様に、一つの�
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{formula-textsepal.length-3.093-1.103cdot-textsepal.width}{%
-\section{\texorpdfstring{Formula: \(\text{Sepal.Length} = 3.093 + 1.103\cdot \text{Sepal.Width}\)}{Formula: \textbackslash text\{Sepal.Length\} = 3.093 + 1.103\textbackslash cdot \textbackslash text\{Sepal.Width\}}}\label{formula-textsepal.length-3.093-1.103cdot-textsepal.width}}
+式は、次のようになっていることがわかります。
+
+Formula: \(\text{Sepal.Length} = 3.093 + 1.103\cdot \text{Sepal.Width}\)
+
+下のグラフから、だいたいの、Y 切片や、傾きを読み取って、上の式と比較してください。
 
 \includegraphics{28-modeling_files/figure-latex/unnamed-chunk-10-1.pdf}
 
-\hypertarget{petal.length-petal.width-r-squared-0.6779---68}{%
-\section{Petal.Length \textasciitilde{} Petal.Width: R squared = 0.6779 - 68\%}\label{petal.length-petal.width-r-squared-0.6779---68}}
+\hypertarget{ux6c7aux5b9aux4fc2ux6570r-squared}{%
+\subsubsection{決定係数（R squared）}\label{ux6c7aux5b9aux4fc2ux6570r-squared}}
+
+日本語では、決定係数と呼ばれることが多いようですが、R squared の意味を簡単に説明します。
+
+まず、決定係数（R squared）は、0 と 1 の間の値を取ります。モデルの当てはまり具合を表す数とも表現されます。
+
+The coefficient of determination R2 represents the strength of fit of the model.
+
+このモデル（現在の場合は X の関数として、Y の値をおおまかに表現する線形モデル）によって、どのていど、実際の値が決まるかをあらわす一つの指標です。この値が、1 のときは、ピッタリ合致していることを意味し、0 のときは、X の値に依存しない、平均値と、変わらないという意味です。たとえば、はなびらモデルでは、下のようになりますから、68％ 程度決定する、または、適合するという言い方をします。がくモデルの場合には、31\% 程度決定する、または、適合するという言い方をします。はなびらモデルのほうが、がくモデルよりもより直線的といいうことを表す数ということになります。
+
+(Multiple) R Squared: a value between 0 and 1, the model's strength. It is a measurement of the model quality. If the value is close to 1, the model quality is high. If it is close to 0, the model quality is low.
+
+Petal.Length \textasciitilde{} Petal.Width: R squared = 0.6779 - 68\%
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris0 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Petal.Width, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summary}\NormalTok{()}
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Petal.Width, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{summary}\NormalTok{()}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Call:}
-\CommentTok{\#\textgreater{} lm(formula = Petal.Length \textasciitilde{} Petal.Width, data = .)}
+\CommentTok{\#\textgreater{} lm(formula = Petal.Length \textasciitilde{} Petal.Width, data = df\_iris0)}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Residuals:}
 \CommentTok{\#\textgreater{}     Min      1Q  Median      3Q     Max }
@@ -9157,15 +9186,14 @@ Tidymodels を使いますが、これは、Tidyverse と同様に、一つの�
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{sepal.length-sepal.width-r-squared-0.3068---31}{%
-\section{Sepal.Length \textasciitilde{} Sepal.Width: R squared = 0.3068 - 31\%}\label{sepal.length-sepal.width-r-squared-0.3068---31}}
+Sepal.Length \textasciitilde{} Sepal.Width: R squared = 0.3068 - 31\%
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df\_iris0 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{lm}\NormalTok{(Sepal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Sepal.Width, .) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summary}\NormalTok{()}
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(Sepal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Sepal.Width, }\AttributeTok{data =}\NormalTok{\_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{summary}\NormalTok{()}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Call:}
-\CommentTok{\#\textgreater{} lm(formula = Sepal.Length \textasciitilde{} Sepal.Width, data = .)}
+\CommentTok{\#\textgreater{} lm(formula = Sepal.Length \textasciitilde{} Sepal.Width, data = df\_iris0)}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Residuals:}
 \CommentTok{\#\textgreater{}     Min      1Q  Median      3Q     Max }
@@ -9185,64 +9213,104 @@ Tidymodels を使いますが、これは、Tidyverse と同様に、一つの�
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{linear-model-basics-y-x}{%
-\section{Linear Model Basics: y \textasciitilde{} x}\label{linear-model-basics-y-x}}
+上のように、summary() 関数をつかうと、Multiple R-squared や、Adjusted R-squared と R squared 値は、出てきますが、現在の場合は、Multiple R-squared が、決定係数だと考えてください。
+
+いまは、Y を、X の関数として表しましたが、X ではなく、X\textsubscript{1}、X\textsubscript{2}、などとたくさんの変数を使って、表し、全体のデータ（観測値）の個数が、あまり多くないときは、Multiple R-squared よりも、Adjusted R-squared のほうが、より適切になってくるばあいはあるので、このように、2つの数が書かれています。
+
+また、決定係数（R squared）は、線形モデル以外にも使えますので、モデルの適合性を表す、たいせつな指標のひとつと理解しておいてください。
+
+summary() には、他にもたくさんの、値が出ています。あとで、それぞれについて、簡単に見ていきたいと思います。
+
+決定係数が1に近いと良い（強い）モデルで、0に近いと悪い（弱い）モデルということになりますが、どの程度ならば、良いモデルかは一概に言えません。分野にもよりますが、0.3 より小さければ、あまりよいモデルだとは言えず、0.7 より大きければ、よいモデルのひとつだと考えても良いのではないかと思います。
+
+上の2つのモデルは、微妙ですが、花びらモデルのほうが、良い（より適合した）モデルだと表現できます。
+
+\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\hypertarget{ux7ddaux5f62ux30e2ux30c7ux30ebux306eux57faux790elinear-model-basics-y-x}{%
+\subsection{線形モデルの基礎（Linear Model Basics）: y \textasciitilde{} x}\label{ux7ddaux5f62ux30e2ux30c7ux30ebux306eux57faux790elinear-model-basics-y-x}}
+
+R では、線形モデルを次のように定めます。\texttt{y\textasciitilde{}x} は、x の関数で、y を表すという意味です。パイプを使うときは、その下の式のようになります。パイプは原則として、最初の変数として、一つ前の出力が読み込まれますが、\texttt{lm(arg1,\ arg2)} の場合には、\texttt{arg2} 2つ目の変数が、データですから、それを表すために、\texttt{data\ =\ \_} (または、\%\textgreater\% の場合には、そこに、ピリオッド（半角））を書き、そのことを示します。場所指定の `\_' （または `.'） (place holder) と言います。
 
 \begin{verbatim}
 lm(y~x, data)
 \end{verbatim}
 
 \begin{verbatim}
+data |> lm(y~x, data=_) # data = をつけないとエラーになります
+\end{verbatim}
+
+\begin{verbatim}
 data %>% lm(y~x, .)
 \end{verbatim}
 
-y-intercept, and slope: rate of increase or decrease
+y 切片や、傾きが得られます。（y-intercept, and slope: rate of increase or decrease）
+
+モデルのより詳細な情報は、summry() によって得ることができます。パイプを使う場合には、その次のコードとなります。
 
 \begin{verbatim}
 summary(lm(y~x, data))
 \end{verbatim}
 
 \begin{verbatim}
-data %>% lm(y~x, .) %>% summary()
+data |> lm(y~x, .) |> summary()
 \end{verbatim}
 
-(Multiple) R Squared: a value between 0 and 1, the model's strength. It is a measurement of the model quality. If the value is close to 1, the model quality is high. If it is close to 0, the model quality is low.
-
-\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-13-1.pdf}
+具体的な例から、それぞれの数値がなにを表しているのか見ていきましょう。
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{df1 }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{), }\AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\DecValTok{2}\NormalTok{, }\FloatTok{1.5}\NormalTok{))}
 \NormalTok{ybar }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(df1}\SpecialCharTok{$}\NormalTok{y)}
 \NormalTok{mod1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(y}\SpecialCharTok{\textasciitilde{}}\NormalTok{x, df1)}
-\FunctionTok{augment}\NormalTok{(mod1) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x,y)) }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x,y), }\AttributeTok{formula =}\NormalTok{ y}\SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =}\NormalTok{ ybar, }\AttributeTok{linetype=}\StringTok{"longdash"}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, ybar), }\AttributeTok{shape=}\DecValTok{4}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, .fitted), }\AttributeTok{shape =}\DecValTok{9}\NormalTok{, }\AttributeTok{size=}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, ybar, }\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"("}\NormalTok{,x,}\StringTok{","}\NormalTok{,}\FloatTok{1.25}\NormalTok{,}\StringTok{")"}\NormalTok{)), }\AttributeTok{nudge\_y =} \SpecialCharTok{{-}}\FloatTok{0.1}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, .fitted, }\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"("}\NormalTok{,x,}\StringTok{","}\NormalTok{,.fitted,}\StringTok{")"}\NormalTok{)), }\AttributeTok{nudge\_y =} \SpecialCharTok{{-}}\FloatTok{0.1}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, y, }\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"("}\NormalTok{,x,}\StringTok{","}\NormalTok{,y,}\StringTok{")"}\NormalTok{)), }\AttributeTok{nudge\_y =} \SpecialCharTok{{-}}\FloatTok{0.1}\NormalTok{) }
+\FunctionTok{augment}\NormalTok{(mod1) }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x,y)) }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x,y), }\AttributeTok{formula =}\NormalTok{ y}\SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =}\NormalTok{ ybar, }\AttributeTok{linetype=}\StringTok{"longdash"}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, ybar), }\AttributeTok{shape=}\DecValTok{4}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, .fitted), }\AttributeTok{shape =}\DecValTok{9}\NormalTok{, }\AttributeTok{size=}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, ybar, }\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"("}\NormalTok{,x,}\StringTok{","}\NormalTok{,}\FloatTok{1.25}\NormalTok{,}\StringTok{")"}\NormalTok{)), }\AttributeTok{nudge\_y =} \SpecialCharTok{{-}}\FloatTok{0.1}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, .fitted, }\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"("}\NormalTok{,x,}\StringTok{","}\NormalTok{,.fitted,}\StringTok{")"}\NormalTok{)), }\AttributeTok{nudge\_y =} \SpecialCharTok{{-}}\FloatTok{0.1}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, y, }\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"("}\NormalTok{,x,}\StringTok{","}\NormalTok{,y,}\StringTok{")"}\NormalTok{)), }\AttributeTok{nudge\_y =} \SpecialCharTok{{-}}\FloatTok{0.1}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
 \begin{itemize}
 \tightlist
 \item
-  \((x_1, y_1)\), \((x_2,y_2)\), \((x_3, y_3)\), \((x_4, y_4)\): Data points
+  \((x_1, y_1)\), \((x_2,y_2)\), \((x_3, y_3)\), \((x_4, y_4)\): Data points - データの4つの点をあらわす黒点
 \item
-  \(\bar{y}\): mean of y = \((y_1 + y_2 + y_3 + y_4)/4\).
+  \(\bar{y}\): mean of y = \((y_1 + y_2 + y_3 + y_4)/4\). （相加）平均値を表す赤線
 \item
-  \(\hat{y}_i\): prediction at \(x_i\),
+  \(\hat{y}_i\): prediction at \(x_i\), 線形モデルの一次式で与えられる値
 
   \begin{itemize}
   \tightlist
   \item
-    \((x_1, \hat{y}_1)\), \((x_2, \hat{y}_2)\), \((x_3, \hat{y}_3)\), \((x_4, \hat{y}_4)\) are on the regression line.
+    \((x_1, \hat{y}_1)\), \((x_2, \hat{y}_2)\), \((x_3, \hat{y}_3)\), \((x_4, \hat{y}_4)\) are on the regression line. 回帰直線上の◇で表された点
   \end{itemize}
 \item
-  \(y_1-\hat{y}_1\), \(y_2-\hat{y}_2\), \(y_2-\hat{y}_2\), \(y_2-\hat{y}_2\) are called residues.
+  \(y_1-\hat{y}_1\), \(y_2-\hat{y}_2\), \(y_2-\hat{y}_2\), \(y_2-\hat{y}_2\) are called residues. 実際の値から、モデルでの予測値を引いたもので、残差と呼ばれます
 \end{itemize}
 
 \includegraphics{28-modeling_files/figure-latex/unnamed-chunk-15-1.pdf}
 
-\hypertarget{r-squared}{%
-\section{R Squared}\label{r-squared}}
+線形モデルの一次式で与えられる値（fitted values）は次のようにしても表示できます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod1}\SpecialCharTok{$}\NormalTok{fitted.values}
+\CommentTok{\#\textgreater{}   1   2   3   4 }
+\CommentTok{\#\textgreater{} 0.8 1.1 1.4 1.7}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6c7aux5b9aux4fc2ux6570r-squared-1}{%
+\subsubsection{決定係数（R Squared）}\label{ux6c7aux5b9aux4fc2ux6570r-squared-1}}
+
+\(SS_{tot}\) は、実際の値から平均値を引いたものを、二乗して足したものです。二乗してあるので、かならず正（正確には非負）になります。
+
+\(SS_{res}\) は、実際の値から（この線形）モデルによって予測したあたいを引いたものを、二乗して足したものです。二乗してあるので、かならず正（正確には非負）になります。
+
+\(R^2\) は、一番下の式で定義されます。完全に予測が実際の値と一致していると、\(SS_{res}\) は、0 になりますから、その場合は、商の分子が 0 で、\(R^2\) の値は、1 になります。
+
+線形モデルの、直線の方程式は、直線の中で、\(SS_{res}\) が一番小さくなるものを（最小二乗法という方法で）選んであり、平均を通る直線をから計算したものよりは、小さくなるので、商の部分は、1 以下、すなわち、\(R^2\) の値は、0 以上 1 以下となります。
 
 \[SS_{tot} = (1-1.25)^2 + (0.5-1.25)^2 + (2-1.25)^2 + (1.5-1.25)^2 = 1.25\] \[SS_{res} = (1-0.8)^2 + (0.5-1.1)^2 + (2-1.4)^2 + (1.5-1.7)^2 = 0.8\] \[R^2 = 1 - \frac{SS_{res}}{SS_{tot}} = 1- \frac{0.8}{1.25} = 0.36.\]
+
+実際に、\texttt{mod1} の \texttt{summary()} から値を取り出す方法をいくつか書いておきます。\texttt{glance} は、\texttt{tidymodel} に含まれる、パッケージ \texttt{broom} の関数で、モデルの概要（summary）を、表（この場合は、tidyverse の標準の tibble）として出力するものです。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9253,14 +9321,25 @@ data %>% lm(y~x, .) %>% summary()
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mod1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{glance}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pull}\NormalTok{(r.squared)}
+\NormalTok{mod1 }\SpecialCharTok{|\textgreater{}} \FunctionTok{summary}\NormalTok{() }\SpecialCharTok{|\textgreater{}} \FunctionTok{glance}\NormalTok{()}
+\CommentTok{\#\textgreater{} \# A tibble: 1 x 8}
+\CommentTok{\#\textgreater{}   r.squared adj.r.squared sigma statistic p.value    df}
+\CommentTok{\#\textgreater{}       \textless{}dbl\textgreater{}         \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1      0.36        0.0400 0.632      1.12     0.4     1}
+\CommentTok{\#\textgreater{} \# i 2 more variables: df.residual \textless{}int\textgreater{}, nobs \textless{}dbl\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod1 }\SpecialCharTok{|\textgreater{}} \FunctionTok{glance}\NormalTok{() }\SpecialCharTok{|\textgreater{}} \FunctionTok{pull}\NormalTok{(r.squared)}
 \CommentTok{\#\textgreater{} [1] 0.36}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mod1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{glance}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{R Squared}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ r.squared)}
+\NormalTok{mod1 }\SpecialCharTok{|\textgreater{}} \FunctionTok{glance}\NormalTok{() }\SpecialCharTok{|\textgreater{}} \FunctionTok{select}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{R Squared}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ r.squared)}
 \CommentTok{\#\textgreater{} \# A tibble: 1 x 1}
 \CommentTok{\#\textgreater{}   \textasciigrave{}R Squared\textasciigrave{}}
 \CommentTok{\#\textgreater{}         \textless{}dbl\textgreater{}}
@@ -9268,73 +9347,148 @@ data %>% lm(y~x, .) %>% summary()
 \end{Highlighting}
 \end{Shaded}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{mod1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summary}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{glimpse}\NormalTok{()}
-\CommentTok{\#\textgreater{} List of 11}
-\CommentTok{\#\textgreater{}  $ call         : language lm(formula = y \textasciitilde{} x, data = df1)}
-\CommentTok{\#\textgreater{}  $ terms        :Classes \textquotesingle{}terms\textquotesingle{}, \textquotesingle{}formula\textquotesingle{}  language y \textasciitilde{} x}
-\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "variables")= language list(y, x)}
-\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "factors")= int [1:2, 1] 0 1}
-\CommentTok{\#\textgreater{}   .. .. ..{-} attr(*, "dimnames")=List of 2}
-\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "term.labels")= chr "x"}
-\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "order")= int 1}
-\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "intercept")= int 1}
-\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "response")= int 1}
-\CommentTok{\#\textgreater{}   .. ..{-} attr(*, ".Environment")=\textless{}environment: R\_GlobalEnv\textgreater{} }
-\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "predvars")= language list(y, x)}
-\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"}
-\CommentTok{\#\textgreater{}   .. .. ..{-} attr(*, "names")= chr [1:2] "y" "x"}
-\CommentTok{\#\textgreater{}  $ residuals    : Named num [1:4] 0.2 {-}0.6 0.6 {-}0.2}
-\CommentTok{\#\textgreater{}   ..{-} attr(*, "names")= chr [1:4] "1" "2" "3" "4"}
-\CommentTok{\#\textgreater{}  $ coefficients : num [1:2, 1:4] 0.5 0.3 0.775 0.283 0.645 ...}
-\CommentTok{\#\textgreater{}   ..{-} attr(*, "dimnames")=List of 2}
-\CommentTok{\#\textgreater{}   .. ..$ : chr [1:2] "(Intercept)" "x"}
-\CommentTok{\#\textgreater{}   .. ..$ : chr [1:4] "Estimate" "Std. Error" "t value" "Pr(\textgreater{}|t|)"}
-\CommentTok{\#\textgreater{}  $ aliased      : Named logi [1:2] FALSE FALSE}
-\CommentTok{\#\textgreater{}   ..{-} attr(*, "names")= chr [1:2] "(Intercept)" "x"}
-\CommentTok{\#\textgreater{}  $ sigma        : num 0.632}
-\CommentTok{\#\textgreater{}  $ df           : int [1:3] 2 2 2}
-\CommentTok{\#\textgreater{}  $ r.squared    : num 0.36}
-\CommentTok{\#\textgreater{}  $ adj.r.squared: num 0.04}
-\CommentTok{\#\textgreater{}  $ fstatistic   : Named num [1:3] 1.12 1 2}
-\CommentTok{\#\textgreater{}   ..{-} attr(*, "names")= chr [1:3] "value" "numdf" "dendf"}
-\CommentTok{\#\textgreater{}  $ cov.unscaled : num [1:2, 1:2] 1.5 {-}0.5 {-}0.5 0.2}
-\CommentTok{\#\textgreater{}   ..{-} attr(*, "dimnames")=List of 2}
-\CommentTok{\#\textgreater{}   .. ..$ : chr [1:2] "(Intercept)" "x"}
-\CommentTok{\#\textgreater{}   .. ..$ : chr [1:2] "(Intercept)" "x"}
-\CommentTok{\#\textgreater{}  {-} attr(*, "class")= chr "summary.lm"}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{ux30e2ux30c7ux30ebux6982ux8981}{%
+\subsection{モデル概要}\label{ux30e2ux30c7ux30ebux6982ux8981}}
 
-\hypertarget{useful-mathematical-formula}{%
-\section{Useful Mathematical Formula}\label{useful-mathematical-formula}}
+一般的な場合に、それぞれの数値を表す数式（Mathematical Formula）と簡単な説明を記します。
 
 \begin{itemize}
 \tightlist
 \item
-  Let \(x = c(x_1, x_2, \ldots, x_n)\) be the independent variable, i.e., Sepal.L
+  \(x = c(x_1, x_2, \ldots, x_n)\) : X 変数（the X (independent) variable） 例 Petal.Width
 \item
-  Let \(y = c(y_1, y_2, \ldots, y_n)\) be the dependent variable, i.e., Sepal.W
+  \(y = c(y_1, y_2, \ldots, y_n)\) ：Y 変数（the Y (dependent) variable） 例 Petal.Length
 \item
-  Let \(\mbox{pred} = c(\hat{y}_1, \hat{y}_2, \ldots, \hat{y}_n)\) be the predicted values by linear regression.
+  \(\mbox{pred} = c(\hat{y}_1, \hat{y}_2, \ldots, \hat{y}_n)\) ：モデル予測値（the predicted values by a (linear regression) model）例 \(\hat{y}_i = b + m\cdot x_i\)
 \end{itemize}
+
+例は、はなびらモデルを使って説明します。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Petal.Width, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summary}\NormalTok{()}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} lm(formula = Petal.Length \textasciitilde{} Petal.Width, data = df\_iris0)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residuals:}
+\CommentTok{\#\textgreater{}     Min      1Q  Median      3Q     Max }
+\CommentTok{\#\textgreater{} {-}0.9842 {-}0.3043 {-}0.1043  0.2407  1.2755 }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Coefficients:}
+\CommentTok{\#\textgreater{}             Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\textgreater{} (Intercept)   2.2240     0.1926   11.55   \textless{}2e{-}16 ***}
+\CommentTok{\#\textgreater{} Petal.Width   1.6003     0.1114   14.36   \textless{}2e{-}16 ***}
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residual standard error: 0.4709 on 98 degrees of freedom}
+\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.6779, Adjusted R{-}squared:  0.6746 }
+\CommentTok{\#\textgreater{} F{-}statistic: 206.3 on 1 and 98 DF,  p{-}value: \textless{} 2.2e{-}16}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{callux9069ux7528ux3055ux308cux305fux30e2ux30c7ux30eb}{%
+\subsubsection{Call（適用されたモデル）}\label{callux9069ux7528ux3055ux308cux305fux30e2ux30c7ux30eb}}
+
+使われたモデルの定義式（The function and the parameters used to create the model）
+
+\hypertarget{residualsux6b8bux5dee}{%
+\subsubsection{Residuals（残差）}\label{residualsux6b8bux5dee}}
+
+残差は、実際の値から、予測値を差し引いた値（Difference between what the model predicted and the actual value of y）：\(e_i = y_i - \hat{y}_i\)
+
+その、分布の、最小値、第一四分位、中央値、第三四分位、最大値が表示されています。次のようにしても、表示できます。
+
+Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{augument()} 関数を使うと、予測値 predicted values (pred) または、fitted values は、.fitted 列に、残差 residues は、.resid に追加されます。（他の列については、さしあたって不要ですが、Help などを参照してください。）
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Petal.Width, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{augment}\NormalTok{()}
+\CommentTok{\#\textgreater{} \# A tibble: 100 x 8}
+\CommentTok{\#\textgreater{}    Petal.Length Petal.Width .fitted  .resid   .hat .sigma}
+\CommentTok{\#\textgreater{}           \textless{}dbl\textgreater{}       \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1          4.7         1.4    4.46  0.236  0.0143  0.473}
+\CommentTok{\#\textgreater{}  2          4.5         1.5    4.62 {-}0.124  0.0117  0.473}
+\CommentTok{\#\textgreater{}  3          4.9         1.5    4.62  0.276  0.0117  0.473}
+\CommentTok{\#\textgreater{}  4          4           1.3    4.30 {-}0.304  0.0179  0.472}
+\CommentTok{\#\textgreater{}  5          4.6         1.5    4.62 {-}0.0244 0.0117  0.473}
+\CommentTok{\#\textgreater{}  6          4.5         1.3    4.30  0.196  0.0179  0.473}
+\CommentTok{\#\textgreater{}  7          4.7         1.6    4.78 {-}0.0844 0.0103  0.473}
+\CommentTok{\#\textgreater{}  8          3.3         1      3.82 {-}0.524  0.0356  0.470}
+\CommentTok{\#\textgreater{}  9          4.6         1.3    4.30  0.296  0.0179  0.472}
+\CommentTok{\#\textgreater{} 10          3.9         1.4    4.46 {-}0.564  0.0143  0.470}
+\CommentTok{\#\textgreater{} \# i 90 more rows}
+\CommentTok{\#\textgreater{} \# i 2 more variables: .cooksd \textless{}dbl\textgreater{}, .std.resid \textless{}dbl\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+したがってそれを使えば、Residuals の部分の値は、次のようにして得られます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Petal.Width, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{augment}\NormalTok{() }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{pull}\NormalTok{(.resid) }\SpecialCharTok{|\textgreater{}} \FunctionTok{summary}\NormalTok{()}
+\CommentTok{\#\textgreater{}    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. }
+\CommentTok{\#\textgreater{} {-}0.9843 {-}0.3043 {-}0.1043  0.0000  0.2407  1.2755}
+\end{Highlighting}
+\end{Shaded}
 
 \[
 \begin{aligned}
-\mbox{slope of the regression line}  &= \frac{cov(x,y)}{var(x)} = \frac{cor(x,y)\sqrt{var(y)}}{\sqrt{var(x)}}\\
-\mbox{total sum of squares} &= SS_{tot} = \sum_{i}(y_i-mean(y))^2\\
-\mbox{residual sum of squares} &= SS_{res} = \sum_{i}(y_i-\mbox{pred}_i)^2 = \sum_{i}(y_i-\hat{y}_i)^2\\
-\mbox{R squared} = R^2 & = 1 - \frac{SS_{res}}{SS_{tot}} = cor(x,y)^2
+\mbox{$x$ の平均：} mean(x) & = \frac{1}{n}\sum_i x_i \\
+\mbox{$y$ の平均：} mean(y) & = \frac{1}{n}\sum_i y_i \\
+\mbox{$x$ の分散：} var(x) & = \frac{1}{n}\sum_i(x_i-mean(x))^2 \\
+\mbox{$y$ の分散：} var(y) & = \frac{1}{n}\sum_i(y_i-mean(y))^2 \\
+\mbox{$x$ と $y$ の共分散：} cov(x) & = \frac{1}{n}\sum_i(x_i-mean(x))(y_i-mean(y)) \\
+\mbox{$x$ と $y$ の相関係数：} cor(x) & = \frac{cov(x,y)}{\sqrt{var(x)}\sqrt{var(y)}}\\
+\mbox{回帰直線の係数： slope}  &= \frac{cov(x,y)}{var(x)} = \frac{cor(x,y)\sqrt{var(y)}}{\sqrt{var(x)}}\\
+\mbox{全平方和 total sum of squares：} &SS_{tot} = \sum_{i}(y_i-mean(y))^2\\
+\mbox{残差平方和 residual sum of squares：} &SS_{res} = \sum_{i}(y_i-\mbox{pred}_i)^2 \\ &= \sum_{i}(y_i-\hat{y}_i)^2\\
+\mbox{決定係数 R squared：} R^2 & = 1 - \frac{SS_{res}}{SS_{tot}} = cor(x,y)^2
 \end{aligned}
 \]
 
-\hypertarget{adjusted-r-squared}{%
-\subsection{Adjusted R Squared}\label{adjusted-r-squared}}
+\hypertarget{ux81eaux7531ux5ea6ux4feeux6b63ux6e08ux307fux6c7aux5b9aux4fc2ux6570adjusted-r-squared}{%
+\subsubsection{自由度修正済み決定係数（Adjusted R Squared）}\label{ux81eaux7531ux5ea6ux4feeux6b63ux6e08ux307fux6c7aux5b9aux4fc2ux6570adjusted-r-squared}}
 
-\[\text{Adjusted }R^2 = 1- \frac{(1-R^2)(n-1)}{n-k-1}\] \(n\): number of observations, the number of rows
+\[\text{Adjusted }R^2 = 1- \frac{(1-R^2)(n-1)}{n-k-1}\] \(n\): 行数（観測値の数）number of observations, the number of rows
 
 \(k\): number of variables used for prediction
+
+\hypertarget{coefficients}{%
+\subsubsection{Coefficients}\label{coefficients}}
+
+Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{tody()} 関数を使うと、係数の部分を表として取り出すことができます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Petal.Width, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{tidy}\NormalTok{()}
+\CommentTok{\#\textgreater{} \# A tibble: 2 x 5}
+\CommentTok{\#\textgreater{}   term        estimate std.error statistic  p.value}
+\CommentTok{\#\textgreater{}   \textless{}chr\textgreater{}          \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1 (Intercept)     2.22     0.193      11.5 5.54e{-}20}
+\CommentTok{\#\textgreater{} 2 Petal.Width     1.60     0.111      14.4 7.57e{-}26}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{significant}{%
+\subsubsection{Significant}\label{significant}}
+
+Tidymodels に含まれる、\texttt{broom} パッケージの \texttt{glance()} 関数を使うと、残りの値が表示できます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_iris0 }\SpecialCharTok{|\textgreater{}} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Petal.Width, }\AttributeTok{data =}\NormalTok{ \_) }\SpecialCharTok{|\textgreater{}} \FunctionTok{glance}\NormalTok{()}
+\CommentTok{\#\textgreater{} \# A tibble: 1 x 12}
+\CommentTok{\#\textgreater{}   r.squared adj.r.squared sigma statistic  p.value    df}
+\CommentTok{\#\textgreater{}       \textless{}dbl\textgreater{}         \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1     0.678         0.675 0.471      206. 7.57e{-}26     1}
+\CommentTok{\#\textgreater{} \# i 6 more variables: logLik \textless{}dbl\textgreater{}, AIC \textless{}dbl\textgreater{}, BIC \textless{}dbl\textgreater{},}
+\CommentTok{\#\textgreater{} \#   deviance \textless{}dbl\textgreater{}, df.residual \textless{}int\textgreater{}, nobs \textless{}int\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9429,7 +9583,7 @@ data %>% lm(y~x, .) %>% summary()
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-26-1.pdf}
+\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-32-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9490,7 +9644,7 @@ Correlations of the data suggest the possible strength of linear model y \textas
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-32-1.pdf}
+\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-38-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9563,7 +9717,7 @@ Correlations of the data suggest the possible strength of linear model y \textas
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-37-1.pdf}
+\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-43-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9572,7 +9726,7 @@ Correlations of the data suggest the possible strength of linear model y \textas
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-38-1.pdf}
+\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-44-1.pdf}
 
 Need to work
 
@@ -9908,7 +10062,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-48-1.pdf}
+\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-54-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9916,7 +10070,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-49-1.pdf}
+\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-55-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9932,7 +10086,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-51-1.pdf}
+\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-57-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9940,7 +10094,7 @@ SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (\% of government 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-52-1.pdf}
+\includegraphics{28-modeling_files/figure-latex/unnamed-chunk-58-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10212,7 +10366,7 @@ R には、WDI のデータを取得する R のツール（パッケージ）\t
 \FunctionTok{Sys.setenv}\NormalTok{(}\AttributeTok{LANG =} \StringTok{"en"}\NormalTok{) }\CommentTok{\# 言語を英語に}
 \FunctionTok{library}\NormalTok{(tidyverse)      }\CommentTok{\# tidyverse パッケージを読み込みます}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -11224,7 +11378,7 @@ GDP が大きな国と、小さな国があるのはわかりますが、それ�
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -12153,7 +12307,7 @@ Line Plot with two indicators with abbreviation and several countries
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -13270,7 +13424,7 @@ Review one by one, referring to the following.
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -14294,7 +14448,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -14392,6 +14546,15 @@ Manual: \url{https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(rnaturalearth)}
+\CommentTok{\#\textgreater{} The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,}
+\CommentTok{\#\textgreater{} which was just loaded, will retire in October 2023.}
+\CommentTok{\#\textgreater{} Please refer to R{-}spatial evolution reports for details, especially}
+\CommentTok{\#\textgreater{} https://r{-}spatial.org/r/2023/05/15/evolution4.html.}
+\CommentTok{\#\textgreater{} It may be desirable to make the sf package available;}
+\CommentTok{\#\textgreater{} package maintainers should consider adding sf to Suggests:.}
+\CommentTok{\#\textgreater{} The sp package is now running under evolution status 2}
+\CommentTok{\#\textgreater{}      (status 2 uses the sf package in place of rgdal)}
+\CommentTok{\#\textgreater{} Support for Spatial objects (\textasciigrave{}sp\textasciigrave{}) will be deprecated in \{rnaturalearth\} and will be removed in a future release of the package. Please use \textasciigrave{}sf\textasciigrave{} objects with \{rnaturalearth\}. For example: \textasciigrave{}ne\_download(returnclass = \textquotesingle{}sf\textquotesingle{})\textasciigrave{}}
 \FunctionTok{library}\NormalTok{(rnaturalearthdata)}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Attaching package: \textquotesingle{}rnaturalearthdata\textquotesingle{}}
@@ -14942,7 +15105,7 @@ ne_states(
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(geodata)}
 \CommentTok{\#\textgreater{} Loading required package: terra}
-\CommentTok{\#\textgreater{} terra 1.7.29}
+\CommentTok{\#\textgreater{} terra 1.7.46}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Attaching package: \textquotesingle{}terra\textquotesingle{}}
 \CommentTok{\#\textgreater{} The following object is masked from \textquotesingle{}package:tidyr\textquotesingle{}:}
