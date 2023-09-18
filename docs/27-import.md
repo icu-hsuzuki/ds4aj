@@ -26,7 +26,7 @@
 ```r
 library(tidyverse)
 #> ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
-#> ✔ dplyr     1.1.2     ✔ readr     2.1.4
+#> ✔ dplyr     1.1.3     ✔ readr     2.1.4
 #> ✔ forcats   1.0.0     ✔ stringr   1.5.0
 #> ✔ ggplot2   3.4.3     ✔ tibble    3.2.1
 #> ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
@@ -161,86 +161,68 @@ Tidyverse の中心的な開発者である H. ウィッカム（Hadley Wickham�
 
 ```r
 table1
-#> # A tibble: 6 × 4
-#>   country      year  cases population
-#>   <chr>       <dbl>  <dbl>      <dbl>
-#> 1 Afghanistan  1999    745   19987071
-#> 2 Afghanistan  2000   2666   20595360
-#> 3 Brazil       1999  37737  172006362
-#> 4 Brazil       2000  80488  174504898
-#> 5 China        1999 212258 1272915272
-#> 6 China        2000 213766 1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cases"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"2666","4":"20595360"},{"1":"Brazil","2":"1999","3":"37737","4":"172006362"},{"1":"Brazil","2":"2000","3":"80488","4":"174504898"},{"1":"China","2":"1999","3":"212258","4":"1272915272"},{"1":"China","2":"2000","3":"213766","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 
 ```r
 table2
-#> # A tibble: 12 × 4
-#>    country      year type            count
-#>    <chr>       <dbl> <chr>           <dbl>
-#>  1 Afghanistan  1999 cases             745
-#>  2 Afghanistan  1999 population   19987071
-#>  3 Afghanistan  2000 cases            2666
-#>  4 Afghanistan  2000 population   20595360
-#>  5 Brazil       1999 cases           37737
-#>  6 Brazil       1999 population  172006362
-#>  7 Brazil       2000 cases           80488
-#>  8 Brazil       2000 population  174504898
-#>  9 China        1999 cases          212258
-#> 10 China        1999 population 1272915272
-#> 11 China        2000 cases          213766
-#> 12 China        2000 population 1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["type"],"name":[3],"type":["chr"],"align":["left"]},{"label":["count"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"cases","4":"745"},{"1":"Afghanistan","2":"1999","3":"population","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"cases","4":"2666"},{"1":"Afghanistan","2":"2000","3":"population","4":"20595360"},{"1":"Brazil","2":"1999","3":"cases","4":"37737"},{"1":"Brazil","2":"1999","3":"population","4":"172006362"},{"1":"Brazil","2":"2000","3":"cases","4":"80488"},{"1":"Brazil","2":"2000","3":"population","4":"174504898"},{"1":"China","2":"1999","3":"cases","4":"212258"},{"1":"China","2":"1999","3":"population","4":"1272915272"},{"1":"China","2":"2000","3":"cases","4":"213766"},{"1":"China","2":"2000","3":"population","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 
 ```r
 table3
-#> # A tibble: 6 × 3
-#>   country      year rate             
-#>   <chr>       <dbl> <chr>            
-#> 1 Afghanistan  1999 745/19987071     
-#> 2 Afghanistan  2000 2666/20595360    
-#> 3 Brazil       1999 37737/172006362  
-#> 4 Brazil       2000 80488/174504898  
-#> 5 China        1999 212258/1272915272
-#> 6 China        2000 213766/1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["rate"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745/19987071"},{"1":"Afghanistan","2":"2000","3":"2666/20595360"},{"1":"Brazil","2":"1999","3":"37737/172006362"},{"1":"Brazil","2":"2000","3":"80488/174504898"},{"1":"China","2":"1999","3":"212258/1272915272"},{"1":"China","2":"2000","3":"213766/1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 
 ```r
 table4a
-#> # A tibble: 3 × 3
-#>   country     `1999` `2000`
-#>   <chr>        <dbl>  <dbl>
-#> 1 Afghanistan    745   2666
-#> 2 Brazil       37737  80488
-#> 3 China       212258 213766
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"745","3":"2666"},{"1":"Brazil","2":"37737","3":"80488"},{"1":"China","2":"212258","3":"213766"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 
 ```r
 table4b
-#> # A tibble: 3 × 3
-#>   country         `1999`     `2000`
-#>   <chr>            <dbl>      <dbl>
-#> 1 Afghanistan   19987071   20595360
-#> 2 Brazil       172006362  174504898
-#> 3 China       1272915272 1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"19987071","3":"20595360"},{"1":"Brazil","2":"172006362","3":"174504898"},{"1":"China","2":"1272915272","3":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 
 ```r
 table5
-#> # A tibble: 6 × 4
-#>   country     century year  rate             
-#>   <chr>       <chr>   <chr> <chr>            
-#> 1 Afghanistan 19      99    745/19987071     
-#> 2 Afghanistan 20      00    2666/20595360    
-#> 3 Brazil      19      99    37737/172006362  
-#> 4 Brazil      20      00    80488/174504898  
-#> 5 China       19      99    212258/1272915272
-#> 6 China       20      00    213766/1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["century"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["chr"],"align":["left"]},{"label":["rate"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"19","3":"99","4":"745/19987071"},{"1":"Afghanistan","2":"20","3":"00","4":"2666/20595360"},{"1":"Brazil","2":"19","3":"99","4":"37737/172006362"},{"1":"Brazil","2":"20","3":"00","4":"80488/174504898"},{"1":"China","2":"19","3":"99","4":"212258/1272915272"},{"1":"China","2":"20","3":"00","4":"213766/1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 どうでしょうか。どれが、整形済みか、どれが整形済みでないかわかりましたか。何を持って、整形済みではないとしているのでしょうか。
 
@@ -293,13 +275,13 @@ pivot_wider(data = table2, names_from = type,
 
 ```r
 table4a
-#> # A tibble: 3 × 3
-#>   country     `1999` `2000`
-#>   <chr>        <dbl>  <dbl>
-#> 1 Afghanistan    745   2666
-#> 2 Brazil       37737  80488
-#> 3 China       212258 213766
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"745","3":"2666"},{"1":"Brazil","2":"37737","3":"80488"},{"1":"China","2":"212258","3":"213766"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 ```         
 pivot_longer(data = table4a, cols = c("1999","2000"), 
@@ -312,16 +294,13 @@ pivot_longer(data = table4a, cols = c("1999","2000"),
 pivot_longer(data = table4a, cols = c("1999","2000"), 
              names_to = "year", values_to = "cases", 
              names_transform = list("year" = as.integer))
-#> # A tibble: 6 × 3
-#>   country      year  cases
-#>   <chr>       <int>  <dbl>
-#> 1 Afghanistan  1999    745
-#> 2 Afghanistan  2000   2666
-#> 3 Brazil       1999  37737
-#> 4 Brazil       2000  80488
-#> 5 China        1999 212258
-#> 6 China        2000 213766
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["cases"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745"},{"1":"Afghanistan","2":"2000","3":"2666"},{"1":"Brazil","2":"1999","3":"37737"},{"1":"Brazil","2":"2000","3":"80488"},{"1":"China","2":"1999","3":"212258"},{"1":"China","2":"2000","3":"213766"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 #### 例 2: `pivot_wider`
 
@@ -330,22 +309,13 @@ type （names_from = type）を二種類の変数に分け、値を cases （val
 
 ```r
 table2
-#> # A tibble: 12 × 4
-#>    country      year type            count
-#>    <chr>       <dbl> <chr>           <dbl>
-#>  1 Afghanistan  1999 cases             745
-#>  2 Afghanistan  1999 population   19987071
-#>  3 Afghanistan  2000 cases            2666
-#>  4 Afghanistan  2000 population   20595360
-#>  5 Brazil       1999 cases           37737
-#>  6 Brazil       1999 population  172006362
-#>  7 Brazil       2000 cases           80488
-#>  8 Brazil       2000 population  174504898
-#>  9 China        1999 cases          212258
-#> 10 China        1999 population 1272915272
-#> 11 China        2000 cases          213766
-#> 12 China        2000 population 1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["type"],"name":[3],"type":["chr"],"align":["left"]},{"label":["count"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"cases","4":"745"},{"1":"Afghanistan","2":"1999","3":"population","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"cases","4":"2666"},{"1":"Afghanistan","2":"2000","3":"population","4":"20595360"},{"1":"Brazil","2":"1999","3":"cases","4":"37737"},{"1":"Brazil","2":"1999","3":"population","4":"172006362"},{"1":"Brazil","2":"2000","3":"cases","4":"80488"},{"1":"Brazil","2":"2000","3":"population","4":"174504898"},{"1":"China","2":"1999","3":"cases","4":"212258"},{"1":"China","2":"1999","3":"population","4":"1272915272"},{"1":"China","2":"2000","3":"cases","4":"213766"},{"1":"China","2":"2000","3":"population","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 ```         
 pivot_wider(data = table2, names_from = type, 
@@ -356,16 +326,13 @@ pivot_wider(data = table2, names_from = type,
 ```r
 pivot_wider(data = table2, names_from = type, 
             values_from = count)
-#> # A tibble: 6 × 4
-#>   country      year  cases population
-#>   <chr>       <dbl>  <dbl>      <dbl>
-#> 1 Afghanistan  1999    745   19987071
-#> 2 Afghanistan  2000   2666   20595360
-#> 3 Brazil       1999  37737  172006362
-#> 4 Brazil       2000  80488  174504898
-#> 5 China        1999 212258 1272915272
-#> 6 China        2000 213766 1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cases"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"2666","4":"20595360"},{"1":"Brazil","2":"1999","3":"37737","4":"172006362"},{"1":"Brazil","2":"2000","3":"80488","4":"174504898"},{"1":"China","2":"1999","3":"212258","4":"1272915272"},{"1":"China","2":"2000","3":"213766","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 #### 例 3: `separate`
 
@@ -374,16 +341,13 @@ pivot_wider(data = table2, names_from = type,
 
 ```r
 table3
-#> # A tibble: 6 × 3
-#>   country      year rate             
-#>   <chr>       <dbl> <chr>            
-#> 1 Afghanistan  1999 745/19987071     
-#> 2 Afghanistan  2000 2666/20595360    
-#> 3 Brazil       1999 37737/172006362  
-#> 4 Brazil       2000 80488/174504898  
-#> 5 China        1999 212258/1272915272
-#> 6 China        2000 213766/1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["rate"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745/19987071"},{"1":"Afghanistan","2":"2000","3":"2666/20595360"},{"1":"Brazil","2":"1999","3":"37737/172006362"},{"1":"Brazil","2":"2000","3":"80488/174504898"},{"1":"China","2":"1999","3":"212258/1272915272"},{"1":"China","2":"2000","3":"213766/1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 ```         
 separate(table3, rate, c("cases", "population"), 
@@ -394,16 +358,13 @@ separate(table3, rate, c("cases", "population"),
 ```r
 separate(table3, rate, c("cases", "population"), 
          sep = "/", convert = TRUE)
-#> # A tibble: 6 × 4
-#>   country      year  cases population
-#>   <chr>       <dbl>  <int>      <int>
-#> 1 Afghanistan  1999    745   19987071
-#> 2 Afghanistan  2000   2666   20595360
-#> 3 Brazil       1999  37737  172006362
-#> 4 Brazil       2000  80488  174504898
-#> 5 China        1999 212258 1272915272
-#> 6 China        2000 213766 1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cases"],"name":[3],"type":["int"],"align":["right"]},{"label":["population"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"2666","4":"20595360"},{"1":"Brazil","2":"1999","3":"37737","4":"172006362"},{"1":"Brazil","2":"2000","3":"80488","4":"174504898"},{"1":"China","2":"1999","3":"212258","4":"1272915272"},{"1":"China","2":"2000","3":"213766","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 #### 例 4: `unite`
 
@@ -412,16 +373,13 @@ separate(table3, rate, c("cases", "population"),
 
 ```r
 table5
-#> # A tibble: 6 × 4
-#>   country     century year  rate             
-#>   <chr>       <chr>   <chr> <chr>            
-#> 1 Afghanistan 19      99    745/19987071     
-#> 2 Afghanistan 20      00    2666/20595360    
-#> 3 Brazil      19      99    37737/172006362  
-#> 4 Brazil      20      00    80488/174504898  
-#> 5 China       19      99    212258/1272915272
-#> 6 China       20      00    213766/1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["century"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["chr"],"align":["left"]},{"label":["rate"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"19","3":"99","4":"745/19987071"},{"1":"Afghanistan","2":"20","3":"00","4":"2666/20595360"},{"1":"Brazil","2":"19","3":"99","4":"37737/172006362"},{"1":"Brazil","2":"20","3":"00","4":"80488/174504898"},{"1":"China","2":"19","3":"99","4":"212258/1272915272"},{"1":"China","2":"20","3":"00","4":"213766/1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 ```         
 table5 %>% unite(col = "year", century, year, sep = "") %>%
@@ -436,16 +394,13 @@ table5 %>% unite(col = "year", century, year, sep = "") %>%
   separate(rate, c("cases", "population"), sep = "/", 
            convert = TRUE) %>%
   mutate(year = as.integer(year), rate = cases / population)
-#> # A tibble: 6 × 5
-#>   country      year  cases population      rate
-#>   <chr>       <int>  <int>      <int>     <dbl>
-#> 1 Afghanistan  1999    745   19987071 0.0000373
-#> 2 Afghanistan  2000   2666   20595360 0.000129 
-#> 3 Brazil       1999  37737  172006362 0.000219 
-#> 4 Brazil       2000  80488  174504898 0.000461 
-#> 5 China        1999 212258 1272915272 0.000167 
-#> 6 China        2000 213766 1280428583 0.000167
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["cases"],"name":[3],"type":["int"],"align":["right"]},{"label":["population"],"name":[4],"type":["int"],"align":["right"]},{"label":["rate"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745","4":"19987071","5":"0.0000372741"},{"1":"Afghanistan","2":"2000","3":"2666","4":"20595360","5":"0.0001294466"},{"1":"Brazil","2":"1999","3":"37737","4":"172006362","5":"0.0002193930"},{"1":"Brazil","2":"2000","3":"80488","4":"174504898","5":"0.0004612363"},{"1":"China","2":"1999","3":"212258","4":"1272915272","5":"0.0001667495"},{"1":"China","2":"2000","3":"213766","4":"1280428583","5":"0.0001669488"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 #### 例 5: [`bind_rows`](https://dplyr.tidyverse.org/reference/bind.html)
 
@@ -454,34 +409,29 @@ table5 %>% unite(col = "year", century, year, sep = "") %>%
 
 ```r
 table4a; table4b
-#> # A tibble: 3 × 3
-#>   country     `1999` `2000`
-#>   <chr>        <dbl>  <dbl>
-#> 1 Afghanistan    745   2666
-#> 2 Brazil       37737  80488
-#> 3 China       212258 213766
-#> # A tibble: 3 × 3
-#>   country         `1999`     `2000`
-#>   <chr>            <dbl>      <dbl>
-#> 1 Afghanistan   19987071   20595360
-#> 2 Brazil       172006362  174504898
-#> 3 China       1272915272 1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"745","3":"2666"},{"1":"Brazil","2":"37737","3":"80488"},{"1":"China","2":"212258","3":"213766"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div><div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"19987071","3":"20595360"},{"1":"Brazil","2":"172006362","3":"174504898"},{"1":"China","2":"1272915272","3":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 
 ```r
 tables <- list(cases = table4a, population = table4b)
 tables %>% bind_rows(.id = "type")
-#> # A tibble: 6 × 4
-#>   type       country         `1999`     `2000`
-#>   <chr>      <chr>            <dbl>      <dbl>
-#> 1 cases      Afghanistan        745       2666
-#> 2 cases      Brazil           37737      80488
-#> 3 cases      China           212258     213766
-#> 4 population Afghanistan   19987071   20595360
-#> 5 population Brazil       172006362  174504898
-#> 6 population China       1272915272 1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["country"],"name":[2],"type":["chr"],"align":["left"]},{"label":["1999"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["2000"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"cases","2":"Afghanistan","3":"745","4":"2666"},{"1":"cases","2":"Brazil","3":"37737","4":"80488"},{"1":"cases","2":"China","3":"212258","4":"213766"},{"1":"population","2":"Afghanistan","3":"19987071","4":"20595360"},{"1":"population","2":"Brazil","3":"172006362","4":"174504898"},{"1":"population","2":"China","3":"1272915272","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 
 ```r
@@ -490,16 +440,13 @@ tables %>% bind_rows(.id = "type") %>%
   pivot_longer(cols = c("1999", "2000"), names_to = "year") %>%
   pivot_wider(names_from = "type", values_from = "value") %>%
   mutate(year = as.integer(year)) %>% arrange(country)
-#> # A tibble: 6 × 4
-#>   country      year  cases population
-#>   <chr>       <int>  <dbl>      <dbl>
-#> 1 Afghanistan  1999    745   19987071
-#> 2 Afghanistan  2000   2666   20595360
-#> 3 Brazil       1999  37737  172006362
-#> 4 Brazil       2000  80488  174504898
-#> 5 China        1999 212258 1272915272
-#> 6 China        2000 213766 1280428583
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["cases"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"2666","4":"20595360"},{"1":"Brazil","2":"1999","3":"37737","4":"172006362"},{"1":"Brazil","2":"2000","3":"80488","4":"174504898"},{"1":"China","2":"1999","3":"212258","4":"1272915272"},{"1":"China","2":"2000","3":"213766","4":"1280428583"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 ## 参照： `tidyr`
 
@@ -575,35 +522,35 @@ The first component, 'Reshape Data' deals with `pivot_longer` and `pivot_wider`.
 
 ```r
 (df_1 <- tibble(A = c('a','b','c'), B = c('t','u','v'), C = c(1,2,3)))
-#> # A tibble: 3 × 3
-#>   A     B         C
-#>   <chr> <chr> <dbl>
-#> 1 a     t         1
-#> 2 b     u         2
-#> 3 c     v         3
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1"},{"1":"b","2":"u","3":"2"},{"1":"c","2":"v","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 
 ```r
 (df_2 <- tibble(A = c('a','b','c'), F = c('t','u','w'), G = c(3,2,1)))
-#> # A tibble: 3 × 3
-#>   A     F         G
-#>   <chr> <chr> <dbl>
-#> 1 a     t         3
-#> 2 b     u         2
-#> 3 c     w         1
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["F"],"name":[2],"type":["chr"],"align":["left"]},{"label":["G"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"3"},{"1":"b","2":"u","3":"2"},{"1":"c","2":"w","3":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 
 ```r
 (df_3 <- tibble(A = c('a','C','d'), B = c('t','u','w'), C = c(1,3,4)))
-#> # A tibble: 3 × 3
-#>   A     B         C
-#>   <chr> <chr> <dbl>
-#> 1 a     t         1
-#> 2 C     u         3
-#> 3 d     w         4
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1"},{"1":"C","2":"u","3":"3"},{"1":"d","2":"w","3":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 df_1, df_2 では、A 列は共通ですから、何も指定しないと、by = 'A' を仮定して結合します。
 
@@ -611,135 +558,138 @@ df_1, df_2 では、A 列は共通ですから、何も指定しないと、by =
 ```r
 left_join(df_1, df_2)
 #> Joining with `by = join_by(A)`
-#> # A tibble: 3 × 5
-#>   A     B         C F         G
-#>   <chr> <chr> <dbl> <chr> <dbl>
-#> 1 a     t         1 t         3
-#> 2 b     u         2 u         2
-#> 3 c     v         3 w         1
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[4],"type":["chr"],"align":["left"]},{"label":["G"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"t","5":"3"},{"1":"b","2":"u","3":"2","4":"u","5":"2"},{"1":"c","2":"v","3":"3","4":"w","5":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 
 ```r
 left_join(df_1, df_2, by = "A")
-#> # A tibble: 3 × 5
-#>   A     B         C F         G
-#>   <chr> <chr> <dbl> <chr> <dbl>
-#> 1 a     t         1 t         3
-#> 2 b     u         2 u         2
-#> 3 c     v         3 w         1
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[4],"type":["chr"],"align":["left"]},{"label":["G"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"t","5":"3"},{"1":"b","2":"u","3":"2","4":"u","5":"2"},{"1":"c","2":"v","3":"3","4":"w","5":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 by = c("A", "B"="F") としましたが、B と F では一致していない箇所があります。そこで、一致していない場所は、左側の表 df_1 はそのまま C 列を読み込みますが、右側の表 df_2 は、その部分を NA にして読み込んでいません。つまり、一致した行のみ読み込んでいます。
 
 
 ```r
 left_join(df_1, df_2, by = c("A", "B"="F"))
-#> # A tibble: 3 × 4
-#>   A     B         C     G
-#>   <chr> <chr> <dbl> <dbl>
-#> 1 a     t         1     3
-#> 2 b     u         2     2
-#> 3 c     v         3    NA
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["G"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"3"},{"1":"b","2":"u","3":"2","4":"2"},{"1":"c","2":"v","3":"3","4":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 A 列も一致していますが、それは指定していないので、それは別と考えて、A.x, A.y と列名を別にして、かつ左側の表をもとにして読み込んでいます。
 
 
 ```r
 left_join(df_1, df_2, by = c("B"="F"))
-#> # A tibble: 3 × 5
-#>   A.x   B         C A.y       G
-#>   <chr> <chr> <dbl> <chr> <dbl>
-#> 1 a     t         1 a         3
-#> 2 b     u         2 b         2
-#> 3 c     v         3 <NA>     NA
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A.x"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["A.y"],"name":[4],"type":["chr"],"align":["left"]},{"label":["G"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"a","5":"3"},{"1":"b","2":"u","3":"2","4":"b","5":"2"},{"1":"c","2":"v","3":"3","4":"NA","5":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 roght_join ですから、今度は、右側の表 df_2 をもとにして読み込みます。B 列には、F 列が入っています。
 
 
 ```r
 right_join(df_1, df_2, by = c("A", "B"="F"))
-#> # A tibble: 3 × 4
-#>   A     B         C     G
-#>   <chr> <chr> <dbl> <dbl>
-#> 1 a     t         1     3
-#> 2 b     u         2     2
-#> 3 c     w        NA     1
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["G"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"3"},{"1":"b","2":"u","3":"2","4":"2"},{"1":"c","2":"w","3":"NA","4":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 左側の表 df_1 と 右側の表 df_2 が一致していない行は、B と F の値によって分けて、読み込んでいます。
 
 
 ```r
 full_join(df_1, df_2, by = c("A", "B"="F"))
-#> # A tibble: 4 × 4
-#>   A     B         C     G
-#>   <chr> <chr> <dbl> <dbl>
-#> 1 a     t         1     3
-#> 2 b     u         2     2
-#> 3 c     v         3    NA
-#> 4 c     w        NA     1
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["G"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1","4":"3"},{"1":"b","2":"u","3":"2","4":"2"},{"1":"c","2":"v","3":"3","4":"NA"},{"1":"c","2":"w","3":"NA","4":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 左側の表と一致しないものに入れ替えています。たとえば、a, b, c は、右側の行でも、t, u, v であるべきときに、違っている部分をチェックするようなときにも使えます。
 
 
 ```r
 anti_join(df_1, df_2, by = c("A", "B" = "F"))
-#> # A tibble: 1 × 3
-#>   A     B         C
-#>   <chr> <chr> <dbl>
-#> 1 c     v         3
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"c","2":"v","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 anti_join とは逆に、一致しているもののみ取り出します。
 
 
 ```r
 semi_join(df_1, df_2, by = c("A", "B" = "F"))
-#> # A tibble: 2 × 3
-#>   A     B         C
-#>   <chr> <chr> <dbl>
-#> 1 a     t         1
-#> 2 b     u         2
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1"},{"1":"b","2":"u","3":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 集合算では、同じ列について、intersect は共通な部分を取り出します。
 
 
 ```r
 intersect(df_1, df_3)
-#> # A tibble: 1 × 3
-#>   A     B         C
-#>   <chr> <chr> <dbl>
-#> 1 a     t         1
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 union は、和集合ですから、すべてを含むものを作成します。
 
 
 ```r
 union(df_1, df_3)
-#> # A tibble: 5 × 3
-#>   A     B         C
-#>   <chr> <chr> <dbl>
-#> 1 a     t         1
-#> 2 b     u         2
-#> 3 c     v         3
-#> 4 C     u         3
-#> 5 d     w         4
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"a","2":"t","3":"1"},{"1":"b","2":"u","3":"2"},{"1":"c","2":"v","3":"3"},{"1":"C","2":"u","3":"3"},{"1":"d","2":"w","3":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 setdiff は差集合ですから、df_1 に入っていて、df_3 には入っていないものを取り出します。
 
 
 ```r
 setdiff(df_1, df_3)
-#> # A tibble: 2 × 3
-#>   A     B         C
-#>   <chr> <chr> <dbl>
-#> 1 b     u         2
-#> 2 c     v         3
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["A"],"name":[1],"type":["chr"],"align":["left"]},{"label":["B"],"name":[2],"type":["chr"],"align":["left"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"b","2":"u","3":"2"},{"1":"c","2":"v","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>

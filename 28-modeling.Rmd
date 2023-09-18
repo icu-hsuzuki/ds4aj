@@ -10,13 +10,15 @@
 
 ここでは、もう少し一般的な分布に関して使われる、数理モデルについて学びます。その中でも、基本的な、二変数に関する、線形モデルについてすこし、ていねいにみていきたいと思います。
 
-簡単にいうと、X と Y という変数があったときに、X が増えると、Y も増えるとか、X が増加すると、Y は減少するという傾向をみたり、それが、どの程度、直線的に、増加、減少しているかを、$X = b + m\cdot X$ と、直線の方程式で近似し、それが、どの程度、実際のデータに近いかを表すというようなことです。
+簡単にいうと、X と Y という変数があったときに、X が増えると、Y も増えるとか、減るとか、X が増加すると、Y も増加するとか、減少するとかいう傾向をみたり、それが、どの程度、直線的に、増加、減少しているかを、$Y = b + m\cdot X$ と、直線の方程式で近似し（おおまかに表し）、それが、どの程度、実際のデータに近いかを表現する（あらわす数値をあたえる）というようなことです。
 
-R では、$b$（Y 切片）は、intercept（切片）として表示され、$m$（直線の傾き）は、slope（傾き）として表示されます。
+Y を X の関数で表す（X を定めると、Y を計算することができる）とも表現され、X を独立変数（independent variable）、Y を従属変数（dependent variable）と呼びます。むろん、X と Y の役割を逆にすることも可能なので、便宜的な名前です。また、統計学では、Y を目的変数（response variable）、X を説明変数（explanatory variable）と呼ぶ呼び方もされます。ただ、これらは、X によって、Y が定まるという、因果関係を表すという考え方が背景にあるのですが、傾向や関係性を見るという観点からは、これらの名前を使うことを避けたほうがよいとも言えますので、ここでは、独立変数、従属変数、説明変数、目的変数という言い方は、できるだけ避けたいと思います。
 
-R を使って、モデルについて表示される、数値の意味も説明したいと思います。
+R では、$b$（Y 切片）は、intercept（切片）として表示され、$m$（直線の傾き）は、（変数　X に関する）slope（傾き）として表示されます。
 
-数理モデルは、非常に多様なだけでなく（主要な）特徴は、分野ごとに必要度が異なることから、一般論として述べることには限界があります。H. ウィッカム（Hadley Wickham, el. al.）の R for Data Science の標準的な教科書でも、第一版には、基本的なことが含まれていましたが、[第二版](https://r4ds.hadley.nz) では、数理モデルは含まれていません。[Tidy Modeling with R](https://www.tmwr.org) を参照するようにとリンクがついています。
+R を使って、モデルについて表示される、数値の意味も説明したいと思います。数式での表現も書きますが、式を正確に覚えたりするよりも、大まかな意味を理解することを心がけてください。
+
+数理モデルは、非常に多様なだけでなく（主要な）特徴は、分野ごとに必要度が異なることから、一般論として述べることには限界があります。H. ウィッカム（Hadley Wickham, el. al.）の R for Data Science の標準的な教科書でも、第一版には、基本的なことが含まれていましたが、[第二版](https://r4ds.hadley.nz) には、数理モデルは含まれていません。[Tidy Modeling with R](https://www.tmwr.org) を参照するようにとリンクがついています。
 
 ## 準備（Setup）
 
@@ -27,7 +29,7 @@ library(readxl)
 library(tidymodels)
 ```
 
-Tidymodels を使いますが、これは、Tidyverse と同様に、一つのパッケージではなく、パッケージ群を表します。また、ここでは、ほんの一部しか使いませんが、一応、後々のために、インストールをし、使えるように `library(tidymodels)` で、読み込んでおいてください。
+Tidymodels パッケージを使いますが、これは、Tidyverse と同様に、一つのパッケージではなく、パッケージ群を表します。また、ここでは、ほんの一部しか使いませんが、一応、後々のために、インストールをし、使えるように `library(tidymodels)` で、読み込んでおいてください。興味のあるかたのために、Tidymodels サイトへのリンクを付けておきます。
 
 -   tidymodels: <https://www.tidymodels.org>
 
@@ -42,149 +44,266 @@ df_iris0 <- as_tibble(datasets::iris) %>% filter(Species != "setosa")
 二つの散布図を見てみます。一つ目は、X 軸が、花弁幅（はなびらのはば）、Y 軸が、花弁長（はなびらの長さ）、二つ目は、X 軸が、萼幅（がくのはば）、Y 軸が、花弁長（がくの長さ）を表した散布図です。
 
 ```{r}
-df_iris0 %>% ggplot(aes(Petal.Width, Petal.Length)) + geom_point()
+df_iris0 |> ggplot(aes(Petal.Width, Petal.Length)) + geom_point()
 ```
 
 ```{r}
-df_iris0 %>% ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
+df_iris0 |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 ```
 
-どちらも、幅（はなびらの幅や、がくの幅）が大きくなると、長さ（はなびらの長さや、がくの長さ）が大きくなる傾向があるように見えます。しかし、はなびらの散布図は、それが明らかにみてとれるだけでなく、ある直線にそって増加しているように見えます。がくの散布図では、その傾向が明らかではなく、直線にそって増加しているとまでは言えないように見えます。
+どちらも、幅（はなびらの幅や、がくの幅）が大きくなると、長さ（はなびらの長さや、がくの長さ）が大きくなる傾向があるように見えます。それは、なんとなく直感的にも自然ですよね。種類が同じ植物のはなびらや、がくの形は、だいたい同じ（相似形にちかい）と思われるからです。（直感はとてもたいせつです。直感とあわないことがあれば、立ち止まって考えて見るようにしてください。）しかし、はなびらの散布図は、それが明らかにみてとれるだけでなく、ある直線にそって（または直線的に）増加しているように見えます。がくの散布図では、その傾向が明らかではなく（ぼんやりとしていて）、直線にそって増加しているとまでは言えないように見えます。
 
-すこし、違った、見方をする方もおられるかもしれません。それを、数値的に表現するのが、線形モデルを使った表現です。まずは、それぞれに、増加傾向をあらわす直線を描いてみましょう。これは、ある一定の方法で描いたものですが、いまは、大体、そんなものだと考えてくださって構いません。
+すこし、違った、見方をする方もおられるかもしれません。定義を明確にすることで、合意ができるように、それを、数値的に表現するのが、線形モデルを使った表現です。まずは、それぞれに、増加傾向をあらわす直線を描いてみましょう。これは、ある一定の方法で描いたもので、歴史的背景から、回帰直線（regression line）と呼ばれすが、いまは、大体、そんなものだと考えてくださって構いません。
 
 ```{r}
-df_iris0 %>% ggplot(aes(Petal.Width, Petal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE)
+df_iris0 |> ggplot(aes(Petal.Width, Petal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE)
 ```
 
 ```{r}
-df_iris0 %>% ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE)
+df_iris0 |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE)
 ```
 
-たしかに、この二つの散布図と、直線を見ると、幅が増加すると長さも増加する傾向にあるようです。そこで、今度は、直線に近い、増加傾向にあると仮定して、適切な直線の方程式を求めてみます。それは、次のようにして求めることができます。
+たしかに、この二つの散布図と、直線を見ると、それぞれ（はなびらや、がくの）幅が増加すると長さも増加する傾向にあるようです。そこで、今度は、直線に近い、増加傾向にあると仮定して、適切な直線の方程式を求めてみます。それは、次のようにして求めることができます。
 
-## Linear Model: Petal.Length \~ Petal.Width
+### 線形モデルの例（Linear Models by Examples）
+
+#### Linear Model: Petal.Length \~ Petal.Width
+
+はなびらの長さを、はなびらの幅を変数とする、直線の方程式で近似してみます。
 
 ```{r}
-df_iris0 %>% lm(Petal.Length ~ Petal.Width, .)
+df_iris0 |> lm(Petal.Length ~ Petal.Width, data = _)
 ```
 
-## Formula: $\text{Petal.Length} = 2.224 + 1.600\cdot \text{Petal.Width}$
+Call の部分は、「このような（X を Petal.Width として、Y を Petal.Length の一次式、すなわち、$Y = b + m\cdot X$ と表わそうと）線形モデルで考えると」といった、意味です。
+
+Coefficients は、係数の意味です。次に、(Intercept) が、2.224、Petal.Width が 1.600 とありますから、1.600 が 一次式で表したときの Petal.Width の係数で、式で書くと次のようになります。
+
+Formula: $\text{Petal.Length} = 2.224 + 1.600\cdot \text{Petal.Width}$
+
+Petal.Width の範囲が限られていますから、Y 切片は確認できませんが、だいたい見当が付きますし、傾きは、X が 1 大きくなると、Y がどれぐらい大きくなるかという数ですから、だいたい、見当がつきますね。
 
 ```{r echo=FALSE}
-df_iris0 %>% ggplot(aes(Petal.Width, Petal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE)
+df_iris0 |> ggplot(aes(Petal.Width, Petal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE) 
 ```
 
-## Linear Model: Sepal.Length \~ Sepal.Width
+#### Linear Model: Sepal.Length \~ Sepal.Width
+
+がくの長さを、がくの幅を変数とする、直線の方程式で近似してみます。
 
 ```{r}
-df_iris0 %>% lm(Sepal.Length ~ Sepal.Width, .)
+df_iris0 |> lm(Sepal.Length ~ Sepal.Width, data = _)
 ```
 
-## Formula: $\text{Sepal.Length} = 3.093 + 1.103\cdot \text{Sepal.Width}$
+式は、次のようになっていることがわかります。
+
+Formula: $\text{Sepal.Length} = 3.093 + 1.103\cdot \text{Sepal.Width}$
+
+下のグラフから、だいたいの、Y 切片や、傾きを読み取って、上の式と比較してください。
 
 ```{r echo=FALSE}
-df_iris0 %>% ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE)
+df_iris0 |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE)
 ```
 
-## Petal.Length \~ Petal.Width: R squared = 0.6779 - 68%
+#### 決定係数（R squared）
+
+日本語では、決定係数と呼ばれることが多いようですが、R squared の意味を簡単に説明します。
+
+まず、決定係数（R squared）は、0 と 1 の間の値を取ります。モデルの当てはまり具合を表す数とも表現されます。
+
+The coefficient of determination R2 represents the strength of fit of the model.
+
+このモデル（現在の場合は X の関数として、Y の値をおおまかに表現する線形モデル）によって、どのていど、実際の値が決まるかをあらわす一つの指標です。この値が、1 のときは、ピッタリ合致していることを意味し、0 のときは、X の値に依存しない、平均値と、変わらないという意味です。たとえば、はなびらモデルでは、下のようになりますから、68％ 程度決定する、または、適合するという言い方をします。がくモデルの場合には、31% 程度決定する、または、適合するという言い方をします。はなびらモデルのほうが、がくモデルよりもより直線的といいうことを表す数ということになります。
+
+(Multiple) R Squared: a value between 0 and 1, the model's strength. It is a measurement of the model quality. If the value is close to 1, the model quality is high. If it is close to 0, the model quality is low.
+
+Petal.Length \~ Petal.Width: R squared = 0.6779 - 68%
 
 ```{r}
-df_iris0 %>% lm(Petal.Length ~ Petal.Width, .) %>% summary()
+df_iris0 |> lm(Petal.Length ~ Petal.Width, data = _) |> summary()
 ```
 
-## Sepal.Length \~ Sepal.Width: R squared = 0.3068 - 31%
+Sepal.Length \~ Sepal.Width: R squared = 0.3068 - 31%
 
 ```{r}
-df_iris0 %>% lm(Sepal.Length ~ Sepal.Width, .) %>% summary()
+df_iris0 |> lm(Sepal.Length ~ Sepal.Width, data =_) |> summary()
 ```
 
-## Linear Model Basics: y \~ x
+上のように、summary() 関数をつかうと、Multiple R-squared や、Adjusted R-squared と R squared 値は、出てきますが、現在の場合は、Multiple R-squared が、決定係数だと考えてください。
+
+いまは、Y を、X の関数として表しましたが、X ではなく、X~1~、X~2~、などとたくさんの変数を使って、表し、全体のデータ（観測値）の個数が、あまり多くないときは、Multiple R-squared よりも、Adjusted R-squared のほうが、より適切になってくるばあいはあるので、このように、2つの数が書かれています。
+
+また、決定係数（R squared）は、線形モデル以外にも使えますので、モデルの適合性を表す、たいせつな指標のひとつと理解しておいてください。
+
+summary() には、他にもたくさんの、値が出ています。あとで、それぞれについて、簡単に見ていきたいと思います。
+
+決定係数が1に近いと良い（強い）モデルで、0に近いと悪い（弱い）モデルということになりますが、どの程度ならば、良いモデルかは一概に言えません。分野にもよりますが、0.3 より小さければ、あまりよいモデルだとは言えず、0.7 より大きければ、よいモデルのひとつだと考えても良いのではないかと思います。
+
+上の2つのモデルは、微妙ですが、花びらモデルのほうが、良い（より適合した）モデルだと表現できます。
+
+```{r echo=FALSE}
+df_iris0 |> ggplot(aes(Petal.Width, Petal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE) + geom_hline(yintercept = mean(df_iris0$Petal.Length), col = "red")
+```
+
+### 線形モデルの基礎（Linear Model Basics）: y \~ x
+
+R では、線形モデルを次のように定めます。`y~x` は、x の関数で、y を表すという意味です。パイプを使うときは、その下の式のようになります。パイプは原則として、最初の変数として、一つ前の出力が読み込まれますが、`lm(arg1, arg2)` の場合には、`arg2` 2つ目の変数が、データですから、それを表すために、`data = _` (または、%\>% の場合には、そこに、ピリオッド（半角））を書き、そのことを示します。場所指定の '\_' （または '.'） (place holder) と言います。
 
 ```         
 lm(y~x, data)
 ```
 
 ```         
+data |> lm(y~x, data=_) # data = をつけないとエラーになります
+```
+
+```         
 data %>% lm(y~x, .)
 ```
 
-y-intercept, and slope: rate of increase or decrease
+y 切片や、傾きが得られます。（y-intercept, and slope: rate of increase or decrease）
+
+モデルのより詳細な情報は、summry() によって得ることができます。パイプを使う場合には、その次のコードとなります。
 
 ```         
 summary(lm(y~x, data))
 ```
 
 ```         
-data %>% lm(y~x, .) %>% summary()
+data |> lm(y~x, .) |> summary()
 ```
 
-(Multiple) R Squared: a value between 0 and 1, the model's strength. It is a measurement of the model quality. If the value is close to 1, the model quality is high. If it is close to 0, the model quality is low.
-
-```{r echo=FALSE}
-df_iris0 %>% ggplot(aes(Petal.Width, Petal.Length)) + geom_point() + geom_smooth(method="lm",formula=y~x, se=FALSE) + geom_hline(yintercept = mean(df_iris0$Petal.Length), col = "red")
-```
+具体的な例から、それぞれの数値がなにを表しているのか見ていきましょう。
 
 ```{r eval = FALSE}
 df1 <- data.frame(x = c(1,2,3,4), y = c(1,0.5,2, 1.5))
 ybar <- mean(df1$y)
 mod1 <- lm(y~x, df1)
-augment(mod1) %>% ggplot() + geom_point(aes(x,y)) + geom_smooth(aes(x,y), formula = y~x, method = "lm", se = FALSE) + geom_hline(yintercept = ybar, linetype="longdash", col = "red") + geom_point(aes(x, ybar), shape=4) + geom_point(aes(x, .fitted), shape =9, size=2) + geom_text(aes(x, ybar, label = paste0("(",x,",",1.25,")")), nudge_y = -0.1, col = "red") + geom_text(aes(x, .fitted, label = paste0("(",x,",",.fitted,")")), nudge_y = -0.1, col = "blue") + geom_text(aes(x, y, label = paste0("(",x,",",y,")")), nudge_y = -0.1) 
+augment(mod1) |> ggplot() + geom_point(aes(x,y)) + geom_smooth(aes(x,y), formula = y~x, method = "lm", se = FALSE) + geom_hline(yintercept = ybar, linetype="longdash", col = "red") + geom_point(aes(x, ybar), shape=4) + geom_point(aes(x, .fitted), shape =9, size=2) + geom_text(aes(x, ybar, label = paste0("(",x,",",1.25,")")), nudge_y = -0.1, col = "red") + geom_text(aes(x, .fitted, label = paste0("(",x,",",.fitted,")")), nudge_y = -0.1, col = "blue") + geom_text(aes(x, y, label = paste0("(",x,",",y,")")), nudge_y = -0.1) 
 ```
 
--   $(x_1, y_1)$, $(x_2,y_2)$, $(x_3, y_3)$, $(x_4, y_4)$: Data points
--   $\bar{y}$: mean of y = $(y_1 + y_2 + y_3 + y_4)/4$.
--   $\hat{y}_i$: prediction at $x_i$,
-    -   $(x_1, \hat{y}_1)$, $(x_2, \hat{y}_2)$, $(x_3, \hat{y}_3)$, $(x_4, \hat{y}_4)$ are on the regression line.
--   $y_1-\hat{y}_1$, $y_2-\hat{y}_2$, $y_2-\hat{y}_2$, $y_2-\hat{y}_2$ are called residues.
+-   $(x_1, y_1)$, $(x_2,y_2)$, $(x_3, y_3)$, $(x_4, y_4)$: Data points - データの4つの点をあらわす黒点
+-   $\bar{y}$: mean of y = $(y_1 + y_2 + y_3 + y_4)/4$. （相加）平均値を表す赤線
+-   $\hat{y}_i$: prediction at $x_i$, 線形モデルの一次式で与えられる値
+    -   $(x_1, \hat{y}_1)$, $(x_2, \hat{y}_2)$, $(x_3, \hat{y}_3)$, $(x_4, \hat{y}_4)$ are on the regression line. 回帰直線上の◇で表された点
+-   $y_1-\hat{y}_1$, $y_2-\hat{y}_2$, $y_2-\hat{y}_2$, $y_2-\hat{y}_2$ are called residues. 実際の値から、モデルでの予測値を引いたもので、残差と呼ばれます
 
 ```{r echo=FALSE}
 df1 <- data.frame(x = c(1,2,3,4), y = c(1,0.5,2, 1.5))
 ybar <- mean(df1$y)
 mod1 <- lm(y~x, df1)
-augment(mod1) %>% ggplot() + geom_point(aes(x,y)) + geom_smooth(aes(x,y), formula = y~x, method = "lm", se = FALSE) + geom_hline(yintercept = ybar, linetype="longdash", col = "red") + geom_point(aes(x, ybar), shape=4) + geom_point(aes(x, .fitted), shape =9, size=2) + geom_text(aes(x, ybar, label = paste0("(",x,",",1.25,")")), nudge_y = -0.1, col = "red") + geom_text(aes(x, .fitted, label = paste0("(",x,",",.fitted,")")), nudge_y = -0.1, col = "blue") + geom_text(aes(x, y, label = paste0("(",x,",",y,")")), nudge_y = -0.1) 
+augment(mod1) |> ggplot() + geom_point(aes(x,y)) + geom_smooth(aes(x,y), formula = y~x, method = "lm", se = FALSE) + geom_hline(yintercept = ybar, linetype="longdash", col = "red") + geom_point(aes(x, ybar), shape=4) + geom_point(aes(x, .fitted), shape =9, size=2) + geom_text(aes(x, ybar, label = paste0("(",x,",",1.25,")")), nudge_y = -0.1, col = "red") + geom_text(aes(x, .fitted, label = paste0("(",x,",",.fitted,")")), nudge_y = -0.1, col = "blue") + geom_text(aes(x, y, label = paste0("(",x,",",y,")")), nudge_y = -0.1) 
 ```
 
-## R Squared
+線形モデルの一次式で与えられる値（fitted values）は次のようにしても表示できます。
+
+```{r}
+mod1$fitted.values
+```
+
+#### 決定係数（R Squared）
+
+$SS_{tot}$ は、実際の値から平均値を引いたものを、二乗して足したものです。二乗してあるので、かならず正（正確には非負）になります。
+
+$SS_{res}$ は、実際の値から（この線形）モデルによって予測したあたいを引いたものを、二乗して足したものです。二乗してあるので、かならず正（正確には非負）になります。
+
+$R^2$ は、一番下の式で定義されます。完全に予測が実際の値と一致していると、$SS_{res}$ は、0 になりますから、その場合は、商の分子が 0 で、$R^2$ の値は、1 になります。
+
+線形モデルの、直線の方程式は、直線の中で、$SS_{res}$ が一番小さくなるものを（最小二乗法という方法で）選んであり、平均を通る直線をから計算したものよりは、小さくなるので、商の部分は、1 以下、すなわち、$R^2$ の値は、0 以上 1 以下となります。
 
 $$SS_{tot} = (1-1.25)^2 + (0.5-1.25)^2 + (2-1.25)^2 + (1.5-1.25)^2 = 1.25$$ $$SS_{res} = (1-0.8)^2 + (0.5-1.1)^2 + (2-1.4)^2 + (1.5-1.7)^2 = 0.8$$ $$R^2 = 1 - \frac{SS_{res}}{SS_{tot}} = 1- \frac{0.8}{1.25} = 0.36.$$
+
+実際に、`mod1` の `summary()` から値を取り出す方法をいくつか書いておきます。`glance` は、`tidymodel` に含まれる、パッケージ `broom` の関数で、モデルの概要（summary）を、表（この場合は、tidyverse の標準の tibble）として出力するものです。
 
 ```{r}
 summary(mod1)$r.squared
 ```
 
 ```{r}
-mod1 %>% glance() %>% pull(r.squared)
+mod1 |> summary() |> glance()
 ```
 
 ```{r}
-mod1 %>% glance() %>% select(`R Squared` = r.squared)
+mod1 |> glance() |> pull(r.squared)
 ```
 
 ```{r}
-mod1 %>% summary() %>% glimpse()
+mod1 |> glance() |> select(`R Squared` = r.squared)
 ```
 
-## Useful Mathematical Formula
+### モデル概要
 
--   Let $x = c(x_1, x_2, \ldots, x_n)$ be the independent variable, i.e., Sepal.L
--   Let $y = c(y_1, y_2, \ldots, y_n)$ be the dependent variable, i.e., Sepal.W
--   Let $\mbox{pred} = c(\hat{y}_1, \hat{y}_2, \ldots, \hat{y}_n)$ be the predicted values by linear regression.
+一般的な場合に、それぞれの数値を表す数式（Mathematical Formula）と簡単な説明を記します。
+
+-   $x = c(x_1, x_2, \ldots, x_n)$ : X 変数（the X (independent) variable） 例 Petal.Width
+-   $y = c(y_1, y_2, \ldots, y_n)$ ：Y 変数（the Y (dependent) variable） 例 Petal.Length
+-   $\mbox{pred} = c(\hat{y}_1, \hat{y}_2, \ldots, \hat{y}_n)$ ：モデル予測値（the predicted values by a (linear regression) model）例 $\hat{y}_i = b + m\cdot x_i$
+
+例は、はなびらモデルを使って説明します。
+
+```{r}
+df_iris0 |> lm(Petal.Length ~ Petal.Width, data = _) %>% summary()
+```
+
+#### Call（適用されたモデル）
+
+使われたモデルの定義式（The function and the parameters used to create the model）
+
+#### Residuals（残差）
+
+残差は、実際の値から、予測値を差し引いた値（Difference between what the model predicted and the actual value of y）：$e_i = y_i - \hat{y}_i$
+
+その、分布の、最小値、第一四分位、中央値、第三四分位、最大値が表示されています。次のようにしても、表示できます。
+
+Tidymodels に含まれる、`broom` パッケージの `augument()` 関数を使うと、予測値 predicted values (pred) または、fitted values は、.fitted 列に、残差 residues は、.resid に追加されます。（他の列については、さしあたって不要ですが、Help などを参照してください。）
+
+```{r}
+df_iris0 |> lm(Petal.Length ~ Petal.Width, data = _) |> augment()
+```
+
+したがってそれを使えば、Residuals の部分の値は、次のようにして得られます。
+
+```{r}
+df_iris0 |> lm(Petal.Length ~ Petal.Width, data = _) |> augment() |>
+  pull(.resid) |> summary()
+```
 
 $$
 \begin{aligned}
-\mbox{slope of the regression line}  &= \frac{cov(x,y)}{var(x)} = \frac{cor(x,y)\sqrt{var(y)}}{\sqrt{var(x)}}\\
-\mbox{total sum of squares} &= SS_{tot} = \sum_{i}(y_i-mean(y))^2\\
-\mbox{residual sum of squares} &= SS_{res} = \sum_{i}(y_i-\mbox{pred}_i)^2 = \sum_{i}(y_i-\hat{y}_i)^2\\
-\mbox{R squared} = R^2 & = 1 - \frac{SS_{res}}{SS_{tot}} = cor(x,y)^2
+\mbox{$x$ の平均：} mean(x) & = \frac{1}{n}\sum_i x_i \\
+\mbox{$y$ の平均：} mean(y) & = \frac{1}{n}\sum_i y_i \\
+\mbox{$x$ の分散：} var(x) & = \frac{1}{n}\sum_i(x_i-mean(x))^2 \\
+\mbox{$y$ の分散：} var(y) & = \frac{1}{n}\sum_i(y_i-mean(y))^2 \\
+\mbox{$x$ と $y$ の共分散：} cov(x) & = \frac{1}{n}\sum_i(x_i-mean(x))(y_i-mean(y)) \\
+\mbox{$x$ と $y$ の相関係数：} cor(x) & = \frac{cov(x,y)}{\sqrt{var(x)}\sqrt{var(y)}}\\
+\mbox{回帰直線の係数： slope}  &= \frac{cov(x,y)}{var(x)} = \frac{cor(x,y)\sqrt{var(y)}}{\sqrt{var(x)}}\\
+\mbox{全平方和 total sum of squares：} &SS_{tot} = \sum_{i}(y_i-mean(y))^2\\
+\mbox{残差平方和 residual sum of squares：} &SS_{res} = \sum_{i}(y_i-\mbox{pred}_i)^2 \\ &= \sum_{i}(y_i-\hat{y}_i)^2\\
+\mbox{決定係数 R squared：} R^2 & = 1 - \frac{SS_{res}}{SS_{tot}} = cor(x,y)^2
 \end{aligned}
 $$
 
-### Adjusted R Squared
+#### 自由度修正済み決定係数（Adjusted R Squared）
 
-$$\text{Adjusted }R^2 = 1- \frac{(1-R^2)(n-1)}{n-k-1}$$ $n$: number of observations, the number of rows
+$$\text{Adjusted }R^2 = 1- \frac{(1-R^2)(n-1)}{n-k-1}$$ $n$: 行数（観測値の数）number of observations, the number of rows
 
 $k$: number of variables used for prediction
+
+#### Coefficients
+
+Tidymodels に含まれる、`broom` パッケージの `tody()` 関数を使うと、係数の部分を表として取り出すことができます。
+
+```{r}
+df_iris0 |> lm(Petal.Length ~ Petal.Width, data = _) |> tidy()
+```
+
+#### Significant
+
+Tidymodels に含まれる、`broom` パッケージの `glance()` 関数を使うと、残りの値が表示できます。
+
+```{r}
+df_iris0 |> lm(Petal.Length ~ Petal.Width, data = _) |> glance()
+```
 
 ```{r}
 df_iris0 %>% select(1:4) %>% cor()
