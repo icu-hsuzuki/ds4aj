@@ -365,7 +365,7 @@ gadm2 %>% filter(NL_NAME_1 %in% c("埼玉県", "群馬県", "栃木県", "茨城
 
 -   Data Visualization for International Relations: Chapter 7 Choropleth Maps: <https://bookdown.org/alhdzsz/data_viz_ir/maps.html>
 
--   R Graphics Cookbook: 13.18 Creating a Choropleth Map: https://r-graphics.org/recipe-miscgraph-choropleth
+-   R Graphics Cookbook: 13.18 Creating a Choropleth Map: <https://r-graphics.org/recipe-miscgraph-choropleth>
 
 -   Geocomputation with R：First Edition in [bookdown サイト](https://bookdown.org/robinlovelace/geocompr/)
 

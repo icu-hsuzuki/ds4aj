@@ -4,7 +4,7 @@
 
 ### **国連児童基金**（UNICEF：United Nations Children's Fund）
 
-https://data.unicef.org
+<https://data.unicef.org>
 
 ## 世界の国の政府機関
 
@@ -196,4 +196,3 @@ df_gm %>% slice(1:10)
 </div>
 
 さて、このデータは、どのようにして集めているのでしょうか。WDI のデータと同じでしょうか。
-
