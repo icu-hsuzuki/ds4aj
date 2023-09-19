@@ -1,0 +1,619 @@
+# base R {#rbasics}
+
+## はじめに
+
+R を使って、データサイエンスをはじめる最初のステップについて説明します。また、R を起動すると、同時に読み込まれる、base と呼ばれるパッケージについても簡単に解説します。
+
+本書では、Tidyverse と呼ばれるパッケージ群を主として使いますが、基礎を支えるのは、base ですので、Tidyverse でデータサイエンスをするため、最低限知っておいていただきたい、base についての説明という感じでしょうか。
+
+R Project に基本文書がありますが、100ページを越しますので、参考程度にしていただくのがよいかと思います。
+
+リンク：
+
+-   [An Introduction to R](https://cran.r-project.org/) Manual にあります。下に日本語版へのリンクもあります。
+
+-   [CheatSheet base R](https://rstudio.github.io/cheatsheets/base-r.pdf) 早見表[^23-rbasics-1]。検索すると日本語版も見つかると思います。
+
+    -   [Posit CheatSheets](https://posit.co/resources/cheatsheets/): Posit co の提供する公式早見表
+
+    -   [Contributed CheatSheet at Posit](https://rstudio.github.io/cheatsheets/contributed-cheatsheets.html): Posit co のサイトからリンクのある早見表
+
+[^23-rbasics-1]: CheatSheet は、直訳は、カンニング・ペーパーです。ここでは、もう少し品のよさそうな、早見表ということばを使いました。
+
+## プロジェクト - Project
+
+RStudio で R を利用する場合には、プロジェクトを作成することを強く勧めます。
+
+1.  まず、R Studio を起動します。
+
+2.  上のメニューの、File から、New Project を選択します。New Directory（新しいディレクトリー）を選択し、プロジェクトを作成する Directory を決めて、名前をつけます。その名前が、プロジェクト名になります。
+
+-   Directory（フォルダー）を指定してその名前をつけて、プロジェクトを作成します。
+-   Directory が階層に分かれているときは、どこに作成するかを選択してから、名前をつけて、作成します。
+
+3.  一旦、R Studio を終了してみましょう。
+
+4.  プロジェクトの起動には、いくつかの方法があります。
+
+-   まず、R Studio を起動。一つしかプロジェクトがない場合は、そのプロジェクトが起動すると思います、。上に、プロジェクト名が掲載されていれば、問題ありません。
+-   File から、Open Project を選択し、起動したい、プロジェクトの Directory（フォルダー）を選択して起動します。
+-   File から、Recent Project（最近使ったプロジェクト）を選択すると、プロジェクト名が表示されますから、選択すると起動することができます。
+-   コンピュータのプロジェクト入っているディレクトリー（フォルダー）をさがし、そこに、プロジェクト名.Rproj とあるものを見つけて、それを開くと、そのプロジェクトが起動します。
+
+5.  作業後は、保存しますかと聞かれますから、保存して終了してください。
+
+## コンソールで実行 - Run in Console
+
+プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console を選択してください。）
+
+### 最初の四つ
+
+下の、四つを、一つずつ、一番下の、\> マークの次に書き（または、コピー・ペーストして）Return または、Enter キーを押してください。実行結果が、その下に出ます。最後の、`plot(cars)` は、`cars` というデータの、散布図が右下の、Plots タブに表示されます。
+
+-   `head(cars)`
+-   `str(cars)`
+-   `summary(cars)`
+-   `plot(cars)`
+
+エラーが表示されたら、もう一度、スペルを確認して、入力してみてください。
+
+次のような、結果が表示されると思います。簡単な説明をつけます。
+
+
+```r
+head(cars)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["speed"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dist"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"2","_rn_":"1"},{"1":"4","2":"10","_rn_":"2"},{"1":"7","2":"4","_rn_":"3"},{"1":"7","2":"22","_rn_":"4"},{"1":"8","2":"16","_rn_":"5"},{"1":"9","2":"10","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+`head(cars)` は、`cars` という、R に付属している、データの、最初（頭 head）の6行を、表示します。
+
+
+```r
+str(cars)
+#> 'data.frame':	50 obs. of  2 variables:
+#>  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...
+#>  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...
+```
+
+`str(cars)` は、`cars` という、R に付属している、データの構造（structure）を表示します。`data.frame` とありますが、これは、矩形になったデータ（各列の長さがおなじ）の一番簡単なクラスの名前で、2変数、それぞれが、50 個の数値データ（numerical data） からなっていることがわかります。
+
+`head(cars)` では、縦に表示されていたものが、横に表示されています。`$speed`、`$dist` とありますが、`cars$speed`, `cars$dist` は、`cars` データの、それぞれの列を意味します。
+
+
+```r
+summary(cars)
+#>      speed           dist       
+#>  Min.   : 4.0   Min.   :  2.00  
+#>  1st Qu.:12.0   1st Qu.: 26.00  
+#>  Median :15.0   Median : 36.00  
+#>  Mean   :15.4   Mean   : 42.98  
+#>  3rd Qu.:19.0   3rd Qu.: 56.00  
+#>  Max.   :25.0   Max.   :120.00
+```
+
+`cars` データの概要（summary）が表示されます。各列（変数）について、最小値（Minimum）、小さい方から、4分の1を切り捨てたときの最小の値（1st Quartile）、中央値（Median）、平均（Mean）、大きい方から、4分の1を切り捨てたときの最大の値（3rd Quartile）、最大値（Maximum）が表示されます。
+
+
+```r
+plot(cars)
+```
+
+<img src="23-rbasics_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+
+右下の、窓枠の、Plots に、上のグラフ（散布図）が表示されると思います。Export と書いてある、プルダウンメニューがあり、そこから、画像として保存することも、可能です。
+
+以前は、このように取り出した画像を、Word などに貼り付けて、使っていました。現在でも、そのような方法を知っていることは有効だと思います。
+
+### アサインメント、ヘルプ
+
+コンソールで次のそれぞれを、試してみてください。
+
+-   `df <- cars`
+
+`df` に、`cars` をアサインします。すなわち、`df` が、`cars` の内容に置き換わります。`cars` はデータですが、データを含む、オブジェクトの名前を設定するためにも使います。オブジェクト名は。英文字から始まれば、かなりの自由度がありますが、わたしは、英文字と数字と `_`（underscore） 程度しか使わないようにしています。
+
+-   `head(df)`
+
+`head(df)` は、`head(cars)` と同じ出力が得られます。
+
+-   `View(cars)`
+
+左上の、窓枠が開き、`cars` というデータ の内容が表示されます。列名のところには、三角形も表示され、それを用いると、大きい順、小さい順などに、並び替えることも可能です。また、フィルター機能も使えます。
+
+-   `?cars`
+
+右下の、窓枠の　Help タブに、`cars` の情報が表示されます。Help タブにある、虫眼鏡がついた、検索窓（search window）に、`cars` といれても、同じ結果が得られます。 内容を確認してください。
+
+一番上には `cars {datasets}` とありますが、これは、`datasets` というパッケージの、`cars` だという意味です。そこで、`datasets` を調べてみましょう。
+
+-   `?datasets`
+
+"The R Datasets Package" だと書かれていて、さらに、
+
+This package contains a variety of datasets. For a complete list, use library(help = "datasets").
+
+さまざまなデータが含まれています。全てのリストをみるには、`library(help = "datasets")` を使ってください。
+
+とありますから、`library(help = "datasets")` をコンソールに入力してみてください。
+
+-   `library(help = "datasets")`
+
+左上の窓枠に、リストが表示されます。古いデータばかりですが、例として使うには、十分すぎるぐらいの、数のデータがあります。これらは、Toy Data（おもちゃのデータ）と呼ばれることもあります。
+
+`cars` も見つかりましたか。
+
+### おすすめ
+
+コンピュータのシステムが、日本語であると、R の言語も日本語になっているはずです。そこで、エラーが発生すると、一部、日本語で表示されます。しかし、ネット上などで、そのエラーの対応を検索するときは、英語のエラーメッセージで検索した方が、解決方法が得られる可能性が圧倒的に高いので、わたしは、英語に設定しています。英語にするには、Console で次のようにします。
+
+言語を英語に設定：`Sys.setenv(LANG = "en")`
+
+RStudio を終了して、もう一度起動すると、日本語に戻っていると思います。ですから、作業の最初、または、エラーが出たら、変更することをお勧めします。
+
+日本語に戻したいときは、次のようにします。
+
+言語を日本語に設定：`Sys.setenv(LANG = "ja")`
+
+さまざまな Help なども、すべて日本語で表示されれば日本語を使うのは有効かもしれませんが、すくなくとも、現在は、そうではないので、上に説明したことから、英語に設定することをお勧めします。
+
+### 練習
+
+1.  `head(cars, 10L)` は何が出力されますか。`head(cars, n=10L)` と同じですか。
+2.  `?head` または、Help の検索窓に `head` と入力して、説明を見てみてください。`head(cars, n=10L)` などについて、書いてありましたか。他には、どのようなことが分かりましたか。
+3.  `datasets` のデータのいくつかについて、そのデータの help や、`head`, `str`, `summary` などを使ってみてください。これらで表示できない場合はありますか。データについては、最初に、これら、三つを試してみることをお勧めします。わかったことをメモしておくと良いでしょう。`datasets` のリストをみるには、`library(help = "datasets")` でしたね。
+
+## RStudio について
+
+RStudio は多くの機能を持っています。
+
+### 四つの窓枠とタブ Four Panes and Tabs
+
+-   左上（Top Left）: スクリプトや文書、データなどの編集（Source Editor）
+-   右上（Top Right）: 環境変数（Environment）, 履歴（History） など（etc.）
+-   左下（Bottom Left）: コードの実行・実行結果などを表示するコンソール（Console）, コンピュータシステムの端末（Terminal）, 文書の機械語翻訳（Render）, 背後での作業（Background Jobs）
+-   右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation[^23-rbasics-2]）
+
+[^23-rbasics-2]: Viewerへの表示を使っており、Presentationへの表示を使っておらず不明
+
+## R Script 実行記録
+
+R Script を使って、コードを実行すると、その記録を残すことができます。
+
+### R Script の作成
+
+-   RStudio の上のメニュー・バーからFile \> New File \> R Script を選択します。
+-   File \> Save As で、名前をつけて保存します。{file_name}.R が作成されます。
+    -   右下の、Files から、ファイルを確認してください。
+-   `head(cars)`, `str(cars)`, `summary(cars)`, `plot(cars)` などと改行をしながらコードを書きます。
+-   実行するには、カーソルの場所で Ctrl+Shift+Enter (Win) または Cmd+Shift+Enter (Mac) とすると、カーソルのある行か、その下の行で、最初のコードが実行されます。
+    -   R Script エディターの上にある、Run ボタンを押しても、同様に実行されます。
+    -   Run ボタンの右の、Source ボタンを押すと、そのスクリプトの、最初からすべてが実行されます。
+-   最後には保存しておきましょう。たとえば、`myfirstscript` などとすると、File のところに、`myfirstscript.R` というファイルができていることを確認できます。
+
+### R Script による実行
+
+新しく、R Script を作成し、この下の、コード（ハイライトされている部分）をコピー・ペーストして、保存し、実行してみてください。
+
+それぞれ、どのようなことをしているでしょうか。
+
+詳細を説明すると、時間もかかりますから、必要になったときに、少しずつ説明していきます。ここでは、スクリプトを使って、実行するという、二つ目の方法に慣れていただければ十分です。
+
+#### スクリプト1: `basics.R`
+
+
+```r
+#################
+#
+# basics.R
+#
+################
+# 'Quick R' by DataCamp may be a handy reference: 
+#     https://www.statmethods.net/management/index.html
+# Cheat Sheet at RStudio: https://www.rstudio.com/resources/cheatsheets/
+# Base R Cheat Sheet: https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf
+# To execute the line: Control + Enter (Window and Linux), Command + Enter (Mac)
+## try your experiments on the console
+
+## calculator
+
+3 + 7
+
+### +, -, *, /, ^ (or **), %%, %/%
+
+3 + 10 / 2
+
+3^2
+
+2^3
+
+2*2*2
+
+### assignment: <-, (=, ->, assign()) 
+
+x <- 5
+
+x 
+
+#### object_name <- value, '<-' shortcut: Alt (option) + '-' (hyphen or minus) 
+#### Object names must start with a letter and can only contain letter, numbers, _ and .
+
+this_is_a_long_name <- 5^3
+
+this_is_a_long_name
+
+char_name <- "What is your name?"
+
+char_name
+
+#### Use 'tab completion' and 'up arrow'
+
+### ls(): list of all assignments
+
+ls()
+ls.str()
+
+#### check Environment in the upper right pane
+
+### (atomic) vectors
+
+5:10
+
+a <- seq(5,10)
+
+a
+
+b <- 5:10
+
+identical(a,b)
+
+seq(5,10,2) # same as seq(from = 5, to = 10, by = 2)
+
+c1 <- seq(0,100, by = 10)
+
+c2 <- seq(0,100, length.out = 10)
+
+c1
+
+c2
+
+length(c1)
+
+#### ? seq   ? length   ? identical
+
+(die <- 1:6)
+
+zero_one <- c(0,1) # same as 0:1
+
+die + zero_one # c(1,2,3,4,5,6) + c(0,1). re-use
+
+d1 <- rep(1:3,2) # repeat
+
+
+d1
+
+die == d1
+
+d2 <- as.character(die == d1)
+
+d2
+
+d3 <- as.numeric(die == d1)
+
+d3
+
+### class() for class and typeof() for mode
+### class of vectors: numeric, charcters, logical
+### types of vectors: doubles, integers, characters, logicals (complex and raw)
+
+typeof(d1); class(d1)
+
+typeof(d2); class(d2)
+
+typeof(d3); class(d3)
+
+sqrt(2)
+
+sqrt(2)^2
+
+sqrt(2)^2 - 2
+
+typeof(sqrt(2))
+
+typeof(2)
+
+typeof(2L)
+
+5 == c(5)
+
+length(5)
+
+### Subsetting
+
+(A_Z <- LETTERS)
+
+A_F <- A_Z[1:6]
+
+A_F
+
+A_F[3]
+
+A_F[c(3,5)]
+
+large <- die > 3
+
+large
+
+even <- die %in% c(2,4,6)
+
+even
+
+A_F[large]
+
+A_F[even]
+
+A_F[die < 4]
+
+### Compare df with df1 <- data.frame(number = die, alphabet = A_F)
+df <- data.frame(number = die, alphabet = A_F, stringsAsFactors = FALSE)
+
+df
+
+df$number
+
+df$alphabet
+
+df[3,2]
+
+df[4,1]
+
+df[1]
+
+class(df[1])
+
+class(df[[1]])
+
+identical(df[[1]], die)
+
+identical(df[1],die)
+
+####################
+# The First Example
+####################
+
+plot(cars)
+
+# Help
+
+? cars
+
+# cars is in the 'datasets' package
+
+data()
+
+# help(cars) does the same as ? cars
+# You can use Help tab in the right bottom pane
+
+help(plot)
+? par
+
+head(cars)
+
+str(cars)
+
+summary(cars)
+
+x <- cars$speed
+y <- cars$dist
+
+min(x)
+mean(x)
+quantile(x)
+
+plot(cars)
+
+abline(lm(cars$dist ~ cars$speed))
+
+summary(lm(cars$dist ~ cars$speed))
+
+boxplot(cars)
+
+hist(cars$speed)
+hist(cars$dist)
+hist(cars$dist, breaks = seq(0,120, 10))
+```
+
+#### スクリプト2: `coronavirus.R`
+
+
+```r
+# https://coronavirus.jhu.edu/map.html
+# JHU Covid-19 global time series data
+# See R package coronavirus at: https://github.com/RamiKrispin/coronavirus
+# Data taken from: https://github.com/RamiKrispin/coronavirus/tree/master/csv
+# Last Updated
+Sys.Date()
+
+## Download and read csv (comma separated value) file
+coronavirus <- read.csv("https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv")
+# write.csv(coronavirus, "data/coronavirus.csv")
+
+## Summaries and structures of the data
+head(coronavirus)
+str(coronavirus)
+coronavirus$date <- as.Date(coronavirus$date)
+str(coronavirus)
+
+range(coronavirus$date)
+unique(coronavirus$country)
+unique(coronavirus$type)
+
+## Set Country
+COUNTRY <- "Japan"
+df0 <- coronavirus[coronavirus$country == COUNTRY,]
+head(df0)
+tail(df0)
+(pop <- df0$population[1])
+df <- df0[c(1,6,7,13)]
+str(df)
+head(df)
+### alternatively,
+head(df0[c("date", "type", "cases", "population")])
+###
+
+## Set types
+df_confirmed <- df[df$type == "confirmed",]
+df_death <- df[df$type == "death",]
+df_recovery <- df[df$data_type == "recovery",]
+head(df_confirmed)
+head(df_death)
+head(df_recovery)
+
+## Histogram
+plot(df_confirmed$date, df_confirmed$cases, type = "h")
+plot(df_death$date, df_death$cases, type = "h")
+# plot(df_recovered$date, df_recovered$cases, type = "h") # no data for recovery
+
+## Scatter plot and correlation
+plot(df_confirmed$cases, df_death$cases, type = "p")
+cor(df_confirmed$cases, df_death$cases)
+
+
+## In addition set a period
+start_date <- as.Date("2022-07-01")
+end_date <- Sys.Date() 
+df_date <- df[df$date >=start_date & df$date <= end_date,]
+##
+
+## Set types
+df_date_confirmed <- df_date[df_date$type == "confirmed",]
+df_date_death <- df_date[df_date$type == "death",]
+df_date_recovery <- df_date[df_date$data_type == "recovery",]
+head(df_date_confirmed)
+head(df_date_death)
+head(df_date_recovery)
+
+## Histogram
+plot(df_date_confirmed$date, df_date_confirmed$cases, type = "h")
+plot(df_date_death$date, df_date_death$cases, type = "h")
+# plot(df_date_recovered$date, df_date_recovered$cases, type = "h") # no data for recovery
+
+plot(df_date_confirmed$cases, df_date_death$cases, type = "p")
+cor(df_date_confirmed$cases, df_date_death$cases)
+
+#### Extra
+plot(df_confirmed$date, df_confirmed$cases, type = "h", 
+     main = paste("Comfirmed Cases in",COUNTRY), 
+     xlab = "Date", ylab = "Number of Cases")
+```
+
+### 練習
+
+上の、`coronavirus.R` について
+
+1.  `COUNTRY <- "Japan"` の Japan を他の国に変えてみましょう。
+2.  `start_date <- as.Date("2022-07-01")` の日付を、他の日付に変えてみましょう。
+3.  `df_confirmed$cases` と `df_death$cases` についてどんなことがわかりますか。
+4.  発見や、問いがあれば、書き出してみましょう。
+
+### Tips
+
+キーボード・ショートカットと言われる、さまざまな機能があります。
+
+-   上のメニュー・バー： Help \> Keyboard Short Cut Help 確認してみてください。
+-   右下の窓枠: Files タブから、ファイルの確認ができます。
+
+## パッケージ - Packages
+
+> R packages are extensions to the R statistical programming language containing code, data, and documentation in a standardised collection format that can be installed by users of R using Tool \> Install Packages in the top menu bar of R Studio. <https://en.wikipedia.org/wiki/R_package>
+
+> Rパッケージは、Rの拡張機能で、コード、データ、ドキュメントを標準化されたコレクション形式で含んでおり、標準的なものは、R Studio の Top Bar の Tool \> Install Packages からインストールできます。
+
+### パッケージのインストール
+
+いずれ使いますので、まずは、三つのパッケージをインストールしてみましょう。
+
+-   `tidyverse`
+-   `rmarkdown`
+-   `tinytex`
+
+インストール方法はいくつかあります。
+
+一つ目は、上のメニューバーの Tool から、Install Packages ... を選択します。そして、パッケージーズにインストールしたい、パッケージ名を入力します。そのパッケージ名が下にも出れば、Install ボタンを押してください。入力した名前の下にパッケージ名が出ない場合は、スペルが間違っている可能性がありますから、確認して、入れ直してください。
+
+Console に、`install.packages("tidyverse")` などと表示され、たくさんメッセージが出ます。終了すると、\> のマークがでます。
+
+二つ目は、`install.packages("tidyverse")` のような書式で書いて、Console に入れる方法です。
+
+三つ目は、右下の窓枠の Packages のタブにある、Install というボタンを押す方法です。すると、一番目の方法に、戻り、パッケージ名を入力できるようになります。
+
+この Packages タブにある、ものが、すでに、インストールされているパッケージです。そのなかで、`base` や、`datasets` などいくつかに、チェックがついていると思いますが、それらは、ロードされていて、いつでも、使える状態になっていることを意味しています。ロードは、たとえば、`library(tidyverse)` のようにしますが、それは、いずれもう一度説明します。
+
+インストールは一回だけ。ときどき、Tools \> Check for Package Update をつかって、Update しておくと良いでしょう。
+
+::: rmdnote
+パッケージのインストールで問題が生じることがあります。特に、Windows の日本語システムの場合です。（4.3.2 R Studio の インストール の下に書いてある部分を参照してください。）
+
+回避方法もいくつかあるようですが、混乱をさけるため、その場合は、Posit Cloud（旧：RStudio Cloud）を使うと良いでしょう。それを見越して、最初は、Posit Cloud ではじめることを、わたしはお薦めしています。自分のコンピュータで、R が RStudio 上で問題なく動いていても、Cloud 上にアカウントを持っていて、実行できることは有効ですし、全員が、同じ環境で作業できることもたいせつなことです。他にも、すぐ、Cheat Sheets（早見表）や、Posit Primers という練習問題（Tutorial）を利用できたり、プロジェクトを共有したりなど、さまざまなメリットがあります。
+:::
+
+### 備考
+
+Package によっては、Source から Compile するかと聞いてくる場合があります。どちらでも、良いのですが、特に、問題が起こっていなければ、No でよいと思います。コンピュータにあった形でインストールすることが必要な場合は、Yes とします。
+
+同じパッケージをもう一度、インストールしたり、または、関連するパッケージがあるような場合、R をリスタートするかと聞いてくることがあります。特に問題が起こらなければ、No で構いません。ただ、エラーが起こって、それに関連して、特別なパッケージをインストールする必要がある場合がありますが、そのときは、Yes としてください。
+
+## 練習問題 Posit Primers
+
+Posit Primers <https://posit.cloud/learn/primers>
+
+教科書 ["R for Data Science"](https://r4ds.had.co.nz) は、`tidyverse` パッケージを中心に、データサイエンスについて解説したものですが、Posit Primers は、演習問題をしながら、教科書の内容を理解できるように構成されています。
+
+Posit Cloud からは、左のメニュー（隠れている場合は左上の3本線をクリックして表示させて）から選ぶことができます。そうでない場合は、直接、上のリンクから、利用してください。
+
+### 最初の演習　The Basics -- r4ds: Explore, I
+
+-   [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+-   [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
+
+ぜひこれら二つの演習問題を、トライしてください。解説を読んでいただけでは、データサイエンスは身につきません。
+
+## 参考文献 References
+
+一番目は、すでに紹介した、教科書です。二番目は、この文書を作成している、Bookdown というパッケージのサイトですが、そこに、たくさんの本が、無償で公開されています。素晴らしい本がたくさん含まれています。
+
+-   R For Data Science, by H. Wickham: <https://r4ds.had.co.nz>
+    -   Introduction: <https://r4ds.had.co.nz/explore-intro.html#explore-intro>
+-   Bookdown: <https://bookdown.org>, [Archive](https://bookdown.org/home/archive/)
+
+下の一番目は、R 入門を、２時限の講義でしたときのものです。二番目と三番目は、講義で使ったものを、まとめたものです。教科書のようには、できていませんが、参考になる部分もあるかと思いますので、紹介しておきます。
+
+-   [Introduction to R](https://ds-sl.github.io/intro2r/intro2r.nb.html)
+-   [Data Analysis for Researchers 2022](https://icu-hsuzuki.github.io/da4r2022/)
+-   [Data Analysis for Researchers 2021](https://icu-hsuzuki.github.io/da4r2021/)
+
+## YouTube Video - getstarted
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9uQmMZoG74g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+
+</iframe>
+
+-   ファイル：<https://ds-sl.github.io/intro2r/getstarted.html>
+
+## まとめと復習
+
+ここでは、詳細までは理解していただかなくて結構ですが、基本事項をまとめておきます。
+
+1.  R Studio で R を使うときには、まず、Project を作成し、その中で行う。
+
+2.  コンソール（Console）に、入力して実行させる方法と、スクリプト（R Script）から実行する方法がある。もう一つ、RMarkdown の章で紹介した、RMarkdown の中で、実行する方法があります。
+
+3.  データを簡単にみる三つの命令、head(), str(), summary() を紹介しました。他にも、View() でデータを見たり、Help を使って、調べる方法を紹介しました。
+
+4.  パッケージによって、便利なさまざまな拡張機能を利用するために、そのインストール方法を紹介しました。
+
+5.  対話型の練習問題集、Posit Primers の紹介をしました。

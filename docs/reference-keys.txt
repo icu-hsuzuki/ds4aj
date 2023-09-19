@@ -1,6 +1,4 @@
-fig:nice-fig
-tab:nice-tab
-eq:binom
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
 introduction
 データサイエンスとは
 なぜデータサイエンスが最近注目されているのか
@@ -79,7 +77,6 @@ notebook
 画像
 データファイル
 まとめ-1
-publicdata-site
 概要-1
 さまざまな機関のオープンデータ
 日本のデータ
@@ -176,7 +173,6 @@ eurostat
 データベース-6
 ダッシュボード-6
 api-6
-ronrstudio
 はじめに
 r-と-r-studio
 r-と-r-studio-のインストール
@@ -352,9 +348,11 @@ linear-model-sepal.length-sepal.width
 モデル概要
 call適用されたモデル
 residuals残差
+数式による定義
 adjusted-r-squared自由度修正済み決定係数
 coefficients係数
 other-model-summariesその他のモデル概要
+chatgpt-への質問と回答
 世界開発指標wdiからの例
 出生時の平均寿命life-expectancy-at-birth
 brics

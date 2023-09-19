@@ -272,6 +272,8 @@ df_iris0 |> lm(Petal.Length ~ Petal.Width, data = _) |> augment() |>
   pull(.resid) |> summary()
 ```
 
+#### 数式による定義
+
 $$
 \begin{aligned}
 \mbox{$x$ の平均：} mean(x) & = \frac{1}{n}\sum_i x_i \\
@@ -333,6 +335,8 @@ df_iris0 |> select(1:4) |> cor()
 
 この例では、Sepal.Length と、Petal.Length の相関が最も強いことがわかります。
 
+select(1:4) で、最初の四列を取り出していますが、iris のデータは、五つの変数（五列）で五番目は、Species（種類）でしたから、Species の列以外という意味です。すこで、下では、select(-5) としています。どちらでも同じです。Species は、文字列で種類が書かれていましたから、相関係数を求めようとすると、エラーになります。
+
 ```{r}
 cormat <- df_iris0 |> select(1:4) |> cor()
 cormat*cormat
@@ -367,6 +371,42 @@ as_tibble(df_iris) |> filter(Species == "virginica") |> lm(Petal.Length ~ Sepal.
 ```{r}
 df_iris |> select(-5) |> cor()
 ```
+
+最後に、もう一つ、iris の例を描いておきます。
+
+```{r}
+df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) +
+  geom_point(aes(color = Species)) + 
+  geom_smooth(aes(color = Species), formula = "y~x", method = "lm", se = FALSE) +
+  geom_smooth(formula = "y~x", method = "lm", se = FALSE, color = "black", linetype = "dotted")
+```
+
+点線は、全体の、がくモデルについての、回帰直線です。どのようなことがわかりますか。
+
+-   三つの種別ごとで見ると、回帰直線は、右肩上がり、すなわち、萼（がく）幅が大きくなると、萼長が大きくなっている。
+
+-   全体で見ると、回帰直線は、右肩下がり、すなわち、萼（がく）幅が大きくなると、萼長が小さくなっている。
+
+最初に、同じ種類のあやめ（iris）では、おそらく、萼の形などは相似（似た形をしている）だろうから、「萼（がく）幅が大きくなると、萼長が大きくなっていると予想される」と書きました。しかし、上のグラフからみると、これら三種類のあやめ全体ではそうなっておらず、三種類個別にみると、予想のようになっていることがわかります。
+
+この場合、Species が交絡因子（confounder）になっていると言います。
+
+#### ChatGPT への質問と回答
+
+> **Q.** 交絡因子、confounder について、説明してください。\
+> iris の data で、Sepal.Width と Sepal.Length でみると、負の相関になっている、または、回帰直線の傾きが負になっているが、各 Species ごとにみると、傾きが正になっている。この場合も、Species が交絡因子になっていると言えますか。
+
+**ChatGPT** (2023.9.19)
+
+交絡因子（confounder）は、2つ以上の変数間の関係を誤解させる要因であり、研究結果に偏りをもたらす可能性がある変数です。交絡因子は、主な関心事（たとえば、Sepal.WidthとSepal.Lengthの関係）と関係がある可能性があり、その関係を調べる際に考慮する必要があります。
+
+IrisデータセットでSepal.WidthとSepal.Lengthの関係を見た場合、負の相関が観察されるか、回帰直線の傾きが負になるかもしれません。しかし、各Speciesごとに見た場合、傾きが正になることが示唆されています。
+
+この場合、Speciesが交絡因子である可能性があります。なぜなら、SpeciesはSepal.WidthとSepal.Lengthの間の関係に影響を与えている可能性があります。例えば、異なる種のアイリスの場合、Sepal.WidthとSepal.Lengthの間の関係が異なるかもしれません。したがって、交絡因子としてSpeciesを考慮しないと、Sepal.WidthとSepal.Lengthの間の関係を適切に解釈することができません。
+
+交絡因子を適切に扱うためには、統計的な手法や分析手法を用いて、交絡因子を制御する必要があります。例えば、多変量解析や回帰分析において、Speciesを説明変数としてモデルに含めることができます。そうすることで、Speciesの効果を考慮したSepal.WidthとSepal.Lengthの関係をより正確に評価できます。
+
+したがって、交絡因子としてSpeciesを考慮することは重要です。それにより、変数間の関係をより正確に理解し、結果の解釈に偏りが生じないようにすることができます。
 
 ## 世界開発指標（WDI）からの例
 
