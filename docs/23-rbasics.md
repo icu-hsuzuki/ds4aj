@@ -62,13 +62,14 @@ RStudio で R を利用する場合には、プロジェクトを作成するこ
 
 ```r
 head(cars)
+#>   speed dist
+#> 1     4    2
+#> 2     4   10
+#> 3     7    4
+#> 4     7   22
+#> 5     8   16
+#> 6     9   10
 ```
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["speed"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dist"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"2","_rn_":"1"},{"1":"4","2":"10","_rn_":"2"},{"1":"7","2":"4","_rn_":"3"},{"1":"7","2":"22","_rn_":"4"},{"1":"8","2":"16","_rn_":"5"},{"1":"9","2":"10","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
 
 `head(cars)` は、`cars` という、R に付属している、データの、最初（頭 head）の6行を、表示します。
 
@@ -103,7 +104,7 @@ summary(cars)
 plot(cars)
 ```
 
-<img src="23-rbasics_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+![](23-rbasics_files/figure-epub3/unnamed-chunk-4-1.png)<!-- -->
 
 右下の、窓枠の、Plots に、上のグラフ（散布図）が表示されると思います。Export と書いてある、プルダウンメニューがあり、そこから、画像として保存することも、可能です。
 
