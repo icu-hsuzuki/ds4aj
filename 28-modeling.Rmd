@@ -428,67 +428,115 @@ wdi_lifeExp <- read_csv("./data/wdi_lifeExp.csv")
 
 ```{r}
 wdi_lifeExp |> filter(country == "World") |> drop_na(lifeExp) |>
-  ggplot(aes(year, lifeExp)) + geom_point() + geom_smooth(method = "lm", se = FALSE)
+  ggplot(aes(year, lifeExp)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
 ```
 
 ```{r}
 wdi_lifeExp |> lm(lifeExp ~ year, data = _) |> summary()
 ```
 
-$$lifeExp \sim -557.4 + 0.3123 \cdot year$$
+$$lifeExp \sim -538.3 + 0.3027 \cdot year$$
 
-世界の平均寿命は、毎年、ほぼ、0.3123年ほど増加しているという傾向にあるということのようです。ただ、適合度は、0.2392 ですから、あまり良くはありません。これを使って、将来について予測するのは、適切ではないかもしれません。
+世界の平均寿命は、毎年、ほぼ、0.3年ほど増加しているという傾向にあるということのようです。ただ、適合度は、0.237 ですから、あまり良くはありません。これを使って、将来について予測するのは、適切ではないかもしれません。
 
-Each year, life expectancy at birth increases approximately 0.3123 years. R-squared of this model is 0.2392, and the model explains 24%.
+Each year, life expectancy at birth increases approximately 0.3 years. R-squared of this model is 0.237, and the model explains 24%.
+
+しかしグラフをみると、1960年ごろと、1920年以降は、ちょっと違った動きをしています。これを、除くと、ほぼ一直線上にあるように見えます。年を 1962年から、2019年までに、制限してみてみましょう。
 
 ```{r}
 wdi_lifeExp %>% filter(country == "World", year >= 1962, year <= 2019) %>% drop_na(lifeExp) %>% lm(lifeExp ~ year, .) %>% summary()
 ```
 
-## BRICS
+今度は、決定係数が 0.9911 になりました。グラフをみた直感とあっていますね。ですから、1962年から、2019年までの間は、世界の出生時平均寿命は、毎年、0.31 年ほどずつ増加していると結論することができそうです。
+
+実際には、調査対象の国がどのように変化しているかなど、他の要因も調べる必要があると思います。
+
+また、なぜ、1960年から、1962年は、大きく変化しているのか、2020年で減少している理由はなんだろうか。コロナウイルス感染症のせいだろうかなど、考えることが広がっていくかもしれません。次々と新しい問いが出てくること。それが素晴らしいことです。ほんの少しわかったことによって、扉が開いていく。そのような経験をたくさんしていただきたいと思います。
+
+### BRICS の出生時
+
+今度は、BRICS についてみてみましょう。最初は、BRIC または、BRICs と、４カ国で、ブラジル、ロシア、インド、中国を指していましたが、南アフリカが急成長したこともあり、南アフリカを加えて、現在は、BRICS と言っているようです。2023 年の首脳会議で、さらに、６カ国（アルゼンチン、エジプト、エチオピア、イラン、サウジアラビア、アラブ首長国連邦）が加わって、かなり大きな勢力となりつつあるようです。どのぐらいの規模なのか、GDP（国内総生産）、Population（人口）、Oil Production（原油生成量）、Exports of Goods （製品輸出）などが世界のどの程度をしめるのかも、そして、これらの指標の増加・または減少の傾向などについても、調べてみると良いかもしれませんね。
+
+決定係数を求めてみましょう。下から、0.47 ですから、まあまあです。
 
 ```{r}
-mod_brics <- wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) %>% drop_na(lifeExp) %>% lm(lifeExp ~ year, .) %>% summary()
+mod_brics <- wdi_lifeExp |> 
+  filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) |> 
+  drop_na(lifeExp) |>
+  lm(lifeExp ~ year, data = _) %>% summary()
 mod_brics$r.squared
 ```
 
+そこで、４カ国の、出生時平均寿命のグラフを描いてみましょう。回帰直線は、データポイント（点）から計算されるものですから、`geom_point()` を使った方が良いかもしれませんが、ある程度長い期間の時系列データですから、`geom_line()` で、折れ線グラフを書いてみました。`geom_line()` の中にある、`color = country` を省略するとどうなるでしょうか。ぜひ試してみてください。`geom_point()` にかえたグラフも描いてみることをお勧めします。
+
 ```{r eval=FALSE}
-wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) %>% drop_na(lifeExp) %>%
-  ggplot(aes(year, lifeExp)) + geom_point() + geom_smooth(formula = y~x, method = "lm", se = FALSE)
+wdi_lifeExp |>  
+  filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) |>  
+  drop_na(lifeExp) |> 
+  ggplot(aes(year, lifeExp)) + geom_line(aes(color = country)) + 
+  geom_smooth(formula = y~x, method = "lm", se = FALSE)
 ```
+
+国ごとにかなり異なることもわかりますね。それも、かなりの変化があります。この場合には、いろいろなモデルのさまざまな値をみるよりも、グラフをていねいにみていくことが大切なように思います。
 
 ```{r echo=FALSE}
-wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) %>% drop_na(lifeExp) %>%
-  ggplot(aes(year, lifeExp)) + geom_point() + geom_smooth(formula = y~x, method = "lm", se = FALSE)
+wdi_lifeExp |>  
+  filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) |>  
+  drop_na(lifeExp) |> 
+  ggplot(aes(year, lifeExp)) + geom_line(aes(color = country)) + 
+  geom_smooth(formula = y~x, method = "lm", se = FALSE)
 ```
+
+一応、geom_point() に変更し、それぞれの国ごとに、回帰直線を描いたグラフを付けておきます。
 
 ```{r}
-wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China","South Africa")) %>% drop_na(lifeExp) %>%
-  ggplot(aes(year, lifeExp, color = country)) + geom_point(aes(shape = country)) + geom_smooth(formula = y~x, method = "lm", se = FALSE)
+wdi_lifeExp |> 
+  filter(country %in% c("Brazil", "Russian Federation", "India", "China","South Africa")) |> 
+  drop_na(lifeExp) |>
+  ggplot(aes(year, lifeExp, color = country)) + geom_point() + 
+  geom_smooth(formula = y~x, method = "lm", se = FALSE) + facet_wrap(~country)
 ```
 
-Need to work
+以下では、それぞれの国ごとに、モデルを作成し tidy や、glance で、その、基本的なデータを、取り出して、表にする方法を紹介します。このようにして、一度に、国ごとのモデルの、さまざまな値を求めることができます。結果だけを出力することも可能ですが、ステップごとの状況も確認できるようにしておきます。
 
-```{r eval=FALSE}
+```{r}
 country_model <- function(df) {
   lm(lifeExp ~ year, data = df)
 }
 
-by_country <- wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China","South Africa")) %>% drop_na(lifeExp) %>% group_by(country) %>% nest()
+by_country <- wdi_lifeExp |> 
+  filter(country %in% c("Brazil", "Russian Federation", "India", "China","South Africa")) |> 
+  drop_na(lifeExp) |> group_by(country) |> nest()
 
-by_country <- by_country %>% 
-  mutate(model = map(data, country_model))
-
-by_country %>% 
-  mutate(tidy = map(model, broom::tidy)) %>% 
-  unnest(tidy)
-
-by_country %>% 
-  mutate(glance = map(model, broom::glance)) %>% 
-  unnest(glance)
+by_country
 ```
 
-## 政府支出（国内総生産比）Government Expenditure, (% of GDP)
+```{r}
+model_by_country <- by_country %>% 
+  mutate(model = map(data, country_model))
+model_by_country
+```
+
+```{r}
+model_by_country |> 
+  mutate(tidied = map(model, tidy)) |>
+  unnest(tidied)
+```
+
+```{r}
+model_by_country |>
+  mutate(glanced = map(model, broom::glance)) |>
+  unnest(glanced)
+```
+
+### 政府支出（国内総生産比）Government Expenditure, (% of GDP)
+
+ここでは、多変数モデルについては、紹介できませんが、複数の変数を使って、それぞれどのような影響があるかを調べる方法を少しだけ紹介します。
+
+WDI の指標が、出生時平均寿命にどのていど、影響するかを調べてみます。
+
+まずは、指標名の中に、"expenditure" と、"% of GDP" を含むものを探します。下では二つの方法を提示しています。一方は、表の結合の、inner_join を使う方法、もう一つは、正規表現の、grepl を使う方法です。なにも指定しないと、grepl は大文字小文字を区別し、WDIsearch は、区別しませんから、ひとつだけ、差が生じています。
 
 ```{r}
 wdi_cache <- read_rds("./data/wdi_cache.RData")
@@ -502,6 +550,8 @@ WDIsearch("expenditure", "name", cache = wdi_cache) %>%
 ```{r}
 wdi_cache$series %>% filter(grepl("expenditure", name), grepl("% of GDP", name))
 ```
+
+以下の指標のデータを読み込んでみます。
 
 -   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) - 国際総生産
 
@@ -531,7 +581,9 @@ wdi_world <- read_csv("./data/wdi_world")
 wdi_world
 ```
 
-SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (% of government expenditure)
+あまりデータがないものもあるようです。少しずつ調べてみましょう。
+
+-   SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (% of government expenditure)
 
 -   SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (% of GDP)
 

@@ -56,7 +56,7 @@ library(tidymodels)
 #> ✖ dplyr::lag()      masks stats::lag()
 #> ✖ yardstick::spec() masks readr::spec()
 #> ✖ recipes::step()   masks stats::step()
-#> • Dig deeper into tidy modeling with R at https://www.tmwr.org
+#> • Search for functions across packages at https://www.tidymodels.org/find/
 ```
 
 Tidymodels パッケージを使いますが、これは、Tidyverse と同様に、一つのパッケージではなく、パッケージ群を表します。また、ここでは、ほんの一部しか使いませんが、一応、後々のために、インストールをし、使えるように `library(tidymodels)` で、読み込んでおいてください。興味のあるかたのために、Tidymodels サイトへのリンクを付けておきます。
@@ -661,7 +661,8 @@ wdi_lifeExp <- WDI(indicator = c(lifeExp = "SP.DYN.LE00.IN"))
 
 ```r
 wdi_lifeExp |> filter(country == "World") |> drop_na(lifeExp) |>
-  ggplot(aes(year, lifeExp)) + geom_point() + geom_smooth(method = "lm", se = FALSE)
+  ggplot(aes(year, lifeExp)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
 
@@ -692,11 +693,13 @@ wdi_lifeExp |> lm(lifeExp ~ year, data = _) |> summary()
 #> F-statistic:  4928 on 1 and 15864 DF,  p-value: < 2.2e-16
 ```
 
-$$lifeExp \sim -557.4 + 0.3123 \cdot year$$
+$$lifeExp \sim -538.3 + 0.3027 \cdot year$$
 
-世界の平均寿命は、毎年、ほぼ、0.3123年ほど増加しているという傾向にあるということのようです。ただ、適合度は、0.2392 ですから、あまり良くはありません。これを使って、将来について予測するのは、適切ではないかもしれません。
+世界の平均寿命は、毎年、ほぼ、0.3年ほど増加しているという傾向にあるということのようです。ただ、適合度は、0.237 ですから、あまり良くはありません。これを使って、将来について予測するのは、適切ではないかもしれません。
 
-Each year, life expectancy at birth increases approximately 0.3123 years. R-squared of this model is 0.2392, and the model explains 24%.
+Each year, life expectancy at birth increases approximately 0.3 years. R-squared of this model is 0.237, and the model explains 24%.
+
+しかしグラフをみると、1960年ごろと、1920年以降は、ちょっと違った動きをしています。これを、除くと、ほぼ一直線上にあるように見えます。年を 1962年から、2019年までに、制限してみてみましょう。
 
 
 ```r
@@ -722,32 +725,57 @@ wdi_lifeExp %>% filter(country == "World", year >= 1962, year <= 2019) %>% drop_
 #> F-statistic:  6224 on 1 and 56 DF,  p-value: < 2.2e-16
 ```
 
-## BRICS
+今度は、決定係数が 0.9911 になりました。グラフをみた直感とあっていますね。ですから、1962年から、2019年までの間は、世界の出生時平均寿命は、毎年、0.31 年ほどずつ増加していると結論することができそうです。
+
+実際には、調査対象の国がどのように変化しているかなど、他の要因も調べる必要があると思います。
+
+また、なぜ、1960年から、1962年は、大きく変化しているのか、2020年で減少している理由はなんだろうか。コロナウイルス感染症のせいだろうかなど、考えることが広がっていくかもしれません。次々と新しい問いが出てくること。それが素晴らしいことです。ほんの少しわかったことによって、扉が開いていく。そのような経験をたくさんしていただきたいと思います。
+
+### BRICS の出生時
+
+今度は、BRICS についてみてみましょう。最初は、BRIC または、BRICs と、４カ国で、ブラジル、ロシア、インド、中国を指していましたが、南アフリカが急成長したこともあり、南アフリカを加えて、現在は、BRICS と言っているようです。2023 年の首脳会議で、さらに、６カ国（アルゼンチン、エジプト、エチオピア、イラン、サウジアラビア、アラブ首長国連邦）が加わって、かなり大きな勢力となりつつあるようです。どのぐらいの規模なのか、GDP（国内総生産）、Population（人口）、Oil Production（原油生成量）、Exports of Goods （製品輸出）などが世界のどの程度をしめるのかも、そして、これらの指標の増加・または減少の傾向などについても、調べてみると良いかもしれませんね。
+
+決定係数を求めてみましょう。下から、0.47 ですから、まあまあです。
 
 
 ```r
-mod_brics <- wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) %>% drop_na(lifeExp) %>% lm(lifeExp ~ year, .) %>% summary()
+mod_brics <- wdi_lifeExp |> 
+  filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) |> 
+  drop_na(lifeExp) |>
+  lm(lifeExp ~ year, data = _) %>% summary()
 mod_brics$r.squared
 #> [1] 0.4717945
 ```
 
+そこで、４カ国の、出生時平均寿命のグラフを描いてみましょう。回帰直線は、データポイント（点）から計算されるものですから、`geom_point()` を使った方が良いかもしれませんが、ある程度長い期間の時系列データですから、`geom_line()` で、折れ線グラフを書いてみました。`geom_line()` の中にある、`color = country` を省略するとどうなるでしょうか。ぜひ試してみてください。`geom_point()` にかえたグラフも描いてみることをお勧めします。
+
 
 ```r
-wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) %>% drop_na(lifeExp) %>%
-  ggplot(aes(year, lifeExp)) + geom_point() + geom_smooth(formula = y~x, method = "lm", se = FALSE)
+wdi_lifeExp |>  
+  filter(country %in% c("Brazil", "Russian Federation", "India", "China", "South Africa")) |>  
+  drop_na(lifeExp) |> 
+  ggplot(aes(year, lifeExp)) + geom_line(aes(color = country)) + 
+  geom_smooth(formula = y~x, method = "lm", se = FALSE)
 ```
+
+国ごとにかなり異なることもわかりますね。それも、かなりの変化があります。この場合には、いろいろなモデルのさまざまな値をみるよりも、グラフをていねいにみていくことが大切なように思います。
 
 <img src="28-modeling_files/figure-html/unnamed-chunk-44-1.png" width="672" />
 
+一応、geom_point() に変更し、それぞれの国ごとに、回帰直線を描いたグラフを付けておきます。
+
 
 ```r
-wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China","South Africa")) %>% drop_na(lifeExp) %>%
-  ggplot(aes(year, lifeExp, color = country)) + geom_point(aes(shape = country)) + geom_smooth(formula = y~x, method = "lm", se = FALSE)
+wdi_lifeExp |> 
+  filter(country %in% c("Brazil", "Russian Federation", "India", "China","South Africa")) |> 
+  drop_na(lifeExp) |>
+  ggplot(aes(year, lifeExp, color = country)) + geom_point() + 
+  geom_smooth(formula = y~x, method = "lm", se = FALSE) + facet_wrap(~country)
 ```
 
 <img src="28-modeling_files/figure-html/unnamed-chunk-45-1.png" width="672" />
 
-Need to work
+以下では、それぞれの国ごとに、モデルを作成し tidy や、glance で、その、基本的なデータを、取り出して、表にする方法を紹介します。このようにして、一度に、国ごとのモデルの、さまざまな値を求めることができます。結果だけを出力することも可能ですが、ステップごとの状況も確認できるようにしておきます。
 
 
 ```r
@@ -755,21 +783,65 @@ country_model <- function(df) {
   lm(lifeExp ~ year, data = df)
 }
 
-by_country <- wdi_lifeExp %>% filter(country %in% c("Brazil", "Russian Federation", "India", "China","South Africa")) %>% drop_na(lifeExp) %>% group_by(country) %>% nest()
+by_country <- wdi_lifeExp |> 
+  filter(country %in% c("Brazil", "Russian Federation", "India", "China","South Africa")) |> 
+  drop_na(lifeExp) |> group_by(country) |> nest()
 
-by_country <- by_country %>% 
-  mutate(model = map(data, country_model))
-
-by_country %>% 
-  mutate(tidy = map(model, broom::tidy)) %>% 
-  unnest(tidy)
-
-by_country %>% 
-  mutate(glance = map(model, broom::glance)) %>% 
-  unnest(glance)
+by_country
 ```
 
-## 政府支出（国内総生産比）Government Expenditure, (% of GDP)
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["data"],"name":[2],"type":["list"],"align":["right"]}],"data":[{"1":"Brazil","2":"<tibble[,4]>"},{"1":"China","2":"<tibble[,4]>"},{"1":"India","2":"<tibble[,4]>"},{"1":"Russian Federation","2":"<tibble[,4]>"},{"1":"South Africa","2":"<tibble[,4]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
+```r
+model_by_country <- by_country %>% 
+  mutate(model = map(data, country_model))
+model_by_country
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["data"],"name":[2],"type":["list"],"align":["right"]},{"label":["model"],"name":[3],"type":["list"],"align":["right"]}],"data":[{"1":"Brazil","2":"<tibble[,4]>","3":"<S3: lm>"},{"1":"China","2":"<tibble[,4]>","3":"<S3: lm>"},{"1":"India","2":"<tibble[,4]>","3":"<S3: lm>"},{"1":"Russian Federation","2":"<tibble[,4]>","3":"<S3: lm>"},{"1":"South Africa","2":"<tibble[,4]>","3":"<S3: lm>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
+```r
+model_by_country |> 
+  mutate(tidied = map(model, tidy)) |>
+  unnest(tidied)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["data"],"name":[2],"type":["list"],"align":["right"]},{"label":["model"],"name":[3],"type":["list"],"align":["right"]},{"label":["term"],"name":[4],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"Brazil","2":"<tibble[,4]>","3":"<S3: lm>","4":"(Intercept)","5":"-693.85295414","6":"13.159218021","7":"-52.7275217","8":"5.749750e-52"},{"1":"Brazil","2":"<tibble[,4]>","3":"<S3: lm>","4":"year","5":"0.38147526","6":"0.006610744","7":"57.7053430","8":"2.842577e-54"},{"1":"China","2":"<tibble[,4]>","3":"<S3: lm>","4":"(Intercept)","5":"-930.18618645","6":"46.833953383","7":"-19.8613638","8":"4.571028e-28"},{"1":"China","2":"<tibble[,4]>","3":"<S3: lm>","4":"year","5":"0.50075679","6":"0.023527787","7":"21.2836331","8":"1.197665e-29"},{"1":"India","2":"<tibble[,4]>","3":"<S3: lm>","4":"(Intercept)","5":"-844.44232251","6":"12.146942424","7":"-69.5189203","8":"4.690802e-59"},{"1":"India","2":"<tibble[,4]>","3":"<S3: lm>","4":"year","5":"0.45344834","6":"0.006102211","7":"74.3088560","8":"9.007844e-61"},{"1":"Russian Federation","2":"<tibble[,4]>","3":"<S3: lm>","4":"(Intercept)","5":"-7.12070953","6":"26.047357514","7":"-0.2733755","8":"7.855034e-01"},{"1":"Russian Federation","2":"<tibble[,4]>","3":"<S3: lm>","4":"year","5":"0.03773633","6":"0.013085308","7":"2.8838706","8":"5.447164e-03"},{"1":"South Africa","2":"<tibble[,4]>","3":"<S3: lm>","4":"(Intercept)","5":"-187.16885352","6":"45.463887342","7":"-4.1168687","8":"1.191371e-04"},{"1":"South Africa","2":"<tibble[,4]>","3":"<S3: lm>","4":"year","5":"0.12377067","6":"0.022839513","7":"5.4191466","8":"1.118391e-06"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
+```r
+model_by_country |>
+  mutate(glanced = map(model, broom::glance)) |>
+  unnest(glanced)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["data"],"name":[2],"type":["list"],"align":["right"]},{"label":["model"],"name":[3],"type":["list"],"align":["right"]},{"label":["r.squared"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["adj.r.squared"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["sigma"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["logLik"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["AIC"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["deviance"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["df.residual"],"name":[14],"type":["int"],"align":["right"]},{"label":["nobs"],"name":[15],"type":["int"],"align":["right"]}],"data":[{"1":"Brazil","2":"<tibble[,4]>","3":"<S3: lm>","4":"0.9823004","5":"0.9820054","6":"0.9315170","7":"3329.90661","8":"2.842577e-54","9":"1","10":"-82.55937","11":"171.1187","12":"177.5001","13":"52.06343","14":"60","15":"62"},{"1":"China","2":"<tibble[,4]>","3":"<S3: lm>","4":"0.8830393","5":"0.8810900","6":"3.3152898","7":"452.99304","8":"1.197665e-29","9":"1","10":"-161.26750","11":"328.5350","12":"334.9164","13":"659.46880","14":"60","15":"62"},{"1":"India","2":"<tibble[,4]>","3":"<S3: lm>","4":"0.9892508","5":"0.9890716","6":"0.8598598","7":"5521.80609","8":"9.007844e-61","9":"1","10":"-77.59658","11":"161.1932","12":"167.5746","13":"44.36153","14":"60","15":"62"},{"1":"Russian Federation","2":"<tibble[,4]>","3":"<S3: lm>","4":"0.1217376","5":"0.1070999","6":"1.8438448","7":"8.31671","8":"5.447164e-03","9":"1","10":"-124.89259","11":"255.7852","12":"262.1666","13":"203.98581","14":"60","15":"62"},{"1":"South Africa","2":"<tibble[,4]>","3":"<S3: lm>","4":"0.3286124","5":"0.3174226","6":"3.2183054","7":"29.36715","8":"1.118391e-06","9":"1","10":"-159.42671","11":"324.8534","12":"331.2348","13":"621.44936","14":"60","15":"62"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+### 政府支出（国内総生産比）Government Expenditure, (% of GDP)
+
+ここでは、多変数モデルについては、紹介できませんが、複数の変数を使って、それぞれどのような影響があるかを調べる方法を少しだけ紹介します。
+
+WDI の指標が、出生時平均寿命にどのていど、影響するかを調べてみます。
+
+まずは、指標名の中に、"expenditure" と、"% of GDP" を含むものを探します。下では二つの方法を提示しています。一方は、表の結合の、inner_join を使う方法、もう一つは、正規表現の、grepl を使う方法です。なにも指定しないと、grepl は大文字小文字を区別し、WDIsearch は、区別しませんから、ひとつだけ、差が生じています。
 
 
 ```r
@@ -799,6 +871,8 @@ wdi_cache$series %>% filter(grepl("expenditure", name), grepl("% of GDP", name))
 {"columns":[{"label":["indicator"],"name":[1],"type":["chr"],"align":["left"]},{"label":["name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["description"],"name":[3],"type":["chr"],"align":["left"]},{"label":["sourceDatabase"],"name":[4],"type":["chr"],"align":["left"]},{"label":["sourceOrganization"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"GB.XPD.DEFN.GDP.ZS","2":"Defense expenditure (% of GDP)","3":"","4":"WDI Database Archives","5":""},{"1":"GB.XPD.RSDV.GD.ZS","2":"Research and development expenditure (% of GDP)","3":"Gross domestic expenditures on research and development (R&D), expressed as a percent of GDP. They include both capital and current expenditures in the four main sectors: Business enterprise, Government, Higher education and Private non-profit. R&D covers basic research, applied research, and experimental development.","4":"World Development Indicators","5":"UNESCO Institute for Statistics (UIS). UIS.Stat Bulk Data Download Service. Accessed October 24, 2022. https://apiportal.uis.unesco.org/bdds."},{"1":"GB.XPD.TOTL.GDP.ZS","2":"Total expenditure (% of GDP)","3":"","4":"WDI Database Archives","5":""},{"1":"IE.ICT.TOTL.GD.ZS","2":"Information and communication technology expenditure (% of GDP)","3":"Information and communications technology expenditures include computer hardware (computers, storage devices, printers, and other peripherals); computer software (operating systems, programming tools, utilities, applications, and internal software development); computer services (information technology consulting, computer and network systems integration, Web hosting, data processing services, and other services); and communications services (voice and data communications services) and wired and wireless communications equipment.","4":"Africa Development Indicators","5":"World Information Technology and Services Alliance, Digital Planet: The Global Information Economy, and Global Insight, Inc."},{"1":"MS.MIL.XPND.GD.ZS","2":"Military expenditure (% of GDP)","3":"Military expenditures data from SIPRI are derived from the NATO definition, which includes all current and capital expenditures on the armed forces, including peacekeeping forces; defense ministries and other government agencies engaged in defense projects; paramilitary forces, if these are judged to be trained and equipped for military operations; and military space activities. Such expenditures include military and civil personnel, including retirement pensions of military personnel and social services for personnel; operation and maintenance; procurement; military research and development; and military aid (in the military expenditures of the donor country). Excluded are civil defense and current expenditures for previous military activities, such as for veterans' benefits, demobilization, conversion, and destruction of weapons. This definition cannot be applied for all countries, however, since that would require much more detailed information than is available about what is included in military budgets and off-budget military expenditure items. (For example, military budgets might or might not cover civil defense, reserves and auxiliary forces, police and paramilitary forces, dual-purpose forces such as military and civilian police, military grants in kind, pensions for military personnel, and social security contributions paid by one part of government to another.)","4":"World Development Indicators","5":"Stockholm International Peace Research Institute (SIPRI), Yearbook: Armaments, Disarmament and International Security."},{"1":"NE.CON.GOVT.ZS","2":"General government final consumption expenditure (% of GDP)","3":"General government final consumption expenditure (formerly general government consumption) includes all government current expenditures for purchases of goods and services (including compensation of employees). It also includes most expenditures on national defense and security, but excludes government military expenditures that are part of government capital formation.","4":"World Development Indicators","5":"World Bank national accounts data, and OECD National Accounts data files."},{"1":"NE.CON.PETC.ZS","2":"Household final consumption expenditure, etc. (% of GDP)","3":"Household final consumption expenditure (formerly private consumption) is the market value of all goods and services, including durable products (such as cars, washing machines, and home computers), purchased by households. It excludes purchases of dwellings but includes imputed rent for owner-occupied dwellings. It also includes payments and fees to governments to obtain permits and licenses. Here, household consumption expenditure includes the expenditures of nonprofit institutions serving households, even when reported separately by the country. This item also includes any statistical discrepancy in the use of resources relative to the supply of resources.","4":"WDI Database Archives","5":"World Bank national accounts data, and OECD National Accounts data files."},{"1":"NE.CON.PRVT.ZS","2":"Households and NPISHs final consumption expenditure (% of GDP)","3":"Household final consumption expenditure (formerly private consumption) is the market value of all goods and services, including durable products (such as cars, washing machines, and home computers), purchased by households. It excludes purchases of dwellings but includes imputed rent for owner-occupied dwellings. It also includes payments and fees to governments to obtain permits and licenses. Here, household consumption expenditure includes the expenditures of nonprofit institutions serving households, even when reported separately by the country. This item also includes any statistical discrepancy in the use of resources relative to the supply of resources.","4":"World Development Indicators","5":"World Bank national accounts data, and OECD National Accounts data files."},{"1":"NE.CON.TETC.ZS","2":"Final consumption expenditure, etc. (% of GDP)","3":"Final consumption expenditure (formerly total consumption) is the sum of household final consumption expenditure (private consumption) and general government final consumption expenditure (general government consumption). This estimate includes any statistical discrepancy in the use of resources relative to the supply of resources.","4":"WDI Database Archives","5":"World Bank national accounts data, and OECD National Accounts data files."},{"1":"NE.CON.TOTL.ZS","2":"Final consumption expenditure (% of GDP)","3":"Final consumption expenditure (formerly total consumption) is the sum of household final consumption expenditure (private consumption) and general government final consumption expenditure (general government consumption). This estimate includes any statistical discrepancy in the use of resources relative to the supply of resources.","4":"World Development Indicators","5":"World Bank national accounts data, and OECD National Accounts data files."},{"1":"NE.DAB.TOTL.ZS","2":"Gross national expenditure (% of GDP)","3":"Gross national expenditure (formerly domestic absorption) is the sum of household final consumption expenditure (formerly private consumption), general government final consumption expenditure (formerly general government consumption), and gross capital formation (formerly gross domestic investment).","4":"World Development Indicators","5":"World Bank national accounts data, and OECD National Accounts data files."},{"1":"NY.GEN.AEDU.GD.ZS","2":"Genuine savings: education expenditure (% of GDP)","3":"","4":"WDI Database Archives","5":""},{"1":"SE.XPD.PRIM.PC.ZS","2":"Government expenditure per student, primary (% of GDP per capita)","3":"Government expenditure per student is the average general government expenditure (current, capital, and transfers) per student in the given level of education, expressed as a percentage of GDP per capita.","4":"World Development Indicators","5":"UNESCO Institute for Statistics (http://uis.unesco.org/). Data as of February 2020."},{"1":"SE.XPD.SECO.PC.ZS","2":"Government expenditure per student, secondary (% of GDP per capita)","3":"Government expenditure per student is the average general government expenditure (current, capital, and transfers) per student in the given level of education, expressed as a percentage of GDP per capita.","4":"World Development Indicators","5":"UNESCO Institute for Statistics (http://uis.unesco.org/). Data as of February 2020."},{"1":"SE.XPD.TERT.PC.ZS","2":"Government expenditure per student, tertiary (% of GDP per capita)","3":"Government expenditure per student is the average general government expenditure (current, capital, and transfers) per student in the given level of education, expressed as a percentage of GDP per capita.","4":"World Development Indicators","5":"UNESCO Institute for Statistics (http://uis.unesco.org/). Data as of February 2020."},{"1":"SE.XPD.TOTL.GD.ZS","2":"Government expenditure on education, total (% of GDP)","3":"General government expenditure on education (current, capital, and transfers) is expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. General government usually refers to local, regional and central governments.","4":"World Development Indicators","5":"UNESCO Institute for Statistics (UIS). UIS.Stat Bulk Data Download Service. Accessed October 24, 2022. https://apiportal.uis.unesco.org/bdds."},{"1":"SH.XPD.CHEX.GD.ZS","2":"Current health expenditure (% of GDP)","3":"Level of current health expenditure expressed as a percentage of GDP.  Estimates of current health expenditures include healthcare goods and services consumed during each year. This indicator does not include capital health expenditures such as buildings, machinery, IT and stocks of vaccines for emergency or outbreaks.","4":"World Development Indicators","5":"World Health Organization Global Health Expenditure database (http://apps.who.int/nha/database). The data was retrieved on January 30, 2022."},{"1":"SH.XPD.GHED.GD.ZS","2":"Domestic general government health expenditure (% of GDP)","3":"Public expenditure on health from domestic sources as a share of the economy as measured by GDP.","4":"World Development Indicators","5":"World Health Organization Global Health Expenditure database (http://apps.who.int/nha/database). The data was retrieved on January 30, 2022."},{"1":"SH.XPD.KHEX.GD.ZS","2":"Capital health expenditure (% of GDP)","3":"Level of capital investments on health expressed as a percentage of GDP.  Capital health investments include health infrastructure (buildings, machinery, IT) and stocks of vaccines for emergency or outbreaks.","4":"Health Nutrition and Population Statistics","5":"World Health Organization Global Health Expenditure database (http://apps.who.int/nha/database). The data was retrieved on January 30, 2022."},{"1":"SH.XPD.PRIV.ZS","2":"Health expenditure, private (% of GDP)","3":"Private health expenditure includes direct household (out-of-pocket) spending, private insurance, charitable donations, and direct service payments by private corporations.","4":"WDI Database Archives","5":"World Health Organization Global Health Expenditure database (see http://apps.who.int/nha/database for the most recent updates)."},{"1":"SH.XPD.PUBL.ZS","2":"Health expenditure, public (% of GDP)","3":"Public health expenditure consists of recurrent and capital spending from government (central and local) budgets, external borrowings and grants (including donations from international agencies and nongovernmental organizations), and social (or compulsory) health insurance funds.","4":"WDI Database Archives","5":"World Health Organization Global Health Expenditure database (see http://apps.who.int/nha/database for the most recent updates)."},{"1":"SH.XPD.TOTL.ZS","2":"Health expenditure, total (% of GDP)","3":"Total health expenditure is the sum of public and private health expenditure. It covers the provision of health services (preventive and curative), family planning activities, nutrition activities, and emergency aid designated for health but does not include provision of water and sanitation.","4":"WDI Database Archives","5":"World Health Organization Global Health Expenditure database (see http://apps.who.int/nha/database for the most recent updates)."},{"1":"UIS.XGDP.0.FSGOV","2":"Government expenditure on pre-primary education as % of GDP (%)","3":"Total general (local, regional and central) government expenditure on pre-primary education (current, capital, and transfers), expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. Divide total government expenditure for a given level of education (ex. primary, secondary, or all levels combined) by the GDP, and multiply by 100. A higher percentage of GDP spent on education shows a higher government priority for education, but also a higher capacity of the government to raise revenues for public spending, in relation to the size of the country's economy. When interpreting this indicator however, one should keep in mind in some countries, the private sector and/or households may fund a higher proportion of total funding for education, thus making government expenditure appear lower than in other countries. Limitations: In some instances data on total public expenditure on education refers only to the Ministry of Education, excluding other ministries which may also spend a part of their budget on educational activities. For more information, consult the UNESCO Institute of Statistics website: http://www.uis.unesco.org/Education/","4":"Education Statistics","5":"UNESCO Institute for Statistics"},{"1":"UIS.XGDP.1.FSGOV","2":"Government expenditure on primary education as % of GDP (%)","3":"Total general (local, regional and central) government expenditure on primary education (current, capital, and transfers), expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. Divide total government expenditure for a given level of education (ex. primary, secondary, or all levels combined) by the GDP, and multiply by 100. A higher percentage of GDP spent on education shows a higher government priority for education, but also a higher capacity of the government to raise revenues for public spending, in relation to the size of the country's economy. When interpreting this indicator however, one should keep in mind in some countries, the private sector and/or households may fund a higher proportion of total funding for education, thus making government expenditure appear lower than in other countries. Limitations: In some instances data on total public expenditure on education refers only to the Ministry of Education, excluding other ministries which may also spend a part of their budget on educational activities. For more information, consult the UNESCO Institute of Statistics website: http://www.uis.unesco.org/Education/","4":"Education Statistics","5":"UNESCO Institute for Statistics"},{"1":"UIS.XGDP.23.FSGOV","2":"Government expenditure on secondary education as % of GDP (%)","3":"Total general (local, regional and central) government expenditure on secondary education (current, capital, and transfers), expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. Divide total government expenditure for a given level of education (ex. primary, secondary, or all levels combined) by the GDP, and multiply by 100. A higher percentage of GDP spent on education shows a higher government priority for education, but also a higher capacity of the government to raise revenues for public spending, in relation to the size of the country's economy. When interpreting this indicator however, one should keep in mind in some countries, the private sector and/or households may fund a higher proportion of total funding for education, thus making government expenditure appear lower than in other countries. Limitations: In some instances data on total public expenditure on education refers only to the Ministry of Education, excluding other ministries which may also spend a part of their budget on educational activities. For more information, consult the UNESCO Institute of Statistics website: http://www.uis.unesco.org/Education/","4":"Education Statistics","5":"UNESCO Institute for Statistics"},{"1":"UIS.XGDP.2T4.V.FSGOV","2":"Government expenditure on secondary and post-secondary non-tertiary vocational education as % of GDP (%)","3":"Total general (local, regional and central) government expenditure on secondary and post-secondary non-tertiary vocational education (current, capital, and transfers), expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. Divide total government expenditure for a given level of education (ex. primary, secondary, or all levels combined) by the GDP, and multiply by 100. A higher percentage of GDP spent on education shows a higher government priority for education, but also a higher capacity of the government to raise revenues for public spending, in relation to the size of the country's economy. When interpreting this indicator however, one should keep in mind in some countries, the private sector and/or households may fund a higher proportion of total funding for education, thus making government expenditure appear lower than in other countries. Limitations: In some instances data on total public expenditure on education refers only to the Ministry of Education, excluding other ministries which may also spend a part of their budget on educational activities. For more information, consult the UNESCO Institute of Statistics website: http://www.uis.unesco.org/Education/","4":"Education Statistics","5":"UNESCO Institute for Statistics"},{"1":"UIS.XGDP.4.FSGOV","2":"Government expenditure on post-secondary non-tertiary education as % of GDP (%)","3":"Total general (local, regional and central) government expenditure on post-secondary non-tertiary education (current, capital, and transfers), expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. Divide total government expenditure for a given level of education (ex. primary, secondary, or all levels combined) by the GDP, and multiply by 100. A higher percentage of GDP spent on education shows a higher government priority for education, but also a higher capacity of the government to raise revenues for public spending, in relation to the size of the country's economy. When interpreting this indicator however, one should keep in mind in some countries, the private sector and/or households may fund a higher proportion of total funding for education, thus making government expenditure appear lower than in other countries. Limitations: In some instances data on total public expenditure on education refers only to the Ministry of Education, excluding other ministries which may also spend a part of their budget on educational activities. For more information, consult the UNESCO Institute of Statistics website: http://www.uis.unesco.org/Education/","4":"Education Statistics","5":"UNESCO Institute for Statistics"},{"1":"UIS.XGDP.56.FSGOV","2":"Government expenditure on tertiary education as % of GDP (%)","3":"Total general (local, regional and central) government expenditure on tertiary education (current, capital, and transfers), expressed as a percentage of GDP. It includes expenditure funded by transfers from international sources to government. Divide total government expenditure for a given level of education (ex. primary, secondary, or all levels combined) by the GDP, and multiply by 100. A higher percentage of GDP spent on education shows a higher government priority for education, but also a higher capacity of the government to raise revenues for public spending, in relation to the size of the country's economy. When interpreting this indicator however, one should keep in mind in some countries, the private sector and/or households may fund a higher proportion of total funding for education, thus making government expenditure appear lower than in other countries. Limitations: In some instances data on total public expenditure on education refers only to the Ministry of Education, excluding other ministries which may also spend a part of their budget on educational activities. For more information, consult the UNESCO Institute of Statistics website: http://www.uis.unesco.org/Education/","4":"Education Statistics","5":"UNESCO Institute for Statistics"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+
+以下の指標のデータを読み込んでみます。
 
 -   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) - 国際総生産
 
@@ -844,7 +918,9 @@ wdi_world
   </script>
 </div>
 
-SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (% of government expenditure)
+あまりデータがないものもあるようです。少しずつ調べてみましょう。
+
+-   SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (% of government expenditure)
 
 -   SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (% of GDP)
 
@@ -875,14 +951,14 @@ wdi_world |> ggplot(aes(education, lifeExp)) + geom_point() + geom_smooth(formul
 #> (`geom_point()`).
 ```
 
-<img src="28-modeling_files/figure-html/unnamed-chunk-55-1.png" width="672" />
+<img src="28-modeling_files/figure-html/unnamed-chunk-58-1.png" width="672" />
 
 
 ```r
 wdi_world %>% filter(income != "Aggregates") |> drop_na(education, lifeExp) |> ggplot(aes(education, lifeExp)) + geom_point() + geom_smooth(formula = y ~ x, method = "lm", se=FALSE)
 ```
 
-<img src="28-modeling_files/figure-html/unnamed-chunk-56-1.png" width="672" />
+<img src="28-modeling_files/figure-html/unnamed-chunk-59-1.png" width="672" />
 
 
 ```r
@@ -896,14 +972,14 @@ wdi_world_el |> ggplot(aes(education)) + geom_histogram()
 #> `binwidth`.
 ```
 
-<img src="28-modeling_files/figure-html/unnamed-chunk-58-1.png" width="672" />
+<img src="28-modeling_files/figure-html/unnamed-chunk-61-1.png" width="672" />
 
 
 ```r
 wdi_world_el |> filter(year==2020) |> ggplot(aes(x = income, y = education, fill = income)) + geom_boxplot()
 ```
 
-<img src="28-modeling_files/figure-html/unnamed-chunk-59-1.png" width="672" />
+<img src="28-modeling_files/figure-html/unnamed-chunk-62-1.png" width="672" />
 
 
 ```r

@@ -360,7 +360,7 @@ other-model-summariesその他のモデル概要
 chatgpt-への質問と回答
 世界開発指標wdiからの例
 出生時の平均寿命life-expectancy-at-birth
-brics
+brics-の出生時
 政府支出国内総生産比government-expenditure-of-gdp
 数理モデルに関する参考文献
 モデル概要に現れる数値について
