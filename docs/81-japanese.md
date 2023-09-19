@@ -31,7 +31,7 @@ showtext_auto()
 plot(cars, main="散布図")
 ```
 
-![](81-japanese_files/figure-epub3/unnamed-chunk-3-1.png)<!-- -->
+<img src="81-japanese_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 
 ## 列名や、データに日本語
@@ -45,10 +45,13 @@ tab <- data.frame(Species = c("setosa", "versicolor", "virginica"),
                   "種別" = c("ヒオウギアヤメ", "ブルーフラッグ", "バージニカ"))
 df_iris <- df_iris %>% left_join(tab, by=c("Species" = "Species")) %>% select(-5)
 df_iris %>% slice(1:2)
-#>   萼長 萼幅 葉長 葉幅           種別
-#> 1  5.1  3.5  1.4  0.2 ヒオウギアヤメ
-#> 2  4.9  3.0  1.4  0.2 ヒオウギアヤメ
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["萼長"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["萼幅"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["葉長"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["葉幅"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["種別"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2","5":"ヒオウギアヤメ"},{"1":"4.9","2":"3.0","3":"1.4","4":"0.2","5":"ヒオウギアヤメ"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 ## `kable` で表示
 
@@ -79,7 +82,7 @@ ggplot(df_iris, aes(x = `葉長`, y = `葉幅`, col = `種別`)) +
   geom_point() + labs(title = "散布図", x = "葉長", y = "葉幅")
 ```
 
-![](81-japanese_files/figure-epub3/unnamed-chunk-5-1.png)<!-- -->
+<img src="81-japanese_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 
 ## 備考：
