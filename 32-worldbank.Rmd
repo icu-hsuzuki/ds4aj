@@ -38,7 +38,6 @@ df_wdi_gdp %>% drop_na(gdp) %>%
   drop_na(region) %>% arrange(desc(gdp))
 ```
 
-
 ```{r cache=TRUE, echo=TRUE, eval=FALSE}
 WDI(country = c("CN","GB","JP","IN","US","DE"), indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE) %>% drop_na(gdp) %>% 
   ggplot(aes(year, gdp, col = country)) + geom_line() +
@@ -115,10 +114,9 @@ df_wdi_gdp_growth_rate_top4 %>%
 
 ふた通りあります。
 
-1. [World Bank Open Data](https://data.worldbank.org) にいくと、表題の下の検索窓の下に、 Country / Indicator とありますから、Indicator を選択します。すると、そこに、項目のリストが、Featured と All という二つのタブに分かれて出ています。かなり膨大です。それを選択すると、その項目のサイトに行きます。それが、指標のサイトです。図などの、右上に、Details とありますから、それを選択すると、その中に、Indicator が書かれています。
-実は、指標のサイトのアドレス（URL）を見ると、そこにも、この Indicator が書かれていることがわかります。
+1.  [World Bank Open Data](https://data.worldbank.org) にいくと、表題の下の検索窓の下に、 Country / Indicator とありますから、Indicator を選択します。すると、そこに、項目のリストが、Featured と All という二つのタブに分かれて出ています。かなり膨大です。それを選択すると、その項目のサイトに行きます。それが、指標のサイトです。図などの、右上に、Details とありますから、それを選択すると、その中に、Indicator が書かれています。 実は、指標のサイトのアドレス（URL）を見ると、そこにも、この Indicator が書かれていることがわかります。
 
-2. [World Development Indicators (WDI)](https://datatopics.worldbank.org/world-development-indicators/) にいくと、下のようなテーマに分かれています。
+2.  [World Development Indicators (WDI)](https://datatopics.worldbank.org/world-development-indicators/) にいくと、下のようなテーマに分かれています。
 
 Themes: Poverty and Inequality, People, Environment, Economy, States and Markets, Global Links
 
@@ -138,12 +136,12 @@ Indicator, Code, Time coverage, Region coverage, Get data
 
 このあとの、例で使う指標を書いておきます。
 
-* NY.GDP.MKTP.CD: GDP (current US$)
-* NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
-* SL.UEM.TOTL.NE.ZS: Unemployment, total (% of total labor force) (national estimate)
-* CPTOTNSXN: CPI Price, nominal
-* SL.TLF.CACT.MA.NE.ZS: Labor force participation rate, male (% of male population ages 15+) (national estimate)
-* SL.TLF.CACT.FE.NE.ZS: Labor force participation rate, female (% of male population ages 15+) (national estimate)
+-   NY.GDP.MKTP.CD: GDP (current US\$)
+-   NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+-   SL.UEM.TOTL.NE.ZS: Unemployment, total (% of total labor force) (national estimate)
+-   CPTOTNSXN: CPI Price, nominal
+-   SL.TLF.CACT.MA.NE.ZS: Labor force participation rate, male (% of male population ages 15+) (national estimate)
+-   SL.TLF.CACT.FE.NE.ZS: Labor force participation rate, female (% of male population ages 15+) (national estimate)
 
 ### 練習 1. - 調べてみたい WDI 指標とそのコード
 
@@ -179,7 +177,7 @@ WDIsearch(string = "NY.GDP.MKTP.CD", field = "indicator", short = TRUE, cache = 
 ```
 
 二件出てきました。
-  
+
 #### 練習 2. - 検索（short）
 
 名前で検索（"" の間に、（なるべく簡単な）検索文字列を入れてください。）
@@ -194,7 +192,6 @@ Indicator で検索（"" の間に、調べたい indicator を入れてくだ�
 WDIsearch(string = "", field = "indicator", short = TRUE, cache = NULL)
 ```
 
-  
 #### 詳しい情報を得るには
 
 上では、Indicator（指標コード）と、Name（指標名）だけでしたが、Description（説明） なども得ることができます。
@@ -220,10 +217,11 @@ series には、すべての指標がリストされ、その情報が書かれ�
 ```{r include=FALSE, eval = FALSE}
 write_rds(wdi_cache, "./data/wdi_cache.RData")
 ```
+
 ```{r include=FALSE, eval = TRUE}
 wdi_cache <- read_rds("./data/wdi_cache.RData")
 ```
-  
+
 #### 検索例 3（WDI名）
 
 `short = FALSE` として、検索してみましょう。文字列が入っている、指標名を検索します。
@@ -232,8 +230,8 @@ wdi_cache <- read_rds("./data/wdi_cache.RData")
 WDIsearch(string = "CPI Price", field = "name", short = FALSE, cache = wdi_cache)
 ```
 
-- CPTOTNSXN: CPI Price, nominal
-  - The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.
+-   CPTOTNSXN: CPI Price, nominal
+    -   The consumer price index reflects the change in prices for the average consumer of a constant basket of consumer goods. Data is not seasonally adjusted.
 
 #### 検索例 4（WDI）
 
@@ -243,7 +241,6 @@ WDIsearch(string = "CPI Price", field = "name", short = FALSE, cache = wdi_cache
 WDIsearch(string = "NY.GDP.MKTP.KD.ZG", field = "indicator", short = FALSE, cache = wdi_cache)
 ```
 
-  
 #### 練習 2 - 検索（long w/ cache）
 
 `string` と、`field` を、ふたつとも入れてください。
@@ -252,13 +249,11 @@ WDIsearch(string = "NY.GDP.MKTP.KD.ZG", field = "indicator", short = FALSE, cach
 WDIsearch(string = "", field = "", short = FALSE, cache = wdi_cache)
 ```
 
-
-  
 ### 指標 WDI データのダウンロード
 
-Indicator が決まったら、ダウンロードします。右下の窓枠の Help タブの検索枠に、`WDI` と入れて確認しましょう。 
+Indicator が決まったら、ダウンロードします。右下の窓枠の Help タブの検索枠に、`WDI` と入れて確認しましょう。
 
-```
+```         
 WDI(
   country = "all",
   indicator = "NY.GDP.PCAP.KD",
@@ -272,7 +267,7 @@ WDI(
 ```
 
 上が基本的な用法ですが、`start` 以下は、Default（初期値）が書かれていますから、たいせつなのは、最初の二つ、country と、indicator です。
-  
+
 #### ダウンロード例 1-1
 
 country は、初期値も、"all" となっていますから、最も簡単なのは、indicator に、指標コードを入れることです。引用符を忘れずに。
@@ -281,10 +276,12 @@ country は、初期値も、"all" となっていますから、最も簡単な
 df_gdp1 <- WDI(country = "all", indicator = "NY.GDP.MKTP.CD")
 df_gdp1
 ```
+
 ```{r include=FALSE, eval=FALSE}
 df_gdp1 <- WDI(country = "all", indicator = "NY.GDP.MKTP.CD")
 write_csv(df_gdp1, "./data/df_gdp1.csv")
 ```
+
 ```{r echo=FALSE, eval=TRUE}
 df_gdp1 <- read_csv("./data/df_gdp1.csv")
 df_gdp1
@@ -298,16 +295,18 @@ df_gdp1
 df_gdp2 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"))
 df_gdp2
 ```
+
 ```{r include=FALSE, eval=FALSE}
 df_gdp2 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"))
 write_csv(df_gdp2, "./data/df_gdp2.csv")
 ```
+
 ```{r echo=FALSE, eval=TRUE}
 df_gdp2 <- read_csv("./data/df_gdp2.csv")
 df_gdp2
 ```
-  
-#### ダウンロード例 1-3\
+
+#### ダウンロード例 1-3
 
 今度は、`extra = TRUE` として、読み込みましょう。先ほど、読み込んである、`wdi_cache` を使います。
 
@@ -316,14 +315,17 @@ df_gdp3 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"),
                extra=TRUE, cache=wdi_cache)
 df_gdp3
 ```
+
 ```{r include=FALSE, eval=FALSE}
 df_gdp3 <- WDI(country = "all", indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
 write_csv(df_gdp3, "./data/df_gdp3.csv")
 ```
+
 ```{r echo=FALSE, eval=TRUE}
 df_gdp3 <- read_csv("./data/df_gdp3.csv")
 df_gdp3
 ```
+
 右上の三角印を使って、どのような詳細情報が付加されたか見て見ましょう。どんなことがわかりますか。
 
 #### ダウンロード例 1-4
@@ -335,11 +337,13 @@ df_gdp4 <- WDI(country = c("CN","GB","JP","IN","US","DE"),
                indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
 df_gdp4
 ```
+
 ```{r include=FALSE, eval=FALSE}
 df_gdp4 <- WDI(country = c("CN","GB","JP","IN","US","DE"), 
                indicator = c(gdp = "NY.GDP.MKTP.CD"), extra=TRUE, cache=wdi_cache)
 write_csv(df_gdp4, "./data/df_gdp4.csv")
 ```
+
 ```{r echo=FALSE, eval=TRUE}
 df_gdp4 <- read_csv("./data/df_gdp4.csv")
 df_gdp4
@@ -349,8 +353,8 @@ df_gdp4
 
 二つの、指標コードを使って、同時に読み込むこともできます。そのときは、`c()` (combine) を使います。
 
-* NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
-* CPTOTNSXN: CPI Price, nominal
+-   NY.GDP.DEFL.KD.ZG: Inflation, GDP deflator (annual %)
+-   CPTOTNSXN: CPI Price, nominal
 
 ```{r cache=TRUE, eval=FALSE}
 df_gdp21 <- WDI(country = "all", 
@@ -359,6 +363,7 @@ df_gdp21 <- WDI(country = "all",
                 extra=TRUE, cache=wdi_cache)
 df_gdp21
 ```
+
 ```{r include=FALSE, eval=FALSE}
 df_gdp21 <- WDI(country = "all", 
                 indicator = c(gdp_deflator = "NY.GDP.DEFL.KD.ZG", 
@@ -366,13 +371,13 @@ df_gdp21 <- WDI(country = "all",
                 extra=TRUE, cache=wdi_cache)
 write_csv(df_gdp21, "./data/df_gdp21.csv")
 ```
+
 ```{r echo=FALSE, eval=TRUE}
 df_gdp21 <- read_csv("./data/df_gdp21.csv")
 df_gdp21
 ```
 
 NA (not available) つまり、データがないものが多いことがわかります。もう少し、データをよく見て見ましょう。
-
 
 ```{r}
 str(df_gdp21)
@@ -392,8 +397,8 @@ summary(df_gdp21)
 
 ### グラフ 1
 
-`x = year`, `y = gdp` の、`x=`, `y=` は省略してあります。`col=country` は、国ごとに、グループにして、色分けをします。`col` は、`color` としても `colour` としても、問題ありません。
-`
+`x = year`, `y = gdp` の、`x=`, `y=` は省略してあります。`col=country` は、国ごとに、グループにして、色分けをします。`col` は、`color` としても `colour` としても、問題ありません。 \`
+
 ```{r}
 df_gdp4 %>% ggplot(aes(year, gdp, col=country)) + geom_line()
 ```
@@ -458,7 +463,6 @@ WDI(country = "all", indicator = c(short_name = chosen_indicator), extra=TRUE, c
   labs(title = paste("WDI ", chosen_indicator, ": ", short_name), y = short_name)
 ```
 
-
 #### 一つの国についての、二つの指標（WDI）と、その略称から、折線グラフを作成
 
 Line Plot with two indicators with abbreviation and one country
@@ -509,7 +513,6 @@ WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name
   scale_linetype_manual(labels = c(short_name_1, short_name_2), values = c("solid", "dashed"))
 ```
 
-
 ```{r eval=FALSE, cache=TRUE}
 chosen_indicator_1 <- "SL.TLF.CACT.MA.NE.ZS"
 short_name_1 <- "male"
@@ -528,3 +531,133 @@ WDI(country = "all", indicator = c(short_name_1 = chosen_indicator_1, short_name
 
 上のテンプレートをコピーして、下に貼り付け、指標 `indicator` と、略称 `short_name` と、いくつかの国名 `chosen_countries` を、入れ替えて、試してみてください。
 
+```{r}
+library(tidymodels)
+```
+
+## 政府支出（国内総生産比）Government Expenditure, (% of GDP)
+
+ここでは、多変数モデルについては、紹介できませんが、複数の変数を使って、それぞれどのような影響があるかを調べる方法を少しだけ紹介します。
+
+WDI の指標が、出生時平均寿命にどのていど、影響するかを調べてみます。
+
+まずは、指標名の中に、"expenditure" と、"% of GDP" を含むものを探します。下では二つの方法を提示しています。一方は、表の結合の、inner_join を使う方法、もう一つは、正規表現の、grepl を使う方法です。なにも指定しないと、grepl は大文字小文字を区別し、WDIsearch は、区別しませんから、ひとつだけ、差が生じています。
+
+```{r}
+wdi_cache <- read_rds("./data/wdi_cache.RData")
+```
+
+```{r}
+WDIsearch("expenditure", "name", cache = wdi_cache) %>% 
+  inner_join(WDIsearch("% of GDP", "name", cache = wdi_cache))
+```
+
+```{r}
+wdi_cache$series %>% filter(grepl("expenditure", name), grepl("% of GDP", name))
+```
+
+以下の指標のデータを読み込んでみます。
+
+-   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$) - 国際総生産
+
+-   SP.DYN.LE00.IN: Life expectancy at birth, total (years) - 出生時寿命
+
+-   SP.POP.TOTL: Population, total - 人口
+
+-   GB.XPD.RSDV.GD.ZS: Research and development expenditure (% of GDP) - 2 - 研究開発
+
+-   MS.MIL.XPND.GD.ZS: Military expenditure (% of GDP) - 6 - 軍事費
+
+-   SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (% of GDP) - 教育費
+
+```{r cash = TRUE, eval=FALSE}
+wdi_world <- WDI(country = "all", indicator = c(gdpPcap = "NY.GDP.PCAP.KD", lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", research = "GB.XPD.RSDV.GD.ZS", military = "MS.MIL.XPND.GD.ZS", education = "SE.XPD.TOTL.GD.ZS"), 1990, extra = TRUE, cache = wdi_cache)
+```
+
+```{r include=FALSE, eval=FALSE}
+write_csv(wdi_world, "./data/wdi_world")
+```
+
+```{r echo=FALSE}
+wdi_world <- read_csv("./data/wdi_world")
+```
+
+```{r}
+wdi_world
+```
+
+あまりデータがないものもあるようです。少しずつ調べてみましょう。
+
+-   SE.XPD.TOTL.GB.ZS: Government expenditure on education, total (% of government expenditure)
+
+-   SE.XPD.TOTL.GD.ZS: Government expenditure on education, total (% of GDP)
+
+-   SE.XPD.PRIM.PC.ZS: Government expenditure per student, primary (% of GDP per capita)
+
+-   MS.MIL.XPND.ZS: Military expenditure (% of general government expenditure)
+
+-   SE.XPD.TERT.ZS: Expenditure on tertiary education (% of government expenditure on education)
+
+```{r}
+mod_e <- lm(lifeExp ~ education, wdi_world); mod_e
+```
+
+```{r}
+wdi_world |> ggplot(aes(education, lifeExp)) + geom_point() + geom_smooth(formula = y ~ x, method = "lm", se=FALSE)
+```
+
+```{r}
+wdi_world %>% filter(income != "Aggregates") |> drop_na(education, lifeExp) |> ggplot(aes(education, lifeExp)) + geom_point() + geom_smooth(formula = y ~ x, method = "lm", se=FALSE)
+```
+
+```{r}
+wdi_world_el <- wdi_world %>% select(country, year, education, lifeExp, gdpPcap, pop, research, military, region, income) |> filter(income != "Aggregates") |> drop_na(education, lifeExp)
+```
+
+```{r}
+wdi_world_el |> ggplot(aes(education)) + geom_histogram()
+```
+
+```{r}
+wdi_world_el |> filter(year==2020) |> ggplot(aes(x = income, y = education, fill = income)) + geom_boxplot()
+```
+
+```{r}
+wdi_world_el |> filter(year==2020) |> arrange(desc(education))
+```
+
+```{r}
+wdi_world_el |> filter(year==2020) |> arrange(desc(education))
+```
+
+```{r}
+wdi_world_el |> filter(year==2020) |> lm(gdpPcap ~ education, data = _)
+```
+
+```{r}
+wdi_world_el |> filter(year==2020) |> lm(gdpPcap ~ education, data = _) |> glance()
+```
+
+```{r}
+wdi_world_el |> lm(lifeExp ~ education + research + military, data = _) |> glance()
+```
+
+```{r}
+wdi_world_el |> lm(lifeExp ~ education + research + military, data = _) |> tidy()
+```
+
+$$lifeExp \sim 70.22 + 0.08\cdot education + 3.84 \cdot research - 0.07 \cdot military$$
+
+```{r}
+wdi_world_el |> lm(gdpPcap ~ education + research + military, data = _) |> tidy()
+```
+
+```{r}
+wdi_world_el |> lm(gdpPcap ~ education + research + military, data = _) |> glance()
+```
+
+$$gdpPcap \sim 1077 + 1024\cdot education + 12792 \cdot research - 967 \cdot military$$
+
+```{r}
+mod_r <- lm(lifeExp ~ research, wdi_world); mod_e
+```
