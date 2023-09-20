@@ -299,6 +299,72 @@ df_wdi_extra |> glimpse()
 
 RStudio の右上の窓の Environment から、df_wdi や、df_wdi_extra を選択して、データを表示してみてください。それぞれの列（変数）の右の二つの三角を押すと、昇順（小さい順）、降順（大きい順）に並び替えることもできますし、Filter を使うと、検索も可能です。たとえば、Japan や、JP や、JPN などと検索窓に入れて、日本のデータを表示させてみてください。h表示させてから、Year 列の右の二つの三角を押して、順序をかえてみてください。それぞれの変数何年からのデータがありますか。
 
+-   ::: {#auguments .rmdcaution}
+    **引数（augument）について**
+
+    関数の中に指定するものを引数と言います。たとえば、`head(df_iris)` の `df_iris` 、
+
+    WDI() の () の中の、country や、indicator、ggplot() の () の中の、aes や、color や size などです。Help を一つ一つ見てみるのが良いのですが、引数に名前がついている場合と、ついていない場合があります。三通りがあります。
+
+    1.  引数の要・不要
+
+    2.  引数の名前がある場合の名前の省略
+
+    3.  引数の順序
+
+    すべて　Help を見ないとわかりませんが、原則は、以下のとおりです。
+
+    1.  引数が必要であっても、その初期値（default value）が決まっていて、変更の必要がなければ、引数を指定する必要なし。
+
+    2.  引数の名前がある場合であっても、引数の順序どおりであれば、名前は省略可能。
+
+    3.  引数には順序があるが、名前のついている引数は、名前をつければ、順序を変更しても構わない。
+
+    例で見ていきましょう。
+
+    -   head(df_iris) は、Help には、head(x, ...) と書いてあり、x は object と書いてありますから、この場合は、df_iris が x に対応します。... は、任意で、詳細は Help の下の方に書いてあります。さらに見ると、ftable（表 S3: flat contingency table）の場合には、head(x, n = 6L, ...) とあります。最初の6行を取り出すという意味です。`n=6L` （6L は整数値で 6 の意味）は、6L が初期値ですから、書く必要はありませんが、もし、6を他の数字、たとえば 10 に変えれば、10行ということになります。L の部分は、なくても自然数（1,2, 3, ...）なら普通に理解してくれます。`head(df_iris, n=-145)` とすると何が表示されるでしょうか。
+
+    -   WDI(country = "all",
+        indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD") はどうでしょうか。Help を見てみると、次のようにあります。
+
+        ```         
+        WDI(
+          country = "all",
+          indicator = "NY.GDP.PCAP.KD",
+          start = 1960,
+          end = NULL,
+          extra = FALSE,
+          cache = NULL,
+          latest = NULL,
+          language = "en"
+        )
+        ```
+
+        -   最初の引数は、country で初期値は "all"、indicator は、初期値は "NY.GDP.PCAP.KD" ですが、それを、`c()` を使ったベクトル表示で与えています。
+
+        -   country = "all" は初期値と同じですから、省略可能です。二番目の引数は、indicator ですから、country = "all" を書いてあれば、"indicator = " の部分は省略可能です。
+
+        -   `extra = FALSE` とありますから、この場合は、何も指定しませんでしたが、df_wdi_extra の場合には、extra = TRUE としました。
+
+    -   df_iris \|\> ggplot(aes(Sepal.Width, Sepal.Length, color = Species,
+        size = Petal.Width)) はどうでしょうか。Help を見ると下のようにありますが、Details の部分も書いておきます。これは、他のパターンもあります。
+
+        ```         
+        ggplot(data = NULL, mapping = aes(), ..., environment = parent.frame())
+        ggplot(data = df, mapping = aes(x, y, other aesthetics))⁠
+        ```
+
+        -   data の部分は、pipe （\|\>）で、最初に引数に `data =  df_iris` とあるのと同じです。
+
+        -   二番目の引数が、aes の部分ですから、`mapping =` は省略しても問題ありません。
+
+        -   aes() の中身は、最初が、x、次が y となっていますから、変数の順番があっていれば、x = Sepal.Width, y = Sepal.Length と書いても、書かなくても同じです。
+
+        -   color = Species, size = Petal.Width の部分は、引数名が書かれているので、順番は、関係ありません。
+
+    慣れが必要ですから、原則を確認して、あとは、出てきたときに、一つ一つ確認してください。
+    :::
+
 ## まとめ
 
 あやめ（iris）のデータを、`df_iris` として、読み込み、WDI パッケージを用いて、WDI のデータを df_wdi および df_wdi_extra として読み込み、それをみてみました。

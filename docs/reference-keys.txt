@@ -318,10 +318,9 @@ tidyverse-の読み込み
 mpg-を使って
 例から学ぶ-ggplot2-ii
 df_wdi-df_wdi_extra-1
-section
+棒グラフbar-graph-and-column-graph
 折線グラフline-graph
 box-plot
-wdi-2
 コメント
 参考文献-1
 練習-4

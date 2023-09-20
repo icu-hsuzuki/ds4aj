@@ -7,7 +7,7 @@
 <title>Chapter 17 Tidyverse | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hiroshi Suzuki）">
 <meta name="description" content="17.1 はじめに R のはじめかたについて少し説明しました。R を起動させると、最初に base などいくつかのパッケージが自動的に読み込まれますが、その基本の基本を紹介したということです。ここでは、第二部で学ぶことの、核となる tidyverse というパッケージ群についてその基本を学びます。 サイト：https://www.tidyverse.org R...">
-<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Chapter 17 Tidyverse | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/tidyverse.html">
@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="17.1 はじめに R のはじめかたについて少し説明しました。R を起動させると、最初に base などいくつかのパッケージが自動的に読み込まれますが、その基本の基本を紹介したということです。ここでは、第二部で学ぶことの、核となる tidyverse というパッケージ群についてその基本を学びます。 サイト：https://www.tidyverse.org R...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -143,7 +143,7 @@
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
-<span><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
+<span><span class="co">#&gt; ✔ dplyr     1.1.3     ✔ readr     2.1.4</span></span>
 <span><span class="co">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0</span></span>
 <span><span class="co">#&gt; ✔ ggplot2   3.4.3     ✔ tibble    3.2.1</span></span>
 <span><span class="co">#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0</span></span>
@@ -471,6 +471,60 @@
 <span><span class="co">#&gt; $ lending     &lt;chr&gt; "IDA", "IDA", "IDA", "IDA", "IDA", "ID…</span></span></code></pre></div>
 <p>列の数が違いますね。どちらも行は、16,758行です。こんなに多いものは、表で見ていても、よくわかりません。これらを扱う方法を少しずつ学んでいきます。</p>
 <p>RStudio の右上の窓の Environment から、df_wdi や、df_wdi_extra を選択して、データを表示してみてください。それぞれの列（変数）の右の二つの三角を押すと、昇順（小さい順）、降順（大きい順）に並び替えることもできますし、Filter を使うと、検索も可能です。たとえば、Japan や、JP や、JPN などと検索窓に入れて、日本のデータを表示させてみてください。h表示させてから、Year 列の右の二つの三角を押して、順序をかえてみてください。それぞれの変数何年からのデータがありますか。</p>
+<ul>
+<li><div id="auguments" class="rmdcaution">
+<p><strong>引数（augument）について</strong></p>
+<p>関数の中に指定するものを引数と言います。たとえば、<code>head(df_iris)</code> の <code>df_iris</code> 、</p>
+<p>WDI() の () の中の、country や、indicator、ggplot() の () の中の、aes や、color や size などです。Help を一つ一つ見てみるのが良いのですが、引数に名前がついている場合と、ついていない場合があります。三通りがあります。</p>
+<ol style="list-style-type: decimal">
+<li><p>引数の要・不要</p></li>
+<li><p>引数の名前がある場合の名前の省略</p></li>
+<li><p>引数の順序</p></li>
+</ol>
+<p>すべて　Help を見ないとわかりませんが、原則は、以下のとおりです。</p>
+<ol style="list-style-type: decimal">
+<li><p>引数が必要であっても、その初期値（default value）が決まっていて、変更の必要がなければ、引数を指定する必要なし。</p></li>
+<li><p>引数の名前がある場合であっても、引数の順序どおりであれば、名前は省略可能。</p></li>
+<li><p>引数には順序があるが、名前のついている引数は、名前をつければ、順序を変更しても構わない。</p></li>
+</ol>
+<p>例で見ていきましょう。</p>
+<ul>
+<li><p>head(df_iris) は、Help には、head(x, …) と書いてあり、x は object と書いてありますから、この場合は、df_iris が x に対応します。… は、任意で、詳細は Help の下の方に書いてあります。さらに見ると、ftable（表 S3: flat contingency table）の場合には、head(x, n = 6L, …) とあります。最初の6行を取り出すという意味です。<code>n=6L</code> （6L は整数値で 6 の意味）は、6L が初期値ですから、書く必要はありませんが、もし、6を他の数字、たとえば 10 に変えれば、10行ということになります。L の部分は、なくても自然数（1,2, 3, …）なら普通に理解してくれます。<code>head(df_iris, n=-145)</code> とすると何が表示されるでしょうか。</p></li>
+<li>
+<p>WDI(country = “all”,
+indicator = c(lifeExp = “SP.DYN.LE00.IN”, pop = “SP.POP.TOTL”, gdpPercap = “NY.GDP.PCAP.KD”) はどうでしょうか。Help を見てみると、次のようにあります。</p>
+<pre><code>WDI(
+  country = "all",
+  indicator = "NY.GDP.PCAP.KD",
+  start = 1960,
+  end = NULL,
+  extra = FALSE,
+  cache = NULL,
+  latest = NULL,
+  language = "en"
+)</code></pre>
+<ul>
+<li><p>最初の引数は、country で初期値は “all”、indicator は、初期値は “NY.GDP.PCAP.KD” ですが、それを、<code><a href="https://rdrr.io/r/base/c.html">c()</a></code> を使ったベクトル表示で与えています。</p></li>
+<li><p>country = “all” は初期値と同じですから、省略可能です。二番目の引数は、indicator ですから、country = “all” を書いてあれば、“indicator =” の部分は省略可能です。</p></li>
+<li><p><code>extra = FALSE</code> とありますから、この場合は、何も指定しませんでしたが、df_wdi_extra の場合には、extra = TRUE としました。</p></li>
+</ul>
+</li>
+<li>
+<p>df_iris |&gt; ggplot(aes(Sepal.Width, Sepal.Length, color = Species,
+size = Petal.Width)) はどうでしょうか。Help を見ると下のようにありますが、Details の部分も書いておきます。これは、他のパターンもあります。</p>
+<pre><code>ggplot(data = NULL, mapping = aes(), ..., environment = parent.frame())
+ggplot(data = df, mapping = aes(x, y, other aesthetics))⁠</code></pre>
+<ul>
+<li><p>data の部分は、pipe （|&gt;）で、最初に引数に <code>data =  df_iris</code> とあるのと同じです。</p></li>
+<li><p>二番目の引数が、aes の部分ですから、<code>mapping =</code> は省略しても問題ありません。</p></li>
+<li><p>aes() の中身は、最初が、x、次が y となっていますから、変数の順番があっていれば、x = Sepal.Width, y = Sepal.Length と書いても、書かなくても同じです。</p></li>
+<li><p>color = Species, size = Petal.Width の部分は、引数名が書かれているので、順番は、関係ありません。</p></li>
+</ul>
+</li>
+</ul>
+<p>慣れが必要ですから、原則を確認して、あとは、出てきたときに、一つ一つ確認してください。</p>
+</div></li>
+</ul>
 </div>
 <div id="まとめ-3" class="section level2" number="17.4">
 <h2>

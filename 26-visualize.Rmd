@@ -154,6 +154,10 @@ The boxplot compactly displays the distribution of a continuous variable.
 
 <https://vimeo.com/222358034>
 
+日本語では、下のサイトの箱ひげ図の項目を見ていただければと思います。外れ値についての説明もあります。
+
+箱ひげ図と幹葉表示：<https://bellcurve.jp/statistics/course/5219.html>
+
 Transcript ボタンから、スクリプトを表示することもできます。
 
 例のように、それぞれのグループごとに箱ひげ図を表示することもできますが、その場合は、文字データや、離散的な数値データ（いくつかの飛び飛びの値をとる変数）を使います。x と y を入れ替えれば、横向きになります。
@@ -307,14 +311,16 @@ WDI の使い方は、世界銀行の部分で紹介しますが、はじめて�
 ```{r eval=FALSE}
 df_wdi <- WDI(
   country = "all", 
-  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", 
+                gdpPercap = "NY.GDP.PCAP.KD")
 )
 ```
 
 ```{r echo=FALSE, eval=FALSE}
 df_wdi <- WDI(
   country = "all", 
-  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", 
+                gdpPercap = "NY.GDP.PCAP.KD")
 )
 write_csv(df_wdi, "./data/wdi.csv")
 ```
@@ -326,7 +332,8 @@ df_wdi <- read_csv("./data/wdi.csv")
 ```{r eval=FALSE}
 df_wdi_extra <- WDI(
   country = "all", 
-  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", 
+                gdpPercap = "NY.GDP.PCAP.KD"), 
   extra = TRUE
 )
 ```
@@ -336,7 +343,8 @@ df_wdi_extra <- WDI(
 ```{r eval=FALSE, echo=FALSE}
 df_wdi_extra <- WDI(
   country = "all", 
-  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
+  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", 
+                gdpPercap = "NY.GDP.PCAP.KD"), 
   extra = TRUE
 )
 write_csv(df_wdi_extra, "./data/wdi_extra.csv")
@@ -350,7 +358,50 @@ df_wdi_extra <- read_csv("./data/wdi_extra.csv")
 df_wdi
 ```
 
-### 
+### 棒グラフ（bar graph and column graph）
+
+まずは、年ごと、指標（indicator）ごとに、どの程度データがあるか見てみましょう。
+
+```{r}
+df_wdi |> drop_na(lifeExp, pop, gdpPercap) |>
+  ggplot() + geom_bar(aes(year))
+```
+
+最初に、三つの indicator が どれもが、NA でない行だけを選択していますから、三つの指標がすべて値がある、データを年ごとに数えてグラフにしたものが、上のものになっています。表にすると次のようになっています。
+
+```{r}
+df_wdi |> drop_na(lifeExp, pop, gdpPercap) |>
+  group_by(year) |> summarize(n = n())
+```
+
+同じような棒グラフですが、それぞれの値をグラフにする場合には、`geom_col()` を使います。
+
+```{r}
+regions <- df_wdi_extra |> drop_na(region) |>
+  filter(region != "Aggregates") |> distinct(region) |> pull()
+regions
+```
+```{r}
+df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
+  filter(country %in% regions) |>
+  ggplot(aes(y = country, x = lifeExp)) + geom_col()
+```
+
+```{r}
+df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
+  filter(country %in% regions) |>
+  ggplot(aes(y = country, x = pop)) + geom_col()
+```
+```{r}
+df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
+  filter(country %in% regions) |>
+  ggplot(aes(y = country, x = gdpPercap)) + geom_col()
+```
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(y = region, fill = income)) + geom_bar()
+```
 
 ### **折線グラフ（line graph）**
 
@@ -422,62 +473,6 @@ df_lifeExp %>% ggplot() +
   geom_line(aes(x = year, y = mean_lifeExp, color = region)) + 
   geom_line(aes(x = year, y = median_lifeExp, linetype = region))
 ```
-
-#### WDI
-
--   SP.DYN.LE00.IN: Life expectancy at birth, total (years)
--   NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$)
--   SP.POP.TOTL: Population, total
-
-```{r eval=FALSE}
-df_wdi <- WDI(
-  country = "all", 
-  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
-)
-```
-
-```{r echo=FALSE, eval=FALSE}
-df_wdi <- WDI(
-  country = "all", 
-  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD")
-)
-write_csv(df_wdi, "./data/wdi.csv")
-```
-
-```{r echo=FALSE, eval=TRUE}
-df_wdi <- read_csv("./data/wdi.csv")
-```
-
-```{r}
-df_wdi %>% slice(1:10)
-```
-
-```{r eval=FALSE}
-df_wdi_extra <- WDI(
-  country = "all", 
-  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
-  extra = TRUE
-)
-```
-
-```{r eval=FALSE, echo=FALSE}
-df_wdi_extra <- WDI(
-  country = "all", 
-  indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD"), 
-  extra = TRUE
-)
-write_csv(df_wdi_extra, "./data/wdi_extra.csv")
-```
-
-```{r eval=TRUE, echo=FALSE}
-df_wdi_extra <- read_csv("./data/wdi_extra.csv")
-```
-
-```{r}
-df_wdi_extra
-```
-
-違いはわかりましたか。同じような変数についてのデータですが、WDI からダウンロードした実際のデータの場合には、練習用のデータとは、違った困難がいくつもあります。それを、少しず見ていきながら、現実世界のデータを扱えるようにしていきましょう。
 
 ## コメント
 

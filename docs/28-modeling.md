@@ -30,7 +30,7 @@ R を使って、モデルについて表示される、数値の意味も説明
 ```r
 library(tidyverse)
 #> ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
-#> ✔ dplyr     1.1.2     ✔ readr     2.1.4
+#> ✔ dplyr     1.1.3     ✔ readr     2.1.4
 #> ✔ forcats   1.0.0     ✔ stringr   1.5.0
 #> ✔ ggplot2   3.4.3     ✔ tibble    3.2.1
 #> ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
@@ -45,7 +45,7 @@ library(tidymodels)
 #> ── Attaching packages ────────────────── tidymodels 1.1.1 ──
 #> ✔ broom        1.0.5     ✔ rsample      1.2.0
 #> ✔ dials        1.2.0     ✔ tune         1.1.2
-#> ✔ infer        1.0.4     ✔ workflows    1.1.3
+#> ✔ infer        1.0.5     ✔ workflows    1.1.3
 #> ✔ modeldata    1.2.0     ✔ workflowsets 1.0.1
 #> ✔ parsnip      1.1.1     ✔ yardstick    1.2.0
 #> ✔ recipes      1.0.8     
