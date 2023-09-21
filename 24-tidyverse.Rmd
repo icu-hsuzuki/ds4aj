@@ -26,6 +26,14 @@ library(showtext)
 showtext_auto()
 ```
 
+いろいろなメッセージが表示されました。簡単に説明しておきます。
+
+-   Attaching core tidyverse packages：パッケージを読み込む、使えるようにするのが、library() という、命令ですが、ここでは、たくさんのパッケージが読み込まれたことが書かれています。Tidyverse パッケージ群の中の核となるパッケージです（core tidyverse packages）。実は、これ以外にも、Tidyverse パッケージ群は、パッケージを含んでいますが、それは、別に、読み込まないといけません。その都度説明します。
+
+-   Conflicts：実は、違うパッケージの中に、同じ名前の関数（命令）が含まれている場合があります。その場合は、あとから読み込んだパッケージの命令が優先されます。いま、tidyverse を読み込んだので、その前に、読み込まれていたパッケージのいくつかの、関数が使えなくなりましたというメッセージです。
+
+-   次に、showtext を読み込んでいます。そこでは、sysfonts と showtextdb も必要なので、読み込んだと書かれています。
+
 以下では、R の起動時に読み込まれる、 `datasets` パッケージの中の、`iris` データを使います。以前には、同じパッケージに含まれる、`cars` を使いました。まず、このデータに、`ds_iris` という名前をつけて使うことにします。これは、アサインと言い、`<-` を使います。半角で入力します。
 
 備考：
@@ -83,7 +91,15 @@ summary(df_iris)
 
 それぞれの最小値（Min. Minimum）、第一四分位（1st Qu. First Quartile 小さい方から、4分の1を切り捨てたときの最小の値）、中央値（Median）、平均（Mean）、第三四分位（3rd Qu. Third Quartile、大きい方から、4分の1を切り捨てたときの最大の値）最大値（Max. Maximum）が、書かれており、各種それぞれ50個のデータからなっていることがわかります。
 
-さらに、`plot`、`View`、`help` についても学びました。
+base R では、さらに、`plot`、`View`、`help` についても学びました。
+
+これは、あやめ（iris）の、長さや幅のデータでしたが、単位は何でしょうか。それも、help で調べることができます。Help の検索ボックスに、iris と入れてみてください。この場合は、Description（概要）に次のように書かれています。
+
+This famous (Fisher's or Anderson's) iris data set gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica.
+
+この有名な（フィッシャーまたはアンダーソンの）あやめのデータは、3種のあやめからそれぞれ50個の花について、萼片の長さと幅、花弁の長さと幅の変数をそれぞれセンチメートル単位で測定したものです。種は、Iris setosa, versicolor, virginica です。
+
+各、変数の説明が書かれている場合もありますので、Help は、かならず確認するようにしてください。
 
 ##### plot: 散布図
 
@@ -324,8 +340,7 @@ RStudio の右上の窓の Environment から、df_wdi や、df_wdi_extra を選
 
     -   head(df_iris) は、Help には、head(x, ...) と書いてあり、x は object と書いてありますから、この場合は、df_iris が x に対応します。... は、任意で、詳細は Help の下の方に書いてあります。さらに見ると、ftable（表 S3: flat contingency table）の場合には、head(x, n = 6L, ...) とあります。最初の6行を取り出すという意味です。`n=6L` （6L は整数値で 6 の意味）は、6L が初期値ですから、書く必要はありませんが、もし、6を他の数字、たとえば 10 に変えれば、10行ということになります。L の部分は、なくても自然数（1,2, 3, ...）なら普通に理解してくれます。`head(df_iris, n=-145)` とすると何が表示されるでしょうか。
 
-    -   WDI(country = "all",
-        indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD") はどうでしょうか。Help を見てみると、次のようにあります。
+    -   WDI(country = "all", indicator = c(lifeExp = "SP.DYN.LE00.IN", pop = "SP.POP.TOTL", gdpPercap = "NY.GDP.PCAP.KD") はどうでしょうか。Help を見てみると、次のようにあります。
 
         ```         
         WDI(
@@ -342,12 +357,11 @@ RStudio の右上の窓の Environment から、df_wdi や、df_wdi_extra を選
 
         -   最初の引数は、country で初期値は "all"、indicator は、初期値は "NY.GDP.PCAP.KD" ですが、それを、`c()` を使ったベクトル表示で与えています。
 
-        -   country = "all" は初期値と同じですから、省略可能です。二番目の引数は、indicator ですから、country = "all" を書いてあれば、"indicator = " の部分は省略可能です。
+        -   country = "all" は初期値と同じですから、省略可能です。二番目の引数は、indicator ですから、country = "all" を書いてあれば、"indicator =" の部分は省略可能です。
 
         -   `extra = FALSE` とありますから、この場合は、何も指定しませんでしたが、df_wdi_extra の場合には、extra = TRUE としました。
 
-    -   df_iris \|\> ggplot(aes(Sepal.Width, Sepal.Length, color = Species,
-        size = Petal.Width)) はどうでしょうか。Help を見ると下のようにありますが、Details の部分も書いておきます。これは、他のパターンもあります。
+    -   df_iris \|\> ggplot(aes(Sepal.Width, Sepal.Length, color = Species, size = Petal.Width)) はどうでしょうか。Help を見ると下のようにありますが、Details の部分も書いておきます。これは、他のパターンもあります。
 
         ```         
         ggplot(data = NULL, mapping = aes(), ..., environment = parent.frame())

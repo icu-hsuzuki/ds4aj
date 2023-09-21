@@ -116,7 +116,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 ```{r}
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() + 
-  labs(title = "菖蒲の萼の長さと幅についての散布図", x = "萼の長さ", y = "萼の幅")
+  labs(title = "あやめの萼の長さと幅についての散布図", x = "萼の長さ", y = "萼の幅")
 ```
 
 このように、日本語をタイトルや、ラベルに使うことも可能ですが、以後は、データに日本語が含まれていない場合には、そのまま表示します。
@@ -381,6 +381,7 @@ regions <- df_wdi_extra |> drop_na(region) |>
   filter(region != "Aggregates") |> distinct(region) |> pull()
 regions
 ```
+
 ```{r}
 df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
   filter(country %in% regions) |>
@@ -392,15 +393,65 @@ df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
   filter(country %in% regions) |>
   ggplot(aes(y = country, x = pop)) + geom_col()
 ```
+
 ```{r}
 df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
   filter(country %in% regions) |>
   ggplot(aes(y = country, x = gdpPercap)) + geom_col()
 ```
+
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   group_by(region) |>
   ggplot(aes(y = region, fill = income)) + geom_bar()
+```
+
+### 備考
+
+最後のグラフを例にとって、いくつかのコメントをしておきます。
+
+#### 概要
+
+地域のリストを regions に入れてありますから、2020 年のデータを取り出し、その中で、それぞれの国ごとのデータではなく、集計してあるもの（Aggregates）を選択してあります。そして、地域ごとのグループ化します。Y 軸に、地域名を取って、`geom_bar()` ですから、データがいくつあるかで棒グラフにしています。そのときに、`fill = income` としていますから、収入レベルごとに、色を変えて塗りつぶし（fill）て、描いています。color は、枠に色をつけ、fill は、塗りつぶしです。
+
+#### 縦か横か
+
+棒が横に伸びていますが、縦にすることも可能です。それには、`y = region` と書いてあるものを、`x = region` とすればできます。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar()
+```
+
+#### 地域名
+
+なぜ、横にしたか、見当がついたかと思います。縦にすると、地域名が長くて重なってしまうのですね。もちろん、それを、改善する手がいくつかあります。1つ目は、地域名を縦にしたり、角度を付ける方法。`theme` を使い、中に角度を書きます。実は、それだけだと、ちょっと重なってしまうので、hjust の変数で調節しています。垂直方向の調節は、vjust です。数はいろいろと変更してみてください。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar() + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+```
+
+もう一つは折り返す方法です。こちらの法が、良いかもしれません。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar() + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8))
+```
+
+もし、fill の方の凡例（legend）も短くしたければ、次のようにします。width のあとの数字は、適切な数を選んでください。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar() + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
 
 ### **折線グラフ（line graph）**

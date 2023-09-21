@@ -231,7 +231,7 @@
 <div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Sepal.Width</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"菖蒲の萼の長さと幅についての散布図"</span>, x <span class="op">=</span> <span class="st">"萼の長さ"</span>, y <span class="op">=</span> <span class="st">"萼の幅"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"あやめの萼の長さと幅についての散布図"</span>, x <span class="op">=</span> <span class="st">"萼の長さ"</span>, y <span class="op">=</span> <span class="st">"萼の幅"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
 <p>このように、日本語をタイトルや、ラベルに使うことも可能ですが、以後は、データに日本語が含まれていない場合には、そのまま表示します。</p>
 </div>
@@ -512,79 +512,129 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">income</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-42-1.png" width="672"></div>
 </div>
-<div id="折線グラフline-graph" class="section level3" number="19.5.3">
+<div id="備考-6" class="section level3" number="19.5.3">
 <h3>
-<span class="header-section-number">19.5.3</span> <strong>折線グラフ（line graph）</strong><a class="anchor" aria-label="anchor" href="#%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95line-graph"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19.5.3</span> 備考<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-6"><i class="fas fa-link"></i></a>
+</h3>
+<p>最後のグラフを例にとって、いくつかのコメントをしておきます。</p>
+<div id="概要-9" class="section level4" number="19.5.3.1">
+<h4>
+<span class="header-section-number">19.5.3.1</span> 概要<a class="anchor" aria-label="anchor" href="#%E6%A6%82%E8%A6%81-9"><i class="fas fa-link"></i></a>
+</h4>
+<p>地域のリストを regions に入れてありますから、2020 年のデータを取り出し、その中で、それぞれの国ごとのデータではなく、集計してあるもの（Aggregates）を選択してあります。そして、地域ごとのグループ化します。Y 軸に、地域名を取って、<code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> ですから、データがいくつあるかで棒グラフにしています。そのときに、<code>fill = income</code> としていますから、収入レベルごとに、色を変えて塗りつぶし（fill）て、描いています。color は、枠に色をつけ、fill は、塗りつぶしです。</p>
+</div>
+<div id="縦か横か" class="section level4" number="19.5.3.2">
+<h4>
+<span class="header-section-number">19.5.3.2</span> 縦か横か<a class="anchor" aria-label="anchor" href="#%E7%B8%A6%E3%81%8B%E6%A8%AA%E3%81%8B"><i class="fas fa-link"></i></a>
+</h4>
+<p>棒が横に伸びていますが、縦にすることも可能です。それには、<code>y = region</code> と書いてあるものを、<code>x = region</code> とすればできます。</p>
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi_extra</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">income</span> <span class="op">!=</span> <span class="st">"Aggregates"</span>, <span class="va">year</span> <span class="op">==</span> <span class="fl">2020</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">income</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-43-1.png" width="672"></div>
+</div>
+<div id="地域名" class="section level4" number="19.5.3.3">
+<h4>
+<span class="header-section-number">19.5.3.3</span> 地域名<a class="anchor" aria-label="anchor" href="#%E5%9C%B0%E5%9F%9F%E5%90%8D"><i class="fas fa-link"></i></a>
+</h4>
+<p>なぜ、横にしたか、見当がついたかと思います。縦にすると、地域名が長くて重なってしまうのですね。もちろん、それを、改善する手がいくつかあります。1つ目は、地域名を縦にしたり、角度を付ける方法。<code>theme</code> を使い、中に角度を書きます。実は、それだけだと、ちょっと重なってしまうので、hjust の変数で調節しています。垂直方向の調節は、vjust です。数はいろいろと変更してみてください。</p>
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi_extra</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">income</span> <span class="op">!=</span> <span class="st">"Aggregates"</span>, <span class="va">year</span> <span class="op">==</span> <span class="fl">2020</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">income</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-44-1.png" width="672"></div>
+<p>もう一つは折り返す方法です。こちらの法が、良いかもしれません。</p>
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi_extra</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">income</span> <span class="op">!=</span> <span class="st">"Aggregates"</span>, <span class="va">year</span> <span class="op">==</span> <span class="fl">2020</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">income</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_wrap.html">str_wrap</a></span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-45-1.png" width="672"></div>
+<p>もし、fill の方の凡例（legend）も短くしたければ、次のようにします。width のあとの数字は、適切な数を選んでください。</p>
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df_wdi_extra</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">income</span> <span class="op">!=</span> <span class="st">"Aggregates"</span>, <span class="va">year</span> <span class="op">==</span> <span class="fl">2020</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">income</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_wrap.html">str_wrap</a></span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_wrap.html">str_wrap</a></span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-46-1.png" width="672"></div>
+</div>
+</div>
+<div id="折線グラフline-graph" class="section level3" number="19.5.4">
+<h3>
+<span class="header-section-number">19.5.4</span> <strong>折線グラフ（line graph）</strong><a class="anchor" aria-label="anchor" href="#%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95line-graph"><i class="fas fa-link"></i></a>
 </h3>
 <p>WDI は時系列データですから、折れ線グラフも使います。後ほど紹介しますが、</p>
 <div class="line-block"><code>&lt;DATA&gt; |&gt; ggplot(aes(year, lifeExp)) + geom_line()</code></div>
 <p>と言った感じです。</p>
 <p>まずは、失敗例から。次のコードでグラフが描けるでしょうか。</p>
-<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Removed 266 rows containing missing values</span></span>
 <span><span class="co">#&gt; (`geom_line()`).</span></span></code></pre></div>
-<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-43-1.png" width="672"></div>
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-47-1.png" width="672"></div>
 <p>何が起こっているかわかりますか。これは、鋸の刃グラフ（saw-tooth chart）と言われる標準的な失敗例です。</p>
-<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df_wdi</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Continuous x aesthetic</span></span>
 <span><span class="co">#&gt; ℹ did you forget `aes(group = ...)`?</span></span>
 <span><span class="co">#&gt; Warning: Removed 892 rows containing non-finite values</span></span>
 <span><span class="co">#&gt; (`stat_boxplot()`).</span></span></code></pre></div>
-<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-44-1.png" width="672"></div>
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-48-1.png" width="672"></div>
 <p>これも期待した箱ひげ図にはなっていません。年は、カテゴリーではなく、数値データですね。</p>
-<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">df_wdi</span>, <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="co"># same as typeof(df$year)</span></span>
 <span><span class="co">#&gt; [1] "double"</span></span></code></pre></div>
 <p>次のようにすると少しマシになります。</p>
-<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df_wdi</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, group <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Removed 892 rows containing non-finite values</span></span>
 <span><span class="co">#&gt; (`stat_boxplot()`).</span></span></code></pre></div>
-<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-46-1.png" width="672"></div>
-<div id="box-plot" class="section level5" number="19.5.3.0.1">
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-50-1.png" width="672"></div>
+<div id="box-plot" class="section level5" number="19.5.4.0.1">
 <h5>
-<span class="header-section-number">19.5.3.0.1</span> Box Plot<a class="anchor" aria-label="anchor" href="#box-plot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19.5.4.0.1</span> Box Plot<a class="anchor" aria-label="anchor" href="#box-plot"><i class="fas fa-link"></i></a>
 </h5>
-<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df_wdi</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Removed 892 rows containing non-finite values</span></span>
 <span><span class="co">#&gt; (`stat_boxplot()`).</span></span></code></pre></div>
-<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-47-1.png" width="672"></div>
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-51-1.png" width="672"></div>
 <p>とはいえ、数が多すぎますね。色もつけてみましょう。塗りつぶしは、fill 枠の線に色をつけるのは、color ですから、ここでは、fill を使います。</p>
-<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_wdi_extra</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">income</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1960</span>, <span class="fl">1980</span>, <span class="fl">2000</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, fill <span class="op">=</span> <span class="va">income</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Removed 37 rows containing non-finite values</span></span>
 <span><span class="co">#&gt; (`stat_boxplot()`).</span></span></code></pre></div>
-<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-48-1.png" width="672"></div>
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-52-1.png" width="672"></div>
 <p>折線グラフの例としては次のようなものがあります。</p>
-<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op">&lt;-</span> <span class="va">df_wdi_extra</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span>  </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">region</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, median_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, max_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, min_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"keep"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Removed 243 rows containing missing values</span></span>
 <span><span class="co">#&gt; (`geom_line()`).</span></span></code></pre></div>
-<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-50-1.png" width="672"></div>
-<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-54-1.png" width="672"></div>
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">region</span>, linetype <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Removed 243 rows containing missing values</span></span>
 <span><span class="co">#&gt; (`geom_line()`).</span></span></code></pre></div>
-<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-51-1.png" width="672"></div>
-<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-55-1.png" width="672"></div>
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_lifeExp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">mean_lifeExp</span>, color <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">median_lifeExp</span>, linetype <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Removed 243 rows containing missing values (`geom_line()`).</span></span>
 <span><span class="co">#&gt; Removed 243 rows containing missing values (`geom_line()`).</span></span></code></pre></div>
-<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-52-1.png" width="672"></div>
+<div class="inline-figure"><img src="26-visualize_files/figure-html/unnamed-chunk-56-1.png" width="672"></div>
 </div>
 </div>
 </div>
@@ -659,7 +709,8 @@
 <a class="nav-link" href="#%E4%BE%8B%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6-ggplot2-ii"><span class="header-section-number">19.5</span> 例から学ぶ ggplot2, II</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#df_wdi-df_wdi_extra-1"><span class="header-section-number">19.5.1</span> df_wdi, df_wdi_extra</a></li>
 <li><a class="nav-link" href="#%E6%A3%92%E3%82%B0%E3%83%A9%E3%83%95bar-graph-and-column-graph"><span class="header-section-number">19.5.2</span> 棒グラフ（bar graph and column graph）</a></li>
-<li><a class="nav-link" href="#%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95line-graph"><span class="header-section-number">19.5.3</span> 折線グラフ（line graph）</a></li>
+<li><a class="nav-link" href="#%E5%82%99%E8%80%83-6"><span class="header-section-number">19.5.3</span> 備考</a></li>
+<li><a class="nav-link" href="#%E6%8A%98%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95line-graph"><span class="header-section-number">19.5.4</span> 折線グラフ（line graph）</a></li>
 </ul>
 </li>
 <li>
@@ -686,7 +737,7 @@
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-20.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -146,7 +146,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 ```r
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() + 
-  labs(title = "菖蒲の萼の長さと幅についての散布図", x = "萼の長さ", y = "萼の幅")
+  labs(title = "あやめの萼の長さと幅についての散布図", x = "萼の長さ", y = "萼の幅")
 ```
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-8-1.png" width="672" />
@@ -521,6 +521,7 @@ regions
 #> [7] "North America"
 ```
 
+
 ```r
 df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
   filter(country %in% regions) |>
@@ -538,6 +539,7 @@ df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-40-1.png" width="672" />
 
+
 ```r
 df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
   filter(country %in% regions) |>
@@ -546,6 +548,7 @@ df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-41-1.png" width="672" />
 
+
 ```r
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   group_by(region) |>
@@ -553,6 +556,66 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 ```
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+
+### 備考
+
+最後のグラフを例にとって、いくつかのコメントをしておきます。
+
+#### 概要
+
+地域のリストを regions に入れてありますから、2020 年のデータを取り出し、その中で、それぞれの国ごとのデータではなく、集計してあるもの（Aggregates）を選択してあります。そして、地域ごとのグループ化します。Y 軸に、地域名を取って、`geom_bar()` ですから、データがいくつあるかで棒グラフにしています。そのときに、`fill = income` としていますから、収入レベルごとに、色を変えて塗りつぶし（fill）て、描いています。color は、枠に色をつけ、fill は、塗りつぶしです。
+
+#### 縦か横か
+
+棒が横に伸びていますが、縦にすることも可能です。それには、`y = region` と書いてあるものを、`x = region` とすればできます。
+
+
+```r
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+
+#### 地域名
+
+なぜ、横にしたか、見当がついたかと思います。縦にすると、地域名が長くて重なってしまうのですね。もちろん、それを、改善する手がいくつかあります。1つ目は、地域名を縦にしたり、角度を付ける方法。`theme` を使い、中に角度を書きます。実は、それだけだと、ちょっと重なってしまうので、hjust の変数で調節しています。垂直方向の調節は、vjust です。数はいろいろと変更してみてください。
+
+
+```r
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar() + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+
+もう一つは折り返す方法です。こちらの法が、良いかもしれません。
+
+
+```r
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar() + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8))
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+
+もし、fill の方の凡例（legend）も短くしたければ、次のようにします。width のあとの数字は、適切な数を選んでください。
+
+
+```r
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar() + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-46-1.png" width="672" />
 
 ### **折線グラフ（line graph）**
 
@@ -571,7 +634,7 @@ df_wdi |> ggplot(aes(year, lifeExp)) + geom_line()
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-47-1.png" width="672" />
 
 何が起こっているかわかりますか。これは、鋸の刃グラフ（saw-tooth chart）と言われる標準的な失敗例です。
 
@@ -584,7 +647,7 @@ ggplot(df_wdi, aes(x = year, y = lifeExp)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-48-1.png" width="672" />
 
 これも期待した箱ひげ図にはなっていません。年は、カテゴリーではなく、数値データですね。
 
@@ -603,7 +666,7 @@ ggplot(df_wdi, aes(y = lifeExp, group = year)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-46-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-50-1.png" width="672" />
 
 ##### Box Plot
 
@@ -614,7 +677,7 @@ ggplot(df_wdi, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-47-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-51-1.png" width="672" />
 
 とはいえ、数が多すぎますね。色もつけてみましょう。塗りつぶしは、fill 枠の線に色をつけるのは、color ですから、ここでは、fill を使います。
 
@@ -628,7 +691,7 @@ df_wdi_extra |> filter(income != "Aggregates") |>
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-48-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 
 折線グラフの例としては次のようなものがあります。
 
@@ -647,7 +710,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region)) +
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-50-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-54-1.png" width="672" />
 
 
 ```r
@@ -657,7 +720,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region, linetype =
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-55-1.png" width="672" />
 
 
 ```r
@@ -668,7 +731,7 @@ df_lifeExp %>% ggplot() +
 #> Removed 243 rows containing missing values (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-52-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-56-1.png" width="672" />
 
 ## コメント
 

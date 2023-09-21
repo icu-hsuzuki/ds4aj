@@ -319,6 +319,10 @@ mpg-を使って
 例から学ぶ-ggplot2-ii
 df_wdi-df_wdi_extra-1
 棒グラフbar-graph-and-column-graph
+備考-6
+概要-9
+縦か横か
+地域名
 折線グラフline-graph
 box-plot
 コメント
@@ -541,7 +545,7 @@ base-r-でタイトルに日本語
 列名やデータに日本語
 kable-で表示
 ggplot-でグラフを作成
-備考-6
+備考-7
 参考日本語の表示について
 データファイルの読み込み
 図の中のテキスト
@@ -553,7 +557,7 @@ sysfonts-loading-fonts-into-r
 foods4all-examples-of-graphs
 tools
 git-と-github
-概要-9
+概要-10
 git
 git-hub
 rstudio-連携
