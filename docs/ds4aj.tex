@@ -150,7 +150,7 @@
 \title{データサイエンスをはじめましょう\\
 - Data Science for All -}
 \author{鈴木寛（Hiroshi Suzuki）}
-\date{2023-09-19}
+\date{2023-09-22}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -617,8 +617,8 @@ Youtube にたくさん、ビデオも出ていますが、二つだけリンク
 
 具体的なデータを利用して、データサインエスとは、どのようなものかをみていきながら、ここで学ぶことの概要を紹介します。オープン・パブリックデータとしては、世界銀行のデータを使います。さまざまなデータが公開され、簡単に取得できるようになっている現状も紹介します。コードの詳細には、こだわらず、データサイエンスの実際について、雰囲気を感じていただければと思います。
 
-\hypertarget{ux7b2cux4e00ux90e8-ux30d1ux30d6ux30eaux30c3ux30afux30c7ux30fcux30bf}{%
-\section{第一部　パブリックデータ}\label{ux7b2cux4e00ux90e8-ux30d1ux30d6ux30eaux30c3ux30afux30c7ux30fcux30bf}}
+\hypertarget{ux7b2cux4e00ux90e8-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}{%
+\section{第一部　オープンデータ}\label{ux7b2cux4e00ux90e8-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bf}}
 
 世界のさまざまな、パブリックデータの紹介をし、ダッシュボードと呼ばれる機能を活用して、データをみることをします。
 
@@ -628,8 +628,8 @@ Youtube にたくさん、ビデオも出ていますが、二つだけリンク
 
 これらの機関内の機能を、ホームページ閲覧ソフト（Google Chrome, Edge, Safari など）を使うだけで、かなりの情報が得られることを、経験していただければと思います。
 
-\hypertarget{ux7b2cux4e8cux90e8-ux57faux672c}{%
-\section{第二部　基本}\label{ux7b2cux4e8cux90e8-ux57faux672c}}
+\hypertarget{ux7b2cux4e8cux90e8-rux306eux57faux790e}{%
+\section{第二部　Rの基礎}\label{ux7b2cux4e8cux90e8-rux306eux57faux790e}}
 
 R の基本を学びます。R は、もともと、統計解析ソフトとして、開発されたもので、さまざまな分野の研究者によって利用され、また、それぞれの分野に必要な機能を、パッケージという形で開発して発展してきた言語です。非常に多くのひとたちが、開発に加わったために、痒いところに手が届く、多くの機能を、パッケージによって使うことができるようになりました。しかし、他方、統一性は十分ではなく、少し複雑な作業を実行するための、プログラミング言語としての機能も十分ではないという欠点も生じました。
 
@@ -649,8 +649,8 @@ R の基本を学びます。R は、もともと、統計解析ソフトとし�
 
 R Markdown の活用も、ともに学んでいきたいと思います。
 
-\hypertarget{ux7b2cux4e09ux90e8-ux56fdux969bux6a5fux95a2ux306aux3069ux306eux30c7ux30fcux30bfux306eux6d3bux7528}{%
-\section{第三部　国際機関などのデータの活用}\label{ux7b2cux4e09ux90e8-ux56fdux969bux6a5fux95a2ux306aux3069ux306eux30c7ux30fcux30bfux306eux6d3bux7528}}
+\hypertarget{ux7b2cux4e09ux90e8-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bfux306eux6d3bux7528}{%
+\section{第三部　オープンデータの活用}\label{ux7b2cux4e09ux90e8-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bfux306eux6d3bux7528}}
 
 R を使って、第一部で概観したデータを実際に分析する手法を学びます。
 
@@ -678,6 +678,60 @@ R を使って、第一部で概観したデータを実際に分析する手法
 技術的なコメントなど、幾つかのトピックについて書いていきます。
 
 だいたい、このような構成を考えています。
+
+\hypertarget{ux30d1ux30c3ux30b1ux30fcux30b8ux306bux3064ux3044ux3066}{%
+\section{パッケージについて}\label{ux30d1ux30c3ux30b1ux30fcux30b8ux306bux3064ux3044ux3066}}
+
+R を使い始めると、追加のパッケージを使う必要が生じます。本書では、特に、\texttt{tidyverse} パッケージ（群）を主として使いますが、他にも、世界銀行の、世界開発指標（WDI）を読み込むための、パッケージ \texttt{WDI} なども使います。ここには、本書で使う、パッケージのリストを上げておきます。パッケージはイントールし、さらに、使えるように読み込む必要がありますが、その情報も少し加えておきます。
+
+\hypertarget{ux4e3bux3068ux3057ux3066ux5229ux7528ux3059ux308bux30d1ux30c3ux30b1ux30fcux30b8}{%
+\subsection{主として利用するパッケージ}\label{ux4e3bux3068ux3057ux3066ux5229ux7528ux3059ux308bux30d1ux30c3ux30b1ux30fcux30b8}}
+
+\begin{itemize}
+\item
+  tidyverse
+
+  \begin{itemize}
+  \tightlist
+  \item
+    読み込み：tidyverse, readxl, stringr
+  \end{itemize}
+\item
+  WDI
+\end{itemize}
+
+\hypertarget{ux7279ux5b9aux306eux7ae0ux3067ux5229ux7528ux3059ux308bux30d1ux30c3ux30b1ux30fcux30b8}{%
+\subsection{特定の章で利用するパッケージ}\label{ux7279ux5b9aux306eux7ae0ux3067ux5229ux7528ux3059ux308bux30d1ux30c3ux30b1ux30fcux30b8}}
+
+\begin{itemize}
+\item
+  tidymodels
+\item
+  devtools
+
+  \begin{itemize}
+  \item
+    wid-r-tool: \texttt{devtools::install\_github("WIDworld/wid-r-tool")}
+  \item
+    owidR: \texttt{devtools::install\_github("piersyork/owidR")}
+  \end{itemize}
+\item
+  estatapi
+\item
+  OECD
+\item
+  eurostat
+\item
+  mapproj
+\item
+  geodata
+\item
+  rnaturalearth
+\item
+  rnaturalearthdata
+\item
+  showtext
+\end{itemize}
 
 \hypertarget{first-example}{%
 \chapter{はじめてのデータサイエンス}\label{first-example}}
@@ -745,7 +799,7 @@ R には、WDI のデータを取得する R のツール（パッケージ）\t
 \FunctionTok{Sys.setenv}\NormalTok{(}\AttributeTok{LANG =} \StringTok{"en"}\NormalTok{) }\CommentTok{\# 言語を英語に}
 \FunctionTok{library}\NormalTok{(tidyverse)      }\CommentTok{\# tidyverse パッケージを読み込みます}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -4927,7 +4981,7 @@ R は、さまざまな分野で、統計分析に利用されてきたことも
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -4942,6 +4996,17 @@ R は、さまざまな分野で、統計分析に利用されてきたことも
 \FunctionTok{showtext\_auto}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
+
+いろいろなメッセージが表示されました。簡単に説明しておきます。
+
+\begin{itemize}
+\item
+  Attaching core tidyverse packages：パッケージを読み込む、使えるようにするのが、library() という、命令ですが、ここでは、たくさんのパッケージが読み込まれたことが書かれています。Tidyverse パッケージ群の中の核となるパッケージです（core tidyverse packages）。実は、これ以外にも、Tidyverse パッケージ群は、パッケージを含んでいますが、それは、別に、読み込まないといけません。その都度説明します。
+\item
+  Conflicts：実は、違うパッケージの中に、同じ名前の関数（命令）が含まれている場合があります。その場合は、あとから読み込んだパッケージの命令が優先されます。いま、tidyverse を読み込んだので、その前に、読み込まれていたパッケージのいくつかの、関数が使えなくなりましたというメッセージです。
+\item
+  次に、showtext を読み込んでいます。そこでは、sysfonts と showtextdb も必要なので、読み込んだと書かれています。
+\end{itemize}
 
 以下では、R の起動時に読み込まれる、 \texttt{datasets} パッケージの中の、\texttt{iris} データを使います。以前には、同じパッケージに含まれる、\texttt{cars} を使いました。まず、このデータに、\texttt{ds\_iris} という名前をつけて使うことにします。これは、アサインと言い、\texttt{\textless{}-} を使います。半角で入力します。
 
@@ -5019,6 +5084,16 @@ R は、さまざまな分野で、統計分析に利用されてきたことも
 
 全体の構造（structure）の概略が表示されました。5つの変数、Sepal.Lengh（萼（がく）長）, Sepal.Width（萼幅）, Petal.Length（花弁長）, Petal.Width（花弁幅）, Species（種別） について、150 の データ（observations）が含まれており、Species は、三つの Factor になっているということがわかります。Factor については、後ほど学びますが、三つに分類されているという意味で、ここでは、あやめの種類、setosa, versicolor, virginica となっています。三つ目は見えていないかもしれません。
 
+次の、summary() を使うと、Species の三種類がなにかわかりますが、unique() という関数を使って、みてみましょう。df\_iris の Species に対応する列は、df\_iris\$Species で取り出せますので、次のようにします。Level と書いてあるのは、Factor という形式になっているので、その順序が書かれています。この場合は、アルファベットの順序になっています。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{unique}\NormalTok{(df\_iris}\SpecialCharTok{$}\NormalTok{Species)}
+\CommentTok{\#\textgreater{} [1] setosa     versicolor virginica }
+\CommentTok{\#\textgreater{} Levels: setosa versicolor virginica}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{summary-ux30c7ux30fcux30bfux306eux6982ux8981}{%
 \paragraph{\texorpdfstring{\texttt{summary}: データの概要}{summary: データの概要}}\label{summary-ux30c7ux30fcux30bfux306eux6982ux8981}}
 
@@ -5044,7 +5119,15 @@ R は、さまざまな分野で、統計分析に利用されてきたことも
 
 それぞれの最小値（Min. Minimum）、第一四分位（1st Qu. First Quartile 小さい方から、4分の1を切り捨てたときの最小の値）、中央値（Median）、平均（Mean）、第三四分位（3rd Qu. Third Quartile、大きい方から、4分の1を切り捨てたときの最大の値）最大値（Max. Maximum）が、書かれており、各種それぞれ50個のデータからなっていることがわかります。
 
-さらに、\texttt{plot}、\texttt{View}、\texttt{help} についても学びました。
+base R では、さらに、\texttt{plot}、\texttt{View}、\texttt{help} についても学びました。
+
+これは、あやめ（iris）の、長さや幅のデータでしたが、単位は何でしょうか。それも、help で調べることができます。Help の検索ボックスに、iris と入れてみてください。この場合は、Description（概要）に次のように書かれています。
+
+This famous (Fisher's or Anderson's) iris data set gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica.
+
+この有名な（フィッシャーまたはアンダーソンの）あやめのデータは、3種のあやめからそれぞれ50個の花について、萼片の長さと幅、花弁の長さと幅の変数をそれぞれセンチメートル単位で測定したものです。種は、Iris setosa, versicolor, virginica です。
+
+各、変数の説明が書かれている場合もありますので、Help は、かならず確認するようにしてください。
 
 \hypertarget{plot-ux6563ux5e03ux56f3}{%
 \paragraph{plot: 散布図}\label{plot-ux6563ux5e03ux56f3}}
@@ -5055,7 +5138,7 @@ R は、さまざまな分野で、統計分析に利用されてきたことも
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-7-1.pdf}
+\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-8-1.pdf}
 
 何を x 軸、何を y 軸 の値とするかを指定します。それは、df\_iris\$Sepal.Width で、df\_iris の、Sepal.Width の列、df\_iris\$Sepal.Length で、df\_iris の Sepal.Length の列の値を指定しています。
 
@@ -5291,7 +5374,7 @@ Sepal.Length の値を大きい方から順に並べて、最初の7つを選択
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-17-1.pdf}
+\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-18-1.pdf}
 
 さまざまな描画が可能ですが、一番、一般的な、散布図、\texttt{plot} に対応するものを書きました。\texttt{ggplot} の中の、\texttt{aes} （aesthetic）の部分に、x 軸、y 軸に対応する変数（列名）を書きます。種類（Species）ごとに色を変える場合には、\texttt{color\ =\ Species} とします。
 
@@ -5302,7 +5385,7 @@ Sepal.Length の値を大きい方から順に並べて、最初の7つを選択
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-18-1.pdf}
+\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-19-1.pdf}
 
 さらに、点の大きさを、Petal.Width によって変える場合には次のように、\texttt{size\ =\ Petal.Width} を加えます。
 
@@ -5315,7 +5398,7 @@ Sepal.Length の値を大きい方から順に並べて、最初の7つを選択
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-19-1.pdf}
+\includegraphics{24-tidyverse_files/figure-latex/unnamed-chunk-20-1.pdf}
 
 少しずつ学んでいきましょう。
 
@@ -5421,16 +5504,16 @@ WDI の使い方は、世界銀行の部分で紹介しますが、はじめて�
 \CommentTok{\#\textgreater{} \# A tibble: 16,758 x 15}
 \CommentTok{\#\textgreater{}    country     iso2c iso3c  year status lastupdated lifeExp}
 \CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}       \textless{}chr\textgreater{} \textless{}chr\textgreater{} \textless{}dbl\textgreater{} \textless{}lgl\textgreater{}  \textless{}date\textgreater{}        \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{}  1 Afghanistan AF    AFG    2014 NA     2023{-}07{-}25     62.5}
-\CommentTok{\#\textgreater{}  2 Afghanistan AF    AFG    2012 NA     2023{-}07{-}25     61.9}
-\CommentTok{\#\textgreater{}  3 Afghanistan AF    AFG    2009 NA     2023{-}07{-}25     60.4}
-\CommentTok{\#\textgreater{}  4 Afghanistan AF    AFG    2013 NA     2023{-}07{-}25     62.4}
-\CommentTok{\#\textgreater{}  5 Afghanistan AF    AFG    1971 NA     2023{-}07{-}25     37.9}
-\CommentTok{\#\textgreater{}  6 Afghanistan AF    AFG    2015 NA     2023{-}07{-}25     62.7}
-\CommentTok{\#\textgreater{}  7 Afghanistan AF    AFG    1969 NA     2023{-}07{-}25     36.9}
-\CommentTok{\#\textgreater{}  8 Afghanistan AF    AFG    2010 NA     2023{-}07{-}25     60.9}
-\CommentTok{\#\textgreater{}  9 Afghanistan AF    AFG    2011 NA     2023{-}07{-}25     61.4}
-\CommentTok{\#\textgreater{} 10 Afghanistan AF    AFG    2008 NA     2023{-}07{-}25     59.9}
+\CommentTok{\#\textgreater{}  1 Afghanistan AF    AFG    2014 NA     2023{-}09{-}19     62.5}
+\CommentTok{\#\textgreater{}  2 Afghanistan AF    AFG    2012 NA     2023{-}09{-}19     61.9}
+\CommentTok{\#\textgreater{}  3 Afghanistan AF    AFG    2009 NA     2023{-}09{-}19     60.4}
+\CommentTok{\#\textgreater{}  4 Afghanistan AF    AFG    2013 NA     2023{-}09{-}19     62.4}
+\CommentTok{\#\textgreater{}  5 Afghanistan AF    AFG    1971 NA     2023{-}09{-}19     37.9}
+\CommentTok{\#\textgreater{}  6 Afghanistan AF    AFG    2015 NA     2023{-}09{-}19     62.7}
+\CommentTok{\#\textgreater{}  7 Afghanistan AF    AFG    1969 NA     2023{-}09{-}19     36.9}
+\CommentTok{\#\textgreater{}  8 Afghanistan AF    AFG    2010 NA     2023{-}09{-}19     60.9}
+\CommentTok{\#\textgreater{}  9 Afghanistan AF    AFG    2011 NA     2023{-}09{-}19     61.4}
+\CommentTok{\#\textgreater{} 10 Afghanistan AF    AFG    2008 NA     2023{-}09{-}19     59.9}
 \CommentTok{\#\textgreater{} \# i 16,748 more rows}
 \CommentTok{\#\textgreater{} \# i 8 more variables: pop \textless{}dbl\textgreater{}, gdpPercap \textless{}dbl\textgreater{},}
 \CommentTok{\#\textgreater{} \#   region \textless{}chr\textgreater{}, capital \textless{}chr\textgreater{}, longitude \textless{}dbl\textgreater{},}
@@ -5467,7 +5550,7 @@ WDI の使い方は、世界銀行の部分で紹介しますが、はじめて�
 \CommentTok{\#\textgreater{} $ iso3c       \textless{}chr\textgreater{} "AFG", "AFG", "AFG", "AFG", "AFG", "AF\textasciitilde{}}
 \CommentTok{\#\textgreater{} $ year        \textless{}dbl\textgreater{} 2014, 2012, 2009, 2013, 1971, 2015, 19\textasciitilde{}}
 \CommentTok{\#\textgreater{} $ status      \textless{}lgl\textgreater{} NA, NA, NA, NA, NA, NA, NA, NA, NA, NA\textasciitilde{}}
-\CommentTok{\#\textgreater{} $ lastupdated \textless{}date\textgreater{} 2023{-}07{-}25, 2023{-}07{-}25, 2023{-}07{-}25, 2\textasciitilde{}}
+\CommentTok{\#\textgreater{} $ lastupdated \textless{}date\textgreater{} 2023{-}09{-}19, 2023{-}09{-}19, 2023{-}09{-}19, 2\textasciitilde{}}
 \CommentTok{\#\textgreater{} $ lifeExp     \textless{}dbl\textgreater{} 62.545, 61.923, 60.364, 62.417, 37.923\textasciitilde{}}
 \CommentTok{\#\textgreater{} $ pop         \textless{}dbl\textgreater{} 32716210, 30466479, 27385307, 31541209\textasciitilde{}}
 \CommentTok{\#\textgreater{} $ gdpPercap   \textless{}dbl\textgreater{} 602.5166, 596.4424, 512.4090, 608.3863\textasciitilde{}}
@@ -5482,7 +5565,134 @@ WDI の使い方は、世界銀行の部分で紹介しますが、はじめて�
 
 列の数が違いますね。どちらも行は、16,758行です。こんなに多いものは、表で見ていても、よくわかりません。これらを扱う方法を少しずつ学んでいきます。
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+RStudio の右上の窓の Environment から、df\_wdi や、df\_wdi\_extra を選択して、データを表示してみてください。それぞれの列（変数）の右の二つの三角を押すと、昇順（小さい順）、降順（大きい順）に並び替えることもできますし、Filter を使うと、検索も可能です。たとえば、Japan や、JP や、JPN などと検索窓に入れて、日本のデータを表示させてみてください。h表示させてから、Year 列の右の二つの三角を押して、順序をかえてみてください。それぞれの変数何年からのデータがありますか。
+
+\begin{itemize}
+\item
+  \leavevmode\vadjust pre{\hypertarget{auguments}{}}%
+  \textbf{引数（augument）について}
+
+  関数の中に指定するものを引数と言います。たとえば、\texttt{head(df\_iris)} の \texttt{df\_iris} 、
+
+  WDI() の () の中の、country や、indicator、ggplot() の () の中の、aes や、color や size などです。Help を一つ一つ見てみるのが良いのですが、引数に名前がついている場合と、ついていない場合があります。三通りがあります。
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item
+    引数の要・不要
+  \item
+    引数の名前がある場合の名前の省略
+  \item
+    引数の順序
+  \end{enumerate}
+
+  すべて　Help を見ないとわかりませんが、原則は、以下のとおりです。
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item
+    引数が必要であっても、その初期値（default value）が決まっていて、変更の必要がなければ、引数を指定する必要なし。
+  \item
+    引数の名前がある場合であっても、引数の順序どおりであれば、名前は省略可能。
+  \item
+    引数には順序があるが、名前のついている引数は、名前をつければ、順序を変更しても構わない。
+  \end{enumerate}
+
+  例で見ていきましょう。
+
+  \begin{itemize}
+  \item
+    head(df\_iris) は、Help には、head(x, \ldots) と書いてあり、x は object と書いてありますから、この場合は、df\_iris が x に対応します。\ldots{} は、任意で、詳細は Help の下の方に書いてあります。さらに見ると、ftable（表 S3: flat contingency table）の場合には、head(x, n = 6L, \ldots) とあります。最初の6行を取り出すという意味です。\texttt{n=6L} （6L は整数値で 6 の意味）は、6L が初期値ですから、書く必要はありませんが、もし、6を他の数字、たとえば 10 に変えれば、10行ということになります。L の部分は、なくても自然数（1,2, 3, \ldots）なら普通に理解してくれます。\texttt{head(df\_iris,\ n=-145)} とすると何が表示されるでしょうか。
+  \item
+    WDI(country = ``all'', indicator = c(lifeExp = ``SP.DYN.LE00.IN'', pop = ``SP.POP.TOTL'', gdpPercap = ``NY.GDP.PCAP.KD'') はどうでしょうか。Help を見てみると、次のようにあります。
+
+\begin{verbatim}
+WDI(
+  country = "all",
+  indicator = "NY.GDP.PCAP.KD",
+  start = 1960,
+  end = NULL,
+  extra = FALSE,
+  cache = NULL,
+  latest = NULL,
+  language = "en"
+)
+\end{verbatim}
+
+    \begin{itemize}
+    \item
+      最初の引数は、country で初期値は ``all''、indicator は、初期値は ``NY.GDP.PCAP.KD'' ですが、それを、\texttt{c()} を使ったベクトル表示で与えています。
+    \item
+      country = ``all'' は初期値と同じですから、省略可能です。二番目の引数は、indicator ですから、country = ``all'' を書いてあれば、``indicator ='' の部分は省略可能です。
+    \item
+      \texttt{extra\ =\ FALSE} とありますから、この場合は、何も指定しませんでしたが、df\_wdi\_extra の場合には、extra = TRUE としました。
+    \end{itemize}
+  \item
+    df\_iris \textbar\textgreater{} ggplot(aes(Sepal.Width, Sepal.Length, color = Species, size = Petal.Width)) はどうでしょうか。Help を見ると下のようにありますが、Details の部分も書いておきます。これは、他のパターンもあります。
+
+\begin{verbatim}
+ggplot(data = NULL, mapping = aes(), ..., environment = parent.frame())
+ggplot(data = df, mapping = aes(x, y, other aesthetics))⁠
+\end{verbatim}
+
+    \begin{itemize}
+    \item
+      data の部分は、pipe （\textbar\textgreater）で、最初に引数に \texttt{data\ =\ \ df\_iris} とあるのと同じです。
+    \item
+      二番目の引数が、aes の部分ですから、\texttt{mapping\ =} は省略しても問題ありません。
+    \item
+      aes() の中身は、最初が、x、次が y となっていますから、変数の順番があっていれば、x = Sepal.Width, y = Sepal.Length と書いても、書かなくても同じです。
+    \item
+      color = Species, size = Petal.Width の部分は、引数名が書かれているので、順番は、関係ありません。
+    \end{itemize}
+  \end{itemize}
+
+  慣れが必要ですから、原則を確認して、あとは、出てきたときに、一つ一つ確認してください。
+\end{itemize}
+
+\hypertarget{ux307eux3068ux3081-3}{%
+\section{まとめ}\label{ux307eux3068ux3081-3}}
+
+あやめ（iris）のデータを、\texttt{df\_iris} として、読み込み、WDI パッケージを用いて、WDI のデータを df\_wdi および df\_wdi\_extra として読み込み、それをみてみました。
+
+また、あやめのデータについては、散布図も描いて、それからわかることも少し考えてみました。
+
+WDI データはかなりの大きさですから、表を眺めていただけでは、わかることは限られていますが、それでも、まずは、表がどのようなものかを確認することは、大切です。
+
+\hypertarget{ux95a2ux6570ux304aux3088ux3073ux547dux4ee4}{%
+\subsection{関数および命令}\label{ux95a2ux6570ux304aux3088ux3073ux547dux4ee4}}
+
+この章で新たに使った関数をリストしておきます。
+
+\hypertarget{base-r}{%
+\subsubsection{base R}\label{base-r}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{unique()}
+\end{itemize}
+
+\hypertarget{tidyverse-1}{%
+\subsubsection{tidyverse}\label{tidyverse-1}}
+
+\begin{itemize}
+\item
+  \texttt{slice()}, \texttt{slice\_head()} , \texttt{slice\_max()}
+\item
+  \texttt{glimpse()}
+\item
+  \texttt{ggplot()} , \texttt{geom\_point()}
+\end{itemize}
+
+\hypertarget{wdi-1}{%
+\subsubsection{WDI}\label{wdi-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{WDI}
+\end{itemize}
 
 \hypertarget{transform}{%
 \chapter{変形（Transform）}\label{transform}}
@@ -5499,7 +5709,7 @@ WDI の使い方は、世界銀行の部分で紹介しますが、はじめて�
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -6102,16 +6312,16 @@ WDI の使い方は、世界銀行の部分で紹介しますが、はじめて�
 \CommentTok{\#\textgreater{} \# A tibble: 16,758 x 15}
 \CommentTok{\#\textgreater{}    country     iso2c iso3c  year status lastupdated lifeExp}
 \CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}       \textless{}chr\textgreater{} \textless{}chr\textgreater{} \textless{}dbl\textgreater{} \textless{}lgl\textgreater{}  \textless{}date\textgreater{}        \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{}  1 Afghanistan AF    AFG    2014 NA     2023{-}07{-}25     62.5}
-\CommentTok{\#\textgreater{}  2 Afghanistan AF    AFG    2012 NA     2023{-}07{-}25     61.9}
-\CommentTok{\#\textgreater{}  3 Afghanistan AF    AFG    2009 NA     2023{-}07{-}25     60.4}
-\CommentTok{\#\textgreater{}  4 Afghanistan AF    AFG    2013 NA     2023{-}07{-}25     62.4}
-\CommentTok{\#\textgreater{}  5 Afghanistan AF    AFG    1971 NA     2023{-}07{-}25     37.9}
-\CommentTok{\#\textgreater{}  6 Afghanistan AF    AFG    2015 NA     2023{-}07{-}25     62.7}
-\CommentTok{\#\textgreater{}  7 Afghanistan AF    AFG    1969 NA     2023{-}07{-}25     36.9}
-\CommentTok{\#\textgreater{}  8 Afghanistan AF    AFG    2010 NA     2023{-}07{-}25     60.9}
-\CommentTok{\#\textgreater{}  9 Afghanistan AF    AFG    2011 NA     2023{-}07{-}25     61.4}
-\CommentTok{\#\textgreater{} 10 Afghanistan AF    AFG    2008 NA     2023{-}07{-}25     59.9}
+\CommentTok{\#\textgreater{}  1 Afghanistan AF    AFG    2014 NA     2023{-}09{-}19     62.5}
+\CommentTok{\#\textgreater{}  2 Afghanistan AF    AFG    2012 NA     2023{-}09{-}19     61.9}
+\CommentTok{\#\textgreater{}  3 Afghanistan AF    AFG    2009 NA     2023{-}09{-}19     60.4}
+\CommentTok{\#\textgreater{}  4 Afghanistan AF    AFG    2013 NA     2023{-}09{-}19     62.4}
+\CommentTok{\#\textgreater{}  5 Afghanistan AF    AFG    1971 NA     2023{-}09{-}19     37.9}
+\CommentTok{\#\textgreater{}  6 Afghanistan AF    AFG    2015 NA     2023{-}09{-}19     62.7}
+\CommentTok{\#\textgreater{}  7 Afghanistan AF    AFG    1969 NA     2023{-}09{-}19     36.9}
+\CommentTok{\#\textgreater{}  8 Afghanistan AF    AFG    2010 NA     2023{-}09{-}19     60.9}
+\CommentTok{\#\textgreater{}  9 Afghanistan AF    AFG    2011 NA     2023{-}09{-}19     61.4}
+\CommentTok{\#\textgreater{} 10 Afghanistan AF    AFG    2008 NA     2023{-}09{-}19     59.9}
 \CommentTok{\#\textgreater{} \# i 16,748 more rows}
 \CommentTok{\#\textgreater{} \# i 8 more variables: pop \textless{}dbl\textgreater{}, gdpPercap \textless{}dbl\textgreater{},}
 \CommentTok{\#\textgreater{} \#   region \textless{}chr\textgreater{}, capital \textless{}chr\textgreater{}, longitude \textless{}dbl\textgreater{},}
@@ -6462,7 +6672,7 @@ NA もなくなりましたから、あとは、Not classified ですね。
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{df\_wdi3c }\SpecialCharTok{|\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(gdpPercap, lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
-\CommentTok{\#\textgreater{} Warning: Removed 3998 rows containing missing values}
+\CommentTok{\#\textgreater{} Warning: Removed 3981 rows containing missing values}
 \CommentTok{\#\textgreater{} (\textasciigrave{}geom\_point()\textasciigrave{}).}
 \end{Highlighting}
 \end{Shaded}
@@ -6490,7 +6700,7 @@ NA もなくなりましたから、あとは、Not classified ですね。
 \begin{Highlighting}[]
 \NormalTok{df\_wdi3c }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(year }\SpecialCharTok{==} \DecValTok{2021}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
   \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(gdpPercap, lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
-\CommentTok{\#\textgreater{} Warning: Removed 22 rows containing missing values}
+\CommentTok{\#\textgreater{} Warning: Removed 23 rows containing missing values}
 \CommentTok{\#\textgreater{} (\textasciigrave{}geom\_point()\textasciigrave{}).}
 \end{Highlighting}
 \end{Shaded}
@@ -6630,10 +6840,10 @@ income でも計算してみましょう。
 \CommentTok{\#\textgreater{} \# A tibble: 63 x 5}
 \CommentTok{\#\textgreater{}     year gdp\_n lifeExp\_n pop\_n gdpPercap\_n}
 \CommentTok{\#\textgreater{}    \textless{}dbl\textgreater{} \textless{}int\textgreater{}     \textless{}int\textgreater{} \textless{}int\textgreater{}       \textless{}int\textgreater{}}
-\CommentTok{\#\textgreater{}  1  2022   185         0   216         185}
-\CommentTok{\#\textgreater{}  2  2021   201       208   216         201}
-\CommentTok{\#\textgreater{}  3  2020   206       208   216         206}
-\CommentTok{\#\textgreater{}  4  2019   206       208   216         206}
+\CommentTok{\#\textgreater{}  1  2022   184         0   216         184}
+\CommentTok{\#\textgreater{}  2  2021   200       208   216         200}
+\CommentTok{\#\textgreater{}  3  2020   205       208   216         205}
+\CommentTok{\#\textgreater{}  4  2019   205       208   216         205}
 \CommentTok{\#\textgreater{}  5  2018   206       208   216         206}
 \CommentTok{\#\textgreater{}  6  2017   206       209   216         206}
 \CommentTok{\#\textgreater{}  7  2016   206       209   216         206}
@@ -7207,8 +7417,45 @@ Gapminder は オラ ロスリング（Ola Rosling） と アンナ ロスリン
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section}{%
-\subsubsection{}\label{section}}
+\hypertarget{ux307eux3068ux3081-4}{%
+\section{まとめ}\label{ux307eux3068ux3081-4}}
+
+\hypertarget{ux95a2ux6570}{%
+\subsection{関数}\label{ux95a2ux6570}}
+
+\hypertarget{base}{%
+\subsubsection{base}\label{base}}
+
+\begin{itemize}
+\item
+  \texttt{colnames()}
+\item
+  \texttt{range()}
+\end{itemize}
+
+\hypertarget{tidyverse-2}{%
+\subsubsection{tidyverse}\label{tidyverse-2}}
+
+\begin{itemize}
+\item
+  \texttt{select()}
+\item
+  \texttt{filter()}
+\item
+  \texttt{mutate()}
+\item
+  \texttt{summarize()} (\texttt{summarise()})
+\item
+  \texttt{arrange()}
+\item
+  \texttt{distinct()}
+\item
+  \texttt{pull()}
+\item
+  \texttt{scale\_x\_log10()}
+\item
+  group\_by()
+\end{itemize}
 
 \hypertarget{visualize}{%
 \chapter{視覚化（Visualize）}\label{visualize}}
@@ -7241,7 +7488,7 @@ ggplot2は、グラフィックスの生成に関する「Grammar of Graphics（
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -7375,7 +7622,7 @@ ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"菖蒲の萼の長さと幅についての散布図"}\NormalTok{, }\AttributeTok{x =} \StringTok{"萼の長さ"}\NormalTok{, }\AttributeTok{y =} \StringTok{"萼の幅"}\NormalTok{)}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"あやめの萼の長さと幅についての散布図"}\NormalTok{, }\AttributeTok{x =} \StringTok{"萼の長さ"}\NormalTok{, }\AttributeTok{y =} \StringTok{"萼の幅"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7430,6 +7677,10 @@ The boxplot compactly displays the distribution of a continuous variable.
 箱ひげ図は、連続な値をとる変数の分布を簡潔な表示でみることができるグラフです。箱や、線の長さ、外れ値の表示なども、正確に決まっていますので、次のビデオをみてください。英語ですが、わかりやすく、まとまっていると思います。
 
 \url{https://vimeo.com/222358034}
+
+日本語では、下のサイトの箱ひげ図の項目を見ていただければと思います。外れ値についての説明もあります。
+
+箱ひげ図と幹葉表示：\url{https://bellcurve.jp/statistics/course/5219.html}
 
 Transcript ボタンから、スクリプトを表示することもできます。
 
@@ -7698,7 +7949,8 @@ WDI の使い方は、世界銀行の部分で紹介しますが、はじめて�
 \begin{Highlighting}[]
 \NormalTok{df\_wdi }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}
   \AttributeTok{country =} \StringTok{"all"}\NormalTok{, }
-  \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{lifeExp =} \StringTok{"SP.DYN.LE00.IN"}\NormalTok{, }\AttributeTok{pop =} \StringTok{"SP.POP.TOTL"}\NormalTok{, }\AttributeTok{gdpPercap =} \StringTok{"NY.GDP.PCAP.KD"}\NormalTok{)}
+  \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{lifeExp =} \StringTok{"SP.DYN.LE00.IN"}\NormalTok{, }\AttributeTok{pop =} \StringTok{"SP.POP.TOTL"}\NormalTok{, }
+                \AttributeTok{gdpPercap =} \StringTok{"NY.GDP.PCAP.KD"}\NormalTok{)}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -7718,7 +7970,8 @@ WDI の使い方は、世界銀行の部分で紹介しますが、はじめて�
 \begin{Highlighting}[]
 \NormalTok{df\_wdi\_extra }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}
   \AttributeTok{country =} \StringTok{"all"}\NormalTok{, }
-  \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{lifeExp =} \StringTok{"SP.DYN.LE00.IN"}\NormalTok{, }\AttributeTok{pop =} \StringTok{"SP.POP.TOTL"}\NormalTok{, }\AttributeTok{gdpPercap =} \StringTok{"NY.GDP.PCAP.KD"}\NormalTok{), }
+  \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{lifeExp =} \StringTok{"SP.DYN.LE00.IN"}\NormalTok{, }\AttributeTok{pop =} \StringTok{"SP.POP.TOTL"}\NormalTok{, }
+                \AttributeTok{gdpPercap =} \StringTok{"NY.GDP.PCAP.KD"}\NormalTok{), }
   \AttributeTok{extra =} \ConstantTok{TRUE}
 \NormalTok{)}
 \end{Highlighting}
@@ -7759,8 +8012,255 @@ WDI の使い方は、世界銀行の部分で紹介しますが、はじめて�
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{section-1}{%
-\subsection{}\label{section-1}}
+\hypertarget{ux68d2ux30b0ux30e9ux30d5bar-graph-and-column-graph}{%
+\subsection{棒グラフ（bar graph and column graph）}\label{ux68d2ux30b0ux30e9ux30d5bar-graph-and-column-graph}}
+
+まずは、年ごと、指標（indicator）ごとに、どの程度データがあるか見てみましょう。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi }\SpecialCharTok{|\textgreater{}} \FunctionTok{drop\_na}\NormalTok{(lifeExp, pop, gdpPercap) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(year))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-36-1.pdf}
+
+最初に、三つの indicator が どれもが、NA でない行だけを選択していますから、三つの指標がすべて値がある、データを年ごとに数えてグラフにしたものが、上のものになっています。表にすると次のようになっています。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi }\SpecialCharTok{|\textgreater{}} \FunctionTok{drop\_na}\NormalTok{(lifeExp, pop, gdpPercap) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(year) }\SpecialCharTok{|\textgreater{}} \FunctionTok{summarize}\NormalTok{(}\AttributeTok{n =} \FunctionTok{n}\NormalTok{())}
+\CommentTok{\#\textgreater{} \# A tibble: 62 x 2}
+\CommentTok{\#\textgreater{}     year     n}
+\CommentTok{\#\textgreater{}    \textless{}dbl\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\textgreater{}  1  1960   117}
+\CommentTok{\#\textgreater{}  2  1961   122}
+\CommentTok{\#\textgreater{}  3  1962   122}
+\CommentTok{\#\textgreater{}  4  1963   122}
+\CommentTok{\#\textgreater{}  5  1964   122}
+\CommentTok{\#\textgreater{}  6  1965   129}
+\CommentTok{\#\textgreater{}  7  1966   132}
+\CommentTok{\#\textgreater{}  8  1967   133}
+\CommentTok{\#\textgreater{}  9  1968   136}
+\CommentTok{\#\textgreater{} 10  1969   136}
+\CommentTok{\#\textgreater{} \# i 52 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+同じような棒グラフですが、それぞれの値をグラフにする場合には、\texttt{geom\_col()} を使います。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{regions }\OtherTok{\textless{}{-}}\NormalTok{ df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{drop\_na}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{filter}\NormalTok{(region }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{distinct}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}} \FunctionTok{pull}\NormalTok{()}
+\NormalTok{regions}
+\CommentTok{\#\textgreater{} [1] "South Asia"                }
+\CommentTok{\#\textgreater{} [2] "Europe \& Central Asia"     }
+\CommentTok{\#\textgreater{} [3] "Middle East \& North Africa"}
+\CommentTok{\#\textgreater{} [4] "East Asia \& Pacific"       }
+\CommentTok{\#\textgreater{} [5] "Sub{-}Saharan Africa"        }
+\CommentTok{\#\textgreater{} [6] "Latin America \& Caribbean" }
+\CommentTok{\#\textgreater{} [7] "North America"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{==} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%}\NormalTok{ regions) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ country, }\AttributeTok{x =}\NormalTok{ lifeExp)) }\SpecialCharTok{+} \FunctionTok{geom\_col}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-39-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{==} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%}\NormalTok{ regions) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ country, }\AttributeTok{x =}\NormalTok{ pop)) }\SpecialCharTok{+} \FunctionTok{geom\_col}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-40-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{==} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%}\NormalTok{ regions) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ country, }\AttributeTok{x =}\NormalTok{ gdpPercap)) }\SpecialCharTok{+} \FunctionTok{geom\_col}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-41-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-42-1.pdf}
+
+\hypertarget{ux5099ux8003-6}{%
+\subsection{備考}\label{ux5099ux8003-6}}
+
+最後のグラフを例にとって、いくつかのコメントをしておきます。
+
+\hypertarget{ux6982ux8981-9}{%
+\subsubsection{概要}\label{ux6982ux8981-9}}
+
+地域のリストを regions に入れてありますから、2020 年のデータを取り出し、その中で、それぞれの国ごとのデータではなく、集計してあるもの（Aggregates）を選択してあります。そして、地域ごとのグループ化します。Y 軸に、地域名を取って、\texttt{geom\_bar()} ですから、データがいくつあるかで棒グラフにしています。そのときに、\texttt{fill\ =\ income} としていますから、収入レベルごとに、色を変えて塗りつぶし（fill）て、描いています。color は、枠に色をつけ、fill は、塗りつぶしです。
+
+\hypertarget{ux7e26ux304bux6a2aux304b}{%
+\subsubsection{縦か横か}\label{ux7e26ux304bux6a2aux304b}}
+
+棒が横に伸びていますが、縦にすることも可能です。それには、\texttt{y\ =\ region} と書いてあるものを、\texttt{x\ =\ region} とすればできます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-43-1.pdf}
+
+\hypertarget{ux5730ux57dfux540d}{%
+\subsubsection{地域名}\label{ux5730ux57dfux540d}}
+
+なぜ、横にしたか、見当がついたかと思います。縦にすると、地域名が長くて重なってしまうのですね。もちろん、それを、改善する手がいくつかあります。1つ目は、地域名を縦にしたり、角度を付ける方法。\texttt{theme} を使い、中に角度を書きます。実は、それだけだと、ちょっと重なってしまうので、hjust の変数で調節しています。垂直方向の調節は、vjust です。数はいろいろと変更してみてください。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust=}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-44-1.pdf}
+
+もう一つは折り返す方法です。こちらの方が、良いかもしれません。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-45-1.pdf}
+
+もし、fill の方の凡例（legend）も短くしたければ、次のようにします。width のあとの数字は、適切な数を選んでください。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-46-1.pdf}
+
+\hypertarget{ux68d2ux30b0ux30e9ux30d5ux306bux9ed2ux67a0}{%
+\subsubsection{棒グラフに黒枠}\label{ux68d2ux30b0ux30e9ux30d5ux306bux9ed2ux67a0}}
+
+変わり目が見にくければ、黒線で囲むことも可能です。どこに、color = ``black'' を入れるか、注意が必要です。少しその線を細目に するために、\texttt{linewidth\ =\ 0.2} を加えました。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-47-1.pdf}
+
+\hypertarget{ux5927ux304dux3044ux9806}{%
+\subsubsection{大きい順}\label{ux5927ux304dux3044ux9806}}
+
+順序は、地域のアルファベット順ですから、上のグラフで問題ありませんが、もし、大きい順、すなわち、国の数が大きい順にするとするとどうしたら良いでしょうか。少しだけ、すでに出てきた、Factor をいうものを使います。\texttt{fct\_infreq(region)} この場合は、度数順に並べてグラフにします。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{fct\_infreq}\NormalTok{(region), }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-48-1.pdf}
+
+\hypertarget{ux5272ux5408ux306eux8868ux793a}{%
+\subsubsection{割合の表示}\label{ux5272ux5408ux306eux8868ux793a}}
+
+積み上げ型になっています。これを、割合で表示するには \texttt{position\ =\ "fill"} を加えます。すると、各地域ごとの、income level（収入の多寡）による国の数の割合がわかります。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.2}\NormalTok{, }\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-49-1.pdf}
+
+\hypertarget{ux7e26ux8ef8ux3092ux767eux5206ux7387ux306b}{%
+\subsubsection{縦軸を百分率に}\label{ux7e26ux8ef8ux3092ux767eux5206ux7387ux306b}}
+
+今度は、それを、百分率（percent）表示にしてみましょう。
+
+\texttt{labels\ =\ scales::percent\_format(accuracy\ =\ 1)}
+
+まず、scales は、Tidyverse パッケージの一部ですが、読み込まれてはいないので、加えてあります。\texttt{library(scales)} としてあれば、省略可能です。\texttt{accuracy\ =\ 1} は小数点以下を省略するもので、小数点以下一位までであれば、\texttt{accuracy\ =\ 0.1} とします。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.2}\NormalTok{, }\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_percent}\NormalTok{(}\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_fill\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-50-1.pdf}
+
+積み上げてありますが、並べることも可能です。ちょっと数が多いのでみにくいですが。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_wdi\_extra }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(income }\SpecialCharTok{!=} \StringTok{"Aggregates"}\NormalTok{, year }\SpecialCharTok{==} \DecValTok{2020}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(region) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ income)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.2}\NormalTok{, }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_discrete}\NormalTok{(}\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{str\_wrap}\NormalTok{(x, }\AttributeTok{width =} \DecValTok{8}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-51-1.pdf}
 
 \hypertarget{ux6298ux7ddaux30b0ux30e9ux30d5line-graph}{%
 \subsection{\texorpdfstring{\textbf{折線グラフ（line graph）}}{折線グラフ（line graph）}}\label{ux6298ux7ddaux30b0ux30e9ux30d5line-graph}}
@@ -7781,7 +8281,7 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-36-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-52-1.pdf}
 
 何が起こっているかわかりますか。これは、鋸の刃グラフ（saw-tooth chart）と言われる標準的な失敗例です。
 
@@ -7795,7 +8295,7 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-37-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-53-1.pdf}
 
 これも期待した箱ひげ図にはなっていません。年は、カテゴリーではなく、数値データですね。
 
@@ -7816,7 +8316,7 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-39-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-55-1.pdf}
 
 \hypertarget{box-plot}{%
 \paragraph{Box Plot}\label{box-plot}}
@@ -7829,7 +8329,7 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-40-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-56-1.pdf}
 
 とはいえ、数が多すぎますね。色もつけてみましょう。塗りつぶしは、fill 枠の線に色をつけるのは、color ですから、ここでは、fill を使います。
 
@@ -7844,7 +8344,7 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-41-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-57-1.pdf}
 
 折線グラフの例としては次のようなものがあります。
 
@@ -7865,7 +8365,7 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-43-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-59-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7876,7 +8376,7 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-44-1.pdf}
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-60-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7888,107 +8388,7 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-45-1.pdf}
-
-\hypertarget{wdi-1}{%
-\subsubsection{WDI}\label{wdi-1}}
-
-\begin{itemize}
-\tightlist
-\item
-  SP.DYN.LE00.IN: Life expectancy at birth, total (years)
-\item
-  NY.GDP.PCAP.KD: GDP per capita (constant 2015 US\$)
-\item
-  SP.POP.TOTL: Population, total
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df\_wdi }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}
-  \AttributeTok{country =} \StringTok{"all"}\NormalTok{, }
-  \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{lifeExp =} \StringTok{"SP.DYN.LE00.IN"}\NormalTok{, }\AttributeTok{pop =} \StringTok{"SP.POP.TOTL"}\NormalTok{, }\AttributeTok{gdpPercap =} \StringTok{"NY.GDP.PCAP.KD"}\NormalTok{)}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-#> Rows: 16758 Columns: 7
-#> -- Column specification ------------------------------------
-#> Delimiter: ","
-#> chr (3): country, iso2c, iso3c
-#> dbl (4): year, lifeExp, pop, gdpPercap
-#> 
-#> i Use `spec()` to retrieve the full column specification for this data.
-#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df\_wdi }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{slice}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
-\CommentTok{\#\textgreater{} \# A tibble: 10 x 7}
-\CommentTok{\#\textgreater{}    country     iso2c iso3c  year lifeExp      pop gdpPercap}
-\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}       \textless{}chr\textgreater{} \textless{}chr\textgreater{} \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}     \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{}  1 Afghanistan AF    AFG    1960    32.5  8622466        NA}
-\CommentTok{\#\textgreater{}  2 Afghanistan AF    AFG    1961    33.1  8790140        NA}
-\CommentTok{\#\textgreater{}  3 Afghanistan AF    AFG    1962    33.5  8969047        NA}
-\CommentTok{\#\textgreater{}  4 Afghanistan AF    AFG    1963    34.0  9157465        NA}
-\CommentTok{\#\textgreater{}  5 Afghanistan AF    AFG    1964    34.5  9355514        NA}
-\CommentTok{\#\textgreater{}  6 Afghanistan AF    AFG    1965    35.0  9565147        NA}
-\CommentTok{\#\textgreater{}  7 Afghanistan AF    AFG    1966    35.5  9783147        NA}
-\CommentTok{\#\textgreater{}  8 Afghanistan AF    AFG    1967    35.9 10010030        NA}
-\CommentTok{\#\textgreater{}  9 Afghanistan AF    AFG    1968    36.4 10247780        NA}
-\CommentTok{\#\textgreater{} 10 Afghanistan AF    AFG    1969    36.9 10494489        NA}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df\_wdi\_extra }\OtherTok{\textless{}{-}} \FunctionTok{WDI}\NormalTok{(}
-  \AttributeTok{country =} \StringTok{"all"}\NormalTok{, }
-  \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\AttributeTok{lifeExp =} \StringTok{"SP.DYN.LE00.IN"}\NormalTok{, }\AttributeTok{pop =} \StringTok{"SP.POP.TOTL"}\NormalTok{, }\AttributeTok{gdpPercap =} \StringTok{"NY.GDP.PCAP.KD"}\NormalTok{), }
-  \AttributeTok{extra =} \ConstantTok{TRUE}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-#> Rows: 16758 Columns: 15
-#> -- Column specification ------------------------------------
-#> Delimiter: ","
-#> chr  (7): country, iso2c, iso3c, region, capital, income...
-#> dbl  (6): year, lifeExp, pop, gdpPercap, longitude, lati...
-#> lgl  (1): status
-#> date (1): lastupdated
-#> 
-#> i Use `spec()` to retrieve the full column specification for this data.
-#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df\_wdi\_extra}
-\CommentTok{\#\textgreater{} \# A tibble: 16,758 x 15}
-\CommentTok{\#\textgreater{}    country     iso2c iso3c  year status lastupdated lifeExp}
-\CommentTok{\#\textgreater{}    \textless{}chr\textgreater{}       \textless{}chr\textgreater{} \textless{}chr\textgreater{} \textless{}dbl\textgreater{} \textless{}lgl\textgreater{}  \textless{}date\textgreater{}        \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{}  1 Afghanistan AF    AFG    2014 NA     2023{-}07{-}25     62.5}
-\CommentTok{\#\textgreater{}  2 Afghanistan AF    AFG    2012 NA     2023{-}07{-}25     61.9}
-\CommentTok{\#\textgreater{}  3 Afghanistan AF    AFG    2009 NA     2023{-}07{-}25     60.4}
-\CommentTok{\#\textgreater{}  4 Afghanistan AF    AFG    2013 NA     2023{-}07{-}25     62.4}
-\CommentTok{\#\textgreater{}  5 Afghanistan AF    AFG    1971 NA     2023{-}07{-}25     37.9}
-\CommentTok{\#\textgreater{}  6 Afghanistan AF    AFG    2015 NA     2023{-}07{-}25     62.7}
-\CommentTok{\#\textgreater{}  7 Afghanistan AF    AFG    1969 NA     2023{-}07{-}25     36.9}
-\CommentTok{\#\textgreater{}  8 Afghanistan AF    AFG    2010 NA     2023{-}07{-}25     60.9}
-\CommentTok{\#\textgreater{}  9 Afghanistan AF    AFG    2011 NA     2023{-}07{-}25     61.4}
-\CommentTok{\#\textgreater{} 10 Afghanistan AF    AFG    2008 NA     2023{-}07{-}25     59.9}
-\CommentTok{\#\textgreater{} \# i 16,748 more rows}
-\CommentTok{\#\textgreater{} \# i 8 more variables: pop \textless{}dbl\textgreater{}, gdpPercap \textless{}dbl\textgreater{},}
-\CommentTok{\#\textgreater{} \#   region \textless{}chr\textgreater{}, capital \textless{}chr\textgreater{}, longitude \textless{}dbl\textgreater{},}
-\CommentTok{\#\textgreater{} \#   latitude \textless{}dbl\textgreater{}, income \textless{}chr\textgreater{}, lending \textless{}chr\textgreater{}}
-\end{Highlighting}
-\end{Shaded}
-
-違いはわかりましたか。同じような変数についてのデータですが、WDI からダウンロードした実際のデータの場合には、練習用のデータとは、違った困難がいくつもあります。それを、少しず見ていきながら、現実世界のデータを扱えるようにしていきましょう。
+\includegraphics{26-visualize_files/figure-latex/unnamed-chunk-61-1.pdf}
 
 \hypertarget{ux30b3ux30e1ux30f3ux30c8}{%
 \section{コメント}\label{ux30b3ux30e1ux30f3ux30c8}}
@@ -8063,7 +8463,7 @@ WDI は時系列データですから、折れ線グラフも使います。後�
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -9004,7 +9404,7 @@ R を使って、モデルについて表示される、数値の意味も説明
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -9019,7 +9419,7 @@ R を使って、モデルについて表示される、数値の意味も説明
 \CommentTok{\#\textgreater{} {-}{-} Attaching packages {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-} tidymodels 1.1.1 {-}{-}}
 \CommentTok{\#\textgreater{} v broom        1.0.5     v rsample      1.2.0}
 \CommentTok{\#\textgreater{} v dials        1.2.0     v tune         1.1.2}
-\CommentTok{\#\textgreater{} v infer        1.0.4     v workflows    1.1.3}
+\CommentTok{\#\textgreater{} v infer        1.0.5     v workflows    1.1.3}
 \CommentTok{\#\textgreater{} v modeldata    1.2.0     v workflowsets 1.0.1}
 \CommentTok{\#\textgreater{} v parsnip      1.1.1     v yardstick    1.2.0}
 \CommentTok{\#\textgreater{} v recipes      1.0.8     }
@@ -9030,7 +9430,7 @@ R を使って、モデルについて表示される、数値の意味も説明
 \CommentTok{\#\textgreater{} x dplyr::lag()      masks stats::lag()}
 \CommentTok{\#\textgreater{} x yardstick::spec() masks readr::spec()}
 \CommentTok{\#\textgreater{} x recipes::step()   masks stats::step()}
-\CommentTok{\#\textgreater{} * Dig deeper into tidy modeling with R at https://www.tmwr.org}
+\CommentTok{\#\textgreater{} * Search for functions across packages at https://www.tidymodels.org/find/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10023,7 +10423,7 @@ RMarkdown を選択すると、Document （文書）が選択されている初�
 ---
 title: "文書名"
 author: "あなたの名前"
-date: "2023-09-19"
+date: "2023-09-22"
 output: html_document
 ---
 \end{verbatim}
@@ -10233,7 +10633,7 @@ R には、WDI のデータを取得する R のツール（パッケージ）\t
 \FunctionTok{Sys.setenv}\NormalTok{(}\AttributeTok{LANG =} \StringTok{"en"}\NormalTok{) }\CommentTok{\# 言語を英語に}
 \FunctionTok{library}\NormalTok{(tidyverse)      }\CommentTok{\# tidyverse パッケージを読み込みます}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -11227,11 +11627,17 @@ GDP が大きな国と、小さな国があるのはわかりますが、それ�
   \href{https://shiny.rstudio.com/tutorial/?_ga=2.149795838.979535829.1639794069-1104332695.1639233659}{Build Interactive Web Apps}
 \end{enumerate}
 
-\hypertarget{part-part-iii-institutional-data}{%
-\part{PART III INSTITUTIONAL DATA}\label{part-part-iii-institutional-data}}
+\hypertarget{part-ux7b2cux4e09ux90e8-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bfux306eux6d3bux7528}{%
+\part{第三部 オープンデータの活用}\label{part-ux7b2cux4e09ux90e8-ux30aaux30fcux30d7ux30f3ux30c7ux30fcux30bfux306eux6d3bux7528}}
 
 \hypertarget{publicdata}{%
-\chapter{Public Data の分析}\label{publicdata}}
+\chapter{オープンデータの分析}\label{publicdata}}
+
+第三部では、実際にオープンデータを使って分析を少しずつ紹介していきます。
+
+特に、API（アプリケーション・プログラム・インターフェース）を用いた、R のパッケージがある場合には、積極的に活用していきます。
+
+オープンデータを提供する、それぞれの機関によって、データの取得方法、データ形式なども異なりますので、すべてを説明することはできませんが、有用な情報を提供します。
 
 \hypertarget{worldbank}{%
 \chapter{World Bank}\label{worldbank}}
@@ -11245,7 +11651,7 @@ GDP が大きな国と、小さな国があるのはわかりますが、それ�
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -12147,7 +12553,7 @@ Line Plot with two indicators with abbreviation and several countries
 \CommentTok{\#\textgreater{} {-}{-} Attaching packages {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-} tidymodels 1.1.1 {-}{-}}
 \CommentTok{\#\textgreater{} v broom        1.0.5     v rsample      1.2.0}
 \CommentTok{\#\textgreater{} v dials        1.2.0     v tune         1.1.2}
-\CommentTok{\#\textgreater{} v infer        1.0.4     v workflows    1.1.3}
+\CommentTok{\#\textgreater{} v infer        1.0.5     v workflows    1.1.3}
 \CommentTok{\#\textgreater{} v modeldata    1.2.0     v workflowsets 1.0.1}
 \CommentTok{\#\textgreater{} v parsnip      1.1.1     v yardstick    1.2.0}
 \CommentTok{\#\textgreater{} v recipes      1.0.8}
@@ -12158,7 +12564,7 @@ Line Plot with two indicators with abbreviation and several countries
 \CommentTok{\#\textgreater{} x dplyr::lag()      masks stats::lag()}
 \CommentTok{\#\textgreater{} x yardstick::spec() masks readr::spec()}
 \CommentTok{\#\textgreater{} x recipes::step()   masks stats::step()}
-\CommentTok{\#\textgreater{} * Use suppressPackageStartupMessages() to eliminate package startup messages}
+\CommentTok{\#\textgreater{} * Dig deeper into tidy modeling with R at https://www.tmwr.org}
 \end{Highlighting}
 \end{Shaded}
 
@@ -12673,8 +13079,26 @@ WDI の指標が、出生時平均寿命にどのていど、影響するかを�
 
 ここでは、R Package owid を用いた例をあげる
 
+必要に応じてインストールしてください。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{)}
+\NormalTok{devtools}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"piersyork/owidR"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{wid}{%
 \chapter{世界不平等データベース}\label{wid}}
+
+必要に応じてインストールしてください。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{)}
+\NormalTok{devtools}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"WIDworld/wid{-}r{-}tool"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{wir2022}{%
 \section{WIR2022}\label{wir2022}}
@@ -12697,7 +13121,7 @@ WDI の指標が、出生時平均寿命にどのていど、影響するかを�
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -12772,7 +13196,7 @@ The table above is nothing terrible; however, if we have it in the following for
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-4-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-5-1.pdf}
 
 We apply the \texttt{pivot\_longer} function of the \texttt{tidyr} package, to transform the first table into the second.
 
@@ -12816,7 +13240,7 @@ Now, we can use the \texttt{fill} aesthetic in addition to \texttt{position\ =\ 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-7-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-8-1.pdf}
 
 Let us add the value as a label, change the y-axis to percent, and add the title. The interpretation and source are from the original
 
@@ -12834,7 +13258,7 @@ Let us add the value as a label, change the y-axis to percent, and add the title
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-9-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-10-1.pdf}
 
 \textbf{Interpretation}: The global bottom 50\% captures 8.5\% of total income measured at Purchasing Power Parity (PPP). The global bottom 50\% owns 2\% of wealth (at Purchasing Power Parity). The global top 10\% owns 76\% of total Household wealth and captures 52\% of total income in 2021. Note that top wealth holders are not necessarily top income holders. Incomes are measured after the operation of pension and unemployment systems and before taxes and transfers.\\
 \textbf{Sources and series}: wir2022.wid.world/methodology.
@@ -12890,7 +13314,7 @@ The next F2 is similar to F1.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-12-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-13-1.pdf}
 
 \hypertarget{pivot-data-from-long-to-wide}{%
 \section{Pivot data from long to wide:}\label{pivot-data-from-long-to-wide}}
@@ -13000,7 +13424,7 @@ The next is an example of the world map.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-17-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-18-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13058,7 +13482,7 @@ Using the information above, we set breakpoints and use R Base's \texttt{cut} co
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-20-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-21-1.pdf}
 
 We observe that we have missing data from several countries. One common problem is the description of the country names varies in different data; in this case, the country names of \texttt{map\_data()} and those of \texttt{wir2022}. There are several ways to edit country names. Here is one of them.
 
@@ -13094,7 +13518,7 @@ We observe that we have missing data from several countries. One common problem 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-22-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-23-1.pdf}
 
 Now it is much better.
 
@@ -13108,7 +13532,7 @@ Now it is much better.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-23-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-24-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13120,7 +13544,7 @@ Now it is much better.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-24-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-25-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13132,7 +13556,7 @@ Now it is much better.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-25-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-26-1.pdf}
 
 Finally, change colors and change labels.
 
@@ -13153,7 +13577,7 @@ Finally, change colors and change labels.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-27-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-28-1.pdf}
 
 We could not treat the data of three. We can check by using \texttt{anti\_join}.
 
@@ -13236,7 +13660,7 @@ We will discuss \texttt{geom\_smooth} and \texttt{stat\_smooth} in Chapter \ref{
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-29-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-30-1.pdf}
 
 \hypertarget{f9-average-annual-wealth-growth-rate-1995-2021---fit-curve-alpha}{%
 \section{F9: Average annual wealth growth rate, 1995-2021 - fit curve + alpha}\label{f9-average-annual-wealth-growth-rate-1995-2021---fit-curve-alpha}}
@@ -13270,7 +13694,7 @@ We will discuss \texttt{geom\_smooth} and \texttt{stat\_smooth} in Chapter \ref{
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-30-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-31-1.pdf}
 
 \hypertarget{f7-global-income-inequality-1820-2020---pivot-fit-curve}{%
 \section{F7: Global income inequality, 1820-2020 - pivot + fit curve}\label{f7-global-income-inequality-1820-2020---pivot-fit-curve}}
@@ -13304,7 +13728,7 @@ We will discuss \texttt{geom\_smooth} and \texttt{stat\_smooth} in Chapter \ref{
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-31-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-32-1.pdf}
 
 \hypertarget{f10-the-share-of-wealth-owned-by-the-global-0.1-and-billionaires-2021---pivot-fit-curve}{%
 \section{F10: The share of wealth owned by the global 0.1\% and billionaires, 2021 - pivot + fit curve}\label{f10-the-share-of-wealth-owned-by-the-global-0.1-and-billionaires-2021---pivot-fit-curve}}
@@ -13365,7 +13789,7 @@ We will discuss \texttt{geom\_smooth} and \texttt{stat\_smooth} in Chapter \ref{
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-33-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-34-1.pdf}
 
 \hypertarget{f6-global-income-inequality-between-vs.-within-country-inequality-theil-index-1820-2020---pivot-area}{%
 \section{F6: Global income inequality: Between vs.~Within country inequality (Theil index), 1820-2020 - pivot + area}\label{f6-global-income-inequality-between-vs.-within-country-inequality-theil-index-1820-2020---pivot-area}}
@@ -13418,7 +13842,7 @@ We will discuss \texttt{geom\_smooth} and \texttt{stat\_smooth} in Chapter \ref{
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-35-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-36-1.pdf}
 
 \hypertarget{f11-top-1-vs-bottom-50-wealth-shares-in-western-europe-and-the-us-1910-2020---pivot-name_sep-fit-curve}{%
 \section{F11: Top 1\% vs bottom 50\% wealth shares in Western Europe and the US, 1910-2020 - pivot name\_sep + fit curve}\label{f11-top-1-vs-bottom-50-wealth-shares-in-western-europe-and-the-us-1910-2020---pivot-name_sep-fit-curve}}
@@ -13560,7 +13984,7 @@ We want to separate `US', `EU' and `bot50', `top10', and `top1'. To apply \textt
 #> # i 38 more rows
 \end{verbatim}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-42-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-43-1.pdf}
 
 The following is similar to the previous example.
 
@@ -13748,7 +14172,7 @@ The following is similar to the previous example.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-51-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-52-1.pdf}
 
 \hypertarget{f15-per-capita-emissions-acriss-the-world-2019---add-row-names-dodge}{%
 \section{F15: Per capita emissions acriss the world, 2019 - add row names + dodge}\label{f15-per-capita-emissions-acriss-the-world-2019---add-row-names-dodge}}
@@ -13785,7 +14209,7 @@ The following is similar to the previous example.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{36-wid_files/figure-latex/unnamed-chunk-53-1.pdf}
+\includegraphics{36-wid_files/figure-latex/unnamed-chunk-54-1.pdf}
 
 Review one by one, referring to the following.
 
@@ -13814,7 +14238,7 @@ Review one by one, referring to the following.
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -14838,7 +15262,7 @@ NY.GDP.PCAP.CD: GDP per capita (current US\$)
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \CommentTok{\#\textgreater{} {-}{-} Attaching core tidyverse packages {-}{-}{-}{-} tidyverse 2.0.0 {-}{-}}
-\CommentTok{\#\textgreater{} v dplyr     1.1.2     v readr     2.1.4}
+\CommentTok{\#\textgreater{} v dplyr     1.1.3     v readr     2.1.4}
 \CommentTok{\#\textgreater{} v forcats   1.0.0     v stringr   1.5.0}
 \CommentTok{\#\textgreater{} v ggplot2   3.4.3     v tibble    3.2.1}
 \CommentTok{\#\textgreater{} v lubridate 1.9.2     v tidyr     1.3.0}
@@ -14936,6 +15360,15 @@ Manual: \url{https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(rnaturalearth)}
+\CommentTok{\#\textgreater{} The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,}
+\CommentTok{\#\textgreater{} which was just loaded, will retire in October 2023.}
+\CommentTok{\#\textgreater{} Please refer to R{-}spatial evolution reports for details, especially}
+\CommentTok{\#\textgreater{} https://r{-}spatial.org/r/2023/05/15/evolution4.html.}
+\CommentTok{\#\textgreater{} It may be desirable to make the sf package available;}
+\CommentTok{\#\textgreater{} package maintainers should consider adding sf to Suggests:.}
+\CommentTok{\#\textgreater{} The sp package is now running under evolution status 2}
+\CommentTok{\#\textgreater{}      (status 2 uses the sf package in place of rgdal)}
+\CommentTok{\#\textgreater{} Support for Spatial objects (\textasciigrave{}sp\textasciigrave{}) will be deprecated in \{rnaturalearth\} and will be removed in a future release of the package. Please use \textasciigrave{}sf\textasciigrave{} objects with \{rnaturalearth\}. For example: \textasciigrave{}ne\_download(returnclass = \textquotesingle{}sf\textquotesingle{})\textasciigrave{}}
 \FunctionTok{library}\NormalTok{(rnaturalearthdata)}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Attaching package: \textquotesingle{}rnaturalearthdata\textquotesingle{}}
@@ -15486,7 +15919,7 @@ ne_states(
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(geodata)}
 \CommentTok{\#\textgreater{} Loading required package: terra}
-\CommentTok{\#\textgreater{} terra 1.7.29}
+\CommentTok{\#\textgreater{} terra 1.7.46}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Attaching package: \textquotesingle{}terra\textquotesingle{}}
 \CommentTok{\#\textgreater{} The following object is masked from \textquotesingle{}package:tidyr\textquotesingle{}:}
@@ -15721,6 +16154,295 @@ ne_states(
 \hypertarget{example1}{%
 \chapter{Example 1}\label{example1}}
 
+\hypertarget{references}{%
+\chapter{参考文献}\label{references}}
+
+参考文献とともに、おすすめのサイトなどについても、個人的に、学ばせせていただあいたものを中心に書いていきます。
+
+\hypertarget{ux6559ux79d1ux66f8}{%
+\section{教科書}\label{ux6559ux79d1ux66f8}}
+
+すでに何度かご紹介していますが、Tidyverse の中心的開発者でもある、Hadley Wickham 等の書いた、次の本に勝るものは、ないと個人的には考えています。
+
+R for Data Science（r4ds と略）: \url{https://r4ds.hadley.nz}
+
+詳細はリンク先をみていたければと思いますが、これを書いている段階で、第二版（2e）がちょうど出版、公開されました。わたしは、第一版で最初勉強し、この文書を準備し始めた頃には、第二版の暫定版が公開されていましたから、そちらは、全てではありませんが、読ませていただき、参考にさせていただきました。多くの部分が、この本に則っています。
+
+第一版も、bookdown パッケージで書かれていますが、この書が、bookdown で書かれ、公開されたことから、他のさまざまな、データサイエンスの教科書も、たとえば、bookdown の Archive のようなところに公開されて、活用されてきたことが、R のデータサイエンスへの利用が、飛躍的に進んだ原因であると同時に、RMarkdown や、bookdown の開発と相まって、このような、Public Domain での出版が進んだ原因だと、個人的には確信しており、個人ではなく、RStudio Co.（現在は、Posit Co.）という会社組織で進んで行ったことが、安定度も含めて、大きな意味があったと思っています。その意味でも、世界を変えた一冊だと考えています。
+
+一つだけコメントさせていただければ、印刷体だけでなく、Public Domain での出版ということで、プロの翻訳家が手を出さず、日本語訳が出なかったことが、日本での知名度が上がらなかった原因であるとも思います。しかし、Web Browser（ホームページ閲覧ソフト）の自動翻訳技術も飛躍的に進歩し（今後ますます進歩するでしょうから）、Web 上に公開することで、このような技術書は、絶対的ではないという状況になったことも、大きな変化かなと考えています。そのような学び方の改革をもご紹介し、その橋渡しができればと願って始めたのがこの文書のプロジェクトでもあります。
+
+\hypertarget{ux7df4ux7fd2ux554fux984c-1}{%
+\subsection{練習問題}\label{ux7df4ux7fd2ux554fux984c-1}}
+
+R for Data Science のもう一つの特徴は、同時に、練習問題集も、早いうちから公開されたことです。learnr というパッケージを使い、対話型（interactive）な練習問題が、Primers（入門書）として、Posit Primers（最初は、RStudio Primers）として開発されたことです。採点など、試験などとして使うことを考えると、まだ、完全とは言えませんが、学びのためには、十分の質のものだと思います。
+
+r4ds のあとに書かれているものは、教科書の対応する章ですが、これは、第一版のもので、第二版では、必ずしも対応していませんが、残しておくことにしました。ここにリストされたものがすべて完成したのは、2022年の終わり頃かと思います。簡単に、日本語の表題を、なるべく本書の表題と近い名前にして添えておきます。
+
+本書では、1から4と、7 に重点を置いています。
+
+\hypertarget{posit-primers-httpsposit.cloudlearnprimers-1}{%
+\subsubsection{\texorpdfstring{\textbf{Posit~Primers~\url{https://posit.cloud/learn/primers}}}{Posit~Primers~https://posit.cloud/learn/primers}}\label{posit-primers-httpsposit.cloudlearnprimers-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  R と Tidyverse の基礎：The Basics --~r4ds: Explore, I
+\end{enumerate}
+
+\begin{itemize}
+\item
+  視覚化の基礎：\href{https://rstudio.cloud/learn/primers/1.1}{Visualization Basics}
+\item
+  プログラミング基礎：\href{https://rstudio.cloud/learn/primers/1.2}{Programming Basics}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  データの変形：Work with Data --~r4ds: Wrangle, I
+\end{enumerate}
+
+\begin{itemize}
+\item
+  表の形式 Tibble：\href{https://rstudio.cloud/learn/primers/2.1}{Working with Tibbles}
+\item
+  dplyr によるデータの抽出：\href{https://rstudio.cloud/learn/primers/2.2}{Isolating Data with dplyr}
+\item
+  dplyr によるデータの変形：\href{https://rstudio.cloud/learn/primers/2.3}{Deriving Information with dplyr}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  データの視覚化：Visualize Data --~r4ds: Explore, II
+\end{enumerate}
+
+\begin{itemize}
+\item
+  探索的データ分析：\href{https://rstudio.cloud/learn/primers/3.1}{Exploratory Data Analysis}
+\item
+  棒グラフ：\href{https://rstudio.cloud/learn/primers/3.2}{Bar Charts}
+\item
+  度数分布：\href{https://rstudio.cloud/learn/primers/3.3}{Histograms}
+\item
+  箱ひげ図：\href{https://rstudio.cloud/learn/primers/3.4}{Boxplots and Counts}
+\item
+  散布図：\href{https://rstudio.cloud/learn/primers/3.5}{Scatterplots}
+\item
+  折れ線グラフと地図：\href{https://rstudio.cloud/learn/primers/3.6}{Line plots and maps}
+\item
+  点データの重なり：\href{https://rstudio.cloud/learn/primers/3.7}{Overplotting}
+\item
+  さまざまな調整：\href{https://rstudio.cloud/learn/primers/3.8}{Customize plots}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Tidy Your Data --~r4ds: Wrangle, II
+\end{enumerate}
+
+\begin{itemize}
+\item
+  データ表の行と列の交換：\protect\hyperlink{0}{Reshape Data - a bit old}
+\item
+  行または列の結合と分離：\protect\hyperlink{0}{Separate and Unite}
+\item
+  二つのデータ表の結合：\href{https://rstudio.cloud/learn/primers/4.3}{Join Data Sets}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  プログラミング：Iterate --~r4ds: Program
+\end{enumerate}
+
+\begin{itemize}
+\item
+  繰り返し処理入門：\href{https://rstudio.cloud/learn/primers/5.1}{Introduction to Iteration}
+\item
+  同時変換：\href{https://rstudio.cloud/learn/primers/5.2}{Map}
+\item
+  表などの同時変換：\href{https://rstudio.cloud/learn/primers/5.3}{Map Shortcut}
+\item
+  ヴェクトルの変換応用：\href{https://rstudio.cloud/learn/primers/5.3}{Multiple Vectors}
+\item
+  応用編：\href{https://rstudio.cloud/learn/primers/5.4}{List Columns}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  関数の活用：Write Functions --~r4ds: Program
+\end{enumerate}
+
+\begin{itemize}
+\item
+  関数の基礎：\href{https://rstudio.cloud/learn/primers/6.1}{Function Basics}
+\item
+  関数の書き方：\href{https://rstudio.cloud/learn/primers/6.2}{How to Write a Function}
+\item
+  引数の対応：\href{https://rstudio.cloud/learn/primers/6.3}{Argument Matching}
+\item
+  環境と適用範囲：\href{https://rstudio.cloud/learn/primers/6.4}{Environments and Scoping}
+\item
+  条件分岐：\href{https://rstudio.cloud/learn/primers/6.5}{Control Flow}
+\item
+  複雑な条件分岐：\href{https://rstudio.cloud/learn/primers/6.6}{Advanced Control Flow}
+\item
+  R によける再帰型プログラム：\href{https://rstudio.cloud/learn/primers/6.7}{Loops in R}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  再現可能性を重視したレポート：Report Reproductively --~r4ds: Communicate
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  ビデオや説明へのリンク：\href{https://rmarkdown.rstudio.com/lesson-1.html?_ga=2.215340127.979535829.1639794069-1104332695.1639233659}{Link to Videos and Explanations}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  対話型アプリの作成：\href{https://shiny.rstudio.com/tutorial/?_ga=2.149795838.979535829.1639794069-1104332695.1639233659}{Build Interactive Web Apps}
+\end{enumerate}
+
+\hypertarget{moocs-ux306aux3069ux306eux30aaux30f3ux30e9ux30a4ux30f3ux30b3ux30fcux30b9}{%
+\section{MOOCs などのオンラインコース}\label{moocs-ux306aux3069ux306eux30aaux30f3ux30e9ux30a4ux30f3ux30b3ux30fcux30b9}}
+
+わたしは、MOOCs（massive open online courses）がちょうど始まった 2012年ごろ、その10年前ぐらいに、スタートした、OCW（open courseware）を勉強していたこともあり、MOOCs のコースをかなり最初の段階からいくつか、視聴していました。
+
+データサイエンスで人気があったのは coursera でホストしていた、Johns Hopkins University が提供する、10コースからなる、JHU Data Science というコースト、edX でホストしていた、Harvard University が提供する、9コースからなる Data Science。
+
+下にリンクと、そのコースを下にした、オンラインなど容易に手に入ると思われる教科書へのリンクをつけておきます。
+
+\begin{itemize}
+\item
+  edX: HarvardX~\href{https://www.edx.org/professional-certificate/harvardx-data-science}{Data Science}~- 9 courses. Textbook:
+
+  \begin{itemize}
+  \item
+    \href{https://leanpub.com/datasciencebook}{"Introduction to Data Science"}~by Rafael A. Irizarry.
+  \item
+    \href{http://rafalab.dfci.harvard.edu/dsbook/}{Free Online Book}~by Rafael A. Irizarry.
+  \end{itemize}
+\item
+  coursera:~\href{https://www.coursera.org/specializations/jhu-data-science}{JHU Data Science}~- 10 courses. List of Companion Books:
+
+  \begin{itemize}
+  \item
+    \href{https://leanpub.com/rprogramming?utm_source=DST2\&utm_medium=Reading\&utm_campaign=DST2}{"R Programming for Data Science"}~by Roger Peng.
+  \item
+    \href{https://bookdown.org/rdpeng/rprogdatascience/}{Free Online Book}~by Roger Peng.
+  \item
+    \href{https://leanpub.com/exdata?utm_source=DST2\&utm_medium=Reading\&utm_campaign=DST2}{"Exploratory Data Analysis with R"}~by Roger Peng.
+  \item
+    \href{https://bookdown.org/rdpeng/exdata/}{Free online Book}~by Roger Peng.
+  \item
+    \href{https://leanpub.com/reportwriting?utm_source=DST2\&utm_medium=Reading\&utm_campaign=DST2}{"Report Writing for Data Science in R"}~by Roger Peng
+  \item
+    \href{https://leanpub.com/LittleInferenceBook}{"Statistical Inference for Data Science"}~by Brian Caffo
+  \item
+    \href{https://leanpub.com/regmods}{"Regression Modeling for Data Science in R"}~by Brian Caffo
+  \end{itemize}
+\end{itemize}
+
+どちらも、素晴らしいコースだと思いますが、個人的には、edX Harvard X のものは、アカデミック（学問的・学際的）で、coursera の方は、技術的（コンピュータ科学）のような印象を受けました。
+
+いまでは、Data Science と検索すれば、膨大なコースが見つかりますが、個人的には、Data Science というものに、実際に触れた最初がこのにコースだったので、影響されていると思います。
+
+また、2018年ごろからでしょうか、会社組織で、データサイエンス教育のようなものを提供するところが、続々と出てきました。DataCamp や、DataQuest などなど、たくさんあります。
+
+MOOCs の方は、受講証明書を必要とせず、各単元の最後のテストの評価が必要なければ、基本的に無償で受けられますが、DataCamp などは、大体、最初の一コースだけ無償で、そのあとは有償になっているかと思います。
+
+有償のコースで、アドバイスをもらったりなど、指導してもらえたり、わからないところの質問をなんでも聞けるというのは、とてもよいと思いますが、オンライン上のコミュニティでも、かなり無償でサポートが得られますし、最近では、AI による、サポートもどんどん進化していますから、個人的には、AI が家庭教師についてくれるような世界へと進んでいくのではないか、そして、基本的な部分は、それで十分ではないかと思います。
+
+\hypertarget{ux305dux306eux4ed6ux306eux53c2ux8003ux66f8}{%
+\section{その他の参考書}\label{ux305dux306eux4ed6ux306eux53c2ux8003ux66f8}}
+
+個人的に、読んだもの、参考にしたものもいくつもありますが、あとは、必要に応じて、参照していただくのがよいと思います。日本語のものは、少ないですが、英語のものであっても、自動翻訳なども上手に使えば、問題なく読めると思います。
+
+上でも書いた、Bookdown サイトと、そこにリンクされている、Archives のリンクをつけておきます。膨大な、電子書籍がリンクされていますが、それは、そこに投稿するシステムも完備しているからでもあります。みなさんも、電子書籍を書いてみませんか。
+
+BOOKDOWN: \url{https://bookdown.org}
+
+Archive Page: \url{https://bookdown.org/home/archive/}
+
+日本語で書かれたものも、数は多くありませんが、いくつかあります。
+
+\hypertarget{ux7d71ux8a08ux95a2ux9023}{%
+\section{統計関連}\label{ux7d71ux8a08ux95a2ux9023}}
+
+統計学についてほとんど書きませんでした。必要ではないという意味では全くありません。しかし、データサイエンスというと、まず、数学、そして、統計学を勉強して、コンピュータプログラミングも勉強してはじめて、始められるのですよね。というような声には、抗（あらが）って、書いてきました。最初から、これらで苦しまなくても、必要になった時に、少しずつ勉強していけばよいと考えているからです。
+
+ひとつ一つステップを踏んで学んでいくよりも、まずは、データに慣れること、グラフをみて、問いを持つこと、そして、さらに、他のグラフを見ること。そう考えると、問いを持ちながら、視覚化を通して、データから特徴を読み取り、さらに問いを深めて、次の視点から、またデータを見ていくことが、何よりも大切だと考えているからです。
+
+そのあとで、統計を勉強してみよう。プログラミングや、コンピュータサイエンスを勉強してみよう、数理モデルについて、もう少し深く知りたい、もう少し、基本的な数学も学び直してみたいとなれば、個人的にはとても嬉しいです。
+
+\hypertarget{cran}{%
+\subsection{CRAN}\label{cran}}
+
+最後の方に、R 本体をホストし、保持してださっている、CRAN（The Comprehensive R Archive Network）をあげるのは、非常に失礼だと思いますが、CRAN にも、基本的な文書はあります。
+
+マニュアル（The R Manuals）：\url{https://cran.r-project.org}
+
+（左の帯の Documentation の中の Manuals）
+
+さまざまなものがリストされています。この下の方に、Contributed という項があり、そこから、Contributed Documentation という項目にリンクがあります。
+
+（左の帯の Documentation の中の Contributed）
+
+ここに、日本語のものも掲載されています。わたしは、全部読んだわけではありませんが、間瀬茂さんのものは、統計解析の道具として R を使う場合には、非常に有効だと思います。
+
+\begin{itemize}
+\item
+  \textbf{R 入門：An Introduction to R}~(\href{https://cran.r-project.org/doc/contrib/manuals-jp/R-intro-170.jp.pdf}{PDF})
+\item
+  \textbf{R 言語定義：The R language definition}~(\href{https://cran.r-project.org/doc/contrib/manuals-jp/R-lang.jp.v110.pdf}{PDF})
+\item
+  \textbf{R の拡張を書く：Writing R Extensions}~(\href{https://cran.r-project.org/doc/contrib/manuals-jp/R-exts.jp.pdf}{PDF})
+\item
+  \textbf{R のデータ取り込み／出力：R Data Import/Export}~(\href{https://cran.r-project.org/doc/contrib/manuals-jp/R-data-jp.v15.pdf}{PDF})
+\item
+  \textbf{R のインストールと管理：R Installation and Administration}~(\href{https://cran.r-project.org/doc/contrib/manuals-jp/R-admin-jp.v15.pdf}{PDF})
+\item
+  \textbf{R 基本統計関数マニュアル：R Statistical Function Help Pages}~(\href{https://cran.r-project.org/doc/contrib/manuals-jp/Mase-Rstatman.pdf}{PDF}, 404 pages, 2009-06-05)
+\end{itemize}
+
+\hypertarget{ux305dux306eux4ed6ux306eux30aaux30f3ux30e9ux30a4ux30f3ux6587ux66f8}{%
+\subsection{その他のオンライン文書}\label{ux305dux306eux4ed6ux306eux30aaux30f3ux30e9ux30a4ux30f3ux6587ux66f8}}
+
+\begin{itemize}
+\item
+  BellCurve 統計WEB：\url{https://bellcurve.jp/statistics/}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    統計用語集：\url{https://bellcurve.jp/statistics/glossary/initial/a/}
+  \end{itemize}
+\end{itemize}
+
 \hypertarget{appendix-appendix}{%
 \appendix}
 
@@ -15820,8 +16542,8 @@ ne_states(
 
 \includegraphics{81-japanese_files/figure-latex/unnamed-chunk-5-1.pdf}
 
-\hypertarget{ux5099ux8003-6}{%
-\section{備考：}\label{ux5099ux8003-6}}
+\hypertarget{ux5099ux8003-7}{%
+\section{備考：}\label{ux5099ux8003-7}}
 
 実は、一番難しいのが、PDF の作成だと思いますが、一応、上のものも、PDF を作成することが可能です。 下のリンクのファイルを、いろいろな、形式で、出力してみてください。R Notebook と、PDF に出力したもののリンクを付けておきます。
 
@@ -16015,8 +16737,8 @@ header-includes:
 
 Git は バージョン管理システムで、GitHub はそれを、活用し、かつ他のメンバーと協力して開発など、さまざまな活動をするためのサイトです。公開が基本となっています。非公開にすることも可能ですが、公開することで、世界中のひとたちと協力していくことが可能になりますので、その利点も学んでいただければと思います。
 
-\hypertarget{ux6982ux8981-9}{%
-\subsection{概要}\label{ux6982ux8981-9}}
+\hypertarget{ux6982ux8981-10}{%
+\subsection{概要}\label{ux6982ux8981-10}}
 
 RStudio で R を使っている場合、Git-GitHub-RStudio の連携で使うことをお勧めします。しかし、これらは、三つとも、まったく異なるものですから、簡単な概要を書いておくことにします。
 

@@ -1,7 +1,6 @@
 fig:nice-fig
 tab:nice-tab
 eq:binom
-thm:tri
 introduction
 データサイエンスとは
 なぜデータサイエンスが最近注目されているのか
@@ -323,6 +322,10 @@ df_wdi-df_wdi_extra-1
 概要-9
 縦か横か
 地域名
+棒グラフに黒枠
+大きい順
+割合の表示
+縦軸を百分率に
 折線グラフline-graph
 box-plot
 コメント

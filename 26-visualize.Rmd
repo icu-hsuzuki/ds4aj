@@ -435,7 +435,7 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 ```
 
-もう一つは折り返す方法です。こちらの法が、良いかもしれません。
+もう一つは折り返す方法です。こちらの方が、良いかもしれません。
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
@@ -454,7 +454,9 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
 
-変わり目が見にくければ、黒線で囲むことも可能です。どこに、color = "black" を入れるか、注意が必要です。少しその線を細目にしました。
+#### 棒グラフに黒枠
+
+変わり目が見にくければ、黒線で囲むことも可能です。どこに、color = "black" を入れるか、注意が必要です。少しその線を細目に するために、`linewidth = 0.2` を加えました。
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
@@ -464,7 +466,22 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
 
-積み上げ型になっています。これを、割合で表示するには position = "fill" を加えます。すると、各地域ごとの、income level（収入の多寡）による国の数の割合がわかります。
+#### 大きい順
+
+順序は、地域のアルファベット順ですから、上のグラフで問題ありませんが、もし、大きい順、すなわち、国の数が大きい順にするとするとどうしたら良いでしょうか。少しだけ、すでに出てきた、Factor をいうものを使います。`fct_infreq(region)` この場合は、度数順に並べてグラフにします。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = fct_infreq(region), fill = income)) + 
+  geom_bar(color = "black", linewidth = 0.2) + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+```
+
+#### 割合の表示
+
+積み上げ型になっています。これを、割合で表示するには `position = "fill"` を加えます。すると、各地域ごとの、income level（収入の多寡）による国の数の割合がわかります。
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
@@ -473,6 +490,8 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
+
+#### 縦軸を百分率に
 
 今度は、それを、百分率（percent）表示にしてみましょう。
 
