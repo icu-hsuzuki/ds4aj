@@ -148,6 +148,17 @@ There are three scales. Add `returnclass = "sf"` as an option to obtain data in 
 ```r
 ne_countries(scale = "large", returnclass = "sf") %>%
   ggplot() +   geom_sf()
+#> The rnaturalearthhires package needs to be installed.
+#> Installing the rnaturalearthhires package.
+#> Downloading GitHub repo ropensci/rnaturalearthhires@HEAD
+#> 
+#> ── R CMD build ─────────────────────────────────────────────
+#> * checking for file ‘/private/var/folders/mc/15j2lx113vscs17fxhz_p7400000gn/T/RtmpGzhgkk/remotes14e2747b42e9/ropensci-rnaturalearthhires-c3785a8/DESCRIPTION’ ... OK
+#> * preparing ‘rnaturalearthhires’:
+#> * checking DESCRIPTION meta-information ... OK
+#> * checking for LF line-endings in source and make files and shell scripts
+#> * checking for empty or unneeded directories
+#> * building ‘rnaturalearthhires_0.2.1.tar.gz’
 ```
 
 <img src="48-worldmap_files/figure-html/unnamed-chunk-6-1.png" width="672" />
