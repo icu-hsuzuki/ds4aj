@@ -1,5 +1,13 @@
 # 世界不平等データベース {#wid}
 
+必要に応じてインストールしてください。
+
+```{r eval = FALSE}
+install.packages("devtools")
+devtools::install_github("WIDworld/wid-r-tool")
+```
+
+
 ## WIR2022
 
 データの整形について、上で学んだことについて、World Inequility Report 2022（WIR2022）の 概要（Executive Report）のデータを使って説明します。

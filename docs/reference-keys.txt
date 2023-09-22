@@ -538,6 +538,15 @@ geodata-package
 gadm-administrative-boundaries
 参考文献-3
 example1
+references
+教科書
+練習問題-1
+posit-primers-httpsposit.cloudlearnprimers-1
+moocs-などのオンラインコース
+その他の参考書
+統計関連
+cran
+その他のオンライン文書
 japanese
 日本語中国語韓国語
 パッケージをロード

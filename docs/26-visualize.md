@@ -617,6 +617,63 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-46-1.png" width="672" />
 
+変わり目が見にくければ、黒線で囲むことも可能です。どこに、color = "black" を入れるか、注意が必要です。少しその線を細目にしました。
+
+
+```r
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2) + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-47-1.png" width="672" />
+
+積み上げ型になっています。これを、割合で表示するには position = "fill" を加えます。すると、各地域ごとの、income level（収入の多寡）による国の数の割合がわかります。
+
+
+```r
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-48-1.png" width="672" />
+
+今度は、それを、百分率（percent）表示にしてみましょう。
+
+`labels = scales::percent_format(accuracy = 1)`
+
+まず、scales は、Tidyverse パッケージの一部ですが、読み込まれてはいないので、加えてあります。`library(scales)` としてあれば、省略可能です。`accuracy = 1` は小数点以下を省略するもので、小数点以下一位までであれば、`accuracy = 0.1` とします。
+
+
+```r
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1)) + 
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-49-1.png" width="672" />
+
+積み上げてありますが、並べることも可能です。ちょっと数が多いのでみにくいですが。
+
+
+```r
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "dodge") + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-50-1.png" width="672" />
+
 ### **折線グラフ（line graph）**
 
 WDI は時系列データですから、折れ線グラフも使います。後ほど紹介しますが、
@@ -634,7 +691,7 @@ df_wdi |> ggplot(aes(year, lifeExp)) + geom_line()
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-47-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-51-1.png" width="672" />
 
 何が起こっているかわかりますか。これは、鋸の刃グラフ（saw-tooth chart）と言われる標準的な失敗例です。
 
@@ -647,7 +704,7 @@ ggplot(df_wdi, aes(x = year, y = lifeExp)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-48-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 
 これも期待した箱ひげ図にはなっていません。年は、カテゴリーではなく、数値データですね。
 
@@ -666,7 +723,7 @@ ggplot(df_wdi, aes(y = lifeExp, group = year)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-50-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-54-1.png" width="672" />
 
 ##### Box Plot
 
@@ -677,7 +734,7 @@ ggplot(df_wdi, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-55-1.png" width="672" />
 
 とはいえ、数が多すぎますね。色もつけてみましょう。塗りつぶしは、fill 枠の線に色をつけるのは、color ですから、ここでは、fill を使います。
 
@@ -691,7 +748,7 @@ df_wdi_extra |> filter(income != "Aggregates") |>
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-52-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-56-1.png" width="672" />
 
 折線グラフの例としては次のようなものがあります。
 
@@ -710,7 +767,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region)) +
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-54-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-58-1.png" width="672" />
 
 
 ```r
@@ -720,7 +777,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region, linetype =
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-55-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-59-1.png" width="672" />
 
 
 ```r
@@ -731,7 +788,7 @@ df_lifeExp %>% ggplot() +
 #> Removed 243 rows containing missing values (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-56-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-60-1.png" width="672" />
 
 ## コメント
 

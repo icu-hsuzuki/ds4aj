@@ -76,8 +76,24 @@ R を使い始めると、追加のパッケージを使う必要が生じます
 
 -   tidymodels
 
+-   devtools
+
+    -   wid-r-tool: `devtools::install_github("WIDworld/wid-r-tool")`
+
+    -   owidR: `devtools::install_github("piersyork/owidR")`
+
 -   estatapi
 
 -   OECD
 
 -   eurostat
+
+-   mapproj
+
+-   geodata
+
+-   rnaturalearth
+
+-   rnaturalearthdata
+
+-   showtext

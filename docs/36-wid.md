@@ -1,5 +1,14 @@
 # 世界不平等データベース {#wid}
 
+必要に応じてインストールしてください。
+
+
+```r
+install.packages("devtools")
+devtools::install_github("WIDworld/wid-r-tool")
+```
+
+
 ## WIR2022
 
 データの整形について、上で学んだことについて、World Inequility Report 2022（WIR2022）の 概要（Executive Report）のデータを使って説明します。
@@ -77,7 +86,7 @@ df_f1_rev %>%
   geom_col(position = "dodge")
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 We apply the `pivot_longer` function of the `tidyr` package, to transform the first table into the second.
 
@@ -115,7 +124,7 @@ df_f1_rev %>%
   geom_col(position = "dodge")
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 Let us add the value as a label, change the y-axis to percent, and add the title. The interpretation and source are from the original
 
@@ -132,7 +141,7 @@ df_f1_rev %>% filter(group != "Top 1%") %>%
        x = "", y = "Share of total income or wealth", fill = "")
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 **Interpretation**: The global bottom 50% captures 8.5% of total income measured at Purchasing Power Parity (PPP). The global bottom 50% owns 2% of wealth (at Purchasing Power Parity). The global top 10% owns 76% of total Household wealth and captures 52% of total income in 2021. Note that top wealth holders are not necessarily top income holders. Incomes are measured after the operation of pension and unemployment systems and before taxes and transfers.\
 **Sources and series**: wir2022.wid.world/methodology.
@@ -171,7 +180,7 @@ df_f2 %>% pivot_longer(cols = 3:5, names_to = "group", values_to = "value") %>%
   geom_col(position = "dodge")
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 ## Pivot data from long to wide:
 
@@ -242,7 +251,7 @@ df_f3 %>% ggplot() + geom_histogram(aes(T10B50))
 #> `binwidth`.
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 
 ```r
@@ -280,7 +289,7 @@ df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50,breaks = c(5, 12, 13, 16,
   expand_limits(x = world_map$long, y = world_map$lat)
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 We observe that we have missing data from several countries. One common problem is the description of the country names varies in different data; in this case, the country names of `map_data()` and those of `wir2022`. There are several ways to edit country names. Here is one of them.
 
@@ -314,7 +323,7 @@ df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` =
     expand_limits(x = world_map_wir$long, y = world_map_wir$lat)
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 Now it is much better.
 
@@ -327,7 +336,7 @@ df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` =
   coord_map("orthographic", orientation = c(25, 60, 0))
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
 
 ```r
@@ -338,7 +347,7 @@ df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` =
   coord_map("orthographic", orientation = c(15, -80, 0))
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 
 ```r
@@ -349,7 +358,7 @@ df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` =
   expand_limits(x = world_map_wir$long, y = world_map_wir$lat)
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
 Finally, change colors and change labels.
 
@@ -369,7 +378,7 @@ df_f3 %>%
   scale_fill_brewer(palette='YlOrRd')
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 We could not treat the data of three. We can check by using `anti_join`.
 
@@ -431,7 +440,7 @@ df_f5 %>% ggplot(aes(x = y, y = t10b50)) + geom_line() + geom_smooth(span=0.25, 
 #> x'
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-30-1.png" width="672" />
 
 ## F9: Average annual wealth growth rate, 1995-2021 - fit curve + alpha
 
@@ -454,7 +463,7 @@ df_f9 %>%
 #> x'
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-31-1.png" width="672" />
 
 ## F7: Global income inequality, 1820-2020 - pivot + fit curve
 
@@ -477,7 +486,7 @@ df_f7 %>%
   stat_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE)
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-32-1.png" width="672" />
 
 ## F10: The share of wealth owned by the global 0.1% and billionaires, 2021 - pivot + fit curve
 
@@ -518,7 +527,7 @@ df_f10 %>%
   stat_smooth(aes(x = year, y = value, color = group), formula = y~x, method = "loess", span = 0.25, se = FALSE)
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-34-1.png" width="672" />
 
 ## F6: Global income inequality: Between vs. Within country inequality (Theil index), 1820-2020 - pivot + area
 
@@ -561,7 +570,7 @@ df_f6 %>% select(year = "...1", 2:3) %>%
                                 of global inequality", width = 20), size = 3)
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-36-1.png" width="672" />
 
 ## F11: Top 1% vs bottom 50% wealth shares in Western Europe and the US, 1910-2020 - pivot name_sep + fit curve
 
@@ -652,7 +661,7 @@ df_f11 %>%
   </script>
 </div>
 
-<img src="36-wid_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-43-1.png" width="672" />
 
 The following is similar to the previous example.
 
@@ -776,7 +785,7 @@ df_f8 %>%
        x = "", y = "wealth as as % of national income", color = "", type = "")
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 
 ## F15: Per capita emissions acriss the world, 2019 - add row names + dodge
 
@@ -802,7 +811,7 @@ df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
        x = "", y = "tonnes of CO2e per person per year", fill = "")
 ```
 
-<img src="36-wid_files/figure-html/unnamed-chunk-53-1.png" width="672" />
+<img src="36-wid_files/figure-html/unnamed-chunk-54-1.png" width="672" />
 
 Review one by one, referring to the following.
 

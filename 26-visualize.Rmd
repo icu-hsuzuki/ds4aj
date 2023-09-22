@@ -454,6 +454,51 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
 
+変わり目が見にくければ、黒線で囲むことも可能です。どこに、color = "black" を入れるか、注意が必要です。少しその線を細目にしました。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2) + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+```
+
+積み上げ型になっています。これを、割合で表示するには position = "fill" を加えます。すると、各地域ごとの、income level（収入の多寡）による国の数の割合がわかります。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+```
+
+今度は、それを、百分率（percent）表示にしてみましょう。
+
+`labels = scales::percent_format(accuracy = 1)`
+
+まず、scales は、Tidyverse パッケージの一部ですが、読み込まれてはいないので、加えてあります。`library(scales)` としてあれば、省略可能です。`accuracy = 1` は小数点以下を省略するもので、小数点以下一位までであれば、`accuracy = 0.1` とします。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1)) + 
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+```
+
+積み上げてありますが、並べることも可能です。ちょっと数が多いのでみにくいですが。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |>
+  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "dodge") + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+```
+
 ### **折線グラフ（line graph）**
 
 WDI は時系列データですから、折れ線グラフも使います。後ほど紹介しますが、
