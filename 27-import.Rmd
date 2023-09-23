@@ -469,3 +469,15 @@ setdiff は差集合ですから、df_1 に入っていて、df_3 には入っ�
 ```{r}
 setdiff(df_1, df_3)
 ```
+
+## 練習
+
+### Posit Primers <https://posit.cloud/learn/primers>
+
+Tidy Your Data -- r4ds: Wrangle, II
+
+-   データ表の行と列の交換：[Reshape Data - a bit old](#0)
+
+-   行または列の結合と分離：[Separate and Unite](#0)
+
+-   二つのデータ表の結合：[Join Data Sets](https://rstudio.cloud/learn/primers/4.3)

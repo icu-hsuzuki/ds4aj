@@ -32,7 +32,7 @@ b
 ### [`select`](https://dplyr.tidyverse.org/reference/select.html): 名前とタイプによって、列（変数）を選択
 
 | 補助関数      | 条件                   | 例                                                    |
-|---------------|------------------------|-------------------------------------------------------|
+|----------------|-----------------|---------------------------------------|
 | \-            | 列の排除               | select(iris, -Species)                                |
 | :             | 列の範囲               | select(iris, 1:4)                                     |
 | contains()    | 指定文字列を含         | select(iris, contains("Width"))                       |
@@ -671,6 +671,18 @@ library(tidyverse)
 library(gapminder)
 library(WDI)
 ```
+
+## 練習
+
+### Posit Primers <https://posit.cloud/learn/primers>
+
+データの変形：Work with Data -- r4ds: Wrangle, I
+
+-   表の形式 Tibble：[Working with Tibbles](https://rstudio.cloud/learn/primers/2.1)
+
+-   dplyr によるデータの抽出：[Isolating Data with dplyr](https://rstudio.cloud/learn/primers/2.2)
+
+-   dplyr によるデータの変形：[Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3)
 
 ## まとめ
 

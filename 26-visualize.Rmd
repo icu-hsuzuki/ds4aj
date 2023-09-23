@@ -406,13 +406,29 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   ggplot(aes(y = region, fill = income)) + geom_bar()
 ```
 
-### 備考
+### 棒グラフの応用
 
 最後のグラフを例にとって、いくつかのコメントをしておきます。
 
 #### 概要
 
-地域のリストを regions に入れてありますから、2020 年のデータを取り出し、その中で、それぞれの国ごとのデータではなく、集計してあるもの（Aggregates）を選択してあります。そして、地域ごとのグループ化します。Y 軸に、地域名を取って、`geom_bar()` ですから、データがいくつあるかで棒グラフにしています。そのときに、`fill = income` としていますから、収入レベルごとに、色を変えて塗りつぶし（fill）て、描いています。color は、枠に色をつけ、fill は、塗りつぶしです。
+地域のリストを regions に入れてありますから、2020 年のデータを取り出し、その中で、それぞれの国ごとのデータではなく、集計してあるもの（Aggregates）を選択してあります。そして、地域ごとにグループ化します。
+
+まず、地域ごとにまとめて、国がいくつあるかは次のように表にすることもできます。また、収入の多寡のグループにも分けたものをその下に加えておきます。
+
+これらを、棒グラフで表示しています。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |> summarize(n = n())
+```
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region, income) |> summarize(n = n())
+```
+
+Y 軸に、地域名を取って、`geom_bar()` ですから、データがいくつあるかで棒グラフにしています。そのときに、`fill = income` としていますから、収入レベルごとに、色を変えて塗りつぶし（fill）て、描いています。color は、枠に色をつけ、fill は、塗りつぶしです。
 
 #### 縦か横か
 
@@ -488,7 +504,8 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   group_by(region) |>
   ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
-  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  labs(y = "count (ratio)")
 ```
 
 #### 縦軸を百分率に
@@ -505,7 +522,8 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_y_continuous(labels = scales::label_percent(accuracy = 1)) + 
-  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  labs(y = "count (percent)")
 ```
 
 積み上げてありますが、並べることも可能です。ちょっと数が多いのでみにくいですが。
@@ -518,7 +536,7 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
 
-### **折線グラフ（line graph）**
+### **折線グラフと箱ひげ図（line graphs and boxplots）**
 
 WDI は時系列データですから、折れ線グラフも使います。後ほど紹介しますが、
 
@@ -589,7 +607,144 @@ df_lifeExp %>% ggplot() +
   geom_line(aes(x = year, y = median_lifeExp, linetype = region))
 ```
 
+### 人口と一人当たりの国内総生産
+
+まず、出生時の平均寿命を見てみましたが、他の指標についてみてみましょう。他には、人口（population）と、一人当たりの 国内総生産（GDP per Capita）の指標がそれぞれ、pop と、gdpPercap という変数名で含まれています。
+
+まずは、簡単に、地域ごとの経年変化を見てみましょう。平均を計算してという方法もありますが、集計したものもデータの中にあるので、上で作った、region 名も使って、それで、グラフを書いてみましょう。
+
+```{r}
+df_wdi_extra |> filter(region == "Aggregates") |> 
+  filter(country %in% regions) |> drop_na(pop) |>
+  ggplot(aes(year, pop, color = country)) + geom_line() + 
+  labs(title = "Populations of Regions", color = "region")
+```
+
+```{r}
+df_wdi_extra |> filter(region == "Aggregates") |> 
+  filter(country %in% regions) |> drop_na(gdpPercap) |>
+  ggplot(aes(year, gdpPercap, color = country)) + geom_line() + 
+  labs(title = "GDP per Capita of Regions", color = "region")
+```
+
+大体、期待したものが描けたかと思います。では、箱ひげ図はどうでしょうか。何年かを切り取り、年毎の地域ごとの分布を見てみましょう。古いものは地域によってはデータがなさそうですから、1980年と、2020年にしましょう。
+
+```{r}
+df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |> 
+  drop_na(pop) |>
+  ggplot(aes(factor(year), pop, fill = region)) + geom_boxplot() + 
+  labs(title = "Population Distributions by Regions", x = "year", fill = "region")
+```
+
+```{r}
+df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |> 
+  drop_na(gdpPercap) |>
+  ggplot(aes(factor(year), gdpPercap, fill = region)) + geom_boxplot() + 
+  labs(title = "GDP per Capita Distribution by Regions", x = "year", fill = "region")
+```
+
+一応、期待したものが表示されたようですが、どうも、下の方が固まっていて、見にくいですね。特に人口のほうは、問題がありそうです。Y 軸でみると、指数表示になっています。小さな国から、人口の多い国までありますから、かなり、幅があるのでしょうね。
+
+両方とも、log10 で表示してみましょう。変形 dplyr のところで使いました。1,000 だと 3、10,000 だと4、100,000 だと 5、1,000,000 だと 6、10,000,000 だと 7、100,000,000 だと 8 と、零の数が表示されるのでした。
+
+```{r}
+df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |> 
+  drop_na(pop) |>
+  ggplot(aes(factor(year), pop, fill = region)) + geom_boxplot() + 
+  scale_y_log10() +
+  labs(title = "Population Distributions by Regions", 
+       x = "year", y = "pop in log10", fill = "region")
+```
+
+```{r}
+df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |> 
+  drop_na(gdpPercap) |>
+  ggplot(aes(factor(year), gdpPercap, fill = region)) + geom_boxplot() + 
+  scale_y_log10() +
+  labs(title = "GDP per Capita Distributions by Regions", 
+       x = "year", y = "gdpPercap in log10", fill = "region")
+```
+
+少しみやすいですかね。実は、log10 で表示する仕方はもう一つあります。座標軸を等間隔にしないで、log10 の切り方に変える方法です。
+
+```{r}
+df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |> 
+  drop_na(pop) |>
+  ggplot(aes(factor(year), pop, fill = region)) + geom_boxplot() + 
+  coord_trans(y = "log10") +
+  labs(title = "Population Distributions by Regions", 
+       x = "year", y = "pop in log10", fill = "region")
+```
+
+```{r}
+df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |> 
+  drop_na(pop) |>
+  ggplot(aes(factor(year), pop, fill = region)) + geom_boxplot() + 
+  coord_trans(y = "log10") +
+  labs(title = "Population Distributions by Regions", 
+       x = "year", y = "pop in log10", fill = "region")
+```
+
+指数表示は避けたいということでしたら、次のようにすることも可能です。日本語にすることも可能です。
+
+```{r}
+df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |> 
+  drop_na(pop) |>
+  ggplot(aes(factor(year), pop, fill = region)) + geom_boxplot() + 
+  scale_y_log10(breaks = c(1e5, 1e7, 1e9), labels = c("10^5", "10^7", "10^9")) +
+  labs(title = "Population Distributions by Regions", 
+       x = "year", y = "pop", fill = "region")
+```
+
 ## コメント
+
+::: {#gg .rmdcaution}
+**描画の幾何（Grammar of Graphics）**
+
+`Ggplot2` は、描画の幾何という理論に則って設計されています。
+
+一つ一つが層（Layer）になっていって、それを定めていくことで、描画（グラフを描いていくこと）をするという設計思想になっています。
+
+-   データ：Data
+
+-   変数の対応：Aestics（絵を飾る要素）: Mapping
+
+-   幾何的関数：Geom Functions
+
+-   統計的処理方法：Stat Option
+
+-   配置の選択：Position Option
+
+-   座標の選択：Coordinate Function
+
+-   尺度関数：Scale Function
+
+-   テーマ関数：Theme Function
+
+簡易的に表現すると、全体として次のようなコードになるというものです。すでに、実例をみてきましたから、おおまかなことは理解できるかと思います。このような設計思想を理解すると、コードを書く時にも、順に頭のなかで構成していくこともできるので、論理的に考えることができます。
+
+ただ、あまり、理論にこだわるのは、ハードルを高くするだけだと思いますので、ここでは、設計思想の背景には、そんなものがあるのかぐらいに理解してくださればよいと思います。
+
+```         
+ggplot (data = <DATA> ) +
+  <GEOM_FUNCTION> (mapping = aes( <MAPPINGS> ),　
+    stat = <STAT> , position = <POSITION> ) + 
+  <COORDINATE_FUNCTION> + 
+  <FACET_FUNCTION> + 
+  <SCALE_FUNCTION> + 
+  <THEME_FUNCTION>
+```
+
+1.  最初にデータを指定します。パイプを使うことも可能です。
+
+2.  幾何関数は一つに限る必要はありませんが、まず、変数の対応を `mapping = aes()` で、定義し、それに、統計処理が必要な時は、stat として加え、場所指定をする時には、position として加えます。
+
+3.  座標系を指定します。
+
+4.  座標軸の物差しを指定します。
+
+5.  全体のテーマなどを最後に指定します。
+:::
 
 ### 参考文献
 
@@ -606,7 +761,20 @@ df_lifeExp %>% ggplot() +
 
 ### Posit Primers <https://posit.cloud/learn/primers>
 
-1.  The Basics -- [r4ds: Explore, I](https://r4ds.had.co.nz/explore-intro.html#explore-intro)
+データの視覚化：Visualize Data -- r4ds: Explore, II
 
--   [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
--   [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
+-   探索的データ分析：[Exploratory Data Analysis](https://rstudio.cloud/learn/primers/3.1)
+
+-   棒グラフ：[Bar Charts](https://rstudio.cloud/learn/primers/3.2)
+
+-   度数分布：[Histograms](https://rstudio.cloud/learn/primers/3.3)
+
+-   箱ひげ図：[Boxplots and Counts](https://rstudio.cloud/learn/primers/3.4)
+
+-   散布図：[Scatterplots](https://rstudio.cloud/learn/primers/3.5)
+
+-   折れ線グラフと地図：[Line plots and maps](https://rstudio.cloud/learn/primers/3.6)
+
+-   点データの重なり：[Overplotting](https://rstudio.cloud/learn/primers/3.7)
+
+-   さまざまな調整：[Customize plots](https://rstudio.cloud/learn/primers/3.8)

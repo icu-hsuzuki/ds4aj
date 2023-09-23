@@ -379,6 +379,16 @@ RStudio の右上の窓の Environment から、df_wdi や、df_wdi_extra を選
     慣れが必要ですから、原則を確認して、あとは、出てきたときに、一つ一つ確認してください。
     :::
 
+## 練習
+
+### Posit Primers <https://posit.cloud/learn/primers>
+
+R と Tidyverse の基礎：The Basics -- r4ds: Explore, I
+
+-   視覚化の基礎：[Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+
+-   プログラミング基礎：[Programming Basics](https://rstudio.cloud/learn/primers/1.2)
+
 ## まとめ
 
 あやめ（iris）のデータを、`df_iris` として、読み込み、WDI パッケージを用いて、WDI のデータを df_wdi および df_wdi_extra として読み込み、それをみてみました。
