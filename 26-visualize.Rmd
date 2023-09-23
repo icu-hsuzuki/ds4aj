@@ -696,6 +696,90 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "year", y = "pop", fill = "region")
 ```
 
+まずは、地域ごとに変化を見るにはどうしたら良いでしょうか。
+
+```{r}
+df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |> 
+  drop_na(pop) |>
+  ggplot(aes(region, pop, fill = factor(year))) + geom_boxplot() + 
+  scale_y_log10(breaks = c(1e5, 1e7, 1e9), labels = c("10^5", "10^7", "10^9")) +
+  labs(title = "Population Distributions by Regions", 
+       x = "region", y = "pop", fill = "year")
+```
+
+地域名が重なっているところがありますね。
+
+```{r}
+df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |> 
+  drop_na(pop) |>
+  ggplot(aes(region, pop, fill = factor(year))) + geom_boxplot() + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 20)) +
+  scale_y_log10(breaks = c(1e5, 1e7, 1e9), labels = c("10^5", "10^7", "10^9")) +
+  labs(title = "Population Distributions by Regions", 
+       x = "region", y = "pop", fill = "year")
+```
+
+### 散布図
+
+```{r}
+df_wdi_extra |> filter(year == 2021) |> drop_na(pop, gdpPercap) |>
+  ggplot(aes(pop, gdpPercap, color = region)) + 
+  geom_point() + scale_x_log10() + scale_y_log10()
+```
+
+どうでしょうか。何か、発見はありますか。
+
+### 世界地図
+
+世界地図については、別の箇所で述べますが、簡単に説明しておきます。
+
+maps パッケージ： [https://CRAN.R-project.org/package=maps](https://cran.r-project.org/package=maps)
+
+まずは、地図データが必要です。ここでは、`maps` パッケージを使い、`ggplot2` の `geom_map()` を使います。この世界地図は、たくさんの情報を持っています。region が、ほぼ国に対応しています。long と lat は、緯度と経度の情報で、国ごとに、境界線情報を、線で結ぶように、順序もつけて、与えています。あとで、df_wdi_extra と結合するために、共通の情報が必要なので、iso2c 情報を付け加えておきます。ここで使う、`iso.alpha()` は、`maps` パッケージの関数です。
+
+```{r}
+library(maps)
+worldmap <- map_data('world') |>  mutate(iso2c = iso.alpha(region, n=2))
+worldmap
+```
+
+df_wdi をそのまま組み込むとあまりに、列数が多くなるので、必要な部分だけ取り出し、それを、wdi_short とし、それから、iso2c, lifeExp, pop, gdpPercap, income, region を取り出します。region は、worldmap にも入っているので、違う名前にしておきます。
+
+最初に準備したように、地図にも、iso2c がありますから、それを共通の鍵として、二つの表を結合します。表の結合は、次の章で学びます。
+
+出来上がったのが、map_wdi です。つまり、地図データに、WDI の情報を加えたものです。
+
+```{r}
+wdi_short <- df_wdi_extra |> filter(year == 2022, region != "Aggregates") |>
+  select(iso2c, lifeExp, pop, gdpPercap, income, wdi_region = region)
+map_wdi <- worldmap |> 
+  left_join(wdi_short, by = "iso2c") 
+map_wdi
+```
+
+```{r}
+map_wdi |> mutate(income_level = factor(income, levels = c("High income", "Upper middle income", "Lower middle income", "Low income", "Not classified", NA))) |>
+  ggplot() +
+  geom_map(aes(long, lat, map_id = region, fill = income_level), map = worldmap, col = "black", size = 0.1) +
+  labs(title = "2022 Income Level of the World")
+```
+
+```{r}
+map_wdi |>
+  ggplot() +
+  geom_map(aes(long, lat, map_id = region, fill = wdi_region), map = worldmap, col = "black", size = 0.1) +
+  labs(title = "Regions of World in WDI")
+```
+
+```{r}
+map_wdi |>
+  ggplot() +
+  geom_map(aes(x=long, y=lat, map_id = region, fill = log10(pop)), map = worldmap, col = "black", size = 0.1) +
+  labs(title = "2022 Population of the World by Country", fill = "pop in log10")
+```
+
+map_wdi には、他にも情報が入っていますから、さまざまな地図が描けますね。
+
 ## コメント
 
 ::: {#gg .rmdcaution}

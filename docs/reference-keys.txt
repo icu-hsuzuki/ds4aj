@@ -334,6 +334,8 @@ df_wdi-df_wdi_extra-1
 折線グラフと箱ひげ図line-graphs-and-boxplots
 box-plot
 人口と一人当たりの国内総生産
+散布図
+世界地図
 コメント
 参考文献-1
 練習-6
