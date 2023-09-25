@@ -10,7 +10,27 @@ install.packages("devtools")
 devtools::install_github("piersyork/owidR")
 ```
 
-*使い方なのが変更になっている可能性があり、全面的に修正が必要か？*
+*使い方なのが変更になっている可能性があり、全面的に修正が必要かもしれません*
+
+## owidR パッケージの現況
+
+2023.09.25
+
+-   CRAN からは削除されている。
+
+-   GitHub サイトから devtools を使ってインストールは可能
+
+-   owid_search() は使えるようである。
+
+-   owid() によるデータのダウンロードしようとすると、Warning と Error が返される。
+
+-   view_chart() は使えるようである。
+
+-   owid_covid() は使えるようである。
+
+-   ほかは、owid() でデータが取得できないので、使えない。
+
+-   Source Code は、サイト（<https://rdrr.io/cran/owidR/>）で見ることができるので、修正を考えるのがよいように思われる。
 
 ## The package `owidR`
 
@@ -130,26 +150,14 @@ If the list is not long, you do not need to add `as_tibble()`. However, note tha
 
 
 ```r
-owid_search("human rights")
-#>      titles                                                                             
-#> [1,] "Human rights index vs. electoral democracy index"                                 
-#> [2,] "Confirmed killings of human rights defenders, journalists and trade unionists"    
-#> [3,] "Countries with accredited independent national human rights institutions"         
-#> [4,] "Distribution of human rights index"                                               
-#> [5,] "Human rights index"                                                               
-#> [6,] "Human rights index"                                                               
-#> [7,] "Human rights index vs. GDP per capita"                                            
-#> [8,] "Share of countries with accredited independent national human rights institutions"
-#>      chart_id                                                                   
-#> [1,] "human-rights-index-vs-electoral-democracy-index"                          
-#> [2,] "cases-of-killed-human-rights-defenders-journalists-trade-unionists"       
-#> [3,] "countries-with-independent-national-human-rights-institution"             
-#> [4,] "distribution-human-rights-index-vdem"                                     
-#> [5,] "human-rights-index-vdem"                                                  
-#> [6,] "human-rights-index-population-weighted"                                   
-#> [7,] "human-rights-index-vs-gdp-per-capita"                                     
-#> [8,] "share-countries-accredited-independent-national-human-rights-institutions"
+owid_search("human rights") %>% as_tibble()
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["titles"],"name":[1],"type":["chr"],"align":["left"]},{"label":["chart_id"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"Human rights index vs. electoral democracy index","2":"human-rights-index-vs-electoral-democracy-index"},{"1":"Confirmed killings of human rights defenders, journalists and trade unionists","2":"cases-of-killed-human-rights-defenders-journalists-trade-unionists"},{"1":"Countries with accredited independent national human rights institutions","2":"countries-with-independent-national-human-rights-institution"},{"1":"Distribution of human rights index","2":"distribution-human-rights-index-vdem"},{"1":"Human rights index","2":"human-rights-index-vdem"},{"1":"Human rights index","2":"human-rights-index-population-weighted"},{"1":"Human rights index vs. GDP per capita","2":"human-rights-index-vs-gdp-per-capita"},{"1":"Share of countries with accredited independent national human rights institutions","2":"share-countries-accredited-independent-national-human-rights-institutions"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 ##### `owid`
 

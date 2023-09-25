@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 27 Our World in Data | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 28 Our World in Data | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hiroshi Suzuki）">
-<meta name="description" content='ここでは、R Package owid を用いた例をあげる 必要に応じてインストールしてください。 install.packages("devtools") devtools::install_github("piersyork/owidR") 使い方なのが変更になっている可能性があり、全面的に修正が必要か？  27.1 The package owidR  We study the R...'>
+<meta name="description" content='ここでは、R Package owid を用いた例をあげる 必要に応じてインストールしてください。 install.packages("devtools") devtools::install_github("piersyork/owidR") 使い方なのが変更になっている可能性があり、全面的に修正が必要かもしれません  28.1 owidR パッケージの現況 2023.09.25...'>
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="Chapter 27 Our World in Data | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 28 Our World in Data | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/owid.html">
-<meta property="og:description" content='ここでは、R Package owid を用いた例をあげる 必要に応じてインストールしてください。 install.packages("devtools") devtools::install_github("piersyork/owidR") 使い方なのが変更になっている可能性があり、全面的に修正が必要か？  27.1 The package owidR  We study the R...'>
+<meta property="og:description" content='ここでは、R Package owid を用いた例をあげる 必要に応じてインストールしてください。 install.packages("devtools") devtools::install_github("piersyork/owidR") 使い方なのが変更になっている可能性があり、全面的に修正が必要かもしれません  28.1 owidR パッケージの現況 2023.09.25...'>
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 27 Our World in Data | データサイエンスをはじめましょう - Data Science for All -">
-<meta name="twitter:description" content='ここでは、R Package owid を用いた例をあげる 必要に応じてインストールしてください。 install.packages("devtools") devtools::install_github("piersyork/owidR") 使い方なのが変更になっている可能性があり、全面的に修正が必要か？  27.1 The package owidR  We study the R...'>
+<meta name="twitter:title" content="Chapter 28 Our World in Data | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:description" content='ここでは、R Package owid を用いた例をあげる 必要に応じてインストールしてください。 install.packages("devtools") devtools::install_github("piersyork/owidR") 使い方なのが変更になっている可能性があり、全面的に修正が必要かもしれません  28.1 owidR パッケージの現況 2023.09.25...'>
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -96,18 +96,19 @@
 <li><a class="" href="aboutfirstexample.html"><span class="header-section-number">23</span> 復習</a></li>
 <li class="book-part">第三部 オープンデータの活用</li>
 <li><a class="" href="publicdata.html"><span class="header-section-number">24</span> オープンデータの分析</a></li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">25</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">26</span> UN Data（国際連合データ）</a></li>
-<li><a class="active" href="owid.html"><span class="header-section-number">27</span> Our World in Data</a></li>
-<li><a class="" href="wid.html"><span class="header-section-number">28</span> 世界不平等データベース</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">29</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">30</span> その他のデータベース</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">25</span> 世界銀行（World Bank）</a></li>
+<li><a class="" href="oecd.html"><span class="header-section-number">26</span> OECD（経済協力開発機構）</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">27</span> UN Data（国際連合データ）</a></li>
+<li><a class="active" href="owid.html"><span class="header-section-number">28</span> Our World in Data</a></li>
+<li><a class="" href="wid.html"><span class="header-section-number">29</span> 世界不平等データベース</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">30</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">31</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">31</span> 探索的データ解析</a></li>
-<li><a class="" href="worldmap.html"><span class="header-section-number">32</span> 地図 Choropleth Maps</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">32</span> 探索的データ解析</a></li>
+<li><a class="" href="worldmap.html"><span class="header-section-number">33</span> 地図 Choropleth Maps</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">33</span> Example 1</a></li>
-<li><a class="" href="references.html"><span class="header-section-number">34</span> 参考文献</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">34</span> Example 1</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">35</span> 参考文献</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -120,27 +121,43 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="owid" class="section level1" number="27">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="owid" class="section level1" number="28">
 <h1>
-<span class="header-section-number">27</span> Our World in Data<a class="anchor" aria-label="anchor" href="#owid"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28</span> Our World in Data<a class="anchor" aria-label="anchor" href="#owid"><i class="fas fa-link"></i></a>
 </h1>
 <p>ここでは、R Package owid を用いた例をあげる</p>
 <p>必要に応じてインストールしてください。</p>
 <div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"piersyork/owidR"</span><span class="op">)</span></span></code></pre></div>
-<p><em>使い方なのが変更になっている可能性があり、全面的に修正が必要か？</em></p>
-<div id="the-package-owidr" class="section level2" number="27.1">
+<p><em>使い方なのが変更になっている可能性があり、全面的に修正が必要かもしれません</em></p>
+<div id="owidr-パッケージの現況" class="section level2" number="28.1">
 <h2>
-<span class="header-section-number">27.1</span> The package <code>owidR</code><a class="anchor" aria-label="anchor" href="#the-package-owidr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.1</span> owidR パッケージの現況<a class="anchor" aria-label="anchor" href="#owidr-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E7%8F%BE%E6%B3%81"><i class="fas fa-link"></i></a>
+</h2>
+<p>2023.09.25</p>
+<ul>
+<li><p>CRAN からは削除されている。</p></li>
+<li><p>GitHub サイトから devtools を使ってインストールは可能</p></li>
+<li><p>owid_search() は使えるようである。</p></li>
+<li><p>owid() によるデータのダウンロードしようとすると、Warning と Error が返される。</p></li>
+<li><p>view_chart() は使えるようである。</p></li>
+<li><p>owid_covid() は使えるようである。</p></li>
+<li><p>ほかは、owid() でデータが取得できないので、使えない。</p></li>
+<li><p>Source Code は、サイト（<a href="https://rdrr.io/cran/owidR/" class="uri">https://rdrr.io/cran/owidR/</a>）で見ることができるので、修正を考えるのがよいように思われる。</p></li>
+</ul>
+</div>
+<div id="the-package-owidr" class="section level2" number="28.2">
+<h2>
+<span class="header-section-number">28.2</span> The package <code>owidR</code><a class="anchor" aria-label="anchor" href="#the-package-owidr"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>We study the R package <code>owidR</code> for importing data from Our World in Data.</p>
 </blockquote>
 </div>
-<div id="references" class="section level2" number="27.2">
+<div id="references" class="section level2" number="28.3">
 <h2>
-<span class="header-section-number">27.2</span> References<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.3</span> References<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
 </h2>
 <p>The package official site contains other links. When you quote the package, use the link to the official site.</p>
 <ul>
@@ -163,28 +180,28 @@
 </ul>
 <p>In general, README gives a short introduction to the package, a Manual, the comprehensive descriptions of each function, and a Vignette, a practical introduction containing examples and applications.</p>
 </div>
-<div id="introduction-1" class="section level2" number="27.3">
+<div id="introduction-1" class="section level2" number="28.4">
 <h2>
-<span class="header-section-number">27.3</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>This package acts as an interface to <a href="https://ourworldindata.org">Our World in Data</a> datasets, allowing for an easy way to search through data used in over 3,000 charts and load them into the R environment.</p>
 </blockquote>
-<div id="setup" class="section level3" number="27.3.1">
+<div id="setup" class="section level3" number="28.4.1">
 <h3>
-<span class="header-section-number">27.3.1</span> Setup<a class="anchor" aria-label="anchor" href="#setup"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.1</span> Setup<a class="anchor" aria-label="anchor" href="#setup"><i class="fas fa-link"></i></a>
 </h3>
-<div id="installation" class="section level4" number="27.3.1.1">
+<div id="installation" class="section level4" number="28.4.1.1">
 <h4>
-<span class="header-section-number">27.3.1.1</span> Installation<a class="anchor" aria-label="anchor" href="#installation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.1.1</span> Installation<a class="anchor" aria-label="anchor" href="#installation"><i class="fas fa-link"></i></a>
 </h4>
 <p>Run the following for the first time</p>
 <div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"owidR"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="load-the-package" class="section level4" number="27.3.1.2">
+<div id="load-the-package" class="section level4" number="28.4.1.2">
 <h4>
-<span class="header-section-number">27.3.1.2</span> Load the package<a class="anchor" aria-label="anchor" href="#load-the-package"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.1.2</span> Load the package<a class="anchor" aria-label="anchor" href="#load-the-package"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb408"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/piersyork/owidR">owidR</a></span><span class="op">)</span></span>
@@ -203,13 +220,13 @@
 <p>The creator of this package also suggests loading packages <code>plm</code> for panels of data, and <code>texreg</code> for displaying models, but let us start without them until we actually use them. For panel data, see, for example, the site](<a href="https://www.aptech.com/blog/introduction-to-the-fundamentals-of-panel-data/" class="uri">https://www.aptech.com/blog/introduction-to-the-fundamentals-of-panel-data/</a>).</p>
 </div>
 </div>
-<div id="core-functions" class="section level3" number="27.3.2">
+<div id="core-functions" class="section level3" number="28.4.2">
 <h3>
-<span class="header-section-number">27.3.2</span> Core functions<a class="anchor" aria-label="anchor" href="#core-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.2</span> Core functions<a class="anchor" aria-label="anchor" href="#core-functions"><i class="fas fa-link"></i></a>
 </h3>
-<div id="list-of-core-functions" class="section level4" number="27.3.2.1">
+<div id="list-of-core-functions" class="section level4" number="28.4.2.1">
 <h4>
-<span class="header-section-number">27.3.2.1</span> List of core functions<a class="anchor" aria-label="anchor" href="#list-of-core-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.2.1</span> List of core functions<a class="anchor" aria-label="anchor" href="#list-of-core-functions"><i class="fas fa-link"></i></a>
 </h4>
 <p>In this package, <code>chart</code> is close to data, and <code>chart id</code> is a data indicator.</p>
 <ul>
@@ -222,13 +239,13 @@
 <li>world_map_data: Function that returns a simple feature collection of class sf. Map data is from naturalearthdata.com. Designed to be used internally.</li>
 </ul>
 </div>
-<div id="usage" class="section level4" number="27.3.2.2">
+<div id="usage" class="section level4" number="28.4.2.2">
 <h4>
-<span class="header-section-number">27.3.2.2</span> Usage<a class="anchor" aria-label="anchor" href="#usage"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.2.2</span> Usage<a class="anchor" aria-label="anchor" href="#usage"><i class="fas fa-link"></i></a>
 </h4>
-<div id="owid_search" class="section level5" number="27.3.2.2.1">
+<div id="owid_search" class="section level5" number="28.4.2.2.1">
 <h5>
-<span class="header-section-number">27.3.2.2.1</span> <code>owid_search</code><a class="anchor" aria-label="anchor" href="#owid_search"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.2.2.1</span> <code>owid_search</code><a class="anchor" aria-label="anchor" href="#owid_search"><i class="fas fa-link"></i></a>
 </h5>
 <p>Search the data sources used in OWID charts</p>
 <pre><code>owid_search(term)</code></pre>
@@ -262,29 +279,16 @@
 </div>
 <p>If the list is not long, you do not need to add <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble()</a></code>. However, note that you need to keep in mind that the title and the chart_id consists of a pair, and you need to use the chart_id to download the data using <code>owid</code>.</p>
 <div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_search.html">owid_search</a></span><span class="op">(</span><span class="st">"human rights"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      titles                                                                             </span></span>
-<span><span class="co">#&gt; [1,] "Human rights index vs. electoral democracy index"                                 </span></span>
-<span><span class="co">#&gt; [2,] "Confirmed killings of human rights defenders, journalists and trade unionists"    </span></span>
-<span><span class="co">#&gt; [3,] "Countries with accredited independent national human rights institutions"         </span></span>
-<span><span class="co">#&gt; [4,] "Distribution of human rights index"                                               </span></span>
-<span><span class="co">#&gt; [5,] "Human rights index"                                                               </span></span>
-<span><span class="co">#&gt; [6,] "Human rights index"                                                               </span></span>
-<span><span class="co">#&gt; [7,] "Human rights index vs. GDP per capita"                                            </span></span>
-<span><span class="co">#&gt; [8,] "Share of countries with accredited independent national human rights institutions"</span></span>
-<span><span class="co">#&gt;      chart_id                                                                   </span></span>
-<span><span class="co">#&gt; [1,] "human-rights-index-vs-electoral-democracy-index"                          </span></span>
-<span><span class="co">#&gt; [2,] "cases-of-killed-human-rights-defenders-journalists-trade-unionists"       </span></span>
-<span><span class="co">#&gt; [3,] "countries-with-independent-national-human-rights-institution"             </span></span>
-<span><span class="co">#&gt; [4,] "distribution-human-rights-index-vdem"                                     </span></span>
-<span><span class="co">#&gt; [5,] "human-rights-index-vdem"                                                  </span></span>
-<span><span class="co">#&gt; [6,] "human-rights-index-population-weighted"                                   </span></span>
-<span><span class="co">#&gt; [7,] "human-rights-index-vs-gdp-per-capita"                                     </span></span>
-<span><span class="co">#&gt; [8,] "share-countries-accredited-independent-national-human-rights-institutions"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_search.html">owid_search</a></span><span class="op">(</span><span class="st">"human rights"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["titles"],"name":[1],"type":["chr"],"align":["left"]},{"label":["chart_id"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"Human rights index vs. electoral democracy index","2":"human-rights-index-vs-electoral-democracy-index"},{"1":"Confirmed killings of human rights defenders, journalists and trade unionists","2":"cases-of-killed-human-rights-defenders-journalists-trade-unionists"},{"1":"Countries with accredited independent national human rights institutions","2":"countries-with-independent-national-human-rights-institution"},{"1":"Distribution of human rights index","2":"distribution-human-rights-index-vdem"},{"1":"Human rights index","2":"human-rights-index-vdem"},{"1":"Human rights index","2":"human-rights-index-population-weighted"},{"1":"Human rights index vs. GDP per capita","2":"human-rights-index-vs-gdp-per-capita"},{"1":"Share of countries with accredited independent national human rights institutions","2":"share-countries-accredited-independent-national-human-rights-institutions"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
-<div id="owid-1" class="section level5" number="27.3.2.2.2">
+</div>
+<div id="owid-1" class="section level5" number="28.4.2.2.2">
 <h5>
-<span class="header-section-number">27.3.2.2.2</span> <code>owid</code><a class="anchor" aria-label="anchor" href="#owid-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.2.2.2</span> <code>owid</code><a class="anchor" aria-label="anchor" href="#owid-1"><i class="fas fa-link"></i></a>
 </h5>
 <p>Get a dataset used in an OWID chart</p>
 <pre><code>owid(chart_id = NULL, rename = NULL, tidy.date = TRUE, ...)</code></pre>
@@ -331,9 +335,9 @@
 <span>         `electdem_vdem_low_owid` <span class="op">=</span> <span class="va">`electdem_vdem_low_owid`</span><span class="op">)</span></span>
 <span><span class="va">democracy</span></span></code></pre></div>
 </div>
-<div id="owid_source" class="section level5" number="27.3.2.2.3">
+<div id="owid_source" class="section level5" number="28.4.2.2.3">
 <h5>
-<span class="header-section-number">27.3.2.2.3</span> <code>owid_source</code><a class="anchor" aria-label="anchor" href="#owid_source"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.2.2.3</span> <code>owid_source</code><a class="anchor" aria-label="anchor" href="#owid_source"><i class="fas fa-link"></i></a>
 </h5>
 <p>A function to get source information from an OWID dataset and display it in the R console.</p>
 <pre><code>owid_source(data)</code></pre>
@@ -345,9 +349,9 @@
 <div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_source.html">owid_source</a></span><span class="op">(</span><span class="va">rights</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="view_chart" class="section level5" number="27.3.2.2.4">
+<div id="view_chart" class="section level5" number="28.4.2.2.4">
 <h5>
-<span class="header-section-number">27.3.2.2.4</span> <code>view_chart</code><a class="anchor" aria-label="anchor" href="#view_chart"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.2.2.4</span> <code>view_chart</code><a class="anchor" aria-label="anchor" href="#view_chart"><i class="fas fa-link"></i></a>
 </h5>
 <p>A function that opens the original OWID chart in your browser</p>
 <pre><code>view_chart(x)</code></pre>
@@ -370,15 +374,15 @@
 <iframe src="https://ourworldindata.org/grapher/share-of-individuals-using-the-internet" loading="lazy" style="width: 100%; height: 600px; border: 0px none;">
 </iframe>
 </div>
-<div id="pal_owid" class="section level5" number="27.3.2.2.5">
+<div id="pal_owid" class="section level5" number="28.4.2.2.5">
 <h5>
-<span class="header-section-number">27.3.2.2.5</span> <code>pal_owid</code><a class="anchor" aria-label="anchor" href="#pal_owid"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.2.2.5</span> <code>pal_owid</code><a class="anchor" aria-label="anchor" href="#pal_owid"><i class="fas fa-link"></i></a>
 </h5>
 <p>Colour palettes based on the colours used by Our World in Data</p>
 </div>
-<div id="owid_covid" class="section level5" number="27.3.2.2.6">
+<div id="owid_covid" class="section level5" number="28.4.2.2.6">
 <h5>
-<span class="header-section-number">27.3.2.2.6</span> <code>owid_covid</code><a class="anchor" aria-label="anchor" href="#owid_covid"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.4.2.2.6</span> <code>owid_covid</code><a class="anchor" aria-label="anchor" href="#owid_covid"><i class="fas fa-link"></i></a>
 </h5>
 <p>owid_covid: Get the Our World in Data covid-19 dataset</p>
 <pre><code><a href="https://rdrr.io/pkg/owidR/man/owid_covid.html">owid_covid()</a></code></pre>
@@ -399,14 +403,14 @@
 </div>
 </div>
 </div>
-<div id="examples" class="section level2" number="27.4">
+<div id="examples" class="section level2" number="28.5">
 <h2>
-<span class="header-section-number">27.4</span> Examples<a class="anchor" aria-label="anchor" href="#examples"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.5</span> Examples<a class="anchor" aria-label="anchor" href="#examples"><i class="fas fa-link"></i></a>
 </h2>
 <p>The following is based on the presentation and the first two R Notebook files created by Professor Kaizoji.</p>
-<div id="human-rights--modified-from-readme" class="section level3" number="27.4.1">
+<div id="human-rights--modified-from-readme" class="section level3" number="28.5.1">
 <h3>
-<span class="header-section-number">27.4.1</span> Human Rights- modified from README<a class="anchor" aria-label="anchor" href="#human-rights--modified-from-readme"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.5.1</span> Human Rights- modified from README<a class="anchor" aria-label="anchor" href="#human-rights--modified-from-readme"><i class="fas fa-link"></i></a>
 </h3>
 <p>Lets use the core functions to get data on how human rights have changed over time. First by searching for charts on human rights.</p>
 <div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
@@ -427,9 +431,9 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">`Human rights protection`</span>, colour <span class="op">=</span> <span class="va">entity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="internet---modified-from-vignette" class="section level3" number="27.4.2">
+<div id="internet---modified-from-vignette" class="section level3" number="28.5.2">
 <h3>
-<span class="header-section-number">27.4.2</span> Internet - modified from vignette<a class="anchor" aria-label="anchor" href="#internet---modified-from-vignette"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.5.2</span> Internet - modified from vignette<a class="anchor" aria-label="anchor" href="#internet---modified-from-vignette"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_search.html">owid_search</a></span><span class="op">(</span><span class="st">"internet"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -475,9 +479,9 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_map.html">owid_map</a></span><span class="op">(</span><span class="va">internet</span>, year <span class="op">=</span> <span class="fl">2017</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Share of Population Using the Internet, 2017"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="democracy---modified-from-vignette" class="section level3" number="27.4.3">
+<div id="democracy---modified-from-vignette" class="section level3" number="28.5.3">
 <h3>
-<span class="header-section-number">27.4.3</span> Democracy - modified from vignette<a class="anchor" aria-label="anchor" href="#democracy---modified-from-vignette"><i class="fas fa-link"></i></a>
+<span class="header-section-number">28.5.3</span> Democracy - modified from vignette<a class="anchor" aria-label="anchor" href="#democracy---modified-from-vignette"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb446"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_search.html">owid_search</a></span><span class="op">(</span><span class="st">"democrac"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -575,25 +579,26 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="un.html"><span class="header-section-number">26</span> UN Data（国際連合データ）</a></div>
-<div class="next"><a href="wid.html"><span class="header-section-number">28</span> 世界不平等データベース</a></div>
+<div class="prev"><a href="un.html"><span class="header-section-number">27</span> UN Data（国際連合データ）</a></div>
+<div class="next"><a href="wid.html"><span class="header-section-number">29</span> 世界不平等データベース</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#owid"><span class="header-section-number">27</span> Our World in Data</a></li>
-<li><a class="nav-link" href="#the-package-owidr"><span class="header-section-number">27.1</span> The package owidR</a></li>
-<li><a class="nav-link" href="#references"><span class="header-section-number">27.2</span> References</a></li>
+<li><a class="nav-link" href="#owid"><span class="header-section-number">28</span> Our World in Data</a></li>
+<li><a class="nav-link" href="#owidr-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E7%8F%BE%E6%B3%81"><span class="header-section-number">28.1</span> owidR パッケージの現況</a></li>
+<li><a class="nav-link" href="#the-package-owidr"><span class="header-section-number">28.2</span> The package owidR</a></li>
+<li><a class="nav-link" href="#references"><span class="header-section-number">28.3</span> References</a></li>
 <li>
-<a class="nav-link" href="#introduction-1"><span class="header-section-number">27.3</span> Introduction</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#setup"><span class="header-section-number">27.3.1</span> Setup</a></li>
-<li><a class="nav-link" href="#core-functions"><span class="header-section-number">27.3.2</span> Core functions</a></li>
+<a class="nav-link" href="#introduction-1"><span class="header-section-number">28.4</span> Introduction</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#setup"><span class="header-section-number">28.4.1</span> Setup</a></li>
+<li><a class="nav-link" href="#core-functions"><span class="header-section-number">28.4.2</span> Core functions</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#examples"><span class="header-section-number">27.4</span> Examples</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#human-rights--modified-from-readme"><span class="header-section-number">27.4.1</span> Human Rights- modified from README</a></li>
-<li><a class="nav-link" href="#internet---modified-from-vignette"><span class="header-section-number">27.4.2</span> Internet - modified from vignette</a></li>
-<li><a class="nav-link" href="#democracy---modified-from-vignette"><span class="header-section-number">27.4.3</span> Democracy - modified from vignette</a></li>
+<a class="nav-link" href="#examples"><span class="header-section-number">28.5</span> Examples</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#human-rights--modified-from-readme"><span class="header-section-number">28.5.1</span> Human Rights- modified from README</a></li>
+<li><a class="nav-link" href="#internet---modified-from-vignette"><span class="header-section-number">28.5.2</span> Internet - modified from vignette</a></li>
+<li><a class="nav-link" href="#democracy---modified-from-vignette"><span class="header-section-number">28.5.3</span> Democracy - modified from vignette</a></li>
 </ul>
 </li>
 </ul>
@@ -614,7 +619,7 @@
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-23.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

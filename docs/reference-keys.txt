@@ -471,6 +471,7 @@ wdi-パッケージ
 課題-assignment
 政府支出国内総生産比government-expenditure-of-gdp
 un
+owidr-パッケージの現況
 the-package-owidr
 references
 introduction-1

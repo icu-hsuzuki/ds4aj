@@ -9,7 +9,27 @@ install.packages("devtools")
 devtools::install_github("piersyork/owidR")
 ```
 
-*使い方なのが変更になっている可能性があり、全面的に修正が必要か？*
+*使い方なのが変更になっている可能性があり、全面的に修正が必要かもしれません*
+
+## owidR パッケージの現況
+
+2023.09.25
+
+-   CRAN からは削除されている。
+
+-   GitHub サイトから devtools を使ってインストールは可能
+
+-   owid_search() は使えるようである。
+
+-   owid() によるデータのダウンロードしようとすると、Warning と Error が返される。
+
+-   view_chart() は使えるようである。
+
+-   owid_covid() は使えるようである。
+
+-   ほかは、owid() でデータが取得できないので、使えない。
+
+-   Source Code は、サイト（<https://rdrr.io/cran/owidR/>）で見ることができるので、修正を考えるのがよいように思われる。
 
 ## The package `owidR`
 
@@ -94,7 +114,7 @@ owid_search("emissions") %>% as_tibble()
 If the list is not long, you do not need to add `as_tibble()`. However, note that you need to keep in mind that the title and the chart_id consists of a pair, and you need to use the chart_id to download the data using `owid`.
 
 ```{r}
-owid_search("human rights")
+owid_search("human rights") %>% as_tibble()
 ```
 
 ##### `owid`

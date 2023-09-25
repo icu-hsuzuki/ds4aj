@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 32 地図 Choropleth Maps | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>Chapter 33 地図 Choropleth Maps | データサイエンスをはじめましょう - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hiroshi Suzuki）">
 <meta name="description" content="この章では、ggplot2 を使って、情報付きの地図を生成する方法を学ぶ。 最も基本的な data.frame を用い geom_map または geom_polygon で地図を書くことも可能だが、最近は、simple feature (sf) 形式のデータを使って ggplot2 の geom_sf を用いて地図を描くことで、複雑なものを扱えるようになってきている。...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="Chapter 32 地図 Choropleth Maps | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="Chapter 33 地図 Choropleth Maps | データサイエンスをはじめましょう - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/worldmap.html">
 <meta property="og:description" content="この章では、ggplot2 を使って、情報付きの地図を生成する方法を学ぶ。 最も基本的な data.frame を用い geom_map または geom_polygon で地図を書くことも可能だが、最近は、simple feature (sf) 形式のデータを使って ggplot2 の geom_sf を用いて地図を描くことで、複雑なものを扱えるようになってきている。...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 32 地図 Choropleth Maps | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:title" content="Chapter 33 地図 Choropleth Maps | データサイエンスをはじめましょう - Data Science for All -">
 <meta name="twitter:description" content="この章では、ggplot2 を使って、情報付きの地図を生成する方法を学ぶ。 最も基本的な data.frame を用い geom_map または geom_polygon で地図を書くことも可能だが、最近は、simple feature (sf) 形式のデータを使って ggplot2 の geom_sf を用いて地図を描くことで、複雑なものを扱えるようになってきている。...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -96,18 +96,19 @@
 <li><a class="" href="aboutfirstexample.html"><span class="header-section-number">23</span> 復習</a></li>
 <li class="book-part">第三部 オープンデータの活用</li>
 <li><a class="" href="publicdata.html"><span class="header-section-number">24</span> オープンデータの分析</a></li>
-<li><a class="" href="worldbank.html"><span class="header-section-number">25</span> World Bank</a></li>
-<li><a class="" href="un.html"><span class="header-section-number">26</span> UN Data（国際連合データ）</a></li>
-<li><a class="" href="owid.html"><span class="header-section-number">27</span> Our World in Data</a></li>
-<li><a class="" href="wid.html"><span class="header-section-number">28</span> 世界不平等データベース</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">29</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">30</span> その他のデータベース</a></li>
+<li><a class="" href="worldbank.html"><span class="header-section-number">25</span> 世界銀行（World Bank）</a></li>
+<li><a class="" href="oecd.html"><span class="header-section-number">26</span> OECD（経済協力開発機構）</a></li>
+<li><a class="" href="un.html"><span class="header-section-number">27</span> UN Data（国際連合データ）</a></li>
+<li><a class="" href="owid.html"><span class="header-section-number">28</span> Our World in Data</a></li>
+<li><a class="" href="wid.html"><span class="header-section-number">29</span> 世界不平等データベース</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">30</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">31</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">31</span> 探索的データ解析</a></li>
-<li><a class="active" href="worldmap.html"><span class="header-section-number">32</span> 地図 Choropleth Maps</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">32</span> 探索的データ解析</a></li>
+<li><a class="active" href="worldmap.html"><span class="header-section-number">33</span> 地図 Choropleth Maps</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">33</span> Example 1</a></li>
-<li><a class="" href="references.html"><span class="header-section-number">34</span> 参考文献</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">34</span> Example 1</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">35</span> 参考文献</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -120,16 +121,16 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="worldmap" class="section level1" number="32">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="worldmap" class="section level1" number="33">
 <h1>
-<span class="header-section-number">32</span> 地図 Choropleth Maps<a class="anchor" aria-label="anchor" href="#worldmap"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33</span> 地図 Choropleth Maps<a class="anchor" aria-label="anchor" href="#worldmap"><i class="fas fa-link"></i></a>
 </h1>
 <p>この章では、<code>ggplot2</code> を使って、情報付きの地図を生成する方法を学ぶ。</p>
 <p>最も基本的な <code>data.frame</code> を用い <code>geom_map</code> または <code>geom_polygon</code> で地図を書くことも可能だが、最近は、<code>simple feature (sf)</code> 形式のデータを使って <code>ggplot2</code> の <code>geom_sf</code> を用いて地図を描くことで、複雑なものを扱えるようになってきている。</p>
 <p>本書のテーマからも、ある情報を加えた地図は有効だと思われるので、紹介を試みる。</p>
-<div id="準備" class="section level2" number="32.1">
+<div id="準備" class="section level2" number="33.1">
 <h2>
-<span class="header-section-number">32.1</span> 準備<a class="anchor" aria-label="anchor" href="#%E6%BA%96%E5%82%99"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.1</span> 準備<a class="anchor" aria-label="anchor" href="#%E6%BA%96%E5%82%99"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb570"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
@@ -177,9 +178,9 @@
 <span><span class="co">#&gt; Columns: 2</span></span>
 <span><span class="co">#&gt; $ iso2c  &lt;chr&gt; "AW", "AF", "AO", "AL", "AD", "AE", "AR", "…</span></span>
 <span><span class="co">#&gt; $ income &lt;fct&gt; High income, Low income, Lower middle incom…</span></span></code></pre></div>
-<div id="geom_sf" class="section level3" number="32.1.1">
+<div id="geom_sf" class="section level3" number="33.1.1">
 <h3>
-<span class="header-section-number">32.1.1</span> <code>geom_sf</code><a class="anchor" aria-label="anchor" href="#geom_sf"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.1.1</span> <code>geom_sf</code><a class="anchor" aria-label="anchor" href="#geom_sf"><i class="fas fa-link"></i></a>
 </h3>
 <p>See also, <code>coord_sf</code>, <code>geom_sf_label</code>, <code>geom_sf_text</code>, <code>stat_sf</code>.</p>
 <blockquote>
@@ -198,16 +199,16 @@
 )</code></pre>
 </div>
 </div>
-<div id="natural-earth-data" class="section level2" number="32.2">
+<div id="natural-earth-data" class="section level2" number="33.2">
 <h2>
-<span class="header-section-number">32.2</span> Natural Earth Data<a class="anchor" aria-label="anchor" href="#natural-earth-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.2</span> Natural Earth Data<a class="anchor" aria-label="anchor" href="#natural-earth-data"><i class="fas fa-link"></i></a>
 </h2>
 <p><a href="https://www.naturalearthdata.com" class="uri">https://www.naturalearthdata.com</a></p>
 <p>このサイトで、データを提供しています。</p>
 <p>Manual: <a href="https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth.pdf" class="uri">https://cran.r-project.org/web/packages/rnaturalearth/rnaturalearth.pdf</a></p>
-<div id="ne_countries" class="section level3" number="32.2.1">
+<div id="ne_countries" class="section level3" number="33.2.1">
 <h3>
-<span class="header-section-number">32.2.1</span> <code>ne_countries</code><a class="anchor" aria-label="anchor" href="#ne_countries"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.2.1</span> <code>ne_countries</code><a class="anchor" aria-label="anchor" href="#ne_countries"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb575"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rnaturalearth/">rnaturalearth</a></span><span class="op">)</span></span>
@@ -235,9 +236,9 @@
   sovereignty = NULL,
   returnclass = c("sp", "sf")
 )</code></pre>
-<div id="arguments" class="section level4" number="32.2.1.1">
+<div id="arguments" class="section level4" number="33.2.1.1">
 <h4>
-<span class="header-section-number">32.2.1.1</span> Arguments<a class="anchor" aria-label="anchor" href="#arguments"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.2.1.1</span> Arguments<a class="anchor" aria-label="anchor" href="#arguments"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>scale: scale of map to return, one of 110, 50, 10 or ‘small’, ‘medium’, ‘large’</li>
@@ -249,9 +250,9 @@
 <li>returnclass: ‘sp’ default or ‘sf’ for Simple Features</li>
 </ul>
 </div>
-<div id="例-2" class="section level4" number="32.2.1.2">
+<div id="例-2" class="section level4" number="33.2.1.2">
 <h4>
-<span class="header-section-number">32.2.1.2</span> 例<a class="anchor" aria-label="anchor" href="#%E4%BE%8B-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.2.1.2</span> 例<a class="anchor" aria-label="anchor" href="#%E4%BE%8B-2"><i class="fas fa-link"></i></a>
 </h4>
 <p>There are three scales. Add <code>returnclass = "sf"</code> as an option to obtain data in <code>sf</code> format.</p>
 <div class="sourceCode" id="cb577"><pre class="downlit sourceCode r">
@@ -387,9 +388,9 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">subregion</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="48-worldmap_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
 </div>
-<div id="type-argument" class="section level4" number="32.2.1.3">
+<div id="type-argument" class="section level4" number="33.2.1.3">
 <h4>
-<span class="header-section-number">32.2.1.3</span> <code>type</code> argument<a class="anchor" aria-label="anchor" href="#type-argument"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.2.1.3</span> <code>type</code> argument<a class="anchor" aria-label="anchor" href="#type-argument"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb589"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/rnaturalearth/reference/ne_countries.html">ne_countries</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"countries"</span>, country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Japan"</span>, <span class="st">"South Korea"</span>, <span class="st">"North Korea"</span>, <span class="st">"China"</span>, <span class="st">"Taiwan"</span>, <span class="st">"Mongolia"</span><span class="op">)</span>, scale <span class="op">=</span> <span class="st">"medium"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -397,15 +398,15 @@
 <div class="inline-figure"><img src="48-worldmap_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
 </div>
 </div>
-<div id="ne_states" class="section level3" number="32.2.2">
+<div id="ne_states" class="section level3" number="33.2.2">
 <h3>
-<span class="header-section-number">32.2.2</span> <code>ne_states</code><a class="anchor" aria-label="anchor" href="#ne_states"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.2.2</span> <code>ne_states</code><a class="anchor" aria-label="anchor" href="#ne_states"><i class="fas fa-link"></i></a>
 </h3>
 <p>Get natural earth world state (admin level 1) polygons</p>
 <p><strong>Description</strong>: returns state polygons (administrative level 1) for specified countries</p>
-<div id="usage-1" class="section level4" number="32.2.2.1">
+<div id="usage-1" class="section level4" number="33.2.2.1">
 <h4>
-<span class="header-section-number">32.2.2.1</span> Usage<a class="anchor" aria-label="anchor" href="#usage-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.2.2.1</span> Usage<a class="anchor" aria-label="anchor" href="#usage-1"><i class="fas fa-link"></i></a>
 </h4>
 <pre><code>ne_states(
   country = NULL,
@@ -416,9 +417,9 @@
 )</code></pre>
 </div>
 </div>
-<div id="arguments-1" class="section level3" number="32.2.3">
+<div id="arguments-1" class="section level3" number="33.2.3">
 <h3>
-<span class="header-section-number">32.2.3</span> Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.2.3</span> Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li><p>country: a character vector of country names.</p></li>
@@ -428,9 +429,9 @@
 <li><p>returnclass: ‘sp’ default or ‘sf’ for Simple Features</p></li>
 </ul>
 </div>
-<div id="value" class="section level3" number="32.2.4">
+<div id="value" class="section level3" number="33.2.4">
 <h3>
-<span class="header-section-number">32.2.4</span> Value<a class="anchor" aria-label="anchor" href="#value"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.2.4</span> Value<a class="anchor" aria-label="anchor" href="#value"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>SpatialPolygons DataFrame or sf</li>
@@ -621,9 +622,9 @@
 <div class="inline-figure"><img src="48-worldmap_files/figure-html/unnamed-chunk-28-1.png" width="672"></div>
 </div>
 </div>
-<div id="geodata-package" class="section level2" number="32.3">
+<div id="geodata-package" class="section level2" number="33.3">
 <h2>
-<span class="header-section-number">32.3</span> <code>geodata</code> Package<a class="anchor" aria-label="anchor" href="#geodata-package"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.3</span> <code>geodata</code> Package<a class="anchor" aria-label="anchor" href="#geodata-package"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>URL: <a href="https://gadm.org" class="uri">https://gadm.org</a>
@@ -698,9 +699,9 @@
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">world5_df</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="48-worldmap_files/figure-html/unnamed-chunk-38-1.png" width="672"></div>
-<div id="gadm-administrative-boundaries" class="section level3" number="32.3.1">
+<div id="gadm-administrative-boundaries" class="section level3" number="33.3.1">
 <h3>
-<span class="header-section-number">32.3.1</span> <code>gadm</code> Administrative boundaries<a class="anchor" aria-label="anchor" href="#gadm-administrative-boundaries"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.3.1</span> <code>gadm</code> Administrative boundaries<a class="anchor" aria-label="anchor" href="#gadm-administrative-boundaries"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Get administrative boundaries for any country in the world. Data are read from files that are down- loaded if necessary.</li>
@@ -770,9 +771,9 @@
 <div class="inline-figure"><img src="48-worldmap_files/figure-html/unnamed-chunk-44-1.png" width="672"></div>
 </div>
 </div>
-<div id="参考文献-3" class="section level2" number="32.4">
+<div id="参考文献-3" class="section level2" number="33.4">
 <h2>
-<span class="header-section-number">32.4</span> 参考文献<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.4</span> 参考文献<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-3"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p>Data Visualization for International Relations: Chapter 7 Choropleth Maps: <a href="https://bookdown.org/alhdzsz/data_viz_ir/maps.html" class="uri">https://bookdown.org/alhdzsz/data_viz_ir/maps.html</a></p></li>
@@ -790,27 +791,27 @@
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="intro2eda.html"><span class="header-section-number">31</span> 探索的データ解析</a></div>
-<div class="next"><a href="example1.html"><span class="header-section-number">33</span> Example 1</a></div>
+<div class="prev"><a href="intro2eda.html"><span class="header-section-number">32</span> 探索的データ解析</a></div>
+<div class="next"><a href="example1.html"><span class="header-section-number">34</span> Example 1</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#worldmap"><span class="header-section-number">32</span> 地図 Choropleth Maps</a></li>
+<li><a class="nav-link" href="#worldmap"><span class="header-section-number">33</span> 地図 Choropleth Maps</a></li>
 <li>
-<a class="nav-link" href="#%E6%BA%96%E5%82%99"><span class="header-section-number">32.1</span> 準備</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#geom_sf"><span class="header-section-number">32.1.1</span> geom_sf</a></li></ul>
+<a class="nav-link" href="#%E6%BA%96%E5%82%99"><span class="header-section-number">33.1</span> 準備</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#geom_sf"><span class="header-section-number">33.1.1</span> geom_sf</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#natural-earth-data"><span class="header-section-number">32.2</span> Natural Earth Data</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#ne_countries"><span class="header-section-number">32.2.1</span> ne_countries</a></li>
-<li><a class="nav-link" href="#ne_states"><span class="header-section-number">32.2.2</span> ne_states</a></li>
-<li><a class="nav-link" href="#arguments-1"><span class="header-section-number">32.2.3</span> Arguments</a></li>
-<li><a class="nav-link" href="#value"><span class="header-section-number">32.2.4</span> Value</a></li>
+<a class="nav-link" href="#natural-earth-data"><span class="header-section-number">33.2</span> Natural Earth Data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ne_countries"><span class="header-section-number">33.2.1</span> ne_countries</a></li>
+<li><a class="nav-link" href="#ne_states"><span class="header-section-number">33.2.2</span> ne_states</a></li>
+<li><a class="nav-link" href="#arguments-1"><span class="header-section-number">33.2.3</span> Arguments</a></li>
+<li><a class="nav-link" href="#value"><span class="header-section-number">33.2.4</span> Value</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#geodata-package"><span class="header-section-number">32.3</span> geodata Package</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#gadm-administrative-boundaries"><span class="header-section-number">32.3.1</span> gadm Administrative boundaries</a></li></ul>
+<a class="nav-link" href="#geodata-package"><span class="header-section-number">33.3</span> geodata Package</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#gadm-administrative-boundaries"><span class="header-section-number">33.3.1</span> gadm Administrative boundaries</a></li></ul>
 </li>
-<li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-3"><span class="header-section-number">32.4</span> 参考文献</a></li>
+<li><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-3"><span class="header-section-number">33.4</span> 参考文献</a></li>
 </ul>
 
       <div class="book-extra">
@@ -829,7 +830,7 @@
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>データサイエンスをはじめましょう<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-23.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
