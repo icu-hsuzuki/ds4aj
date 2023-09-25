@@ -108,25 +108,25 @@ r4ds のあとに書かれているものは、教科書の対応する章です
 
 -   edX: HarvardX [Data Science](https://www.edx.org/professional-certificate/harvardx-data-science) - 9 courses. Textbook:
 
-    -   [\"Introduction to Data Science\"](https://leanpub.com/datasciencebook) by Rafael A. Irizarry.
+    -   ["Introduction to Data Science"](https://leanpub.com/datasciencebook) by Rafael A. Irizarry.
 
     -   [Free Online Book](http://rafalab.dfci.harvard.edu/dsbook/) by Rafael A. Irizarry.
 
 -   coursera: [JHU Data Science](https://www.coursera.org/specializations/jhu-data-science) - 10 courses. List of Companion Books:
 
-    -   [\"R Programming for Data Science\"](https://leanpub.com/rprogramming?utm_source=DST2&utm_medium=Reading&utm_campaign=DST2) by Roger Peng.
+    -   ["R Programming for Data Science"](https://leanpub.com/rprogramming?utm_source=DST2&utm_medium=Reading&utm_campaign=DST2) by Roger Peng.
 
     -   [Free Online Book](https://bookdown.org/rdpeng/rprogdatascience/) by Roger Peng.
 
-    -   [\"Exploratory Data Analysis with R\"](https://leanpub.com/exdata?utm_source=DST2&utm_medium=Reading&utm_campaign=DST2) by Roger Peng.
+    -   ["Exploratory Data Analysis with R"](https://leanpub.com/exdata?utm_source=DST2&utm_medium=Reading&utm_campaign=DST2) by Roger Peng.
 
     -   [Free online Book](https://bookdown.org/rdpeng/exdata/) by Roger Peng.
 
-    -   [\"Report Writing for Data Science in R\"](https://leanpub.com/reportwriting?utm_source=DST2&utm_medium=Reading&utm_campaign=DST2) by Roger Peng
+    -   ["Report Writing for Data Science in R"](https://leanpub.com/reportwriting?utm_source=DST2&utm_medium=Reading&utm_campaign=DST2) by Roger Peng
 
-    -   [\"Statistical Inference for Data Science\"](https://leanpub.com/LittleInferenceBook) by Brian Caffo
+    -   ["Statistical Inference for Data Science"](https://leanpub.com/LittleInferenceBook) by Brian Caffo
 
-    -   [\"Regression Modeling for Data Science in R\"](https://leanpub.com/regmods) by Brian Caffo
+    -   ["Regression Modeling for Data Science in R"](https://leanpub.com/regmods) by Brian Caffo
 
 どちらも、素晴らしいコースだと思いますが、個人的には、edX Harvard X のものは、アカデミック（学問的・学際的）で、coursera の方は、技術的（コンピュータ科学）のような印象を受けました。
 
@@ -158,7 +158,7 @@ Archive Page: <https://bookdown.org/home/archive/>
 
 そのあとで、統計を勉強してみよう。プログラミングや、コンピュータサイエンスを勉強してみよう、数理モデルについて、もう少し深く知りたい、もう少し、基本的な数学も学び直してみたいとなれば、個人的にはとても嬉しいです。
 
-### CRAN 
+### CRAN
 
 最後の方に、R 本体をホストし、保持してださっている、CRAN（The Comprehensive R Archive Network）をあげるのは、非常に失礼だと思いますが、CRAN にも、基本的な文書はあります。
 
@@ -189,3 +189,25 @@ Archive Page: <https://bookdown.org/home/archive/>
 -   BellCurve 統計WEB：<https://bellcurve.jp/statistics/>
 
     -   統計用語集：<https://bellcurve.jp/statistics/glossary/initial/a/>
+
+## 経済学を学ぶ人のために
+
+わたしは、まったく、経済学を学んだことがありませんから、適切な、アドヴァイスはできませんが、一般的な教科書として次のものがあるようです。計量経済学の教科書については、データセットも、R のパッケージとして出ているようです。
+
+-   *Introductory Econometrics: A Modern Approach, 7e* by Jeffrey M. Wooldridge
+
+    -   R Package woodridge
+
+        -   wooldridge: 115 Data Sets from "Introductory Econometrics: A Modern Approach, 7e" by Jeffrey M. Wooldridge
+
+        -   [https://CRAN.R-project.org/package=wooldridge](https://cran.r-project.org/package=wooldridge)
+
+-   *Principles of Macroeconomics* by Gregory Mankiw et al (2014)
+
+    -   R Package priceR
+
+        -   Functions to aid in micro and macro economic analysis and handling of price and currency data. Includes extraction of relevant inflation and exchange rate data from World Bank API, data cleaning/parsing, and standardisation. Inflation adjustment calculations as found in Principles of Macroeconomics by Gregory Mankiw et al (2014). Current and historical end of day exchange rates for 171 currencies from the European Central Bank Statistical Data Warehouse (2020) 
+
+        -   [https://CRAN.R-project.org/package=priceR](https://cran.r-project.org/package=priceR)
+
+-   *Macroeconomics by N. Gregory Mankiw*
