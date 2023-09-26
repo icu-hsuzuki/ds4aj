@@ -12,18 +12,18 @@ RStudio で R を使っている場合、Git-GitHub-RStudio の連携で使う�
 
 #### Git
 
-これは、ファイルのバージョン（更新履歴）の管理システムで、単独で機能します。他の、プログラムなどに関係しない、他の文書ファイルであっても、バージョンを管理する場合に活用できます。特に、テキスト・ファイルの場合には、どこがどう改訂されているかを確認することもできます。また、基本的には、Unix の Shell プログラムで動作させるのが一般的です。Mac は、Unix システムの上に構築されているため、最初から、ユーティリティ（Utility）> ターミナル（Terminal）で、Shell コマンドが利用可能になっていますが、Windows の場合には、bash と呼ばれる Shell プログラムをインストールすることをお勧めします。Windows システムについてよくご存知の方は、他の方法を使っていただいて構いませんが、Git のインストールの時に、Git bash を選択して、簡単に インストールできますし、Unix システムの基本を理解するチャンスでもあり、Mac とも同じ環境で説明できますから、ここでは、そちらを使います。Shell コマンドは、R Studio の中のターミナルを使って、利用することも可能です。（注：Windows のコマンド・プロンプト、または、パワー・シェルをお使いの方は、利用環境が変化する可能性がありますから、そのまま使われる方が良いかもしれません。）
+これは、ファイルのバージョン（更新履歴）の管理システムで、単独で機能します。他の、プログラムなどに関係しない、他の文書ファイルであっても、バージョンを管理する場合に活用できます。特に、テキスト・ファイルの場合には、どこがどう改訂されているかを確認することもできます。また、基本的には、Unix の Shell プログラムで動作させるのが一般的です。Mac は、Unix システムの上に構築されているため、最初から、ユーティリティ（Utility）\> ターミナル（Terminal）で、Shell コマンドが利用可能になっていますが、Windows の場合には、bash と呼ばれる Shell プログラムをインストールすることをお勧めします。Windows システムについてよくご存知の方は、他の方法を使っていただいて構いませんが、Git のインストールの時に、Git bash を選択して、簡単に インストールできますし、Unix システムの基本を理解するチャンスでもあり、Mac とも同じ環境で説明できますから、ここでは、そちらを使います。Shell コマンドは、R Studio の中のターミナルを使って、利用することも可能です。（注：Windows のコマンド・プロンプト、または、パワー・シェルをお使いの方は、利用環境が変化する可能性がありますから、そのまま使われる方が良いかもしれません。）
 
 基本的なコマンドとしては、以下のものがあります。いまは、このようなものがある程度に、眺めておいてください。
 
-* `git init`: 特定のディレクトリ（フォルダ）で バージョン管理を始める時に使います。
-* `git status`: 現在の状況を確認するときに使います。
-* `git diff file_name`: ファイルへの変更を確認します。
-* `git log`: 過去の commit による履歴を確認する時に使います。
-* `git add file_name`: ステージングという中間的な場所に登録します。
-* `git commit -m "log message here"`: ステージングにあるものを、確定させます。引用符で囲まれた短いコメントを加えます。50文字が上限です。
-* `git help`: Help のリストが表示されます。
-  - 例：`git help init` などと入力すると、説明を見ることができます。
+-   `git init`: 特定のディレクトリ（フォルダ）で バージョン管理を始める時に使います。
+-   `git status`: 現在の状況を確認するときに使います。
+-   `git diff file_name`: ファイルへの変更を確認します。
+-   `git log`: 過去の commit による履歴を確認する時に使います。
+-   `git add file_name`: ステージングという中間的な場所に登録します。
+-   `git commit -m "log message here"`: ステージングにあるものを、確定させます。引用符で囲まれた短いコメントを加えます。50文字が上限です。
+-   `git help`: Help のリストが表示されます。
+    -   例：`git help init` などと入力すると、説明を見ることができます。
 
 #### Git Hub
 
@@ -39,42 +39,56 @@ Git でバージョン管理されているディレクトリ（フォルダ）�
 
 ### はじめかた
 
-1. Git のインストール
-  - Windows と Mac で異なりますので注意が必要です。Mac については、**Mac** と書いてあるところを読んでください。
-  - **Windows** の場合は、[git-scm](https://git-scm.com/download/win) にアクセスしてダウンロード、インストールしてください。セットアップ（Setup）で、２箇所、注意点があります、それ以外は、すべて、初期設定のままで変更は必要ありません。
-    - Choosing the default editor used by Git: 設定で、エディタ（Editor）を設定しますが、vi, vim に慣れていない方は、nano を選択することをお勧めします。（nano^[GNU nanoは、コンソールウィンドウで動作する小型でフレンドリーなテキストエディタです。(GNU nano is a small and friendly text editor running in the console window.)] は、メニューが下に出るので、それを見て操作することが可能なエディターです。）
-    - Adjusting Your Path Environment: Windows の コマンドライン・ツール（command line prompt) を使っていない方は、Git Bash のインストールを選択してください。さらに、Git and optional Unix tools from the Windows Command Prompt を選択することをお勧めしますが、上で書いたように、Windows の コマンド・プロンプトになれておられる方で、それを使い続けたいかたは、Use Git from Git Bash only を選択されるのが良いかもしれません。
-    - 最後に、RStudio の設定（Tools > Global Option）で、Terminal　から、Git Bash を選択^[自動的に選択されているかもしれません]し、Tools から、New Terminal を選択^[すでにタブがあればこの作業は不要です]します。
-  - **Mac** は、最初から、Install されていると思います。ユーティリティ（Utility）> ターミナル（Terminal）を開いて^[RStudio を既にお使いの方は、左下の窓枠から、Terminal タブを選択できますので、それを使うことも可能です。]、`git --version` とすると、インストールされているバージョンが表示されると思います。バージョンがでない場合には、Install するかと聞かれます。このときに、Git だけをインストールすることも、Xcode という開発環境を同時にインストールすることも可能です。（インストールするように指示が出なければ、App Store からも、インストールできます。もし、そのあとで、git などのコマンドで xcrun: error などとエラーが出たら、`xcode-select --install` としてください。）インストールが終了したら、もう一度、`git --version` と Terminal に入力して、結果を確認してください。
+1.  Git のインストール
 
-2. GitHub のアカウント取得
-  - [GitHub サイト](https://github.com) に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。
+-   Windows と Mac で異なりますので注意が必要です。Mac については、**Mac** と書いてあるところを読んでください。
+-   **Windows** の場合は、[git-scm](https://git-scm.com/download/win) にアクセスしてダウンロード、インストールしてください。セットアップ（Setup）で、２箇所、注意点があります、それ以外は、すべて、初期設定のままで変更は必要ありません。
+    -   Choosing the default editor used by Git: 設定で、エディタ（Editor）を設定しますが、vi, vim に慣れていない方は、nano を選択することをお勧めします。（nano[^85-tools-1] は、メニューが下に出るので、それを見て操作することが可能なエディターです。）
+    -   Adjusting Your Path Environment: Windows の コマンドライン・ツール（command line prompt) を使っていない方は、Git Bash のインストールを選択してください。さらに、Git and optional Unix tools from the Windows Command Prompt を選択することをお勧めしますが、上で書いたように、Windows の コマンド・プロンプトになれておられる方で、それを使い続けたいかたは、Use Git from Git Bash only を選択されるのが良いかもしれません。
+    -   最後に、RStudio の設定（Tools \> Global Option）で、Terminal　から、Git Bash を選択[^85-tools-2]し、Tools から、New Terminal を選択[^85-tools-3]します。
+-   **Mac** は、最初から、Install されていると思います。ユーティリティ（Utility）\> ターミナル（Terminal）を開いて[^85-tools-4]、`git --version` とすると、インストールされているバージョンが表示されると思います。バージョンがでない場合には、Install するかと聞かれます。このときに、Git だけをインストールすることも、Xcode という開発環境を同時にインストールすることも可能です。（インストールするように指示が出なければ、App Store からも、インストールできます。もし、そのあとで、git などのコマンドで xcrun: error などとエラーが出たら、`xcode-select --install` としてください。）インストールが終了したら、もう一度、`git --version` と Terminal に入力して、結果を確認してください。
 
-3. RStudio の 左下の窓枠のTerminal タブ^[Terminal がない場合は、Tools > Terminal > New Terminal とすると表示されます。]から、GitHub アカウントに連携する設定を行います。
-下の２行を、１行ずつ、コピーして、Terminal に入力してください。
-```
+[^85-tools-1]: GNU nanoは、コンソールウィンドウで動作する小型でフレンドリーなテキストエディタです。(GNU nano is a small and friendly text editor running in the console window.)
+
+[^85-tools-2]: 自動的に選択されているかもしれません
+
+[^85-tools-3]: すでにタブがあればこの作業は不要です
+
+[^85-tools-4]: RStudio を既にお使いの方は、左下の窓枠から、Terminal タブを選択できますので、それを使うことも可能です。
+
+2.  GitHub のアカウント取得
+
+-   [GitHub サイト](https://github.com) に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。
+
+3.  RStudio の 左下の窓枠のTerminal タブ[^85-tools-5]から、GitHub アカウントに連携する設定を行います。 下の２行を、１行ずつ、コピーして、Terminal に入力してください。
+
+[^85-tools-5]: Terminal がない場合は、Tools \> Terminal \> New Terminal とすると表示されます。
+
+```         
 git config --global user.name "Your Name" # GitHub の User Name
 git config --global user.email "your@email.com" # GitHub に登録したメールアドレス
 ```
 
-4. RStudio の、Tools > Global Opton の、Git/SVN タブを開き、Git Executable とあるところに、Git 実行プログラムのある場所を入れます。
-  - **Windows** の場合は、`C:/Program Files/Git/bin/git.exe` だと思いますが、Browse ボタンから確認してください。
-  - **Mac** の場合は、`/usr/bin/git` になるかと思いますが、Browse ボタンから確認してください。
+4.  RStudio の、Tools \> Global Opton の、Git/SVN タブを開き、Git Executable とあるところに、Git 実行プログラムのある場所を入れます。
 
-5. その下に、Create RSA key とありますから、それを押し、Create ボタンを押しててください^[Passphrase (optional) と出ますが、無視してくださって構いません。]。すると、View RSA key から、暗号キーも確認できます。（この作業は、Terminal から、`ssh-keygen -t rsa` として作成することも可能です。この作業で、`~/.ssh/` 内に、SSH キーが記述されたファイルが作成されます。）
+-   **Windows** の場合は、`C:/Program Files/Git/bin/git.exe` だと思いますが、Browse ボタンから確認してください。
+-   **Mac** の場合は、`/usr/bin/git` になるかと思いますが、Browse ボタンから確認してください。
 
-6. GitHub アカウントで公開鍵を利用できるようにします。まず、RStudio の方で作成した、RSA key （Tools の、Global Option の Git/SVN）の下にある view を押すと見ることができ、上に、書いてあるように、そこに出てきたものを、コピーします。次に、GitHubにログインし、右上のアイコンの右の三角から、設定（Setting）を選択し、SSH公開鍵（SSH and GPG Keys）を選択します。新しい公開鍵を追加（New SSH Key）を選択すると、SSH  キーを貼り付けることができます。（リポジトリの左上にある、アカウント名をクリックし現れるダッシュボードの左上の大きなアイコンをクリックしても「アカウント設定」が現れ、SSH and GPG Keysを見つけることができると思います。）
+5.  その下に、Create RSA key とありますから、それを押し、Create ボタンを押しててください[^85-tools-6]。すると、View RSA key から、暗号キーも確認できます。（この作業は、Terminal から、`ssh-keygen -t rsa` として作成することも可能です。この作業で、`~/.ssh/` 内に、SSH キーが記述されたファイルが作成されます。）
+
+6.  GitHub アカウントで公開鍵を利用できるようにします。まず、RStudio の方で作成した、RSA key （Tools の、Global Option の Git/SVN）の下にある view を押すと見ることができ、上に、書いてあるように、そこに出てきたものを、コピーします。次に、GitHubにログインし、右上のアイコンの右の三角から、設定（Setting）を選択し、SSH公開鍵（SSH and GPG Keys）を選択します。新しい公開鍵を追加（New SSH Key）を選択すると、SSH キーを貼り付けることができます。（リポジトリの左上にある、アカウント名をクリックし現れるダッシュボードの左上の大きなアイコンをクリックしても「アカウント設定」が現れ、SSH and GPG Keysを見つけることができると思います。）
+
+[^85-tools-6]: Passphrase (optional) と出ますが、無視してくださって構いません。
 
 （なお、RStudio ではなく、Terminal からコピーするときは、Unix では、`pbcopy < ~/.ssh/id_rsa.pub` などとします。Windows の場合は、`pbcopy` が使えない可能性があるので、そのときは、Terminal から、Git Bash を使い、`use < ~/.ssh/id_rsa.pub` とします。Terminal に慣れておられない方には、上に紹介した、RStudio からコピーする方が簡便かと思います。）
 
-7. これで設定終了ですので、R Studio を再起動させてください。
-
+7.  これで設定終了ですので、R Studio を再起動させてください。
 
 ### GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合
 
-1. GitHub にログインして、既存のリポジトリを開きます。
-2. Code の、Clone から、リンク先のアドレスを入手。https と SSH を選べますが、SSH を選び、コピーします。
-3. RStudio から、New Project とし、Version Control を選択し、ディレクトリーを決めたら、上でコピーした、ものを、貼り付けて、Project を作成します。
+1.  GitHub にログインして、既存のリポジトリを開きます。
+2.  Code の、Clone から、リンク先のアドレスを入手。https と SSH を選べますが、SSH を選び、コピーします。
+3.  RStudio から、New Project とし、Version Control を選択し、ディレクトリーを決めたら、上でコピーした、ものを、貼り付けて、Project を作成します。
 
 この手続きで、リモート・リポジトリのファイルがすべて、RStudio のプロジェクトに入ります。
 
@@ -82,12 +96,14 @@ git config --global user.email "your@email.com" # GitHub に登録したメー�
 
 ### 自分のコンピュータのリポジトリ（Local Repo）から始める場合
 
-1. RStudio から新しい、プロジェクト（Project） を作成 `test0` としておきましょう。
-2. GitHub に、新しい、レポジトリを作成して繋げる
-  - 自分の GitHub アカウントに、新しい、レポジトリをプロジェクトと同じ名前 `test0` で作成します。同じ名前でなくてもかまわないのですが、関連がしやすいので、同じ名前がお勧めです。
-  - Quick Setup というページが表示されますから、その、下の Set up in Desktop or  の右から、https と SSH を選べますが、SSH を選び、コピーします。
-  - プロジェクトの中の 左下の窓枠の、Terminal から次を実行します。
-```
+1.  RStudio から新しい、プロジェクト（Project） を作成 `test0` としておきましょう。
+2.  GitHub に、新しい、レポジトリを作成して繋げる
+
+-   自分の GitHub アカウントに、新しい、レポジトリをプロジェクトと同じ名前 `test0` で作成します。同じ名前でなくてもかまわないのですが、関連がしやすいので、同じ名前がお勧めです。
+-   Quick Setup というページが表示されますから、その、下の Set up in Desktop or の右から、https と SSH を選べますが、SSH を選び、コピーします。
+-   プロジェクトの中の 左下の窓枠の、Terminal から次を実行します。
+
+```         
 echo "# Project test0" >> README.md # REAME の表題を書きます。
 git init
 git add README.md
@@ -118,14 +134,17 @@ Git-GitHub-RStuio の設定は済んでいると仮定して書きます。ま�
 
 #### RStudio での設定
 
-1. 新しい book プロジェクトを始めます、標準設定の `book` と、`bs4_book` を選択できます。このディレクトリ（フォルダ。ローカル・リポジトリと呼びます）の名前をリモート・リポジトリの名前と同じにして、作成します^[異なる名前でも可能ですが、特別な理由がない限り同じにしておいた方が良いでしょう]。
-2. Files の、Rename 機能を使って `_book` ディレクトリ（フォルダ）の名前を、`docs` に変更します。
-3. `_bookdown.yml` を編集し次の行を加えます（私は２行目に入れています）。  
-`output_dir: docs`  
-GitHub Pages の機能を使って、公開するための変更です。
-4. **\@GitHub:** 新いリポジトリー（リモート・リポジトリと言います）を作成します。ローカル・リポジトリと同じ名前にし、簡単な説明を加えます。
-5. 左下の窓枠から、Terminal タブを選択します。 以下は例です。`git remote add origin` のところは、適当に変更してください。
-```
+1.  新しい book プロジェクトを始めます、標準設定の `book` と、`bs4_book` を選択できます。このディレクトリ（フォルダ。ローカル・リポジトリと呼びます）の名前をリモート・リポジトリの名前と同じにして、作成します[^85-tools-7]。
+2.  Files の、Rename 機能を使って `_book` ディレクトリ（フォルダ）の名前を、`docs` に変更します。
+3.  `_bookdown.yml` を編集し次の行を加えます（私は２行目に入れています）。\
+    `output_dir: docs`\
+    GitHub Pages の機能を使って、公開するための変更です。
+4.  **\@GitHub:** 新いリポジトリー（リモート・リポジトリと言います）を作成します。ローカル・リポジトリと同じ名前にし、簡単な説明を加えます。
+5.  左下の窓枠から、Terminal タブを選択します。 以下は例です。`git remote add origin` のところは、適当に変更してください。
+
+[^85-tools-7]: 異なる名前でも可能ですが、特別な理由がない限り同じにしておいた方が良いでしょう
+
+```         
 echo "# ds-book" >> README.md
 git init
 git add README.md
@@ -134,20 +153,19 @@ git branch -M main
 git remote add origin git@github.com:icu-hsuzuki/ds4aj.git # 変更
 git push -u origin main
 ```
-5. RStudio を一旦終了し、もう一度、そのプロジェクトを立ち上げると、右上の窓枠に、Git タブが表示されるはずです。
-6. Build から、Build Book ボタンを利用すれば、作成されます。
-7. Git タブから: Commit "first build" とし、 Push をします。
-8. **\@GitHub:** Settings から、Pages > main > docs と変更すると、公開されます。
-9. Code に戻り、About の右のギアマークから、
 
-
+5.  RStudio を一旦終了し、もう一度、そのプロジェクトを立ち上げると、右上の窓枠に、Git タブが表示されるはずです。
+6.  Build から、Build Book ボタンを利用すれば、作成されます。
+7.  Git タブから: Commit "first build" とし、 Push をします。
+8.  **\@GitHub:** Settings から、Pages \> main \> docs と変更すると、公開されます。
+9.  Code に戻り、About の右のギアマークから、
 
 ##### 他の PC での作業
 
-1. Login to GitHub account
-2. Copy SSH address under Code>Clone
-3. Create a new project using Version Control:Git with the SSH address by setting the directory name
-4. Edit README.md and test Git Commit and Push
+1.  Login to GitHub account
+2.  Copy SSH address under Code\>Clone
+3.  Create a new project using Version Control:Git with the SSH address by setting the directory name
+4.  Edit README.md and test Git Commit and Push
 
 #### テンプレートを利用する方法
 
@@ -155,10 +173,10 @@ git push -u origin main
 
 [`bookdown` の電子書籍（bookdown: Authoring Books and Technical Documents with R Markdown）](https://bookdown.org/yihui/bookdown/) の、はじめてみよう（Get started）から、GitHub リポジトリー [rstudio/bookdown-demo](https://github.com/rstudio/bookdown-demo) にリンクがついています。
 
-1. 自分の、GitHub アカウントに、ログインします。
-2. [rstudio/bookdown-demo](https://github.com/rstudio/bookdown-demo) にアクセスし、Use this template から、create a new repository を選択します。
-3. 自分のアカウントの中に、コピーされたリポジトリーがつくられます。
-4. 上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
+1.  自分の、GitHub アカウントに、ログインします。
+2.  [rstudio/bookdown-demo](https://github.com/rstudio/bookdown-demo) にアクセスし、Use this template から、create a new repository を選択します。
+3.  自分のアカウントの中に、コピーされたリポジトリーがつくられます。
+4.  上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
 
 よくできているテンプレートです。しかし、このままでは、公開されません。[bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) には、いくつかの公開方法が書かれていますから、参照してください。
 
@@ -166,24 +184,23 @@ git push -u origin main
 
 YouTube ビデオ [5分間で、bookdown の本を作成する方法（How to create a bookdown book in 5 minutes）](https://www.youtube.com/watch?v=m5D-yoH416Y) で紹介されているものです。
 
-1. 自分の、GitHub アカウントに、ログインします。
-2. [jtr13/bookdown-template](https://github.com/jtr13/bookdown-template) にアクセスし、Use this template から、create a new repository を選択します。
-3. 自分のアカウントの中に、コピーされたリポジトリーがつくられます。
-4. 上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
+1.  自分の、GitHub アカウントに、ログインします。
+2.  [jtr13/bookdown-template](https://github.com/jtr13/bookdown-template) にアクセスし、Use this template から、create a new repository を選択します。
+3.  自分のアカウントの中に、コピーされたリポジトリーがつくられます。
+4.  上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
 
-ビデオの中では、簡単に、GitHub Pages（GitHub のホームページサービス）に、公開する方法が説明されています。最も、大切な部分は、テンプレートがコピーされた、自分のリポジトリの Settings から、Pages を選び、Branch を main > docs とする部分です。このようにすることで、公開されます。上の、「GitHub Pages」で説明していることと同じです。
+ビデオの中では、簡単に、GitHub Pages（GitHub のホームページサービス）に、公開する方法が説明されています。最も、大切な部分は、テンプレートがコピーされた、自分のリポジトリの Settings から、Pages を選び、Branch を main \> docs とする部分です。このようにすることで、公開されます。上の、「GitHub Pages」で説明していることと同じです。
 
 ##### 日本語テンプレート
 
 `bs4_book` スタイルでの、簡単な、日本語テンプレートを作成しました。
 
-1. 自分の、GitHub アカウントに、ログインします。
-2. [icu-hsuzuki/bs4_book_template](https://github.com/icu-hsuzuki/bs4_book_template) にアクセスし、Use this template から、create a new repository を選択します。
-3. 自分のアカウントの中に、コピーされたリポジトリーがつくられます。
-4. 上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
+1.  自分の、GitHub アカウントに、ログインします。
+2.  [icu-hsuzuki/bs4_book_template](https://github.com/icu-hsuzuki/bs4_book_template) にアクセスし、Use this template から、create a new repository を選択します。
+3.  自分のアカウントの中に、コピーされたリポジトリーがつくられます。
+4.  上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。
 
-まだ、不十分ですが、少しずつ、改訂していきます。
-使い方は、リポジトリの README に、注意点などは、最後の章 Bookdown に書いておく予定です。
+まだ、不十分ですが、少しずつ、改訂していきます。 使い方は、リポジトリの README に、注意点などは、最後の章 Bookdown に書いておく予定です。
 
 ### 大きなファイルに関すること
 
@@ -195,20 +212,40 @@ YouTube ビデオ [5分間で、bookdown の本を作成する方法（How to cr
 
 #### 大きなファイルの取り除きかた
 
-下のサイトからの引用です。非常に分かりやすく書かれています。Terminal で作業を行いますが、いま、Add した場合と、いくつか、前のステップで、Add した場合で、対応の方法が異なります。
+ChatGPT の指示での対応
 
-- [Tutorial: Removing Large Files from Git](https://medium.com/analytics-vidhya/tutorial-removing-large-files-from-git-78dbf4cf83a) 
-	- Scenario 1: The Large File Was Just Added in the Most Recent Commit
-		- git rm --cached big_file_name
-		- git commit --amend -C HEAD
-	- Scenario 2: The Large File Was Committed Prior to The Most Recent Commit
-		- Locating the Last “Good” Commit: git log --oneline
-		- Initiate a Rebase Between the Last “Good” Commit and the Current Commit: git rebase -i 8464da4
-		- This will open up a file in your Git editor (in my case, Vim), that looks something like this:
-			- pick -> edit
-		- git rm --cached csv_building_damage_assessment.csv
-		- git commit --amend -C HEAD
-		
+-   大きなファイルの Path の特定
+
+-   `git filter-branch --tree-filter 'rm -rf path/to/large_file' -- --all`
+
+-   `git count-objects -vH` \# 確認
+
+-   `git push --force origin` \# これで解決
+
+<!-- 下のサイトからの引用です。非常に分かりやすく書かれています。Terminal で作業を行いますが、いま、Add した場合と、いくつか、前のステップで、Add した場合で、対応の方法が異なります。 -->
+
+<!-- -   [Tutorial: Removing Large Files from Git](https://medium.com/analytics-vidhya/tutorial-removing-large-files-from-git-78dbf4cf83a) -->
+
+<!--     -   Scenario 1: The Large File Was Just Added in the Most Recent Commit -->
+
+<!--         -   git rm --cached big_file_name -->
+
+<!--         -   git commit --amend -C HEAD -->
+
+<!--     -   Scenario 2: The Large File Was Committed Prior to The Most Recent Commit -->
+
+<!--         -   Locating the Last "Good" Commit: git log --oneline -->
+
+<!--         -   Initiate a Rebase Between the Last "Good" Commit and the Current Commit: git rebase -i 8464da4 -->
+
+<!--         -   This will open up a file in your Git editor (in my case, Vim), that looks something like this: -->
+
+<!--             -   pick -\> edit -->
+
+<!--         -   git rm --cached csv_building_damage_assessment.csv -->
+
+<!--         -   git commit --amend -C HEAD -->
+
 ### 複数のコンピュータから利用する方法
 
 わたしも、いくつかのコンピュータから、同じGitHub アカウントにアクセスして作業しています。
@@ -219,7 +256,7 @@ YouTube ビデオ [5分間で、bookdown の本を作成する方法（How to cr
 
 （たとえば、RSA 形式で作成した）複数の SSH キーを使用するときは、GitHub アカウントに公開鍵を追加する必要があります。
 
-GitHub アカウントに別の公開鍵を追加するには、GitHubにログインし、右上のアイコンの右の三角から、設定（Setting）を選択し、SSH公開鍵（SSH and GPG Keys）を選択します。新しい公開鍵を追加（New SSH Key）を選択すると、SSH  キーを貼り付けることができます。（リポジトリの左上にある、アカウント名をクリックし現れるダッシュボードの左上の大きなアイコンをクリックしても「アカウント設定」が現れ、SSH and GPG Keysを見つけることができると思います。）
+GitHub アカウントに別の公開鍵を追加するには、GitHubにログインし、右上のアイコンの右の三角から、設定（Setting）を選択し、SSH公開鍵（SSH and GPG Keys）を選択します。新しい公開鍵を追加（New SSH Key）を選択すると、SSH キーを貼り付けることができます。（リポジトリの左上にある、アカウント名をクリックし現れるダッシュボードの左上の大きなアイコンをクリックしても「アカウント設定」が現れ、SSH and GPG Keysを見つけることができると思います。）
 
 コピーを貼り付ける時には、RStudio の、Global Option の、Git/SVN タブから、View public key を見ると、コピーできるようになっています。
 
@@ -229,16 +266,15 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 
 この設定をすれば、どちらのマシンからでもSSH経由でGithubリポジトリにアクセスできるようになります。
 
-
 ### 複数のアカウントを一つのコンピュータから利用する方法
 
 わたしも複数のGitHub アカウントを利用しています。
 
-- ~/.ssh 内に 複数（例では三つ）、ssh-keygen -t rsa  でファイル作成
-	- id_rsa , id_sub1_rsa, id_sub2_rsa
-- 上の複数のコンピュータから利用する時に説明してあるように、SSH キーを GitHub に登録
-- ~/.ssh 内の config ファイル（~/.ssh/config）を編集　(nano などを利用)
-- ~/.gitconfig, ~/.gitconfig_sub1, ~/.gitconfig_sub2 を作成
+-   \~/.ssh 内に 複数（例では三つ）、ssh-keygen -t rsa でファイル作成
+    -   id_rsa , id_sub1_rsa, id_sub2_rsa
+-   上の複数のコンピュータから利用する時に説明してあるように、SSH キーを GitHub に登録
+-   \~/.ssh 内の config ファイル（\~/.ssh/config）を編集　(nano などを利用)
+-   \~/.gitconfig, \~/.gitconfig_sub1, \~/.gitconfig_sub2 を作成
 
 詳しくは、参考にしたサイトを参照してください。
 
@@ -246,76 +282,81 @@ SSH キーの最後には、コンピュータ名とコンピュータのアカ�
 
 以下では、ひとり管理者（とりまとめ役）がいて、その人がまずは、レポジトリーを作成し、何人かの編集者で、共同編集することを想定して、書きます。内容は本でなくても、プログラムでも、ノートでも構いませんが、イメージしやすくするため、本を編集することを想定して書いていきます。
 
-1. 編集に関わる全員が、それぞれ、個人の、GitHub アカウントを作成します。
+1.  編集に関わる全員が、それぞれ、個人の、GitHub アカウントを作成します。
 
-2. リポジトリを フォーク（Fork）： 共同編集する（本の）レポジトリ（オリジナル・レポジトリと呼ぶことにします^[upstream repository と呼ぶこともありますが、自分のリモート・リポジトリを upstream  repository と呼ぶこともあるので、ここでは、オリジナル・リポジトリと呼ぶことにします。]）にいき、フォークします。フォークすることで、編集者のリポジトリに、コピーが作成され、大元のリポジトリ（オリジナル・レポジトリ）の変更を依頼することができます。名前をつけますが、元のものと同じでも、フォークしたことがわかるようにしておいても良いでしょう。
+2.  リポジトリを フォーク（Fork）： 共同編集する（本の）レポジトリ（オリジナル・レポジトリと呼ぶことにします[^85-tools-8]）にいき、フォークします。フォークすることで、編集者のリポジトリに、コピーが作成され、大元のリポジトリ（オリジナル・レポジトリ）の変更を依頼することができます。名前をつけますが、元のものと同じでも、フォークしたことがわかるようにしておいても良いでしょう。
 
-  - 一回フォーク（Fork）したら、２度目以降は、オリジナル・レポジトリから、フォーク（Fork）する必要はありません。ただし、改訂されているかもしれないので、更新（Sync fork）する必要はあります。GitHub 上の、フォーク（Fork） した、自分のレポジトリを見ると、更新されている場合は、オリジナル・レポジトリーに、Sync することができますから、Sync し^[Synk fork ボタンを押すと This branch is out-of-date などと表示され、Update branch を選択すると、update されます]、最新の状態にしておきます。よくみると、オリジナル・レポジトリーとの関係が読み取れるかと思います。
+[^85-tools-8]: upstream repository と呼ぶこともありますが、自分のリモート・リポジトリを upstream repository と呼ぶこともあるので、ここでは、オリジナル・リポジトリと呼ぶことにします。
 
-3. （フォークした）リポジトリをクローン: 編集者のコンピュータにフォークして得られたリポジトリを、クローンし、自分のコンピュータ内に、ローカル・リポジトリを作成ます。
+-   一回フォーク（Fork）したら、２度目以降は、オリジナル・レポジトリから、フォーク（Fork）する必要はありません。ただし、改訂されているかもしれないので、更新（Sync fork）する必要はあります。GitHub 上の、フォーク（Fork） した、自分のレポジトリを見ると、更新されている場合は、オリジナル・レポジトリーに、Sync することができますから、Sync し[^85-tools-9]、最新の状態にしておきます。よくみると、オリジナル・レポジトリーとの関係が読み取れるかと思います。
 
-4. RStudio の右上の、Git タブの右にある、New Branch に、新しい、Branch（編集用枝）を作成します。すると、その右に、Branch 名が記載されます。それが、現在の Branch 名です。その右の三角を押すと、main など、すべての Branch が見えるはずです。編集のための Branch が表示されている（アクティブ）になっていることを確認します^[New Branch の右に、現在どのBranch がアクティブになっているかが表示されています。そこに現れている Branch に、commit などで、編集を加えていくことになります。]。
+[^85-tools-9]: Synk fork ボタンを押すと This branch is out-of-date などと表示され、Update branch を選択すると、update されます
 
-5. 編集: 編集者のコンピュータ（RStudio 上）で編集を行います。
+3.  （フォークした）リポジトリをクローン: 編集者のコンピュータにフォークして得られたリポジトリを、クローンし、自分のコンピュータ内に、ローカル・リポジトリを作成ます。
 
-6. 編集結果をコミット : 編集者のコンピュータで編集した後に、簡単な説明を書いて、コミットします。
+4.  RStudio の右上の、Git タブの右にある、New Branch に、新しい、Branch（編集用枝）を作成します。すると、その右に、Branch 名が記載されます。それが、現在の Branch 名です。その右の三角を押すと、main など、すべての Branch が見えるはずです。編集のための Branch が表示されている（アクティブ）になっていることを確認します[^85-tools-10]。
 
-7. 編集結果をプッシュ : フォークした GitHub の自分のリポジトリに、プッシュします。
+5.  編集: 編集者のコンピュータ（RStudio 上）で編集を行います。
 
-  - 実際にどうなるかをみるために、Build をする場合もあるかもしれませんが、すると、たくさんのファイルが書き換えられます。管理者も、一つ一つ丁寧に見るのは大変ですから、実際に、書き換えた、Rmd ファイルなどだけに、チェックを入れて、Commit + Push するのも良いでしょう。
-  - この時点で、RStudio 上の、Branch を main に戻しておくと良いでしょう^[New Branch の右のところで、選択します]。
+6.  編集結果をコミット : 編集者のコンピュータで編集した後に、簡単な説明を書いて、コミットします。
 
-8. プル依頼を作成 : フォークした自分の（リモート）リポジトリで、編集の内容を簡単に記述して、プルリクエスト（Pull Request）をします。
+7.  編集結果をプッシュ : フォークした GitHub の自分のリポジトリに、プッシュします。
 
-  - 編集して、プッシュした、Branch を選択し、オリジナル・レポジトリーと異なった状態であることを確認します。
-  - Pull Request を選択します。
-  - オリジナル・レポジトリーの管理者は、修正をしやすいように、修正の要点を書いておきます。
-  - ここまでで終了です。管理者にメールが届きます。
-  - このあと、編集者が何をするか、確認してください。
+[^85-tools-10]: New Branch の右に、現在どのBranch がアクティブになっているかが表示されています。そこに現れている Branch に、commit などで、編集を加えていくことになります。
 
-9. **管理者**：編集結果の確認 : オリジナル・リポジトリの所有者は、編集結果を確認し、承認する場合は、main に、統合（マージ）します。
+-   実際にどうなるかをみるために、Build をする場合もあるかもしれませんが、すると、たくさんのファイルが書き換えられます。管理者も、一つ一つ丁寧に見るのは大変ですから、実際に、書き換えた、Rmd ファイルなどだけに、チェックを入れて、Commit + Push するのも良いでしょう。
+-   この時点で、RStudio 上の、Branch を main に戻しておくと良いでしょう[^85-tools-11]。
 
-  - 統合（マージ）すると、Pull Request をした編集者に、メールが届きます。
+[^85-tools-11]: New Branch の右のところで、選択します
+
+8.  プル依頼を作成 : フォークした自分の（リモート）リポジトリで、編集の内容を簡単に記述して、プルリクエスト（Pull Request）をします。
+
+-   編集して、プッシュした、Branch を選択し、オリジナル・レポジトリーと異なった状態であることを確認します。
+-   Pull Request を選択します。
+-   オリジナル・レポジトリーの管理者は、修正をしやすいように、修正の要点を書いておきます。
+-   ここまでで終了です。管理者にメールが届きます。
+-   このあと、編集者が何をするか、確認してください。
+
+9.  **管理者**：編集結果の確認 : オリジナル・リポジトリの所有者は、編集結果を確認し、承認する場合は、main に、統合（マージ）します。
+
+-   統合（マージ）すると、Pull Request をした編集者に、メールが届きます。
 
 10. 変更の同期: 編集者は、承認された、オリジナル・リポジトリを、フォークした自分のリポジトリに、同期（Sync Fork）させます。
 
-  - 自分のコンピュータ上の、ローカル・リポジトリの　main branch も（アクティブな、Branch 名を確認して）Pull をして、更新しておくと良いでしょう。
-  - 少し、複雑な、変更の場合には、注意が出ます。詳細は省略しますが、Terminal で、一つの選択肢の、`git config pull.rebase true # rebase` を入力して、それから、もう一度、Pull をすると良いでしょう。これによって、オリジナル・リポジトリと同じ状態を維持することができます。
-  
+-   自分のコンピュータ上の、ローカル・リポジトリの　main branch も（アクティブな、Branch 名を確認して）Pull をして、更新しておくと良いでしょう。
+-   少し、複雑な、変更の場合には、注意が出ます。詳細は省略しますが、Terminal で、一つの選択肢の、`git config pull.rebase true # rebase` を入力して、それから、もう一度、Pull をすると良いでしょう。これによって、オリジナル・リポジトリと同じ状態を維持することができます。
+
 #### 要点
 
-* フォークして作成したリポジトリ（リモートも、ローカルも）の、main branch は、オリジナル・レポジトリと同じ状態にしておく。
-* 編集は、編集用に、branch を作成して、その branch を、リモート・リポジトリにプッシュして、プル・リクエストを行う。
-* プル・リクエストの結果が反映されたら、リモートも、ローカルも、同期しておく。
-* プル・リクエストが反映される前に、また編集するときは、別の branch を作成して、また、プル・リクエストをするのがよいでしょう。
-* 管理者は、merge で、編集結果を反映するときに、注意を要しますから、管理者が編集結果を反映しやすいように、丁寧に、プル・リクエストのときの説明をしておくのがよいと思います。
-
+-   フォークして作成したリポジトリ（リモートも、ローカルも）の、main branch は、オリジナル・レポジトリと同じ状態にしておく。
+-   編集は、編集用に、branch を作成して、その branch を、リモート・リポジトリにプッシュして、プル・リクエストを行う。
+-   プル・リクエストの結果が反映されたら、リモートも、ローカルも、同期しておく。
+-   プル・リクエストが反映される前に、また編集するときは、別の branch を作成して、また、プル・リクエストをするのがよいでしょう。
+-   管理者は、merge で、編集結果を反映するときに、注意を要しますから、管理者が編集結果を反映しやすいように、丁寧に、プル・リクエストのときの説明をしておくのがよいと思います。
 
 ### 参考にしたサイト
 
 #### Git - GitHub - RStudio 関連
 
-* [git -- everything is local](https://git-scm.com/about)
-  - About、Documentation など
-* GitHub Docs: [Hellow World](https://docs.github.com/ja/get-started/quickstart/hello-world)
-  - 基本的なことがコンパクトにまとまっている GitHub のサイトです。日本語もサポートしています。
-* Introduction to Data Science, by Rafael A. Irizarry
-  - [Git and GitHub](http://rafalab.dfci.harvard.edu/dsbook/git.html#git)
-  - edX の、データサイエンスのコースの教科書に入っています。よく、まとまっていると思います。原語は英語ですが、Google などの翻訳機能を使っても、十分理解することができると思います。Git と GitHub の概要から、Bookdown パッケージによる、電子書籍の執筆の前までは、基本的に、この教科書を参考にしていますが、それぞれのステップでの、スクリーンショットもたくさん掲載されており、確認がしやすいようになっています。
-* [Git-GitHub-RStudio](https://icu-hsuzuki.github.io/myds/techmemo.html#git-github-rstudio): 個人的メモ
+-   [git -- everything is local](https://git-scm.com/about)
+    -   About、Documentation など
+-   GitHub Docs: [Hellow World](https://docs.github.com/ja/get-started/quickstart/hello-world)
+    -   基本的なことがコンパクトにまとまっている GitHub のサイトです。日本語もサポートしています。
+-   Introduction to Data Science, by Rafael A. Irizarry
+    -   [Git and GitHub](http://rafalab.dfci.harvard.edu/dsbook/git.html#git)
+    -   edX の、データサイエンスのコースの教科書に入っています。よく、まとまっていると思います。原語は英語ですが、Google などの翻訳機能を使っても、十分理解することができると思います。Git と GitHub の概要から、Bookdown パッケージによる、電子書籍の執筆の前までは、基本的に、この教科書を参考にしていますが、それぞれのステップでの、スクリーンショットもたくさん掲載されており、確認がしやすいようになっています。
+-   [Git-GitHub-RStudio](https://icu-hsuzuki.github.io/myds/techmemo.html#git-github-rstudio): 個人的メモ
 
 #### Bookdown 関連
 
-* The bookdown book: https://bookdown.org/yihui/bookdown/
+-   The bookdown book: <https://bookdown.org/yihui/bookdown/>
 
-* The bookdown package reference site: https://pkgs.rstudio.com/bookdown
+-   The bookdown package reference site: <https://pkgs.rstudio.com/bookdown>
 
-* How to create a bookdown book in 5 minutes: https://www.youtube.com/watch?v=m5D-yoH416Y
+-   How to create a bookdown book in 5 minutes: <https://www.youtube.com/watch?v=m5D-yoH416Y>
 
 #### 複数アカウント・複数のキー関連
 
-* [Using the same github account from multiple PCs](https://serverfault.com/questions/206907/using-the-same-github-account-from-multiple-pcs)
-* [複数のGitHubアカウントを使い分けたい時の設定方法とTips](https://zenn.dev/taichifukumoto/articles/how-to-use-multiple-github-accounts)
-* [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-
-
+-   [Using the same github account from multiple PCs](https://serverfault.com/questions/206907/using-the-same-github-account-from-multiple-pcs)
+-   [複数のGitHubアカウントを使い分けたい時の設定方法とTips](https://zenn.dev/taichifukumoto/articles/how-to-use-multiple-github-accounts)
+-   [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)

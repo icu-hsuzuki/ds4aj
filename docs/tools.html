@@ -208,8 +208,7 @@
 <a href="https://github.com">GitHub サイト</a> に、アカウントを作成します。アカウント名は、短く、分かりやすく、覚えやすいものをよく考えて決めてください。Email Address だけで、無償で作成できます。</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
-<li>RStudio の 左下の窓枠のTerminal タブ<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Terminal がない場合は、Tools &amp;gt; Terminal &amp;gt; New Terminal とすると表示されます。&lt;/p&gt;"><sup>28</sup></a>から、GitHub アカウントに連携する設定を行います。
-下の２行を、１行ずつ、コピーして、Terminal に入力してください。</li>
+<li>RStudio の 左下の窓枠のTerminal タブ<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Terminal がない場合は、Tools &amp;gt; Terminal &amp;gt; New Terminal とすると表示されます。&lt;/p&gt;"><sup>28</sup></a>から、GitHub アカウントに連携する設定を行います。 下の２行を、１行ずつ、コピーして、Terminal に入力してください。</li>
 </ol>
 <pre><code>git config --global user.name "Your Name" # GitHub の User Name
 git config --global user.email "your@email.com" # GitHub に登録したメールアドレス</code></pre>
@@ -366,8 +365,7 @@ git push -u origin main</code></pre>
 <li>自分のアカウントの中に、コピーされたリポジトリーがつくられます。</li>
 <li>上で説明した「GitHub にあるリモート・リポジトリ（Remote Repo）から始める場合」を利用してください。</li>
 </ol>
-<p>まだ、不十分ですが、少しずつ、改訂していきます。
-使い方は、リポジトリの README に、注意点などは、最後の章 Bookdown に書いておく予定です。</p>
+<p>まだ、不十分ですが、少しずつ、改訂していきます。 使い方は、リポジトリの README に、注意点などは、最後の章 Bookdown に書いておく予定です。</p>
 </div>
 </div>
 </div>
@@ -382,33 +380,14 @@ git push -u origin main</code></pre>
 <h4>
 <span class="header-section-number">B.1.7.1</span> 大きなファイルの取り除きかた<a class="anchor" aria-label="anchor" href="#%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%8F%96%E3%82%8A%E9%99%A4%E3%81%8D%E3%81%8B%E3%81%9F"><i class="fas fa-link"></i></a>
 </h4>
-<p>下のサイトからの引用です。非常に分かりやすく書かれています。Terminal で作業を行いますが、いま、Add した場合と、いくつか、前のステップで、Add した場合で、対応の方法が異なります。</p>
+<p>ChatGPT の指示での対応</p>
 <ul>
-<li>
-<a href="https://medium.com/analytics-vidhya/tutorial-removing-large-files-from-git-78dbf4cf83a">Tutorial: Removing Large Files from Git</a>
-<ul>
-<li>Scenario 1: The Large File Was Just Added in the Most Recent Commit
-<ul>
-<li>git rm –cached big_file_name</li>
-<li>git commit –amend -C HEAD</li>
+<li><p>大きなファイルの Path の特定</p></li>
+<li><p><code>git filter-branch --tree-filter 'rm -rf path/to/large_file' -- --all</code></p></li>
+<li><p><code>git count-objects -vH</code> # 確認</p></li>
+<li><p><code>git push --force origin</code> # これで解決</p></li>
 </ul>
-</li>
-<li>Scenario 2: The Large File Was Committed Prior to The Most Recent Commit
-<ul>
-<li>Locating the Last “Good” Commit: git log –oneline</li>
-<li>Initiate a Rebase Between the Last “Good” Commit and the Current Commit: git rebase -i 8464da4</li>
-<li>This will open up a file in your Git editor (in my case, Vim), that looks something like this:
-<ul>
-<li>pick -&gt; edit</li>
-</ul>
-</li>
-<li>git rm –cached csv_building_damage_assessment.csv</li>
-<li>git commit –amend -C HEAD</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<!-- 下のサイトからの引用です。非常に分かりやすく書かれています。Terminal で作業を行いますが、いま、Add した場合と、いくつか、前のステップで、Add した場合で、対応の方法が異なります。 --><!-- -   [Tutorial: Removing Large Files from Git](https://medium.com/analytics-vidhya/tutorial-removing-large-files-from-git-78dbf4cf83a) --><!--     -   Scenario 1: The Large File Was Just Added in the Most Recent Commit --><!--         -   git rm --cached big_file_name --><!--         -   git commit --amend -C HEAD --><!--     -   Scenario 2: The Large File Was Committed Prior to The Most Recent Commit --><!--         -   Locating the Last "Good" Commit: git log --oneline --><!--         -   Initiate a Rebase Between the Last "Good" Commit and the Current Commit: git rebase -i 8464da4 --><!--         -   This will open up a file in your Git editor (in my case, Vim), that looks something like this: --><!--             -   pick -\> edit --><!--         -   git rm --cached csv_building_damage_assessment.csv --><!--         -   git commit --amend -C HEAD -->
 </div>
 </div>
 <div id="複数のコンピュータから利用する方法" class="section level3" number="37.1.8">

@@ -127,7 +127,7 @@
 </h1>
 <p>ここでは、R Package owid を用いた例をあげる</p>
 <p>必要に応じてインストールしてください。</p>
-<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"piersyork/owidR"</span><span class="op">)</span></span></code></pre></div>
 <p><em>使い方なのが変更になっている可能性があり、全面的に修正が必要かもしれません</em></p>
@@ -196,14 +196,14 @@
 <span class="header-section-number">28.4.1.1</span> Installation<a class="anchor" aria-label="anchor" href="#installation"><i class="fas fa-link"></i></a>
 </h4>
 <p>Run the following for the first time</p>
-<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"owidR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="load-the-package" class="section level4" number="28.4.1.2">
 <h4>
 <span class="header-section-number">28.4.1.2</span> Load the package<a class="anchor" aria-label="anchor" href="#load-the-package"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/piersyork/owidR">owidR</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
 <span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
@@ -253,7 +253,7 @@
 <li>Example</li>
 </ul>
 <p>Since the output is long, I cut it off to the first six rows using <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>.</p>
-<div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_search.html">owid_search</a></span><span class="op">(</span><span class="st">"emissions"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      titles                                                  </span></span>
 <span><span class="co">#&gt; [1,] "Air pollutant emissions"                               </span></span>
@@ -270,7 +270,7 @@
 <span><span class="co">#&gt; [5,] "so-emissions-by-world-region-in-million-tonnes"</span></span>
 <span><span class="co">#&gt; [6,] "so2-emissions"</span></span></code></pre></div>
 <p>A matrix is returned. If the list is long, it is easier to see the pairs of the titles and chart_ids by adding <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble()</a></code>.</p>
-<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_search.html">owid_search</a></span><span class="op">(</span><span class="st">"emissions"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -278,7 +278,7 @@
   </script>
 </div>
 <p>If the list is not long, you do not need to add <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble()</a></code>. However, note that you need to keep in mind that the title and the chart_id consists of a pair, and you need to use the chart_id to download the data using <code>owid</code>.</p>
-<div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb425"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_search.html">owid_search</a></span><span class="op">(</span><span class="st">"human rights"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -297,38 +297,38 @@
 <ul>
 <li>Example</li>
 </ul>
-<div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">emissions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"per-capita-ghg-emissions"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">emissions</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">emissions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"per-capita-ghg-emissions"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rights</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"human-rights-scores"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">emissions</span></span></code></pre></div>
 <div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rights</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"human-rights-scores"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rights</span></span></code></pre></div>
 <p><strong>Note.</strong></p>
 <ol style="list-style-type: decimal">
 <li>You can use <code>rename</code> to change column names. For example,</li>
 </ol>
-<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"per-capita-ghg-emissions"</span>, rename <span class="op">=</span> <span class="st">"ghgPcap"</span><span class="op">)</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Since until after importing the data, you never know the original column name, and how many columns are for indicators. It is natural to change column names using <code>dpyr::rename</code>. In the next example, I used <code>Total including LUCF</code>. However, ‘Total including LUCF’ and “Total including LUCF” work as well.</li>
 </ol>
-<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">emissions</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>ghgPcap <span class="op">=</span> <span class="va">`Per-capita greenhouse gas emissions in CO2 equivalents`</span><span class="op">)</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>If there are more than one variables to rename, use vector notation as follows. Here <code>top_n(1)</code> is same as <code>slice(1)</code>, and gives the first row only.</li>
 </ol>
-<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"electoral-democracy"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"electoral-democracy"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"electoral-democracy"</span>, rename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"electoral_democracy"</span>, <span class="st">"vdem_high"</span>, <span class="st">"vdem_low"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>You can use <code><a href="https://dplyr.tidyverse.org/reference/rename.html">dplyr::rename</a></code>, and keep the record of renaming column names.</li>
 </ol>
-<div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">democracy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"electoral-democracy"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb435"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">democracy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"electoral-democracy"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">democracy</span> <span class="op">&lt;-</span> <span class="va">democracy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>`electoral_democracy` <span class="op">=</span> <span class="va">`Electoral democracy`</span>,  </span>
 <span>         `vdem_high` <span class="op">=</span> <span class="va">`electdem_vdem_high_owid`</span>, </span>
@@ -344,9 +344,9 @@
 <ul>
 <li>Example</li>
 </ul>
-<div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_source.html">owid_source</a></span><span class="op">(</span><span class="va">emissions</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb438"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_source.html">owid_source</a></span><span class="op">(</span><span class="va">emissions</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_source.html">owid_source</a></span><span class="op">(</span><span class="va">rights</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="view_chart" class="section level5" number="28.4.2.2.4">
@@ -360,16 +360,16 @@
 <li><p>Example</p></li>
 </ul>
 <p>The first one uses the chart, i.e., the tibble returned by <code><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid()</a></code>, and the second, <code>chart_id</code>. You can also embed in your R Markdown file by copying Embed <code>iframe</code> clink from <code>Share</code> botton at the bottom right corner.</p>
-<div class="sourceCode" id="cb440"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">firearm_suicide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"suicide-rate-by-firearm"</span><span class="op">)</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/view_chart.html">view_chart</a></span><span class="op">(</span><span class="va">firearm_suicide</span><span class="op">)</span></span></code></pre></div>
 <iframe src="https://ourworldindata.org/grapher/suicide-rate-by-firearm" loading="lazy" style="width: 100%; height: 600px; border: 0px none;">
 </iframe>
-<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/view_chart.html">view_chart</a></span><span class="op">(</span><span class="st">"electoral-democracy"</span><span class="op">)</span></span></code></pre></div>
 <iframe src="https://ourworldindata.org/grapher/electoral-democracy?country=ARG~AUS~BWA~CHN" loading="lazy" style="width: 100%; height: 600px; border: 0px none;">
 </iframe>
-<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb443"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/view_chart.html">view_chart</a></span><span class="op">(</span><span class="st">"share-of-individuals-using-the-internet"</span><span class="op">)</span></span></code></pre></div>
 <iframe src="https://ourworldindata.org/grapher/share-of-individuals-using-the-internet" loading="lazy" style="width: 100%; height: 600px; border: 0px none;">
 </iframe>
@@ -390,9 +390,9 @@
 <ul>
 <li>Example</li>
 </ul>
-<div class="sourceCode" id="cb444"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">covid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_covid.html">owid_covid</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb445"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">covid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_covid.html">owid_covid</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">covid</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">location</span> <span class="op">==</span> <span class="st">"Japan"</span><span class="op">)</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -413,7 +413,7 @@
 <span class="header-section-number">28.5.1</span> Human Rights- modified from README<a class="anchor" aria-label="anchor" href="#human-rights--modified-from-readme"><i class="fas fa-link"></i></a>
 </h3>
 <p>Lets use the core functions to get data on how human rights have changed over time. First by searching for charts on human rights.</p>
-<div class="sourceCode" id="cb446"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb447"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_search.html">owid_search</a></span><span class="op">(</span><span class="st">"human rights"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -421,11 +421,11 @@
   </script>
 </div>
 <p>Let’s use the human rights protection dataset.</p>
-<div class="sourceCode" id="cb447"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb448"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rights</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"human-rights-protection"</span><span class="op">)</span></span>
 <span><span class="va">rights</span></span></code></pre></div>
 <p>ggplot2 makes it easy to visualise our data.</p>
-<div class="sourceCode" id="cb448"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb449"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rights</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">entity</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"United Kingdom"</span>, <span class="st">"France"</span>, <span class="st">"United States"</span>, <span class="st">"Japan"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">`Human rights protection`</span>, colour <span class="op">=</span> <span class="va">entity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -435,7 +435,7 @@
 <h3>
 <span class="header-section-number">28.5.2</span> Internet - modified from vignette<a class="anchor" aria-label="anchor" href="#internet---modified-from-vignette"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb449"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb450"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_search.html">owid_search</a></span><span class="op">(</span><span class="st">"internet"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -443,30 +443,30 @@
   </script>
 </div>
 <p>Get a dataset used in an OWID chart.</p>
-<div class="sourceCode" id="cb450"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"share-of-individuals-using-the-internet"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb451"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"share-of-individuals-using-the-internet"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">internet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"share-of-individuals-using-the-internet"</span>, rename <span class="op">=</span> <span class="st">"internet_use"</span><span class="op">)</span></span>
 <span><span class="va">internet</span></span></code></pre></div>
 <p>Get source information on an OWID dataset</p>
-<div class="sourceCode" id="cb452"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb453"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_source.html">owid_source</a></span><span class="op">(</span><span class="va">internet</span><span class="op">)</span></span></code></pre></div>
 <p>A function that opens the original OWID chart in your browser.</p>
-<div class="sourceCode" id="cb453"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb454"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/view_chart.html">view_chart</a></span><span class="op">(</span><span class="va">internet</span><span class="op">)</span></span></code></pre></div>
 <iframe src="https://ourworldindata.org/grapher/share-of-individuals-using-the-internet" loading="lazy" style="width: 100%; height: 600px; border: 0px none;">
 </iframe>
 <p>Plot an owid dataset. The first is the simplest, and the second uses oied theme.</p>
-<div class="sourceCode" id="cb454"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb455"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">internet</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">entity</span> <span class="op">==</span> <span class="st">"World"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">internet_use</span><span class="op">)</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
-<div class="sourceCode" id="cb455"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb456"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">internet</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">entity</span> <span class="op">==</span> <span class="st">"World"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">internet_use</span><span class="op">)</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Share of the World Population \nusing the Internet"</span>,</span>
 <span>       y <span class="op">=</span> <span class="st">"Individuals using the Internet \n(% of population)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb456"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb457"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">internet</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">entity</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"United Kingdom"</span>, <span class="st">"Spain"</span>, <span class="st">"Russia"</span>, <span class="st">"Egypt"</span>, <span class="st">"Nigeria"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">internet_use</span>, color <span class="op">=</span>  <span class="va">entity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -475,7 +475,7 @@
 <span>       color <span class="op">=</span> <span class="st">"country"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"%"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Creating a choropleth map.</p>
-<div class="sourceCode" id="cb457"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb458"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_map.html">owid_map</a></span><span class="op">(</span><span class="va">internet</span>, year <span class="op">=</span> <span class="fl">2017</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Share of Population Using the Internet, 2017"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -483,30 +483,30 @@
 <h3>
 <span class="header-section-number">28.5.3</span> Democracy - modified from vignette<a class="anchor" aria-label="anchor" href="#democracy---modified-from-vignette"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb458"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_search.html">owid_search</a></span><span class="op">(</span><span class="st">"democrac"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["titles"],"name":[1],"type":["chr"],"align":["left"]},{"label":["chart_id"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"Under-five mortality rate vs. electoral democracy","2":"child-mortality-vs-electoral-democracy"},{"1":"People living in democracies and non-democracies","2":"world-pop-by-political-regime"},{"1":"Age of democracy","2":"age-of-democracy-bmr"},{"1":"Age of democracy","2":"age-of-democracy-womsuffr-bmr"},{"1":"Age of democracy","2":"age-of-democracy-polity"},{"1":"Age of electoral democracy","2":"age-of-electoral-democracy"},{"1":"Age of electoral democracy","2":"age-of-electoral-democracy-lexical"},{"1":"Age of liberal democracy","2":"age-of-liberal-democracy-row"},{"1":"Citizen satisfaction with democracy","2":"citizen-satisfaction-with-democracy"},{"1":"Citizen support for democracy","2":"citizen-support-for-democracy"},{"1":"Countries that are democracies and autocracies","2":"countries-democracies-autocracies-row"},{"1":"Countries that are democracies and autocracies","2":"democracies-autocracies-amb-row"},{"1":"Countries that are democracies and autocracies","2":"countries-democracies-autocracies-lexical"},{"1":"Countries that are democracies and autocracies","2":"countries-democracies-autocracies-bti"},{"1":"Countries that are democracies and non-democracies","2":"countries-democracies-nondemocracies-bmr"},{"1":"Countries that are democracies and non-democracies","2":"countries-democracies-nondemocracies-womsuffr-bmr"},{"1":"Countries that are democracies and non-democracies","2":"countries-democracies-nondemocracies-fh"},{"1":"Countries that are democracies and non-democracies","2":"countries-democracies-nondemocracies-polity"},{"1":"Countries that are democracies and non-democracies","2":"countries-democracies-nondemocracies-eiu"},{"1":"Countries that are long-standing democracies","2":"countries-long-standing-democracies-bmr"},{"1":"Countries that are long-standing democracies","2":"countries-long-standing-democracies-womsuffr-bmr"},{"1":"Countries that are long-standing democracies","2":"countries-long-standing-democracies-polity"},{"1":"Countries that are long-standing electoral democracies","2":"countries-long-standing-electoral-democracies"},{"1":"Countries that are long-standing electoral democracies","2":"countries-long-standing-electoral-democracies-lexical"},{"1":"Countries that are long-standing liberal democracies","2":"countries-long-standing-liberal-democracies-row"},{"1":"Deliberative democracy","2":"deliberative-democracy-vdem"},{"1":"Deliberative democracy","2":"deliberative-democracy-popw-vdem"},{"1":"Democracy index","2":"democracy-index-polity"},{"1":"Democracy index","2":"democracy-index-population-weighted-polity"},{"1":"Democracy index","2":"democracy-index-eiu"},{"1":"Democracy index","2":"popw-democracy-index-eiu"},{"1":"Democracy index by source","2":"democracy-index-by-source"},{"1":"Distribution of deliberative democracy","2":"distribution-deliberative-democracy-popw-vdem"},{"1":"Distribution of deliberative democracy","2":"distribution-deliberative-democracy-vdem"},{"1":"Distribution of democracy","2":"distribution-democracy-popw-polity"},{"1":"Distribution of democracy","2":"distribution-democracy-polity"},{"1":"Distribution of democracy index","2":"distribution-democracy-index-popw-eiu"},{"1":"Distribution of democracy index","2":"distribution-democracy-index-eiu"},{"1":"Distribution of egalitarian democracy","2":"distribution-egalitarian-democracy-popw-vdem"},{"1":"Distribution of egalitarian democracy","2":"distribution-egalitarian-democracy-vdem"},{"1":"Distribution of electoral democracy index","2":"distribution-electoral-democracy-index-vdem"},{"1":"Distribution of electoral democracy index","2":"distribution-electoral-democracy-index-popw-vdem"},{"1":"Distribution of liberal democracy index","2":"distribution-liberal-democracy-index-popw-vdem"},{"1":"Distribution of liberal democracy index","2":"distribution-liberal-democracy-index-vdem"},{"1":"Distribution of participatory democracy","2":"distribution-participatory-democracy-vdem"},{"1":"Distribution of participatory democracy","2":"distribution-participatory-democracy-popw-vdem"},{"1":"Egalitarian democracy","2":"egalitarian-democracy-vdem"},{"1":"Egalitarian democracy","2":"egalitarian-democracy-popw-vdem"},{"1":"Electoral democracy","2":"electoral-democracy-lexical"},{"1":"Electoral democracy","2":"electoral-democracy-row"},{"1":"Electoral democracy index","2":"electoral-democracy-index"},{"1":"Electoral democracy index","2":"electoral-democracy-index-popw-vdem"},{"1":"Electoral democracy today vs. past average years of schooling","2":"electoral-democracy-today-vs-past-schooling"},{"1":"Experience with democracy","2":"experience-with-democracy-bmr"},{"1":"Experience with democracy","2":"experience-with-democracy-womsuffr-bmr"},{"1":"Experience with democracy","2":"experience-with-democracy-polity"},{"1":"Experience with electoral democracy","2":"experience-with-electoral-democracy"},{"1":"Experience with electoral democracy","2":"experience-with-electoral-democracy-lexical"},{"1":"Experience with liberal democracy","2":"experience-with-liberal-democracy-row"},{"1":"GDP per capita vs. electoral democracy","2":"gdp-per-capita-vs-electoral-democracy"},{"1":"Government effectiveness vs. liberal democracy","2":"govt-effectiveness-vs-liberal-democracy"},{"1":"Human rights index vs. electoral democracy index","2":"human-rights-index-vs-electoral-democracy-index"},{"1":"Liberal democracy","2":"liberal-democracy-row"},{"1":"Liberal democracy index","2":"liberal-democracy-index"},{"1":"Liberal democracy index","2":"liberal-democracy-index-popw-vdem"},{"1":"Life expectancy vs. liberal democracy","2":"life-expectancy-vs-liberal-democracy"},{"1":"Number of democracies by age","2":"number-democracies-age-bmr"},{"1":"Number of democracies by age","2":"number-democracies-age-womsuffr-bmr"},{"1":"Number of democracies by age","2":"number-democracies-age-polity"},{"1":"Number of electoral democracies by age","2":"number-electoral-democracies-age"},{"1":"Number of electoral democracies by age","2":"number-electoral-democracies-age-lexical"},{"1":"Number of liberal democracies by age","2":"number-liberal-democracies-age"},{"1":"Participatory democracy","2":"participatory-democracy-popw-vdem"},{"1":"Participatory democracy","2":"participatory-democracy-vdem"},{"1":"People living in democracies and autocracies","2":"people-living-in-democracies-autocracies"},{"1":"People living in democracies and autocracies","2":"people-living-in-democracies-autocracies-amb-row"},{"1":"People living in democracies and autocracies","2":"people-living-in-democracies-autocracies-lexical"},{"1":"People living in democracies and autocracies","2":"people-living-in-democracies-autocracies-bti"},{"1":"People living in democracies and non-democracies","2":"people-living-in-democracies-nondemocracies-bmr"},{"1":"People living in democracies and non-democracies","2":"people-living-in-democracies-nondemocracies-womsuffr-bmr"},{"1":"People living in democracies and non-democracies","2":"people-living-in-democracies-nondemocracies-fh"},{"1":"People living in democracies and non-democracies","2":"people-living-in-democracies-nondemocracies-polity"},{"1":"People living in democracies and non-democracies","2":"people-living-in-democracies-nondemocracies-eiu"},{"1":"People living in long-standing democracies","2":"people-living-in-long-standing-democracies-bmr"},{"1":"People living in long-standing democracies","2":"people-living-in-long-standing-democracies-womsuffr-bmr"},{"1":"People living in long-standing democracies","2":"people-living-in-long-standing-democracies-polity"},{"1":"People living in long-standing electoral democracies","2":"people-living-in-long-standing-electoral-democracies-row"},{"1":"People living in long-standing electoral democracies","2":"people-living-in-long-standing-electoral-democracies-lexical"},{"1":"People living in long-standing liberal democracies","2":"people-living-in-long-standing-liberal-democracies-row"},{"1":"Tax revenues vs. electoral democracy","2":"tax-revenues-vs-electoral-democracy"},{"1":"Varieties of democracy","2":"varieties-democracy-popw-vdem"},{"1":"Varieties of democracy","2":"varieties-democracy-vdem"},{"1":"Women's political empowerment index vs. electoral democracy index","2":"women-political-empowerment-index-vs-electoral-democracy-index"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"electoral-democracy"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb460"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"electoral-democracy"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">democracy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"electoral-democracy"</span>, rename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"electoral_democracy"</span>, <span class="st">"vdem_high"</span>, <span class="st">"vdem_low"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">democracy</span></span></code></pre></div>
-<div class="sourceCode" id="cb461"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_source.html">owid_source</a></span><span class="op">(</span><span class="va">democracy</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb462"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_source.html">owid_source</a></span><span class="op">(</span><span class="va">democracy</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid_map.html">owid_map</a></span><span class="op">(</span><span class="va">democracy</span>, year <span class="op">=</span> <span class="fl">2015</span>, palette <span class="op">=</span> <span class="st">"YlGn"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Electoral Democracy"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb463"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb464"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">democracy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">entity</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"United Kingdom"</span>, <span class="st">"Spain"</span>, <span class="st">"Russia"</span>, <span class="st">"Egypt"</span>, <span class="st">"Nigeria"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">electoral_democracy</span>, color <span class="op">=</span> <span class="va">entity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Electoral Democracy"</span>, y <span class="op">=</span> <span class="st">""</span>, color <span class="op">=</span> <span class="st">"country"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"%"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb464"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb465"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gdp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"gdp-per-capita-worldbank"</span>, rename <span class="op">=</span> <span class="st">"gdp"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">gov_exp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/owidR/man/owid.html">owid</a></span><span class="op">(</span><span class="st">"total-gov-expenditure-gdp-wdi"</span>, rename <span class="op">=</span> <span class="st">"gov_exp"</span><span class="op">)</span></span>
@@ -526,7 +526,7 @@
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb465"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb466"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">internet</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">democracy</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gdp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -534,30 +534,30 @@
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">age_dep</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">unemployment</span><span class="op">)</span></span></code></pre></div>
 <p>Drawing scatter plot</p>
-<div class="sourceCode" id="cb466"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb467"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2015</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">internet_use</span>, <span class="va">electoral_democracy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"#57677D"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, colour <span class="op">=</span> <span class="st">"#DC5E78"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Relationship Between Internet Use \nand electoral_democracy"</span>, x <span class="op">=</span> <span class="st">"Internet Use"</span>, y <span class="op">=</span> <span class="st">"electoral_democracy"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb467"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb468"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2015</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">gdp</span>, <span class="va">internet_use</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"gam"</span>, colour <span class="op">=</span> <span class="st">"red"</span>, level <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Relationship Between Internet Use and GDP"</span>, x <span class="op">=</span> <span class="st">"GDP"</span>, y <span class="op">=</span> <span class="st">"Internet Use"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb468"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb469"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">electoral_democracy</span> <span class="op">~</span> <span class="va">internet_use</span>, <span class="va">data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model1</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb469"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb470"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">model2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">gdp</span> <span class="op">~</span> <span class="va">internet_use</span>, <span class="va">data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model2</span><span class="op">)</span></span></code></pre></div>
 <p>Creating a table of the results of the regression analysis using <code>texreg</code>. For the first time, install the pacage <code>texreg</code>.</p>
-<div class="sourceCode" id="cb470"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"texreg"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb471"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"texreg"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/leifeld/texreg/">texreg</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Version:  1.38.6</span></span>
 <span><span class="co">#&gt; Date:     2022-04-06</span></span>
@@ -570,7 +570,7 @@
 <span><span class="co">#&gt; The following object is masked from 'package:tidyr':</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     extract</span></span></code></pre></div>
-<div class="sourceCode" id="cb472"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb473"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">models</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Model 1"</span> <span class="op">=</span> <span class="va">model1</span>,</span>
 <span>               <span class="st">"Model 2"</span> <span class="op">=</span> <span class="va">model2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/texreg/man/screenreg.html">screenreg</a></span><span class="op">(</span><span class="va">models</span>, stars <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
