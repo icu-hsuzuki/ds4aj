@@ -467,15 +467,17 @@ hist(cars$dist, breaks = seq(0,120, 10))
 2*2*2
 #> [1] 8
 
-### assignment: <-, (=, ->, assign()) - アサインメント
+### assignment: <-, (=, ->, assign()) 
+### アサインメント
 
 x <- 5
 
 x 
 #> [1] 5
 
-#### object_name <- value, '<-' shortcut: Alt (option) + '-' (hyphen or minus) 
-#### Object names must start with a letter and can only contain letter, numbers, _ and . 文字列は、日本語でも構いません。ただ、引用符は、半角英数にしてください。
+### object_name <- value, '<-' shortcut: Alt (option) + '-' (hyphen or minus) 
+### Object names must start with a letter and can only contain letter, numbers, _ and . 
+### 文字列は、日本語でも構いません。ただ、引用符は、半角英数にしてください。
 
 this_is_a_long_name <- 5^3
 
@@ -487,9 +489,15 @@ char_name <- "What is your name?"
 char_name
 #> [1] "What is your name?"
 
-#### Use 'tab completion' and 'up arrow' 長い名前を使っても、少しだけ入力すれば、可能性が表示され、tab キーを押すと、残りが表示されます。この機能を tab completion（タブ補完）と言います。
+### Use 'tab completion' and 'up arrow' 
+### 長い名前を使っても、少しだけ入力すれば、可能性が表示され、
+### tab キーを押すと、残りが表示されます。
+### この機能を tab completion（タブ補完）と言います。
 
-### ls(): list of all assignments - 名前が割り当てられているものをすべて表示します。右上の窓枠の、Environment と同じです。ls.str() では、それぞれのオブジェクトの構造（structure）まで表示されます。
+### ls(): list of all assignments -
+### 名前が割り当てられているものをすべて表示します。
+### 右上の窓枠の、Environment と同じです。
+### ls.str() では、それぞれのオブジェクトの構造（structure）まで表示されます。
 
 ls()
 #> [1] "char_name"           "this_is_a_long_name"
@@ -499,11 +507,15 @@ ls.str()
 #> this_is_a_long_name :  num 125
 #> x :  num 5
 
-#### check Environment in the upper right pane
+### check Environment in the upper right pane
 
-### (atomic) vectors 数字または文字の並びのオブジェクトをベクトル（vectors）と呼びます。
+### (atomic) vectors 
+### 数字または文字の並びのオブジェクトをベクトル（vectors）と呼びます。
 
-5:10 # 5 から 10 までの整数をこのようにも作成できます。これは、次の、seq(5,10) とも同じです。
+### 5 から 10 までの整数をこのようにも作成できます。
+### これは、次の、seq(5,10) とも同じです。
+
+5:10 
 #> [1]  5  6  7  8  9 10
 
 a <- seq(5,10)
@@ -513,10 +525,15 @@ a
 
 b <- 5:10
 
-identical(a,b) # 二つのベクトルが同じが稼働化をチェックします。
+### 二つのベクトルが同じが稼働化をチェックします。
+
+identical(a,b) 
 #> [1] TRUE
 
-seq(5,10,2) # same as seq(from = 5, to = 10, by = 2) # とびとびの数列も定義できます。次が、どのようなものを定義しているか確認してください。
+### とびとびの数列も定義できます。
+### 次が、どのようなものを定義しているか確認してください。
+
+seq(5,10,2) # same as seq(from = 5, to = 10, by = 2) 
 #> [1] 5 7 9
 
 c1 <- seq(0,100, by = 10)
@@ -533,14 +550,20 @@ c2
 length(c1) # ベクトルの長さです。
 #> [1] 11
 
-#### ? seq   ? length   ? identical
+### ? seq   ? length   ? identical
 
-(die <- 1:6) # かっこをつけておくと、名前をつけ、そのオブジェクトを表示することまでしてくれます。
+### かっこをつけておくと、名前をつけ、そのオブジェクトを表示することまでしてくれます。
+(die <- 1:6) 
 #> [1] 1 2 3 4 5 6
 
 zero_one <- c(0,1) # same as 0:1 # ベクトルの基本的な定義です。
 
-die + zero_one # c(1,2,3,4,5,6) + c(0,1). re-use # 何をしているかわかりますか。1+0, 2+1, 3+0, 4+1, 5+0, 6+1 とあとのものが足りなくなると、繰り返して使うようにしています。
+
+### 何をしているかわかりますか。
+### 1+0, 2+1, 3+0, 4+1, 5+0, 6+1 とあとのものが足りなくなると、
+### 繰り返して使うようにしています。
+
+die + zero_one # c(1,2,3,4,5,6) + c(0,1). re-use 
 #> [1] 1 3 3 5 5 7
 
 d1 <- rep(1:3,2) # repeat 2回繰り返す場合はこのようにします。
@@ -562,7 +585,8 @@ d3 <- as.numeric(die == d1) # 数字として扱うときは、このように�
 d3
 #> [1] 1 1 1 0 0 0
 
-### class() for class and typeof() for mode　# クラスとモードがそれぞれに定まっています。ベクトルの場合には、それぞれ次のようなものがあります。
+### class() for class and typeof() for mode　
+### クラスとモードがそれぞれに定まっています。ベクトルの場合には、それぞれ次のようなものがあります。
 ### class of vectors: numeric, charcters, logical
 ### types of vectors: doubles, integers, characters, logicals (complex and raw)
 
@@ -604,37 +628,43 @@ length(5)
 
 ### Subsetting 一部分を取り出す。
 
-(A_Z <- LETTERS) # LETTERS には、最初から、アルファベットからなるベクトルが入っています。letters はどうでしょうか。
+### LETTERS には、最初から、アルファベットからなるベクトルが入っています。
+### letters はどうでしょうか。
+(A_Z <- LETTERS) 
 #>  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N"
 #> [15] "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"
 
-# 1番目から6番目まで取り出して、A_F とおきます。
+### 1番目から6番目まで取り出して、A_F とおきます。
 A_F <- A_Z[1:6]
 
 A_F
 #> [1] "A" "B" "C" "D" "E" "F"
 
-# A_F の三番目です。
+### A_F の三番目です。
 A_F[3]
 #> [1] "C"
 
-# A_F の三番目と五番目です。
+### A_F の三番目と五番目です。
 A_F[c(3,5)]
 #> [1] "C" "E"
 
-# die は、1,2,3,4,5,6 からなるベクトルでした。そのなかで、3 より大きいものを取り出します。
+### die は、1,2,3,4,5,6 からなるベクトルでした。
+### そのなかで、3 より大きいものを取り出します。
+
 large <- die > 3
 
 large
 #> [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE
 
-# die の中で、2 か、4 か 6 に適合するもの、すなわち、偶数を取り出します。
+### die の中で、2 か、4 か 6 に適合するもの、すなわち、偶数を取り出します。
+
 even <- die %in% c(2,4,6)
 
 even
 #> [1] FALSE  TRUE FALSE  TRUE FALSE  TRUE
 
-# 次のようなことも可能です。
+### 次のようなことも可能です。
+
 A_F[large]
 #> [1] "D" "E" "F"
 
@@ -645,7 +675,11 @@ A_F[die < 4]
 #> [1] "A" "B" "C"
 
 ### Compare df with df1 <- data.frame(number = die, alphabet = A_F)
-# 表：data frame を作成しています。文字列なども、一定の順序を決めることができますが、この命令で、そのようにはしないことを指定しています。data frame は、変数の長さが同じでないといけません。die はサイコロの意味で６個、A, B, C, D, E, F も６個でちょうどあっています。
+### 表：data frame を作成しています。
+### 文字列なども、一定の順序を決めることができますが、
+### この命令で、そのようにはしないことを指定しています
+### data frame は、変数の長さが同じでないといけません。
+### die はサイコロの意味で６個、A, B, C, D, E, F も６個でちょうどあっています。
 
 df <- data.frame(number = die, alphabet = A_F, stringsAsFactors = FALSE)
 
@@ -685,7 +719,8 @@ class(df[1]) # 一列目だけからなる表のクラスは？
 class(df[[1]]) # 一列目からなるベクトルのクラスです。
 #> [1] "integer"
 
-# 次は、一方が、TRUE 他方が、FALSE です。わかりますか。
+### 次は、一方が、TRUE 他方が、FALSE です。わかりますか。
+
 identical(df[[1]], die)
 #> [1] TRUE
 
@@ -698,11 +733,13 @@ identical(df[1],die)
 
 plot(cars)
 
-# Help: Help Tab に表示されます。省略。
+### Help: Help Tab に表示されます。省略。
 
 # ? cars
 
-# cars is in the 'datasets' package # data() で現在使用可能なデータがすべて表示されます。最初は、datasets のリストが表示されると思います。
+# cars is in the 'datasets' package 
+### data() で現在使用可能なデータがすべて表示されます。
+### 最初は、datasets のリストが表示されると思います。
 
 # data()
 
@@ -748,7 +785,8 @@ quantile(x) # 四分位が表示されます。上の、summary() の説明で�
 
 plot(cars)
 
-# 回帰直線を加えます。フィットした直線といった感じです。
+### 回帰直線を加えます。フィットした直線といった感じです。
+
 abline(lm(cars$dist ~ cars$speed))
 ```
 
@@ -756,7 +794,8 @@ abline(lm(cars$dist ~ cars$speed))
 
 ```r
 
-# 回帰直線に関するさまざまな値が表示されます。数値モデル Modeling で説明します。
+### 回帰直線に関するさまざまな値が表示されます。数値モデル Modeling で説明します。
+
 summary(lm(cars$dist ~ cars$speed))
 #> 
 #> Call:
@@ -778,7 +817,8 @@ summary(lm(cars$dist ~ cars$speed))
 #> Multiple R-squared:  0.6511,	Adjusted R-squared:  0.6438 
 #> F-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12
 
-# 箱ひげ図です
+### 箱ひげ図です
+
 boxplot(cars)
 ```
 
@@ -786,8 +826,9 @@ boxplot(cars)
 
 ```r
 
-# ヒストグラム（度数分布表）です。
-# どのように区切るかを指定することも可能です。
+### ヒストグラム（度数分布表）です。
+### どのように区切るかを指定することも可能です。
+
 hist(cars$speed)
 ```
 
@@ -904,7 +945,8 @@ Sys.Date()
 #> [1] "2023-09-26"
 
 ## Download and read csv (comma separated value) file
-coronavirus <- read.csv("https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv") # データを Krispin のサイトから入手します。
+coronavirus <- read.csv("https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv") 
+### データを Krispin のサイトから入手します。
 # write.csv(coronavirus, "data/coronavirus.csv")
 
 ## Summaries and structures of the data
@@ -947,7 +989,8 @@ str(coronavirus)
 #>  $ population    : num  4413146 4413146 4413146 4413146 4413146 ...
 #>  $ continent_name: chr  "North America" "North America" "North America" "North America" ...
 #>  $ continent_code: chr  NA NA NA NA ...
-coronavirus$date <- as.Date(coronavirus$date) # date 列を、日付だと認識するように指定します。
+coronavirus$date <- as.Date(coronavirus$date) 
+### date 列を、日付だと認識するように指定します。
 str(coronavirus)
 #> 'data.frame':	919308 obs. of  15 variables:
 #>  $ date          : Date, format: "2020-01-22" ...
@@ -968,7 +1011,11 @@ str(coronavirus)
 
 range(coronavirus$date) # 期間（日付の幅）を調べます
 #> [1] "2020-01-22" "2023-01-04"
-unique(coronavirus$country) # country 列に入っている国（何度も同じ国が入っているので、異なるもののみを抽出）
+
+### country 列に入っている国（何度も同じ国が入っているので、
+### 異なるもののみを抽出）
+
+unique(coronavirus$country) 
 #>   [1] "Canada"                          
 #>   [2] "United Kingdom"                  
 #>   [3] "China"                           
@@ -1170,12 +1217,23 @@ unique(coronavirus$country) # country 列に入っている国（何度も同じ
 #> [199] "Yemen"                           
 #> [200] "Zambia"                          
 #> [201] "Zimbabwe"
+
 unique(coronavirus$type) # type 列の種類
 #> [1] "confirmed" "death"     "recovery"
 
 ## Set Country 
-COUNTRY <- "Japan" # 日本に設定してみます。上の国のリストから、選択すれば、他の国についても、グラフなどを書くことができます。
-df0 <- coronavirus[coronavirus$country == COUNTRY,] # country 列が上で指定した、COUNTRY と同じもの、この場合は日本のものだけを取り出します。
+
+### 日本に設定してみます。
+### 上の国のリストから、選択すれば、他の国についても、
+### グラフなどを書くことができます。
+
+COUNTRY <- "Japan" 
+
+### country 列が上で指定した、COUNTRY と同じもの、
+### この場合は日本のものだけを取り出します。
+
+df0 <- coronavirus[coronavirus$country == COUNTRY,] 
+
 head(df0)
 #>              date province country      lat     long
 #> 189905 2020-01-22     <NA>   Japan 36.20482 138.2529
@@ -1237,7 +1295,9 @@ head(df)
 #> 189908 2020-01-25 confirmed     0  126476458
 #> 189909 2020-01-26 confirmed     2  126476458
 #> 189910 2020-01-27 confirmed     0  126476458
+
 ### alternatively,
+
 head(df0[c("date", "type", "cases", "population")])
 #>              date      type cases population
 #> 189905 2020-01-22 confirmed     2  126476458
@@ -1246,10 +1306,10 @@ head(df0[c("date", "type", "cases", "population")])
 #> 189908 2020-01-25 confirmed     0  126476458
 #> 189909 2020-01-26 confirmed     2  126476458
 #> 189910 2020-01-27 confirmed     0  126476458
-###
 
 ## Set types
 ###  タイプ毎に取り出します。
+
 df_confirmed <- df[df$type == "confirmed",]　# 感染者数
 df_death <- df[df$type == "death",] # 死者数
 df_recovery <- df[df$data_type == "recovery",] # 回復者数

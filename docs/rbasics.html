@@ -590,15 +590,17 @@
 <span><span class="fl">2</span><span class="op">*</span><span class="fl">2</span><span class="op">*</span><span class="fl">2</span></span>
 <span><span class="co">#&gt; [1] 8</span></span>
 <span></span>
-<span><span class="co">### assignment: &lt;-, (=, -&gt;, assign()) - アサインメント</span></span>
+<span><span class="co">### assignment: &lt;-, (=, -&gt;, assign()) </span></span>
+<span><span class="co">### アサインメント</span></span>
 <span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
 <span></span>
 <span><span class="va">x</span> </span>
 <span><span class="co">#&gt; [1] 5</span></span>
 <span></span>
-<span><span class="co">#### object_name &lt;- value, '&lt;-' shortcut: Alt (option) + '-' (hyphen or minus) </span></span>
-<span><span class="co">#### Object names must start with a letter and can only contain letter, numbers, _ and . 文字列は、日本語でも構いません。ただ、引用符は、半角英数にしてください。</span></span>
+<span><span class="co">### object_name &lt;- value, '&lt;-' shortcut: Alt (option) + '-' (hyphen or minus) </span></span>
+<span><span class="co">### Object names must start with a letter and can only contain letter, numbers, _ and . </span></span>
+<span><span class="co">### 文字列は、日本語でも構いません。ただ、引用符は、半角英数にしてください。</span></span>
 <span></span>
 <span><span class="va">this_is_a_long_name</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">^</span><span class="fl">3</span></span>
 <span></span>
@@ -610,9 +612,15 @@
 <span><span class="va">char_name</span></span>
 <span><span class="co">#&gt; [1] "What is your name?"</span></span>
 <span></span>
-<span><span class="co">#### Use 'tab completion' and 'up arrow' 長い名前を使っても、少しだけ入力すれば、可能性が表示され、tab キーを押すと、残りが表示されます。この機能を tab completion（タブ補完）と言います。</span></span>
+<span><span class="co">### Use 'tab completion' and 'up arrow' </span></span>
+<span><span class="co">### 長い名前を使っても、少しだけ入力すれば、可能性が表示され、</span></span>
+<span><span class="co">### tab キーを押すと、残りが表示されます。</span></span>
+<span><span class="co">### この機能を tab completion（タブ補完）と言います。</span></span>
 <span></span>
-<span><span class="co">### ls(): list of all assignments - 名前が割り当てられているものをすべて表示します。右上の窓枠の、Environment と同じです。ls.str() では、それぞれのオブジェクトの構造（structure）まで表示されます。</span></span>
+<span><span class="co">### ls(): list of all assignments -</span></span>
+<span><span class="co">### 名前が割り当てられているものをすべて表示します。</span></span>
+<span><span class="co">### 右上の窓枠の、Environment と同じです。</span></span>
+<span><span class="co">### ls.str() では、それぞれのオブジェクトの構造（structure）まで表示されます。</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "char_name"           "this_is_a_long_name"</span></span>
@@ -622,11 +630,15 @@
 <span><span class="co">#&gt; this_is_a_long_name :  num 125</span></span>
 <span><span class="co">#&gt; x :  num 5</span></span>
 <span></span>
-<span><span class="co">#### check Environment in the upper right pane</span></span>
+<span><span class="co">### check Environment in the upper right pane</span></span>
 <span></span>
-<span><span class="co">### (atomic) vectors 数字または文字の並びのオブジェクトをベクトル（vectors）と呼びます。</span></span>
+<span><span class="co">### (atomic) vectors </span></span>
+<span><span class="co">### 数字または文字の並びのオブジェクトをベクトル（vectors）と呼びます。</span></span>
 <span></span>
-<span><span class="fl">5</span><span class="op">:</span><span class="fl">10</span> <span class="co"># 5 から 10 までの整数をこのようにも作成できます。これは、次の、seq(5,10) とも同じです。</span></span>
+<span><span class="co">### 5 から 10 までの整数をこのようにも作成できます。</span></span>
+<span><span class="co">### これは、次の、seq(5,10) とも同じです。</span></span>
+<span></span>
+<span><span class="fl">5</span><span class="op">:</span><span class="fl">10</span> </span>
 <span><span class="co">#&gt; [1]  5  6  7  8  9 10</span></span>
 <span></span>
 <span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">10</span><span class="op">)</span></span>
@@ -636,10 +648,15 @@
 <span></span>
 <span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">:</span><span class="fl">10</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span> <span class="co"># 二つのベクトルが同じが稼働化をチェックします。</span></span>
+<span><span class="co">### 二つのベクトルが同じが稼働化をチェックします。</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># same as seq(from = 5, to = 10, by = 2) # とびとびの数列も定義できます。次が、どのようなものを定義しているか確認してください。</span></span>
+<span><span class="co">### とびとびの数列も定義できます。</span></span>
+<span><span class="co">### 次が、どのようなものを定義しているか確認してください。</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># same as seq(from = 5, to = 10, by = 2) </span></span>
 <span><span class="co">#&gt; [1] 5 7 9</span></span>
 <span></span>
 <span><span class="va">c1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
@@ -656,14 +673,20 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">c1</span><span class="op">)</span> <span class="co"># ベクトルの長さです。</span></span>
 <span><span class="co">#&gt; [1] 11</span></span>
 <span></span>
-<span><span class="co">#### ? seq   ? length   ? identical</span></span>
+<span><span class="co">### ? seq   ? length   ? identical</span></span>
 <span></span>
-<span><span class="op">(</span><span class="va">die</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> <span class="co"># かっこをつけておくと、名前をつけ、そのオブジェクトを表示することまでしてくれます。</span></span>
+<span><span class="co">### かっこをつけておくと、名前をつけ、そのオブジェクトを表示することまでしてくれます。</span></span>
+<span><span class="op">(</span><span class="va">die</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; [1] 1 2 3 4 5 6</span></span>
 <span></span>
 <span><span class="va">zero_one</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span> <span class="co"># same as 0:1 # ベクトルの基本的な定義です。</span></span>
 <span></span>
-<span><span class="va">die</span> <span class="op">+</span> <span class="va">zero_one</span> <span class="co"># c(1,2,3,4,5,6) + c(0,1). re-use # 何をしているかわかりますか。1+0, 2+1, 3+0, 4+1, 5+0, 6+1 とあとのものが足りなくなると、繰り返して使うようにしています。</span></span>
+<span></span>
+<span><span class="co">### 何をしているかわかりますか。</span></span>
+<span><span class="co">### 1+0, 2+1, 3+0, 4+1, 5+0, 6+1 とあとのものが足りなくなると、</span></span>
+<span><span class="co">### 繰り返して使うようにしています。</span></span>
+<span></span>
+<span><span class="va">die</span> <span class="op">+</span> <span class="va">zero_one</span> <span class="co"># c(1,2,3,4,5,6) + c(0,1). re-use </span></span>
 <span><span class="co">#&gt; [1] 1 3 3 5 5 7</span></span>
 <span></span>
 <span><span class="va">d1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># repeat 2回繰り返す場合はこのようにします。</span></span>
@@ -685,7 +708,8 @@
 <span><span class="va">d3</span></span>
 <span><span class="co">#&gt; [1] 1 1 1 0 0 0</span></span>
 <span></span>
-<span><span class="co">### class() for class and typeof() for mode　# クラスとモードがそれぞれに定まっています。ベクトルの場合には、それぞれ次のようなものがあります。</span></span>
+<span><span class="co">### class() for class and typeof() for mode　</span></span>
+<span><span class="co">### クラスとモードがそれぞれに定まっています。ベクトルの場合には、それぞれ次のようなものがあります。</span></span>
 <span><span class="co">### class of vectors: numeric, charcters, logical</span></span>
 <span><span class="co">### types of vectors: doubles, integers, characters, logicals (complex and raw)</span></span>
 <span></span>
@@ -727,37 +751,43 @@
 <span></span>
 <span><span class="co">### Subsetting 一部分を取り出す。</span></span>
 <span></span>
-<span><span class="op">(</span><span class="va">A_Z</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span><span class="op">)</span> <span class="co"># LETTERS には、最初から、アルファベットからなるベクトルが入っています。letters はどうでしょうか。</span></span>
+<span><span class="co">### LETTERS には、最初から、アルファベットからなるベクトルが入っています。</span></span>
+<span><span class="co">### letters はどうでしょうか。</span></span>
+<span><span class="op">(</span><span class="va">A_Z</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span><span class="op">)</span> </span>
 <span><span class="co">#&gt;  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N"</span></span>
 <span><span class="co">#&gt; [15] "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"</span></span>
 <span></span>
-<span><span class="co"># 1番目から6番目まで取り出して、A_F とおきます。</span></span>
+<span><span class="co">### 1番目から6番目まで取り出して、A_F とおきます。</span></span>
 <span><span class="va">A_F</span> <span class="op">&lt;-</span> <span class="va">A_Z</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
 <span></span>
 <span><span class="va">A_F</span></span>
 <span><span class="co">#&gt; [1] "A" "B" "C" "D" "E" "F"</span></span>
 <span></span>
-<span><span class="co"># A_F の三番目です。</span></span>
+<span><span class="co">### A_F の三番目です。</span></span>
 <span><span class="va">A_F</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] "C"</span></span>
 <span></span>
-<span><span class="co"># A_F の三番目と五番目です。</span></span>
+<span><span class="co">### A_F の三番目と五番目です。</span></span>
 <span><span class="va">A_F</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] "C" "E"</span></span>
 <span></span>
-<span><span class="co"># die は、1,2,3,4,5,6 からなるベクトルでした。そのなかで、3 より大きいものを取り出します。</span></span>
+<span><span class="co">### die は、1,2,3,4,5,6 からなるベクトルでした。</span></span>
+<span><span class="co">### そのなかで、3 より大きいものを取り出します。</span></span>
+<span></span>
 <span><span class="va">large</span> <span class="op">&lt;-</span> <span class="va">die</span> <span class="op">&gt;</span> <span class="fl">3</span></span>
 <span></span>
 <span><span class="va">large</span></span>
 <span><span class="co">#&gt; [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE</span></span>
 <span></span>
-<span><span class="co"># die の中で、2 か、4 か 6 に適合するもの、すなわち、偶数を取り出します。</span></span>
+<span><span class="co">### die の中で、2 か、4 か 6 に適合するもの、すなわち、偶数を取り出します。</span></span>
+<span></span>
 <span><span class="va">even</span> <span class="op">&lt;-</span> <span class="va">die</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">6</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">even</span></span>
 <span><span class="co">#&gt; [1] FALSE  TRUE FALSE  TRUE FALSE  TRUE</span></span>
 <span></span>
-<span><span class="co"># 次のようなことも可能です。</span></span>
+<span><span class="co">### 次のようなことも可能です。</span></span>
+<span></span>
 <span><span class="va">A_F</span><span class="op">[</span><span class="va">large</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] "D" "E" "F"</span></span>
 <span></span>
@@ -768,7 +798,11 @@
 <span><span class="co">#&gt; [1] "A" "B" "C"</span></span>
 <span></span>
 <span><span class="co">### Compare df with df1 &lt;- data.frame(number = die, alphabet = A_F)</span></span>
-<span><span class="co"># 表：data frame を作成しています。文字列なども、一定の順序を決めることができますが、この命令で、そのようにはしないことを指定しています。data frame は、変数の長さが同じでないといけません。die はサイコロの意味で６個、A, B, C, D, E, F も６個でちょうどあっています。</span></span>
+<span><span class="co">### 表：data frame を作成しています。</span></span>
+<span><span class="co">### 文字列なども、一定の順序を決めることができますが、</span></span>
+<span><span class="co">### この命令で、そのようにはしないことを指定しています</span></span>
+<span><span class="co">### data frame は、変数の長さが同じでないといけません。</span></span>
+<span><span class="co">### die はサイコロの意味で６個、A, B, C, D, E, F も６個でちょうどあっています。</span></span>
 <span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>number <span class="op">=</span> <span class="va">die</span>, alphabet <span class="op">=</span> <span class="va">A_F</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
@@ -808,7 +842,8 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="co"># 一列目からなるベクトルのクラスです。</span></span>
 <span><span class="co">#&gt; [1] "integer"</span></span>
 <span></span>
-<span><span class="co"># 次は、一方が、TRUE 他方が、FALSE です。わかりますか。</span></span>
+<span><span class="co">### 次は、一方が、TRUE 他方が、FALSE です。わかりますか。</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">die</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
 <span></span>
@@ -821,11 +856,13 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Help: Help Tab に表示されます。省略。</span></span>
+<span><span class="co">### Help: Help Tab に表示されます。省略。</span></span>
 <span></span>
 <span><span class="co"># ? cars</span></span>
 <span></span>
-<span><span class="co"># cars is in the 'datasets' package # data() で現在使用可能なデータがすべて表示されます。最初は、datasets のリストが表示されると思います。</span></span>
+<span><span class="co"># cars is in the 'datasets' package </span></span>
+<span><span class="co">### data() で現在使用可能なデータがすべて表示されます。</span></span>
+<span><span class="co">### 最初は、datasets のリストが表示されると思います。</span></span>
 <span></span>
 <span><span class="co"># data()</span></span>
 <span></span>
@@ -871,12 +908,14 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 回帰直線を加えます。フィットした直線といった感じです。</span></span>
+<span><span class="co">### 回帰直線を加えます。フィットした直線といった感じです。</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span> <span class="op">~</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># 回帰直線に関するさまざまな値が表示されます。数値モデル Modeling で説明します。</span></span>
+<span><span class="co">### 回帰直線に関するさまざまな値が表示されます。数値モデル Modeling で説明します。</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span> <span class="op">~</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Call:</span></span>
@@ -898,13 +937,15 @@
 <span><span class="co">#&gt; Multiple R-squared:  0.6511, Adjusted R-squared:  0.6438 </span></span>
 <span><span class="co">#&gt; F-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12</span></span>
 <span></span>
-<span><span class="co"># 箱ひげ図です</span></span>
+<span><span class="co">### 箱ひげ図です</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-6-2.png" width="672"></div>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># ヒストグラム（度数分布表）です。</span></span>
-<span><span class="co"># どのように区切るかを指定することも可能です。</span></span>
+<span><span class="co">### ヒストグラム（度数分布表）です。</span></span>
+<span><span class="co">### どのように区切るかを指定することも可能です。</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-6-3.png" width="672"></div>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
@@ -1013,7 +1054,8 @@
 <span><span class="co">#&gt; [1] "2023-09-26"</span></span>
 <span></span>
 <span><span class="co">## Download and read csv (comma separated value) file</span></span>
-<span><span class="va">coronavirus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv"</span><span class="op">)</span> <span class="co"># データを Krispin のサイトから入手します。</span></span>
+<span><span class="va">coronavirus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv"</span><span class="op">)</span> </span>
+<span><span class="co">### データを Krispin のサイトから入手します。</span></span>
 <span><span class="co"># write.csv(coronavirus, "data/coronavirus.csv")</span></span>
 <span></span>
 <span><span class="co">## Summaries and structures of the data</span></span>
@@ -1056,7 +1098,8 @@
 <span><span class="co">#&gt;  $ population    : num  4413146 4413146 4413146 4413146 4413146 ...</span></span>
 <span><span class="co">#&gt;  $ continent_name: chr  "North America" "North America" "North America" "North America" ...</span></span>
 <span><span class="co">#&gt;  $ continent_code: chr  NA NA NA NA ...</span></span>
-<span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span><span class="op">)</span> <span class="co"># date 列を、日付だと認識するように指定します。</span></span>
+<span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span><span class="op">)</span> </span>
+<span><span class="co">### date 列を、日付だと認識するように指定します。</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 'data.frame':    919308 obs. of  15 variables:</span></span>
 <span><span class="co">#&gt;  $ date          : Date, format: "2020-01-22" ...</span></span>
@@ -1077,7 +1120,11 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span><span class="op">)</span> <span class="co"># 期間（日付の幅）を調べます</span></span>
 <span><span class="co">#&gt; [1] "2020-01-22" "2023-01-04"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span><span class="op">)</span> <span class="co"># country 列に入っている国（何度も同じ国が入っているので、異なるもののみを抽出）</span></span>
+<span></span>
+<span><span class="co">### country 列に入っている国（何度も同じ国が入っているので、</span></span>
+<span><span class="co">### 異なるもののみを抽出）</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span><span class="op">)</span> </span>
 <span><span class="co">#&gt;   [1] "Canada"                          </span></span>
 <span><span class="co">#&gt;   [2] "United Kingdom"                  </span></span>
 <span><span class="co">#&gt;   [3] "China"                           </span></span>
@@ -1279,12 +1326,23 @@
 <span><span class="co">#&gt; [199] "Yemen"                           </span></span>
 <span><span class="co">#&gt; [200] "Zambia"                          </span></span>
 <span><span class="co">#&gt; [201] "Zimbabwe"</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">type</span><span class="op">)</span> <span class="co"># type 列の種類</span></span>
 <span><span class="co">#&gt; [1] "confirmed" "death"     "recovery"</span></span>
 <span></span>
 <span><span class="co">## Set Country </span></span>
-<span><span class="va">COUNTRY</span> <span class="op">&lt;-</span> <span class="st">"Japan"</span> <span class="co"># 日本に設定してみます。上の国のリストから、選択すれば、他の国についても、グラフなどを書くことができます。</span></span>
-<span><span class="va">df0</span> <span class="op">&lt;-</span> <span class="va">coronavirus</span><span class="op">[</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="va">COUNTRY</span>,<span class="op">]</span> <span class="co"># country 列が上で指定した、COUNTRY と同じもの、この場合は日本のものだけを取り出します。</span></span>
+<span></span>
+<span><span class="co">### 日本に設定してみます。</span></span>
+<span><span class="co">### 上の国のリストから、選択すれば、他の国についても、</span></span>
+<span><span class="co">### グラフなどを書くことができます。</span></span>
+<span></span>
+<span><span class="va">COUNTRY</span> <span class="op">&lt;-</span> <span class="st">"Japan"</span> </span>
+<span></span>
+<span><span class="co">### country 列が上で指定した、COUNTRY と同じもの、</span></span>
+<span><span class="co">### この場合は日本のものだけを取り出します。</span></span>
+<span></span>
+<span><span class="va">df0</span> <span class="op">&lt;-</span> <span class="va">coronavirus</span><span class="op">[</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="va">COUNTRY</span>,<span class="op">]</span> </span>
+<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df0</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              date province country      lat     long</span></span>
 <span><span class="co">#&gt; 189905 2020-01-22     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
@@ -1346,7 +1404,9 @@
 <span><span class="co">#&gt; 189908 2020-01-25 confirmed     0  126476458</span></span>
 <span><span class="co">#&gt; 189909 2020-01-26 confirmed     2  126476458</span></span>
 <span><span class="co">#&gt; 189910 2020-01-27 confirmed     0  126476458</span></span>
+<span></span>
 <span><span class="co">### alternatively,</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df0</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"date"</span>, <span class="st">"type"</span>, <span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              date      type cases population</span></span>
 <span><span class="co">#&gt; 189905 2020-01-22 confirmed     2  126476458</span></span>
@@ -1355,10 +1415,10 @@
 <span><span class="co">#&gt; 189908 2020-01-25 confirmed     0  126476458</span></span>
 <span><span class="co">#&gt; 189909 2020-01-26 confirmed     2  126476458</span></span>
 <span><span class="co">#&gt; 189910 2020-01-27 confirmed     0  126476458</span></span>
-<span><span class="co">###</span></span>
 <span></span>
 <span><span class="co">## Set types</span></span>
 <span><span class="co">###  タイプ毎に取り出します。</span></span>
+<span></span>
 <span><span class="va">df_confirmed</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"confirmed"</span>,<span class="op">]</span>　<span class="co"># 感染者数</span></span>
 <span><span class="va">df_death</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"death"</span>,<span class="op">]</span> <span class="co"># 死者数</span></span>
 <span><span class="va">df_recovery</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">data_type</span> <span class="op">==</span> <span class="st">"recovery"</span>,<span class="op">]</span> <span class="co"># 回復者数</span></span>
