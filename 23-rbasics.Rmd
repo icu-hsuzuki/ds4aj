@@ -10,7 +10,7 @@ R Project に基本文書がありますが、100ページを越しますので�
 
 リンク：
 
--   [An Introduction to R](https://cran.r-project.org/) Manual にあります。下に日本語版へのリンクもあります。
+-   [An Introduction to R](https://cran.r-project.org/) Manual にあります。下に日本語版へのリンクもあります。[[日本語版 PDF](https://cran.r-project.org/doc/contrib/manuals-jp/R-intro-170.jp.pdf)]
 
 -   [CheatSheet base R](https://rstudio.github.io/cheatsheets/base-r.pdf) 早見表[^23-rbasics-1]。検索すると日本語版も見つかると思います。
 
@@ -37,14 +37,16 @@ RStudio で R を利用する場合には、プロジェクトを作成するこ
 
 -   まず、R Studio を起動。一つしかプロジェクトがない場合は、そのプロジェクトが起動すると思います、。上に、プロジェクト名が掲載されていれば、問題ありません。
 -   File から、Open Project を選択し、起動したい、プロジェクトの Directory（フォルダー）を選択して起動します。
--   File から、Recent Project（最近使ったプロジェクト）を選択すると、プロジェクト名が表示されますから、選択すると起動することができます。
+-   File から、Recent Projects（最近使ったプロジェクト）を選択すると、プロジェクト名が表示されますから、選択すると起動することができます。
 -   コンピュータのプロジェクト入っているディレクトリー（フォルダー）をさがし、そこに、プロジェクト名.Rproj とあるものを見つけて、それを開くと、そのプロジェクトが起動します。
 
 5.  作業後は、保存しますかと聞かれますから、保存して終了してください。
 
 ## コンソールで実行 - Run in Console
 
-プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console を選択してください。）
+プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール[^23-rbasics-2]での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console を選択してください。）
+
+[^23-rbasics-2]: Console - 操作盤というような意味ですが、用語としてはコンソールを使います。また英語で書いてあった方が見つけやすいので、Console と記することが多いと思います
 
 ### 最初の四つ
 
@@ -59,7 +61,7 @@ RStudio で R を利用する場合には、プロジェクトを作成するこ
 
 次のような、結果が表示されると思います。簡単な説明をつけます。
 
-```{r}
+```{r paged.print=FALSE}
 head(cars)
 ```
 
@@ -69,7 +71,9 @@ head(cars)
 str(cars)
 ```
 
-`str(cars)` は、`cars` という、R に付属している、データの構造（structure）を表示します。`data.frame` とありますが、これは、矩形になったデータ（各列の長さがおなじ）の一番簡単なクラスの名前で、2変数、それぞれが、50 個の数値データ（numerical data） からなっていることがわかります。
+`str(cars)` は、`cars` という、R に付属している、データの構造（structure）を表示します。`data.frame` とありますが、これは、矩形になったデータ（各列の長さがおなじ）の一番簡単なクラスの名前で、2変数、それぞれが、50 個[^23-rbasics-3]の数値データ（numerical data） からなっていることがわかります。
+
+[^23-rbasics-3]: 50 obs. とありますが、obs. は、おそらく、observations 観測値の略
 
 `head(cars)` では、縦に表示されていたものが、横に表示されています。`$speed`、`$dist` とありますが、`cars$speed`, `cars$dist` は、`cars` データの、それぞれの列を意味します。
 
@@ -91,17 +95,21 @@ plot(cars)
 
 コンソールで次のそれぞれを、試してみてください。
 
--   `df <- cars`
+-   `df_cars <- cars`
 
-`df` に、`cars` をアサインします。すなわち、`df` が、`cars` の内容に置き換わります。`cars` はデータですが、データを含む、オブジェクトの名前を設定するためにも使います。オブジェクト名は。英文字から始まれば、かなりの自由度がありますが、わたしは、英文字と数字と `_`（underscore） 程度しか使わないようにしています。
+`df_cars` に、`cars` をアサインします。すなわち、`df_cars` が、`cars` の内容に置き換わります。`cars` はデータですが、データを含む、オブジェクトの名前を設定するためにも使います。オブジェクト名は。英文字から始まれば、かなりの自由度がありますが、わたしは、英文字と数字と `_`（underscore） 程度しか使わないようにしています。
 
--   `head(df)`
+-   `head(df_cars)`
 
-`head(df)` は、`head(cars)` と同じ出力が得られます。
+`head(df_cars)` は、`head(cars)` と同じ出力が得られます。
 
--   `View(cars)`
+-   `View(df_cars)`
 
 左上の、窓枠が開き、`cars` というデータ の内容が表示されます。列名のところには、三角形も表示され、それを用いると、大きい順、小さい順などに、並び替えることも可能です。また、フィルター機能も使えます。
+
+`df_cars <- cars` などと、オブジェクト（この場合は表データ）を設定していると、RStudio の右上の窓枠（Pane）の、Environment に、`df_cars` が見つかると思いますから、それをクリックしてみてください。`View(df_cars)` と同じものが表示されます。
+
+`cars` のまま、作業をしても、問題はないのですが、データに変更などを施した時に、最初の `cars` と同じなのかどうか、不明にならないように、最初から能動的に、名前をつけて、そのデータについて作業をすることをお勧めします。また、Environemnt などを利用すると、現在、それぞれの名前で、どのようなものが登録されているか確認もできます。名前をつける時に、確認して、新しい名前をつけることも可能になります。
 
 -   `?cars`
 
@@ -154,9 +162,9 @@ RStudio は多くの機能を持っています。
 -   左上（Top Left）: スクリプトや文書、データなどの編集（Source Editor）
 -   右上（Top Right）: 環境変数（Environment）, 履歴（History） など（etc.）
 -   左下（Bottom Left）: コードの実行・実行結果などを表示するコンソール（Console）, コンピュータシステムの端末（Terminal）, 文書の機械語翻訳（Render）, 背後での作業（Background Jobs）
--   右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation[^23-rbasics-2]）
+-   右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation[^23-rbasics-4]）
 
-[^23-rbasics-2]: Viewerへの表示を使っており、Presentationへの表示を使っておらず不明
+[^23-rbasics-4]: Viewerへの表示を使っており、Presentationへの表示を使っておらず不明
 
 ## R Script 実行記録
 
@@ -181,7 +189,7 @@ R Script を使って、コードを実行すると、その記録を残すこ�
 
 詳細を説明すると、時間もかかりますから、必要になったときに、少しずつ説明していきます。ここでは、スクリプトを使って、実行するという、二つ目の方法に慣れていただければ十分です。
 
-#### スクリプト1: `basics.R`
+#### スクリプト1: `basics.R` 
 
 ```{r eval=FALSE}
 #################
@@ -404,6 +412,239 @@ hist(cars$dist)
 hist(cars$dist, breaks = seq(0,120, 10))
 ```
 
+#### スクリプト1 実行結果
+
+みなさんの、コンピュータに表示されるもの（? cars, ? par）を除いて、出力結果もあわせて、つけておきます。
+
+```{r paged.print=FALSE}
+#################
+#
+# basics.R with outputs
+#
+################
+
+## calculator - 電卓機能
+
+3 + 7
+
+### +, -, *, /, ^ (or **), %%, %/%
+
+3 + 10 / 2
+
+3^2
+
+2^3
+
+2*2*2
+
+### assignment: <-, (=, ->, assign()) - アサインメント
+
+x <- 5
+
+x 
+
+#### object_name <- value, '<-' shortcut: Alt (option) + '-' (hyphen or minus) 
+#### Object names must start with a letter and can only contain letter, numbers, _ and . 文字列は、日本語でも構いません。ただ、引用符は、半角英数にしてください。
+
+this_is_a_long_name <- 5^3
+
+this_is_a_long_name
+
+char_name <- "What is your name?"
+
+char_name
+
+#### Use 'tab completion' and 'up arrow' 長い名前を使っても、少しだけ入力すれば、可能性が表示され、tab キーを押すと、残りが表示されます。この機能を tab completion（タブ補完）と言います。
+
+### ls(): list of all assignments - 名前が割り当てられているものをすべて表示します。右上の窓枠の、Environment と同じです。ls.str() では、それぞれのオブジェクトの構造（structure）まで表示されます。
+
+ls()
+ls.str()
+
+#### check Environment in the upper right pane
+
+### (atomic) vectors 数字または文字の並びのオブジェクトをベクトル（vectors）と呼びます。
+
+5:10 # 5 から 10 までの整数をこのようにも作成できます。これは、次の、seq(5,10) とも同じです。
+
+a <- seq(5,10)
+
+a
+
+b <- 5:10
+
+identical(a,b) # 二つのベクトルが同じが稼働化をチェックします。
+
+seq(5,10,2) # same as seq(from = 5, to = 10, by = 2) # とびとびの数列も定義できます。次が、どのようなものを定義しているか確認してください。
+
+c1 <- seq(0,100, by = 10)
+
+c2 <- seq(0,100, length.out = 10)
+
+c1
+
+c2
+
+length(c1) # ベクトルの長さです。
+
+#### ? seq   ? length   ? identical
+
+(die <- 1:6) # かっこをつけておくと、名前をつけ、そのオブジェクトを表示することまでしてくれます。
+
+zero_one <- c(0,1) # same as 0:1 # ベクトルの基本的な定義です。
+
+die + zero_one # c(1,2,3,4,5,6) + c(0,1). re-use # 何をしているかわかりますか。1+0, 2+1, 3+0, 4+1, 5+0, 6+1 とあとのものが足りなくなると、繰り返して使うようにしています。
+
+d1 <- rep(1:3,2) # repeat 2回繰り返す場合はこのようにします。
+
+
+d1
+
+die == d1
+
+d2 <- as.character(die == d1) # 数字ですが、文字列として扱います。
+
+d2
+
+d3 <- as.numeric(die == d1) # 数字として扱うときは、このようにします。
+
+d3
+
+### class() for class and typeof() for mode　# クラスとモードがそれぞれに定まっています。ベクトルの場合には、それぞれ次のようなものがあります。
+### class of vectors: numeric, charcters, logical
+### types of vectors: doubles, integers, characters, logicals (complex and raw)
+
+typeof(d1); class(d1)
+
+typeof(d2); class(d2)
+
+typeof(d3); class(d3)
+
+sqrt(2)
+
+sqrt(2)^2
+
+sqrt(2)^2 - 2 # 微妙な違いがわかりますか。
+
+typeof(sqrt(2))
+
+typeof(2)
+
+typeof(2L)
+
+5 == c(5)
+
+length(5)
+
+### Subsetting 一部分を取り出す。
+
+(A_Z <- LETTERS) # LETTERS には、最初から、アルファベットからなるベクトルが入っています。letters はどうでしょうか。
+
+# 1番目から6番目まで取り出して、A_F とおきます。
+A_F <- A_Z[1:6]
+
+A_F
+
+# A_F の三番目です。
+A_F[3]
+
+# A_F の三番目と五番目です。
+A_F[c(3,5)]
+
+# die は、1,2,3,4,5,6 からなるベクトルでした。そのなかで、3 より大きいものを取り出します。
+large <- die > 3
+
+large
+
+# die の中で、2 か、4 か 6 に適合するもの、すなわち、偶数を取り出します。
+even <- die %in% c(2,4,6)
+
+even
+
+# 次のようなことも可能です。
+A_F[large]
+
+A_F[even]
+
+A_F[die < 4]
+
+### Compare df with df1 <- data.frame(number = die, alphabet = A_F)
+# 表：data frame を作成しています。文字列なども、一定の順序を決めることができますが、この命令で、そのようにはしないことを指定しています。data frame は、変数の長さが同じでないといけません。die はサイコロの意味で６個、A, B, C, D, E, F も６個でちょうどあっています。
+
+df <- data.frame(number = die, alphabet = A_F, stringsAsFactors = FALSE)
+
+df
+
+df$number # 二つ列（変数）がありますが、number の方の列を取り出します。
+
+df$alphabet # alphabet の列を取り出します。
+
+df[3,2] # 3行2列を取り出します。
+
+df[4,1] # 4行1列
+
+df[1]　# 一列目だけからなる表を作ります
+
+class(df[1]) # 一列目だけからなる表のクラスは？
+
+class(df[[1]]) # 一列目からなるベクトルのクラスです。
+
+# 次は、一方が、TRUE 他方が、FALSE です。わかりますか。
+identical(df[[1]], die)
+
+identical(df[1],die)
+
+####################
+# The First Example
+####################
+
+plot(cars)
+
+# Help: Help Tab に表示されます。省略。
+
+# ? cars
+
+# cars is in the 'datasets' package # data() で現在使用可能なデータがすべて表示されます。最初は、datasets のリストが表示されると思います。
+
+# data()
+
+# help(cars) does the same as ? cars
+# You can use Help tab in the right bottom pane
+
+# help(plot) # Help Tab に表示されます。省略。
+# ? par # Help Tab に表示されます。省略。
+
+head(cars)
+
+str(cars)
+
+summary(cars)
+
+x <- cars$speed
+y <- cars$dist
+
+min(x) # x すなわち、cars の speed の最小値です。
+mean(x) #  x すなわち、cars の speed の（相加）平均です。
+quantile(x) # 四分位が表示されます。上の、summary() の説明で確認してください。
+
+plot(cars)
+
+# 回帰直線を加えます。フィットした直線といった感じです。
+abline(lm(cars$dist ~ cars$speed))
+
+# 回帰直線に関するさまざまな値が表示されます。数値モデル Modeling で説明します。
+summary(lm(cars$dist ~ cars$speed))
+
+# 箱ひげ図です
+boxplot(cars)
+
+# ヒストグラム（度数分布表）です。
+# どのように区切るかを指定することも可能です。
+hist(cars$speed)
+hist(cars$dist)
+hist(cars$dist, breaks = seq(0,120, 10))
+```
+
 #### スクリプト2: `coronavirus.R`
 
 ```{r eval=FALSE}
@@ -461,6 +702,92 @@ cor(df_confirmed$cases, df_death$cases)
 
 ## In addition set a period
 start_date <- as.Date("2022-07-01")
+end_date <- Sys.Date() 
+df_date <- df[df$date >=start_date & df$date <= end_date,]
+##
+
+## Set types
+df_date_confirmed <- df_date[df_date$type == "confirmed",]
+df_date_death <- df_date[df_date$type == "death",]
+df_date_recovery <- df_date[df_date$data_type == "recovery",]
+head(df_date_confirmed)
+head(df_date_death)
+head(df_date_recovery)
+
+## Histogram
+plot(df_date_confirmed$date, df_date_confirmed$cases, type = "h")
+plot(df_date_death$date, df_date_death$cases, type = "h")
+# plot(df_date_recovered$date, df_date_recovered$cases, type = "h") # no data for recovery
+
+plot(df_date_confirmed$cases, df_date_death$cases, type = "p")
+cor(df_date_confirmed$cases, df_date_death$cases)
+
+#### Extra
+plot(df_confirmed$date, df_confirmed$cases, type = "h", 
+     main = paste("Comfirmed Cases in",COUNTRY), 
+     xlab = "Date", ylab = "Number of Cases")
+```
+
+#### スクリプト2 実行結果
+
+大体、どのようなことをしているか、想像してみてください。少しだけ説明を加えます。
+
+```{r paged.print=FALSE, cache = TRUE}
+# https://coronavirus.jhu.edu/map.html
+# JHU Covid-19 global time series data
+# See R package coronavirus at: https://github.com/RamiKrispin/coronavirus
+# Data taken from: https://github.com/RamiKrispin/coronavirus/tree/master/csv
+# Last Updated
+Sys.Date()
+
+## Download and read csv (comma separated value) file
+coronavirus <- read.csv("https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv") # データを Krispin のサイトから入手します。
+# write.csv(coronavirus, "data/coronavirus.csv")
+
+## Summaries and structures of the data
+head(coronavirus)
+str(coronavirus)
+coronavirus$date <- as.Date(coronavirus$date) # date 列を、日付だと認識するように指定します。
+str(coronavirus)
+
+range(coronavirus$date) # 期間（日付の幅）を調べます
+unique(coronavirus$country) # country 列に入っている国（何度も同じ国が入っているので、異なるもののみを抽出）
+unique(coronavirus$type) # type 列の種類
+
+## Set Country 
+COUNTRY <- "Japan" # 日本に設定してみます。上の国のリストから、選択すれば、他の国についても、グラフなどを書くことができます。
+df0 <- coronavirus[coronavirus$country == COUNTRY,] # country 列が上で指定した、COUNTRY と同じもの、この場合は日本のものだけを取り出します。
+head(df0)
+tail(df0)
+(pop <- df0$population[1])
+df <- df0[c(1,6,7,13)]
+str(df)
+head(df)
+### alternatively,
+head(df0[c("date", "type", "cases", "population")])
+###
+
+## Set types
+###  タイプ毎に取り出します。
+df_confirmed <- df[df$type == "confirmed",]　# 感染者数
+df_death <- df[df$type == "death",] # 死者数
+df_recovery <- df[df$data_type == "recovery",] # 回復者数
+head(df_confirmed)
+head(df_death)
+head(df_recovery)
+
+## Histogram
+plot(df_confirmed$date, df_confirmed$cases, type = "h")
+plot(df_death$date, df_death$cases, type = "h")
+# plot(df_recovered$date, df_recovered$cases, type = "h") # no data for recovery
+
+## Scatter plot and correlation
+plot(df_confirmed$cases, df_death$cases, type = "p")
+cor(df_confirmed$cases, df_death$cases) # 相関係数を計算しています
+
+
+## In addition set a period
+start_date <- as.Date("2022-07-01") # 特定の期間を定めます
 end_date <- Sys.Date() 
 df_date <- df[df$date >=start_date & df$date <= end_date,]
 ##

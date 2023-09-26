@@ -241,6 +241,27 @@ output:
 <p><a href="https://ds-sl.github.io/intro2r/Rmarkdown-J.html" class="uri">https://ds-sl.github.io/intro2r/Rmarkdown-J.html</a></p>
 </div>
 </div>
+<div id="tipsちょっとしたこと-覚書" class="section level3" number="22.3.3">
+<h3>
+<span class="header-section-number">22.3.3</span> Tips（ちょっとしたこと 覚書）<a class="anchor" aria-label="anchor" href="#tips%E3%81%A1%E3%82%87%E3%81%A3%E3%81%A8%E3%81%97%E3%81%9F%E3%81%93%E3%81%A8-%E8%A6%9A%E6%9B%B8"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="tables表" class="section level3" number="22.3.4">
+<h3>
+<span class="header-section-number">22.3.4</span> Tables（表）<a class="anchor" aria-label="anchor" href="#tables%E8%A1%A8"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<p>HTML 文書で、Table（表）の表示の仕方、Code Chunk 毎に変更：default, kable, tibble, paged：<a href="https://github.com/rstudio/rmarkdown/issues/1403">参照リンク</a></p>
+<ul>
+<li><p>df_print: paged　# under html_document in YAML</p></li>
+<li><p>paged.print=TRUE # in code chunk option</p></li>
+<li><p>paged.print=FALSE # in code chunk option</p></li>
+<li><p>knitr::kable(ggplot2::diamonds[1:10, ]) # kable output</p></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="quarto-について" class="section level2" number="22.4">
 <h2>
@@ -286,6 +307,8 @@ editor: visual
 <a class="nav-link" href="#%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%E3%81%A8%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89"><span class="header-section-number">22.3</span> レポートとスライド</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#rnotebookrmarkdown"><span class="header-section-number">22.3.1</span> RNotebook/RMarkdown</a></li>
 <li><a class="nav-link" href="#%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89"><span class="header-section-number">22.3.2</span> スライド</a></li>
+<li><a class="nav-link" href="#tips%E3%81%A1%E3%82%87%E3%81%A3%E3%81%A8%E3%81%97%E3%81%9F%E3%81%93%E3%81%A8-%E8%A6%9A%E6%9B%B8"><span class="header-section-number">22.3.3</span> Tips（ちょっとしたこと 覚書）</a></li>
+<li><a class="nav-link" href="#tables%E8%A1%A8"><span class="header-section-number">22.3.4</span> Tables（表）</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#quarto-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="header-section-number">22.4</span> Quarto について</a></li>

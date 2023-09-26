@@ -270,8 +270,7 @@
 <li>7.3 R Notebook</li>
 <li>7.4 日本語のテンプレート</li>
 <li>7.5 R Markdown いくつかの Output</li>
-<li>7.6 YouTube Video - rmarkdown
--7.6.1 RMarkdown で PDF を作成するときの注意</li>
+<li>7.6 YouTube Video - rmarkdown -7.6.1 RMarkdown で PDF を作成するときの注意</li>
 </ul>
 <ol start="23" style="list-style-type: decimal">
 <li>R Basics</li>
@@ -315,7 +314,8 @@
 </ul>
 <p>PART III INSTITUTIONAL DATA</p>
 <ol start="31" style="list-style-type: decimal">
-<li>World Bank</li>
+<li><p>Open Data</p></li>
+<li><p>World Bank</p></li>
 </ol>
 <ul>
 <li>9.1 World Development Indicator (WDI)
@@ -337,11 +337,40 @@
 <ul>
 <li>9.3.1 グラフ 1</li>
 <li>9.3.2 グラフ 2</li>
-<li>9.3.3 テンプレート Templates
--9.4 課題　Assignment</li>
+<li>9.3.3 テンプレート Templates -9.4 課題　Assignment</li>
 </ul>
 </li>
 </ul>
+<ol start="33" style="list-style-type: decimal">
+<li><p>OECD</p></li>
+<li><p>UN</p></li>
+<li><p>OWID</p></li>
+</ol>
+<ul>
+<li><p>owidR が CRAN から削除されている。</p></li>
+<li><p>GitHub: <a href="https://github.com/piersyork/owidR" class="uri">https://github.com/piersyork/owidR</a></p></li>
+<li><p>owid: <a href="https://rdrr.io/cran/owidR/" class="uri">https://rdrr.io/cran/owidR/</a></p></li>
+<li>
+<p>Need to check the following codes:</p>
+<pre class="get_data_url"><code>  url &lt;- sprintf("https://ourworldindata.org/grapher/%s", chart_id)
+  page &lt;- xml2::read_html(url)
+  links &lt;- rvest::html_nodes(page, "link")
+
+  preload &lt;- links[rvest::html_attr(links, "rel") == "preload"]
+
+  all_urls &lt;- sprintf("https://ourworldindata.org%s", rvest::html_attr(preload, "href"))
+
+  json_urls &lt;- grep("json$", all_urls, value = TRUE)
+
+  return(json_urls)
+}</code></pre>
+</li>
+</ul>
+<ol start="36" style="list-style-type: decimal">
+<li>WID</li>
+<li>ESTAT</li>
+<li>Others</li>
+</ol>
 <p>PART IV EDA</p>
 <ol start="41" style="list-style-type: decimal">
 <li>探索的データ解析</li>
@@ -419,6 +448,8 @@ Xie, Yihui. <em>Bookdown: Authoring Books and Technical Documents with r Markdow
 </div>
 </div>
 </div>
+
+
 
 
 

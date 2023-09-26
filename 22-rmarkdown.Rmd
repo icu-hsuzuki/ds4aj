@@ -76,7 +76,10 @@ RNotebook の新しいファイルを作成し、下のサイトを表示させ�
 title: "Testing R Markdown Formats"
 author: "ID Your Name"
 header-includes:
-  - \usepackage{ctex}
+  - \usepackage{xeCJK}
+  - \setCJKmainfont{ipaexm.ttf}
+  - \setCJKsansfont{ipaexg.ttf}
+  - \setCJKmonofont{ipaexg.ttf}
 output:
   html_notebook: default
   html_document: default

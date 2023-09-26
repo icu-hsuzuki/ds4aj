@@ -126,6 +126,20 @@ output:
 
 <https://ds-sl.github.io/intro2r/Rmarkdown-J.html>
 
+### Tips（ちょっとしたこと 覚書）
+
+### Tables（表）
+
+-   HTML 文書で、Table（表）の表示の仕方、Code Chunk 毎に変更：default, kable, tibble, paged：[参照リンク](https://github.com/rstudio/rmarkdown/issues/1403)
+
+    -   df_print: paged　# under html_document in YAML
+
+    -   paged.print=TRUE \# in code chunk option
+
+    -   paged.print=FALSE \# in code chunk option
+
+    -   knitr::kable(ggplot2::diamonds[1:10, ]) \# kable output
+
 ## Quarto について
 
 リンク：<https://quarto.org>

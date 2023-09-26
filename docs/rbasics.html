@@ -134,7 +134,7 @@
 <p>R Project に基本文書がありますが、100ページを越しますので、参考程度にしていただくのがよいかと思います。</p>
 <p>リンク：</p>
 <ul>
-<li><p><a href="https://cran.r-project.org/">An Introduction to R</a> Manual にあります。下に日本語版へのリンクもあります。</p></li>
+<li><p><a href="https://cran.r-project.org/">An Introduction to R</a> Manual にあります。下に日本語版へのリンクもあります。[<a href="https://cran.r-project.org/doc/contrib/manuals-jp/R-intro-170.jp.pdf">日本語版 PDF</a>]</p></li>
 <li>
 <p><a href="https://rstudio.github.io/cheatsheets/base-r.pdf">CheatSheet base R</a> 早見表<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;CheatSheet は、直訳は、カンニング・ペーパーです。ここでは、もう少し品のよさそうな、早見表ということばを使いました。&lt;/p&gt;"><sup>18</sup></a>。検索すると日本語版も見つかると思います。</p>
 <ul>
@@ -164,7 +164,7 @@
 <ul>
 <li>まず、R Studio を起動。一つしかプロジェクトがない場合は、そのプロジェクトが起動すると思います、。上に、プロジェクト名が掲載されていれば、問題ありません。</li>
 <li>File から、Open Project を選択し、起動したい、プロジェクトの Directory（フォルダー）を選択して起動します。</li>
-<li>File から、Recent Project（最近使ったプロジェクト）を選択すると、プロジェクト名が表示されますから、選択すると起動することができます。</li>
+<li>File から、Recent Projects（最近使ったプロジェクト）を選択すると、プロジェクト名が表示されますから、選択すると起動することができます。</li>
 <li>コンピュータのプロジェクト入っているディレクトリー（フォルダー）をさがし、そこに、プロジェクト名.Rproj とあるものを見つけて、それを開くと、そのプロジェクトが起動します。</li>
 </ul>
 <ol start="5" style="list-style-type: decimal">
@@ -175,7 +175,7 @@
 <h2>
 <span class="header-section-number">16.3</span> コンソールで実行 - Run in Console<a class="anchor" aria-label="anchor" href="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%A7%E5%AE%9F%E8%A1%8C---run-in-console"><i class="fas fa-link"></i></a>
 </h2>
-<p>プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール（Console）での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console を選択してください。）</p>
+<p>プログラム（コード）の実行には、いくつかの方法がありますが、一番、基本的な、コンソール<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Console - 操作盤というような意味ですが、用語としてはコンソールを使います。また英語で書いてあった方が見つけやすいので、Console と記することが多いと思います&lt;/p&gt;"><sup>19</sup></a>での実行について、説明します。Console は、R Studio の左下にあります。（左の枠が一つになっているかもしれません。その一番左のタブが Console です。選択されていない場合は、Console を選択してください。）</p>
 <div id="最初の四つ" class="section level3" number="16.3.1">
 <h3>
 <span class="header-section-number">16.3.1</span> 最初の四つ<a class="anchor" aria-label="anchor" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E5%9B%9B%E3%81%A4"><i class="fas fa-link"></i></a>
@@ -190,19 +190,21 @@
 <p>エラーが表示されたら、もう一度、スペルを確認して、入力してみてください。</p>
 <p>次のような、結果が表示されると思います。簡単な説明をつけます。</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["speed"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dist"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"2","_rn_":"1"},{"1":"4","2":"10","_rn_":"2"},{"1":"7","2":"4","_rn_":"3"},{"1":"7","2":"22","_rn_":"4"},{"1":"8","2":"16","_rn_":"5"},{"1":"9","2":"10","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   speed dist</span></span>
+<span><span class="co">#&gt; 1     4    2</span></span>
+<span><span class="co">#&gt; 2     4   10</span></span>
+<span><span class="co">#&gt; 3     7    4</span></span>
+<span><span class="co">#&gt; 4     7   22</span></span>
+<span><span class="co">#&gt; 5     8   16</span></span>
+<span><span class="co">#&gt; 6     9   10</span></span></code></pre></div>
 <p><code>head(cars)</code> は、<code>cars</code> という、R に付属している、データの、最初（頭 head）の6行を、表示します。</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 'data.frame':    50 obs. of  2 variables:</span></span>
 <span><span class="co">#&gt;  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...</span></span>
 <span><span class="co">#&gt;  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</span></span></code></pre></div>
-<p><code>str(cars)</code> は、<code>cars</code> という、R に付属している、データの構造（structure）を表示します。<code>data.frame</code> とありますが、これは、矩形になったデータ（各列の長さがおなじ）の一番簡単なクラスの名前で、2変数、それぞれが、50 個の数値データ（numerical data） からなっていることがわかります。</p>
+<p><code>str(cars)</code> は、<code>cars</code> という、R に付属している、データの構造（structure）を表示します。<code>data.frame</code> とありますが、これは、矩形になったデータ（各列の長さがおなじ）の一番簡単なクラスの名前で、2変数、それぞれが、50 個<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;50 obs. とありますが、obs. は、おそらく、observations 観測値の略&lt;/p&gt;"><sup>20</sup></a>の数値データ（numerical data） からなっていることがわかります。</p>
 <p><code>head(cars)</code> では、縦に表示されていたものが、横に表示されています。<code>$speed</code>、<code>$dist</code> とありますが、<code>cars$speed</code>, <code>cars$dist</code> は、<code>cars</code> データの、それぞれの列を意味します。</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
@@ -226,17 +228,19 @@
 </h3>
 <p>コンソールで次のそれぞれを、試してみてください。</p>
 <ul>
-<li><code>df &lt;- cars</code></li>
+<li><code>df_cars &lt;- cars</code></li>
 </ul>
-<p><code>df</code> に、<code>cars</code> をアサインします。すなわち、<code>df</code> が、<code>cars</code> の内容に置き換わります。<code>cars</code> はデータですが、データを含む、オブジェクトの名前を設定するためにも使います。オブジェクト名は。英文字から始まれば、かなりの自由度がありますが、わたしは、英文字と数字と <code>_</code>（underscore） 程度しか使わないようにしています。</p>
+<p><code>df_cars</code> に、<code>cars</code> をアサインします。すなわち、<code>df_cars</code> が、<code>cars</code> の内容に置き換わります。<code>cars</code> はデータですが、データを含む、オブジェクトの名前を設定するためにも使います。オブジェクト名は。英文字から始まれば、かなりの自由度がありますが、わたしは、英文字と数字と <code>_</code>（underscore） 程度しか使わないようにしています。</p>
 <ul>
-<li><code>head(df)</code></li>
+<li><code>head(df_cars)</code></li>
 </ul>
-<p><code>head(df)</code> は、<code>head(cars)</code> と同じ出力が得られます。</p>
+<p><code>head(df_cars)</code> は、<code>head(cars)</code> と同じ出力が得られます。</p>
 <ul>
-<li><code>View(cars)</code></li>
+<li><code>View(df_cars)</code></li>
 </ul>
 <p>左上の、窓枠が開き、<code>cars</code> というデータ の内容が表示されます。列名のところには、三角形も表示され、それを用いると、大きい順、小さい順などに、並び替えることも可能です。また、フィルター機能も使えます。</p>
+<p><code>df_cars &lt;- cars</code> などと、オブジェクト（この場合は表データ）を設定していると、RStudio の右上の窓枠（Pane）の、Environment に、<code>df_cars</code> が見つかると思いますから、それをクリックしてみてください。<code>View(df_cars)</code> と同じものが表示されます。</p>
+<p><code>cars</code> のまま、作業をしても、問題はないのですが、データに変更などを施した時に、最初の <code>cars</code> と同じなのかどうか、不明にならないように、最初から能動的に、名前をつけて、そのデータについて作業をすることをお勧めします。また、Environemnt などを利用すると、現在、それぞれの名前で、どのようなものが登録されているか確認もできます。名前をつける時に、確認して、新しい名前をつけることも可能になります。</p>
 <ul>
 <li><code><a href="https://rdrr.io/r/datasets/cars.html">?cars</a></code></li>
 </ul>
@@ -293,7 +297,7 @@
 <li>左上（Top Left）: スクリプトや文書、データなどの編集（Source Editor）</li>
 <li>右上（Top Right）: 環境変数（Environment）, 履歴（History） など（etc.）</li>
 <li>左下（Bottom Left）: コードの実行・実行結果などを表示するコンソール（Console）, コンピュータシステムの端末（Terminal）, 文書の機械語翻訳（Render）, 背後での作業（Background Jobs）</li>
-<li>右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Viewerへの表示を使っており、Presentationへの表示を使っておらず不明&lt;/p&gt;"><sup>19</sup></a>）</li>
+<li>右下（Bottom Right）: ファイル（Files）, 描画（Plots）, パッケージ（Packages）, ヘルプ（Help）, 文書などの表示窓（Viewer）, R Markdown の HTML, PDF 表示（Presentation<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Viewerへの表示を使っており、Presentationへの表示を使っておらず不明&lt;/p&gt;"><sup>21</sup></a>）</li>
 </ul>
 </div>
 </div>
@@ -555,11 +559,366 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">120</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="スクリプト2-coronavirus.r" class="section level4" number="16.5.2.2">
+<div id="スクリプト1-実行結果" class="section level4" number="16.5.2.2">
 <h4>
-<span class="header-section-number">16.5.2.2</span> スクリプト2: <code>coronavirus.R</code><a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%882-coronavirus.r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.5.2.2</span> スクリプト1 実行結果<a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%881-%E5%AE%9F%E8%A1%8C%E7%B5%90%E6%9E%9C"><i class="fas fa-link"></i></a>
 </h4>
+<p>みなさんの、コンピュータに表示されるもの（? cars, ? par）を除いて、出力結果もあわせて、つけておきます。</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#################</span></span>
+<span><span class="co">#</span></span>
+<span><span class="co"># basics.R with outputs</span></span>
+<span><span class="co">#</span></span>
+<span><span class="co">################</span></span>
+<span></span>
+<span><span class="co">## calculator - 電卓機能</span></span>
+<span></span>
+<span><span class="fl">3</span> <span class="op">+</span> <span class="fl">7</span></span>
+<span><span class="co">#&gt; [1] 10</span></span>
+<span></span>
+<span><span class="co">### +, -, *, /, ^ (or **), %%, %/%</span></span>
+<span></span>
+<span><span class="fl">3</span> <span class="op">+</span> <span class="fl">10</span> <span class="op">/</span> <span class="fl">2</span></span>
+<span><span class="co">#&gt; [1] 8</span></span>
+<span></span>
+<span><span class="fl">3</span><span class="op">^</span><span class="fl">2</span></span>
+<span><span class="co">#&gt; [1] 9</span></span>
+<span></span>
+<span><span class="fl">2</span><span class="op">^</span><span class="fl">3</span></span>
+<span><span class="co">#&gt; [1] 8</span></span>
+<span></span>
+<span><span class="fl">2</span><span class="op">*</span><span class="fl">2</span><span class="op">*</span><span class="fl">2</span></span>
+<span><span class="co">#&gt; [1] 8</span></span>
+<span></span>
+<span><span class="co">### assignment: &lt;-, (=, -&gt;, assign()) - アサインメント</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span></span>
+<span><span class="va">x</span> </span>
+<span><span class="co">#&gt; [1] 5</span></span>
+<span></span>
+<span><span class="co">#### object_name &lt;- value, '&lt;-' shortcut: Alt (option) + '-' (hyphen or minus) </span></span>
+<span><span class="co">#### Object names must start with a letter and can only contain letter, numbers, _ and . 文字列は、日本語でも構いません。ただ、引用符は、半角英数にしてください。</span></span>
+<span></span>
+<span><span class="va">this_is_a_long_name</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">^</span><span class="fl">3</span></span>
+<span></span>
+<span><span class="va">this_is_a_long_name</span></span>
+<span><span class="co">#&gt; [1] 125</span></span>
+<span></span>
+<span><span class="va">char_name</span> <span class="op">&lt;-</span> <span class="st">"What is your name?"</span></span>
+<span></span>
+<span><span class="va">char_name</span></span>
+<span><span class="co">#&gt; [1] "What is your name?"</span></span>
+<span></span>
+<span><span class="co">#### Use 'tab completion' and 'up arrow' 長い名前を使っても、少しだけ入力すれば、可能性が表示され、tab キーを押すと、残りが表示されます。この機能を tab completion（タブ補完）と言います。</span></span>
+<span></span>
+<span><span class="co">### ls(): list of all assignments - 名前が割り当てられているものをすべて表示します。右上の窓枠の、Environment と同じです。ls.str() では、それぞれのオブジェクトの構造（structure）まで表示されます。</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "char_name"           "this_is_a_long_name"</span></span>
+<span><span class="co">#&gt; [3] "x"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/ls_str.html">ls.str</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; char_name :  chr "What is your name?"</span></span>
+<span><span class="co">#&gt; this_is_a_long_name :  num 125</span></span>
+<span><span class="co">#&gt; x :  num 5</span></span>
+<span></span>
+<span><span class="co">#### check Environment in the upper right pane</span></span>
+<span></span>
+<span><span class="co">### (atomic) vectors 数字または文字の並びのオブジェクトをベクトル（vectors）と呼びます。</span></span>
+<span></span>
+<span><span class="fl">5</span><span class="op">:</span><span class="fl">10</span> <span class="co"># 5 から 10 までの整数をこのようにも作成できます。これは、次の、seq(5,10) とも同じです。</span></span>
+<span><span class="co">#&gt; [1]  5  6  7  8  9 10</span></span>
+<span></span>
+<span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">a</span></span>
+<span><span class="co">#&gt; [1]  5  6  7  8  9 10</span></span>
+<span></span>
+<span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">:</span><span class="fl">10</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span> <span class="co"># 二つのベクトルが同じが稼働化をチェックします。</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># same as seq(from = 5, to = 10, by = 2) # とびとびの数列も定義できます。次が、どのようなものを定義しているか確認してください。</span></span>
+<span><span class="co">#&gt; [1] 5 7 9</span></span>
+<span></span>
+<span><span class="va">c1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">c2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, length.out <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">c1</span></span>
+<span><span class="co">#&gt;  [1]   0  10  20  30  40  50  60  70  80  90 100</span></span>
+<span></span>
+<span><span class="va">c2</span></span>
+<span><span class="co">#&gt;  [1]   0.00000  11.11111  22.22222  33.33333  44.44444</span></span>
+<span><span class="co">#&gt;  [6]  55.55556  66.66667  77.77778  88.88889 100.00000</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">c1</span><span class="op">)</span> <span class="co"># ベクトルの長さです。</span></span>
+<span><span class="co">#&gt; [1] 11</span></span>
+<span></span>
+<span><span class="co">#### ? seq   ? length   ? identical</span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">die</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> <span class="co"># かっこをつけておくと、名前をつけ、そのオブジェクトを表示することまでしてくれます。</span></span>
+<span><span class="co">#&gt; [1] 1 2 3 4 5 6</span></span>
+<span></span>
+<span><span class="va">zero_one</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span> <span class="co"># same as 0:1 # ベクトルの基本的な定義です。</span></span>
+<span></span>
+<span><span class="va">die</span> <span class="op">+</span> <span class="va">zero_one</span> <span class="co"># c(1,2,3,4,5,6) + c(0,1). re-use # 何をしているかわかりますか。1+0, 2+1, 3+0, 4+1, 5+0, 6+1 とあとのものが足りなくなると、繰り返して使うようにしています。</span></span>
+<span><span class="co">#&gt; [1] 1 3 3 5 5 7</span></span>
+<span></span>
+<span><span class="va">d1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span> <span class="co"># repeat 2回繰り返す場合はこのようにします。</span></span>
+<span></span>
+<span></span>
+<span><span class="va">d1</span></span>
+<span><span class="co">#&gt; [1] 1 2 3 1 2 3</span></span>
+<span></span>
+<span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span></span>
+<span><span class="co">#&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE</span></span>
+<span></span>
+<span><span class="va">d2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span><span class="op">)</span> <span class="co"># 数字ですが、文字列として扱います。</span></span>
+<span></span>
+<span><span class="va">d2</span></span>
+<span><span class="co">#&gt; [1] "TRUE"  "TRUE"  "TRUE"  "FALSE" "FALSE" "FALSE"</span></span>
+<span></span>
+<span><span class="va">d3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">die</span> <span class="op">==</span> <span class="va">d1</span><span class="op">)</span> <span class="co"># 数字として扱うときは、このようにします。</span></span>
+<span></span>
+<span><span class="va">d3</span></span>
+<span><span class="co">#&gt; [1] 1 1 1 0 0 0</span></span>
+<span></span>
+<span><span class="co">### class() for class and typeof() for mode　# クラスとモードがそれぞれに定まっています。ベクトルの場合には、それぞれ次のようなものがあります。</span></span>
+<span><span class="co">### class of vectors: numeric, charcters, logical</span></span>
+<span><span class="co">### types of vectors: doubles, integers, characters, logicals (complex and raw)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d1</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "integer"</span></span>
+<span><span class="co">#&gt; [1] "integer"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d2</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "character"</span></span>
+<span><span class="co">#&gt; [1] "character"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">d3</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "double"</span></span>
+<span><span class="co">#&gt; [1] "numeric"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1.414214</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
+<span><span class="co">#&gt; [1] 2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">2</span> <span class="co"># 微妙な違いがわかりますか。</span></span>
+<span><span class="co">#&gt; [1] 4.440892e-16</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "double"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "double"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "integer"</span></span>
+<span></span>
+<span><span class="fl">5</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1</span></span>
+<span></span>
+<span><span class="co">### Subsetting 一部分を取り出す。</span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">A_Z</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span><span class="op">)</span> <span class="co"># LETTERS には、最初から、アルファベットからなるベクトルが入っています。letters はどうでしょうか。</span></span>
+<span><span class="co">#&gt;  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N"</span></span>
+<span><span class="co">#&gt; [15] "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"</span></span>
+<span></span>
+<span><span class="co"># 1番目から6番目まで取り出して、A_F とおきます。</span></span>
+<span><span class="va">A_F</span> <span class="op">&lt;-</span> <span class="va">A_Z</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">A_F</span></span>
+<span><span class="co">#&gt; [1] "A" "B" "C" "D" "E" "F"</span></span>
+<span></span>
+<span><span class="co"># A_F の三番目です。</span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] "C"</span></span>
+<span></span>
+<span><span class="co"># A_F の三番目と五番目です。</span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] "C" "E"</span></span>
+<span></span>
+<span><span class="co"># die は、1,2,3,4,5,6 からなるベクトルでした。そのなかで、3 より大きいものを取り出します。</span></span>
+<span><span class="va">large</span> <span class="op">&lt;-</span> <span class="va">die</span> <span class="op">&gt;</span> <span class="fl">3</span></span>
+<span></span>
+<span><span class="va">large</span></span>
+<span><span class="co">#&gt; [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE</span></span>
+<span></span>
+<span><span class="co"># die の中で、2 か、4 か 6 に適合するもの、すなわち、偶数を取り出します。</span></span>
+<span><span class="va">even</span> <span class="op">&lt;-</span> <span class="va">die</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">even</span></span>
+<span><span class="co">#&gt; [1] FALSE  TRUE FALSE  TRUE FALSE  TRUE</span></span>
+<span></span>
+<span><span class="co"># 次のようなことも可能です。</span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">large</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] "D" "E" "F"</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">even</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] "B" "D" "F"</span></span>
+<span></span>
+<span><span class="va">A_F</span><span class="op">[</span><span class="va">die</span> <span class="op">&lt;</span> <span class="fl">4</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] "A" "B" "C"</span></span>
+<span></span>
+<span><span class="co">### Compare df with df1 &lt;- data.frame(number = die, alphabet = A_F)</span></span>
+<span><span class="co"># 表：data frame を作成しています。文字列なども、一定の順序を決めることができますが、この命令で、そのようにはしないことを指定しています。data frame は、変数の長さが同じでないといけません。die はサイコロの意味で６個、A, B, C, D, E, F も６個でちょうどあっています。</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>number <span class="op">=</span> <span class="va">die</span>, alphabet <span class="op">=</span> <span class="va">A_F</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt;   number alphabet</span></span>
+<span><span class="co">#&gt; 1      1        A</span></span>
+<span><span class="co">#&gt; 2      2        B</span></span>
+<span><span class="co">#&gt; 3      3        C</span></span>
+<span><span class="co">#&gt; 4      4        D</span></span>
+<span><span class="co">#&gt; 5      5        E</span></span>
+<span><span class="co">#&gt; 6      6        F</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">number</span> <span class="co"># 二つ列（変数）がありますが、number の方の列を取り出します。</span></span>
+<span><span class="co">#&gt; [1] 1 2 3 4 5 6</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">alphabet</span> <span class="co"># alphabet の列を取り出します。</span></span>
+<span><span class="co">#&gt; [1] "A" "B" "C" "D" "E" "F"</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">2</span><span class="op">]</span> <span class="co"># 3行2列を取り出します。</span></span>
+<span><span class="co">#&gt; [1] "C"</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">4</span>,<span class="fl">1</span><span class="op">]</span> <span class="co"># 4行1列</span></span>
+<span><span class="co">#&gt; [1] 4</span></span>
+<span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>　<span class="co"># 一列目だけからなる表を作ります</span></span>
+<span><span class="co">#&gt;   number</span></span>
+<span><span class="co">#&gt; 1      1</span></span>
+<span><span class="co">#&gt; 2      2</span></span>
+<span><span class="co">#&gt; 3      3</span></span>
+<span><span class="co">#&gt; 4      4</span></span>
+<span><span class="co">#&gt; 5      5</span></span>
+<span><span class="co">#&gt; 6      6</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="co"># 一列目だけからなる表のクラスは？</span></span>
+<span><span class="co">#&gt; [1] "data.frame"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="co"># 一列目からなるベクトルのクラスです。</span></span>
+<span><span class="co">#&gt; [1] "integer"</span></span>
+<span></span>
+<span><span class="co"># 次は、一方が、TRUE 他方が、FALSE です。わかりますか。</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">die</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,<span class="va">die</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span></span>
+<span><span class="co">####################</span></span>
+<span><span class="co"># The First Example</span></span>
+<span><span class="co">####################</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Help: Help Tab に表示されます。省略。</span></span>
+<span></span>
+<span><span class="co"># ? cars</span></span>
+<span></span>
+<span><span class="co"># cars is in the 'datasets' package # data() で現在使用可能なデータがすべて表示されます。最初は、datasets のリストが表示されると思います。</span></span>
+<span></span>
+<span><span class="co"># data()</span></span>
+<span></span>
+<span><span class="co"># help(cars) does the same as ? cars</span></span>
+<span><span class="co"># You can use Help tab in the right bottom pane</span></span>
+<span></span>
+<span><span class="co"># help(plot) # Help Tab に表示されます。省略。</span></span>
+<span><span class="co"># ? par # Help Tab に表示されます。省略。</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   speed dist</span></span>
+<span><span class="co">#&gt; 1     4    2</span></span>
+<span><span class="co">#&gt; 2     4   10</span></span>
+<span><span class="co">#&gt; 3     7    4</span></span>
+<span><span class="co">#&gt; 4     7   22</span></span>
+<span><span class="co">#&gt; 5     8   16</span></span>
+<span><span class="co">#&gt; 6     9   10</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    50 obs. of  2 variables:</span></span>
+<span><span class="co">#&gt;  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...</span></span>
+<span><span class="co">#&gt;  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      speed           dist       </span></span>
+<span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
+<span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
+<span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
+<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">cars</span><span class="op">$</span><span class="va">dist</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># x すなわち、cars の speed の最小値です。</span></span>
+<span><span class="co">#&gt; [1] 4</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co">#  x すなわち、cars の speed の（相加）平均です。</span></span>
+<span><span class="co">#&gt; [1] 15.4</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># 四分位が表示されます。上の、summary() の説明で確認してください。</span></span>
+<span><span class="co">#&gt;   0%  25%  50%  75% 100% </span></span>
+<span><span class="co">#&gt;    4   12   15   19   25</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 回帰直線を加えます。フィットした直線といった感じです。</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span> <span class="op">~</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># 回帰直線に関するさまざまな値が表示されます。数値モデル Modeling で説明します。</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span> <span class="op">~</span> <span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = cars$dist ~ cars$speed)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span><span class="co">#&gt; -29.069  -9.525  -2.272   9.215  43.201 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; (Intercept) -17.5791     6.7584  -2.601   0.0123 *  </span></span>
+<span><span class="co">#&gt; cars$speed    3.9324     0.4155   9.464 1.49e-12 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 15.38 on 48 degrees of freedom</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.6511, Adjusted R-squared:  0.6438 </span></span>
+<span><span class="co">#&gt; F-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12</span></span>
+<span></span>
+<span><span class="co"># 箱ひげ図です</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-6-2.png" width="672"></div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># ヒストグラム（度数分布表）です。</span></span>
+<span><span class="co"># どのように区切るかを指定することも可能です。</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">speed</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-6-3.png" width="672"></div>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-6-4.png" width="672"></div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">cars</span><span class="op">$</span><span class="va">dist</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">120</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-6-5.png" width="672"></div>
+</div>
+<div id="スクリプト2-coronavirus.r" class="section level4" number="16.5.2.3">
+<h4>
+<span class="header-section-number">16.5.2.3</span> スクリプト2: <code>coronavirus.R</code><a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%882-coronavirus.r"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># https://coronavirus.jhu.edu/map.html</span></span>
 <span><span class="co"># JHU Covid-19 global time series data</span></span>
 <span><span class="co"># See R package coronavirus at: https://github.com/RamiKrispin/coronavirus</span></span>
@@ -638,6 +997,458 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span>, </span>
 <span>     main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Comfirmed Cases in"</span>,<span class="va">COUNTRY</span><span class="op">)</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"Date"</span>, ylab <span class="op">=</span> <span class="st">"Number of Cases"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="スクリプト2-実行結果" class="section level4" number="16.5.2.4">
+<h4>
+<span class="header-section-number">16.5.2.4</span> スクリプト2 実行結果<a class="anchor" aria-label="anchor" href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%882-%E5%AE%9F%E8%A1%8C%E7%B5%90%E6%9E%9C"><i class="fas fa-link"></i></a>
+</h4>
+<p>大体、どのようなことをしているか、想像してみてください。少しだけ説明を加えます。</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># https://coronavirus.jhu.edu/map.html</span></span>
+<span><span class="co"># JHU Covid-19 global time series data</span></span>
+<span><span class="co"># See R package coronavirus at: https://github.com/RamiKrispin/coronavirus</span></span>
+<span><span class="co"># Data taken from: https://github.com/RamiKrispin/coronavirus/tree/master/csv</span></span>
+<span><span class="co"># Last Updated</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "2023-09-26"</span></span>
+<span></span>
+<span><span class="co">## Download and read csv (comma separated value) file</span></span>
+<span><span class="va">coronavirus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://github.com/RamiKrispin/coronavirus/raw/master/csv/coronavirus.csv"</span><span class="op">)</span> <span class="co"># データを Krispin のサイトから入手します。</span></span>
+<span><span class="co"># write.csv(coronavirus, "data/coronavirus.csv")</span></span>
+<span></span>
+<span><span class="co">## Summaries and structures of the data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         date province country     lat      long      type</span></span>
+<span><span class="co">#&gt; 1 2020-01-22  Alberta  Canada 53.9333 -116.5765 confirmed</span></span>
+<span><span class="co">#&gt; 2 2020-01-23  Alberta  Canada 53.9333 -116.5765 confirmed</span></span>
+<span><span class="co">#&gt; 3 2020-01-24  Alberta  Canada 53.9333 -116.5765 confirmed</span></span>
+<span><span class="co">#&gt; 4 2020-01-25  Alberta  Canada 53.9333 -116.5765 confirmed</span></span>
+<span><span class="co">#&gt; 5 2020-01-26  Alberta  Canada 53.9333 -116.5765 confirmed</span></span>
+<span><span class="co">#&gt; 6 2020-01-27  Alberta  Canada 53.9333 -116.5765 confirmed</span></span>
+<span><span class="co">#&gt;   cases   uid iso2 iso3 code3    combined_key population</span></span>
+<span><span class="co">#&gt; 1     0 12401   CA  CAN   124 Alberta, Canada    4413146</span></span>
+<span><span class="co">#&gt; 2     0 12401   CA  CAN   124 Alberta, Canada    4413146</span></span>
+<span><span class="co">#&gt; 3     0 12401   CA  CAN   124 Alberta, Canada    4413146</span></span>
+<span><span class="co">#&gt; 4     0 12401   CA  CAN   124 Alberta, Canada    4413146</span></span>
+<span><span class="co">#&gt; 5     0 12401   CA  CAN   124 Alberta, Canada    4413146</span></span>
+<span><span class="co">#&gt; 6     0 12401   CA  CAN   124 Alberta, Canada    4413146</span></span>
+<span><span class="co">#&gt;   continent_name continent_code</span></span>
+<span><span class="co">#&gt; 1  North America           &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2  North America           &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3  North America           &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4  North America           &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5  North America           &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6  North America           &lt;NA&gt;</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    919308 obs. of  15 variables:</span></span>
+<span><span class="co">#&gt;  $ date          : chr  "2020-01-22" "2020-01-23" "2020-01-24" "2020-01-25" ...</span></span>
+<span><span class="co">#&gt;  $ province      : chr  "Alberta" "Alberta" "Alberta" "Alberta" ...</span></span>
+<span><span class="co">#&gt;  $ country       : chr  "Canada" "Canada" "Canada" "Canada" ...</span></span>
+<span><span class="co">#&gt;  $ lat           : num  53.9 53.9 53.9 53.9 53.9 ...</span></span>
+<span><span class="co">#&gt;  $ long          : num  -117 -117 -117 -117 -117 ...</span></span>
+<span><span class="co">#&gt;  $ type          : chr  "confirmed" "confirmed" "confirmed" "confirmed" ...</span></span>
+<span><span class="co">#&gt;  $ cases         : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ uid           : int  12401 12401 12401 12401 12401 12401 12401 12401 12401 12401 ...</span></span>
+<span><span class="co">#&gt;  $ iso2          : chr  "CA" "CA" "CA" "CA" ...</span></span>
+<span><span class="co">#&gt;  $ iso3          : chr  "CAN" "CAN" "CAN" "CAN" ...</span></span>
+<span><span class="co">#&gt;  $ code3         : int  124 124 124 124 124 124 124 124 124 124 ...</span></span>
+<span><span class="co">#&gt;  $ combined_key  : chr  "Alberta, Canada" "Alberta, Canada" "Alberta, Canada" "Alberta, Canada" ...</span></span>
+<span><span class="co">#&gt;  $ population    : num  4413146 4413146 4413146 4413146 4413146 ...</span></span>
+<span><span class="co">#&gt;  $ continent_name: chr  "North America" "North America" "North America" "North America" ...</span></span>
+<span><span class="co">#&gt;  $ continent_code: chr  NA NA NA NA ...</span></span>
+<span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span><span class="op">)</span> <span class="co"># date 列を、日付だと認識するように指定します。</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    919308 obs. of  15 variables:</span></span>
+<span><span class="co">#&gt;  $ date          : Date, format: "2020-01-22" ...</span></span>
+<span><span class="co">#&gt;  $ province      : chr  "Alberta" "Alberta" "Alberta" "Alberta" ...</span></span>
+<span><span class="co">#&gt;  $ country       : chr  "Canada" "Canada" "Canada" "Canada" ...</span></span>
+<span><span class="co">#&gt;  $ lat           : num  53.9 53.9 53.9 53.9 53.9 ...</span></span>
+<span><span class="co">#&gt;  $ long          : num  -117 -117 -117 -117 -117 ...</span></span>
+<span><span class="co">#&gt;  $ type          : chr  "confirmed" "confirmed" "confirmed" "confirmed" ...</span></span>
+<span><span class="co">#&gt;  $ cases         : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ uid           : int  12401 12401 12401 12401 12401 12401 12401 12401 12401 12401 ...</span></span>
+<span><span class="co">#&gt;  $ iso2          : chr  "CA" "CA" "CA" "CA" ...</span></span>
+<span><span class="co">#&gt;  $ iso3          : chr  "CAN" "CAN" "CAN" "CAN" ...</span></span>
+<span><span class="co">#&gt;  $ code3         : int  124 124 124 124 124 124 124 124 124 124 ...</span></span>
+<span><span class="co">#&gt;  $ combined_key  : chr  "Alberta, Canada" "Alberta, Canada" "Alberta, Canada" "Alberta, Canada" ...</span></span>
+<span><span class="co">#&gt;  $ population    : num  4413146 4413146 4413146 4413146 4413146 ...</span></span>
+<span><span class="co">#&gt;  $ continent_name: chr  "North America" "North America" "North America" "North America" ...</span></span>
+<span><span class="co">#&gt;  $ continent_code: chr  NA NA NA NA ...</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">date</span><span class="op">)</span> <span class="co"># 期間（日付の幅）を調べます</span></span>
+<span><span class="co">#&gt; [1] "2020-01-22" "2023-01-04"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span><span class="op">)</span> <span class="co"># country 列に入っている国（何度も同じ国が入っているので、異なるもののみを抽出）</span></span>
+<span><span class="co">#&gt;   [1] "Canada"                          </span></span>
+<span><span class="co">#&gt;   [2] "United Kingdom"                  </span></span>
+<span><span class="co">#&gt;   [3] "China"                           </span></span>
+<span><span class="co">#&gt;   [4] "Netherlands"                     </span></span>
+<span><span class="co">#&gt;   [5] "Australia"                       </span></span>
+<span><span class="co">#&gt;   [6] "New Zealand"                     </span></span>
+<span><span class="co">#&gt;   [7] "Denmark"                         </span></span>
+<span><span class="co">#&gt;   [8] "France"                          </span></span>
+<span><span class="co">#&gt;   [9] "Afghanistan"                     </span></span>
+<span><span class="co">#&gt;  [10] "Albania"                         </span></span>
+<span><span class="co">#&gt;  [11] "Algeria"                         </span></span>
+<span><span class="co">#&gt;  [12] "Andorra"                         </span></span>
+<span><span class="co">#&gt;  [13] "Angola"                          </span></span>
+<span><span class="co">#&gt;  [14] "Antarctica"                      </span></span>
+<span><span class="co">#&gt;  [15] "Antigua and Barbuda"             </span></span>
+<span><span class="co">#&gt;  [16] "Argentina"                       </span></span>
+<span><span class="co">#&gt;  [17] "Armenia"                         </span></span>
+<span><span class="co">#&gt;  [18] "Austria"                         </span></span>
+<span><span class="co">#&gt;  [19] "Azerbaijan"                      </span></span>
+<span><span class="co">#&gt;  [20] "Bahamas"                         </span></span>
+<span><span class="co">#&gt;  [21] "Bahrain"                         </span></span>
+<span><span class="co">#&gt;  [22] "Bangladesh"                      </span></span>
+<span><span class="co">#&gt;  [23] "Barbados"                        </span></span>
+<span><span class="co">#&gt;  [24] "Belarus"                         </span></span>
+<span><span class="co">#&gt;  [25] "Belgium"                         </span></span>
+<span><span class="co">#&gt;  [26] "Belize"                          </span></span>
+<span><span class="co">#&gt;  [27] "Benin"                           </span></span>
+<span><span class="co">#&gt;  [28] "Bhutan"                          </span></span>
+<span><span class="co">#&gt;  [29] "Bolivia"                         </span></span>
+<span><span class="co">#&gt;  [30] "Bosnia and Herzegovina"          </span></span>
+<span><span class="co">#&gt;  [31] "Botswana"                        </span></span>
+<span><span class="co">#&gt;  [32] "Brazil"                          </span></span>
+<span><span class="co">#&gt;  [33] "Brunei"                          </span></span>
+<span><span class="co">#&gt;  [34] "Bulgaria"                        </span></span>
+<span><span class="co">#&gt;  [35] "Burkina Faso"                    </span></span>
+<span><span class="co">#&gt;  [36] "Burma"                           </span></span>
+<span><span class="co">#&gt;  [37] "Burundi"                         </span></span>
+<span><span class="co">#&gt;  [38] "Cabo Verde"                      </span></span>
+<span><span class="co">#&gt;  [39] "Cambodia"                        </span></span>
+<span><span class="co">#&gt;  [40] "Cameroon"                        </span></span>
+<span><span class="co">#&gt;  [41] "Central African Republic"        </span></span>
+<span><span class="co">#&gt;  [42] "Chad"                            </span></span>
+<span><span class="co">#&gt;  [43] "Chile"                           </span></span>
+<span><span class="co">#&gt;  [44] "Colombia"                        </span></span>
+<span><span class="co">#&gt;  [45] "Comoros"                         </span></span>
+<span><span class="co">#&gt;  [46] "Congo (Brazzaville)"             </span></span>
+<span><span class="co">#&gt;  [47] "Congo (Kinshasa)"                </span></span>
+<span><span class="co">#&gt;  [48] "Costa Rica"                      </span></span>
+<span><span class="co">#&gt;  [49] "Cote d'Ivoire"                   </span></span>
+<span><span class="co">#&gt;  [50] "Croatia"                         </span></span>
+<span><span class="co">#&gt;  [51] "Cuba"                            </span></span>
+<span><span class="co">#&gt;  [52] "Cyprus"                          </span></span>
+<span><span class="co">#&gt;  [53] "Czechia"                         </span></span>
+<span><span class="co">#&gt;  [54] "Diamond Princess"                </span></span>
+<span><span class="co">#&gt;  [55] "Djibouti"                        </span></span>
+<span><span class="co">#&gt;  [56] "Dominica"                        </span></span>
+<span><span class="co">#&gt;  [57] "Dominican Republic"              </span></span>
+<span><span class="co">#&gt;  [58] "Ecuador"                         </span></span>
+<span><span class="co">#&gt;  [59] "Egypt"                           </span></span>
+<span><span class="co">#&gt;  [60] "El Salvador"                     </span></span>
+<span><span class="co">#&gt;  [61] "Equatorial Guinea"               </span></span>
+<span><span class="co">#&gt;  [62] "Eritrea"                         </span></span>
+<span><span class="co">#&gt;  [63] "Estonia"                         </span></span>
+<span><span class="co">#&gt;  [64] "Eswatini"                        </span></span>
+<span><span class="co">#&gt;  [65] "Ethiopia"                        </span></span>
+<span><span class="co">#&gt;  [66] "Fiji"                            </span></span>
+<span><span class="co">#&gt;  [67] "Finland"                         </span></span>
+<span><span class="co">#&gt;  [68] "Gabon"                           </span></span>
+<span><span class="co">#&gt;  [69] "Gambia"                          </span></span>
+<span><span class="co">#&gt;  [70] "Georgia"                         </span></span>
+<span><span class="co">#&gt;  [71] "Germany"                         </span></span>
+<span><span class="co">#&gt;  [72] "Ghana"                           </span></span>
+<span><span class="co">#&gt;  [73] "Greece"                          </span></span>
+<span><span class="co">#&gt;  [74] "Grenada"                         </span></span>
+<span><span class="co">#&gt;  [75] "Guatemala"                       </span></span>
+<span><span class="co">#&gt;  [76] "Guinea"                          </span></span>
+<span><span class="co">#&gt;  [77] "Guinea-Bissau"                   </span></span>
+<span><span class="co">#&gt;  [78] "Guyana"                          </span></span>
+<span><span class="co">#&gt;  [79] "Haiti"                           </span></span>
+<span><span class="co">#&gt;  [80] "Holy See"                        </span></span>
+<span><span class="co">#&gt;  [81] "Honduras"                        </span></span>
+<span><span class="co">#&gt;  [82] "Hungary"                         </span></span>
+<span><span class="co">#&gt;  [83] "Iceland"                         </span></span>
+<span><span class="co">#&gt;  [84] "India"                           </span></span>
+<span><span class="co">#&gt;  [85] "Indonesia"                       </span></span>
+<span><span class="co">#&gt;  [86] "Iran"                            </span></span>
+<span><span class="co">#&gt;  [87] "Iraq"                            </span></span>
+<span><span class="co">#&gt;  [88] "Ireland"                         </span></span>
+<span><span class="co">#&gt;  [89] "Israel"                          </span></span>
+<span><span class="co">#&gt;  [90] "Italy"                           </span></span>
+<span><span class="co">#&gt;  [91] "Jamaica"                         </span></span>
+<span><span class="co">#&gt;  [92] "Japan"                           </span></span>
+<span><span class="co">#&gt;  [93] "Jordan"                          </span></span>
+<span><span class="co">#&gt;  [94] "Kazakhstan"                      </span></span>
+<span><span class="co">#&gt;  [95] "Kenya"                           </span></span>
+<span><span class="co">#&gt;  [96] "Kiribati"                        </span></span>
+<span><span class="co">#&gt;  [97] "Korea, North"                    </span></span>
+<span><span class="co">#&gt;  [98] "Korea, South"                    </span></span>
+<span><span class="co">#&gt;  [99] "Kosovo"                          </span></span>
+<span><span class="co">#&gt; [100] "Kuwait"                          </span></span>
+<span><span class="co">#&gt; [101] "Kyrgyzstan"                      </span></span>
+<span><span class="co">#&gt; [102] "Laos"                            </span></span>
+<span><span class="co">#&gt; [103] "Latvia"                          </span></span>
+<span><span class="co">#&gt; [104] "Lebanon"                         </span></span>
+<span><span class="co">#&gt; [105] "Lesotho"                         </span></span>
+<span><span class="co">#&gt; [106] "Liberia"                         </span></span>
+<span><span class="co">#&gt; [107] "Libya"                           </span></span>
+<span><span class="co">#&gt; [108] "Liechtenstein"                   </span></span>
+<span><span class="co">#&gt; [109] "Lithuania"                       </span></span>
+<span><span class="co">#&gt; [110] "Luxembourg"                      </span></span>
+<span><span class="co">#&gt; [111] "Madagascar"                      </span></span>
+<span><span class="co">#&gt; [112] "Malawi"                          </span></span>
+<span><span class="co">#&gt; [113] "Malaysia"                        </span></span>
+<span><span class="co">#&gt; [114] "Maldives"                        </span></span>
+<span><span class="co">#&gt; [115] "Mali"                            </span></span>
+<span><span class="co">#&gt; [116] "Malta"                           </span></span>
+<span><span class="co">#&gt; [117] "Marshall Islands"                </span></span>
+<span><span class="co">#&gt; [118] "Mauritania"                      </span></span>
+<span><span class="co">#&gt; [119] "Mauritius"                       </span></span>
+<span><span class="co">#&gt; [120] "Mexico"                          </span></span>
+<span><span class="co">#&gt; [121] "Micronesia"                      </span></span>
+<span><span class="co">#&gt; [122] "Moldova"                         </span></span>
+<span><span class="co">#&gt; [123] "Monaco"                          </span></span>
+<span><span class="co">#&gt; [124] "Mongolia"                        </span></span>
+<span><span class="co">#&gt; [125] "Montenegro"                      </span></span>
+<span><span class="co">#&gt; [126] "Morocco"                         </span></span>
+<span><span class="co">#&gt; [127] "Mozambique"                      </span></span>
+<span><span class="co">#&gt; [128] "MS Zaandam"                      </span></span>
+<span><span class="co">#&gt; [129] "Namibia"                         </span></span>
+<span><span class="co">#&gt; [130] "Nauru"                           </span></span>
+<span><span class="co">#&gt; [131] "Nepal"                           </span></span>
+<span><span class="co">#&gt; [132] "Nicaragua"                       </span></span>
+<span><span class="co">#&gt; [133] "Niger"                           </span></span>
+<span><span class="co">#&gt; [134] "Nigeria"                         </span></span>
+<span><span class="co">#&gt; [135] "North Macedonia"                 </span></span>
+<span><span class="co">#&gt; [136] "Norway"                          </span></span>
+<span><span class="co">#&gt; [137] "Oman"                            </span></span>
+<span><span class="co">#&gt; [138] "Pakistan"                        </span></span>
+<span><span class="co">#&gt; [139] "Palau"                           </span></span>
+<span><span class="co">#&gt; [140] "Panama"                          </span></span>
+<span><span class="co">#&gt; [141] "Papua New Guinea"                </span></span>
+<span><span class="co">#&gt; [142] "Paraguay"                        </span></span>
+<span><span class="co">#&gt; [143] "Peru"                            </span></span>
+<span><span class="co">#&gt; [144] "Philippines"                     </span></span>
+<span><span class="co">#&gt; [145] "Poland"                          </span></span>
+<span><span class="co">#&gt; [146] "Portugal"                        </span></span>
+<span><span class="co">#&gt; [147] "Qatar"                           </span></span>
+<span><span class="co">#&gt; [148] "Romania"                         </span></span>
+<span><span class="co">#&gt; [149] "Russia"                          </span></span>
+<span><span class="co">#&gt; [150] "Rwanda"                          </span></span>
+<span><span class="co">#&gt; [151] "Saint Kitts and Nevis"           </span></span>
+<span><span class="co">#&gt; [152] "Saint Lucia"                     </span></span>
+<span><span class="co">#&gt; [153] "Saint Vincent and the Grenadines"</span></span>
+<span><span class="co">#&gt; [154] "Samoa"                           </span></span>
+<span><span class="co">#&gt; [155] "San Marino"                      </span></span>
+<span><span class="co">#&gt; [156] "Sao Tome and Principe"           </span></span>
+<span><span class="co">#&gt; [157] "Saudi Arabia"                    </span></span>
+<span><span class="co">#&gt; [158] "Senegal"                         </span></span>
+<span><span class="co">#&gt; [159] "Serbia"                          </span></span>
+<span><span class="co">#&gt; [160] "Seychelles"                      </span></span>
+<span><span class="co">#&gt; [161] "Sierra Leone"                    </span></span>
+<span><span class="co">#&gt; [162] "Singapore"                       </span></span>
+<span><span class="co">#&gt; [163] "Slovakia"                        </span></span>
+<span><span class="co">#&gt; [164] "Slovenia"                        </span></span>
+<span><span class="co">#&gt; [165] "Solomon Islands"                 </span></span>
+<span><span class="co">#&gt; [166] "Somalia"                         </span></span>
+<span><span class="co">#&gt; [167] "South Africa"                    </span></span>
+<span><span class="co">#&gt; [168] "South Sudan"                     </span></span>
+<span><span class="co">#&gt; [169] "Spain"                           </span></span>
+<span><span class="co">#&gt; [170] "Sri Lanka"                       </span></span>
+<span><span class="co">#&gt; [171] "Sudan"                           </span></span>
+<span><span class="co">#&gt; [172] "Summer Olympics 2020"            </span></span>
+<span><span class="co">#&gt; [173] "Suriname"                        </span></span>
+<span><span class="co">#&gt; [174] "Sweden"                          </span></span>
+<span><span class="co">#&gt; [175] "Switzerland"                     </span></span>
+<span><span class="co">#&gt; [176] "Syria"                           </span></span>
+<span><span class="co">#&gt; [177] "Taiwan*"                         </span></span>
+<span><span class="co">#&gt; [178] "Tajikistan"                      </span></span>
+<span><span class="co">#&gt; [179] "Tanzania"                        </span></span>
+<span><span class="co">#&gt; [180] "Thailand"                        </span></span>
+<span><span class="co">#&gt; [181] "Timor-Leste"                     </span></span>
+<span><span class="co">#&gt; [182] "Togo"                            </span></span>
+<span><span class="co">#&gt; [183] "Tonga"                           </span></span>
+<span><span class="co">#&gt; [184] "Trinidad and Tobago"             </span></span>
+<span><span class="co">#&gt; [185] "Tunisia"                         </span></span>
+<span><span class="co">#&gt; [186] "Turkey"                          </span></span>
+<span><span class="co">#&gt; [187] "Tuvalu"                          </span></span>
+<span><span class="co">#&gt; [188] "Uganda"                          </span></span>
+<span><span class="co">#&gt; [189] "Ukraine"                         </span></span>
+<span><span class="co">#&gt; [190] "United Arab Emirates"            </span></span>
+<span><span class="co">#&gt; [191] "Uruguay"                         </span></span>
+<span><span class="co">#&gt; [192] "US"                              </span></span>
+<span><span class="co">#&gt; [193] "Uzbekistan"                      </span></span>
+<span><span class="co">#&gt; [194] "Vanuatu"                         </span></span>
+<span><span class="co">#&gt; [195] "Venezuela"                       </span></span>
+<span><span class="co">#&gt; [196] "Vietnam"                         </span></span>
+<span><span class="co">#&gt; [197] "West Bank and Gaza"              </span></span>
+<span><span class="co">#&gt; [198] "Winter Olympics 2022"            </span></span>
+<span><span class="co">#&gt; [199] "Yemen"                           </span></span>
+<span><span class="co">#&gt; [200] "Zambia"                          </span></span>
+<span><span class="co">#&gt; [201] "Zimbabwe"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">type</span><span class="op">)</span> <span class="co"># type 列の種類</span></span>
+<span><span class="co">#&gt; [1] "confirmed" "death"     "recovery"</span></span>
+<span></span>
+<span><span class="co">## Set Country </span></span>
+<span><span class="va">COUNTRY</span> <span class="op">&lt;-</span> <span class="st">"Japan"</span> <span class="co"># 日本に設定してみます。上の国のリストから、選択すれば、他の国についても、グラフなどを書くことができます。</span></span>
+<span><span class="va">df0</span> <span class="op">&lt;-</span> <span class="va">coronavirus</span><span class="op">[</span><span class="va">coronavirus</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="va">COUNTRY</span>,<span class="op">]</span> <span class="co"># country 列が上で指定した、COUNTRY と同じもの、この場合は日本のものだけを取り出します。</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df0</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              date province country      lat     long</span></span>
+<span><span class="co">#&gt; 189905 2020-01-22     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt; 189906 2020-01-23     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt; 189907 2020-01-24     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt; 189908 2020-01-25     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt; 189909 2020-01-26     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt; 189910 2020-01-27     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt;             type cases uid iso2 iso3 code3 combined_key</span></span>
+<span><span class="co">#&gt; 189905 confirmed     2 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt; 189906 confirmed     0 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt; 189907 confirmed     0 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt; 189908 confirmed     0 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt; 189909 confirmed     2 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt; 189910 confirmed     0 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt;        population continent_name continent_code</span></span>
+<span><span class="co">#&gt; 189905  126476458           Asia             AS</span></span>
+<span><span class="co">#&gt; 189906  126476458           Asia             AS</span></span>
+<span><span class="co">#&gt; 189907  126476458           Asia             AS</span></span>
+<span><span class="co">#&gt; 189908  126476458           Asia             AS</span></span>
+<span><span class="co">#&gt; 189909  126476458           Asia             AS</span></span>
+<span><span class="co">#&gt; 189910  126476458           Asia             AS</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">df0</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              date province country      lat     long</span></span>
+<span><span class="co">#&gt; 798455 2022-12-30     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt; 798456 2022-12-31     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt; 798457 2023-01-01     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt; 798458 2023-01-02     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt; 798459 2023-01-03     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt; 798460 2023-01-04     &lt;NA&gt;   Japan 36.20482 138.2529</span></span>
+<span><span class="co">#&gt;            type cases uid iso2 iso3 code3 combined_key</span></span>
+<span><span class="co">#&gt; 798455 recovery     0 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt; 798456 recovery     0 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt; 798457 recovery     0 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt; 798458 recovery     0 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt; 798459 recovery     0 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt; 798460 recovery     0 392   JP  JPN   392        Japan</span></span>
+<span><span class="co">#&gt;        population continent_name continent_code</span></span>
+<span><span class="co">#&gt; 798455  126476458           Asia             AS</span></span>
+<span><span class="co">#&gt; 798456  126476458           Asia             AS</span></span>
+<span><span class="co">#&gt; 798457  126476458           Asia             AS</span></span>
+<span><span class="co">#&gt; 798458  126476458           Asia             AS</span></span>
+<span><span class="co">#&gt; 798459  126476458           Asia             AS</span></span>
+<span><span class="co">#&gt; 798460  126476458           Asia             AS</span></span>
+<span><span class="op">(</span><span class="va">pop</span> <span class="op">&lt;-</span> <span class="va">df0</span><span class="op">$</span><span class="va">population</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 126476458</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df0</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">13</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    3237 obs. of  4 variables:</span></span>
+<span><span class="co">#&gt;  $ date      : Date, format: "2020-01-22" ...</span></span>
+<span><span class="co">#&gt;  $ type      : chr  "confirmed" "confirmed" "confirmed" "confirmed" ...</span></span>
+<span><span class="co">#&gt;  $ cases     : int  2 0 0 0 2 0 3 0 4 4 ...</span></span>
+<span><span class="co">#&gt;  $ population: num  1.26e+08 1.26e+08 1.26e+08 1.26e+08 1.26e+08 ...</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              date      type cases population</span></span>
+<span><span class="co">#&gt; 189905 2020-01-22 confirmed     2  126476458</span></span>
+<span><span class="co">#&gt; 189906 2020-01-23 confirmed     0  126476458</span></span>
+<span><span class="co">#&gt; 189907 2020-01-24 confirmed     0  126476458</span></span>
+<span><span class="co">#&gt; 189908 2020-01-25 confirmed     0  126476458</span></span>
+<span><span class="co">#&gt; 189909 2020-01-26 confirmed     2  126476458</span></span>
+<span><span class="co">#&gt; 189910 2020-01-27 confirmed     0  126476458</span></span>
+<span><span class="co">### alternatively,</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df0</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"date"</span>, <span class="st">"type"</span>, <span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              date      type cases population</span></span>
+<span><span class="co">#&gt; 189905 2020-01-22 confirmed     2  126476458</span></span>
+<span><span class="co">#&gt; 189906 2020-01-23 confirmed     0  126476458</span></span>
+<span><span class="co">#&gt; 189907 2020-01-24 confirmed     0  126476458</span></span>
+<span><span class="co">#&gt; 189908 2020-01-25 confirmed     0  126476458</span></span>
+<span><span class="co">#&gt; 189909 2020-01-26 confirmed     2  126476458</span></span>
+<span><span class="co">#&gt; 189910 2020-01-27 confirmed     0  126476458</span></span>
+<span><span class="co">###</span></span>
+<span></span>
+<span><span class="co">## Set types</span></span>
+<span><span class="co">###  タイプ毎に取り出します。</span></span>
+<span><span class="va">df_confirmed</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"confirmed"</span>,<span class="op">]</span>　<span class="co"># 感染者数</span></span>
+<span><span class="va">df_death</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"death"</span>,<span class="op">]</span> <span class="co"># 死者数</span></span>
+<span><span class="va">df_recovery</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">data_type</span> <span class="op">==</span> <span class="st">"recovery"</span>,<span class="op">]</span> <span class="co"># 回復者数</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              date      type cases population</span></span>
+<span><span class="co">#&gt; 189905 2020-01-22 confirmed     2  126476458</span></span>
+<span><span class="co">#&gt; 189906 2020-01-23 confirmed     0  126476458</span></span>
+<span><span class="co">#&gt; 189907 2020-01-24 confirmed     0  126476458</span></span>
+<span><span class="co">#&gt; 189908 2020-01-25 confirmed     0  126476458</span></span>
+<span><span class="co">#&gt; 189909 2020-01-26 confirmed     2  126476458</span></span>
+<span><span class="co">#&gt; 189910 2020-01-27 confirmed     0  126476458</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_death</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              date  type cases population</span></span>
+<span><span class="co">#&gt; 501736 2020-01-22 death     0  126476458</span></span>
+<span><span class="co">#&gt; 501737 2020-01-23 death     0  126476458</span></span>
+<span><span class="co">#&gt; 501738 2020-01-24 death     0  126476458</span></span>
+<span><span class="co">#&gt; 501739 2020-01-25 death     0  126476458</span></span>
+<span><span class="co">#&gt; 501740 2020-01-26 death     0  126476458</span></span>
+<span><span class="co">#&gt; 501741 2020-01-27 death     0  126476458</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_recovery</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] date       type       cases      population</span></span>
+<span><span class="co">#&gt; &lt;0 rows&gt; (or 0-length row.names)</span></span>
+<span></span>
+<span><span class="co">## Histogram</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_death</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-8-2.png" width="672"></div>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># plot(df_recovered$date, df_recovered$cases, type = "h") # no data for recovery</span></span>
+<span></span>
+<span><span class="co">## Scatter plot and correlation</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-8-3.png" width="672"></div>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_death</span><span class="op">$</span><span class="va">cases</span><span class="op">)</span> <span class="co"># 相関係数を計算しています</span></span>
+<span><span class="co">#&gt; [1] 0.7696834</span></span>
+<span></span>
+<span></span>
+<span><span class="co">## In addition set a period</span></span>
+<span><span class="va">start_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2022-07-01"</span><span class="op">)</span> <span class="co"># 特定の期間を定めます</span></span>
+<span><span class="va">end_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="va">df_date</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">date</span> <span class="op">&gt;=</span><span class="va">start_date</span> <span class="op">&amp;</span> <span class="va">df</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;=</span> <span class="va">end_date</span>,<span class="op">]</span></span>
+<span><span class="co">##</span></span>
+<span></span>
+<span><span class="co">## Set types</span></span>
+<span><span class="va">df_date_confirmed</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"confirmed"</span>,<span class="op">]</span></span>
+<span><span class="va">df_date_death</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">type</span> <span class="op">==</span> <span class="st">"death"</span>,<span class="op">]</span></span>
+<span><span class="va">df_date_recovery</span> <span class="op">&lt;-</span> <span class="va">df_date</span><span class="op">[</span><span class="va">df_date</span><span class="op">$</span><span class="va">data_type</span> <span class="op">==</span> <span class="st">"recovery"</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              date      type cases population</span></span>
+<span><span class="co">#&gt; 190796 2022-07-01 confirmed 23125  126476458</span></span>
+<span><span class="co">#&gt; 190797 2022-07-02 confirmed 24900  126476458</span></span>
+<span><span class="co">#&gt; 190798 2022-07-03 confirmed 23286  126476458</span></span>
+<span><span class="co">#&gt; 190799 2022-07-04 confirmed 16785  126476458</span></span>
+<span><span class="co">#&gt; 190800 2022-07-05 confirmed 36233  126476458</span></span>
+<span><span class="co">#&gt; 190801 2022-07-06 confirmed 45794  126476458</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_death</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              date  type cases population</span></span>
+<span><span class="co">#&gt; 502627 2022-07-01 death    21  126476458</span></span>
+<span><span class="co">#&gt; 502628 2022-07-02 death    11  126476458</span></span>
+<span><span class="co">#&gt; 502629 2022-07-03 death     5  126476458</span></span>
+<span><span class="co">#&gt; 502630 2022-07-04 death    14  126476458</span></span>
+<span><span class="co">#&gt; 502631 2022-07-05 death    20  126476458</span></span>
+<span><span class="co">#&gt; 502632 2022-07-06 death    12  126476458</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_date_recovery</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] date       type       cases      population</span></span>
+<span><span class="co">#&gt; &lt;0 rows&gt; (or 0-length row.names)</span></span>
+<span></span>
+<span><span class="co">## Histogram</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-8-4.png" width="672"></div>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_death</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-8-5.png" width="672"></div>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># plot(df_date_recovered$date, df_date_recovered$cases, type = "h") # no data for recovery</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-8-6.png" width="672"></div>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">df_date_confirmed</span><span class="op">$</span><span class="va">cases</span>, <span class="va">df_date_death</span><span class="op">$</span><span class="va">cases</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.6528591</span></span>
+<span></span>
+<span><span class="co">#### Extra</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_confirmed</span><span class="op">$</span><span class="va">date</span>, <span class="va">df_confirmed</span><span class="op">$</span><span class="va">cases</span>, type <span class="op">=</span> <span class="st">"h"</span>, </span>
+<span>     main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Comfirmed Cases in"</span>,<span class="va">COUNTRY</span><span class="op">)</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"Date"</span>, ylab <span class="op">=</span> <span class="st">"Number of Cases"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="23-rbasics_files/figure-html/unnamed-chunk-8-7.png" width="672"></div>
 </div>
 </div>
 <div id="練習-2" class="section level3" number="16.5.3">

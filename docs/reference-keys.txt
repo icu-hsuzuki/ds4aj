@@ -228,7 +228,9 @@ r-script-実行記録
 r-script-の作成
 r-script-による実行
 スクリプト1-basics.r
+スクリプト1-実行結果
 スクリプト2-coronavirus.r
+スクリプト2-実行結果
 練習-2
 tips
 パッケージ---packages
@@ -402,6 +404,8 @@ pdf-への出力
 word-への出力
 スライド
 powerpoint-への出力
+tipsちょっとしたこと-覚書
+tables表
 quarto-について
 参考文献-2
 aboutfirstexample
