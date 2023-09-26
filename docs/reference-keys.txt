@@ -271,7 +271,7 @@ filter-列の値の条件に適合した行の選択
 arrange
 mutate
 group_by
-summarise-or-summarize
+summarise-または-summarize
 集約のための関数
 パイプpipe
 備考-2

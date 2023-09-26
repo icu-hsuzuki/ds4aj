@@ -27,13 +27,11 @@ library(tidyverse)
 
 `dplyr` を初めて使われる場合には、まず [R for data science (2e) Transform](https://r4ds.hadley.nz/transform) を学ばれることをお勧めします。以下も、このサイトに沿った説明をします。
 
-b
-
 ### [`select`](https://dplyr.tidyverse.org/reference/select.html): 名前とタイプによって、列（変数）を選択
 
 | 補助関数      | 条件                   | 例                                                    |
 |----------------|-----------------|---------------------------------------|
-| \-            | 列の排除               | select(iris, -Species)                                |
+| \-            | 列の除去               | select(iris, -Species)                                |
 | :             | 列の範囲               | select(iris, 1:4)                                     |
 | contains()    | 指定文字列を含         | select(iris, contains("Width"))                       |
 | ends_with()   | 指定文字列で終わる     | select(iris, ends_with("th"))                         |
@@ -57,7 +55,7 @@ b
 | is.na()    | 値が NA である x | is.na(x)  |
 | !is.na()   | 値が NA でない x | !is.na(x) |
 
-NA は、not available 値が存在しないという意味です。欠損値のことで、`df_wdi` などには、一番上に、NA が出てきます。欠損値の扱いも、データサイエンスにおいてはとても大切です。
+NA は、not available 値が存在しないという意味です。欠損値のことで、`df_wdi` などには、たくさん、NA が出てきます。欠損値の扱いも、データサイエンスにおいてはとても大切です。
 
 ### [`arrange`](https://dplyr.tidyverse.org/reference/arrange.html)
 
@@ -85,7 +83,7 @@ NA は、not available 値が存在しないという意味です。欠損値の
 
 指定した列の値によって表全体をグループ化した表を作成します。表自体が変形されるわけではありませんから、注意してください。次の、`summarize` と合わせて利用すると便利です。
 
-### [`summarise` or `summarize`](https://dplyr.tidyverse.org/reference/summarise.html)
+### [`summarise` または `summarize`](https://dplyr.tidyverse.org/reference/summarise.html)
 
 値の集約 (summarize) または、集計に利用します。グループ化された表の場合には、そのグループごとに、値を集約します。
 
@@ -215,7 +213,7 @@ select(df_iris, c(5,3,4,1,2)) |> head()
 Species の列の値が、virginica であるものだけを抽出します。`==` とイコールが二つであることと、文字列の場合には、半角の引用符（double quote）でくくります。'verginica' でも同じです。（列名に空白や、特殊記号が含まれているときには、back tick と呼ばれる、反対向きの引用符で括ります。あとからその必要が生じたときに説明します。）
 
 ```{r}
-filter(df_iris, Species == "virginica") %>% head()
+filter(df_iris, Species == "virginica")
 ```
 
 #### 備考　
@@ -229,7 +227,7 @@ filter(df_iris, Species == "virginica") %>% head()
 次の例では、Sepal.Length の値の、昇順（小さい順）にし、同じ値の中では、Spepal.Width の降順（大きい順 （desc は descending order からとったもの）にします。Sepal.Length の値が、4.4 の部分の、Sepal.Width の値をみてください。
 
 ```{r}
-arrange(df_iris, Sepal.Length, desc(Sepal.Width)) %>% head()
+arrange(df_iris, Sepal.Length, desc(Sepal.Width)) 
 ```
 
 ### `mutate` - rank（階級）
@@ -501,7 +499,7 @@ df_wdi3c |> mutate(gdp = pop*gdpPercap, .after = year) |>
   arrange(country, desc(year))
 ```
 
-2022 年のデータはあまりないようですから、2021 年の GDP の大きい順に並べてみましょう。gdp が　2.052946e13 などと書かれているのは、指数表示（Scientific Notation）で、e3 は、1000 千、e6 は、1,000,000 百万、e9 は、1,000,000,000 千億、e12 は、1,000,000,000,000 超です。つまり、アメリカの GDP は、だいたい、20兆ドル、日本は、4.5兆ドルと言ったところです。
+2022 年のデータはあまりないようですから、2021 年の GDP の大きい順に並べてみましょう。gdp が　2.052946e+13 などと書かれているのは、指数表示（Scientific Notation）で、e+3 は、1000 千、e+6 は、1,000,000 百万、e+9 は、1,000,000,000 千億、e+12 は、1,000,000,000,000 超です。つまり、アメリカの GDP は、だいたい、20兆ドル、日本は、4.5兆ドルと言ったところです。
 
 ```{r}
 df_wdi4c |> filter(year == 2021) |> arrange(desc(gdp))
@@ -532,7 +530,7 @@ df_wdi4c |> group_by(year) |>
 
 ### `filter`
 
-一番上に、国名（country）に、アフガニスタン（Afghanistan） がありましたから、aアフガニスタンのデータを選び、平均寿命（lifeExp: Life Expectancy）の折線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。フ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。
+一番上に、国名（country）に、アフガニスタン（Afghanistan） がありましたから、aアフガニスタンのデータを選び、平均寿命（lifeExp: Life Expectancy）の折線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。折れ線グラフ（line graph）を描いてみましょう。まずは、filter で、アフガニスタンのデータを抽出します。スペルに注意してください。コピーをするのが安全かもしれません。
 
 `filter(country == "Afghanistan")`
 
@@ -547,7 +545,7 @@ df_wdi |> filter(country == "Afghanistan")
 折線グラフを書きます。この場合は、GEOM は、`geom_line` です。
 
 ```{r}
-df_wdi |> filter(country == "Afghanistan") %>%
+df_wdi |> filter(country == "Afghanistan") |>
   ggplot(aes(x = year, y = lifeExp)) + geom_line()
 ```
 
@@ -556,13 +554,13 @@ df_wdi |> filter(country == "Afghanistan") %>%
 アフガニスタンと日本両方を抽出してみましょう。そのときは、 `country %in% c("Afghanistan", "Japan")`　とします。
 
 ```{r}
-df_wdi %>% filter(country %in% c("Afghanistan", "Japan"))
+df_wdi |> filter(country %in% c("Afghanistan", "Japan"))
 ```
 
 グラフにしてみましょう。今度は、区別のため、`color = country` を追加します。すると、線が違う色で表示されます。詳しくは、視覚化を参照してください。
 
 ```{r}
-df_wdi %>% filter(country %in% c("Afghanistan", "Japan")) %>%
+df_wdi |> filter(country %in% c("Afghanistan", "Japan")) |>
   ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
 ```
 
@@ -571,7 +569,7 @@ df_wdi %>% filter(country %in% c("Afghanistan", "Japan")) %>%
 他の国についても調べるときは、国のリストがあるとよいので、 `unique(df_gm$country)` とすると、リストが得られます。`distinct(country)` で、異なる国を選択してから、その部分をベクトルとして出力することもできます。
 
 ```{r}
-df_wdi %>% distinct(country) %>% pull()
+df_wdi |> distinct(country) |> pull()
 ```
 
 このデータには 142 の国のデータがあることがわかりました。
@@ -579,7 +577,7 @@ df_wdi %>% distinct(country) %>% pull()
 BRICs を選んでみるとどうなるでしょうか。最近は、BRICS として、South Africa を加えることが増えてきているようです。
 
 ```{r}
-df_wdi %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
+df_wdi |> filter(country %in% c("Brazil", "Russia", "India", "China")) |>
   ggplot(aes(x = year, y = lifeExp, color = country)) + geom_line()
 ```
 
@@ -603,37 +601,12 @@ df_wdi %>% filter(country %in% c("Brazil", "Russia", "India", "China")) %>%
 それぞれの大陸ごとの2007年の平均寿命の平均と中央値と最大、最小を求めてみましょう。
 
 ```{r}
-df_wdi_extra %>% filter(year == 2007) %>% 
-  group_by(income) %>% 
+df_wdi_extra |> filter(year == 2007) |> 
+  group_by(income) |> 
   summarize(mean_lifeExp = mean(lifeExp), median_lifeExp = median(lifeExp), max_lifeExp = max(lifeExp), min_lifeExp = min(lifeExp), .groups = "keep")
 ```
 
 ## 練習問題
-
-**R Markdown and `dplyr`**
-
--   Create an R Notebook of a Data Analysis containing the following and submit the rendered HTML file (eg. `a2_123456.nb.html`)
-    1.  create an R Notebook using the R Notebook Template in Moodle, save as `a2_123456.Rmd`,
-    2.  write your name and ID and the contents,
-    3.  run each code block,
-    4.  preview to create `a2_123456.nb.html`,
-    5.  submit `a2_123456.nb.html` to Moodle.
-
-1.  Pick data from the built-in datasets besides `cars`. (`library(help = "datasets")` or go to the site [The R Datasets Package](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html))
-
-    -   Information of the data: Name, Description, Usage, Format, Source, References (Hint: ?cars)
-    -   Use `head()`, `str()`, ..., and create at least one chart using `ggplot2` - Code Chunk.
-        -   Don't forget to add `library(tidyverse)` in the first code chunk.
-    -   An observation of the chart - in your own words.
-
-2.  Load `gapminder` by `library(gapminder)`.
-
-    -   Choose `pop` or `gdpPercap`, or both, one country in the data, a group of countries in the data.
-    -   Create charts using ggplot2 with geom_line and the variables and countries chosen in 1. (See examples of the charts for `lifeExp`.)
-    -   Study the data as you like.
-    -   Observations and difficulties encountered.
-
-演習
 
 #### Gapminder と R Package `gapminder`
 
@@ -671,6 +644,14 @@ library(tidyverse)
 library(gapminder)
 library(WDI)
 ```
+
+lifeExp, pop, gdpPercap と三つの指標があります。df_wdi と似ていますね。
+
+1.  なにが同じで、何が違いますか。
+
+2.  練習用のデータですが、df_wdi や、df_wdi_extra でしたようなことを試してみてください。
+
+3.  値は同じでしょうか。
 
 ## 練習
 

@@ -56,7 +56,7 @@ library(tidymodels)
 #> ✖ dplyr::lag()      masks stats::lag()
 #> ✖ yardstick::spec() masks readr::spec()
 #> ✖ recipes::step()   masks stats::step()
-#> • Learn how to get started at https://www.tidymodels.org/start/
+#> • Use tidymodels_prefer() to resolve common conflicts.
 ```
 
 Tidymodels パッケージを使いますが、これは、Tidyverse と同様に、一つのパッケージではなく、パッケージ群を表します。また、ここでは、ほんの一部しか使いませんが、一応、後々のために、インストールをし、使えるように `library(tidymodels)` で、読み込んでおいてください。興味のあるかたのために、Tidymodels サイトへのリンクを付けておきます。
