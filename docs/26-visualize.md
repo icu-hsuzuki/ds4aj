@@ -765,18 +765,22 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-55-1.png" width="672" />
 
+#### 数を表示
 
-<!-- #### 数を表示 -->
+それぞれの上に、数を加え、region ごとの国数の大きい順に並べ替えてみました。ここでは、`position = position_dodge(width=0.9)` を使っています。[参照リンク](https://ggplot2.tidyverse.org/reference/position_dodge.html)
 
-<!-- ```{r} -->
-<!-- df_wdi_extra |> filter(income != "Aggregates", year == 2020) |> -->
-<!--   group_by(region, income) |> mutate(n = n()) |>  -->
-<!--   ggplot(aes(x = region, fill = income)) +  -->
-<!--   geom_bar(color = "black", linewidth = 0.2, position = "dodge") +  -->
-<!--   geom_text(aes(y = n, label = n), position = "dodge") + -->
-<!--   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) + -->
-<!--   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8))  -->
-<!-- ``` -->
+
+```r
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region, income) |> mutate(n = n()) |>
+  ggplot(aes(x = fct_infreq(region), fill = income)) +
+  geom_bar(color = "black", linewidth = 0.2, position = "dodge") +
+  geom_text(aes(y = n, label = n), position = position_dodge(width=0.9), vjust = -0.5) +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8))
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-56-1.png" width="672" />
 
 ### **折線グラフと箱ひげ図（line graphs and boxplots）**
 
@@ -795,7 +799,7 @@ df_wdi |> ggplot(aes(year, lifeExp)) + geom_line()
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-56-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-57-1.png" width="672" />
 
 何が起こっているかわかりますか。これは、鋸の刃グラフ（saw-tooth chart）と言われる標準的な失敗例です。
 
@@ -808,7 +812,7 @@ ggplot(df_wdi, aes(x = year, y = lifeExp)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-57-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-58-1.png" width="672" />
 
 これも期待した箱ひげ図にはなっていません。年は、カテゴリーではなく、数値データですね。
 
@@ -827,7 +831,7 @@ ggplot(df_wdi, aes(y = lifeExp, group = year)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-59-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-60-1.png" width="672" />
 
 ##### Box Plot
 
@@ -838,7 +842,7 @@ ggplot(df_wdi, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-60-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-61-1.png" width="672" />
 
 とはいえ、数が多すぎますね。色もつけてみましょう。塗りつぶしは、fill 枠の線に色をつけるのは、color ですから、ここでは、fill を使います。
 
@@ -852,7 +856,7 @@ df_wdi_extra |> filter(income != "Aggregates") |>
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-61-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-62-1.png" width="672" />
 
 折線グラフの例としては次のようなものがあります。
 
@@ -871,7 +875,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region)) +
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-63-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-64-1.png" width="672" />
 
 
 ```r
@@ -881,7 +885,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region, linetype =
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-64-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-65-1.png" width="672" />
 
 
 ```r
@@ -892,7 +896,7 @@ df_lifeExp %>% ggplot() +
 #> Removed 243 rows containing missing values (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-65-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-66-1.png" width="672" />
 
 ### 人口と一人当たりの国内総生産
 
@@ -908,7 +912,7 @@ df_wdi_extra |> filter(region == "Aggregates") |>
   labs(title = "Populations of Regions", color = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-66-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-67-1.png" width="672" />
 
 
 ```r
@@ -918,7 +922,7 @@ df_wdi_extra |> filter(region == "Aggregates") |>
   labs(title = "GDP per Capita of Regions", color = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-67-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-68-1.png" width="672" />
 
 大体、期待したものが描けたかと思います。では、箱ひげ図はどうでしょうか。何年かを切り取り、年毎の地域ごとの分布を見てみましょう。古いものは地域によってはデータがなさそうですから、1980年と、2020年にしましょう。
 
@@ -930,7 +934,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
   labs(title = "Population Distributions by Regions", x = "year", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-68-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-69-1.png" width="672" />
 
 
 ```r
@@ -940,7 +944,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
   labs(title = "GDP per Capita Distribution by Regions", x = "year", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-69-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-70-1.png" width="672" />
 
 一応、期待したものが表示されたようですが、どうも、下の方が固まっていて、見にくいですね。特に人口のほうは、問題がありそうです。Y 軸でみると、指数表示になっています。小さな国から、人口の多い国までありますから、かなり、幅があるのでしょうね。
 
@@ -956,7 +960,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "year", y = "pop in log10", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-70-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-71-1.png" width="672" />
 
 
 ```r
@@ -968,7 +972,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "year", y = "gdpPercap in log10", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-71-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-72-1.png" width="672" />
 
 少しみやすいですかね。実は、log10 で表示する仕方はもう一つあります。座標軸を等間隔にしないで、log10 の切り方に変える方法です。
 
@@ -982,7 +986,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "year", y = "pop in log10", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-72-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-73-1.png" width="672" />
 
 
 ```r
@@ -994,7 +998,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "year", y = "pop in log10", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-73-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-74-1.png" width="672" />
 
 指数表示は避けたいということでしたら、次のようにすることも可能です。日本語にすることも可能です。
 
@@ -1008,7 +1012,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "year", y = "pop", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-74-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-75-1.png" width="672" />
 
 まずは、地域ごとに変化を見るにはどうしたら良いでしょうか。
 
@@ -1022,7 +1026,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "region", y = "pop", fill = "year")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-75-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-76-1.png" width="672" />
 
 地域名が重なっているところがありますね。
 
@@ -1037,7 +1041,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "region", y = "pop", fill = "year")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-76-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-77-1.png" width="672" />
 
 ### 散布図
 
@@ -1048,7 +1052,7 @@ df_wdi_extra |> filter(year == 2021) |> drop_na(pop, gdpPercap) |>
   geom_point() + scale_x_log10() + scale_y_log10()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-77-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-78-1.png" width="672" />
 
 どうでしょうか。何か、発見はありますか。
 
@@ -1115,7 +1119,7 @@ map_wdi |> mutate(income_level = factor(income, levels = c("High income", "Upper
 #> income_level), : Ignoring unknown aesthetics: x and y
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-80-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-81-1.png" width="672" />
 
 
 ```r
@@ -1127,7 +1131,7 @@ map_wdi |>
 #> wdi_region), : Ignoring unknown aesthetics: x and y
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-81-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-82-1.png" width="672" />
 
 
 ```r
@@ -1139,7 +1143,7 @@ map_wdi |>
 #> fill = log10(pop)), : Ignoring unknown aesthetics: x and y
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-82-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-83-1.png" width="672" />
 
 map_wdi には、他にも情報が入っていますから、さまざまな地図が描けますね。
 

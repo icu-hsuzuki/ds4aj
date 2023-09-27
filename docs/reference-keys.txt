@@ -335,6 +335,7 @@ df_wdi-df_wdi_extra-1
 数の表示
 割合の表示
 縦軸を百分率に
+数を表示
 折線グラフと箱ひげ図line-graphs-and-boxplots
 box-plot
 人口と一人当たりの国内総生産

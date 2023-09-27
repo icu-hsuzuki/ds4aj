@@ -565,18 +565,19 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
 
+#### 数を表示
 
-<!-- #### 数を表示 -->
+それぞれの上に、数を加え、region ごとの国数の大きい順に並べ替えてみました。ここでは、`position = position_dodge(width=0.9)` を使っています。[参照リンク](https://ggplot2.tidyverse.org/reference/position_dodge.html)
 
-<!-- ```{r} -->
-<!-- df_wdi_extra |> filter(income != "Aggregates", year == 2020) |> -->
-<!--   group_by(region, income) |> mutate(n = n()) |>  -->
-<!--   ggplot(aes(x = region, fill = income)) +  -->
-<!--   geom_bar(color = "black", linewidth = 0.2, position = "dodge") +  -->
-<!--   geom_text(aes(y = n, label = n), position = "dodge") + -->
-<!--   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) + -->
-<!--   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8))  -->
-<!-- ``` -->
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region, income) |> mutate(n = n()) |>
+  ggplot(aes(x = fct_infreq(region), fill = income)) +
+  geom_bar(color = "black", linewidth = 0.2, position = "dodge") +
+  geom_text(aes(y = n, label = n), position = position_dodge(width=0.9), vjust = -0.5) +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8))
+```
 
 ### **折線グラフと箱ひげ図（line graphs and boxplots）**
 
