@@ -827,7 +827,9 @@ map_wdi には、他にも情報が入っていますから、さまざまな地
 
 いくつかの、geom 関数について説明してきました。
 
-geom_point, geom_boxplot, geom_bar, geom_col, geom_text, geom_line, geom_smooth, geom_map
+geom_point, geom_boxplot, geom_histogram, `geom_freqpoly`, geom_density, geom_bar, geom_col, geom_text, geom_line, geom_smooth, geom_map
+
+他にも、いろいろな geom 関数があります。
 
 描画についての一般的なことをまとめておきましょう。
 
@@ -879,9 +881,15 @@ ggplot (data = <DATA> ) +
 5.  全体のテーマなどを最後に指定します。
 :::
 
+ここで紹介した、GEOM 関数については、書きました。その中の、aes() の中身も、いくつか紹介しました。GEOM 関数により、少し変わりますね。たとえば、x, y, color, fill, shape, などです。
+
+STAT の部分は、まだ紹介していませんが、POSITION は、初期値の "stack" と　"dodge" を少しだけ説明しました。座標系（`coord_trans`）、座標軸（`scale_x_discrete`, `scale_fill_discrete`, `scale_y_continuous`, `scale_y_log10`, `scale_colour_manual`）、テーマ（`theme`, `labs`）も少しだけ例に出てきました。詳しくは、また、他の個所で説明します。
+
+すべてを学習することはできませんが、どのような機能が必要かを考えて、例をみると、見当がつきやすいかもしれません。参考文献の早見表をわたしは、時々みています。
+
 ### 参考文献
 
--   Cheat Sheet in RStudio: <https://www.rstudio.com/resources/cheatsheets/>
+-   早見表 Cheat Sheet in RStudio: <https://www.rstudio.com/resources/cheatsheets/>
 
     -   [RStudio IED](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf)
     -   [Base R Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf)

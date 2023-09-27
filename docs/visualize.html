@@ -944,7 +944,8 @@
 <span class="header-section-number">19.6</span> まとめ<a class="anchor" aria-label="anchor" href="#%E3%81%BE%E3%81%A8%E3%82%81-5"><i class="fas fa-link"></i></a>
 </h2>
 <p>いくつかの、geom 関数について説明してきました。</p>
-<p>geom_point, geom_boxplot, geom_bar, geom_col, geom_text, geom_line, geom_smooth, geom_map</p>
+<p>geom_point, geom_boxplot, geom_histogram, <code>geom_freqpoly</code>, geom_density, geom_bar, geom_col, geom_text, geom_line, geom_smooth, geom_map</p>
+<p>他にも、いろいろな geom 関数があります。</p>
 <p>描画についての一般的なことをまとめておきましょう。</p>
 <div id="gg" class="rmdcaution">
 <p><strong>描画の原理（Grammar of Graphics）</strong></p>
@@ -977,13 +978,16 @@
 <li><p>全体のテーマなどを最後に指定します。</p></li>
 </ol>
 </div>
+<p>ここで紹介した、GEOM 関数については、書きました。その中の、aes() の中身も、いくつか紹介しました。GEOM 関数により、少し変わりますね。たとえば、x, y, color, fill, shape, などです。</p>
+<p>STAT の部分は、まだ紹介していませんが、POSITION は、初期値の “stack” と　“dodge” を少しだけ説明しました。座標系（<code>coord_trans</code>）、座標軸（<code>scale_x_discrete</code>, <code>scale_fill_discrete</code>, <code>scale_y_continuous</code>, <code>scale_y_log10</code>, <code>scale_colour_manual</code>）、テーマ（<code>theme</code>, <code>labs</code>）も少しだけ例に出てきました。詳しくは、また、他の個所で説明します。</p>
+<p>すべてを学習することはできませんが、どのような機能が必要かを考えて、例をみると、見当がつきやすいかもしれません。参考文献の早見表をわたしは、時々みています。</p>
 <div id="参考文献-1" class="section level3" number="19.6.1">
 <h3>
 <span class="header-section-number">19.6.1</span> 参考文献<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-1"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
-<p>Cheat Sheet in RStudio: <a href="https://www.rstudio.com/resources/cheatsheets/" class="uri">https://www.rstudio.com/resources/cheatsheets/</a></p>
+<p>早見表 Cheat Sheet in RStudio: <a href="https://www.rstudio.com/resources/cheatsheets/" class="uri">https://www.rstudio.com/resources/cheatsheets/</a></p>
 <ul>
 <li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf">RStudio IED</a></li>
 <li><a href="https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf">Base R Cheat Sheet</a></li>
