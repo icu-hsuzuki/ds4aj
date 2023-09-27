@@ -4,7 +4,9 @@
 
 R では、追加パッケージを使わなくても、簡単に、グラフを描画できますが、質の高いグラフを作成するには、`ggplot2` パッケージを用いたものが標準となっています。`ggplot2` は、`tidyverse` パッケージの一部ですので、`tidyverse` パッケージをインストール、使えるように、`library(tidyverse)` として読み込んであれば、そのまま使うことができます。
 
-サイト：<https://ggplot2.tidyverse.org> パッケージサイト：<https://CRAN.R-project.org/package=ggplot2>
+サイト：<https://ggplot2.tidyverse.org>
+
+パッケージサイト：<https://CRAN.R-project.org/package=ggplot2>
 
 ### ggplot2 概要
 
@@ -16,7 +18,7 @@ R では、追加パッケージを使わなくても、簡単に、グラフを
 
 #### `tidyverse` の読み込み
 
-タイトルや、列名などにに日本語を使う場合があるときは、`install.packages('showtext')` で、`showtext` パッケージをインストールして、下のように設定してください。そうでない場合は、最初の行 `library(tidyverse)` だけで他は不要です。
+タイトルや、列名などに日本語を使う場合があるときは、`install.packages('showtext')` で、`showtext` パッケージをインストールして、下のように設定してください。そうでない場合は、最初の行 `library(tidyverse)` だけで他は不要です。
 
 ```{r}
 library(tidyverse)
@@ -40,7 +42,7 @@ df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 
 | `<DATA> |> ggplot(aes(<変数 x の列名>, <変数 y の列名>)) + geom_point()`
 
-もっと明示的に
+もっと明示的に、下のように書きます。最初は、このような書き方が、わかりやすいと思います。
 
 | `<DATA> |> ggplot(aes(x = <変数 x の列名>, y = <変数 y の列名>)) + geom_point()`
 
@@ -56,7 +58,7 @@ df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 
 | `ggplot(data = <DATA>, mapping = aes(x = <変数 x の列名>, y = <変数 y の列名>)) + geom_point()`
 
-も可能です。
+も可能です。いろいろな書き方が可能であることを書きましたが、原則は、関数の中に書く、引数をどのような順序で、名前をつけて書くか省略するかですので、詳細は、Tidyverse の メモ蘭をご覧ください。
 
 種類（Species）ごとに色を変える場合には、`color = Species` とします。
 
@@ -81,7 +83,8 @@ df_iris |>
 散布図は、データの二つの変数（列） を x と y に対応させる、最も基本的なグラフです。最初に試すべきグラフだともいうことができます。`mapping =` は省略することができます。
 
 ```         
-ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
+ggplot(data = <data>, 
+  aes(x = <column name for x>, y = <column name for y>)) +
   geom_point()
 ```
 
@@ -90,7 +93,9 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
 ```
 
-変形（Transform）のときにつかった、`iris` データを使います。
+変形（Transform）のときにもつかい、上でも使った、あやめ（`iris` ）データを使います。
+
+まずは、上で復習した基本形から。
 
 ```{r message=FALSE, warning=FALSE, comment=FALSE}
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
@@ -110,39 +115,52 @@ ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
 ```{r}
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() + 
-  labs(title = "Scatter Plot of Sepal Data of Iris", x = "Sepal Length", y = "Sepal Width")
+  labs(title = "Scatter Plot of Sepal Data of Iris", 
+       x = "Sepal Length", y = "Sepal Width")
 ```
 
 ```{r}
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() + 
-  labs(title = "あやめの萼の長さと幅についての散布図", x = "萼の長さ", y = "萼の幅")
+  labs(title = "あやめの萼の長さと幅についての散布図", 
+       x = "萼の長さ", y = "萼の幅")
 ```
 
 このように、日本語をタイトルや、ラベルに使うことも可能ですが、以後は、データに日本語が含まれていない場合には、そのまま表示します。
 
 ### 色付き [Colors](https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html)
 
-菖蒲（iris）のデータは、Species 列に、三種類の菖蒲の名前が含まれていました。それぞれに、違う色で表示してみましょう。それには、x 軸、y 軸に対応する変数を指定したように、`color = Species` と指定します。
+菖蒲（iris）のデータは、Species 列に、三種類の菖蒲の名前が含まれていました。それぞれに、違う色で表示してみましょう。それには、x 軸、y 軸に対応する変数を指定したように、`color = Species` と指定します。これも、Species の列に書いてある値によって変化させるので、mapping（写像）の、aes() の一部として加えます。色は自動的に割り当ててくれます。色を指定する方法[^26-visualize-1]などは、また別の箇所で述べます。
+
+[^26-visualize-1]: `scale_colour_manual()` を使います。
 
 ```{r}
-ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, 
+                           color = Species)) +
   geom_point()
+```
+
+単に、点の色をすべて、blue に変えたいのなら、geom_point() の中に color = "blue" と書きます。表への[リンク](http://sape.inf.usi.ch/sites/default/files/ggplot2-colour-names.png)をつけておきます。sape（Software and Programmer Efficiency Research Group） の[ggplot2 quick reference](http://sape.inf.usi.ch/quick-reference/ggplot2) のものです。
+
+```{r}
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point(color = "blue")
 ```
 
 ### 形状 [Shapes](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)
 
-色ではなく、形で Species を区別することも可能です。
+色ではなく、形で Species を区別することも可能です。[sape のリンク](http://sape.inf.usi.ch/quick-reference/ggplot2/shape)をつけておきます。
 
 ```{r}
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, shape = Species)) +
   geom_point()
 ```
 
-色と、形、両方を同時に使うことも可能です。
+色と、形、両方を同時に使うことも可能です。色盲の方など、さまざまな背景の方にやさしい工夫・配慮をすることも、大切です。色についても、色盲の方に配慮した配色を選択することも可能なようになっています。[参照リンク](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette)
 
 ```{r}
-ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, 
+                           color = Species, shape = Species)) +
   geom_point()
 ```
 
@@ -177,12 +195,14 @@ ggplot(data = df_iris, aes(y = Species, x = Sepal.Length)) +
 color を指定すると、枠に色がつき、fill を指定すると、箱の中が塗り潰されます。
 
 ```{r}
-ggplot(data = df_iris, aes(x = Species, y = Sepal.Length, color = Species)) +
+ggplot(data = df_iris, 
+       aes(x = Species, y = Sepal.Length, color = Species)) +
   geom_boxplot()
 ```
 
 ```{r}
-ggplot(data = df_iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+ggplot(data = df_iris, 
+       aes(x = Species, y = Sepal.Length, fill = Species)) +
   geom_boxplot()
 ```
 
@@ -402,7 +422,6 @@ df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
   ggplot(aes(y = region, fill = income)) + geom_bar()
 ```
 
@@ -436,7 +455,6 @@ Y 軸に、地域名を取って、`geom_bar()` ですから、データがい�
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
   ggplot(aes(x = region, fill = income)) + geom_bar()
 ```
 
@@ -446,7 +464,6 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
   ggplot(aes(x = region, fill = income)) + geom_bar() + 
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 ```
@@ -455,7 +472,6 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
   ggplot(aes(x = region, fill = income)) + geom_bar() + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8))
 ```
@@ -464,7 +480,6 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
   ggplot(aes(x = region, fill = income)) + geom_bar() + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
@@ -476,8 +491,8 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
-  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2) + 
+  ggplot(aes(x = region, fill = income)) + 
+  geom_bar(color = "black", linewidth = 0.2) + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
@@ -495,14 +510,28 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
 
+#### 数の表示
+
+棒グラフの上に、値を加えてみましょう。vjust の値を調節することで、ちょっと上にしたり、下にしたりできます。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |> mutate(n = n()) |>
+  ggplot(aes(x = fct_infreq(region), fill = income)) +
+  geom_bar(color = "black", linewidth = 0.2) +
+  geom_text(aes(y = n, label = n), vjust = -0.5) + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8))
+```
+
 #### 割合の表示
 
 積み上げ型になっています。これを、割合で表示するには `position = "fill"` を加えます。すると、各地域ごとの、income level（収入の多寡）による国の数の割合がわかります。
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
-  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
+  ggplot(aes(x = region, fill = income)) + 
+  geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) +
   labs(y = "count (ratio)")
@@ -518,8 +547,8 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
-  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
+  ggplot(aes(x = region, fill = income)) + 
+  geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_y_continuous(labels = scales::label_percent(accuracy = 1)) + 
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) +
@@ -530,11 +559,24 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 ```{r}
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
-  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "dodge") + 
+  ggplot(aes(x = region, fill = income)) + 
+  geom_bar(color = "black", linewidth = 0.2, position = "dodge") + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
+
+
+<!-- #### 数を表示 -->
+
+<!-- ```{r} -->
+<!-- df_wdi_extra |> filter(income != "Aggregates", year == 2020) |> -->
+<!--   group_by(region, income) |> mutate(n = n()) |>  -->
+<!--   ggplot(aes(x = region, fill = income)) +  -->
+<!--   geom_bar(color = "black", linewidth = 0.2, position = "dodge") +  -->
+<!--   geom_text(aes(y = n, label = n), position = "dodge") + -->
+<!--   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) + -->
+<!--   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8))  -->
+<!-- ``` -->
 
 ### **折線グラフと箱ひげ図（line graphs and boxplots）**
 
@@ -780,7 +822,13 @@ map_wdi |>
 
 map_wdi には、他にも情報が入っていますから、さまざまな地図が描けますね。
 
-## コメント
+## まとめ
+
+いくつかの、geom 関数について説明してきました。
+
+geom_point, geom_boxplot, geom_bar, geom_col, geom_text, geom_line, geom_smooth, geom_map
+
+描画についての一般的なことをまとめておきましょう。
 
 ::: {#gg .rmdcaution}
 **描画の原理（Grammar of Graphics）**

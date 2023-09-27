@@ -4,7 +4,9 @@
 
 R では、追加パッケージを使わなくても、簡単に、グラフを描画できますが、質の高いグラフを作成するには、`ggplot2` パッケージを用いたものが標準となっています。`ggplot2` は、`tidyverse` パッケージの一部ですので、`tidyverse` パッケージをインストール、使えるように、`library(tidyverse)` として読み込んであれば、そのまま使うことができます。
 
-サイト：<https://ggplot2.tidyverse.org> パッケージサイト：<https://CRAN.R-project.org/package=ggplot2>
+サイト：<https://ggplot2.tidyverse.org>
+
+パッケージサイト：<https://CRAN.R-project.org/package=ggplot2>
 
 ### ggplot2 概要
 
@@ -16,7 +18,7 @@ R では、追加パッケージを使わなくても、簡単に、グラフを
 
 #### `tidyverse` の読み込み
 
-タイトルや、列名などにに日本語を使う場合があるときは、`install.packages('showtext')` で、`showtext` パッケージをインストールして、下のように設定してください。そうでない場合は、最初の行 `library(tidyverse)` だけで他は不要です。
+タイトルや、列名などに日本語を使う場合があるときは、`install.packages('showtext')` で、`showtext` パッケージをインストールして、下のように設定してください。そうでない場合は、最初の行 `library(tidyverse)` だけで他は不要です。
 
 
 ```r
@@ -57,7 +59,7 @@ df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 
 | `<DATA> |> ggplot(aes(<変数 x の列名>, <変数 y の列名>)) + geom_point()`
 
-もっと明示的に
+もっと明示的に、下のように書きます。最初は、このような書き方が、わかりやすいと思います。
 
 | `<DATA> |> ggplot(aes(x = <変数 x の列名>, y = <変数 y の列名>)) + geom_point()`
 
@@ -73,7 +75,7 @@ df_iris |> ggplot(aes(Sepal.Width, Sepal.Length)) + geom_point()
 
 | `ggplot(data = <DATA>, mapping = aes(x = <変数 x の列名>, y = <変数 y の列名>)) + geom_point()`
 
-も可能です。
+も可能です。いろいろな書き方が可能であることを書きましたが、原則は、関数の中に書く、引数をどのような順序で、名前をつけて書くか省略するかですので、詳細は、Tidyverse の メモ蘭をご覧ください。
 
 種類（Species）ごとに色を変える場合には、`color = Species` とします。
 
@@ -104,7 +106,8 @@ df_iris |>
 散布図は、データの二つの変数（列） を x と y に対応させる、最も基本的なグラフです。最初に試すべきグラフだともいうことができます。`mapping =` は省略することができます。
 
 ```         
-ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
+ggplot(data = <data>, 
+  aes(x = <column name for x>, y = <column name for y>)) +
   geom_point()
 ```
 
@@ -113,7 +116,9 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point()
 ```
 
-変形（Transform）のときにつかった、`iris` データを使います。
+変形（Transform）のときにもつかい、上でも使った、あやめ（`iris` ）データを使います。
+
+まずは、上で復習した基本形から。
 
 
 ```r
@@ -137,7 +142,8 @@ ggplot(data = <data>, aes(x = <column name for x>, y = <column name for y>)) +
 ```r
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() + 
-  labs(title = "Scatter Plot of Sepal Data of Iris", x = "Sepal Length", y = "Sepal Width")
+  labs(title = "Scatter Plot of Sepal Data of Iris", 
+       x = "Sepal Length", y = "Sepal Width")
 ```
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-7-1.png" width="672" />
@@ -146,7 +152,8 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 ```r
 ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() + 
-  labs(title = "あやめの萼の長さと幅についての散布図", x = "萼の長さ", y = "萼の幅")
+  labs(title = "あやめの萼の長さと幅についての散布図", 
+       x = "萼の長さ", y = "萼の幅")
 ```
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-8-1.png" width="672" />
@@ -155,19 +162,32 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 
 ### 色付き [Colors](https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html)
 
-菖蒲（iris）のデータは、Species 列に、三種類の菖蒲の名前が含まれていました。それぞれに、違う色で表示してみましょう。それには、x 軸、y 軸に対応する変数を指定したように、`color = Species` と指定します。
+菖蒲（iris）のデータは、Species 列に、三種類の菖蒲の名前が含まれていました。それぞれに、違う色で表示してみましょう。それには、x 軸、y 軸に対応する変数を指定したように、`color = Species` と指定します。これも、Species の列に書いてある値によって変化させるので、mapping（写像）の、aes() の一部として加えます。色は自動的に割り当ててくれます。色を指定する方法[^26-visualize-1]などは、また別の箇所で述べます。
+
+[^26-visualize-1]: `scale_colour_manual()` を使います。
 
 
 ```r
-ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, 
+                           color = Species)) +
   geom_point()
 ```
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
+単に、点の色をすべて、blue に変えたいのなら、geom_point() の中に color = "blue" と書きます。表への[リンク](http://sape.inf.usi.ch/sites/default/files/ggplot2-colour-names.png)をつけておきます。sape（Software and Programmer Efficiency Research Group） の[ggplot2 quick reference](http://sape.inf.usi.ch/quick-reference/ggplot2) のものです。
+
+
+```r
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point(color = "blue")
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+
 ### 形状 [Shapes](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)
 
-色ではなく、形で Species を区別することも可能です。
+色ではなく、形で Species を区別することも可能です。[sape のリンク](http://sape.inf.usi.ch/quick-reference/ggplot2/shape)をつけておきます。
 
 
 ```r
@@ -175,17 +195,18 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, shape = Species)) 
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
-色と、形、両方を同時に使うことも可能です。
+色と、形、両方を同時に使うことも可能です。色盲の方など、さまざまな背景の方にやさしい工夫・配慮をすることも、大切です。色についても、色盲の方に配慮した配色を選択することも可能なようになっています。[参照リンク](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette)
 
 
 ```r
-ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species)) +
+ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width, 
+                           color = Species, shape = Species)) +
   geom_point()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 ## 箱ひげ図 [Boxplot](https://ggplot2.tidyverse.org/reference/geom_boxplot.html)
 
@@ -209,7 +230,7 @@ ggplot(data = df_iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 
 ```r
@@ -217,7 +238,7 @@ ggplot(data = df_iris, aes(y = Species, x = Sepal.Length)) +
   geom_boxplot()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 各、種類（Species）ごとに、Sepal.Width（萼（がく）幅）が、どのように分布しているかを示しています。真ん中の太い線が、中央値（median）、箱が、第一四分位（Q1）から第三四分位（Q3）、線と点で表される外れ値も、どのような基準か定められています。(IQR = Q3-Q1, 線は、Q3+1.5$\times$ IQR 以下に入っている実際の値までと、Q1-1.5 $\times$ IQR 以上に入っている実際の値まで。それらに入っていないものが外れ値)。
 
@@ -225,19 +246,21 @@ color を指定すると、枠に色がつき、fill を指定すると、箱の
 
 
 ```r
-ggplot(data = df_iris, aes(x = Species, y = Sepal.Length, color = Species)) +
-  geom_boxplot()
-```
-
-<img src="26-visualize_files/figure-html/unnamed-chunk-14-1.png" width="672" />
-
-
-```r
-ggplot(data = df_iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+ggplot(data = df_iris, 
+       aes(x = Species, y = Sepal.Length, color = Species)) +
   geom_boxplot()
 ```
 
 <img src="26-visualize_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+
+
+```r
+ggplot(data = df_iris, 
+       aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot()
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 ### ヒストグラム [Histogram](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
 
@@ -255,7 +278,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
 #> `binwidth`.
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 枠（bins）を幾つに分けるか、または枠の幅を指定するようにとのメッセージが表示されます。
 
@@ -269,7 +292,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_histogram(bins = 10)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 
 ```r
@@ -277,7 +300,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
   geom_histogram(binwidth = 1)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 頻度多角形（geom_freqpoly()）を使うと以下のようになります。Species ごとに比べたり、色をつけたりもできます。
 
@@ -289,7 +312,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length)) +
 #> `binwidth`.
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 
 ```r
@@ -297,7 +320,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, color = Species)) +
   geom_freqpoly(bins = 10)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 滑らかな曲線にするときは、density plot を使います。alpha は透明度で 0 から 1 の値で指定します。数が小さい方が薄くなります。color で線の色もあわせて設定することも可能です。いろいろと試してみてください。
 
@@ -307,7 +330,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, fill = Species)) +
   geom_density(alpha = 0.5)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 ### 線形モデル Data Modeling
 
@@ -320,7 +343,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 
 ```r
@@ -329,7 +352,7 @@ ggplot(data = df_iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_smooth()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
 ## 例から学ぶ ggplot2`,` I
 
@@ -374,14 +397,14 @@ glimpse(df_mpg)
 ggplot(data = df_mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-27-1.png" width="672" />
 
 
 ```r
 ggplot(data = df_mpg) + geom_boxplot(mapping = aes(x = class, y = hwy))
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 1.  `data = df_mpg` でデータを指定します。
 
@@ -489,7 +512,7 @@ df_wdi |> drop_na(lifeExp, pop, gdpPercap) |>
   ggplot() + geom_bar(aes(year))
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-37-1.png" width="672" />
 
 最初に、三つの indicator が どれもが、NA でない行だけを選択していますから、三つの指標がすべて値がある、データを年ごとに数えてグラフにしたものが、上のものになっています。表にすると次のようになっています。
 
@@ -528,7 +551,7 @@ df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
   ggplot(aes(y = country, x = lifeExp)) + geom_col()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-40-1.png" width="672" />
 
 
 ```r
@@ -537,7 +560,7 @@ df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
   ggplot(aes(y = country, x = pop)) + geom_col()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-41-1.png" width="672" />
 
 
 ```r
@@ -546,16 +569,15 @@ df_wdi_extra |> filter(income == "Aggregates", year == 2020) |>
   ggplot(aes(y = country, x = gdpPercap)) + geom_col()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-41-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-42-1.png" width="672" />
 
 
 ```r
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
   ggplot(aes(y = region, fill = income)) + geom_bar()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-43-1.png" width="672" />
 
 ### 棒グラフの応用
 
@@ -604,11 +626,10 @@ Y 軸に、地域名を取って、`geom_bar()` ですから、データがい�
 
 ```r
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
   ggplot(aes(x = region, fill = income)) + geom_bar()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-46-1.png" width="672" />
 
 #### 地域名
 
@@ -617,37 +638,34 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 ```r
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
   ggplot(aes(x = region, fill = income)) + geom_bar() + 
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-46-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-47-1.png" width="672" />
 
 もう一つは折り返す方法です。こちらの方が、良いかもしれません。
 
 
 ```r
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
   ggplot(aes(x = region, fill = income)) + geom_bar() + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8))
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-47-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-48-1.png" width="672" />
 
 もし、fill の方の凡例（legend）も短くしたければ、次のようにします。width のあとの数字は、適切な数を選んでください。
 
 
 ```r
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
   ggplot(aes(x = region, fill = income)) + geom_bar() + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-48-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-49-1.png" width="672" />
 
 #### 棒グラフに黒枠
 
@@ -656,13 +674,13 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 ```r
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
-  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2) + 
+  ggplot(aes(x = region, fill = income)) + 
+  geom_bar(color = "black", linewidth = 0.2) + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-49-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-50-1.png" width="672" />
 
 #### 大きい順
 
@@ -678,7 +696,24 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-50-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+
+#### 数の表示
+
+棒グラフの上に、値を加えてみましょう。vjust の値を調節することで、ちょっと上にしたり、下にしたりできます。
+
+
+```r
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |> mutate(n = n()) |>
+  ggplot(aes(x = fct_infreq(region), fill = income)) +
+  geom_bar(color = "black", linewidth = 0.2) +
+  geom_text(aes(y = n, label = n), vjust = -0.5) + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8))
+```
+
+<img src="26-visualize_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 
 #### 割合の表示
 
@@ -687,14 +722,14 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 ```r
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
-  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
+  ggplot(aes(x = region, fill = income)) + 
+  geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) +
   labs(y = "count (ratio)")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-53-1.png" width="672" />
 
 #### 縦軸を百分率に
 
@@ -707,28 +742,41 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
 
 ```r
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
-  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
+  ggplot(aes(x = region, fill = income)) + 
+  geom_bar(color = "black", linewidth = 0.2, position = "fill") + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_y_continuous(labels = scales::label_percent(accuracy = 1)) + 
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) +
   labs(y = "count (percent)")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-52-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-54-1.png" width="672" />
 
 積み上げてありますが、並べることも可能です。ちょっと数が多いのでみにくいですが。
 
 
 ```r
 df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
-  group_by(region) |>
-  ggplot(aes(x = region, fill = income)) + geom_bar(color = "black", linewidth = 0.2, position = "dodge") + 
+  ggplot(aes(x = region, fill = income)) + 
+  geom_bar(color = "black", linewidth = 0.2, position = "dodge") + 
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) +
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8)) 
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-53-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-55-1.png" width="672" />
+
+
+<!-- #### 数を表示 -->
+
+<!-- ```{r} -->
+<!-- df_wdi_extra |> filter(income != "Aggregates", year == 2020) |> -->
+<!--   group_by(region, income) |> mutate(n = n()) |>  -->
+<!--   ggplot(aes(x = region, fill = income)) +  -->
+<!--   geom_bar(color = "black", linewidth = 0.2, position = "dodge") +  -->
+<!--   geom_text(aes(y = n, label = n), position = "dodge") + -->
+<!--   scale_x_discrete(labels = function(x) str_wrap(x, width = 8)) + -->
+<!--   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8))  -->
+<!-- ``` -->
 
 ### **折線グラフと箱ひげ図（line graphs and boxplots）**
 
@@ -747,7 +795,7 @@ df_wdi |> ggplot(aes(year, lifeExp)) + geom_line()
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-54-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-56-1.png" width="672" />
 
 何が起こっているかわかりますか。これは、鋸の刃グラフ（saw-tooth chart）と言われる標準的な失敗例です。
 
@@ -760,7 +808,7 @@ ggplot(df_wdi, aes(x = year, y = lifeExp)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-55-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-57-1.png" width="672" />
 
 これも期待した箱ひげ図にはなっていません。年は、カテゴリーではなく、数値データですね。
 
@@ -779,7 +827,7 @@ ggplot(df_wdi, aes(y = lifeExp, group = year)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-57-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-59-1.png" width="672" />
 
 ##### Box Plot
 
@@ -790,7 +838,7 @@ ggplot(df_wdi, aes(x = as_factor(year), y = lifeExp)) + geom_boxplot()
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-58-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-60-1.png" width="672" />
 
 とはいえ、数が多すぎますね。色もつけてみましょう。塗りつぶしは、fill 枠の線に色をつけるのは、color ですから、ここでは、fill を使います。
 
@@ -804,7 +852,7 @@ df_wdi_extra |> filter(income != "Aggregates") |>
 #> (`stat_boxplot()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-59-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-61-1.png" width="672" />
 
 折線グラフの例としては次のようなものがあります。
 
@@ -823,7 +871,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region)) +
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-61-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-63-1.png" width="672" />
 
 
 ```r
@@ -833,7 +881,7 @@ df_lifeExp %>% ggplot(aes(x = year, y = mean_lifeExp, color = region, linetype =
 #> (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-62-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-64-1.png" width="672" />
 
 
 ```r
@@ -844,7 +892,7 @@ df_lifeExp %>% ggplot() +
 #> Removed 243 rows containing missing values (`geom_line()`).
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-63-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-65-1.png" width="672" />
 
 ### 人口と一人当たりの国内総生産
 
@@ -860,7 +908,7 @@ df_wdi_extra |> filter(region == "Aggregates") |>
   labs(title = "Populations of Regions", color = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-64-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-66-1.png" width="672" />
 
 
 ```r
@@ -870,7 +918,7 @@ df_wdi_extra |> filter(region == "Aggregates") |>
   labs(title = "GDP per Capita of Regions", color = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-65-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-67-1.png" width="672" />
 
 大体、期待したものが描けたかと思います。では、箱ひげ図はどうでしょうか。何年かを切り取り、年毎の地域ごとの分布を見てみましょう。古いものは地域によってはデータがなさそうですから、1980年と、2020年にしましょう。
 
@@ -882,7 +930,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
   labs(title = "Population Distributions by Regions", x = "year", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-66-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-68-1.png" width="672" />
 
 
 ```r
@@ -892,7 +940,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
   labs(title = "GDP per Capita Distribution by Regions", x = "year", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-67-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-69-1.png" width="672" />
 
 一応、期待したものが表示されたようですが、どうも、下の方が固まっていて、見にくいですね。特に人口のほうは、問題がありそうです。Y 軸でみると、指数表示になっています。小さな国から、人口の多い国までありますから、かなり、幅があるのでしょうね。
 
@@ -908,7 +956,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "year", y = "pop in log10", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-68-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-70-1.png" width="672" />
 
 
 ```r
@@ -920,7 +968,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "year", y = "gdpPercap in log10", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-69-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-71-1.png" width="672" />
 
 少しみやすいですかね。実は、log10 で表示する仕方はもう一つあります。座標軸を等間隔にしないで、log10 の切り方に変える方法です。
 
@@ -934,7 +982,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "year", y = "pop in log10", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-70-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-72-1.png" width="672" />
 
 
 ```r
@@ -946,7 +994,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "year", y = "pop in log10", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-71-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-73-1.png" width="672" />
 
 指数表示は避けたいということでしたら、次のようにすることも可能です。日本語にすることも可能です。
 
@@ -960,7 +1008,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "year", y = "pop", fill = "region")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-72-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-74-1.png" width="672" />
 
 まずは、地域ごとに変化を見るにはどうしたら良いでしょうか。
 
@@ -974,7 +1022,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "region", y = "pop", fill = "year")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-73-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-75-1.png" width="672" />
 
 地域名が重なっているところがありますね。
 
@@ -989,7 +1037,7 @@ df_wdi_extra |> filter(region != "Aggregates", year %in% c(1980, 2020)) |>
        x = "region", y = "pop", fill = "year")
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-74-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-76-1.png" width="672" />
 
 ### 散布図
 
@@ -1000,7 +1048,7 @@ df_wdi_extra |> filter(year == 2021) |> drop_na(pop, gdpPercap) |>
   geom_point() + scale_x_log10() + scale_y_log10()
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-75-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-77-1.png" width="672" />
 
 どうでしょうか。何か、発見はありますか。
 
@@ -1067,7 +1115,7 @@ map_wdi |> mutate(income_level = factor(income, levels = c("High income", "Upper
 #> income_level), : Ignoring unknown aesthetics: x and y
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-78-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-80-1.png" width="672" />
 
 
 ```r
@@ -1079,7 +1127,7 @@ map_wdi |>
 #> wdi_region), : Ignoring unknown aesthetics: x and y
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-79-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-81-1.png" width="672" />
 
 
 ```r
@@ -1091,11 +1139,17 @@ map_wdi |>
 #> fill = log10(pop)), : Ignoring unknown aesthetics: x and y
 ```
 
-<img src="26-visualize_files/figure-html/unnamed-chunk-80-1.png" width="672" />
+<img src="26-visualize_files/figure-html/unnamed-chunk-82-1.png" width="672" />
 
 map_wdi には、他にも情報が入っていますから、さまざまな地図が描けますね。
 
-## コメント
+## まとめ
+
+いくつかの、geom 関数について説明してきました。
+
+geom_point, geom_boxplot, geom_bar, geom_col, geom_text, geom_line, geom_smooth, geom_map
+
+描画についての一般的なことをまとめておきましょう。
 
 ::: {#gg .rmdcaution}
 **描画の原理（Grammar of Graphics）**

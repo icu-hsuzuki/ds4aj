@@ -14,6 +14,12 @@ R for Data Science（r4ds と略）: <https://r4ds.hadley.nz>
 
 一つだけコメントさせていただければ、印刷体だけでなく、Public Domain での出版ということで、プロの翻訳家が手を出さず、日本語訳が出なかったことが、日本での知名度が上がらなかった原因であるとも思います。しかし、Web Browser（ホームページ閲覧ソフト）の自動翻訳技術も飛躍的に進歩し（今後ますます進歩するでしょうから）、Web 上に公開することで、このような技術書は、絶対的ではないという状況になったことも、大きな変化かなと考えています。そのような学び方の改革をもご紹介し、その橋渡しができればと願って始めたのがこの文書のプロジェクトでもあります。
 
+### 視覚化の教科書
+
+良い本がたくさんでいます。まずは、Hadley Wickham の最初の、ggplot2 の本の第三版が、著者も増えていますが、執筆中として、電子版が公開されています。
+
+-   ggplot2: Elegant Graphics for Data Analysis (3e), by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen. [[リンク](https://ggplot2-book.org)]
+
 ### 練習問題
 
 R for Data Science のもう一つの特徴は、同時に、練習問題集も、早いうちから公開されたことです。learnr というパッケージを使い、対話型（interactive）な練習問題が、Primers（入門書）として、Posit Primers（最初は、RStudio Primers）として開発されたことです。採点など、試験などとして使うことを考えると、まだ、完全とは言えませんが、学びのためには、十分の質のものだと思います。

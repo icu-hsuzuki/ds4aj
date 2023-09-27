@@ -257,6 +257,7 @@ slice-行を切り取る
 glimpse-データの構造
 ggplot2-グラフの描画
 wdi-のデータ
+sec-memo
 練習-3
 posit-primers-httpsposit.cloudlearnprimers
 まとめ-3
@@ -331,6 +332,7 @@ df_wdi-df_wdi_extra-1
 地域名
 棒グラフに黒枠
 大きい順
+数の表示
 割合の表示
 縦軸を百分率に
 折線グラフと箱ひげ図line-graphs-and-boxplots
@@ -338,7 +340,7 @@ box-plot
 人口と一人当たりの国内総生産
 散布図
 世界地図
-コメント
+まとめ-5
 参考文献-1
 練習-6
 posit-primers-httpsposit.cloudlearnprimers-2
@@ -577,6 +579,7 @@ gadm-administrative-boundaries
 参考文献-3
 example1
 教科書
+視覚化の教科書
 練習問題-1
 posit-primers-httpsposit.cloudlearnprimers-4
 moocs-などのオンラインコース
