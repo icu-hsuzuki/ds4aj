@@ -537,6 +537,9 @@ estatapi-利用概要-1
 統計データ取得estat_getstatsdata
 others
 国際機関
+国際労働機関international-labor-organization-ilo
+ilostat
+例実質賃金ear_4mth_sex_eco_cur_nb_a
 国連児童基金unicefunited-nations-childrens-fund
 世界の国の政府機関
 米国data.gov

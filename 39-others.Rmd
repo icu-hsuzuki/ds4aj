@@ -2,6 +2,121 @@
 
 ## 国際機関
 
+### 国際労働機関（International Labor Organization (ILO) ）
+
+ILO サイト：<https://www.ilo.org/global/lang–en/index.htm>
+
+国際労働機関（ILO）は働く権利を促進し、ディーセントな雇用の機会を奨励し、社会的保護を高め、労働関連の問題に関する対話を強化する。世界の永続する平和は、社会正義を基礎としてのみ確立されるとの前提のもとに1919年に設立され、1946年に国連の最初の専門機関となった。すべての女性と男性にディーセント・ワーク（働きがいのある人間らしい仕事）の実現を目指し、労働基準を設定し、政策を発展させ、プログラムを策定する。その「国際労働基準」は、各国の担当当局が労働政策を実施する際の指針となる。また、政府がこれらの政策を効果的に実施できるように幅広い技術協力を行い、かつそうした努力を前進させるために必要な研修、教育、調査研究を行う。ILOは国際機関の中でもユニークな存在で、政策の作成にあたっては労働者と使用者の代表が政府代表と平等の発言権を持つ。ILOは三つの機関から構成される。
+
+国際労働会議（総会）－ 毎年開かれ、政府、使用者、労働者の3者代表が参加する。国際労働基準を設定するとともに、全世界にとって重要な社会問題や労働問題を討議するためのフォーラムとなる。 管理理事会 － ILOの活動に指示を与え、事業計画と予算を作成し、ILO基準が順守されていないとの苦情を審議する。 国際労働事務局 － ILOの恒久事務局である。 さらに、イタリアのトリノにある「国際研修センター」が研究と研修の機会を提供している。ILOは重要な労働政策の分野において最新の研究を刊行し、また労働統計に関しては世界でも主要な提供者である。
+
+（[国際連合広報機関より](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/ilo/)）
+
+#### ILOSTAT
+
+-   Website: <https://ilostat.ilo.org/data/>
+
+    -   検索をすると、ILOSTAT Explorer が立ち上がります。
+
+    -   例：**Average monthly earnings of employees by sex and economic activity \-- Annual - [ILOSTAT Explorer](https://www.ilo.org/shinyapps/bulkexplorer9/?lang=en&id=EAR_4MTH_SEX_ECO_CUR_NB_A)**
+
+-   R パッケージ　Rilostat
+
+    -   CRAN パッケージサイト：<https://cran.r-project.org/web/packages/Rilostat/index.html>
+
+        -   Rilostat: ILO Open Data via Ilostat Bulk Download Facility or SDMX Web Service
+
+        -   マニュアル [Manual](https://cran.r-project.org/web/packages/Rilostat/Rilostat.pdf)
+
+    -   活用例 Vignettes: <https://ilostat.github.io/Rilostat/articles/Rilostat.html>
+
+        -   基本的な機能 Essential Functionality
+
+#### 例：実質賃金（EAR_4MTH_SEX_ECO_CUR_NB_A）
+
+```{r eval = FALSE}
+install.packages("Rilostat")　# 最初に一度だけインストール
+```
+
+```{r}
+library(tidyverse)
+library(Rilostat)
+```
+
+検索を wage でしてみるがどうも、十分現れない。
+
+```{r}
+get_ilostat_toc(search = 'wage')
+```
+
+earnings で検索すると、現れる。検索の仕方は検討する必要がある。
+
+```{r}
+get_ilostat_toc(search = 'earnings')
+```
+
+id がわかっていればその一部を入れて検索も可能。
+
+```{r}
+get_ilostat_toc(search = 'EAR_4MTH')
+```
+
+データをダウンロード
+
+```{r eval = FALSE}
+df_ilo_wages <- get_ilostat("EAR_4MTH_SEX_ECO_CUR_NB_A", cache = FALSE)
+```
+
+```{r echo=FALSE, eval=FALSE}
+write_csv(df_ilo_wages, "./data/df_ilo_wages.csv")
+```
+
+```{r echo=FALSE}
+df_ilo_wages <- read_csv("./data/df_ilo_wages.csv")
+```
+
+みてみる
+
+```{r}
+df_ilo_wages
+```
+
+それぞれ、どのような値があるか、カテゴリカルな列のみみてみる。
+
+```{r}
+df_ilo_wages |> filter(ref_area == "JPN", time == 2020) |> 
+  select(1:6) |> lapply(unique)
+```
+
+classif1 と classif2 の意味を確認する必要があるので、辞書機能を使って、みてみる。
+
+```{r}
+get_ilostat_dic("classif1") |> filter(grepl("ECO", classif1))
+```
+
+```{r}
+get_ilostat_dic("classif2") |> filter(grepl("CUR", classif2))
+```
+
+一応、ECO_AGGREGATE_TOTAL と、CUR_TYPE_PPP を指標にとり、グラフを書いてみる。year が 文字列になっている部分のみ修正。
+
+```{r}
+df_ilo_wages |> filter(classif1 == "ECO_AGGREGATE_TOTAL", classif2 == "CUR_TYPE_PPP", ref_area == "JPN") |> mutate(time = as.numeric(time)) |> 
+  ggplot(aes(time, obs_value, color = sex)) + geom_line()
+```
+
+他の国の状況もみてみる。
+
+```{r}
+df_ilo_wages |> filter(ref_area %in% c("JPN", "GBR", "DEU", "USA", "CHN")) |> 
+  filter(sex == "SEX_T") |> 
+  filter(classif1 == "ECO_AGGREGATE_TOTAL", classif2 == "CUR_TYPE_PPP") |> 
+  mutate(time = as.numeric(time)) |> 
+  ggplot(aes(time, obs_value, color = ref_area)) + geom_line()
+```
+
+*他の機能も確認する必要あり。*
+
 ### **国連児童基金**（UNICEF：United Nations Children's Fund）
 
 <https://data.unicef.org>
