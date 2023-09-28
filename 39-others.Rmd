@@ -119,7 +119,7 @@ df_ilo_wages |> filter(ref_area %in% c("JPN", "GBR", "DEU", "USA", "CHN")) |>
 
 Import Data with an Option
 
-type = "both" とすると、指標の内容も書かれていて、_get_ilostat_dic()_ を使わなくて良いが、余分なものが多くて見にくい面もある。
+type = "both" とすると、指標の内容も書かれていて、*get_ilostat_dic()* を使わなくて良いが、余分なものが多くて見にくい面もある。
 
 ```{r cache = TRUE}
 df_ilo_wages_both <- get_ilostat("EAR_4MTH_SEX_ECO_CUR_NB_A", type = "both", cache = FALSE)
@@ -238,9 +238,31 @@ df_income |> filter(ref_area == "JPN", indicator == "LAP_2LID_QTL_RT") |>
 
 *他の機能も確認する必要あり。*
 
-### **国連児童基金**（UNICEF：United Nations Children's Fund）
+### 国連児童基金（UNICEF: United Nations Children's Fund）
 
-<https://data.unicef.org>
+データサイト：<https://data.unicef.org>
+
+### 国際通貨基金（IMF: International Monetary Fund）
+
+ホームページ：<https://www.imf.org/en/home>
+
+日本語ホームページ：<https://www.imf.org/ja/Home>
+
+IMF データ：<https://www.imf.org/en/Data>、
+
+データサイト：<https://data.imf.org/?sk=388dfa60-1d26-4ade-b505-a05a558d9a42>
+
+国際通貨基金（IMF）は、生産性や雇用創出、健全な経済に必要不可欠となる金融の安定と国際通貨協力を促す経済政策を支援することで、全ての加盟国190か国が持続的な成長と繁栄を実現するための取り組みを行っています。 IMFは、加盟国によって運営され、加盟国政府に対して責任を負っています
+
+業務
+
+IMFは3つの重要な任務があります。国際通貨協力の強化、貿易の拡大・経済成長の促進、繁栄を損なう政策の抑制、の3つです。任務を達成するため、IMF加盟国は互いに、また他の国際機関と協力して働いています。
+
+#### R Package
+
+imfr: <https://github.com/christophergandrud/imfr>
+
+2022年までは、CRAN に登録されたパッケージでした。詳細は、上の GitHub ページを参照してください。
 
 ## 世界の国の政府機関
 
