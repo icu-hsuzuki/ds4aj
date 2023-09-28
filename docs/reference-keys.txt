@@ -540,6 +540,8 @@ others
 国際労働機関international-labor-organization-ilo
 ilostat
 例実質賃金ear_4mth_sex_eco_cur_nb_a
+データ取得時のオプション
+例所得の労働分配率
 国連児童基金unicefunited-nations-childrens-fund
 世界の国の政府機関
 米国data.gov
