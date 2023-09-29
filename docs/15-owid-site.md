@@ -72,6 +72,16 @@
 
 これら以外にも、コロナウイルス感染症や、持続的開発目標（SDGs）についてのサイトなどもあります。
 
+## All Charts
+
+トップページの一番下の帯にもリンクがありますが、All Charts の[リンク](https://ourworldindata.org/charts)から、すべてのトピックをみることができます。
+
+分野ごとに分けてありますが、左上の、Contents（目次） からも、分野ごとに分かれた部分に飛ぶことができます。
+
+## GitHub サイト
+
+<https://github.com/owid>
+
 ## レポート
 
 ### [Population Growth](https://ourworldindata.org/population-growth)

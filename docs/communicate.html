@@ -185,6 +185,18 @@ output: html_document
 </h4>
 <p>この中に、コードを書くのですが、右上にギアマークと、下向きの三角と、右向きの三角があります。コードチャンクに名前をつけたり、メッセージの表示・非表示、注意（Warnings）の表示・非表示の切り替えなど、さらには、コードを表示する・しない、実行する・しないなども、選択できるようになっています。詳しくは、下に、Chunk Option とありますから、その<a href="https://yihui.org/knitr/options/">リンク先</a>をみてください。</p>
 <p>Code Chunk の一番右の、右向き三角を押すと、コードが実行されます。それより上のコードチャンスに、たとえば、library(tidyverse) などの設定があり、それを実行していないと、エラーになる場合もありますから、一番上から実行するというときには、下向きの三角印を押します。</p>
+<p>チャンクに書き込むには二通りの書き方があります。上のように、{r} の中に書く方法と、そとに出す方法です。どちらも、その下にある出力になります。eval = FALSE ですから、実行はせず、コードだけが表示されます。chunk-label などは省略可能ですが、書いておくと、エラーが出た時に、どのコードチャンクかがわかりやすいという利点があります。チャンクオプションについては、<a href="https://yihui.org/knitr/options/">リンク</a>を参照してください。</p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb326-1"><a href="communicate.html#cb326-1" tabindex="-1"></a><span class="in">```{r, chunk-label, eval = FALSE, echo = TRUE}</span></span>
+<span id="cb326-2"><a href="communicate.html#cb326-2" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb326-3"><a href="communicate.html#cb326-3" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb327-1"><a href="communicate.html#cb327-1" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb327-2"><a href="communicate.html#cb327-2" tabindex="-1"></a><span class="in">#| chunk-label, eval = FALSE, </span></span>
+<span id="cb327-3"><a href="communicate.html#cb327-3" tabindex="-1"></a><span class="in">#| echo = TRUE</span></span>
+<span id="cb327-4"><a href="communicate.html#cb327-4" tabindex="-1"></a></span>
+<span id="cb327-5"><a href="communicate.html#cb327-5" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb327-6"><a href="communicate.html#cb327-6" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="pdf-への出力" class="section level4" number="22.3.1.4">
 <h4>

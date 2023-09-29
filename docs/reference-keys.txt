@@ -140,6 +140,8 @@ un-site
 api-2
 owid-site
 概要-5
+all-charts
+github-サイト
 レポート
 population-growth
 war-and-peace

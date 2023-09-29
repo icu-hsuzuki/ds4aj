@@ -62,6 +62,31 @@ Preview ボタンを押すと、HTML ファイルが生成されます。別ウ�
 
 Code Chunk の一番右の、右向き三角を押すと、コードが実行されます。それより上のコードチャンスに、たとえば、library(tidyverse) などの設定があり、それを実行していないと、エラーになる場合もありますから、一番上から実行するというときには、下向きの三角印を押します。
 
+チャンクに書き込むには二通りの書き方があります。上のように、{r} の中に書く方法と、そとに出す方法です。どちらも、その下にある出力になります。eval = FALSE ですから、実行はせず、コードだけが表示されます。chunk-label などは省略可能ですが、書いておくと、エラーが出た時に、どのコードチャンクかがわかりやすいという利点があります。チャンクオプションについては、[リンク](https://yihui.org/knitr/options/)を参照してください。
+
+````md
+```{r, chunk-label, eval = FALSE, echo = TRUE}`r ''`
+plot(cars)
+```
+````
+
+````md
+```{r}`r ''`
+#| chunk-label, eval = FALSE, 
+#| echo = TRUE
+
+plot(cars)
+```
+````
+
+```{r}
+#| chunk-label, eval = FALSE, 
+#| echo = TRUE
+
+plot(cars)
+```
+
+
 #### PDF への出力
 
 RNotebook でも、RMarkdown でも、初期設定では、HTML 文書が生成されますが、RNotebook では、Preview ボタン、RMarkdown では、knit ボタンの右にある、三角を押すと、そこから、PDF と Word が選択できるようになっています。RNotebook の場合には、HTML も選択できます。

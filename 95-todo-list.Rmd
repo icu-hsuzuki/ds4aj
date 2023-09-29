@@ -62,16 +62,29 @@ PART I PUBLIC DATA
 -   5.1 オープンデータ
     -   5.1.1 Open Government Data Toolkit: Open Data Defined
 -   5.2 日本から世界を見る
--   5.3 世界銀行（World Bank）
-    -   5.3.1 世界開発指数（World Development Indicator (WDI)）
-    -   5.3.2 World Bank: WDI - World Development Indicaters
-    -   5.3.3 世界開発指標（World Development Indicator）
-    -   5.3.4 例
--   5.4 世界のさまざまな課題から見る
--   5.5 OECD
--   5.6 UN Data
--   5.7 Our World in Data
--   5.8 Eurostat
+
+12. 世界銀行（World Bank）
+
+-   7 世界銀行（World Bank）
+    -   7.1 概要
+    -   7.2 データベース
+    -   7.3 ダッシュボード（Dashboard）
+        -   データバンクの iframe の調整
+    -   7.4 API
+    -   7.5 Google Public Data Explorer
+
+13.  OECD
+
+```{=html}
+<!-- -->
+```
+14. UN Data
+15. Our World in Data
+
+17\. Eurostat
+
+18. sdgs
+19. Other sites
 
 PART II BASICS
 
