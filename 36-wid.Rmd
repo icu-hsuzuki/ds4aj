@@ -14,7 +14,7 @@ The *World Inequality Database* ([**WID.world**](https://wid.world/)) aims to 
 
 まず、World Inequility Report 2022（WIR2022）の 概要（Executive Report）に含まれている、図を、再構成（recrerate）する方法を説明し、そのあとで、報告の他の部分のデータの取得方法や、活用について説明します。
 
-以下が、基本的な、サイトの URL dえす。
+以下が、基本的な、サイトの URL です。
 
 -   世界不平等報告2022（World Inequality Report）: <https://wir2022.wid.world/>
 -   概要（Executive Summary）: <https://wir2022.wid.world/executive-summary/>
@@ -88,27 +88,30 @@ summary_sheets
 -   読み込む時は、シート名 `sheet = "Index"` 以外に、 `sheet = 1` など、何番目のシートかを指定することも可能です。ただ、たとえば、シートを削除していたりすると、削除したシートも含めての番号になっているので、問題が起こる場合もあります。
 
 ```{r}
-df_index <- read_excel("data/WIR2022TablesFigures-Summary.xlsx", sheet = "Index")
+df_index <- read_excel("data/WIR2022TablesFigures-Summary.xlsx", 
+                       sheet = "Index")
 df_index
 ```
 
 このファイルの情報から、それぞれのシートの内容がわかります。データは、"data-F1" to "data-F15". にあります。
 
-### F1: Global income and wealth inequality, 2021
+### F1: 世界の所得と富の不平等 2021年
+
+**Global income and wealth inequality, 2021**
 
 ```{r data-f1, cash = TRUE}
 df_f1 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F1")
 ```
 
--   Since the first column does not have a column name, R assigns `...1` to its name, and returns a message: `New names:.`
+-   最初の列には、列名がないため, R は、自動的に `...1` を割り当て、 `New names:` とメッセージを出しています。
 
 ```{r}
 df_f1
 ```
 
 ```{r}
-df_f1 %>% select(cat = ...1, 2:4) %>%
-  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+df_f1 |> select(cat = ...1, 2:4) |>
+  pivot_longer(2:4, names_to = "group", values_to = "value") |>
   ggplot(aes(x = cat, y = value, fill = group)) +
   geom_col(position = "dodge") + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + 
@@ -121,50 +124,53 @@ df_f1 %>% select(cat = ...1, 2:4) %>%
 **Interpretation**: The global bottom 50% captures 8.5% of total income measured at Purchasing Power Parity (PPP). The global bottom 50% owns 2% of wealth (at Purchasing Power Parity). The global top 10% owns 76% of total Household wealth and captures 52% of total income in 2021. Note that top wealth holders are not necessarily top income holders. Incomes are measured after the operation of pension and unemployment systems and before taxes and transfers.\
 **Sources and series**: wir2022.wid.world/methodology.
 
-#### Explanation
+**図の解釈** 世界の下位50%は、購買力平価（PPP）で測定した総所得の8.5%を占めている。世界の下位50%は富の2%を所有（購買力平価で）。世界の上位10%は、2021年には世帯総資産の76%を保有し、総所得の52%を獲得する。富の上位者が所得の上位者とは限らないことに注意。所得は年金と失業制度の運用後、税金と移転の前に測定されている。出典とシリーズ：wir2022.wid.world/methodology.
+
+#### 説明
 
 ##### Step 1.
 
--   The chart does not use Top 1% data.
--   There are two groups, Income and Wealth. We need to tidy the data using `pivot_longer`.
--   The basic format of `pivot_longer` is:
-    -   `pivot_longer(cols, names_to = "group", values_to = "value")`, and `cols` is the columns to pivot into a longer format. Hence, in this case, `cols = 2:4` or `cols = -1`, i.e., except the first column.
+-   図には Top 1% のデータは含まれていない。
+-   Income と Wealth の二つのグループがあり、`pivot_longer` を使って、整える（tidy にする）必要がある。
+-   `pivot_longer` の基本的な使い方：
+    -   `pivot_longer(cols, names_to = "group", values_to = "value")`, `cols` は、縦長の形式にする列、この場合は、2列から4列なので、 `cols = 2:4` と指定。第一列以外なので、 `cols = -1`, と指定してもよい。
+-   列名 ...1 を cat（カテゴリの省略形）に変更。
 
 ```{r}
-df_f1 %>% select(cat = ...1, 2:4) %>%
+df_f1 |> select(cat = ...1, 2:4) |>
   pivot_longer(2:4, names_to = "group", values_to = "value")
 ```
 
 ##### Step 2.
 
--   Now we use `ggplot2` to draw a chart.
+-    `ggplot2` を使って図を描く。
 
 ```{r}
-df_f1 %>% select(cat = ...1, 2:4) %>%
-  pivot_longer(2:4, names_to = "level", values_to = "value") %>%
+df_f1 |> select(cat = ...1, 2:4) |>
+  pivot_longer(2:4, names_to = "level", values_to = "value") |>
   ggplot(aes(x = cat, y = value, fill = level)) +
   geom_col()
 ```
 
 ##### Step 3.
 
--   In order to place columns side by side, we use the option `position = dodge`.
+-   積み上げグラフになっているので、 `position = dodge` で横に並べる。
 
 ```{r}
-df_f1 %>% select(cat = ...1, 2:4) %>%
-  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+df_f1 |> select(cat = ...1, 2:4) |>
+  pivot_longer(2:4, names_to = "group", values_to = "value") |>
   ggplot(aes(x = cat, y = value, fill = group)) +
   geom_col(position = "dodge")
 ```
 
 ##### Step 4.
 
--   We use the percent scale on y-axis.
--   In this case, `scale_y_continuous(labels = c("0%", "20%", "40%", "60%", "80%"))` does the same.
+-   y-軸を％に変更
+-   この場合は、 `scale_y_continuous(labels = c("0%", "20%", "40%", "60%", "80%"))` でも同じ。
 
 ```{r}
-df_f1 %>% select(cat = ...1, 2:4) %>%
-  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+df_f1 |> select(cat = ...1, 2:4) |>
+  pivot_longer(2:4, names_to = "group", values_to = "value") |>
   ggplot(aes(x = cat, y = value, fill = group)) +
   geom_col(position = "dodge") + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
@@ -172,11 +178,11 @@ df_f1 %>% select(cat = ...1, 2:4) %>%
 
 ##### Step 5.
 
--   Add the title and the label of the y-axis, and erase the label of the x-axis and the legend.
+-   表題（title）と y-軸のラベルをつけ、x 軸のられると、凡例のラベルを消去。
 
 ```{r}
-df_f1 %>% select(cat = ...1, 2:4) %>%
-  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+df_f1 |> select(cat = ...1, 2:4) |>
+  pivot_longer(2:4, names_to = "group", values_to = "value") |>
   ggplot(aes(x = cat, y = value, fill = group)) +
   geom_col(position = "dodge") + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -186,11 +192,11 @@ df_f1 %>% select(cat = ...1, 2:4) %>%
 
 ##### Step 6.
 
--   Add the value in percent as the text to top of each column.
+-   値を、棒グラフの上に表示。
 
 ```{r}
-df_f1 %>% select(cat = ...1, 2:4) %>%
-  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+df_f1 |> select(cat = ...1, 2:4) |>
+  pivot_longer(2:4, names_to = "group", values_to = "value") |>
   ggplot(aes(x = cat, y = value, fill = group)) +
   geom_col(position = "dodge") + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -202,11 +208,11 @@ df_f1 %>% select(cat = ...1, 2:4) %>%
 
 ##### Step 7.
 
--   If we want to place the labels at the top of the columns, use `vjust`.
+-   棒の上にするためには、 `vjust` を利用して調節。
 
 ```{r}
-df_f1 %>% select(cat = ...1, 2:4) %>%
-  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+df_f1 |> select(cat = ...1, 2:4) |>
+  pivot_longer(2:4, names_to = "group", values_to = "value") |>
   ggplot(aes(x = cat, y = value, fill = group)) +
   geom_col(position = "dodge") + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -216,7 +222,9 @@ df_f1 %>% select(cat = ...1, 2:4) %>%
        x = "", y = "Share of total income or wealth", fill = "")
 ```
 
-### F2: The poorest half lags behind: Bottom 50%, middle 40% and top 10% income shares across the world in 2021
+### F2: 最貧困層はかなり少なくなっている： 2021年における世界の下位50％、中位40％、上位10％の所得シェア
+
+**The poorest half lags behind: Bottom 50%, middle 40% and top 10% income shares across the world in 2021**
 
 ```{r data-f2, cash = TRUE}
 df_f2 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F2")
@@ -224,7 +232,7 @@ df_f2
 ```
 
 ```{r}
-df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+df_f2 |> pivot_longer(3:5, names_to = "level", values_to = "value") |>
   ggplot(aes(x = iso, y = value, fill = level)) +
   geom_col(position = "dodge") + 
   scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8)) +
@@ -236,22 +244,24 @@ df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
 **Interpretation**: In Latin America, the top 10% captures 55% of national income, compared to 36% in Europe. Income is measured after pension and unemployment contributions and benefits paid and received by individuals but before income taxes and other transfers.\
 **Sources and series**: www.wir2022.wid.world/methodology.
 
-#### Explanation
+**図の解釈** ラテンアメリカでは、上位10％が国民所得の55％を占めているのに対し、ヨーロッパでは36％である。所得は、個人が支払った年金や失業保険、給付の後、所得税やその他の移転の前に測定される。出典と系列： www.wir2022.wid.world/methodology.
+
+#### 説明
 
 ##### Step 1.
 
--   Similar to F1.
+-   F1 と同様。
 
 ```{r}
-df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value")
+df_f2 |> pivot_longer(3:5, names_to = "level", values_to = "value")
 ```
 
 ##### Step 2.
 
-\*Since the title is very long, insert `\n` for a line break. If `\n and`, then it creates a space before `and`.
+-   タイトルが非常に長いので、 `\n` を入れて改行。 \'and' の前にスペースを入れると `\n and` 'and' の前にスペースが入ることになる。
 
 ```{r}
-df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+df_f2 |> pivot_longer(3:5, names_to = "level", values_to = "value") |>
   ggplot(aes(x = iso, y = value, fill = level)) +
   geom_col(position = "dodge") + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -261,11 +271,11 @@ df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
 
 ##### Step 3.
 
--   The labels of the x-axis are overlapping. One way is to add `angle`. See below.
--   Another way is to use `scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8))` to wrap. Since label varies we use a function with a variable x. See above.
+-   x-軸のラベルが重なっている。一つの方法は `angle` を使って角度をつけること。
+-   もう一つの方法は `scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8))` をつかって、幅を指定し折り返すことで重複を避ける。
 
 ```{r}
-df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+df_f2 |> pivot_longer(3:5, names_to = "level", values_to = "value") |>
   ggplot(aes(x = iso, y = value, fill = level)) +
   geom_col(position = "dodge") + 
   theme(axis.text.x = element_text(angle = 30, vjust = 1, hjust=1)) + 
@@ -275,7 +285,7 @@ df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
 ```
 
 ```{r}
-df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+df_f2 |> pivot_longer(3:5, names_to = "level", values_to = "value") |>
   ggplot(aes(x = iso, y = value, fill = level)) +
   geom_col(position = "dodge") + 
   scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8)) +
@@ -284,7 +294,9 @@ df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
        x = "", y = "Share of national income (%)", fill = "")
 ```
 
-### F3: Top 10/Bottom 50 income gaps across the world, 2021
+### F3: 世界の所得格差上位10位／下位50位（2021年）
+
+**Top 10/Bottom 50 income gaps across the world, 2021**
 
 ```{r data-f3, cash = TRUE}
 df_f3 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F3")
@@ -308,8 +320,8 @@ map0$region[map0$region=="Syria"]<- "Syrian Arab Republic"
 map0$region[map0$region=="Trinidad"]<- "Trinidad and Tobago"
 map0$region[map0$region=="Tobago"]<- "Trinidad and Tobago"
 
-df_f3 %>% 
-  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50,breaks = c(5, 12, 13, 16, 19,140), include.lowest = FALSE)) %>%
+df_f3 |> 
+  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50,breaks = c(5, 12, 13, 16, 19,140), include.lowest = FALSE)) |>
   ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = map0) + expand_limits(x = map0$long, y = map0$lat) +
   labs(title = "Figure 3. Top 10/Bottom 50 income gaps across the world, 2021",
        x = "", y = "", fill = "Top 10/Bottom 50 ratio") +
@@ -321,7 +333,7 @@ df_f3 %>%
 
 **Interpretation**: In Brazil, the bottom 50% earns 29 times less than the top 10%. The value is 7 in France. Income is measured after pension and unemployment payments and benefits received by individuals but before other taxes they pay and transfers they receive. Source and series: wir2022.wid.world/methodology.
 
-#### Explanation
+#### 説明
 
 ##### Step 1.
 
@@ -340,7 +352,7 @@ datatable(world_map)
 -   Let us try using the standard template of `ggplot`. We use `Country` for `map_id` and `T10B50` for numerical data. Since `world_map` data contains `long` and `lat` of each region, we assign them as `expand_limit`.
 
 ```{r}
-df_f3 %>% 
+df_f3 |> 
   ggplot(aes(map_id = Country)) + 
   geom_map(aes(fill = `T10B50`), map = world_map) +
   expand_limits(x = world_map$long, y = world_map$lat)
@@ -390,7 +402,7 @@ df_f3_rev$Country[df_f3_rev$Country == "Congo"] <- "Republic of Congo"
 -   Now check the country names again using `anti_join`. By the code below, we can create a new table such that there is no region in `world_map` corresponding to Country in `df_f3_rev`.
 
 ```{r}
-df_f3_rev %>% anti_join(world_map, by = c("Country" = "region"))
+df_f3_rev |> anti_join(world_map, by = c("Country" = "region"))
 ```
 
 We can proceed one by one. However, WIR provides the code of this part in R. So let us use it. It is in Computer Codes at the Methodology [site](https://wir2022.wid.world/methodology/). Download 'Full Datasets' and 'Computer Codes'. Then in WIR2022 - Computer codes, find `Chapter1_Maps.R`.
@@ -454,13 +466,13 @@ map$region[map$region=="Tobago"]<- "Trinidad and Tobago"
 ```
 
 ```{r}
-df_f3 %>% anti_join(map, by = c("Country" = "region"))
+df_f3 |> anti_join(map, by = c("Country" = "region"))
 ```
 
 -   Is Zanzibar a part of Tanzania?
 
 ```{r}
-df_f3 %>% 
+df_f3 |> 
   ggplot(aes(map_id = Country)) + 
   geom_map(aes(fill = `T10B50`), map = map) +
   expand_limits(x = map$long, y = map$lat)
@@ -472,8 +484,8 @@ df_f3 %>%
 -   Place the legend at the bottom using `theme(legend.position="bottom")`.
 
 ```{r}
-df_f3_rev %>% 
-  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50, breaks = c(5, 12, 13, 16, 19, 140), include.lowest = FALSE)) %>%
+df_f3_rev |> 
+  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50, breaks = c(5, 12, 13, 16, 19, 140), include.lowest = FALSE)) |>
   ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = world_map) + expand_limits(x = world_map$long, y = world_map$lat) +
   theme(legend.position="bottom")
 ```
@@ -483,8 +495,8 @@ df_f3_rev %>%
 Finally add the title, remove x and y labels, and change the legend name.
 
 ```{r}
-df_f3_rev %>% 
-  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50, breaks = c(5, 12, 13, 16, 19, 140), include.lowest = FALSE)) %>%
+df_f3_rev |> 
+  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50, breaks = c(5, 12, 13, 16, 19, 140), include.lowest = FALSE)) |>
   ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = world_map) + expand_limits(x = world_map$long, y = world_map$lat) +
   labs(title = "Figure 3. Top 10/Bottom 50 income gaps across the world, 2021",
        x = "", y = "", fill = "Top 10/Bottom 50 ratio") +
@@ -499,8 +511,8 @@ Remove x-axis, y-axis and ticks. If you want to change color palette, see:
 -   [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/){.uri}
 
 ```{r}
-df_f3_rev %>% 
-  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50, breaks = c(5, 12, 13, 16, 19, 140), include.lowest = FALSE)) %>%
+df_f3_rev |> 
+  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50, breaks = c(5, 12, 13, 16, 19, 140), include.lowest = FALSE)) |>
   ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = world_map) + expand_limits(x = world_map$long, y = world_map$lat) +
   labs(title = "Figure 3. Top 10/Bottom 50 income gaps across the world, 2021",
        x = "", y = "", fill = "Top 10/Bottom 50 ratio") +
@@ -518,7 +530,7 @@ df_f4
 ```
 
 ```{r}
-df_f4 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+df_f4 |> pivot_longer(3:5, names_to = "level", values_to = "value") |>
   ggplot(aes(x = iso, y = value, fill = level)) +
   geom_col(position = "dodge") + 
   scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
@@ -530,7 +542,7 @@ df_f4 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
 **Interpretation**: The Top 10% in Latin America captures 77% of total household wealth, versus 22% for the Middle 40% and 1% for the Bottom 50%. In Europe, the Top 10% owns 58% of total wealth, versus 38% for the Middle 40% and 4% for the Bottom 50%.\
 **Sources and series**: wir2022.wid.world/methodology.
 
-#### Explanation
+#### 説明
 
 -   Almost the same as F1 and F2.
 
@@ -546,7 +558,7 @@ df_f5
 ```
 
 ```{r}
-df_f5 %>% select(year = y, ratio = t10b50) %>%
+df_f5 |> select(year = y, ratio = t10b50) |>
   ggplot(aes(x = year, y = ratio)) + 
   lims(y = c(10,70)) + 
   geom_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE) + 
@@ -562,14 +574,14 @@ df_f5 %>% select(year = y, ratio = t10b50) %>%
 **Interpretation**. Global inequality, as measured by the ratio T10/B50 between the average income of the top 10% and the average income of the bottom 50%, more than doubled between between 1820 and 1910, from less than 20 to about 40, and stabilized around 40 between 1910 and 2020. It is too early to say whether the decline in global inequality observed since 2008 will continue. Income is measured per capita after pension and unemployement insurance transfers and before income and wealth taxes.\
 **Sources and series**: wir2022.wid.world/lmethodology and Chancel and Piketty (2021)..
 
-#### Explanation
+#### 説明
 
 ##### Step 1.
 
 -   The following is enough. Here we applied `str_wrap` to the label of the y-axis as it is very long.
 
 ```{r}
-df_f5 %>% select(year = y, ratio = t10b50) %>%
+df_f5 |> select(year = y, ratio = t10b50) |>
   ggplot(aes(x = year, y = ratio)) + 
   geom_line() +
   labs(title = "Figure 5. Global income inequality:T10/B50 ratio, 1820-2020", 
@@ -587,7 +599,7 @@ There are many way of smoothing.
 -   We try other methods below.
 
 ```{r}
-df_f5 %>% select(year = y, ratio = t10b50) %>%
+df_f5 |> select(year = y, ratio = t10b50) |>
   ggplot(aes(x = year, y = ratio)) +
   geom_line() +
   geom_smooth(formula = y~x, method = "loess", se = FALSE) + 
@@ -599,7 +611,7 @@ df_f5 %>% select(year = y, ratio = t10b50) %>%
 **GAM Smoothing with 24 Points**
 
 ```{r}
-df_f5 %>% select(year = y, ratio = t10b50) %>%
+df_f5 |> select(year = y, ratio = t10b50) |>
   ggplot(aes(x = year, y = ratio)) +
   stat_smooth(method = "gam", formula = y ~ s(x, k = 24), se = FALSE) + 
   scale_x_continuous(breaks = round(seq(min(df_f5$y), max(df_f5$y), by = 20),1)) + 
@@ -610,7 +622,7 @@ df_f5 %>% select(year = y, ratio = t10b50) %>%
 **Polynomial Approximation of Degree 6**
 
 ```{r}
-df_f5 %>% select(year = y, ratio = t10b50) %>%
+df_f5 |> select(year = y, ratio = t10b50) |>
   ggplot(aes(x = year, y = ratio)) +
   geom_point() +
   geom_smooth(method = "lm", formula = y ~ poly(x, 6), se = FALSE) + 
@@ -630,7 +642,7 @@ df_f5 %>% select(year = y, ratio = t10b50) %>%
 -   `ggforce::geom_mark_rect` will add annotation in a box.
 
 ```{r}
-df_f5 %>% select(year = y, ratio = t10b50) %>%
+df_f5 |> select(year = y, ratio = t10b50) |>
   ggplot(aes(x = year, y = ratio)) + 
   lims(y = c(10,70)) + 
   geom_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE) + 
@@ -651,9 +663,9 @@ df_f6
 ```
 
 ```{r}
-df_f6 %>% select(year = "...1", 2:3) %>%
-  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") %>%
-  mutate(types = factor(type, levels = c("Within-country inequality", "Between-country inequality"))) %>%
+df_f6 |> select(year = "...1", 2:3) |>
+  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") |>
+  mutate(types = factor(type, levels = c("Within-country inequality", "Between-country inequality"))) |>
   ggplot(aes(x = year, y = value, fill = types)) +
   geom_area() +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -669,9 +681,9 @@ df_f6 %>% select(year = "...1", 2:3) %>%
 -   Legend can be placed at the bottom: `theme(legend.position="bottom")`
 
 ```{r}
-df_f6 %>% select(year = "...1", 2:3) %>%
-  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") %>%
-  mutate(types = factor(type, levels = c("Within-country inequality", "Between-country inequality"))) %>%
+df_f6 |> select(year = "...1", 2:3) |>
+  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") |>
+  mutate(types = factor(type, levels = c("Within-country inequality", "Between-country inequality"))) |>
   ggplot(aes(x = year, y = value, fill = types)) +
   geom_area() +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -688,15 +700,15 @@ df_f6 %>% select(year = "...1", 2:3) %>%
 **Interpretation**. The importance of between-country inequality in overall global inequality, as measured by the Theil index, rose between 1820 and 1980 and strongly declined since then. In 2020, between-country inequality makes-up about a third of global inequality between individuals. The rest is due to inequality within countries. Income is measured per capita after pension and unemployement insurance transfers and before income and wealth taxes.\
 **Sources and series**: wir2022.wid.world/methodology and Chancel and Piketty (2021).
 
-#### Explanation
+#### 説明
 
 ##### Step 1.
 
 -   We use `geom_area` after tidying the data with `pilot_longer`.
 
 ```{r}
-df_f6 %>% select(year = "...1", 2:3) %>%
-  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") %>%
+df_f6 |> select(year = "...1", 2:3) |>
+  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") |>
   ggplot(aes(x = year, y = value, fill = type)) +
   geom_area() +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -719,9 +731,9 @@ scale_fill_manual(values=rev(scales::hue_pal()(2)), labels = function(x) str_wra
 -   Add a line break in the y-axis label.
 
 ```{r}
-df_f6 %>% select(year = "...1", 2:3) %>%
-  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") %>%
-  mutate(types = factor(type, levels = c("Within-country inequality", "Between-country inequality"))) %>%
+df_f6 |> select(year = "...1", 2:3) |>
+  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") |>
+  mutate(types = factor(type, levels = c("Within-country inequality", "Between-country inequality"))) |>
   ggplot(aes(x = year, y = value, fill = types)) +
   geom_area() +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -739,8 +751,8 @@ df_f7
 ```
 
 ```{r}
-df_f7 %>% select(year = y, 2:4) %>%
-  pivot_longer(cols = 2:4, names_to = "type", values_to = "value") %>%
+df_f7 |> select(year = y, 2:4) |>
+  pivot_longer(cols = 2:4, names_to = "type", values_to = "value") |>
   ggplot(aes(x = year, y = value, color = type)) +
   geom_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE) +
   scale_x_continuous(breaks = round(seq(1820, 2020, by = 20),1)) +
@@ -752,14 +764,14 @@ df_f7 %>% select(year = y, 2:4) %>%
 
 **Interpretation**. The share of global income going to top 10% highest incomes at the world level has fluctuated around 50-60% between 1820 and 2020 (50% in 1820, 60% in 1910, 56% in 1980, 61% in 2000, 55% in 2020), while the share going to the bottom 50% lowest incomes has generally been around or below 10% (14% in 1820, 7% in 1910, 5% in 1980, 6% in 2000, 7% in 2020). Global inequality has always been very large. It rose between 1820 and 1910 and shows little long-run trend between 1910 and 2020. Distribution of per capita incomes. Sources and series: see wir2022.wid.world/methodology and Chancel and Piketty (2021).
 
-#### Explanation
+#### 説明
 
 ##### Step 1.
 
--   Use `pivot_longer` to tidy the data.
+-   pivot_longer() 適用し、tidy データに変換
 
 ```{r}
-df_f7 %>% select(year = y, 2:4) %>%
+df_f7 |> select(year = y, 2:4) |>
   pivot_longer(cols = 2:4, names_to = "type", values_to = "value") 
 ```
 
@@ -768,8 +780,8 @@ df_f7 %>% select(year = y, 2:4) %>%
 \*Use `geom_smooth` with `span`, and change the scale of x-axis and y-axis.
 
 ```{r}
-df_f7 %>% select(year = y, 2:4) %>%
-  pivot_longer(cols = 2:4, names_to = "type", values_to = "value") %>%
+df_f7 |> select(year = y, 2:4) |>
+  pivot_longer(cols = 2:4, names_to = "type", values_to = "value") |>
   ggplot(aes(x = year, y = value, color = type)) +
   geom_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE) +
   scale_x_continuous(breaks = round(seq(1820, 2020, by = 20),1)) +
@@ -788,16 +800,16 @@ df_f8
 ```
 
 ```{r}
-df_f8 %>% drop_na() %>%
+df_f8 |> drop_na() |>
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
          France_public = France, France_private = 'France (private)', 
          UK_public  = UK, UK_private = 'UK (private)', 
          Japan_public = Japan, Japan_private = 'Japan (private)', 
          Norway_public = Norway, Norway_private = 'Norway (private)',
-         USA_public = USA, USA_private = 'USA (private)') %>%
-  pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") %>%
-  pivot_longer(3:4, names_to = "type", values_to = "value") %>%
+         USA_public = USA, USA_private = 'USA (private)') |>
+  pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") |>
+  pivot_longer(3:4, names_to = "type", values_to = "value") |>
   ggplot() +
   stat_smooth(aes(x = year, y = value, color = country, linetype = type), 
               formula = y~x, method = "loess", 
@@ -810,14 +822,14 @@ df_f8 %>% drop_na() %>%
 **Interpretation**: Public wealth is the sum of all financial and non-financial assets, net of debts, held by governments. Public wealth dropped from 60% of national income in 1970 to -106% in 2020 in the UK.\
 **Sources and series**: wir2022.wid.world/methodology, Bauluz et al. (2021) and updates.
 
-#### Explanation
+#### 説明
 
 ##### Step 1.
 
 -   There are two types of groups, countries and public vs private. So we change the column names first to identify that classification easily. We delete the last two columns "gwealAVGRICH" and "pwealAVGRICH" as they will not appear in the chart.
 
 ```{r}
-df_f8 %>% 
+df_f8 |> 
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
          France_public = France, France_private = 'France (private)', 
@@ -833,14 +845,14 @@ df_f8 %>%
 -   Here, we used an option `names_sep = "_"`.
 
 ```{r}
-df_f8 %>% 
+df_f8 |> 
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
          France_public = France, France_private = 'France (private)', 
          UK_public  = UK, UK_private = 'UK (private)', 
          Japan_public = Japan, Japan_private = 'Japan (private)', 
          Norway_public = Norway, Norway_private = 'Norway (private)',
-         USA_public = USA, USA_private = 'USA (private)') %>%
+         USA_public = USA, USA_private = 'USA (private)') |>
   pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") 
 ```
 
@@ -849,15 +861,15 @@ df_f8 %>%
 -   Next apply `pivot_longer` again to form the second group.
 
 ```{r}
-df_f8 %>% 
+df_f8 |> 
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
          France_public = France, France_private = 'France (private)', 
          UK_public  = UK, UK_private = 'UK (private)', 
          Japan_public = Japan, Japan_private = 'Japan (private)', 
          Norway_public = Norway, Norway_private = 'Norway (private)',
-         USA_public = USA, USA_private = 'USA (private)') %>%
-  pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") %>%
+         USA_public = USA, USA_private = 'USA (private)') |>
+  pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") |>
   pivot_longer(3:4, names_to = "type", values_to = "value")
 ```
 
@@ -866,16 +878,16 @@ df_f8 %>%
 -   Assign colors to countries and distinguish types by `linetype`.
 
 ```{r}
-df_f8 %>% 
+df_f8 |> 
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
          France_public = France, France_private = 'France (private)', 
          UK_public  = UK, UK_private = 'UK (private)', 
          Japan_public = Japan, Japan_private = 'Japan (private)', 
          Norway_public = Norway, Norway_private = 'Norway (private)',
-         USA_public = USA, USA_private = 'USA (private)') %>%
-  pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") %>%
-  pivot_longer(3:4, names_to = "type", values_to = "value") %>%
+         USA_public = USA, USA_private = 'USA (private)') |>
+  pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") |>
+  pivot_longer(3:4, names_to = "type", values_to = "value") |>
   ggplot() +
   geom_smooth(aes(x = year, y = value, color = country, linetype = type),
               formula = y~x, method = "loess", span = 0.25, se = FALSE)
@@ -887,16 +899,16 @@ df_f8 %>%
 -   Change the line width by `size`, change the y-axis to percents and add the .title.
 
 ```{r}
-df_f8 %>% drop_na() %>%
+df_f8 |> drop_na() |>
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
          France_public = France, France_private = 'France (private)', 
          UK_public  = UK, UK_private = 'UK (private)', 
          Japan_public = Japan, Japan_private = 'Japan (private)', 
          Norway_public = Norway, Norway_private = 'Norway (private)',
-         USA_public = USA, USA_private = 'USA (private)') %>%
-  pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") %>%
-  pivot_longer(3:4, names_to = "type", values_to = "value") %>%
+         USA_public = USA, USA_private = 'USA (private)') |>
+  pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") |>
+  pivot_longer(3:4, names_to = "type", values_to = "value") |>
   ggplot() +
   geom_smooth(aes(x = year, y = value, color = country, linetype = type),
               formula = y~x, method = "loess", 
@@ -911,8 +923,8 @@ df_f8 %>% drop_na() %>%
 -   Let us check if we use only color for each group representing columns. This is not the chart we wanted to obtain.
 
 ```{r}
-df_f8 %>% drop_na() %>% 
-  pivot_longer(!year, names_to = "group", values_to = "value") %>%
+df_f8 |> drop_na() |> 
+  pivot_longer(!year, names_to = "group", values_to = "value") |>
   ggplot() +
   geom_smooth(aes(x = year, y = value, color = group), 
             formula = y~x, method = "loess", 
@@ -931,9 +943,9 @@ df_f9
 
 ```{r}
 brks <- c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 99.9, 99.99, 99.999)
-df_f9 %>% 
-  mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) %>% 
-  mutate(xlabel = as.numeric(level)+0.8) %>%
+df_f9 |> 
+  mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) |> 
+  mutate(xlabel = as.numeric(level)+0.8) |>
   ggplot(aes(x = xlabel, y = `Wealth growth 1995-2021`)) + geom_smooth(method = "loess", formula = y~x, se = FALSE, span = 0.5) + 
   scale_x_discrete(limits=as.character(brks)) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 0.1)) +
@@ -945,7 +957,7 @@ df_f9 %>%
 **Interpretation**: Growth rates among the poorest half of the population were between 3% and 4% per year, between 1995 and 2021. Since this group started from very low wealth levels, its absolute levels of growth remained very low. The poorest half of the world population only captured 2.3% of overall wealth growth since 1995. The top 1% benefited from high growth rates (3% to 9% per year). This group captured 38% of total wealth growth between 1995 and 2021. Net household wealth is equal to the sum of financial assets (e.g. equity or bonds) and non-financial assets (e.g. housing or land) owned by individuals, net of their debts.\
 **Sources and series**: wir2022.wid.world/methodology.
 
-#### Explanation
+#### 説明
 
 ##### Step 1.
 
@@ -957,14 +969,14 @@ df_f9 %>%
 -   Look at the column p of the data.
 
 ```{r}
-df_f9 %>% distinct(p) %>% pull()
+df_f9 |> distinct(p) |> pull()
 ```
 
 -   Use cut to break in levels.
 
 ```{r}
 brks <- c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 99.9, 99.99, 99.999)
-df_f9 %>% mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE))
+df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE))
 ```
 
 ##### Step 2.
@@ -972,7 +984,7 @@ df_f9 %>% mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks
 -   Add `xlabel` in numeric.
 
 ```{r}
-df_f9 %>% mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) %>% 
+df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) |> 
   mutate(xlabel = as.numeric(level))
 ```
 
@@ -982,8 +994,8 @@ df_f9 %>% mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks
 -   Added 0.5 to represent the mean value in each interval.
 
 ```{r}
-df_f9 %>% mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) %>% 
-  mutate(xlabel = as.numeric(level)+0.5) %>%
+df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) |> 
+  mutate(xlabel = as.numeric(level)+0.5) |>
   ggplot(aes(x = xlabel, y = `Wealth growth 1995-2021`)) + geom_smooth(method = "loess", formula = y~x, se = FALSE, span = 0.5)
 ```
 
@@ -993,8 +1005,8 @@ df_f9 %>% mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks
 -   Use `scale_y_continuous(labels = scales::percent_format(accuracy = 0.1))`.
 
 ```{r}
-df_f9 %>% mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) %>% 
-  mutate(xlabel = as.numeric(level)+ 0.8) %>%
+df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) |> 
+  mutate(xlabel = as.numeric(level)+ 0.8) |>
   ggplot(aes(x = xlabel, y = `Wealth growth 1995-2021`)) + geom_smooth(method = "loess", formula = y~x, se = FALSE, span = 0.5) + 
   scale_x_discrete(limits=as.character(brks)) + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 0.1))
@@ -1008,9 +1020,9 @@ df_f10
 ```
 
 ```{r}
-df_f10 %>% 
-  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
-  pivot_longer(!year, names_to = "group", values_to = "value") %>%
+df_f10 |> 
+  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) |>
+  pivot_longer(!year, names_to = "group", values_to = "value") |>
   ggplot() +
   geom_smooth(aes(x = year, y = value, color = group), 
               formula = y~x, method = "loess", 
@@ -1025,15 +1037,15 @@ df_f10 %>%
 **Interpretation**: The share of wealth detained by the world's billionaires rose from 1% of total household wealth in 1995 to nearly 3.5% today. The threshold of top 0.01%, composed of 520 000 adults, grew from €693,000 (PPP) in 1995 to €16,666,000 today. The net household wealth is equal to the sum of financial assets (e.g. equity or bonds) and non-financial assets (e.g. housing or land) owned by individuals, net of their debts.\
 **Sources and series**: wir2022.wid.world/methodology, Bauluz et al. (2021) and updates.
 
-#### Explanation
+#### 説明
 
 ##### Step 1.
 
 -   Use descriptive column names and use `pivot_longer` to make it tidy.
 
 ```{r}
-df_f10 %>% 
-  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
+df_f10 |> 
+  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) |>
   pivot_longer(!year, names_to = "group", values_to = "value")
 ```
 
@@ -1042,9 +1054,9 @@ df_f10 %>%
 -   Use `geom_smooth` with `span = 0.25` and change the breaks of x-labels.
 
 ```{r}
-df_f10 %>% 
-  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
-  pivot_longer(!year, names_to = "group", values_to = "value") %>%
+df_f10 |> 
+  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) |>
+  pivot_longer(!year, names_to = "group", values_to = "value") |>
   ggplot() +
   geom_smooth(aes(x = year, y = value, color = group), 
               formula = y~x, method = "loess", span = 0.25, se = FALSE) +
@@ -1059,9 +1071,9 @@ df_f10 %>%
 -   Swap the colors by `scale_color_manual(values=rev(scales::hue_pal()(2)))`. If `n` is the number of colors used `scales::hue_pal()(n)` returns the RGB color codes used. By `rev`, the order is reversed. See <https://ggplot2.tidyverse.org/reference/scale_hue.html>.
 
 ```{r}
-df_f10 %>% 
-  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
-  pivot_longer(!year, names_to = "group", values_to = "value") %>%
+df_f10 |> 
+  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) |>
+  pivot_longer(!year, names_to = "group", values_to = "value") |>
   ggplot() +
   geom_smooth(aes(x = year, y = value, color = group), 
               formula = y~x, method = "loess", span = 0.25, se = FALSE) +
@@ -1080,10 +1092,10 @@ df_f11
 ```
 
 ```{r}
-df_f11 %>%
-  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
-  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") %>%
-  pivot_longer(3:4, names_to = "type", values_to = "value") %>%
+df_f11 |>
+  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) |>
+  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") |>
+  pivot_longer(3:4, names_to = "type", values_to = "value") |>
   ggplot() +
   geom_smooth(aes(x = year, y = value, color = group, linetype = type), 
               formula = y~x, method = "loess", span = 0.5, se = FALSE) +
@@ -1097,15 +1109,15 @@ df_f11 %>%
 
 **Interpretation**: The graph presents decennal averages of top 1% personal wealth shares in Western Europe and the US. Between 1910 and 2020, the top 1% was 55% on average in Europe vs. 43% in the US. A century later, the US is almost back to its early 20th century level. Sources and series: wir2022.wid.world/methodology.
 
-#### Explanation
+#### 説明
 
 ##### Step 1.
 
 -   There are two groups: US vs. EU and bot50 and top1. We use the same technique as in F8.
 
 ```{r}
-df_f11 %>% 
-  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
+df_f11 |> 
+  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) |>
   pivot_longer(!year, names_to = c("group",".value"), names_sep = "_")
 ```
 
@@ -1115,9 +1127,9 @@ df_f11 %>%
 -   Can you see the difference of the chart above?
 
 ```{r}
-df_f11 %>% 
-  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
-  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") %>%
+df_f11 |> 
+  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) |>
+  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") |>
   ggplot() +
   geom_smooth(aes(x = year, y = top1, color = group), 
               formula = y~x, method = "loess", span = 0.5, se = FALSE) +
@@ -1135,10 +1147,10 @@ df_f11 %>%
 Use `pivot_longer` the second time.
 
 ```{r}
-df_f11 %>% 
-  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
-  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") %>%
-  pivot_longer(3:4, names_to = "type", values_to = "value") %>%
+df_f11 |> 
+  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) |>
+  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") |>
+  pivot_longer(3:4, names_to = "type", values_to = "value") |>
   ggplot() +
   geom_smooth(aes(x = year, y = value, color = group, linetype = type), 
               formula = y~x, method = "loess", span = 0.5, se = FALSE) +
@@ -1154,10 +1166,10 @@ df_f11 %>%
 Change the order of linetypes manually.
 
 ```{r}
-df_f11 %>% 
-  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
-  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") %>%
-  pivot_longer(3:4, names_to = "type", values_to = "value") %>%
+df_f11 |> 
+  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) |>
+  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") |>
+  pivot_longer(3:4, names_to = "type", values_to = "value") |>
   ggplot() +
   geom_smooth(aes(x = year, y = value, color = group, linetype = type), 
               formula = y~x, method = "loess",
@@ -1178,9 +1190,9 @@ df_f12
 ```
 
 ```{r}
-df_f12 %>% 
-  select(year = "Data needs to be updated", value = ...2) %>%
-  filter(!is.na(year)) %>%
+df_f12 |> 
+  select(year = "Data needs to be updated", value = ...2) |>
+  filter(!is.na(year)) |>
   ggplot(aes(x = year, y = value)) +
   geom_col(width = 0.5, fill = scales::hue_pal()(2)[2]) +
   geom_hline(yintercept = 0.5, linetype = 2, colour = scales::hue_pal()(2)[1]) +
@@ -1193,15 +1205,15 @@ df_f12 %>%
 
 **Interpretation**: The share of female incomes in global labour incomes was 31% in 1990 and nears 35% in 2015-2020. Today, males make up 65% of total labor incomes. Sources and series: wir2022.wid.world/methodology and Neef and Robilliard (2021).
 
-#### Explanation
+#### 説明
 
 ##### Step 1.
 
 Change the column names and delete the rows with NAs.
 
 ```{r}
-df_f12 %>% 
-  select(year = "Data needs to be updated", value = ...2) %>%
+df_f12 |> 
+  select(year = "Data needs to be updated", value = ...2) |>
   filter(!is.na(year))
 ```
 
@@ -1210,9 +1222,9 @@ df_f12 %>%
 Add `geom_col` and `geom_hline` with colors `scales::hue_pal()(2)[2]` and `scales::hue_pal()(2)[1]`.
 
 ```{r}
-df_f12 %>% 
-  select(year = "Data needs to be updated", value = ...2) %>%
-  filter(!is.na(year)) %>%
+df_f12 |> 
+  select(year = "Data needs to be updated", value = ...2) |>
+  filter(!is.na(year)) |>
   ggplot(aes(x = year, y = value)) +
   geom_col(width = 0.5, fill = scales::hue_pal()(2)[2]) +
   geom_hline(yintercept = 0.5, linetype = 2, colour = scales::hue_pal()(2)[1]) +
@@ -1233,7 +1245,7 @@ df_f13
 ```
 
 ```{r}
-df_f13 %>% pivot_longer(2:9, names_to = "region", values_to = "value") %>%
+df_f13 |> pivot_longer(2:9, names_to = "region", values_to = "value") |>
   ggplot(aes(x = region, y = value, fill = ...1)) +
   geom_col(position = "dodge") + 
   geom_hline(yintercept = 0.5, linetype = 2, colour = "red") +
@@ -1246,7 +1258,7 @@ df_f13 %>% pivot_longer(2:9, names_to = "region", values_to = "value") %>%
 
 **Interpretation**: The female labour income share rose from 34% to 38% in North America between 1990 and 2020. Sources and series: wir2022.wid.world/methodology and Neef and Robilliard (2021).
 
-#### Explanation
+#### 説明
 
 Not so difficult.
 
@@ -1262,7 +1274,7 @@ df_f14
 -   `\n` for line break in the title.
 
 ```{r}
-df_f14 %>% 
+df_f14 |> 
   ggplot(aes(x = Group, y = Share)) +
   geom_col(width = 0.5, fill = scales::hue_pal()(1)[1]) + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -1272,7 +1284,7 @@ df_f14 %>%
 
 **Interpretation**: Personal carbon footprints include emissions from domestic consumption, public and private investments as well as imports and exports of carbon embedded in goods and services traded with the rest of the world. Modeled estimates based on the systematic combination of tax data, household surveys and input-output tables. Emissions split equally within households. Sources and series: wir2022.wid.world/methodology and Chancel (2021).
 
-#### Explanation
+#### 説明
 
 Not so difficult. You can assign color name. See [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/){.uri}.
 
@@ -1284,8 +1296,8 @@ df_f15
 ```
 
 ```{r}
-df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
-  select(region, group, tcap) %>%
+df_f15 |> mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) |>
+  select(region, group, tcap) |>
   ggplot(aes(x = region, y = tcap, fill = group)) +
   geom_col(position = "dodge") + 
   scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
@@ -1295,7 +1307,7 @@ df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
 
 **Interpretation**: Personal carbon footprints include emissions from domestic consumption, public and private investments as well as imports and exports of carbon embedded in goods and services traded with the rest of the world. Modeled estimates based on the systematic combination of tax data, household surveys and input-output tables. Emissions split equally within households. Sources and series: wir2022.wid.world/methodology and Chancel (2021).
 
-#### Explanation
+#### 説明
 
 ##### Step 1.
 
@@ -1311,11 +1323,11 @@ region_test
 Add the names of the region in the last column by `mutate` and choose columns by `select`.
 
 ```{r}
-df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3))
+df_f15 |> mutate(region = rep(regionWID[!is.na(regionWID)], each = 3))
 ```
 
 ```{r}
-df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
+df_f15 |> mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) |>
   select(region, group, tcap)
 ```
 
@@ -1324,8 +1336,8 @@ df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
 Now it is not difficult to draw a chart.
 
 ```{r}
-df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
-  select(region, group, tcap) %>%
+df_f15 |> mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) |>
+  select(region, group, tcap) |>
   ggplot(aes(x = region, y = tcap, fill = group)) +
   geom_col(position = "dodge") + 
   scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
@@ -1396,7 +1408,7 @@ wir_F1.0
 6.  Select the range by slice or use range option.
 
 ```{r eval = FALSE}
-wir_F1.0 <- wir_F1.0 %>% slice(1:2)
+wir_F1.0 <- wir_F1.0 |> slice(1:2)
 wir_F1.0
 ```
 
@@ -1464,16 +1476,16 @@ data <- download_wid(
     indicators = "anninc", # Average net national income
     areas = c("JP", "FR", "US", "DE", "GB"),
     ages = 992 # Adults
-) %>% rename(value_lcu = value)
+) |> rename(value_lcu = value)
 # Purchasing power parities with US dollar
 ppp <- download_wid(
     indicators = "xlcusp", # US PPP
     areas = c("JP", "FR", "US", "DE", "GB"), # France, China and United States
     year = 2016 # Reference year only
-) %>% rename(ppp = value) %>% select(-year, -percentile)
+) |> rename(ppp = value) |> select(-year, -percentile)
 # Convert from local currency to PPP US dollar
-data <- merge(data, ppp, by = "country") %>%
-    mutate(value_ppp = value_lcu/ppp) %>%
+data <- merge(data, ppp, by = "country") |>
+    mutate(value_ppp = value_lcu/ppp) |>
     filter(year %in% 1950:2021)
 ggplot(data) +
     geom_line(aes(x = year, y = value_ppp, color = country, linetype=country)) +
@@ -1529,17 +1541,17 @@ wwealp <-read_csv("./data/wwealp.csv")
 ```
 
 ```{r}
-public <- wwealg %>% select(country, year, public = value)
+public <- wwealg |> select(country, year, public = value)
 public
 ```
 
 ```{r}
-private <- wwealp %>% select(country, year, private = value)
+private <- wwealp |> select(country, year, private = value)
 private
 ```
 
 ```{r}
-public_vs_private <- public %>% left_join(private)
+public_vs_private <- public |> left_join(private)
 public_vs_private
 ```
 
@@ -1550,7 +1562,7 @@ wdi_cache <- read_rds("./data/wdi_cache.RData")
 ```
 
 ```{r}
-df_pub_priv <- public_vs_private %>% pivot_longer(cols = c(3,4), names_to = "category", values_to = "value") %>% left_join(wdi_cache$country, by = c("country"="iso2c")) %>%
+df_pub_priv <- public_vs_private |> pivot_longer(cols = c(3,4), names_to = "category", values_to = "value") |> left_join(wdi_cache$country, by = c("country"="iso2c")) |>
   select(country = country.y, iso2c = country, year, category, value, region, income, lending)
 df_pub_priv
 ```
@@ -1560,8 +1572,8 @@ unique(df_pub_priv$country)
 ```
 
 ```{r}
-df_pub_priv %>% 
-  filter(country %in% c("Japan", "Norway", "Sweden", "Denmark", "Finland"), year %in% 1970:2020) %>%
+df_pub_priv |> 
+  filter(country %in% c("Japan", "Norway", "Sweden", "Denmark", "Finland"), year %in% 1970:2020) |>
   ggplot(aes(year, value, color = country, linetype = category)) + geom_line()
 ```
 
