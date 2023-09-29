@@ -506,15 +506,16 @@ human-rights--modified-from-readme
 internet---modified-from-vignette
 democracy---modified-from-vignette
 wid
-wir2022
-executive-summary
-setup-1
-data-and-charts
+wid-と-wir
+sec-wir2022
+wir2022概要
+準備setup-1
 f1-global-income-and-wealth-inequality-2021
 explanation
 step-1.
 step-2.
 step-3.
+step-4.
 step-5.
 step-6.
 step-7.
@@ -528,7 +529,7 @@ explanation-2
 step-1.-2
 step-2.-2
 step-3.-2
-step-4.
+step-4.-1
 step-5.-1
 f4-the-extreme-concentration-of-capital-wealth-inequality-across-the-world-2021
 explanation-3
@@ -550,7 +551,7 @@ explanation-7
 step-1.-6
 step-2.-6
 step-3.-4
-step-4.-1
+step-4.-2
 step-5.-2
 step-6.-1
 f9-average-annual-wealth-growth-rate-1995-2021
@@ -558,7 +559,7 @@ explanation-8
 step-1.-7
 step-2.-7
 step-3.-5
-step-4.-2
+step-4.-3
 f10-the-share-of-wealth-owned-by-the-global-0.1-and-billionaires-2021
 explanation-9
 step-1.-8
@@ -569,6 +570,7 @@ explanation-10
 step-1.-9
 step-2.-9
 step-3.-7
+step-4.-4
 f12-female-share-in-global-labor-incomes-1990-2020
 explanation-11
 step-1.-10
