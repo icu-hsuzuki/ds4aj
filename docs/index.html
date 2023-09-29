@@ -4,20 +4,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>データサイエンスをはじめましょう | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>みんなのデータサイエンス | みんなのデータサイエンス - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hiroshi Suzuki）">
 <meta name="description" content="&lt;p&gt;This is a lecture note using the bookdown package to write a book in Japanese.
 The HTML output format for this example is bookdown::bs4_book,
 set in the _output.yml file.&lt;/p&gt;">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="データサイエンスをはじめましょう | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="みんなのデータサイエンス | みんなのデータサイエンス - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/">
 <meta property="og:description" content="&lt;p&gt;This is a lecture note using the bookdown package to write a book in Japanese.
 The HTML output format for this example is bookdown::bs4_book,
 set in the _output.yml file.&lt;/p&gt;">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="データサイエンスをはじめましょう | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:title" content="みんなのデータサイエンス | みんなのデータサイエンス - Data Science for All -">
 <meta name="twitter:description" content="&lt;p&gt;This is a lecture note using the bookdown package to write a book in Japanese.
 The HTML output format for this example is bookdown::bs4_book,
 set in the _output.yml file.&lt;/p&gt;">
@@ -25,7 +25,11 @@ set in the _output.yml file.&lt;/p&gt;">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.29/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -61,7 +65,7 @@ set in the _output.yml file.&lt;/p&gt;">
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+        <a href="index.html" title="">みんなのデータサイエンス<br>
 - Data Science for All -</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -74,7 +78,7 @@ set in the _output.yml file.&lt;/p&gt;">
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="active" href="index.html">データサイエンスをはじめましょう</a></li>
+<li><a class="active" href="index.html">みんなのデータサイエンス</a></li>
 <li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
 <li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
 <li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
@@ -107,16 +111,17 @@ set in the _output.yml file.&lt;/p&gt;">
 <li><a class="" href="un.html"><span class="header-section-number">27</span> UN Data（国際連合データ）</a></li>
 <li><a class="" href="owid.html"><span class="header-section-number">28</span> Our World in Data</a></li>
 <li><a class="" href="wid.html"><span class="header-section-number">29</span> 世界不平等データベース</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">30</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">31</span> その他のデータベース</a></li>
+<li><a class="" href="executive-summary.html"><span class="header-section-number">30</span> Executive Summary</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">31</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">32</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">32</span> 探索的データ解析</a></li>
-<li><a class="" href="visualize2.html"><span class="header-section-number">33</span> 視覚化の詳細　</a></li>
-<li><a class="" href="toolbox.html"><span class="header-section-number">34</span> 道具箱</a></li>
-<li><a class="" href="worldmap.html"><span class="header-section-number">35</span> 地図 Choropleth Maps</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">33</span> 探索的データ解析</a></li>
+<li><a class="" href="visualize2.html"><span class="header-section-number">34</span> 視覚化の詳細　</a></li>
+<li><a class="" href="toolbox.html"><span class="header-section-number">35</span> 道具箱</a></li>
+<li><a class="" href="worldmap.html"><span class="header-section-number">36</span> 地図 Choropleth Maps</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">36</span> Example 1</a></li>
-<li><a class="" href="references.html"><span class="header-section-number">37</span> 参考文献</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">37</span> Example 1</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">38</span> 参考文献</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -129,8 +134,8 @@ set in the _output.yml file.&lt;/p&gt;">
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="データサイエンスをはじめましょう" class="section level1 unnumbered">
-<h1>データサイエンスをはじめましょう<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%92%E3%81%AF%E3%81%98%E3%82%81%E3%81%BE%E3%81%97%E3%82%87%E3%81%86"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="みんなのデータサイエンス" class="section level1 unnumbered">
+<h1>みんなのデータサイエンス<a class="anchor" aria-label="anchor" href="#%E3%81%BF%E3%82%93%E3%81%AA%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9"><i class="fas fa-link"></i></a>
 </h1>
 <div id="data-science-for-all" class="section level2 unnumbered">
 <h2>Data Science for All<a class="anchor" aria-label="anchor" href="#data-science-for-all"><i class="fas fa-link"></i></a>
@@ -147,14 +152,14 @@ set in the _output.yml file.&lt;/p&gt;">
 <p>幸運にも、2019年9月の日本数学会教育委員会主催教育シンポジウムで、「文理共通して行う数理・データサイエンス教育」という題で、話す機会が与えられ、その後、あることが契機となり、2020年度から、毎年、冬学期（12月から2月）に、大学院一般向け（分野の指定なし）の授業、「研究者のためのデータ分析（Data Analysis for Researchers）」を担当しています。複数の教員で担当しますが、基本的な部分は、わたしが教え、応用について、他の先生がおしえています。受講生は20人程度で、殆どが、外国人。それも、多国籍で、多くても一国から三人程度。英語で教えています。</p>
 <p>この授業の関係で親しくなった経済学の先生に依頼されて、いくつかのレベルの経済学の授業で、２・３時限、世界銀行の世界開発指標などを使った分析の入門を、特別講師として教えさせていただきました。これらのコースは日本語で教えましたが、日本語で書かれた一般の学生向けのデータサイエンスの教科書、学習教材が不足していることも感じました。</p>
 <p>2023年3月に京都大学数理解析研究所で開かれた数学教育の会で、話す機会が与えられ、大学などで全学生向けに提供する「数理・データサイエンス・AI」について講演し、生成系AIの進化も踏まえて、どのようなことを学ぶ機会とすれば良いかについても、考えました。</p>
-<p>「データサイエンスをはじめましょう」も、このような背景の下で書かれたものです。</p>
+<p>「みんなのデータサイエンス」も、このような背景の下で書かれたものです。</p>
 <p>コースで利用したものや、講演記録ににご興味のある方は、このページの下にもリンクがある、著者の<a href="https://icu-hsuzuki.github.io/science/computer/learning/ds.html">ホームページ</a>を参照してください。</p>
 </div>
 <div id="コンピュータ言語について" class="section level2 unnumbered">
 <h2>コンピュータ言語について<a class="anchor" aria-label="anchor" href="#%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E8%A8%80%E8%AA%9E%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
 </h2>
 <p>データサイエンスには、コンピュータを使います。コンピュータに指示をして、データを使いやすく変形したり、計算をしてもらったり、グラフを書いてもらったりします。そのためにコンピュータとのやりとりをする言語が必要です。さまざまな言語（プログラミング言語と呼びます）が、使われますが、データサイエンスで、一番、使われているのは、Python と、R です。</p>
-<p>「データサイエンスをはじめましょう」では、統計解析のために開発された R を使います。いずれは、python についても触れたいと思いますが、プログラミングの経験がない方も含めて、最初にデータサイエンスを学ぶには、R は最適だと考えています。また現在は、R Studio IDE（integrated development environment, 統合開発環境） で、R を簡単に使うことができます。さらに、簡単なプログラムであれば、Posit Cloud で試したり、共有することも可能です。また、再現性（Reproducibility）や、なにを実行しているのかの説明を同時に記述すること（Literate Programming）は、非常に重要ですが、その記述も、R Markdown や、Quarto によって、可能になっています。これが、Excel や、Google Spread Sheet ではなく、R を推奨する理由でもあります。 この文書も、R Markdown の一つの形式の、bookdown を利用しています。最後に、Bookdown に関連して、膨大な数の、参考書も、無償で提供されており、オンラインで読むことができることも、R をお薦めする理由です。</p>
+<p>「みんなのデータサイエンス」では、統計解析のために開発された R を使います。いずれは、python についても触れたいと思いますが、プログラミングの経験がない方も含めて、最初にデータサイエンスを学ぶには、R は最適だと考えています。また現在は、R Studio IDE（integrated development environment, 統合開発環境） で、R を簡単に使うことができます。さらに、簡単なプログラムであれば、Posit Cloud で試したり、共有することも可能です。また、再現性（Reproducibility）や、なにを実行しているのかの説明を同時に記述すること（Literate Programming）は、非常に重要ですが、その記述も、R Markdown や、Quarto によって、可能になっています。これが、Excel や、Google Spread Sheet ではなく、R を推奨する理由でもあります。 この文書も、R Markdown の一つの形式の、bookdown を利用しています。最後に、Bookdown に関連して、膨大な数の、参考書も、無償で提供されており、オンラインで読むことができることも、R をお薦めする理由です。</p>
 <p>ただし、日本語の学習教材は、まだ十分とは言えない状況です。この文書を書き始めたのも、すこしでも、お役に立つことができればとの、気持ちが背景にあります。</p>
 <p>もう一つ付け加えると、高校の教科書でも、一部、Python のスクリプトが使われ、大学で、全学生向けに、データサイエンスのコースを提供するときにも、Excel を使うか、Python を使うかが R と比較するとより一般的のように見えます。しかし、それは、教える側の都合が影響しているのではないでしょうか。急いでコースを提供するため、身近な Excel から始めることにしたり、データサイエンスなら、情報科学の教員がコースをデザインせざるを得ないことから、汎用性が高く、かつデータサイエンスでも、中心的な役割を果たす Python を選択すると言ったことです。</p>
 <p>しかし、すべての人が、データサイエンスを学ぶ必要があるならば、文系の先生、そして、純粋数学を生業（なりわい）としてきたわたしのようなものも含めて、教えることに関わることは、とても大切だと思います。教員も学ぶ必要があるからです。R は、社会科学系の分野で、最近特に使われています。分野ごとには、SPSS や、Stata や、MATLAB などが使われいるかもしれませんが、これらは、有償で、大学では、使えたとしても、一般の学生が卒業後も、これらのソフトを使えることは稀です。また、研究においても、最近は、さまざまな分野で、R がより一般的になっているとも聞きます。</p>
@@ -193,7 +198,7 @@ set in the _output.yml file.&lt;/p&gt;">
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%92%E3%81%AF%E3%81%98%E3%82%81%E3%81%BE%E3%81%97%E3%82%87%E3%81%86">データサイエンスをはじめましょう</a></li>
+<li><a class="nav-link" href="#%E3%81%BF%E3%82%93%E3%81%AA%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9">みんなのデータサイエンス</a></li>
 <li><a class="nav-link" href="#data-science-for-all">Data Science for All</a></li>
 <li><a class="nav-link" href="#%E8%91%97%E8%80%85%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">著者について</a></li>
 <li><a class="nav-link" href="#%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E8%A8%80%E8%AA%9E%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">コンピュータ言語について</a></li>
@@ -217,7 +222,7 @@ set in the _output.yml file.&lt;/p&gt;">
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう<br>
+    <p>"<strong>みんなのデータサイエンス<br>
 - Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-29.</p>
   </div>
 

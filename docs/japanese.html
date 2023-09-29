@@ -4,22 +4,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>A 日本語の扱いについて | データサイエンスをはじめましょう - Data Science for All -</title>
+<title>A 日本語の扱いについて | みんなのデータサイエンス - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hiroshi Suzuki）">
 <meta name="description" content="A.1 日本語・中国語・韓国語 文字化けが、起こることが多く、対応が、一定せず、特に、図の表示において、Windows や、macOS や、Linux などの、OS...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="A 日本語の扱いについて | データサイエンスをはじめましょう - Data Science for All -">
+<meta property="og:title" content="A 日本語の扱いについて | みんなのデータサイエンス - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/japanese.html">
 <meta property="og:description" content="A.1 日本語・中国語・韓国語 文字化けが、起こることが多く、対応が、一定せず、特に、図の表示において、Windows や、macOS や、Linux などの、OS...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A 日本語の扱いについて | データサイエンスをはじめましょう - Data Science for All -">
+<meta name="twitter:title" content="A 日本語の扱いについて | みんなのデータサイエンス - Data Science for All -">
 <meta name="twitter:description" content="A.1 日本語・中国語・韓国語 文字化けが、起こることが多く、対応が、一定せず、特に、図の表示において、Windows や、macOS や、Linux などの、OS...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.29/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -55,7 +59,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">データサイエンスをはじめましょう<br>
+        <a href="index.html" title="">みんなのデータサイエンス<br>
 - Data Science for All -</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -68,7 +72,7 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">データサイエンスをはじめましょう</a></li>
+<li><a class="" href="index.html">みんなのデータサイエンス</a></li>
 <li><a class="" href="introduction.html"><span class="header-section-number">1</span> はじめに</a></li>
 <li><a class="" href="what2learn.html"><span class="header-section-number">2</span> 学ぶ内容　</a></li>
 <li><a class="" href="first-example.html"><span class="header-section-number">3</span> はじめてのデータサイエンス</a></li>
@@ -101,16 +105,17 @@
 <li><a class="" href="un.html"><span class="header-section-number">27</span> UN Data（国際連合データ）</a></li>
 <li><a class="" href="owid.html"><span class="header-section-number">28</span> Our World in Data</a></li>
 <li><a class="" href="wid.html"><span class="header-section-number">29</span> 世界不平等データベース</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">30</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">31</span> その他のデータベース</a></li>
+<li><a class="" href="executive-summary.html"><span class="header-section-number">30</span> Executive Summary</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">31</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">32</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">32</span> 探索的データ解析</a></li>
-<li><a class="" href="visualize2.html"><span class="header-section-number">33</span> 視覚化の詳細　</a></li>
-<li><a class="" href="toolbox.html"><span class="header-section-number">34</span> 道具箱</a></li>
-<li><a class="" href="worldmap.html"><span class="header-section-number">35</span> 地図 Choropleth Maps</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">33</span> 探索的データ解析</a></li>
+<li><a class="" href="visualize2.html"><span class="header-section-number">34</span> 視覚化の詳細　</a></li>
+<li><a class="" href="toolbox.html"><span class="header-section-number">35</span> 道具箱</a></li>
+<li><a class="" href="worldmap.html"><span class="header-section-number">36</span> 地図 Choropleth Maps</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">36</span> Example 1</a></li>
-<li><a class="" href="references.html"><span class="header-section-number">37</span> 参考文献</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">37</span> Example 1</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">38</span> 参考文献</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="active" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -123,42 +128,42 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="japanese" class="section level1" number="38">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="japanese" class="section level1" number="39">
 <h1>
 <span class="header-section-number">A</span> 日本語の扱いについて<a class="anchor" aria-label="anchor" href="#japanese"><i class="fas fa-link"></i></a>
 </h1>
-<div id="日本語中国語韓国語" class="section level2" number="38.1">
+<div id="日本語中国語韓国語" class="section level2" number="39.1">
 <h2>
 <span class="header-section-number">A.1</span> 日本語・中国語・韓国語<a class="anchor" aria-label="anchor" href="#%E6%97%A5%E6%9C%AC%E8%AA%9E%E4%B8%AD%E5%9B%BD%E8%AA%9E%E9%9F%93%E5%9B%BD%E8%AA%9E"><i class="fas fa-link"></i></a>
 </h2>
 <p>文字化けが、起こることが多く、対応が、一定せず、特に、図の表示において、Windows や、macOS や、Linux などの、OS ごとに、フォントが違ったり、それを、図のタイトルなどに、使ったりが、難しかったのですが、どうやら、現在は、どの場合も、次の設定で、解決しているようです。下の例を確認してください。特に、フォントについては、好みも関係しますから、難しいですが、ここでは、どのプラットフォーム（OS）でも、共通に扱えることを中心に書きます。</p>
-<div class="sourceCode" id="cb672"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb732"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># showtext を、インストールしていない場合は、一回だけ、右上の三角をクリックして実行</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'showtext'</span><span class="op">)</span></span></code></pre></div>
-<div id="パッケージをロード" class="section level3" number="38.1.1">
+<div id="パッケージをロード" class="section level3" number="39.1.1">
 <h3>
 <span class="header-section-number">A.1.1</span> パッケージをロード<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E3%83%AD%E3%83%BC%E3%83%89"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>library</code> によって、Package をロード（いつでも使えるように）します。</p>
-<div class="sourceCode" id="cb673"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb733"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="base-r-でタイトルに日本語" class="section level2" number="38.2">
+<div id="base-r-でタイトルに日本語" class="section level2" number="39.2">
 <h2>
 <span class="header-section-number">A.2</span> Base R でタイトルに日本語<a class="anchor" aria-label="anchor" href="#base-r-%E3%81%A7%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%81%AB%E6%97%A5%E6%9C%AC%E8%AA%9E"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb674"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb734"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html">plot</a></span><span class="op">(</span><span class="va">cars</span>, main<span class="op">=</span><span class="st">"散布図"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="81-japanese_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
 </div>
-<div id="列名やデータに日本語" class="section level2" number="38.3">
+<div id="列名やデータに日本語" class="section level2" number="39.3">
 <h2>
 <span class="header-section-number">A.3</span> 列名や、データに日本語<a class="anchor" aria-label="anchor" href="#%E5%88%97%E5%90%8D%E3%82%84%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AB%E6%97%A5%E6%9C%AC%E8%AA%9E"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb675"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb735"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_iris</span> <span class="op">&lt;-</span> <span class="va">iris</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"萼長"</span>,<span class="st">"萼幅"</span>,<span class="st">"葉長"</span>,<span class="st">"葉幅"</span>,<span class="st">"Species"</span> <span class="op">)</span></span>
 <span><span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"virginica"</span><span class="op">)</span>, </span>
@@ -171,11 +176,11 @@
   </script>
 </div>
 </div>
-<div id="kable-で表示" class="section level2" number="38.4">
+<div id="kable-で表示" class="section level2" number="39.4">
 <h2>
 <span class="header-section-number">A.4</span> <code>kable</code> で表示<a class="anchor" aria-label="anchor" href="#kable-%E3%81%A7%E8%A1%A8%E7%A4%BA"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb676"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb736"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">df_iris</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -231,16 +236,16 @@
 </tbody>
 </table></div>
 </div>
-<div id="ggplot-でグラフを作成" class="section level2" number="38.5">
+<div id="ggplot-でグラフを作成" class="section level2" number="39.5">
 <h2>
 <span class="header-section-number">A.5</span> <code>ggplot</code> でグラフを作成<a class="anchor" aria-label="anchor" href="#ggplot-%E3%81%A7%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E6%88%90"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb677"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb737"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df_iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">`葉長`</span>, y <span class="op">=</span> <span class="va">`葉幅`</span>, col <span class="op">=</span> <span class="va">`種別`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"散布図"</span>, x <span class="op">=</span> <span class="st">"葉長"</span>, y <span class="op">=</span> <span class="st">"葉幅"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="81-japanese_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 </div>
-<div id="備考-6" class="section level2" number="38.6">
+<div id="備考-6" class="section level2" number="39.6">
 <h2>
 <span class="header-section-number">A.6</span> 備考：<a class="anchor" aria-label="anchor" href="#%E5%82%99%E8%80%83-6"><i class="fas fa-link"></i></a>
 </h2>
@@ -268,7 +273,7 @@
 </ul>
 <p>詳細は、これらのファイルに記載されていますから、参考にしてください。</p>
 </div>
-<div id="参考日本語の表示について" class="section level2" number="38.7">
+<div id="参考日本語の表示について" class="section level2" number="39.7">
 <h2>
 <span class="header-section-number">A.7</span> 参考：日本語の表示について<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%81%AE%E8%A1%A8%E7%A4%BA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fas fa-link"></i></a>
 </h2>
@@ -283,7 +288,7 @@
 <li>図の中のタイトルなどが、適切に表示されない</li>
 <li>R Markdown の出力において、適切に表示されない</li>
 </ol>
-<div id="データファイルの読み込み" class="section level3" number="38.7.1">
+<div id="データファイルの読み込み" class="section level3" number="39.7.1">
 <h3>
 <span class="header-section-number">A.7.1</span> データファイルの読み込み<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF"><i class="fas fa-link"></i></a>
 </h3>
@@ -299,7 +304,7 @@
 <li>read.csv() など、base R では、fileEncoding = ““, encoding =”unknown” がオプションに含まれていたので、指定して読み込むことが通常でした。</li>
 </ul>
 </div>
-<div id="図の中のテキスト" class="section level3" number="38.7.2">
+<div id="図の中のテキスト" class="section level3" number="39.7.2">
 <h3>
 <span class="header-section-number">A.7.2</span> 図の中のテキスト<a class="anchor" aria-label="anchor" href="#%E5%9B%B3%E3%81%AE%E4%B8%AD%E3%81%AE%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88"><i class="fas fa-link"></i></a>
 </h3>
@@ -313,7 +318,7 @@
 </li>
 </ul>
 </div>
-<div id="r-markdown-の出力" class="section level3" number="38.7.3">
+<div id="r-markdown-の出力" class="section level3" number="39.7.3">
 <h3>
 <span class="header-section-number">A.7.3</span> R Markdown の出力<a class="anchor" aria-label="anchor" href="#r-markdown-%E3%81%AE%E5%87%BA%E5%8A%9B"><i class="fas fa-link"></i></a>
 </h3>
@@ -326,18 +331,18 @@
   - \setCJKsansfont{ipaexg.ttf}
   - \setCJKmonofont{ipaexg.ttf}</code></pre>
 </div>
-<div id="bookdown" class="section level3" number="38.7.4">
+<div id="bookdown" class="section level3" number="39.7.4">
 <h3>
 <span class="header-section-number">A.7.4</span> <code>bookdown</code><a class="anchor" aria-label="anchor" href="#bookdown"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>bookdown</code> を使って、電子書籍を出版する場合には、<a href="https://bookdown.org/yihui/bookdown/"><code>bookdown</code> （リンク）</a> を参照してください。</p>
 <p>日本語におけるテンプレートは、<a href="https://github.com/icu-hsuzuki/bs4_book_template">こちら</a> にあります。まずは、ページの下にある、README を読んでください。</p>
 </div>
-<div id="参考としたもの" class="section level3" number="38.7.5">
+<div id="参考としたもの" class="section level3" number="39.7.5">
 <h3>
 <span class="header-section-number">A.7.5</span> 参考としたもの<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E3%81%A8%E3%81%97%E3%81%9F%E3%82%82%E3%81%AE"><i class="fas fa-link"></i></a>
 </h3>
-<div id="showtext-using-fonts-more-easily-in-r-graphs" class="section level4" number="38.7.5.1">
+<div id="showtext-using-fonts-more-easily-in-r-graphs" class="section level4" number="39.7.5.1">
 <h4>
 <span class="header-section-number">A.7.5.1</span> showtext: Using Fonts More Easily in R Graphs<a class="anchor" aria-label="anchor" href="#showtext-using-fonts-more-easily-in-r-graphs"><i class="fas fa-link"></i></a>
 </h4>
@@ -356,7 +361,7 @@
 </li>
 </ul>
 </div>
-<div id="sysfonts-loading-fonts-into-r" class="section level4" number="38.7.5.2">
+<div id="sysfonts-loading-fonts-into-r" class="section level4" number="39.7.5.2">
 <h4>
 <span class="header-section-number">A.7.5.2</span> sysfonts: Loading Fonts into R<a class="anchor" aria-label="anchor" href="#sysfonts-loading-fonts-into-r"><i class="fas fa-link"></i></a>
 </h4>
@@ -369,7 +374,7 @@
 </li>
 </ul>
 </div>
-<div id="foods4all-examples-of-graphs" class="section level4" number="38.7.5.3">
+<div id="foods4all-examples-of-graphs" class="section level4" number="39.7.5.3">
 <h4>
 <span class="header-section-number">A.7.5.3</span> foods4all: Examples of Graphs<a class="anchor" aria-label="anchor" href="#foods4all-examples-of-graphs"><i class="fas fa-link"></i></a>
 </h4>
@@ -386,7 +391,7 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="references.html"><span class="header-section-number">37</span> 参考文献</a></div>
+<div class="prev"><a href="references.html"><span class="header-section-number">38</span> 参考文献</a></div>
 <div class="next"><a href="tools.html"><span class="header-section-number">B</span> IT ツール</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
@@ -426,7 +431,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>データサイエンスをはじめましょう<br>
+    <p>"<strong>みんなのデータサイエンス<br>
 - Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-09-29.</p>
   </div>
 

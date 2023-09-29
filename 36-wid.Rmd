@@ -18,516 +18,765 @@ devtools::install_github("WIDworld/wid-r-tool")
 -   分析方法（Methodology）: <https://wir2022.wid.world/methodology/>
 -   データ（世界不平等データベース, WID）: <https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx>
 
+# Executive Summary
+
+## Setup
+
+First, create a new project using R Studio and create a `data` folder in it by running the following code. It is better to set `Lang = "en"` as you can find a resolution easily by posting the error message.
+
+```{r setup, eval=FALSE}
+Sys.setenv(LANG = "en")
+dir.create("./data")
+```
+
+
+* Data: https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx
+* Data are in Excel format and charts are also created in Excel.
+
 ```{r}
 library(tidyverse)
 library(readxl)
-```
-
-```{r summary-data, cash = TRUE, eval = FALSE}
-url_summary <- "https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx"
-download.file(url = url_summary, destfile = "./data/WIR2022s.xlsx", mode = "wb") 
+library(DT)
+library(maps)
 ```
 
 Excel ファイルは、CSV のようなテキストファイルではなく、デジタルファイル（binary file）ですから、ダウンロードするには `mode = "wb"` を追加する必要があります。
 
-```{r}
-excel_sheets("./data/WIR2022s.xlsx")
+```{r summary-data, cash = TRUE, eval = FALSE}
+url_summary <- "https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx"
+download.file(
+  url = url_summary, 
+  destfile = "./data/WIR2022TablesFigures-Summary.xlsx",
+  mode = "wb") 
 ```
 
-Excel ファイルに限らず、データを読み込んだときに、 `...1`, `...2`, `...3`, などが、列名に現れることがありますが、これは、元々のデータには、列名がないために、R が自動的につけた名前です。
+**Note:** 
+
+* `mode = "wb"` is for binary files. 
+* If you get an error, go to [Methodology page](https://wir2022.wid.world/methodology/) and download Datasets 1. Open the file and save it in the `data` folder in your Project folder.
+
+As Mac uses resource files, the following simple code works as well. 
+
+```
+download.file(url = url_summary, 
+destfile = "data/WIR2022TablesFigures-Summary.xlsx") 
+```
+
+```{r summary-data-sheet, cash = TRUE}
+summary_sheets <- excel_sheets("data/WIR2022TablesFigures-Summary.xlsx")
+summary_sheets
+```
+
+* You can check the sheet names if you open the Excel file. However, to import a sheet, it is convenient to have a list, as we can copy and paste the sheet name.
+* Note that some of the sheet names contain a period.
+* You can replace `sheet = "Index"` by `sheet = 1`. However, the sheet number stays the same if a sheet is deleted. So it is safer to use the sheet name.
+
+```{r}
+df_index <- read_excel("data/WIR2022TablesFigures-Summary.xlsx", sheet = "Index")
+df_index
+```
+* The list of the titles of the tables and the figures.
+
+## Data and Charts
+
+* Data are in "data-F1" to "data-F15".
 
 ### F1: Global income and wealth inequality, 2021
 
-```{r data-f1, cash = TRUE, message = FALSE}
-df_f1 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F1")
+```{r data-f1, cash = TRUE}
+df_f1 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F1")
+```
+
+* Since the first column does not have a column name, R assigns `...1` to its name, and returns a message: `New names:.`
+
+```{r}
 df_f1
 ```
 
-The table above is nothing terrible; however, if we have it in the following format, we can construct a chart applying the color aesthetic mapping to the group.
-
-```{r echo=FALSE}
-df_f1_rev <- df_f1 %>% select(cat = ...1, 2:4) %>%
-  pivot_longer(2:4, names_to = "group", values_to = "value")
-df_f1_rev
+```{r}
+df_f1 %>% select(cat = ...1, 2:4) %>%
+  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+  ggplot(aes(x = cat, y = value, fill = group)) +
+  geom_col(position = "dodge") + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + 
+  geom_text(aes(x = cat, y = value, group = group, label = scales::label_percent(accuracy=1)(value)), vjust = -0.08,
+            position = position_dodge(0.9)) + 
+  labs(title = "Figure 1. Global income and wealth inequality, 2021",
+       x = "", y = "Share of total income or wealth", fill = "")
 ```
 
+**Interpretation**: The global bottom 50% captures 8.5% of total income measured at Purchasing Power Parity (PPP). The global bottom 50% owns 2% of wealth (at Purchasing Power Parity). The global top 10% owns 76% of total Household wealth and captures 52% of total income in 2021. Note that top wealth holders are not necessarily top income holders. Incomes are measured after the operation of pension and unemployment systems and before taxes and transfers.   
+**Sources and series**: wir2022.wid.world/methodology.
+
+#### Explanation
+##### Step 1.
+
+* The chart does not use Top 1% data.
+* There are two groups, Income and Wealth. We need to tidy the data using `pivot_longer`.
+* The basic format of `pivot_longer` is:
+  - `pivot_longer(cols, names_to = "group", values_to = "value")`, and `cols` is the columns to pivot into a longer format. Hence, in this case, `cols = 2:4` or `cols = -1`, i.e., except the first column.
+
 ```{r}
-df_f1_rev %>%
+df_f1 %>% select(cat = ...1, 2:4) %>%
+  pivot_longer(2:4, names_to = "group", values_to = "value")
+```
+
+##### Step 2.
+
+* Now we use `ggplot2` to draw a chart.
+
+```{r}
+df_f1 %>% select(cat = ...1, 2:4) %>%
+  pivot_longer(2:4, names_to = "level", values_to = "value") %>%
+  ggplot(aes(x = cat, y = value, fill = level)) +
+  geom_col()
+```
+
+##### Step 3.
+
+* In order to place columns side by side, we use the option `position = dodge`.
+
+```{r}
+df_f1 %>% select(cat = ...1, 2:4) %>%
+  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
   ggplot(aes(x = cat, y = value, fill = group)) +
   geom_col(position = "dodge")
 ```
+##### Step 4.
 
-We apply the `pivot_longer` function of the `tidyr` package, to transform the first table into the second.
-
-```{r}
-df_f1
-```
+* We use the percent scale on y-axis.
+* In this case, `scale_y_continuous(labels = c("0%", "20%", "40%", "60%", "80%"))` does the same.
 
 ```{r}
-(df_f1_rev <- df_f1 %>% pivot_longer(-1, names_to = "group", values_to = "value"))
+df_f1 %>% select(cat = ...1, 2:4) %>%
+  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+  ggplot(aes(x = cat, y = value, fill = group)) +
+  geom_col(position = "dodge") + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
-In the example above, `-1`, i.e., `cols = -1` stands for all colums except the first.
+##### Step 5.
 
-Now, we can use the `fill` aesthetic in addition to `position = "dodge"`. The default position is "stack".
+* Add the title and the label of the y-axis, and erase the label of the x-axis and the legend.
 
 ```{r}
-df_f1_rev %>% 
-  ggplot(aes(x = ...1, y = value, fill = group)) +
-  geom_col(position = "dodge")
-```
-
-Let us add the value as a label, change the y-axis to percent, and add the title. The interpretation and source are from the original
-
-```{r eval=FALSE}
-df_f1_rev %>% filter(group != "Top 1%") %>%
-  ggplot() +
-  geom_col(aes(x = ...1, y = value, fill = group), position = "dodge") +
-  geom_text(aes(x = ...1, y = value, group = group, 
-            label = scales::label_percent(accuracy=1)(value)), 
-            position = position_dodge(width = 0.9)) + 
+df_f1 %>% select(cat = ...1, 2:4) %>%
+  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+  ggplot(aes(x = cat, y = value, fill = group)) +
+  geom_col(position = "dodge") + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
   labs(title = "Figure 1. Global income and wealth inequality, 2021",
        x = "", y = "Share of total income or wealth", fill = "")
 ```
 
-```{r echo=FALSE}
-df_f1_rev %>% filter(group != "Top 1%") %>%
-  ggplot() +
-  geom_col(aes(x = ...1, y = value, fill = group), position = "dodge") +
-  geom_text(aes(x = ...1, y = value, group = group, 
-            label = scales::label_percent(accuracy=1)(value)), 
-            position = position_dodge(width = 0.9)) + 
+##### Step 6.
+
+* Add the value in percent as the text to top of each column.
+
+```{r}
+df_f1 %>% select(cat = ...1, 2:4) %>%
+  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+  ggplot(aes(x = cat, y = value, fill = group)) +
+  geom_col(position = "dodge") + 
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  geom_text(aes(x = cat, y = value, group = group, label = scales::label_percent(accuracy=1)(value)), 
+            position = position_dodge(0.9)) + 
   labs(title = "Figure 1. Global income and wealth inequality, 2021",
        x = "", y = "Share of total income or wealth", fill = "")
 ```
 
-**Interpretation**: The global bottom 50% captures 8.5% of total income measured at Purchasing Power Parity (PPP). The global bottom 50% owns 2% of wealth (at Purchasing Power Parity). The global top 10% owns 76% of total Household wealth and captures 52% of total income in 2021. Note that top wealth holders are not necessarily top income holders. Incomes are measured after the operation of pension and unemployment systems and before taxes and transfers.\
-**Sources and series**: wir2022.wid.world/methodology.
+##### Step 7.
 
-The next F2 is similar to F1.
-
-## F2: The poorest half lags behind: Bottom 50%, middle 40% and top 10% income shares across the world in 2021
+* If we want to place the labels at the top of the columns, use `vjust`.
 
 ```{r}
-df_f2 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F2")
+df_f1 %>% select(cat = ...1, 2:4) %>%
+  pivot_longer(2:4, names_to = "group", values_to = "value") %>%
+  ggplot(aes(x = cat, y = value, fill = group)) +
+  geom_col(position = "dodge") + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  geom_text(aes(x = cat, y = value, group = group, label = scales::label_percent(accuracy=1)(value)), vjust = 0,
+            position = position_dodge(width = 0.9)) + 
+  labs(title = "Figure 1. Global income and wealth inequality, 2021",
+       x = "", y = "Share of total income or wealth", fill = "")
+```
+
+### F2: The poorest half lags behind: Bottom 50%, middle 40% and top 10% income shares across the world in 2021
+
+```{r data-f2, cash = TRUE}
+df_f2 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F2")
 df_f2
 ```
 
 ```{r}
-df_f2 %>% pivot_longer(cols = 3:5, names_to = "group", values_to = "value")
+df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+  ggplot(aes(x = iso, y = value, fill = level)) +
+  geom_col(position = "dodge") + 
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 2. The poorest half lags behind Bottom 50%, middle 40% \nand top 10% income shares across the world in 2021",
+       x = "", y = "Share of national income (%)", fill = "")
+```
+**Interpretation**: In Latin America, the top 10% captures 55% of national income, compared to 36% in Europe. Income is measured after pension and unemployment contributions and benefits paid and received by individuals but before income taxes and other transfers.   
+**Sources and series**: www.wir2022.wid.world/methodology.
+
+#### Explanation
+##### Step 1.
+
+* Similar to F1.
+
+```{r}
+df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value")
+```
+
+##### Step 2.
+
+*Since the title is very long, insert `\n` for a line break. If `\n and`, then it creates a space before `and`.
+
+```{r}
+df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+  ggplot(aes(x = iso, y = value, fill = level)) +
+  geom_col(position = "dodge") + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 2. The poorest half lags behind Bottom 50%, middle 40% \nand top 10% income shares across the world in 2021",
+       x = "", y = "Share of national income (%)", fill = "")
+```
+
+##### Step 3.
+
+* The labels of the x-axis are overlapping. One way is to add `angle`. See below. 
+* Another way is to use 
+`scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8))` to wrap. Since label varies we use a function with a variable x. See above.
+
+```{r}
+df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+  ggplot(aes(x = iso, y = value, fill = level)) +
+  geom_col(position = "dodge") + 
+  theme(axis.text.x = element_text(angle = 30, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 2. The poorest half lags behind Bottom 50%, middle 40% \nand top 10% income shares across the world in 2021",
+       x = "", y = "Share of national income (%)", fill = "")
 ```
 
 ```{r}
-df_f2 %>% pivot_longer(cols = 3:5, names_to = "group", values_to = "value") %>%
-  ggplot(aes(x = iso, y = value, fill = group)) +
-  geom_col(position = "dodge")
+df_f2 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+  ggplot(aes(x = iso, y = value, fill = level)) +
+  geom_col(position = "dodge") + 
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 2. The poorest half lags behind Bottom 50%, middle 40% \nand top 10% income shares across the world in 2021",
+       x = "", y = "Share of national income (%)", fill = "")
 ```
 
-## Pivot data from long to wide:
+### F3: Top 10/Bottom 50 income gaps across the world, 2021
 
-[`pivot_wider()`](https://tidyr.tidyverse.org/reference/pivot_wider.html) In Console: vignette("pivot")
 
-```         
-pivot_wider(data, 
-  names_from = <name of the column (or columns) to get the name of the output column>,
-  values_from = <name of the column to get the value of the output>) 
-```
-
-```{r echo = FALSE}
-df_f2 %>% pivot_longer(cols = 3:5, names_to = "group", values_to = "value")
-```
-
-```         
-pivot_wider(data, names_from = group, values_from = value) 
-```
-
-## Practice: F4 and F13
-
-F4 and F13 are similar. Please use `pivot_longer` to tidy the data and create charts.
-
--   **References**: <https://ds-sl.github.io/data-analysis/wir2022.nb.html>
-
-### Done Last Week
-
--   F12: Female share in global labor incomes, 1990-2020
--   F14: Global carbon inequality, 2019. Group contribution to world emissions (%)
-
-The next is an example of the world map.
-
-## F3: Top 10/Bottom 50 income gaps across the world, 2021
-
-```{r}
-df_f3 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F3")
+```{r data-f3, cash = TRUE}
+df_f3 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F3")
 df_f3
 ```
 
-## F3: Top 10/Bottom 50 income gaps across the world, 2021 - Original
-
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("./data/F3.png")
-```
-
--   To 10 / Bottom 50 ratio has 5 classes: 5-12, 12-13, 13-16, 16-19, 19-140
-
--   Let us look at the range and distribution of the values in `T10B50`.
 
 ```{r}
-df_f3$T10B50 %>% summary()
-```
+map0<-map_data("world")
+map0$region[map0$region=="Democratic Republic of the Congo"]<-"DR Congo"
+map0$region[map0$region=="Republic of Congo"]<-"Congo"
+map0$region[map0$region=="Ivory Coast"]<-"Cote dIvoire"
+map0$region[map0$region=="Vietnam"]<-"Viet Nam"
+map0$region[map0$region=="Russia"]<-"Russian Federation"
+map0$region[map0$region=="South Korea"]<-"Korea"
+map0$region[map0$region=="UK"]<-"United Kingdom"
+map0$region[map0$region=="Brunei"]<-"Brunei Darussalam"
+map0$region[map0$region=="Laos"]<-"Lao PDR"
+map0$region[map0$region=="Cote dIvoire"]<-"Cote d'Ivoire"
+map0$region[map0$region=="Cape Verde"]<- "Cabo Verde"
+map0$region[map0$region=="Syria"]<- "Syrian Arab Republic"
+map0$region[map0$region=="Trinidad"]<- "Trinidad and Tobago"
+map0$region[map0$region=="Tobago"]<- "Trinidad and Tobago"
 
-```{r}
-df_f3 %>% ggplot() + geom_histogram(aes(T10B50))
-```
-
-```{r}
-df_f3 %>% arrange(desc(T10B50))
-```
-
-Using the information above, we set breakpoints and use R Base's `cut` command to divide into five classes, and add it as a new column using `mutate`
-
-```{r}
 df_f3 %>% 
-  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50,breaks = c(5, 12, 13, 16, 19,140), 
-                                        include.lowest = FALSE)) 
+  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50,breaks = c(5, 12, 13, 16, 19,140), include.lowest = FALSE)) %>%
+  ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = map0) + expand_limits(x = map0$long, y = map0$lat) +
+  labs(title = "Figure 3. Top 10/Bottom 50 income gaps across the world, 2021",
+       x = "", y = "", fill = "Top 10/Bottom 50 ratio") +
+  theme(legend.position="bottom", 
+        axis.text.x=element_blank(), axis.ticks.x=element_blank(),
+        axis.text.y=element_blank(), axis.ticks.y=element_blank()) + 
+  scale_fill_brewer(palette='YlOrRd')
 ```
+**Interpretation**: In Brazil, the bottom 50% earns 29 times less than the top 10%. The value is 7 in France. Income is measured after pension and unemployment payments and benefits received by individuals but before other taxes they pay and transfers they receive. Source and series: wir2022.wid.world/methodology.
+
+
+#### Explanation
+##### Step 1.
+
+```{r data-f3-2, cash=TRUE}
+df_f3 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F3")
+df_f3
+```
+
+* We use `map_data("world")` data attached to the `tidyverse` package. Let us look at the data first.
 
 ```{r}
 world_map <- map_data("world")
-df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50,breaks = c(5, 12, 13, 16, 19,140), 
-                                        include.lowest = FALSE)) %>%
+datatable(world_map)
+```
+
+* Let us try using the standard template of `ggplot`. We use `Country` for `map_id` and `T10B50` for numerical data. Since `world_map` data contains `long` and `lat` of each region, we assign them as `expand_limit`.
+
+```{r}
+df_f3 %>% 
   ggplot(aes(map_id = Country)) + 
-  geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = world_map) + 
+  geom_map(aes(fill = `T10B50`), map = world_map) +
   expand_limits(x = world_map$long, y = world_map$lat)
 ```
 
-We observe that we have missing data from several countries. One common problem is the description of the country names varies in different data; in this case, the country names of `map_data()` and those of `wir2022`. There are several ways to edit country names. Here is one of them.
+##### Step 2.
+
+* We observe a couple of issues by comparing them with the image of the original.
+
+1. Russia, Congo, and some other areas are void.
+2. Scale and the legend should be improved.
+3. It may be better to bring the legend at the bottom to provide more width to the world map.
+
+
+![F3_world_map](figs/F3.png)
+
+
+* The region name and the country name may be different in two datasets `world_map` and `df_f3`. Let us take care of the first issue.
+
+* To search names, we use `DT::datatable`, i.e., `datatable` in the `DT` package. 
 
 ```{r}
-world_map_wir <- world_map
-world_map_wir$region[
-  world_map_wir$region=="Democratic Republic of the Congo"]<-"DR Congo"
-world_map_wir$region[world_map_wir$region=="Republic of Congo"]<-"Congo"
-world_map_wir$region[world_map_wir$region=="Ivory Coast"]<-"Cote dIvoire"
-world_map_wir$region[world_map_wir$region=="Vietnam"]<-"Viet Nam"
-world_map_wir$region[world_map_wir$region=="Russia"]<-"Russian Federation"
-world_map_wir$region[world_map_wir$region=="South Korea"]<-"Korea"
-world_map_wir$region[world_map_wir$region=="UK"]<-"United Kingdom"
-world_map_wir$region[world_map_wir$region=="Brunei"]<-"Brunei Darussalam"
-world_map_wir$region[world_map_wir$region=="Laos"]<-"Lao PDR"
-world_map_wir$region[world_map_wir$region=="Cote dIvoire"]<-"Cote d'Ivoire"
-world_map_wir$region[world_map_wir$region=="Cape Verde"]<- "Cabo Verde"
-world_map_wir$region[world_map_wir$region=="Syria"]<- "Syrian Arab Republic"
-world_map_wir$region[world_map_wir$region=="Trinidad"]<- "Trinidad and Tobago"
-world_map_wir$region[world_map_wir$region=="Tobago"]<- "Trinidad and Tobago"
+datatable(df_f3)
+```
+
+* Search for 'russia' and 'congo', we find that 
+
+  - Russian Federation = Russia in `world_map`
+  - DR Congo = Democratic Republic of the Congo in `world_map`
+  - Congo = Republic of Congo in `world_map`
+  
+* There are at least three ways to change the entries.
+
+  - The following is a method to use Base R. 
+
+    + `df_f3_rev$Country[df_f3_rev$Country == "Russian Federation"] <- "Russia": If the entry of the column `Country` in the data frame `df_f3_rev` matches with "Russian Federation", then replace it with "Russia`.
+    
+  - The second is to use `mutate` and `case_when` of `tidyverse`.
+  
+  - The third is to use `left_join` after making a comparison table. 
+
+```{r}
+df_f3_rev <- df_f3
+df_f3_rev$Country[df_f3_rev$Country == "Russian Federation"] <- "Russia"
+df_f3_rev$Country[df_f3_rev$Country == "DR Congo"] <- "Democratic Republic of the Congo"
+df_f3_rev$Country[df_f3_rev$Country == "Congo"] <- "Republic of Congo"
+```
+
+* Now check the country names again using `anti_join`. By the code below, we can create a new table such that there is no region in `world_map` corresponding to Country in `df_f3_rev`.
+
+```{r}
+df_f3_rev %>% anti_join(world_map, by = c("Country" = "region"))
+```
+
+We can proceed one by one. However, WIR provides the code of this part in R. So let us use it. It is in Computer Codes at the Methodology [site](https://wir2022.wid.world/methodology/). Download 'Full Datasets' and 'Computer Codes'. Then in WIR2022 - Computer codes, find `Chapter1_Maps.R`. 
+
+```{r}
+map<-map_data("world")
+map$region[map$region=="Democratic Republic of the Congo"]<-"DR Congo"
+map$region[map$region=="Republic of Congo"]<-"Congo"
+map$region[map$region=="Ivory Coast"]<-"Cote dIvoire"
+map$region[map$region=="Vietnam"]<-"Viet Nam"
+# map$region[map$region=="United Arab Emirates"]<-"UAE"
+```
+
+The last one for UAE seems to be wrong, so deleted.
+
+Since the data used in the next line was not find, let me use `map` now.
+
+```
+index_region2<-read_dta("index_region.dta")
+map<-left_join(map,index_region2,by=c("region"="name_region"))
+map$ISO[map$region=="Greenland"]<-"GL"
+map$ISO[map$region=="UAE"]<-"AE"
+map$ISO[map$region=="Brunei"]<-"BR" # done
+map$ISO[map$region=="Antigua"]<-"AG"
+map$ISO[map$region=="Cape Verde"]<-"CV"
+map$ISO[map$region=="Cote dIvoire"]<-"CI"
+map$ISO[map$region=="UK"]<-"GB" # done
+map$ISO[map$region=="Canary Islands"]<-"ES"
+map$ISO[map$region=="French Guiana"]<-"FR"
+map$ISO[map$region=="Saint Kitts"]<-"KN"
+map$ISO[map$region=="South Korea"]<-"KR"
+map$ISO[map$region=="Saint Martin"]<-"MF"
+map$ISO[map$region=="Macedonia"]<-"MK"
+map$ISO[map$region=="Russia"]<-"RU" # done
+map$ISO[map$region=="Bonaire"]<-"BQ"
+map$ISO[map$region=="Sint Eustatius"]<-"BQ"
+map$ISO[map$region=="Saba"]<-"BQ"
+map$ISO[map$region=="Laos"]<-"LA"
+map$ISO[map$region=="Sint Maarten"]<-"SX"
+map$ISO[map$region=="Syria"]<-"SY"
+map$ISO[map$region=="Trinidad"]<-"TT"
+map$ISO[map$region=="Tobago"]<-"TT"
+map$ISO[map$region=="Virgin Islands"]<-"VI"
+map$ISO[map$region=="Saint Vincent"]<-"VC"
+map$ISO[map$region=="Grenadines"]<-"VC"
+map$ISO[map$region=="French Southern and Antarctic Lands"]<-"FR"
+map$ISO[map$region=="Western Sahara"]<-"WS"
+```
+```{r}
+map$region[map$region=="Russia"]<-"Russian Federation"
+map$region[map$region=="South Korea"]<-"Korea"
+map$region[map$region=="UK"]<-"United Kingdom"
+map$region[map$region=="Brunei"]<-"Brunei Darussalam"
+map$region[map$region=="Laos"]<-"Lao PDR"
+map$region[map$region=="Cote dIvoire"]<-"Cote d'Ivoire"
+map$region[map$region=="Cape Verde"]<- "Cabo Verde"
+map$region[map$region=="Syria"]<- "Syrian Arab Republic"
+map$region[map$region=="Trinidad"]<- "Trinidad and Tobago"
+map$region[map$region=="Tobago"]<- "Trinidad and Tobago"
 ```
 
 ```{r}
-df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` = 
-    cut(T10B50, breaks = c(5, 12, 13, 16, 19,140), include.lowest = FALSE)) %>%
-  ggplot(aes(map_id = Country)) + 
-  geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), 
-    map = world_map_wir) + 
-    expand_limits(x = world_map_wir$long, y = world_map_wir$lat)
+df_f3 %>% anti_join(map, by = c("Country" = "region"))
 ```
 
-Now it is much better.
+* Is Zanzibar a part of Tanzania?
 
 ```{r}
-df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` = 
-    cut(T10B50,breaks = c(5, 12, 13, 16, 19,140), include.lowest = FALSE)) %>%
-  ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), 
-    map = world_map_wir) + expand_limits(x = world_map_wir$long, y = world_map_wir$lat) + 
-  coord_map("orthographic", orientation = c(25, 60, 0))
-```
-
-```{r}
-df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` = 
-  cut(T10B50,breaks = c(5, 12, 13, 16, 19,140), include.lowest = FALSE)) %>%
-  ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), 
-    map = world_map_wir) + expand_limits(x = world_map_wir$long, y = world_map_wir$lat) + 
-  coord_map("orthographic", orientation = c(15, -80, 0))
-```
-
-```{r}
-df_f3 %>% mutate(`Top 10 Bottom 50 Ratio` = 
-  cut(T10B50,breaks = c(5, 12, 13, 16, 19,140), include.lowest = FALSE)) %>%
-  ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), 
-    map = world_map_wir) + 
-  expand_limits(x = world_map_wir$long, y = world_map_wir$lat)
-```
-
-Finally, change colors and change labels.
-
-```{r eval = FALSE}
 df_f3 %>% 
-  mutate(`Top 10 Bottom 50 Ratio` = 
-        cut(T10B50,breaks = c(5, 12, 13, 16, 19,140), include.lowest = FALSE)) %>%
   ggplot(aes(map_id = Country)) + 
-  geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = world_map_wir) + 
-  expand_limits(x = world_map_wir$long, y = world_map_wir$lat)  + 
+  geom_map(aes(fill = `T10B50`), map = map) +
+  expand_limits(x = map$long, y = map$lat)
+```
+
+
+##### Step 3.
+
+* Next we add a new column `Top 10 Bottom 50 Ratio` by setting new breaks of `T10B50`.
+* Place the legend at the bottom using `theme(legend.position="bottom")`.
+
+```{r}
+df_f3_rev %>% 
+  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50, breaks = c(5, 12, 13, 16, 19, 140), include.lowest = FALSE)) %>%
+  ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = world_map) + expand_limits(x = world_map$long, y = world_map$lat) +
+  theme(legend.position="bottom")
+```
+
+##### Step 4.
+
+Finally add the title, remove x and y labels, and change the legend name.
+
+```{r}
+df_f3_rev %>% 
+  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50, breaks = c(5, 12, 13, 16, 19, 140), include.lowest = FALSE)) %>%
+  ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = world_map) + expand_limits(x = world_map$long, y = world_map$lat) +
+  labs(title = "Figure 3. Top 10/Bottom 50 income gaps across the world, 2021",
+       x = "", y = "", fill = "Top 10/Bottom 50 ratio") +
+  theme(legend.position="bottom")
+```
+
+##### Step 5.
+
+Remove x-axis, y-axis and ticks. If you want to change color palette, see:
+
+* https://ggplot2.tidyverse.org/reference/scale_brewer.html
+* http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
+
+```{r}
+df_f3_rev %>% 
+  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50, breaks = c(5, 12, 13, 16, 19, 140), include.lowest = FALSE)) %>%
+  ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = world_map) + expand_limits(x = world_map$long, y = world_map$lat) +
   labs(title = "Figure 3. Top 10/Bottom 50 income gaps across the world, 2021",
        x = "", y = "", fill = "Top 10/Bottom 50 ratio") +
   theme(legend.position="bottom", 
         axis.text.x=element_blank(), axis.ticks.x=element_blank(),
-        axis.text.y=element_blank(), axis.ticks.y=element_blank()) + 
+        axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
   scale_fill_brewer(palette='YlOrRd')
 ```
 
-```{r echo = FALSE}
-df_f3 %>% 
-  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50,breaks = c(5, 12, 13, 16, 19,140), include.lowest = FALSE)) %>%
-  ggplot(aes(map_id = Country)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = world_map_wir) + expand_limits(x = world_map_wir$long, y = world_map_wir$lat)  + 
-  labs(title = "Figure 3. Top 10/Bottom 50 income gaps across the world, 2021",
-       x = "", y = "", fill = "Top 10/Bottom 50 ratio") +
-  theme(legend.position="bottom", 
-        axis.text.x=element_blank(), axis.ticks.x=element_blank(),
-        axis.text.y=element_blank(), axis.ticks.y=element_blank()) + 
-  scale_fill_brewer(palette='YlOrRd')
+
+
+
+
+
+### F4: The extreme concentration of capital: wealth inequality across the world, 2021
+
+```{r data-f4, cash = TRUE}
+df_f4 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F4")
+df_f4
 ```
 
-We could not treat the data of three. We can check by using `anti_join`.
 
 ```{r}
-df_f3 %>% anti_join(world_map_wir, by = c("Country" = "region"))
+df_f4 %>% pivot_longer(3:5, names_to = "level", values_to = "value") %>%
+  ggplot(aes(x = iso, y = value, fill = level)) +
+  geom_col(position = "dodge") + 
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 4. The extreme concentration of capital: \nwealth inequality across the world, 2021",
+       x = "", y = "Share of national wealth (%)", fill = "")
 ```
+**Interpretation**:  The Top 10% in Latin America captures 77% of total household wealth, versus 22% for the Middle 40% and 1% for the Bottom 50%. In Europe, the Top 10% owns 58% of total wealth, versus 38% for the Middle 40% and 4% for the Bottom 50%.   
+**Sources and series**: wir2022.wid.world/methodology.
 
-**Filtering joins**
+#### Explanation
 
--   `anti_join(x,y, ...)`: return all rows from x without a match in y.
--   `semi_join(x,y, ...)`: return all rows from x with a match in y.
+* Almost the same as F1 and F2.
 
-Check `dplyr` cheat sheet, and Posit Primers Tidy Data.
+* Wrap long label: `scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10))`
+* Per Cent: `scale_y_continuous(labels = scales::percent_format(accuracy = 1))`
 
-## Remaining Charts
-
--   F5: Global income inequality: T10/B50 ratio, 1820-2020 - fit curve
-
--   F9: Average annual wealth growth rate, 1995-2021 - fit curve + alpha
-
--   F7: Global income inequality, 1820-2020 - pivot + fit curve
-
--   F10: The share of wealth owned by the global 0.1% and billionaires, 2021 - pivot + fit curve
-
--   F6: Global income inequality: Between vs. Within country inequality (Theil index), 1820-2020 - pivot + area
-
--   F11: Top 1% vs bottom 50% wealth shares in Western Europe and the US, 1910-2020 - pivot name_sep + fit curve
-
--   F8: The rise of private versus the decline of public wealth in rich countries, 1970-2020 - rename + pivot + pivot + fit curve
-
--   F15: Per capita emissions acriss the world, 2019 - add row names + dodge
-
-We will discuss `geom_smooth` and `stat_smooth` in Chapter \@ref(model) applied to F5, F9, F7, F10.
-
-## F5: Global income inequality: T10/B50 ratio, 1820-2020
+### F5: Global income inequality: T10/B50 ratio, 1820-2020
 
 ```{r data-f5, cash = TRUE}
-(df_f5 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F5"))
+df_f5 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F5")
+df_f5
 ```
 
 ```{r}
-df_f5 %>% ggplot(aes(x = y, y = t10b50)) + geom_line() + geom_smooth(span=0.25, se=FALSE)
+df_f5 %>% select(year = y, ratio = t10b50) %>%
+  ggplot(aes(x = year, y = ratio)) + 
+  lims(y = c(10,70)) + 
+  geom_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE) + 
+  scale_x_continuous(breaks = round(seq(1820, 2020, by = 20),1)) + 
+  labs(title = "Figure 5. Global income inequality:T10/B50 ratio, 1820-2020", 
+       x = "", y = stringr::str_wrap("Ratio of top 10% average income to bottom 50% average income", width = 35)) +
+  annotate("text", x = 1840, y = 32, label = stringr::str_wrap("1820: average income of the global top 10% is 18x higher than average income of the bottom 50%", width = 20), size = 3) + 
+  annotate("text", x = 1910, y = 49, label = stringr::str_wrap("1910: average income of the global top 10% is 41x higher than average income of the bottom 50%", width = 20), size = 3) +
+    annotate("text", x = 1980, y = 60, label = stringr::str_wrap("1980: average income of the global top 10% is 53x higher than average income of the bottom 50%", width = 20), size = 3) +
+    annotate("text", x = 2010, y = 32, label = stringr::str_wrap("2020: average income of the global top 10% is 38x higher than average income of the bottom 50%", width = 20), size = 3)
 ```
+**Interpretation**. Global inequality, as measured by the ratio T10/B50 between the average income of the top 10% and the average income of the bottom 50%, more than doubled between between 1820 and 1910, from less than 20 to about 40, and stabilized around 40 between 1910 and 2020. It is too early to say whether the decline in global inequality observed since 2008 will continue. Income is measured per capita after pension and unemployement insurance transfers and before income and wealth taxes.   
+**Sources and series**: wir2022.wid.world/lmethodology and Chancel and Piketty (2021)..
 
-## F9: Average annual wealth growth rate, 1995-2021 - fit curve + alpha
+#### Explanation
 
-```{r data-f9, cash = TRUE}
-df_f9 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F9"); df_f9
-```
+##### Step 1.
+
+* The following is enough. Here we applied `str_wrap` to the label of the y-axis as it is very long.
 
 ```{r}
-df_f9 %>% 
-  ggplot(aes(x = p, y = `Wealth growth 1995-2021`)) + geom_smooth(span = 0.30, se = FALSE)
+df_f5 %>% select(year = y, ratio = t10b50) %>%
+  ggplot(aes(x = year, y = ratio)) + 
+  geom_line() +
+  labs(title = "Figure 5. Global income inequality:T10/B50 ratio, 1820-2020", 
+       x = "", y = stringr::str_wrap("Ratio of top 10% average income to bottom 50% average income", width = 35))
 ```
 
-## F7: Global income inequality, 1820-2020 - pivot + fit curve
+##### Step 2.
 
-```{r data-f7, cash = TRUE}
-df_f7 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F7"); df_f7
-```
+There are many way of smoothing.
+
+
+**Line Plot and LOESS**
+
+* The default is "loess", and `se = TRUE` which include the standard error.
+* Unless you clearly understand them, it is better to use `formula = y~x`, `method = "loess",  and `se = FALSE`.
+* We try other methods below.
 
 ```{r}
-df_f7 %>% 
-  pivot_longer(cols = 2:4, names_to = "type", values_to = "value") %>%
-  ggplot(aes(x = y, y = value, color = type)) +
-  stat_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE)
+df_f5 %>% select(year = y, ratio = t10b50) %>%
+  ggplot(aes(x = year, y = ratio)) +
+  geom_line() +
+  geom_smooth(formula = y~x, method = "loess", se = FALSE) + 
+  labs(title = "Figure 5. Global income inequality:", 
+       subtitle = "T10/B50 ratio, 1820-2020",
+       x = "", y = "Ratio of top 10% average income to bottom 50% average income")
 ```
 
-## F10: The share of wealth owned by the global 0.1% and billionaires, 2021 - pivot + fit curve
-
-```{r data-f10, cash = TRUE}
-df_f10 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F10"); df_f10
-```
+**GAM Smoothing with 24 Points**
 
 ```{r}
-df_f10 %>% 
-  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
-  pivot_longer(!year, names_to = "group", values_to = "value")
+df_f5 %>% select(year = y, ratio = t10b50) %>%
+  ggplot(aes(x = year, y = ratio)) +
+  stat_smooth(method = "gam", formula = y ~ s(x, k = 24), se = FALSE) + 
+  scale_x_continuous(breaks = round(seq(min(df_f5$y), max(df_f5$y), by = 20),1)) + 
+  labs(title = "Figure 5. Global income inequality:T10/B50 ratio, 1820-2020", 
+       x = "", y = stringr::str_wrap("Ratio of top 10% average income to bottom 50% average income", width = 35))
 ```
+
+**Polynomial Approximation of Degree 6**
 
 ```{r}
-df_f10 %>% 
-  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
-  pivot_longer(!year, names_to = "group", values_to = "value") %>%
-  ggplot() +
-  stat_smooth(aes(x = year, y = value, color = group), formula = y~x, method = "loess", span = 0.25, se = FALSE)
+df_f5 %>% select(year = y, ratio = t10b50) %>%
+  ggplot(aes(x = year, y = ratio)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ poly(x, 6), se = FALSE) + 
+  labs(title = "Figure 5. Global income inequality:", 
+       subtitle = "T10/B50 ratio, 1820-2020",
+       x = "", y = stringr::str_wrap("Ratio of top 10% average income to bottom 50% average income", width = 35))
 ```
 
-## F6: Global income inequality: Between vs. Within country inequality (Theil index), 1820-2020 - pivot + area
+##### Step 3.
+
+* In the main chart for F5, we applied `geom_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE)` as it is easy. You can adjust smoothness by changing the value for `span`.
+
+* For the y-axis, following the output provided, `lims(y = c(10,70))` is added and annotation.
+
+* For a long text use: `stringr::str_wrap("long text", width = size)` and `annotate` with `size = fontsize`.
+
+* `ggforce::geom_mark_rect` will add annotation in a box.
+
+```{r}
+df_f5 %>% select(year = y, ratio = t10b50) %>%
+  ggplot(aes(x = year, y = ratio)) + 
+  lims(y = c(10,70)) + 
+  geom_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE) + 
+  scale_x_continuous(breaks = round(seq(1820, 2020, by = 20),1)) + 
+  labs(title = "Figure 5. Global income inequality:T10/B50 ratio, 1820-2020", 
+       x = "", y = stringr::str_wrap("Ratio of top 10% average income to bottom 50% average income", width = 35)) +
+  annotate("text", x = 1840, y = 32, label = stringr::str_wrap("1820: average income of the global top 10% is 18x higher than average income of the bottom 50%", width = 20), size = 3) + 
+  annotate("text", x = 1910, y = 49, label = stringr::str_wrap("1910: average income of the global top 10% is 41x higher than average income of the bottom 50%", width = 20), size = 3) +
+    annotate("text", x = 1980, y = 60, label = stringr::str_wrap("1980: average income of the global top 10% is 53x higher than average income of the bottom 50%", width = 20), size = 3) +
+    annotate("text", x = 2010, y = 32, label = stringr::str_wrap("2020: average income of the global top 10% is 38x higher than average income of the bottom 50%", width = 20), size = 3)
+```
+
+### F6: Global income inequality: Between vs. Within country inequality (Theil index), 1820-2020
 
 ```{r data-f6, cash = TRUE}
-df_f6 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F6"); df_f6
+df_f6 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F6")
+df_f6
 ```
 
-```{r eval =FALSE}
-df_f6 %>% select(year = "...1", 2:3) %>%
-  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") %>%
-  mutate(types = factor(type, 
-      levels = c("Within-country inequality", "Between-country inequality"))) %>%
-  ggplot(aes(x = year, y = value, fill = types)) +
-  geom_area() +
-  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-  scale_x_continuous(breaks = round(seq(1820, 2020, by = 20),1)) + 
-  scale_fill_manual(values=rev(scales::hue_pal()(2)), 
-      labels = function(x) str_wrap(x, width = 15)) +
-  labs(title = "Figure 6. Global income inequality: 
-       \nBetween vs. within country inequality (Theil index), 1820-2020",
-       x = "", y = "Share of global inequality (% of total Theil index)", fill = "") + 
-  annotate("text", x = 1850, y = 0.28, 
-      label = stringr::str_wrap("1820: Between country inequality represents 11% 
-                                of global inequality", width = 20), size = 3) + 
-  annotate("text", x = 1980, y = 0.70, 
-      label = stringr::str_wrap("1980: Between country inequality represents 57% 
-                                of global inequality", width = 20), size = 3) +
-  annotate("text", x = 1990, y = 0.30, 
-      label = stringr::str_wrap("2020: Between country inequality represents 32% 
-                                of global inequality", width = 20), size = 3)
-```
-
-```{r echo =FALSE}
-df_f6 %>% select(year = "...1", 2:3) %>%
-  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") %>%
-  mutate(types = factor(type, 
-      levels = c("Within-country inequality", "Between-country inequality"))) %>%
-  ggplot(aes(x = year, y = value, fill = types)) +
-  geom_area() +
-  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-  scale_x_continuous(breaks = round(seq(1820, 2020, by = 20),1)) + 
-  scale_fill_manual(values=rev(scales::hue_pal()(2)), 
-      labels = function(x) str_wrap(x, width = 15)) +
-  labs(title = "Figure 6. Global income inequality: 
-       \nBetween vs. within country inequality (Theil index), 1820-2020",
-       x = "", y = "Share of global inequality (% of total Theil index)", fill = "") + 
-  annotate("text", x = 1850, y = 0.28, 
-      label = stringr::str_wrap("1820: Between country inequality represents 11% 
-                                of global inequality", width = 20), size = 3) + 
-  annotate("text", x = 1980, y = 0.70, 
-      label = stringr::str_wrap("1980: Between country inequality represents 57% 
-                                of global inequality", width = 20), size = 3) +
-  annotate("text", x = 1990, y = 0.30, 
-      label = stringr::str_wrap("2020: Between country inequality represents 32% 
-                                of global inequality", width = 20), size = 3)
-```
-
-## F11: Top 1% vs bottom 50% wealth shares in Western Europe and the US, 1910-2020 - pivot name_sep + fit curve
-
-```{r data-f11, cash = TRUE}
-df_f11 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F11"); df_f11
-```
-
-We want to separate 'US', 'EU' and 'bot50', 'top10', and 'top1'. To apply `names_sep = "_"`, we first changed the name of columns.
-
-```{r eval = FALSE}
-df_f11 %>% 
-  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, 
-         EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
-  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") %>%
-  pivot_longer(3:4, names_to = "type", values_to = "value") %>%
-  ggplot() +
-  stat_smooth(aes(x = year, y = value, color = group, linetype = type), 
-              span = 0.25, se = FALSE) +
-  scale_x_continuous(breaks = round(seq(1910, 2020, by = 10),1)) +
-  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-  labs(title = "Figure 11. Top 1% vs bottom 50% wealth shares 
-       \n in Western Europe and the US, 1910-2020", 
-       x = "", y = "Share of total personal wealth (%)", color = "", linetype = "") +
-  scale_linetype_manual(values = c("dotted","solid")) +
-  annotate("text", x = 2000, y = 0.50, 
-      label = stringr::str_wrap("Wealth inequality has been rising at 
-        different speeds after a historical decline. The bottom 50% has always been 
-                                extremely low.", width = 30), size = 3)
-```
-
-### Step 1.
 
 ```{r}
-df_f11 %>% rename(!year, US_bot50 = USbot50, US_top1 = UStop1, 
-                  EU_bot50 = EUbot50, EU_top1 = EUtop1) 
-```
-
-### Step 2.
-
-```{r warning = FALSE, eval=FALSE}
-df_f11 %>% 
-  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, 
-         EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
-  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_")
-```
-
-### Step 2.
-
-```{r warning = FALSE, echo=FALSE}
-df_f11 %>% 
-  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
-  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_")
-```
-
-### Step 3.
-
-```{r warning = FALSE, eval=FALSE}
-df_f11 %>% 
-  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, 
-         EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
-  pivot_longer(!year, names_to = c("group",".value"), 
-               names_sep = "_") %>%
-  pivot_longer(3:4, names_to = "type", values_to = "value") 
-```
-
-### Step 3.
-
-```{r warning = FALSE, echo=FALSE}
-df_f11 %>% 
-  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
-  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") %>%
-  pivot_longer(3:4, names_to = "type", values_to = "value") 
-```
-
-```{r warning = FALSE, echo=FALSE}
-df_f11 %>% 
-  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
-  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") %>%
-  pivot_longer(3:4, names_to = "type", values_to = "value") %>%
-  ggplot() +
-  stat_smooth(aes(x = year, y = value, color = group, linetype = type), formula = y ~ x, method = "loess", span = 0.25, se = FALSE) +
-  scale_x_continuous(breaks = round(seq(1910, 2020, by = 10),1)) +
+df_f6 %>% select(year = "...1", 2:3) %>%
+  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") %>%
+  mutate(types = factor(type, levels = c("Within-country inequality", "Between-country inequality"))) %>%
+  ggplot(aes(x = year, y = value, fill = types)) +
+  geom_area() +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-  labs(title = "Figure 11. Top 1% vs bottom 50% wealth shares \n in Western Europe and the US, 1910-2020", 
-       x = "", y = "Share of total personal wealth (%)", color = "", linetype = "") +
-  scale_linetype_manual(values = c("dotted","solid")) +
-  annotate("text", x = 2000, y = 0.50, label = stringr::str_wrap("Wealth inequality has been rising at different speeds after a historical decline. The bottom 50% has always been extremely low.", width = 30), size = 3)
+  scale_x_continuous(breaks = round(seq(1820, 2020, by = 20),1)) + 
+  scale_fill_manual(values=rev(scales::hue_pal()(2)), labels = function(x) str_wrap(x, width = 15)) +
+  labs(title = "Figure 6. Global income inequality: \nBetween vs. within country inequality (Theil index), 1820-2020",
+       x = "", y = "Share of global inequality (% of total Theil index)", fill = "") + 
+  annotate("text", x = 1850, y = 0.28, label = stringr::str_wrap("1820: Between country inequality represents 11% of global inequality", width = 20), size = 3) + 
+  annotate("text", x = 1980, y = 0.70, label = stringr::str_wrap("1980: Between country inequality represents 57% of global inequality", width = 20), size = 3) +
+  annotate("text", x = 1990, y = 0.30, label = stringr::str_wrap("2020: Between country inequality represents 32% of global inequality", width = 20), size = 3)
 ```
 
-The following is similar to the previous example.
+* Legend can be placed at the bottom: `theme(legend.position="bottom")`
 
-## F8: The rise of private versus the decline of public wealth in rich countries, 1970-2020 - rename + pivot + pivot + fit curve
+```{r}
+df_f6 %>% select(year = "...1", 2:3) %>%
+  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") %>%
+  mutate(types = factor(type, levels = c("Within-country inequality", "Between-country inequality"))) %>%
+  ggplot(aes(x = year, y = value, fill = types)) +
+  geom_area() +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_x_continuous(breaks = round(seq(1820, 2020, by = 20),1)) + 
+  scale_fill_manual(values=rev(scales::hue_pal()(2))) +
+  labs(title = "Figure 6. Global income inequality: \nBetween vs. within country inequality (Theil index), 1820-2020",
+       x = "", y = "Share of global inequality (% of total Theil index)", fill = "") + 
+  annotate("text", x = 1850, y = 0.28, label = stringr::str_wrap("1820: Between country inequality represents 11% of global inequality", width = 20), size = 3) + 
+  annotate("text", x = 1980, y = 0.70, label = stringr::str_wrap("1980: Between country inequality represents 57% of global inequality", width = 20), size = 3) +
+    annotate("text", x = 1990, y = 0.30, label = stringr::str_wrap("2020: Between country inequality represents 32% of global inequality", width = 20), size = 3) +
+  theme(legend.position="bottom")
+```
+**Interpretation**. The importance of between-country inequality in overall global inequality, as measured by the Theil index, rose between 1820 and 1980 and strongly declined since then. In 2020, between-country inequality makes-up about a third of global inequality between individuals. The rest is due to inequality within countries. Income is measured per capita after pension and unemployement insurance transfers and before income and wealth taxes.   
+**Sources and series**: wir2022.wid.world/methodology and Chancel and Piketty (2021).
+
+#### Explanation
+
+##### Step 1.
+
+* We use `geom_area` after tidying the data with `pilot_longer`.
+
+```{r}
+df_f6 %>% select(year = "...1", 2:3) %>%
+  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") %>%
+  ggplot(aes(x = year, y = value, fill = type)) +
+  geom_area() +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 6. Global income inequality: \nBetween vs. within country inequality (Theil index), 1820-2020",
+       x = "", y = "Share of global inequality (% of total Theil index)")
+```
+
+##### Step 2.
+
+* Since the order of the two groups are different, the following linw is added.
+```
+scale_fill_manual(values=rev(scales::hue_pal()(2)), labels = function(x) str_wrap(x, width = 15))
+```
+
+* The second option is to control the legend to wrap.
+
+* Annotation can be omitted if we use RMarkdown to explain the charts clearly.
+
+* Add a line break in the y-axis label.
+
+```{r}
+df_f6 %>% select(year = "...1", 2:3) %>%
+  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") %>%
+  mutate(types = factor(type, levels = c("Within-country inequality", "Between-country inequality"))) %>%
+  ggplot(aes(x = year, y = value, fill = types)) +
+  geom_area() +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_x_continuous(breaks = round(seq(1820, 2020, by = 20),1)) + 
+  scale_fill_manual(values=rev(scales::hue_pal()(2)), labels = function(x) str_wrap(x, width = 15)) +
+  labs(title = "Figure 6. Global income inequality: \nBetween vs. within country inequality (Theil index), 1820-2020",
+       x = "", y = "Share of global inequality \n(% of total Theil index)", fill = "")
+```
+
+### F7: Global income inequality, 1820-2020
+
+```{r data-f7, cash = TRUE}
+df_f7 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F7")
+df_f7
+```
+
+```{r}
+df_f7 %>% select(year = y, 2:4) %>%
+  pivot_longer(cols = 2:4, names_to = "type", values_to = "value") %>%
+  ggplot(aes(x = year, y = value, color = type)) +
+  geom_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE) +
+  scale_x_continuous(breaks = round(seq(1820, 2020, by = 20),1)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 7. Global income inequality, 1820-2020", 
+       x = "", y = " Share of total world income (%)", color = "") +
+  annotate("text", x = 1980, y = 0.20, label = stringr::str_wrap("The global bottom 50% income share remains historically low despite growth in the emerging world in the past decades.", width = 30), size = 3)
+```
+**Interpretation**. The share of global income going to top 10% highest incomes at the world level has fluctuated around 50-60% between 1820 and 2020 (50% in 1820, 60% in 1910, 56% in 1980, 61% in 2000, 55% in 2020), while the share going to the bottom 50% lowest incomes has generally been around or below 10% (14% in 1820, 7% in 1910, 5% in 1980, 6% in 2000, 7% in 2020). Global inequality has always been very large. It rose between 1820 and 1910 and shows little long-run trend between 1910 and 2020. Distribution of per capita incomes. Sources and series: see wir2022.wid.world/methodology and Chancel and Piketty (2021).
+
+#### Explanation
+
+##### Step 1.
+
+* Use `pivot_longer` to tidy the data.
+
+```{r}
+df_f7 %>% select(year = y, 2:4) %>%
+  pivot_longer(cols = 2:4, names_to = "type", values_to = "value") 
+```
+
+##### Step 2.
+
+*Use `geom_smooth` with `span`, and change the scale of x-axis and y-axis.
+
+```{r}
+df_f7 %>% select(year = y, 2:4) %>%
+  pivot_longer(cols = 2:4, names_to = "type", values_to = "value") %>%
+  ggplot(aes(x = year, y = value, color = type)) +
+  geom_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE) +
+  scale_x_continuous(breaks = round(seq(1820, 2020, by = 20),1)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 7. Global income inequality, 1820-2020", 
+       x = "", y = " Share of total world income (%)", color = "")
+```
+
+* Finally, add the annotation to obtain the figure above.
+
+### F8: The rise of private versus the decline of public wealth in rich countries, 1970-2020
 
 ```{r data-f8, cash = TRUE}
-df_f8 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F8"); df_f8
+df_f8 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F8")
+df_f8
 ```
-
-```{r warning=FALSE, eval = FALSE}
-df_f8 %>% 
+```{r}
+df_f8 %>% drop_na() %>%
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
          France_public = France, France_private = 'France (private)', 
@@ -539,16 +788,22 @@ df_f8 %>%
   pivot_longer(3:4, names_to = "type", values_to = "value") %>%
   ggplot() +
   stat_smooth(aes(x = year, y = value, color = country, linetype = type), 
+              formula = y~x, method = "loess", 
               span = 0.25, se = FALSE, size=0.75) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-  labs(title = "Figure 8. The rise of private versus the decline of public 
-       wealth in rich countries, 1970-2020", 
-       x = "", y = "wealth as as % of national income", color = "", type = "")
+  labs(title = "Figure 8. The rise of private versus the decline of \npublic wealth in rich countries, 1970-2020", 
+       x = "", y = "wealth as % of national income", color = "", type = "")
 ```
+**Interpretation**: Public wealth is the sum of all financial and non-financial assets, net of debts, held by governments. Public wealth dropped from 60% of national income in 1970 to -106% in 2020 in the UK.   
+**Sources and series**: wir2022.wid.world/methodology, Bauluz et al. (2021) and updates.
 
-### Step 1
+#### Explanation
 
-```{r warning=FALSE, eval=FALSE}
+##### Step 1.
+
+* There are two types of groups, countries and public vs private. So we change the column names first to identify that classification easily. We delete the last two columns "gwealAVGRICH" and  "pwealAVGRICH" as they will not appear in the chart.
+
+```{r}
 df_f8 %>% 
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
@@ -559,20 +814,12 @@ df_f8 %>%
          USA_public = USA, USA_private = 'USA (private)') 
 ```
 
-```{r warning=FALSE, echo=FALSE}
-df_f8 %>% 
-  select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
-         Spain_public = Spain, Spain_private = 'Spain (private)', 
-         France_public = France, France_private = 'France (private)', 
-         UK_public  = UK, UK_private = 'UK (private)', 
-         Japan_public = Japan, Japan_private = 'Japan (private)', 
-         Norway_public = Norway, Norway_private = 'Norway (private)',
-         USA_public = USA, USA_private = 'USA (private)')
-```
+##### Step 2. 
 
-### Step 2.
+* First separate the countries into a new column.
+* Here, we used an option `names_sep = "_"`. 
 
-```{r warning=FALSE, eval=FALSE}
+```{r}
 df_f8 %>% 
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
@@ -584,21 +831,11 @@ df_f8 %>%
   pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") 
 ```
 
-```{r warning=FALSE, echo=FALSE}
-df_f8 %>% 
-  select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
-         Spain_public = Spain, Spain_private = 'Spain (private)', 
-         France_public = France, France_private = 'France (private)', 
-         UK_public  = UK, UK_private = 'UK (private)', 
-         Japan_public = Japan, Japan_private = 'Japan (private)', 
-         Norway_public = Norway, Norway_private = 'Norway (private)',
-         USA_public = USA, USA_private = 'USA (private)') %>%
-  pivot_longer(!year, names_to = c("country",".value"), names_sep = "_")
-```
+##### Step 3.
 
-### Step 3.
+* Next apply `pivot_longer`  again to form the second group.
 
-```{r warning=FALSE, eval=FALSE}
+```{r}
 df_f8 %>% 
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
@@ -611,22 +848,11 @@ df_f8 %>%
   pivot_longer(3:4, names_to = "type", values_to = "value")
 ```
 
-```{r warning=FALSE, echo=FALSE}
-df_f8 %>% 
-  select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
-         Spain_public = Spain, Spain_private = 'Spain (private)', 
-         France_public = France, France_private = 'France (private)', 
-         UK_public  = UK, UK_private = 'UK (private)', 
-         Japan_public = Japan, Japan_private = 'Japan (private)', 
-         Norway_public = Norway, Norway_private = 'Norway (private)',
-         USA_public = USA, USA_private = 'USA (private)') %>%
-  pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") %>%
-  pivot_longer(3:4, names_to = "type", values_to = "value") 
-```
+##### Step 4.
 
-### Step 3. Final Step
+* Assign colors to countries and distinguish types by `linetype`.
 
-```{r eval=FALSE, warning=FALSE}
+```{r}
 df_f8 %>% 
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
@@ -638,16 +864,17 @@ df_f8 %>%
   pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") %>%
   pivot_longer(3:4, names_to = "type", values_to = "value") %>%
   ggplot() +
-  stat_smooth(aes(x = year, y = value, color = country, linetype = type), 
-              formula = y~x, method = "loess", span = 0.25, se = FALSE, size=0.75) +
-  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-  labs(title = "Figure 8. The rise of private versus the decline of public wealth 
-       \nin rich countries, 1970-2020", 
-       x = "", y = "wealth as as % of national income", color = "", type = "")
+  geom_smooth(aes(x = year, y = value, color = country, linetype = type),
+              formula = y~x, method = "loess", span = 0.25, se = FALSE)
 ```
 
-```{r echo=FALSE, warning=FALSE}
-df_f8 %>% 
+##### Step 5.
+
+* Since there are a lot of NA's, removed using `drop_na()`
+* Change the line width by `size`, change the y-axis to percents and add the .title.
+
+```{r}
+df_f8 %>% drop_na() %>%
   select(year, Germany_public = Germany, Germany_private = 'Germany (private)', 
          Spain_public = Spain, Spain_private = 'Spain (private)', 
          France_public = France, France_private = 'France (private)', 
@@ -658,41 +885,592 @@ df_f8 %>%
   pivot_longer(!year, names_to = c("country",".value"), names_sep = "_") %>%
   pivot_longer(3:4, names_to = "type", values_to = "value") %>%
   ggplot() +
-  stat_smooth(aes(x = year, y = value, color = country, linetype = type), 
-              formula = y~x, method = "loess", span = 0.25, se = FALSE, size=0.75) +
+  geom_smooth(aes(x = year, y = value, color = country, linetype = type),
+              formula = y~x, method = "loess", 
+              span = 0.25, se = FALSE, size=0.75) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-  labs(title = "Figure 8. The rise of private versus the decline of public wealth 
-       \nin rich countries, 1970-2020", 
-       x = "", y = "wealth as as % of national income", color = "", type = "")
+  labs(title = "Figure 8. The rise of private versus the decline of \npublic wealth in rich countries, 1970-2020", 
+       x = "", y = "wealth as % of national income", color = "", type = "")
 ```
 
-## F15: Per capita emissions acriss the world, 2019 - add row names + dodge
+##### Step 6.
+
+* Let us check if we use only color for each group representing columns. This is not the chart we wanted to obtain.
+
+```{r}
+df_f8 %>% drop_na() %>% 
+  pivot_longer(!year, names_to = "group", values_to = "value") %>%
+  ggplot() +
+  geom_smooth(aes(x = year, y = value, color = group), 
+            formula = y~x, method = "loess", 
+            span = 0.25, se = FALSE, size=0.75) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 8. The rise of private versus \nthe decline of public wealth in rich countries, \n1970-2020", 
+       x = "", y = "wealth as % of national income", color = "")
+```
+
+### F9: Average annual wealth growth rate, 1995-2021
+
+```{r data-f9, cash = TRUE}
+df_f9 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F9")
+df_f9
+```
+
+```{r}
+brks <- c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 99.9, 99.99, 99.999)
+df_f9 %>% 
+  mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) %>% 
+  mutate(xlabel = as.numeric(level)+0.8) %>%
+  ggplot(aes(x = xlabel, y = `Wealth growth 1995-2021`)) + geom_smooth(method = "loess", formula = y~x, se = FALSE, span = 0.5) + 
+  scale_x_discrete(limits=as.character(brks)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 0.1)) +
+  labs(title = "Figure 9. Average annual wealth growth rate, 1995-2021", 
+       x = "←1% poorest Global wealth group              0.001% richest→", 
+       y = "Per adult annual growth rate in wealth, \nnet of inflation (%)")
+```
+**Interpretation**: Growth rates among the poorest half of the population were between 3% and 4% per year, between 1995 and 2021. Since this group started from very low wealth levels, its absolute levels of growth remained very low. The poorest half of the world population only captured 2.3% of overall wealth growth since 1995. The top 1%  benefited from high growth rates (3% to 9% per year). This group captured 38% of total wealth growth between 1995 and 2021. Net household wealth is equal to the sum of financial assets (e.g. equity or bonds) and non-financial assets (e.g. housing or land) owned by individuals, net of their debts.   
+**Sources and series**: wir2022.wid.world/methodology.
+
+#### Explanation
+
+##### Step 1.
+
+* Let's look at the original chart
+
+![F9_world_map](figs/F9.png){width = 100%}
+
+* The scale of the x-axis is not evenly partitioned. It is (0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 99.9, 99.99, 99.999).
+* Look at the column p of the data.
+
+```{r}
+df_f9 %>% distinct(p) %>% pull()
+```
+* Use cut to break in levels.
+
+```{r}
+brks <- c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 99.9, 99.99, 99.999)
+df_f9 %>% mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE))
+```
+
+##### Step 2.
+
+* Add `xlabel` in numeric.
+
+```{r}
+df_f9 %>% mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) %>% 
+  mutate(xlabel = as.numeric(level))
+```
+
+##### Step 3.
+
+* Draw a curve using `geom_smooth`.
+* Added 0.5 to represent the mean value in each interval.
+
+```{r}
+df_f9 %>% mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) %>% 
+  mutate(xlabel = as.numeric(level)+0.5) %>%
+  ggplot(aes(x = xlabel, y = `Wealth growth 1995-2021`)) + geom_smooth(method = "loess", formula = y~x, se = FALSE, span = 0.5)
+```
+
+##### Step 4.
+
+* Use `scale_x_discrete(limits=as.character(brks))` to change the label of the x-axis.
+* Use `scale_y_continuous(labels = scales::percent_format(accuracy = 0.1))`.
+
+```{r}
+df_f9 %>% mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) %>% 
+  mutate(xlabel = as.numeric(level)+ 0.8) %>%
+  ggplot(aes(x = xlabel, y = `Wealth growth 1995-2021`)) + geom_smooth(method = "loess", formula = y~x, se = FALSE, span = 0.5) + 
+  scale_x_discrete(limits=as.character(brks)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 0.1))
+```
+
+### F10: The share of wealth owned by the global 0.1% and billionaires, 2021
+
+```{r data-f10, cash = TRUE}
+df_f10 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F10")
+df_f10
+```
+
+```{r}
+df_f10 %>% 
+  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
+  pivot_longer(!year, names_to = "group", values_to = "value") %>%
+  ggplot() +
+  geom_smooth(aes(x = year, y = value, color = group), 
+              formula = y~x, method = "loess", 
+              span = 0.25, se = FALSE) +
+  scale_x_continuous(breaks = round(seq(1995, 2020, by = 5),1)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_color_manual(values=rev(scales::hue_pal()(2))) +
+  labs(title = "Figure 10. Extreme wealth inequality: \nthe rise of global billionaires and top 0.01%, 1995-2021", 
+       x = "", y = "Share of total household wealth (%)", color = "")
+```
+**Interpretation**: The share of wealth detained by the world's billionaires rose from 1% of total household wealth in 1995 to nearly 3.5% today. The threshold of top 0.01%, composed of 520 000 adults, grew from €693,000 (PPP) in 1995 to €16,666,000 today. The net household wealth is equal to the sum of financial assets (e.g. equity or bonds) and non-financial assets (e.g. housing or land) owned by individuals, net of their debts.   
+**Sources and series**: wir2022.wid.world/methodology, Bauluz et al. (2021) and updates.
+
+#### Explanation
+
+##### Step 1.
+
+* Use descriptive column names and use `pivot_longer` to make it tidy.
+
+```{r}
+df_f10 %>% 
+  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
+  pivot_longer(!year, names_to = "group", values_to = "value")
+```
+
+##### Step 2.
+
+* Use `geom_smooth` with `span = 0.25` and change the breaks of x-labels.
+
+```{r}
+df_f10 %>% 
+  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
+  pivot_longer(!year, names_to = "group", values_to = "value") %>%
+  ggplot() +
+  geom_smooth(aes(x = year, y = value, color = group), 
+              formula = y~x, method = "loess", span = 0.25, se = FALSE) +
+  scale_x_continuous(breaks = round(seq(1995, 2020, by = 5),1)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 10. Extreme wealth inequality: \nthe rise of global billionaires and top 0.01%, 1995-2021", 
+       x = "", y = "Share of total household wealth (%)", color = "")
+```
+
+##### Step 3.
+
+* Swap the colors by `scale_color_manual(values=rev(scales::hue_pal()(2)))`. If `n` is the number of colors used `scales::hue_pal()(n)` returns the RGB color codes used. By `rev`, the order is reversed. See https://ggplot2.tidyverse.org/reference/scale_hue.html.
+
+```{r}
+df_f10 %>% 
+  select(year, "Global Billionaire Wealth" = bn_hhweal, "Top 0.01%" = top0.1_hhweal) %>%
+  pivot_longer(!year, names_to = "group", values_to = "value") %>%
+  ggplot() +
+  geom_smooth(aes(x = year, y = value, color = group), 
+              formula = y~x, method = "loess", span = 0.25, se = FALSE) +
+  scale_x_continuous(breaks = round(seq(1995, 2020, by = 5),1)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_color_manual(values=rev(scales::hue_pal()(2))) +
+  labs(title = "Figure 10. Extreme wealth inequality: \nthe rise of global billionaires and top 0.01%, 1995-2021", 
+       x = "", y = "Share of total household wealth (%)", color = "")
+```
+
+### F11: Top 1% vs bottom 50% wealth shares in Western Europe and the US, 1910-2020
+
+```{r data-f11, cash = TRUE}
+df_f11 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F11")
+df_f11
+```
+
+```{r}
+df_f11 %>%
+  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
+  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") %>%
+  pivot_longer(3:4, names_to = "type", values_to = "value") %>%
+  ggplot() +
+  geom_smooth(aes(x = year, y = value, color = group, linetype = type), 
+              formula = y~x, method = "loess", span = 0.5, se = FALSE) +
+  scale_x_continuous(breaks = round(seq(1910, 2020, by = 10),1)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 11. Top 1% vs bottom 50% wealth shares \n in Western Europe and the US, 1910-2020", 
+       x = "", y = "Share of total personal wealth (%)", color = "", linetype = "") +
+  scale_linetype_manual(values = c("dotted","solid")) +
+  annotate("text", x = 2000, y = 0.50, label = stringr::str_wrap("Wealth inequality has been rising at different speeds after a historical decline. The bottom 50% has always been extremely low.", width = 30), size = 3)
+```
+**Interpretation**: The graph presents decennal averages of top 1% personal wealth shares in Western Europe and the US. Between 1910 and 2020, the top 1% was 55% on average in Europe vs. 43% in the US. A century later, the US is almost back to its early 20th century level. Sources and series: wir2022.wid.world/methodology.
+
+#### Explanation
+
+##### Step 1.
+
+* There are two groups: US vs. EU and bot50 and top1. We use the same technique as in F8.
+
+```{r}
+df_f11 %>% 
+  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
+  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_")
+```
+
+##### Step 2.
+
+* Here, we try another way. Here we use two `geom_smooth` with different `aes()`.
+* Can you see the difference of the chart above?
+
+```{r}
+df_f11 %>% 
+  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
+  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") %>%
+  ggplot() +
+  geom_smooth(aes(x = year, y = top1, color = group), 
+              formula = y~x, method = "loess", span = 0.5, se = FALSE) +
+  geom_smooth(aes(x = year, y = bot50, color = group), 
+              formula = y~x, method = "loess", span = 0.5, se = FALSE, linetype = 2) +
+  scale_x_continuous(breaks = round(seq(1910, 2020, by = 10),1)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 11. Top 1% vs bottom 50% wealth shares \n in Western Europe and the US, 1910-2020", 
+       x = "", y = "Share of total personal wealth (%)", color = "") +
+  annotate("text", x = 2000, y = 0.50, label = stringr::str_wrap("Wealth inequality has been rising at different speeds after a historical decline. The bottom 50% has always been extremely low.", width = 30), size = 3)
+```
+
+##### Step 3.
+
+Use `pivot_longer` the second time.
+
+```{r}
+df_f11 %>% 
+  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
+  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") %>%
+  pivot_longer(3:4, names_to = "type", values_to = "value") %>%
+  ggplot() +
+  geom_smooth(aes(x = year, y = value, color = group, linetype = type), 
+              formula = y~x, method = "loess", span = 0.5, se = FALSE) +
+  scale_x_continuous(breaks = round(seq(1910, 2020, by = 10),1)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 11. Top 1% vs bottom 50% wealth shares \n in Western Europe and the US, 1910-2020", 
+       x = "", y = "Share of total personal wealth (%)", color = "", linetype = "") +
+  annotate("text", x = 2000, y = 0.50, label = stringr::str_wrap("Wealth inequality has been rising at different speeds after a historical decline. The bottom 50% has always been extremely low.", width = 30), size = 3)
+```
+##### Step 4. 
+
+Change the order of linetypes manually.
+
+```{r}
+df_f11 %>% 
+  rename(!year, US_bot50 = USbot50, US_top1 = UStop1, EU_bot50 = EUbot50, EU_top1 = EUtop1) %>%
+  pivot_longer(!year, names_to = c("group",".value"), names_sep = "_") %>%
+  pivot_longer(3:4, names_to = "type", values_to = "value") %>%
+  ggplot() +
+  geom_smooth(aes(x = year, y = value, color = group, linetype = type), 
+              formula = y~x, method = "loess",
+              span = 0.5, se = FALSE) +
+  scale_x_continuous(breaks = round(seq(1910, 2020, by = 10),1)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 11. Top 1% vs bottom 50% wealth shares \n in Western Europe and the US, 1910-2020", 
+       x = "", y = "Share of total personal wealth (%)", color = "", linetype = "") +
+  scale_linetype_manual(values = c("dotted","solid")) +
+  annotate("text", x = 2000, y = 0.50, label = stringr::str_wrap("Wealth inequality has been rising at different speeds after a historical decline. The bottom 50% has always been extremely low.", width = 30), size = 3)
+```
+
+### F12: Female share in global labor incomes, 1990-2020
+
+```{r data-f12, cash = TRUE}
+df_f12 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F12")
+df_f12
+```
+
+```{r}
+df_f12 %>% 
+  select(year = "Data needs to be updated", value = ...2) %>%
+  filter(!is.na(year)) %>%
+  ggplot(aes(x = year, y = value)) +
+  geom_col(width = 0.5, fill = scales::hue_pal()(2)[2]) +
+  geom_hline(yintercept = 0.5, linetype = 2, colour = scales::hue_pal()(2)[1]) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 12. Female share in global labor incomes, 1990-2020", 
+        x = "", y = "") +
+  annotate("text", x = 1, y = 0.48, label = "Gender parity", size = 3) +
+  annotate("text", x = 5.2, y = 0.47, label = stringr::str_wrap("Women make only 35% of global labor incomes, men make the remaining  65%.", width = 40), size = 3)
+```
+**Interpretation**: The share of female incomes in global labour incomes was 31% in 1990 and nears 35% in 2015-2020. Today, males make up 65% of total labor incomes. Sources and series: wir2022.wid.world/methodology and Neef and Robilliard (2021).
+
+#### Explanation
+
+##### Step 1.
+
+Change the column names and delete the rows with NAs.
+
+```{r}
+df_f12 %>% 
+  select(year = "Data needs to be updated", value = ...2) %>%
+  filter(!is.na(year))
+```
+
+##### Step 2.
+
+Add `geom_col` and  `geom_hline` with colors `scales::hue_pal()(2)[2]` and `scales::hue_pal()(2)[1]`.
+
+```{r}
+df_f12 %>% 
+  select(year = "Data needs to be updated", value = ...2) %>%
+  filter(!is.na(year)) %>%
+  ggplot(aes(x = year, y = value)) +
+  geom_col(width = 0.5, fill = scales::hue_pal()(2)[2]) +
+  geom_hline(yintercept = 0.5, linetype = 2, colour = scales::hue_pal()(2)[1]) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 12. Female share in global labor incomes, 1990-2020", 
+        x = "", y = "") +
+  annotate("text", x = 1, y = 0.48, label = "Gender parity", size = 3) +
+  annotate("text", x = 5.2, y = 0.47, label = stringr::str_wrap("Women make only 35% of global labor incomes, men make the remaining  65%.", width = 40), size = 3)
+```
+
+### F13: Female labor income share across the world, 1990-2020
+
+Note that the sheet name of F13 has period at the end. Note that `summary_sheets[30] = ``r summary_sheets[30]` with a period.
+
+```{r data-f13, cash = TRUE}
+df_f13 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F13.")
+df_f13
+```
+
+```{r}
+df_f13 %>% pivot_longer(2:9, names_to = "region", values_to = "value") %>%
+  ggplot(aes(x = region, y = value, fill = ...1)) +
+  geom_col(position = "dodge") + 
+  geom_hline(yintercept = 0.5, linetype = 2, colour = "red") +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 12)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 13. Female labor income share across the world, 1990-2020", 
+        x = "", y = "", fill = "") +
+  annotate("text", x = 1.2, y = 0.48, label = "Gender parity", size = 3)
+```
+**Interpretation**: The female labour income share rose from 34% to 38% in North America between 1990 and 2020. Sources and series: wir2022.wid.world/methodology and Neef and Robilliard (2021).
+
+#### Explanation
+
+Not so difficult.
+
+### F14: Global carbon inequality, 2019. Group contribution to world emissions (%)
+
+Note that the sheet name of F14 has period at the end. Note that `summary_sheets[31] = ``r summary_sheets[31]` with a period.
+
+```{r data-f14, cash = TRUE}
+df_f14 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F14.")
+df_f14
+```
+
+* `\n` for line break in the title.
+
+```{r}
+df_f14 %>% 
+  ggplot(aes(x = Group, y = Share)) +
+  geom_col(width = 0.5, fill = scales::hue_pal()(1)[1]) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "Figure 14. Global carbon inequality, \n2019 Group contribution to world emissions (%)", 
+       x = "", y = "Share of world emissions (%)")
+```
+
+**Interpretation**: Personal carbon footprints include emissions from domestic consumption, public and private investments as well as imports and exports of carbon embedded in goods and services traded with the rest of the world. Modeled estimates based on the systematic combination of tax data, household surveys and input-output tables. Emissions split equally within households. Sources and series: wir2022.wid.world/methodology and Chancel (2021).
+
+#### Explanation
+
+Not so difficult. You can assign color name. See http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/.
+
+### F15: Per capita emissions acriss the world, 2019
 
 ```{r data-f15, cash = TRUE}
-df_f15 <- read_excel("./data/WIR2022s.xlsx", sheet = "data-F15"); df_f15
+df_f15 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F15")
+df_f15
+```
+```{r}
+df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
+  select(region, group, tcap) %>%
+  ggplot(aes(x = region, y = tcap, fill = group)) +
+  geom_col(position = "dodge") + 
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
+  labs(title = "Figure 15 Per capita emissions across the world, 2019", 
+       x = "", y = "tonnes of CO2e per person per year", fill = "")
+```
+**Interpretation**: Personal carbon footprints include emissions from domestic consumption, public and private investments as well as imports and exports of carbon embedded in goods and services traded with the rest of the world. Modeled estimates based on the systematic combination of tax data, household surveys and input-output tables. Emissions split equally within households. Sources and series: wir2022.wid.world/methodology and Chancel (2021).
+
+#### Explanation
+
+##### Step 1. 
+
+It is in Excel stype and there are missing values in the first column. In order to add a new column, let us check the following.
+
+```{r}
+region_test <- rep(df_f15$regionWID[!is.na(df_f15$regionWID)], each = 3)
+region_test
+```
+
+##### Step 2.
+
+Add the names of the region in the last column by `mutate` and choose columns by `select`.
+
+```{r}
+df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3))
+```
+
+```{r}
+df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
+  select(region, group, tcap)
+```
+
+##### Step 3.
+
+Now it is not difficult to draw a chart.
+
+```{r}
+df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
+  select(region, group, tcap) %>%
+  ggplot(aes(x = region, y = tcap, fill = group)) +
+  geom_col(position = "dodge") + 
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
+  labs(title = "Figure 15 Per capita emissions across the world, 2019", 
+       x = "", y = "tonnes of CO2e per person per year", fill = "")
+```
+
+### T1 Global millionaires and billionaires, 2021
+
+Check the format of the sheet and add `skip=4, n_max=7`.
+
+```{r T1}
+df_t1 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", 
+                    sheet = "T1", skip = 4, n_max = 7)
+df_t1
+```
+**Interpretation**: In 2021, there were 62.2 million people in the world owning more than $1 million (measured at Market Exchange Rates). Their average wealth was $ 2.8 million, representing a total of  $174 trillion. In our Tax scenario 2, a global progressive wealth tax would yield 2.1% of global income, taking into account capital depreciation and evasion. Sources and series: wir2022.wid.world/methodology.
+
+## Other Data of WIR2022
+
+### Data Used in Chapter 1 to Chapter 10
+
+There are three ways to import data used in Chapter 1 to Chapter 10.
+
+#### Use the link to download the data.
+
+1. Go to the Methodology site: https://wir2022.wid.world/methodology/
+
+2. Copy the link to Dataset 2, i.e., the datasets of chapters 1 to 10.
+
+```{r eval = FALSE}
+url_wir1to10 <- "https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Chapter.zip"
+```
+
+3. Download the data in your data folder.
+
+```{r eval = FALSE}
+download.file(url_wir1to10, destfile = "./data/wir1to10.zip", mode = "wb")
+```
+3. Unzip the file.
+
+```{r eval = FALSE}
+unzip("./data/wir1to10.zip", exdir = "./data")
+```
+
+
+* Download the data from the following site.
+  - Methodology: https://wir2022.wid.world/methodology/
+  
+4. Check the file names and check the sheet names.
+
+```{r eval = FALSE}
+list.files("./data/WIR2022TablesFigures-Chapter")
 ```
 
 ```{r eval = FALSE}
-df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
-  select(region, group, tcap) %>%
-  ggplot(aes(x = region, y = tcap, fill = group)) +
-  geom_col(position = "dodge") + 
-  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
-  labs(title = "Figure 15 Per capita emissions across the world, 2019", 
-       x = "", y = "tonnes of CO2e per person per year", fill = "")
+excel_sheets("./data/WIR2022TablesFigures-Chapter/WIR2022TablesFigures-Chapter1.xlsx")
 ```
 
-```{r echo = FALSE}
-df_f15 %>% mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) %>%
-  select(region, group, tcap) %>%
-  ggplot(aes(x = region, y = tcap, fill = group)) +
-  geom_col(position = "dodge") + 
-  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
-  labs(title = "Figure 15 Per capita emissions across the world, 2019", 
-       x = "", y = "tonnes of CO2e per person per year", fill = "")
+5. Import the data table.
+
+```{r eval = FALSE}
+wir_F1.0 <- read_excel("./data/WIR2022TablesFigures-Chapter/WIR2022TablesFigures-Chapter1.xlsx", sheet = "data-F1.0")
+wir_F1.0
 ```
 
-Review one by one, referring to the following.
+6. Select the range by slice or use range option.
+
+```{r eval = FALSE}
+wir_F1.0 <- wir_F1.0 %>% slice(1:2)
+wir_F1.0
+```
+
+```{r eval = FALSE}
+wir_F1.0a <- read_excel("./data/WIR2022TablesFigures-Chapter/WIR2022TablesFigures-Chapter1.xlsx", sheet = "data-F1.0", range = "A2:E4")
+wir_F1.0a
+```
+
+```{r eval = FALSE}
+wir_F1.0b <- read_excel("./data/WIR2022TablesFigures-Chapter/WIR2022TablesFigures-Chapter1.xlsx", sheet = "data-F1.0", range = "A7:E9")
+wir_F1.0b
+```
+### Download the zip file and move to you data folder
+
+1. Go to the Methodology site: https://wir2022.wid.world/methodology/
+
+2. Double click the download link under Dataset 2, i.e., the datasets of chapters 1 to 10 to dounload the zip file.
+
+3. Unzip the file using the helper application of your PC. In most cases, if you double click the zip file, you can get a folder containing Excel files.
+
+4. Move to your data folder and follow the line above of the previous method.
+
+### Use copying and pasting
+
+Since the table structure of Excel is complicated, it may be much easier to copy and paste the range you want to use. In this case keep the record of the data so that the method is reproducible. 
+
+```{r eval=FALSE}
+# Copy the range of an Excel sheet into your clipboard
+wir_F1.0c <- read_delim(clipboard())
+```
+
+
+
+## Package: `wid` to Download Data {#wir-d-tool}
+
+In the following, we explain how to download data by an R package `wid-r-tool`. First, you need to install the package. The `wid-r-tool` is a package in the development stage; it is not an official R package yet; you need to use the package `devtools` to install it.
+
+To install, run the following code or in Console. If you are recommended to update, select one by choosing 'All'.
+
+```{r eval=FALSE}
+install.packages("devtools")
+devtools::install_github("WIDworld/wid-r-tool")
+```
+
+For references use '?download_wid' or put 'download_wid' in the search box under Help.
+
+It is similar to `WDI`. For more detail and examples, see [vignettes](https://ds-sl.github.io/data-analysis/wir_download.pdf).
+
+For indicators of WIR, see [codebook](https://wid.world/codes-dictionary).
+
+
+```{r}
+library("wid")
+```
+
+### Examples
+
+#### Evolution of national income over long period
+
+This example is essentially the same as in the vignettes.
+
+* We now plot the evolution of average net national income per adult in Japan, France, Germany, the United Kingdom and the United States.
+
+```{r, message=FALSE, fig.align='center', fig.height=4, cache=TRUE, eval=FALSE}
+# Average national income data
+data <- download_wid(
+    indicators = "anninc", # Average net national income
+    areas = c("JP", "FR", "US", "DE", "GB"),
+    ages = 992 # Adults
+) %>% rename(value_lcu = value)
+# Purchasing power parities with US dollar
+ppp <- download_wid(
+    indicators = "xlcusp", # US PPP
+    areas = c("JP", "FR", "US", "DE", "GB"), # France, China and United States
+    year = 2016 # Reference year only
+) %>% rename(ppp = value) %>% select(-year, -percentile)
+# Convert from local currency to PPP US dollar
+data <- merge(data, ppp, by = "country") %>%
+    mutate(value_ppp = value_lcu/ppp) %>%
+    filter(year %in% 1950:2021)
+ggplot(data) +
+    geom_line(aes(x = year, y = value_ppp, color = country, linetype=country)) +
+    scale_y_log10(breaks = c(2e3, 5e3, 1e4, 2e4, 5e4)) +
+    ylab("2016 $ PPP") +
+    scale_color_discrete(
+        labels = c("JP" = "Japan", "US" = "USA", "FR" = "France", "DE" = "Germany", "GB" = "UK")
+    ) + 
+    scale_linetype_discrete(
+        labels = c("JP" = "Japan", "US" = "USA", "FR" = "France", "DE" = "Germany", "GB" = "UK")
+    ) + 
+    ggtitle("Average net national income per adult")
+```
+
+We choose two indicators: 'wealg' and 'wealp'. WIR2022 indicators consists of 6 characters; 1 letter code plus 5 letter code. You can find the list in the codebook.
+
+If you want to study WIR2022, please study the [report](https://wir2022.wid.world/), the [codebook](https://wid.world/codes-dictionary), and wir [vignette](https://ds-sl.github.io/data-analysis/wir_download.pdf) together with the [R Notebook](https://ds-sl.github.io/data-analysis/wir2022.nb.html). 
+
 
 **References**: <https://ds-sl.github.io/data-analysis/wir2022.nb.html>
 
