@@ -18,9 +18,9 @@ devtools::install_github("WIDworld/wid-r-tool")
 -   分析方法（Methodology）: <https://wir2022.wid.world/methodology/>
 -   データ（世界不平等データベース, WID）: <https://wir2022.wid.world/www-site/uploads/2022/03/WIR2022TablesFigures-Summary.xlsx>
 
-# Executive Summary
+## Executive Summary
 
-## Setup
+### Setup
 
 First, create a new project using R Studio and create a `data` folder in it by running the following code. It is better to set `Lang = "en"` as you can find a resolution easily by posting the error message.
 
@@ -77,7 +77,7 @@ df_index
 ```
 * The list of the titles of the tables and the figures.
 
-## Data and Charts
+### Data and Charts
 
 * Data are in "data-F1" to "data-F15".
 

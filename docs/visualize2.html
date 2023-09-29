@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 34 視覚化の詳細　 | みんなのデータサイエンス - Data Science for All -</title>
+<title>Chapter 33 視覚化の詳細　 | みんなのデータサイエンス - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hiroshi Suzuki）">
 <meta name="description" content="描画の原理（Grammar of Graphics） Ggplot2 は、描画の原理という理論に則って設計されています。 一つ一つが層（Layer）になっていって、それを定めていくことで、描画（グラフを描いていくこと）をするという設計思想になっています。 データ：Data 変数の対応：Aestics（絵を飾る要素）: Mapping 幾何的関数：Geom Functions...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="Chapter 34 視覚化の詳細　 | みんなのデータサイエンス - Data Science for All -">
+<meta property="og:title" content="Chapter 33 視覚化の詳細　 | みんなのデータサイエンス - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/visualize2.html">
 <meta property="og:description" content="描画の原理（Grammar of Graphics） Ggplot2 は、描画の原理という理論に則って設計されています。 一つ一つが層（Layer）になっていって、それを定めていくことで、描画（グラフを描いていくこと）をするという設計思想になっています。 データ：Data 変数の対応：Aestics（絵を飾る要素）: Mapping 幾何的関数：Geom Functions...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 34 視覚化の詳細　 | みんなのデータサイエンス - Data Science for All -">
+<meta name="twitter:title" content="Chapter 33 視覚化の詳細　 | みんなのデータサイエンス - Data Science for All -">
 <meta name="twitter:description" content="描画の原理（Grammar of Graphics） Ggplot2 は、描画の原理という理論に則って設計されています。 一つ一つが層（Layer）になっていって、それを定めていくことで、描画（グラフを描いていくこと）をするという設計思想になっています。 データ：Data 変数の対応：Aestics（絵を飾る要素）: Mapping 幾何的関数：Geom Functions...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -105,17 +105,16 @@
 <li><a class="" href="un.html"><span class="header-section-number">27</span> UN Data（国際連合データ）</a></li>
 <li><a class="" href="owid.html"><span class="header-section-number">28</span> Our World in Data</a></li>
 <li><a class="" href="wid.html"><span class="header-section-number">29</span> 世界不平等データベース</a></li>
-<li><a class="" href="executive-summary.html"><span class="header-section-number">30</span> Executive Summary</a></li>
-<li><a class="" href="estat.html"><span class="header-section-number">31</span> e-Stat</a></li>
-<li><a class="" href="others.html"><span class="header-section-number">32</span> その他のデータベース</a></li>
+<li><a class="" href="estat.html"><span class="header-section-number">30</span> e-Stat</a></li>
+<li><a class="" href="others.html"><span class="header-section-number">31</span> その他のデータベース</a></li>
 <li class="book-part">PART IV EDA</li>
-<li><a class="" href="intro2eda.html"><span class="header-section-number">33</span> 探索的データ解析</a></li>
-<li><a class="active" href="visualize2.html"><span class="header-section-number">34</span> 視覚化の詳細　</a></li>
-<li><a class="" href="toolbox.html"><span class="header-section-number">35</span> 道具箱</a></li>
-<li><a class="" href="worldmap.html"><span class="header-section-number">36</span> 地図 Choropleth Maps</a></li>
+<li><a class="" href="intro2eda.html"><span class="header-section-number">32</span> 探索的データ解析</a></li>
+<li><a class="active" href="visualize2.html"><span class="header-section-number">33</span> 視覚化の詳細　</a></li>
+<li><a class="" href="toolbox.html"><span class="header-section-number">34</span> 道具箱</a></li>
+<li><a class="" href="worldmap.html"><span class="header-section-number">35</span> 地図 Choropleth Maps</a></li>
 <li class="book-part">PART V EXAMPLES</li>
-<li><a class="" href="example1.html"><span class="header-section-number">37</span> Example 1</a></li>
-<li><a class="" href="references.html"><span class="header-section-number">38</span> 参考文献</a></li>
+<li><a class="" href="example1.html"><span class="header-section-number">36</span> Example 1</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">37</span> 参考文献</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="japanese.html"><span class="header-section-number">A</span> 日本語の扱いについて</a></li>
 <li><a class="" href="tools.html"><span class="header-section-number">B</span> IT ツール</a></li>
@@ -128,9 +127,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="visualize2" class="section level1" number="34">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="visualize2" class="section level1" number="33">
 <h1>
-<span class="header-section-number">34</span> 視覚化の詳細　<a class="anchor" aria-label="anchor" href="#visualize2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33</span> 視覚化の詳細　<a class="anchor" aria-label="anchor" href="#visualize2"><i class="fas fa-link"></i></a>
 </h1>
 <div id="gg2" class="rmdcaution">
 <p><strong>描画の原理（Grammar of Graphics）</strong></p>
@@ -164,21 +163,21 @@
 </ol>
 </div>
 <p>上記の原理の詳細について述べます。</p>
-<div id="視覚化逆引き事典" class="section level2" number="34.1">
+<div id="視覚化逆引き事典" class="section level2" number="33.1">
 <h2>
-<span class="header-section-number">34.1</span> 視覚化逆引き事典<a class="anchor" aria-label="anchor" href="#%E8%A6%96%E8%A6%9A%E5%8C%96%E9%80%86%E5%BC%95%E3%81%8D%E4%BA%8B%E5%85%B8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">33.1</span> 視覚化逆引き事典<a class="anchor" aria-label="anchor" href="#%E8%A6%96%E8%A6%9A%E5%8C%96%E9%80%86%E5%BC%95%E3%81%8D%E4%BA%8B%E5%85%B8"><i class="fas fa-link"></i></a>
 </h2>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="intro2eda.html"><span class="header-section-number">33</span> 探索的データ解析</a></div>
-<div class="next"><a href="toolbox.html"><span class="header-section-number">35</span> 道具箱</a></div>
+<div class="prev"><a href="intro2eda.html"><span class="header-section-number">32</span> 探索的データ解析</a></div>
+<div class="next"><a href="toolbox.html"><span class="header-section-number">34</span> 道具箱</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#visualize2"><span class="header-section-number">34</span> 視覚化の詳細　</a></li>
-<li><a class="nav-link" href="#%E8%A6%96%E8%A6%9A%E5%8C%96%E9%80%86%E5%BC%95%E3%81%8D%E4%BA%8B%E5%85%B8"><span class="header-section-number">34.1</span> 視覚化逆引き事典</a></li>
+<li><a class="nav-link" href="#visualize2"><span class="header-section-number">33</span> 視覚化の詳細　</a></li>
+<li><a class="nav-link" href="#%E8%A6%96%E8%A6%9A%E5%8C%96%E9%80%86%E5%BC%95%E3%81%8D%E4%BA%8B%E5%85%B8"><span class="header-section-number">33.1</span> 視覚化逆引き事典</a></li>
 </ul>
 
       <div class="book-extra">
