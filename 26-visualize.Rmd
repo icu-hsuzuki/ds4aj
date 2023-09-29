@@ -524,6 +524,36 @@ df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
   scale_fill_discrete(labels = function(x) str_wrap(x, width = 8))
 ```
 
+#### 縦と横の変換
+
+縦横は、x, y などの変数を入れ替えることで可能ですが、座標軸自体を逆に（flip）することも可能です。`coord_flip()` を使います。ただし、vjust で調節した部分は、hjust で調節する必要は生じます。
+
+文字列の折り返しの幅も調整が必要かもしれません。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |> mutate(n = n()) |>
+  ggplot(aes(x = fct_infreq(region), fill = income)) +
+  geom_bar(color = "black", linewidth = 0.2) +
+  geom_text(aes(y = n, label = n), hjust = -0.5) + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 12)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8))+
+  coord_flip()
+```
+
+逆順に変える時は fct_rev() を被せれば解決します。
+
+```{r}
+df_wdi_extra |> filter(income != "Aggregates", year == 2020) |>
+  group_by(region) |> mutate(n = n()) |>
+  ggplot(aes(x = fct_rev(fct_infreq(region)), fill = income)) +
+  geom_bar(color = "black", linewidth = 0.2) +
+  geom_text(aes(y = n, label = n), hjust = -0.5) + 
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 12)) +
+  scale_fill_discrete(labels = function(x) str_wrap(x, width = 8))+
+  coord_flip()
+```
+
 #### 割合の表示
 
 積み上げ型になっています。これを、割合で表示するには `position = "fill"` を加えます。すると、各地域ごとの、income level（収入の多寡）による国の数の割合がわかります。

@@ -1,8 +1,64 @@
 # その他のデータベース {#others}
 
-## 国際機関
+## 国際連合専門機関および関連機関
 
-### 国際労働機関（International Labor Organization (ILO) ）
+Specialized agencies and related organizations
+
+-   [国連食糧農業機関（FAO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/fao/)
+
+-   [国際民間航空機関（ICAO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/icao/)
+
+-   [国際農業開発基金（IFAD）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/ifad/)
+
+-   [国際労働機関（ILO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/ilo/)
+
+-   [国際通貨基金（IMF）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/imf/)
+
+-   [国際海事機関（IMO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/imo/)
+
+-   [国際電気通信連合（ITU）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/itu/)
+
+-   [国連教育科学文化機関（UNESCO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/unesco/)
+
+-   [国連工業開発機関（UNIDO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/unido/)
+
+-   [世界観光機関（UNWTO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/unwto/)
+
+-   [万国郵便連合（UPU）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/upu/)
+
+-   [世界保健機関（WHO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/who/)
+
+-   [世界知的所有権機関（WIPO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/wipo/)
+
+-   [世界気象機関（WMO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/wmo/)
+
+    -   [気候変動政府間パネル（IPCC）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/wmo/ipcc/)
+
+-   [世界銀行グループ（World Bank Group）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/worldbankgroup/)
+
+    -   [国際復興開発銀行（IBRD）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/worldbankgroup/ibrd/)
+
+    -   [国際開発協会（IDA）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/worldbankgroup/ida/)
+
+    -   [国際金融公社（IFC）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/worldbankgroup/ifc/)
+
+    -   [多数国間投資保証機関（MIGA）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/worldbankgroup/miga/)
+
+    -   [国際投資紛争解決センター（ICSID）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/worldbankgroup/icsid/)
+
+-   [包括的核実験禁止条約機関準備委員会（CTBTO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/ctbto/)
+
+-   [国際原子力機関（IAEA）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/iaea/)
+
+-   [国際移住機関（IOM）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/iom/)
+
+-   [化学兵器禁止機関（OPCW）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/opcw/)
+
+-   [世界貿易機関（WTO）](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/wto/)
+
+（[国際連合広報センターより](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/)）
+
+### 国際労働機関（International Labor Organization (ILO) ） {#sec-ilo}
 
 ILO サイト：<https://www.ilo.org/global/lang–en/index.htm>
 
@@ -238,11 +294,21 @@ df_income |> filter(ref_area == "JPN", indicator == "LAP_2LID_QTL_RT") |>
 
 *他の機能も確認する必要あり。*
 
-### 国連児童基金（UNICEF: United Nations Children's Fund）
+### 国連児童基金（UNICEF: United Nations Children's Fund） {#sec-unicef}
 
 データサイト：<https://data.unicef.org>
 
-### 国際通貨基金（IMF: International Monetary Fund）
+### 世界保健機関（WHO: World Health Organization） {#sec-who}
+
+世界保健機関は1948年に設立され、国連システムの中にあって保健について指示を与え、調整する機関である。WHOは、グローバルな保健問題についてリーダーシップを発揮し、健康に関する研究課題を作成し、規範や基準を設定する。また、証拠に基づく政策選択肢を明確にし、加盟国へ技術的支援を行い、健康志向を監視、評価する。その政策決定機関は世界保健総会で、毎年開かれ、194全加盟国の代表が出席する。執行理事会は保健の分野で技術的に資格のある34人のメンバーで構成される。
+
+（[国際連合広報センターより](https://www.unic.or.jp/info/un/unsystem/specialized_agencies/who/)）
+
+WHO ホームページ：<https://www.who.int>
+
+Data at WHO：<https://www.who.int/data>
+
+### 国際通貨基金（IMF: International Monetary Fund） {#sec-imf}
 
 ホームページ：<https://www.imf.org/en/home>
 

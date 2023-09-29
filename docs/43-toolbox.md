@@ -1,0 +1,21 @@
+# 道具箱 {#toolbox}
+
+## 論理値のあつかい
+
+## 数値 numbers
+
+## 文字列 stringr
+
+## 正規表現 greg
+
+## 日付 lubridate
+
+## ファクター factor
+
+## 関数 functions
+
+## プログラミング purrr
+
+## ホームページからの読み込み rvest
+
+## API の活用
