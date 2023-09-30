@@ -93,7 +93,7 @@ df_index <- read_excel("data/WIR2022TablesFigures-Summary.xlsx",
 df_index
 ```
 
-このファイルの情報から、それぞれのシートの内容がわかります。データは、"data-F1" to "data-F15". にあります。
+このファイルの情報から、それぞれのシートの内容がわかります。データは、"data-F1" から "data-F15" にあります。
 
 ### F1: 世界の所得と富の不平等 2021年
 
@@ -121,10 +121,11 @@ df_f1 |> select(cat = ...1, 2:4) |>
        x = "", y = "Share of total income or wealth", fill = "")
 ```
 
-**Interpretation**: The global bottom 50% captures 8.5% of total income measured at Purchasing Power Parity (PPP). The global bottom 50% owns 2% of wealth (at Purchasing Power Parity). The global top 10% owns 76% of total Household wealth and captures 52% of total income in 2021. Note that top wealth holders are not necessarily top income holders. Incomes are measured after the operation of pension and unemployment systems and before taxes and transfers.\
-**Sources and series**: wir2022.wid.world/methodology.
+**Interpretation**: The global bottom 50% captures 8.5% of total income measured at Purchasing Power Parity (PPP). The global bottom 50% owns 2% of wealth (at Purchasing Power Parity). The global top 10% owns 76% of total Household wealth and captures 52% of total income in 2021. Note that top wealth holders are not necessarily top income holders. Incomes are measured after the operation of pension and unemployment systems and before taxes and transfers.
 
-**図の解釈** 世界の下位50%は、購買力平価（PPP）で測定した総所得の8.5%を占めている。世界の下位50%は富の2%を所有（購買力平価で）。世界の上位10%は、2021年には世帯総資産の76%を保有し、総所得の52%を獲得する。富の上位者が所得の上位者とは限らないことに注意。所得は年金と失業制度の運用後、税金と移転の前に測定されている。出典とシリーズ：wir2022.wid.world/methodology.
+**図の解釈** 世界の下位50%は、購買力平価（PPP）で測定した総所得の8.5%を占めている。世界の下位50%は富の2%を所有（購買力平価で）。世界の上位10%は、2021年には世帯総資産の76%を保有し、総所得の52%を獲得する。富の上位者が所得の上位者とは限らないことに注意。所得は年金と失業制度の運用後、税金と移転の前に測定されている。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology.
 
 #### 説明
 
@@ -143,7 +144,7 @@ df_f1 |> select(cat = ...1, 2:4) |>
 
 ##### Step 2.
 
--    `ggplot2` を使って図を描く。
+-   `ggplot2` を使って図を描く。
 
 ```{r}
 df_f1 |> select(cat = ...1, 2:4) |>
@@ -241,10 +242,11 @@ df_f2 |> pivot_longer(3:5, names_to = "level", values_to = "value") |>
        x = "", y = "Share of national income (%)", fill = "")
 ```
 
-**Interpretation**: In Latin America, the top 10% captures 55% of national income, compared to 36% in Europe. Income is measured after pension and unemployment contributions and benefits paid and received by individuals but before income taxes and other transfers.\
-**Sources and series**: www.wir2022.wid.world/methodology.
+**Interpretation**: In Latin America, the top 10% captures 55% of national income, compared to 36% in Europe. Income is measured after pension and unemployment contributions and benefits paid and received by individuals but before income taxes and other transfers.
 
-**図の解釈** ラテンアメリカでは、上位10％が国民所得の55％を占めているのに対し、ヨーロッパでは36％である。所得は、個人が支払った年金や失業保険、給付の後、所得税やその他の移転の前に測定される。出典と系列： www.wir2022.wid.world/methodology.
+**図の解釈** ラテンアメリカでは、上位10％が国民所得の55％を占めているのに対し、ヨーロッパでは36％である。所得は、個人が支払った年金や失業保険、給付の後、所得税やその他の移転の前に測定される。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology.
 
 #### 説明
 
@@ -258,7 +260,7 @@ df_f2 |> pivot_longer(3:5, names_to = "level", values_to = "value")
 
 ##### Step 2.
 
--   タイトルが非常に長いので、 `\n` を入れて改行。 \'and' の前にスペースを入れると `\n and` 'and' の前にスペースが入ることになる。
+-   タイトルが非常に長いので、 `\n` を入れて改行。 'and' の前にスペースを入れると `\n and` 'and' の前にスペースが入ることになる。
 
 ```{r}
 df_f2 |> pivot_longer(3:5, names_to = "level", values_to = "value") |>
@@ -273,6 +275,7 @@ df_f2 |> pivot_longer(3:5, names_to = "level", values_to = "value") |>
 
 -   x-軸のラベルが重なっている。一つの方法は `angle` を使って角度をつけること。
 -   もう一つの方法は `scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8))` をつかって、幅を指定し折り返すことで重複を避ける。
+-   stringr は、tidyverse と一緒にインストールされるが、読み込まれてはいないので、stringr:: としているが、library(stringr) と最初に読み込んでおけば、`scale_x_discrete(labels = function(x) str_wrap(x, width = 8))` で良い。
 
 ```{r}
 df_f2 |> pivot_longer(3:5, names_to = "level", values_to = "value") |>
@@ -331,7 +334,11 @@ df_f3 |>
   scale_fill_brewer(palette='YlOrRd')
 ```
 
-**Interpretation**: In Brazil, the bottom 50% earns 29 times less than the top 10%. The value is 7 in France. Income is measured after pension and unemployment payments and benefits received by individuals but before other taxes they pay and transfers they receive. Source and series: wir2022.wid.world/methodology.
+**Interpretation**: In Brazil, the bottom 50% earns 29 times less than the top 10%. The value is 7 in France. Income is measured after pension and unemployment payments and benefits received by individuals but before other taxes they pay and transfers they receive.
+
+**図の解釈** ：ブラジルでは、下位50％の所得は上位10％の29倍である。フランスは7倍。所得は、個人が受け取る年金や失業手当、給付金を差し引いたものであり、その他の税金や給付金を差し引く前のものである。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology.
 
 #### 説明
 
@@ -522,7 +529,9 @@ df_f3_rev |>
   scale_fill_brewer(palette='YlOrRd')
 ```
 
-### F4: The extreme concentration of capital: wealth inequality across the world, 2021
+### F4: 資本の極端な集中：世界全体の富の不平等、2021年
+
+**The extreme concentration of capital: wealth inequality across the world, 2021**
 
 ```{r data-f4, cash = TRUE}
 df_f4 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F4")
@@ -540,17 +549,22 @@ df_f4 |> pivot_longer(3:5, names_to = "level", values_to = "value") |>
 ```
 
 **Interpretation**: The Top 10% in Latin America captures 77% of total household wealth, versus 22% for the Middle 40% and 1% for the Bottom 50%. In Europe, the Top 10% owns 58% of total wealth, versus 38% for the Middle 40% and 4% for the Bottom 50%.\
-**Sources and series**: wir2022.wid.world/methodology.
+
+**図の解釈：** ラテンアメリカでは上位10％が家計総資産の77％を占めているのに対し、中位40％は22％、下位50％は1％である。ヨーロッパでは、上位10%が総資産の58%を所有しているのに対し、中位40%は38%、下位50%は4%である。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology.
 
 #### 説明
 
--   Almost the same as F1 and F2.
+-   F1 や F2 とほぼ同じ。
 
--   Wrap long label: `scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10))`
+-   ラベルが長いので、 `scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10))` を使っている。
 
--   Per Cent: `scale_y_continuous(labels = scales::percent_format(accuracy = 1))`
+-   Y軸を百分率にするために、次を挿入 `scale_y_continuous(labels = scales::percent_format(accuracy = 1))`
 
-### F5: Global income inequality: T10/B50 ratio, 1820-2020
+### F5: 世界の所得格差： T10/B50比、1820年-2020年
+
+**Global income inequality: T10/B50 ratio, 1820-2020**
 
 ```{r data-f5, cash = TRUE}
 df_f5 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F5")
@@ -571,14 +585,17 @@ df_f5 |> select(year = y, ratio = t10b50) |>
     annotate("text", x = 2010, y = 32, label = stringr::str_wrap("2020: average income of the global top 10% is 38x higher than average income of the bottom 50%", width = 20), size = 3)
 ```
 
-**Interpretation**. Global inequality, as measured by the ratio T10/B50 between the average income of the top 10% and the average income of the bottom 50%, more than doubled between between 1820 and 1910, from less than 20 to about 40, and stabilized around 40 between 1910 and 2020. It is too early to say whether the decline in global inequality observed since 2008 will continue. Income is measured per capita after pension and unemployement insurance transfers and before income and wealth taxes.\
-**Sources and series**: wir2022.wid.world/lmethodology and Chancel and Piketty (2021)..
+**Interpretation**. Global inequality, as measured by the ratio T10/B50 between the average income of the top 10% and the average income of the bottom 50%, more than doubled between between 1820 and 1910, from less than 20 to about 40, and stabilized around 40 between 1910 and 2020. It is too early to say whether the decline in global inequality observed since 2008 will continue. Income is measured per capita after pension and unemployement insurance transfers and before income and wealth taxes.
+
+図の解釈： 世界の不平等は、上位10％の平均所得と下位50％の平均所得の比 T10/B50で測定され、1820年から1910年の間に、20未満から約40へと2倍以上に増加し、1910年から2020年の間に40前後で安定した。2008年以降に観察された世界的な不平等の減少が今後も続くかどうか を判断するのは時期尚早である。所得は、年金および失業保険給付後、所得税および富裕税課税前の1人当たりで測定されている。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology, Chancel and Piketty (2021)..
 
 #### 説明
 
 ##### Step 1.
 
--   The following is enough. Here we applied `str_wrap` to the label of the y-axis as it is very long.
+-   基本的に、次で十分。Y 軸のラベルが長いので、 `str_wrap` で、折り返している。改行コード `\n` で折り返し場所を指定しても良い。
 
 ```{r}
 df_f5 |> select(year = y, ratio = t10b50) |>
@@ -588,15 +605,23 @@ df_f5 |> select(year = y, ratio = t10b50) |>
        x = "", y = stringr::str_wrap("Ratio of top 10% average income to bottom 50% average income", width = 35))
 ```
 
+```{r}
+df_f5 |> select(year = y, ratio = t10b50) |>
+  ggplot(aes(x = year, y = ratio)) + 
+  geom_line() +
+  labs(title = "Figure 5. Global income inequality:T10/B50 ratio, 1820-2020", 
+       x = "", y = "Ratio of top 10% average income to \nbottom 50% average income")
+```
+
 ##### Step 2.
 
-There are many way of smoothing.
+なめらかな曲線にする方法はいくつもある。基本的には、`geom_smooth()` を使い、`formula = y~x` と、`method` を指定し、必要に応じて、パラメター span などを設定する。se = TRUE （初期値はこのようになっている）とすると、標準誤差の帯が表示される。信頼誤差（level of confidence）は、level で指定できる。初期値は、0.95。
 
-**Line Plot and LOESS**
+**折れ線グラフと局所回帰（Line Plot and LOESS（**locally estimated scatterplot smoothing**））**
 
--   The default is "loess", and `se = TRUE` which include the standard error.
--   Unless you clearly understand them, it is better to use `formula = y~x`, `method = "loess",  and`se = FALSE\`.
--   We try other methods below.
+-   method の初期値は "loess" で `se = TRUE` になっている。
+-   十分理解できるまでは次を使用： `formula = y~x`, `method = "loess",  and`se = FALSE\`.
+-   下では、他の方法も例示する。
 
 ```{r}
 df_f5 |> select(year = y, ratio = t10b50) |>
@@ -608,7 +633,7 @@ df_f5 |> select(year = y, ratio = t10b50) |>
        x = "", y = "Ratio of top 10% average income to bottom 50% average income")
 ```
 
-**GAM Smoothing with 24 Points**
+**24点での GAM（General Additive Model）近似**
 
 ```{r}
 df_f5 |> select(year = y, ratio = t10b50) |>
@@ -619,7 +644,7 @@ df_f5 |> select(year = y, ratio = t10b50) |>
        x = "", y = stringr::str_wrap("Ratio of top 10% average income to bottom 50% average income", width = 35))
 ```
 
-**Polynomial Approximation of Degree 6**
+**6次多項式近似**
 
 ```{r}
 df_f5 |> select(year = y, ratio = t10b50) |>
@@ -633,13 +658,13 @@ df_f5 |> select(year = y, ratio = t10b50) |>
 
 ##### Step 3.
 
--   In the main chart for F5, we applied `geom_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE)` as it is easy. You can adjust smoothness by changing the value for `span`.
+-   F5 の描画では, 次を使用：`geom_smooth(formula = y~x, method = "loess", span = 0.25, se = FALSE)` `span` の値を変更すれば、なめらかさを変えることができる。
 
--   For the y-axis, following the output provided, `lims(y = c(10,70))` is added and annotation.
+-   実際の図に合わせて Y 軸の範囲を `lims(y = c(10,70))` で修正。
 
--   For a long text use: `stringr::str_wrap("long text", width = size)` and `annotate` with `size = fontsize`.
+-   長いテキストは、str_wrap を使い、注釈（`annotate`）を挿入、文字の大きさは、`size = fontsize`　で調整： `stringr::str_wrap("long text", width = size)` and with `size = fontsize`.
 
--   `ggforce::geom_mark_rect` will add annotation in a box.
+-   `ggforce::geom_mark_rect` によって注釈を長方形で挿入。
 
 ```{r}
 df_f5 |> select(year = y, ratio = t10b50) |>
@@ -655,7 +680,9 @@ df_f5 |> select(year = y, ratio = t10b50) |>
     annotate("text", x = 2010, y = 32, label = stringr::str_wrap("2020: average income of the global top 10% is 38x higher than average income of the bottom 50%", width = 20), size = 3)
 ```
 
-### F6: Global income inequality: Between vs. Within country inequality (Theil index), 1820-2020
+### F6: 世界の所得格差： 国間不平等と国内不平等（Theil指数）、1820-2020年
+
+**Global income inequality: Between vs. Within country inequality (Theil index), 1820-2020**
 
 ```{r data-f6, cash = TRUE}
 df_f6 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F6")
@@ -678,7 +705,7 @@ df_f6 |> select(year = "...1", 2:3) |>
   annotate("text", x = 1990, y = 0.30, label = stringr::str_wrap("2020: Between country inequality represents 32% of global inequality", width = 20), size = 3)
 ```
 
--   Legend can be placed at the bottom: `theme(legend.position="bottom")`
+-   凡例を下にしたい場合は `theme` を利用: `theme(legend.position="bottom")`
 
 ```{r}
 df_f6 |> select(year = "...1", 2:3) |>
@@ -697,14 +724,17 @@ df_f6 |> select(year = "...1", 2:3) |>
   theme(legend.position="bottom")
 ```
 
-**Interpretation**. The importance of between-country inequality in overall global inequality, as measured by the Theil index, rose between 1820 and 1980 and strongly declined since then. In 2020, between-country inequality makes-up about a third of global inequality between individuals. The rest is due to inequality within countries. Income is measured per capita after pension and unemployement insurance transfers and before income and wealth taxes.\
-**Sources and series**: wir2022.wid.world/methodology and Chancel and Piketty (2021).
+**Interpretation**. The importance of between-country inequality in overall global inequality, as measured by the Theil index, rose between 1820 and 1980 and strongly declined since then. In 2020, between-country inequality makes-up about a third of global inequality between individuals. The rest is due to inequality within countries. Income is measured per capita after pension and unemployement insurance transfers and before income and wealth taxes.
+
+**図の解釈：** Theil指数によって測定された、世界全体の不平等における国間不平等の重要性は、1820年から1980年の間に上昇し、それ以降は強く低下した。2020年には、個人間の不平等が世界の不平等の約3分の1を占めるようになる。残りは国内の不平等によるものである。所得は、年金と失業保険給付後、所得税と富裕税課税前の1人当たりで測定されている。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology, Chancel and Piketty (2021).
 
 #### 説明
 
 ##### Step 1.
 
--   We use `geom_area` after tidying the data with `pilot_longer`.
+-   まず `pilot_longer`　で、データを整えてから、 `geom_area` を利用。
 
 ```{r}
 df_f6 |> select(year = "...1", 2:3) |>
@@ -718,17 +748,15 @@ df_f6 |> select(year = "...1", 2:3) |>
 
 ##### Step 2.
 
--   Since the order of the two groups are different, the following linw is added.
+-   グループの順序を変えたいのと、凡例が長いので、折り返すために、下の部分を挿入。
 
 ```         
 scale_fill_manual(values=rev(scales::hue_pal()(2)), labels = function(x) str_wrap(x, width = 15))
 ```
 
--   The second option is to control the legend to wrap.
+-   RMarkdown で説明を加えるのであれば、注釈を図に加えることはしなくても良いかもしれない。
 
--   Annotation can be omitted if we use RMarkdown to explain the charts clearly.
-
--   Add a line break in the y-axis label.
+-   Y 軸のラベルを、パーセントにし、X 軸のらべるを調整する。
 
 ```{r}
 df_f6 |> select(year = "...1", 2:3) |>
@@ -743,7 +771,23 @@ df_f6 |> select(year = "...1", 2:3) |>
        x = "", y = "Share of global inequality \n(% of total Theil index)", fill = "")
 ```
 
-### F7: Global income inequality, 1820-2020
+単に、`type` の順序を変えて、色の順番を変えるだけなら、`fill = fct_rev(type)` と、`scale_fill_hue(direction = -1)` でも十分。ただしここでは、fill のラベルも調整しているので、上で説明する方法を利用した。下の図参照。
+
+```{r}
+df_f6 |> select(year = "...1", 2:3) |>
+  pivot_longer(cols = 2:3, names_to = "type", values_to = "value") |>
+  ggplot(aes(x = year, y = value, fill = fct_rev(type))) +
+  geom_area() +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_fill_hue(direction = -1) + 
+  labs(title = "Figure 6. Global income inequality: \nBetween vs. within country inequality (Theil index), 1820-2020",
+       x = "", y = "Share of global inequality \n(% of total Theil index)",
+       fill = "")
+```
+
+### F7: 世界の所得格差、1820-2020年
+
+**Global income inequality, 1820-2020**
 
 ```{r data-f7, cash = TRUE}
 df_f7 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F7")
@@ -762,7 +806,11 @@ df_f7 |> select(year = y, 2:4) |>
   annotate("text", x = 1980, y = 0.20, label = stringr::str_wrap("The global bottom 50% income share remains historically low despite growth in the emerging world in the past decades.", width = 30), size = 3)
 ```
 
-**Interpretation**. The share of global income going to top 10% highest incomes at the world level has fluctuated around 50-60% between 1820 and 2020 (50% in 1820, 60% in 1910, 56% in 1980, 61% in 2000, 55% in 2020), while the share going to the bottom 50% lowest incomes has generally been around or below 10% (14% in 1820, 7% in 1910, 5% in 1980, 6% in 2000, 7% in 2020). Global inequality has always been very large. It rose between 1820 and 1910 and shows little long-run trend between 1910 and 2020. Distribution of per capita incomes. Sources and series: see wir2022.wid.world/methodology and Chancel and Piketty (2021).
+**Interpretation**. The share of global income going to top 10% highest incomes at the world level has fluctuated around 50-60% between 1820 and 2020 (50% in 1820, 60% in 1910, 56% in 1980, 61% in 2000, 55% in 2020), while the share going to the bottom 50% lowest incomes has generally been around or below 10% (14% in 1820, 7% in 1910, 5% in 1980, 6% in 2000, 7% in 2020). Global inequality has always been very large. It rose between 1820 and 1910 and shows little long-run trend between 1910 and 2020. Distribution of per capita incomes.
+
+図の解釈： 世界所得に占める上位10％の高額所得者の割合は、1820年から2020年にかけて50～60％前後で変動している（1820年：50％、1910年：60％、1980年：56％、2000年：61％、2020年：55％）が、下位50％の低額所得者の割合は概ね10％前後かそれ以下である（1820年：14％、1910年：7％、1980年：5％、2000年：6％、2020年：7％）。世界の不平等は常に非常に大きい。1820年から1910年にかけて上昇し、1910年から2020年にかけては長期的なトレンドはほとんど見られない。一人当たり所得の分布。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology, Chancel and Piketty (2021).
 
 #### 説明
 
@@ -777,7 +825,7 @@ df_f7 |> select(year = y, 2:4) |>
 
 ##### Step 2.
 
-\*Use `geom_smooth` with `span`, and change the scale of x-axis and y-axis.
+-    `geom_smooth` と `span` を使って、なめらかな曲線で近似し、X 軸と、Y 軸のラベルを調整。
 
 ```{r}
 df_f7 |> select(year = y, 2:4) |>
@@ -790,9 +838,11 @@ df_f7 |> select(year = y, 2:4) |>
        x = "", y = " Share of total world income (%)", color = "")
 ```
 
--   Finally, add the annotation to obtain the figure above.
+-   最後に、注釈を追加する。
 
-### F8: The rise of private versus the decline of public wealth in rich countries, 1970-2020
+### F8: 富裕国における私的富の増加と公的富の減少（1970-2020年）
+
+**The rise of private versus the decline of public wealth in rich countries, 1970-2020**
 
 ```{r data-f8, cash = TRUE}
 df_f8 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F8")
@@ -820,13 +870,14 @@ df_f8 |> drop_na() |>
 ```
 
 **Interpretation**: Public wealth is the sum of all financial and non-financial assets, net of debts, held by governments. Public wealth dropped from 60% of national income in 1970 to -106% in 2020 in the UK.\
-**Sources and series**: wir2022.wid.world/methodology, Bauluz et al. (2021) and updates.
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology, Bauluz et al. (2021) と更新情報.
 
 #### 説明
 
 ##### Step 1.
 
--   There are two types of groups, countries and public vs private. So we change the column names first to identify that classification easily. We delete the last two columns "gwealAVGRICH" and "pwealAVGRICH" as they will not appear in the chart.
+-   それぞれの、countries において、public と private というグループに分かれているので、まずは、列名を、変更しやすいように、下線 '\_' で分けることにする。最後の二列 "gwealAVGRICH"、"pwealAVGRICH" は、使わないので、削除。
 
 ```{r}
 df_f8 |> 
@@ -841,8 +892,7 @@ df_f8 |>
 
 ##### Step 2.
 
--   First separate the countries into a new column.
--   Here, we used an option `names_sep = "_"`.
+-   まずは、国を分け、poublic と private を分ける。次のオプションを利用 `names_sep = "_"`.
 
 ```{r}
 df_f8 |> 
@@ -858,7 +908,7 @@ df_f8 |>
 
 ##### Step 3.
 
--   Next apply `pivot_longer` again to form the second group.
+-   つぎに `pivot_longer` を使って、次のグループを作成
 
 ```{r}
 df_f8 |> 
@@ -875,7 +925,7 @@ df_f8 |>
 
 ##### Step 4.
 
--   Assign colors to countries and distinguish types by `linetype`.
+-   色と、線の種類 `linetype` を使って、グループを区別する。
 
 ```{r}
 df_f8 |> 
@@ -895,8 +945,8 @@ df_f8 |>
 
 ##### Step 5.
 
--   Since there are a lot of NA's, removed using `drop_na()`
--   Change the line width by `size`, change the y-axis to percents and add the .title.
+-   たくさん NA's があるので、 `drop_na()` を使って、削除。
+-   線の太さは `size` で変更し、Y 軸を百分率に、また、表題を追加。
 
 ```{r}
 df_f8 |> drop_na() |>
@@ -920,7 +970,7 @@ df_f8 |> drop_na() |>
 
 ##### Step 6.
 
--   Let us check if we use only color for each group representing columns. This is not the chart we wanted to obtain.
+-   色 color だけを使うと、どうだろうか。これは、望んでいたものではないことを、確認してください。
 
 ```{r}
 df_f8 |> drop_na() |> 
@@ -934,7 +984,9 @@ df_f8 |> drop_na() |>
        x = "", y = "wealth as % of national income", color = "")
 ```
 
-### F9: Average annual wealth growth rate, 1995-2021
+### F9: 年平均資産成長率（1995年-2021年）
+
+**Average annual wealth growth rate, 1995-2021**
 
 ```{r data-f9, cash = TRUE}
 df_f9 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F9")
@@ -954,8 +1006,11 @@ df_f9 |>
        y = "Per adult annual growth rate in wealth, \nnet of inflation (%)")
 ```
 
-**Interpretation**: Growth rates among the poorest half of the population were between 3% and 4% per year, between 1995 and 2021. Since this group started from very low wealth levels, its absolute levels of growth remained very low. The poorest half of the world population only captured 2.3% of overall wealth growth since 1995. The top 1% benefited from high growth rates (3% to 9% per year). This group captured 38% of total wealth growth between 1995 and 2021. Net household wealth is equal to the sum of financial assets (e.g. equity or bonds) and non-financial assets (e.g. housing or land) owned by individuals, net of their debts.\
-**Sources and series**: wir2022.wid.world/methodology.
+**Interpretation**: Growth rates among the poorest half of the population were between 3% and 4% per year, between 1995 and 2021. Since this group started from very low wealth levels, its absolute levels of growth remained very low. The poorest half of the world population only captured 2.3% of overall wealth growth since 1995. The top 1% benefited from high growth rates (3% to 9% per year). This group captured 38% of total wealth growth between 1995 and 2021. Net household wealth is equal to the sum of financial assets (e.g. equity or bonds) and non-financial assets (e.g. housing or land) owned by individuals, net of their debts.
+
+**図の解釈：** 1995年から2021年にかけて、最貧困層の成長率は年率3％から4％であった。このグループは非常に低い富の水準から出発したため、成長の絶対水準は非常に低いままであった。世界人口の最貧困層は、1995年以降、富の成長全体の2.3％を占めたに過ぎない。上位1％は高い成長率（年率3％から9％）の恩恵を受けた。このグループは1995年から2021年の間に富の増加全体の38％を獲得した。家計純富とは、個人が所有する金融資産（株式や債券など）と非金融資産（住宅や土地など）の合計から負債を差し引いたものである。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology.
 
 #### 説明
 
@@ -1012,7 +1067,9 @@ df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks)
   scale_y_continuous(labels = scales::percent_format(accuracy = 0.1))
 ```
 
-### F10: The share of wealth owned by the global 0.1% and billionaires, 2021
+### F10: 世界の0.1％と億万長者が所有する富のシェア（2021年）
+
+**The share of wealth owned by the global 0.1% and billionaires, 2021**
 
 ```{r data-f10, cash = TRUE}
 df_f10 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F10")
@@ -1034,8 +1091,11 @@ df_f10 |>
        x = "", y = "Share of total household wealth (%)", color = "")
 ```
 
-**Interpretation**: The share of wealth detained by the world's billionaires rose from 1% of total household wealth in 1995 to nearly 3.5% today. The threshold of top 0.01%, composed of 520 000 adults, grew from €693,000 (PPP) in 1995 to €16,666,000 today. The net household wealth is equal to the sum of financial assets (e.g. equity or bonds) and non-financial assets (e.g. housing or land) owned by individuals, net of their debts.\
-**Sources and series**: wir2022.wid.world/methodology, Bauluz et al. (2021) and updates.
+**Interpretation**: The share of wealth detained by the world's billionaires rose from 1% of total household wealth in 1995 to nearly 3.5% today. The threshold of top 0.01%, composed of 520 000 adults, grew from €693,000 (PPP) in 1995 to €16,666,000 today. The net household wealth is equal to the sum of financial assets (e.g. equity or bonds) and non-financial assets (e.g. housing or land) owned by individuals, net of their debts.
+
+図の解釈：世界の億万長者が保有する富のシェアは、1995年の世帯総資産の1％から、今日では約3.5％に上昇した。520,000人の成人で構成される上位0.01％の閾値は、1995年の693,000ユーロ（購買力平価）から、今日では16,666,000ユーロに増加している。正味家計資産とは、個人が所有する金融資産（株式や債券など）と非金融資産（住宅や土地など）の合計から負債を差し引いたものである。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology, Bauluz et al. (2021) と更新情報
 
 #### 説明
 
@@ -1084,7 +1144,9 @@ df_f10 |>
        x = "", y = "Share of total household wealth (%)", color = "")
 ```
 
-### F11: Top 1% vs bottom 50% wealth shares in Western Europe and the US, 1910-2020
+### F11: 西欧とアメリカにおける上位1％と下位50％の富のシェア（1910年-2020年）
+
+**Top 1% vs bottom 50% wealth shares in Western Europe and the US, 1910-2020**
 
 ```{r data-f11, cash = TRUE}
 df_f11 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F11")
@@ -1107,7 +1169,11 @@ df_f11 |>
   annotate("text", x = 2000, y = 0.50, label = stringr::str_wrap("Wealth inequality has been rising at different speeds after a historical decline. The bottom 50% has always been extremely low.", width = 30), size = 3)
 ```
 
-**Interpretation**: The graph presents decennal averages of top 1% personal wealth shares in Western Europe and the US. Between 1910 and 2020, the top 1% was 55% on average in Europe vs. 43% in the US. A century later, the US is almost back to its early 20th century level. Sources and series: wir2022.wid.world/methodology.
+**Interpretation**: The graph presents decennal averages of top 1% personal wealth shares in Western Europe and the US. Between 1910 and 2020, the top 1% was 55% on average in Europe vs. 43% in the US. A century later, the US is almost back to its early 20th century level.
+
+**図の解釈：** グラフは西欧と米国の上位1％の個人資産シェアの10年平均を示している。1910年から2020年にかけて、上位1％の平均は欧州が55％であったのに対し、米国は43％であった。1世紀後、米国は20世紀初頭の水準にほぼ戻っている。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology.
 
 #### 説明
 
@@ -1182,7 +1248,9 @@ df_f11 |>
   annotate("text", x = 2000, y = 0.50, label = stringr::str_wrap("Wealth inequality has been rising at different speeds after a historical decline. The bottom 50% has always been extremely low.", width = 30), size = 3)
 ```
 
-### F12: Female share in global labor incomes, 1990-2020
+### F12: 世界の労働所得に占める女性の割合（1990年-2020年）
+
+**Female share in global labor incomes, 1990-2020**
 
 ```{r data-f12, cash = TRUE}
 df_f12 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F12")
@@ -1203,7 +1271,11 @@ df_f12 |>
   annotate("text", x = 5.2, y = 0.47, label = stringr::str_wrap("Women make only 35% of global labor incomes, men make the remaining  65%.", width = 40), size = 3)
 ```
 
-**Interpretation**: The share of female incomes in global labour incomes was 31% in 1990 and nears 35% in 2015-2020. Today, males make up 65% of total labor incomes. Sources and series: wir2022.wid.world/methodology and Neef and Robilliard (2021).
+**Interpretation**: The share of female incomes in global labour incomes was 31% in 1990 and nears 35% in 2015-2020. Today, males make up 65% of total labor incomes.
+
+**図の解釈：** 世界の労働所得に占める女性の割合は、1990年には31％であったが、2015-2020年には35％に近づく。現在、男性が労働所得全体の65％を占めている。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology, Neef and Robilliard (2021).
 
 #### 説明
 
@@ -1235,7 +1307,9 @@ df_f12 |>
   annotate("text", x = 5.2, y = 0.47, label = stringr::str_wrap("Women make only 35% of global labor incomes, men make the remaining  65%.", width = 40), size = 3)
 ```
 
-### F13: Female labor income share across the world, 1990-2020
+### F13: 世界における女性の労働所得シェア（1990-2020年）
+
+**Female labor income share across the world, 1990-2020**
 
 Note that the sheet name of F13 has period at the end. Note that ``` summary_sheets[30] = ``r summary_sheets[30] ``` with a period.
 
@@ -1256,13 +1330,19 @@ df_f13 |> pivot_longer(2:9, names_to = "region", values_to = "value") |>
   annotate("text", x = 1.2, y = 0.48, label = "Gender parity", size = 3)
 ```
 
-**Interpretation**: The female labour income share rose from 34% to 38% in North America between 1990 and 2020. Sources and series: wir2022.wid.world/methodology and Neef and Robilliard (2021).
+**Interpretation**: The female labour income share rose from 34% to 38% in North America between 1990 and 2020.
+
+**図の解釈：** 1990年から2020年にかけて、北米における女性の労働所得シェアは34％から38％に上昇した。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology, Neef and Robilliard (2021).
 
 #### 説明
 
 Not so difficult.
 
-### F14: Global carbon inequality, 2019. Group contribution to world emissions (%)
+### F14: 世界の炭素不平等、2019年 世界の排出量に対するグループの寄与率(%)
+
+**Global carbon inequality, 2019. Group contribution to world emissions (%)**
 
 Note that the sheet name of F14 has period at the end. Note that ``` summary_sheets[31] = ``r summary_sheets[31] ``` with a period.
 
@@ -1282,13 +1362,19 @@ df_f14 |>
        x = "", y = "Share of world emissions (%)")
 ```
 
-**Interpretation**: Personal carbon footprints include emissions from domestic consumption, public and private investments as well as imports and exports of carbon embedded in goods and services traded with the rest of the world. Modeled estimates based on the systematic combination of tax data, household surveys and input-output tables. Emissions split equally within households. Sources and series: wir2022.wid.world/methodology and Chancel (2021).
+**Interpretation**: Personal carbon footprints include emissions from domestic consumption, public and private investments as well as imports and exports of carbon embedded in goods and services traded with the rest of the world. Modeled estimates based on the systematic combination of tax data, household surveys and input-output tables. Emissions split equally within households.
+
+図の解釈： 個人のカーボン・フットプリントには、国内消費、公共投資、民間投資による排出に加え、世界と取引される財やサービスに含まれる炭素の輸出入が含まれる。税データ、家計調査、産業連関表の体系的な組み合わせに基づくモデル推定値。排出量は家計内で均等に分配される。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology, Chancel (2021).
 
 #### 説明
 
 Not so difficult. You can assign color name. See [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/){.uri}.
 
-### F15: Per capita emissions acriss the world, 2019
+### F15: 世界の一人当たり排出量（2019年）
+
+**Per capita emissions acriss the world, 2019**
 
 ```{r data-f15, cash = TRUE}
 df_f15 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F15")
@@ -1305,7 +1391,11 @@ df_f15 |> mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) |>
        x = "", y = "tonnes of CO2e per person per year", fill = "")
 ```
 
-**Interpretation**: Personal carbon footprints include emissions from domestic consumption, public and private investments as well as imports and exports of carbon embedded in goods and services traded with the rest of the world. Modeled estimates based on the systematic combination of tax data, household surveys and input-output tables. Emissions split equally within households. Sources and series: wir2022.wid.world/methodology and Chancel (2021).
+**Interpretation**: Personal carbon footprints include emissions from domestic consumption, public and private investments as well as imports and exports of carbon embedded in goods and services traded with the rest of the world. Modeled estimates based on the systematic combination of tax data, household surveys and input-output tables. Emissions split equally within households.
+
+**図の解釈：** 個人のカーボン・フットプリントには、国内消費、公共投資、民間投資による排出に加え、世界と取引される財やサービスに含まれる炭素の輸出入が含まれる。税データ、家計調査、産業連関表の体系的な組み合わせに基づくモデル推定値。排出量は家計内で均等に分配される。
+
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology, Chancel (2021).
 
 #### 説明
 
@@ -1345,9 +1435,11 @@ df_f15 |> mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) |>
        x = "", y = "tonnes of CO2e per person per year", fill = "")
 ```
 
-### T1 Global millionaires and billionaires, 2021
+### T1 世界の億万長者と億万長者（2021年）
 
-Check the format of the sheet and add `skip=4, n_max=7`.
+**Global millionaires and billionaires, 2021**
+
+シートの形式を確認し、 `skip=4, n_max=7` 、すなわち、最初の4行を、読み込まず、最大、７行を読み込みます。
 
 ```{r T1}
 df_t1 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", 
@@ -1355,11 +1447,15 @@ df_t1 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx",
 df_t1
 ```
 
-**Interpretation**: In 2021, there were 62.2 million people in the world owning more than \$1 million (measured at Market Exchange Rates). Their average wealth was \$ 2.8 million, representing a total of \$174 trillion. In our Tax scenario 2, a global progressive wealth tax would yield 2.1% of global income, taking into account capital depreciation and evasion. Sources and series: wir2022.wid.world/methodology.
+**Interpretation**: In 2021, there were 62.2 million people in the world owning more than \$1 million (measured at Market Exchange Rates). Their average wealth was \$ 2.8 million, representing a total of \$174 trillion. In our Tax scenario 2, a global progressive wealth tax would yield 2.1% of global income, taking into account capital depreciation and evasion.
 
-## Other Data of WIR2022
+**表の解釈：** 2021年、世界には100万ドル以上（市場為替レートで測定）を所有する人々が6,220万人いた。彼らの平均資産は280万ドルで、合計174兆ドルに相当する。我々の税制シナリオ2では、世界的な累進富裕税は、資本償却と脱税を考慮すると、世界所得の2.1％をもたらすだろう。
 
-### Data Used in Chapter 1 to Chapter 10
+**出典とシリーズ（Sources and series）**：wir2022.wid.world/methodology.
+
+## WIR2022 の他のデータ
+
+### 報告書の第1章から第10章で使用されたデータ
 
 There are three ways to import data used in Chapter 1 to Chapter 10.
 
