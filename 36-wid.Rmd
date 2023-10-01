@@ -1082,18 +1082,14 @@ df_f9 |>
 
 ##### Step 1.
 
--   Let's look at the original chart
-
-![F9_world_map](figs/F9.png){width = 100%}
-
--   The scale of the x-axis is not evenly partitioned. It is (0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 99.9, 99.99, 99.999).
--   Look at the column p of the data.
+-   実際の図を見ると、X軸が、等間隔には分割されていない。  (0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 99.9, 99.99, 99.999).
+-   データの p 列を参照。
 
 ```{r}
 df_f9 |> distinct(p) |> pull()
 ```
 
--   Use cut to break in levels.
+-  `cut` を使って、分割を作成します。
 
 ```{r}
 brks <- c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 99.9, 99.99, 99.999)
@@ -1102,7 +1098,7 @@ df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks)
 
 ##### Step 2.
 
--   Add `xlabel` in numeric.
+-   列 `xlabel` を加えます。
 
 ```{r}
 df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) |> 
@@ -1111,8 +1107,8 @@ df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks)
 
 ##### Step 3.
 
--   Draw a curve using `geom_smooth`.
--   Added 0.5 to represent the mean value in each interval.
+-   GEOM `geom_smooth` を使って、近似曲線を描きます。
+-   各区間の平均をとるため 0.5 を加えています。
 
 ```{r}
 df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) |> 
@@ -1122,8 +1118,8 @@ df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks)
 
 ##### Step 4.
 
--   Use `scale_x_discrete(limits=as.character(brks))` to change the label of the x-axis.
--   Use `scale_y_continuous(labels = scales::percent_format(accuracy = 0.1))`.
+-  X 軸のラベルを `scale_x_discrete(limits=as.character(brks))` で変更します。
+-  Y 軸のラベルを `scale_y_continuous(labels = scales::percent_format(accuracy = 0.1))`で設定します。
 
 ```{r}
 df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) |> 
