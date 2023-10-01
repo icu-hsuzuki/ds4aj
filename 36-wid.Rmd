@@ -349,14 +349,14 @@ df_f3 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F3
 df_f3
 ```
 
--   We use `map_data("world")` data attached to the `tidyverse` package. Let us look at the data first.
+-   最初の読み込んだ、`mapr` パッケージを使って、世界地図 map_data("world")` を読み込みます。
 
 ```{r}
 world_map <- map_data("world")
 datatable(world_map)
 ```
 
--   Let us try using the standard template of `ggplot`. We use `Country` for `map_id` and `T10B50` for numerical data. Since `world_map` data contains `long` and `lat` of each region, we assign them as `expand_limit`.
+-   まず `ggplot` の標準的な雛形を使って地図を書いてみます。 国名 `Country` を `map_id` に `T10B50` を数値データに割り当てます。地図データ `world_map` は、それぞれの地域の経度と緯度 （`long` と `lat`）の 情報を持っており、地図を書きます。地図の端が切れてしまうといけないので、`expand_limit` を付け加えます。
 
 ```{r}
 df_f3 |> 
@@ -365,39 +365,42 @@ df_f3 |>
   expand_limits(x = world_map$long, y = world_map$lat)
 ```
 
+
 ##### Step 2.
 
--   We observe a couple of issues by comparing them with the image of the original.
+-   いくつかの問題点がわかります。
 
-1.  Russia, Congo, and some other areas are void.
-2.  Scale and the legend should be improved.
-3.  It may be better to bring the legend at the bottom to provide more width to the world map.
+1.  ロシア（Russia）, コンゴ（Congo）などいくつかの地域が地図から抜け落ちています。
+2.  どのように区切るかなどの尺度と、凡例は改善が必要です。
+3.  地図の横幅が狭くなるので、凡例は、下に移したほうがよい。
 
 ![F3_world_map](figs/F3.png)
 
--   The region name and the country name may be different in two datasets `world_map` and `df_f3`. Let us take care of the first issue.
+-   地図 `world_map` の地域名 `region` と、`df_f3` の国名が異なっていることが、最初の問題の理由のようです。
 
--   To search names, we use `DT::datatable`, i.e., `datatable` in the `DT` package.
+-   `DT::datatable`、すなわち `DT` パッケージの `datatable` 機能をつかって調べてみます。
 
 ```{r}
 datatable(df_f3)
 ```
 
--   Search for 'russia' and 'congo', we find that
+-   ロシア 'russia' や、コンゴ 'congo' を調べると、次のように対応していることがわかります。等号の左が、df_f3 の名前です。
 
-    -   Russian Federation = Russia in `world_map`
-    -   DR Congo = Democratic Republic of the Congo in `world_map`
-    -   Congo = Republic of Congo in `world_map`
+    -   Russian Federation = Russia （`world_map`名）
+    -   DR Congo = Democratic Republic of the Congo （`world_map`名）
+    -   Congo = Republic of Congo （`world_map`名）
 
--   There are at least three ways to change the entries.
+-   最低でも、三つほど、修正する方法があります。
 
-    -   The following is a method to use Base R.
+    -   最初の方法は Base R の機能を使う方法です。
 
-        -   `df_f3_rev$Country[df_f3_rev$Country == "Russian Federation"] <- "Russia": If the entry of the column`Country`in the data frame`df_f3_rev`matches with "Russian Federation", then replace it with "Russia`.
+        -   `df_f3_rev$Country[df_f3_rev$Country == "Russian Federation"] <- "Russia": これにより、`df_f3_rev` の `Country` 列が、"Russian Federation" と一致するものを、"Russia` に取り替える、などです。
 
-    -   The second is to use `mutate` and `case_when` of `tidyverse`.
+    -   二番目の方法は、`tidyverse` の `mutate` を、補助関数 `case_when` とともに使い修正する方法。
 
-    -   The third is to use `left_join` after making a comparison table.
+    -   三番目は、対照表を作っておいて、 `left_join` で、修正する方法です。
+    
+データを一つ一つ手で直して言ってもよいように思えますが、上のような修正を記録に残すことで、間違いを減らせます。追跡できる方法を、極力採用してください。
 
 ```{r}
 df_f3_rev <- df_f3
@@ -406,13 +409,13 @@ df_f3_rev$Country[df_f3_rev$Country == "DR Congo"] <- "Democratic Republic of th
 df_f3_rev$Country[df_f3_rev$Country == "Congo"] <- "Republic of Congo"
 ```
 
--   Now check the country names again using `anti_join`. By the code below, we can create a new table such that there is no region in `world_map` corresponding to Country in `df_f3_rev`.
+-   次に `anti_join` を使って、チェックします。これによって、 `df_f3_rev` の Country には入っているが、 `world_map` の `region` には入っていない、もののリストが得られます。 
 
 ```{r}
 df_f3_rev |> anti_join(world_map, by = c("Country" = "region"))
 ```
 
-We can proceed one by one. However, WIR provides the code of this part in R. So let us use it. It is in Computer Codes at the Methodology [site](https://wir2022.wid.world/methodology/). Download 'Full Datasets' and 'Computer Codes'. Then in WIR2022 - Computer codes, find `Chapter1_Maps.R`.
+一つ一つ修正しても良いのですが WIR は R でのコードを提供しています。そこで、それを使ってみましょう。Methodology の [site](https://wir2022.wid.world/methodology/) にあります。'Full Datasets' と　'Computer Codes'をダウンロードすると、 WIR2022 - Computer codes, がありますから `Chapter1_Maps.R` を探してください。
 
 ```{r}
 map<-map_data("world")
@@ -423,9 +426,9 @@ map$region[map$region=="Vietnam"]<-"Viet Nam"
 # map$region[map$region=="United Arab Emirates"]<-"UAE"
 ```
 
-The last one for UAE seems to be wrong, so deleted.
+どうも、最後の UAE は間違いのようですから、削除しました。このように、記録が残っているから、それもわかります。
 
-Since the data used in the next line was not find, let me use `map` now.
+次は見つかりません。 `map` を使ってみましょう。
 
 ```         
 index_region2<-read_dta("index_region.dta")
@@ -476,7 +479,7 @@ map$region[map$region=="Tobago"]<- "Trinidad and Tobago"
 df_f3 |> anti_join(map, by = c("Country" = "region"))
 ```
 
--   Is Zanzibar a part of Tanzania?
+-   Zanzibar は Tanzania の一部でしょうか。国の色分けも、微妙な問題を含む場合もありますので、記録を残し、判断をメモしておくことは大切でしょう。
 
 ```{r}
 df_f3 |> 
@@ -487,8 +490,8 @@ df_f3 |>
 
 ##### Step 3.
 
--   Next we add a new column `Top 10 Bottom 50 Ratio` by setting new breaks of `T10B50`.
--   Place the legend at the bottom using `theme(legend.position="bottom")`.
+-   新しい列 `Top 10 Bottom 50 Ratio` を加え `T10B50` の値を分割します。
+-   凡例を下に置くには、 `theme(legend.position="bottom")` を使います。
 
 ```{r}
 df_f3_rev |> 
@@ -499,7 +502,7 @@ df_f3_rev |>
 
 ##### Step 4.
 
-Finally add the title, remove x and y labels, and change the legend name.
+最後に、表題をつけ、 x と y それぞれの軸の名前を消去し、凡例名を変更します。
 
 ```{r}
 df_f3_rev |> 
@@ -512,7 +515,7 @@ df_f3_rev |>
 
 ##### Step 5.
 
-Remove x-axis, y-axis and ticks. If you want to change color palette, see:
+X 軸（x-axis）と　Y軸（y-axis）と、目盛りの印（ticks）を消します。色を変えたい場合は、次を参照してください。
 
 -   <https://ggplot2.tidyverse.org/reference/scale_brewer.html>
 -   [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/){.uri}
@@ -528,6 +531,69 @@ df_f3_rev |>
         axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
   scale_fill_brewer(palette='YlOrRd')
 ```
+
+-   最初の読み込んだ、`mapr` パッケージを使って、世界地図 map_data("world")` を読み込み、それに、二文字の ISO コードを付けます。
+
+##### Steps 3-5 (別法)
+
+パッケージ、maps の関数 mutate(iso2c = iso.alpha(region, n=2)) によって、iso2c コードを付加することが可能です。ただ、やはり、多少問題も残ります。それぞれのコードで、何をしているか、考えてみてください。
+
+```{r}
+world_map_iso2c <- map_data("world") |>  mutate(iso2c = iso.alpha(region, n=2))
+world_map_iso2c |> filter(is.na(iso2c)) |> distinct(region) |> pull()
+```
+
+```{r}
+world_map_iso2c <- world_map_iso2c |> 
+  mutate(iso2c = case_when(is.na(iso2c) & region == "Namibia" ~ "NA",
+                           is.na(iso2c) & region == "Virgin Islands" ~ "US",
+                           TRUE ~ iso2c))
+```
+
+
+```{r}
+df_f3 |> mutate(iso2c = iso.alpha(Country, n=2)) |> filter(is.na(iso2c)) |> distinct(Country) |> pull()
+```
+
+```{r}
+country <- df_f3 |> distinct(Country) |> pull()
+world_map_iso2c |> filter(!(region %in% country)) |> distinct(region, iso2c) |> arrange(region)
+```
+
+```{r}
+df_f3_iso2c <- df_f3 |> mutate(iso2c = iso.alpha(Country, n=2)) |>
+  mutate(iso2c = case_when(is.na(iso2c) & Country == "DR Congo" ~ "CD",
+                           is.na(iso2c) & Country == "Congo" ~ "CG",
+                           is.na(iso2c) & Country == "Cote d'Ivoire" ~ "CI",
+                           is.na(iso2c) & Country == "Cabo Verde" ~ "CV",
+                           is.na(iso2c) & Country == "United Kingdom" ~ "GB",
+                           is.na(iso2c) & Country == "Hong Kong" ~ "HK",
+                           is.na(iso2c) & Country == "Korea" ~ "KR",
+                           is.na(iso2c) & Country == "Lao PDR" ~ "LA",
+                           is.na(iso2c) & Country == "Macao" ~ "MO",
+                           is.na(iso2c) & Country == "Namibia" ~ "NA",
+                           is.na(iso2c) & Country == "Viet Nam" ~ "VN",
+                           is.na(iso2c) & Country == "Zanzibar" ~ "TZ",
+                           TRUE ~ iso2c))
+```
+
+```{r}
+df_f3_iso2c
+```
+
+```{r}
+world_map_iso2c |> left_join(df_f3_iso2c, by = 'iso2c') |> 
+  mutate(`Top 10 Bottom 50 Ratio` = cut(T10B50, breaks = c(5, 12, 13, 16, 19, 140), include.lowest = FALSE)) |>
+  drop_na(`Top 10 Bottom 50 Ratio`) |>
+  ggplot(aes(map_id = region)) + geom_map(aes(fill = `Top 10 Bottom 50 Ratio`), map = world_map_iso2c) + expand_limits(x = world_map$long, y = world_map$lat) +
+  labs(title = "Figure 3. Top 10/Bottom 50 income gaps across the world, 2021",
+       x = "", y = "", fill = "Top 10/Bottom 50 ratio") +
+  theme(legend.position="bottom", 
+        axis.text.x=element_blank(), axis.ticks.x=element_blank(),
+        axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
+  scale_fill_brewer(palette='YlOrRd')
+```
+
 
 ### F4: 資本の極端な集中：世界全体の富の不平等、2021年
 
@@ -771,7 +837,7 @@ df_f6 |> select(year = "...1", 2:3) |>
        x = "", y = "Share of global inequality \n(% of total Theil index)", fill = "")
 ```
 
-単に、`type` の順序を変えて、色の順番を変えるだけなら、`fill = fct_rev(type)` と、`scale_fill_hue(direction = -1)` でも十分。ただしここでは、fill のラベルも調整しているので、上で説明する方法を利用した。下の図参照。
+単に、`type` の順序を逆にして、色の順番を変えるだけなら、`fill = fct_rev(type)` と、`scale_fill_hue(direction = -1, labels = function(x) str_wrap(x, width = 15))` も一つです。この場合は二種類でしたから、順序はそのままか逆にするかでしたが、順序を自由に変えるには、上で示した ように、factor で、levels を指定する方法のほうが良いでしょう。
 
 ```{r}
 df_f6 |> select(year = "...1", 2:3) |>
@@ -779,7 +845,7 @@ df_f6 |> select(year = "...1", 2:3) |>
   ggplot(aes(x = year, y = value, fill = fct_rev(type))) +
   geom_area() +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-  scale_fill_hue(direction = -1) + 
+  scale_fill_hue(direction = -1, labels = function(x) str_wrap(x, width = 15)) + 
   labs(title = "Figure 6. Global income inequality: \nBetween vs. within country inequality (Theil index), 1820-2020",
        x = "", y = "Share of global inequality \n(% of total Theil index)",
        fill = "")
@@ -1101,7 +1167,7 @@ df_f10 |>
 
 ##### Step 1.
 
--   Use descriptive column names and use `pivot_longer` to make it tidy.
+-   わかりやすい列名に変更し `pivot_longer` を使って tidy データに整理。
 
 ```{r}
 df_f10 |> 
@@ -1111,7 +1177,7 @@ df_f10 |>
 
 ##### Step 2.
 
--   Use `geom_smooth` with `span = 0.25` and change the breaks of x-labels.
+-   近似曲線を `geom_smooth` に引数 `span = 0.25` を加えて描き、X 軸のラベルを変更。
 
 ```{r}
 df_f10 |> 
@@ -1128,7 +1194,7 @@ df_f10 |>
 
 ##### Step 3.
 
--   Swap the colors by `scale_color_manual(values=rev(scales::hue_pal()(2)))`. If `n` is the number of colors used `scales::hue_pal()(n)` returns the RGB color codes used. By `rev`, the order is reversed. See <https://ggplot2.tidyverse.org/reference/scale_hue.html>.
+-   色を `scale_color_manual(values=rev(scales::hue_pal()(2)))` で入れ替えます。`n` を数の数とすると `scales::hue_pal()(n)` によって RGB の色コードがわかります。 また `rev`　を使うと、順序を逆にできます。 <https://ggplot2.tidyverse.org/reference/scale_hue.html>.
 
 ```{r}
 df_f10 |> 
@@ -1179,7 +1245,7 @@ df_f11 |>
 
 ##### Step 1.
 
--   There are two groups: US vs. EU and bot50 and top1. We use the same technique as in F8.
+-   二種類のグループがあります: US と EU の組と、 bot50 と top1 の組です。F8 で使ったのと同じ、方法を使って、分離します。
 
 ```{r}
 df_f11 |> 
@@ -1189,8 +1255,8 @@ df_f11 |>
 
 ##### Step 2.
 
--   Here, we try another way. Here we use two `geom_smooth` with different `aes()`.
--   Can you see the difference of the chart above?
+-   ここでは、 `geom_smooth` と、異なる `aes()` を使うことも可能です。
+-   違いがわかりますか。
 
 ```{r}
 df_f11 |> 
@@ -1210,7 +1276,7 @@ df_f11 |>
 
 ##### Step 3.
 
-Use `pivot_longer` the second time.
+再度 `pivot_longer` を使います。
 
 ```{r}
 df_f11 |> 
@@ -1229,7 +1295,7 @@ df_f11 |>
 
 ##### Step 4.
 
-Change the order of linetypes manually.
+線の種類 linetypes を手動で変更します。
 
 ```{r}
 df_f11 |> 
@@ -1281,7 +1347,7 @@ df_f12 |>
 
 ##### Step 1.
 
-Change the column names and delete the rows with NAs.
+列名を変更し、欠損値 NA のある行を削除します。
 
 ```{r}
 df_f12 |> 
@@ -1291,7 +1357,7 @@ df_f12 |>
 
 ##### Step 2.
 
-Add `geom_col` and `geom_hline` with colors `scales::hue_pal()(2)[2]` and `scales::hue_pal()(2)[1]`.
+二つの GEOM、 `geom_col` と `geom_hline` を使い、色を、`scales::hue_pal()(2)[2]` と `scales::hue_pal()(2)[1]` で設定します。
 
 ```{r}
 df_f12 |> 
@@ -1311,7 +1377,7 @@ df_f12 |>
 
 **Female labor income share across the world, 1990-2020**
 
-Note that the sheet name of F13 has period at the end. Note that ``` summary_sheets[30] = ``r summary_sheets[30] ``` with a period.
+シート名には F13 の後に、ピリオッドがついています。 ``` summary_sheets[30] = ``r summary_sheets[30] ``` 
 
 ```{r data-f13, cash = TRUE}
 df_f13 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F13.")
@@ -1344,14 +1410,14 @@ Not so difficult.
 
 **Global carbon inequality, 2019. Group contribution to world emissions (%)**
 
-Note that the sheet name of F14 has period at the end. Note that ``` summary_sheets[31] = ``r summary_sheets[31] ``` with a period.
+シート名にピリオッドが F14 の後ろについています。 Note that ``` summary_sheets[31] = ``r summary_sheets[31] ```
 
 ```{r data-f14, cash = TRUE}
 df_f14 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F14.")
 df_f14
 ```
 
--   `\n` for line break in the title.
+-   `\n` をタイトルの、改行が必要な箇所に挿入します。
 
 ```{r}
 df_f14 |> 
@@ -1401,7 +1467,7 @@ df_f15 |> mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) |>
 
 ##### Step 1.
 
-It is in Excel stype and there are missing values in the first column. In order to add a new column, let us check the following.
+Excel では、よくあることですが、一列目に、値が入っていません。次を参照してください。ここでは、まず、三つずつ繰り返したものを作っています。
 
 ```{r}
 region_test <- rep(df_f15$regionWID[!is.na(df_f15$regionWID)], each = 3)
@@ -1410,7 +1476,7 @@ region_test
 
 ##### Step 2.
 
-Add the names of the region in the last column by `mutate` and choose columns by `select`.
+最後の列に `mutate` を使って、値を挿入し `select` を使って、適切な順序に入れ替えます。
 
 ```{r}
 df_f15 |> mutate(region = rep(regionWID[!is.na(regionWID)], each = 3))
@@ -1423,7 +1489,7 @@ df_f15 |> mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) |>
 
 ##### Step 3.
 
-Now it is not difficult to draw a chart.
+表が、このようになっていれば、あとは、難しくありません。
 
 ```{r}
 df_f15 |> mutate(region = rep(regionWID[!is.na(regionWID)], each = 3)) |>
@@ -1486,34 +1552,34 @@ unzip("./data/wir1to10.zip", exdir = "./data")
 
 4.  Check the file names and check the sheet names.
 
-```{r eval = FALSE}
+```{r}
 list.files("./data/WIR2022TablesFigures-Chapter")
 ```
 
-```{r eval = FALSE}
+```{r}
 excel_sheets("./data/WIR2022TablesFigures-Chapter/WIR2022TablesFigures-Chapter1.xlsx")
 ```
 
 5.  Import the data table.
 
-```{r eval = FALSE}
+```{r}
 wir_F1.0 <- read_excel("./data/WIR2022TablesFigures-Chapter/WIR2022TablesFigures-Chapter1.xlsx", sheet = "data-F1.0")
 wir_F1.0
 ```
 
 6.  Select the range by slice or use range option.
 
-```{r eval = FALSE}
+```{r}
 wir_F1.0 <- wir_F1.0 |> slice(1:2)
 wir_F1.0
 ```
 
-```{r eval = FALSE}
+```{r}
 wir_F1.0a <- read_excel("./data/WIR2022TablesFigures-Chapter/WIR2022TablesFigures-Chapter1.xlsx", sheet = "data-F1.0", range = "A2:E4")
 wir_F1.0a
 ```
 
-```{r eval = FALSE}
+```{r}
 wir_F1.0b <- read_excel("./data/WIR2022TablesFigures-Chapter/WIR2022TablesFigures-Chapter1.xlsx", sheet = "data-F1.0", range = "A7:E9")
 wir_F1.0b
 ```
