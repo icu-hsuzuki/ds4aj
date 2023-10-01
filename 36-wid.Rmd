@@ -825,7 +825,7 @@ df_f7 |> select(year = y, 2:4) |>
 
 ##### Step 2.
 
--    `geom_smooth` と `span` を使って、なめらかな曲線で近似し、X 軸と、Y 軸のラベルを調整。
+-   `geom_smooth` と `span` を使って、なめらかな曲線で近似し、X 軸と、Y 軸のラベルを調整。
 
 ```{r}
 df_f7 |> select(year = y, 2:4) |>
