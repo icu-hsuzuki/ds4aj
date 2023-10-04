@@ -643,6 +643,8 @@ intro2eda
 visualize2
 視覚化逆引き事典
 toolbox
+基本的な関数
+現在の状態を知る
 論理値のあつかい
 数値-numbers
 文字列-stringr

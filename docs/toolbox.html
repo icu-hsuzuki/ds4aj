@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 34 道具箱 | みんなのデータサイエンス - Data Science for All -</title>
 <meta name="author" content="鈴木寛（Hiroshi Suzuki）">
-<meta name="description" content="34.1 論理値のあつかい   34.2 数値 numbers   34.3 文字列 stringr   34.4 正規表現 greg   34.5 日付 lubridate   34.6 ファクター factor   34.7 関数 functions   34.8 プログラミング purrr   34.9 ホームページからの読み込み rvest   34.10 API の活用">
+<meta name="description" content="34.1 基本的な関数  34.1.1 現在の状態を知る  R.Version(), R.version, R.version.string: R のバージョンの情報を出力します R.Version() : は、list 形式で詳細を出力します R.version: は、テキスト形式で詳細を出力します（括弧付きではありません） R.version.string :...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Chapter 34 道具箱 | みんなのデータサイエンス - Data Science for All -">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://icu-hsuzuki.github.io/ds4aj/toolbox.html">
-<meta property="og:description" content="34.1 論理値のあつかい   34.2 数値 numbers   34.3 文字列 stringr   34.4 正規表現 greg   34.5 日付 lubridate   34.6 ファクター factor   34.7 関数 functions   34.8 プログラミング purrr   34.9 ホームページからの読み込み rvest   34.10 API の活用">
+<meta property="og:description" content="34.1 基本的な関数  34.1.1 現在の状態を知る  R.Version(), R.version, R.version.string: R のバージョンの情報を出力します R.Version() : は、list 形式で詳細を出力します R.version: は、テキスト形式で詳細を出力します（括弧付きではありません） R.version.string :...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 34 道具箱 | みんなのデータサイエンス - Data Science for All -">
-<meta name="twitter:description" content="34.1 論理値のあつかい   34.2 数値 numbers   34.3 文字列 stringr   34.4 正規表現 greg   34.5 日付 lubridate   34.6 ファクター factor   34.7 関数 functions   34.8 プログラミング purrr   34.9 ホームページからの読み込み rvest   34.10 API の活用">
+<meta name="twitter:description" content="34.1 基本的な関数  34.1.1 現在の状態を知る  R.Version(), R.version, R.version.string: R のバージョンの情報を出力します R.Version() : は、list 形式で詳細を出力します R.version: は、テキスト形式で詳細を出力します（括弧付きではありません） R.version.string :...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -131,54 +131,103 @@
 <h1>
 <span class="header-section-number">34</span> 道具箱<a class="anchor" aria-label="anchor" href="#toolbox"><i class="fas fa-link"></i></a>
 </h1>
-<div id="論理値のあつかい" class="section level2" number="34.1">
+<div id="基本的な関数" class="section level2" number="34.1">
 <h2>
-<span class="header-section-number">34.1</span> 論理値のあつかい<a class="anchor" aria-label="anchor" href="#%E8%AB%96%E7%90%86%E5%80%A4%E3%81%AE%E3%81%82%E3%81%A4%E3%81%8B%E3%81%84"><i class="fas fa-link"></i></a>
+<span class="header-section-number">34.1</span> 基本的な関数<a class="anchor" aria-label="anchor" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E9%96%A2%E6%95%B0"><i class="fas fa-link"></i></a>
+</h2>
+<div id="現在の状態を知る" class="section level3" number="34.1.1">
+<h3>
+<span class="header-section-number">34.1.1</span> 現在の状態を知る<a class="anchor" aria-label="anchor" href="#%E7%8F%BE%E5%9C%A8%E3%81%AE%E7%8A%B6%E6%85%8B%E3%82%92%E7%9F%A5%E3%82%8B"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>
+<p>R.Version(), R.version, R.version.string: R のバージョンの情報を出力します</p>
+<ul>
+<li><p><code><a href="https://rdrr.io/r/base/Version.html">R.Version()</a></code> : は、list 形式で詳細を出力します</p></li>
+<li><p><code>R.version</code>: は、テキスト形式で詳細を出力します（括弧付きではありません）</p></li>
+<li><p><code>R.version.string</code> : は、テキストで、たとえば、“R version 4.3.0 (2023-04-21)” などと出力します。基本的には、この情報で十分です。</p></li>
+</ul>
+</li>
+<li>
+<p><code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv()</a></code> : 環境変数の値を返します</p>
+<ul>
+<li><p>ほとんどの基本的なシステム環境変数を出力します。</p></li>
+<li><p>EDITOR, HOME, LANG, LOGNAME, PAGER, PATH, USER などなど</p></li>
+</ul>
+</li>
+<li>
+<p><code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>: 現在の R の絶対パスを出力します</p>
+<ul>
+<li>Project を設定しているときは、Project のパスを基準としています</li>
+</ul>
+</li>
+<li><p><code><a href="https://rdrr.io/r/utils/data.html">data()</a></code>: 読み込んでいる（使用可能な）データのリストを出力します</p></li>
+<li>
+<p><code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code>: 現在のオブジェクトのリストを、文字列ベクトルとして出力します</p>
+<ul>
+<li>Environment タブからも確認できます</li>
+</ul>
+</li>
+<li><p><code><a href="https://tidyverse.tidyverse.org/reference/tidyverse_packages.html">tidyverse_packages()</a></code> : tidyverse パッケージ群のパッケージ全体を表示します。</p></li>
+<li>
+<p><code><a href="https://tidyverse.tidyverse.org/reference/tidyverse_conflicts.html">tidyverse_conflicts()</a></code>: tidyverse パッケージ群とぶつかっていて使えなくしている機能を表示します。</p>
+<ul>
+<li>library(tidyverse) でも表示されますが、その後、読み込んだパッケージとの衝突情報も表示します。</li>
+</ul>
+</li>
+<li><p><code><a href="https://tidyverse.tidyverse.org/reference/tidyverse_deps.html">tidyverse_deps()</a></code>: tidyverse パッケージの依存情報を表示します</p></li>
+<li><p><code><a href="https://tidyverse.tidyverse.org/reference/tidyverse_update.html">tidyverse_update()</a></code>: tidyverse の更新情報を表示します。何を 更新すべきかを教えてくれます。</p></li>
+</ol>
+</div>
+</div>
+<div id="論理値のあつかい" class="section level2" number="34.2">
+<h2>
+<span class="header-section-number">34.2</span> 論理値のあつかい<a class="anchor" aria-label="anchor" href="#%E8%AB%96%E7%90%86%E5%80%A4%E3%81%AE%E3%81%82%E3%81%A4%E3%81%8B%E3%81%84"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="数値-numbers" class="section level2" number="34.2">
+<div id="数値-numbers" class="section level2" number="34.3">
 <h2>
-<span class="header-section-number">34.2</span> 数値 numbers<a class="anchor" aria-label="anchor" href="#%E6%95%B0%E5%80%A4-numbers"><i class="fas fa-link"></i></a>
+<span class="header-section-number">34.3</span> 数値 numbers<a class="anchor" aria-label="anchor" href="#%E6%95%B0%E5%80%A4-numbers"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="文字列-stringr" class="section level2" number="34.3">
+<div id="文字列-stringr" class="section level2" number="34.4">
 <h2>
-<span class="header-section-number">34.3</span> 文字列 stringr<a class="anchor" aria-label="anchor" href="#%E6%96%87%E5%AD%97%E5%88%97-stringr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">34.4</span> 文字列 stringr<a class="anchor" aria-label="anchor" href="#%E6%96%87%E5%AD%97%E5%88%97-stringr"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="正規表現-greg" class="section level2" number="34.4">
+<div id="正規表現-greg" class="section level2" number="34.5">
 <h2>
-<span class="header-section-number">34.4</span> 正規表現 greg<a class="anchor" aria-label="anchor" href="#%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE-greg"><i class="fas fa-link"></i></a>
+<span class="header-section-number">34.5</span> 正規表現 greg<a class="anchor" aria-label="anchor" href="#%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE-greg"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="日付-lubridate" class="section level2" number="34.5">
+<div id="日付-lubridate" class="section level2" number="34.6">
 <h2>
-<span class="header-section-number">34.5</span> 日付 lubridate<a class="anchor" aria-label="anchor" href="#%E6%97%A5%E4%BB%98-lubridate"><i class="fas fa-link"></i></a>
+<span class="header-section-number">34.6</span> 日付 lubridate<a class="anchor" aria-label="anchor" href="#%E6%97%A5%E4%BB%98-lubridate"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="ファクター-factor" class="section level2" number="34.6">
+<div id="ファクター-factor" class="section level2" number="34.7">
 <h2>
-<span class="header-section-number">34.6</span> ファクター factor<a class="anchor" aria-label="anchor" href="#%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%BC-factor"><i class="fas fa-link"></i></a>
+<span class="header-section-number">34.7</span> ファクター factor<a class="anchor" aria-label="anchor" href="#%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%BC-factor"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="関数-functions" class="section level2" number="34.7">
+<div id="関数-functions" class="section level2" number="34.8">
 <h2>
-<span class="header-section-number">34.7</span> 関数 functions<a class="anchor" aria-label="anchor" href="#%E9%96%A2%E6%95%B0-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">34.8</span> 関数 functions<a class="anchor" aria-label="anchor" href="#%E9%96%A2%E6%95%B0-functions"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="プログラミング-purrr" class="section level2" number="34.8">
+<div id="プログラミング-purrr" class="section level2" number="34.9">
 <h2>
-<span class="header-section-number">34.8</span> プログラミング purrr<a class="anchor" aria-label="anchor" href="#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0-purrr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">34.9</span> プログラミング purrr<a class="anchor" aria-label="anchor" href="#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0-purrr"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="ホームページからの読み込み-rvest" class="section level2" number="34.9">
+<div id="ホームページからの読み込み-rvest" class="section level2" number="34.10">
 <h2>
-<span class="header-section-number">34.9</span> ホームページからの読み込み rvest<a class="anchor" aria-label="anchor" href="#%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%8B%E3%82%89%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF-rvest"><i class="fas fa-link"></i></a>
+<span class="header-section-number">34.10</span> ホームページからの読み込み rvest<a class="anchor" aria-label="anchor" href="#%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%8B%E3%82%89%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF-rvest"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="api-の活用" class="section level2" number="34.10">
+<div id="api-の活用" class="section level2" number="34.11">
 <h2>
-<span class="header-section-number">34.10</span> API の活用<a class="anchor" aria-label="anchor" href="#api-%E3%81%AE%E6%B4%BB%E7%94%A8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">34.11</span> API の活用<a class="anchor" aria-label="anchor" href="#api-%E3%81%AE%E6%B4%BB%E7%94%A8"><i class="fas fa-link"></i></a>
 </h2>
 
 </div>
@@ -190,16 +239,19 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#toolbox"><span class="header-section-number">34</span> 道具箱</a></li>
-<li><a class="nav-link" href="#%E8%AB%96%E7%90%86%E5%80%A4%E3%81%AE%E3%81%82%E3%81%A4%E3%81%8B%E3%81%84"><span class="header-section-number">34.1</span> 論理値のあつかい</a></li>
-<li><a class="nav-link" href="#%E6%95%B0%E5%80%A4-numbers"><span class="header-section-number">34.2</span> 数値 numbers</a></li>
-<li><a class="nav-link" href="#%E6%96%87%E5%AD%97%E5%88%97-stringr"><span class="header-section-number">34.3</span> 文字列 stringr</a></li>
-<li><a class="nav-link" href="#%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE-greg"><span class="header-section-number">34.4</span> 正規表現 greg</a></li>
-<li><a class="nav-link" href="#%E6%97%A5%E4%BB%98-lubridate"><span class="header-section-number">34.5</span> 日付 lubridate</a></li>
-<li><a class="nav-link" href="#%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%BC-factor"><span class="header-section-number">34.6</span> ファクター factor</a></li>
-<li><a class="nav-link" href="#%E9%96%A2%E6%95%B0-functions"><span class="header-section-number">34.7</span> 関数 functions</a></li>
-<li><a class="nav-link" href="#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0-purrr"><span class="header-section-number">34.8</span> プログラミング purrr</a></li>
-<li><a class="nav-link" href="#%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%8B%E3%82%89%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF-rvest"><span class="header-section-number">34.9</span> ホームページからの読み込み rvest</a></li>
-<li><a class="nav-link" href="#api-%E3%81%AE%E6%B4%BB%E7%94%A8"><span class="header-section-number">34.10</span> API の活用</a></li>
+<li>
+<a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E9%96%A2%E6%95%B0"><span class="header-section-number">34.1</span> 基本的な関数</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E7%8F%BE%E5%9C%A8%E3%81%AE%E7%8A%B6%E6%85%8B%E3%82%92%E7%9F%A5%E3%82%8B"><span class="header-section-number">34.1.1</span> 現在の状態を知る</a></li></ul>
+</li>
+<li><a class="nav-link" href="#%E8%AB%96%E7%90%86%E5%80%A4%E3%81%AE%E3%81%82%E3%81%A4%E3%81%8B%E3%81%84"><span class="header-section-number">34.2</span> 論理値のあつかい</a></li>
+<li><a class="nav-link" href="#%E6%95%B0%E5%80%A4-numbers"><span class="header-section-number">34.3</span> 数値 numbers</a></li>
+<li><a class="nav-link" href="#%E6%96%87%E5%AD%97%E5%88%97-stringr"><span class="header-section-number">34.4</span> 文字列 stringr</a></li>
+<li><a class="nav-link" href="#%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE-greg"><span class="header-section-number">34.5</span> 正規表現 greg</a></li>
+<li><a class="nav-link" href="#%E6%97%A5%E4%BB%98-lubridate"><span class="header-section-number">34.6</span> 日付 lubridate</a></li>
+<li><a class="nav-link" href="#%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%BC-factor"><span class="header-section-number">34.7</span> ファクター factor</a></li>
+<li><a class="nav-link" href="#%E9%96%A2%E6%95%B0-functions"><span class="header-section-number">34.8</span> 関数 functions</a></li>
+<li><a class="nav-link" href="#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0-purrr"><span class="header-section-number">34.9</span> プログラミング purrr</a></li>
+<li><a class="nav-link" href="#%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%8B%E3%82%89%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF-rvest"><span class="header-section-number">34.10</span> ホームページからの読み込み rvest</a></li>
+<li><a class="nav-link" href="#api-%E3%81%AE%E6%B4%BB%E7%94%A8"><span class="header-section-number">34.11</span> API の活用</a></li>
 </ul>
 
       <div class="book-extra">
@@ -218,7 +270,7 @@
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>みんなのデータサイエンス<br>
-- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-10-02.</p>
+- Data Science for All -</strong>" was written by 鈴木寛（Hiroshi Suzuki）. It was last built on 2023-10-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
