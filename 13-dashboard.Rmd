@@ -66,10 +66,10 @@ YouTube にも、たくさん、ビデオが出ています。
 
 ### いくつかのダッシュボードを作成してみよう
 
-[リンク](https://public.tableau.com/app/profile/hiroshi.suzuki/viz/BubbleChartofGDPPerCapandLifeExpectancywithPOP/All?publish=yes)
+[リンク](https://public.tableau.com/views/BubbleChartofGDPPerCapandLifeExpectancywithPOP/All?:language=ja-JP&publish=yes&:display_count=n&:origin=viz_share_link)
 
 ```{=html}
-<iframe src="https://public.tableau.com/app/profile/hiroshi.suzuki/viz/BubbleChartofGDPPerCapandLifeExpectancywithPOP/All?publish=yes" width="450" height="300" frameBorder="0" scrolling="no"></frame>
+<iframe src="https://public.tableau.com/views/BubbleChartofGDPPerCapandLifeExpectancywithPOP/All?:language=ja-JP&publish=yes&:display_count=n&:origin=viz_share_link" width="600" height="400" frameBorder="0" scrolling="no"></frame>
 ```
 ### 参考
 
