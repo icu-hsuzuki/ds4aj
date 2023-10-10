@@ -66,6 +66,8 @@ YouTube にも、たくさん、ビデオが出ています。
 
 ### いくつかのダッシュボードを作成してみよう
 
+[リンク](https://public.tableau.com/app/profile/hiroshi.suzuki/viz/BubbleChartofGDPPerCapandLifeExpectancywithPOP/All?publish=yes)
+
 ```{=html}
 <iframe src="https://public.tableau.com/app/profile/hiroshi.suzuki/viz/BubbleChartofGDPPerCapandLifeExpectancywithPOP/All?publish=yes" width="450" height="300" frameBorder="0" scrolling="no"></frame>
 ```
