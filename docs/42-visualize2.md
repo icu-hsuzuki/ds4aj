@@ -1,4 +1,6 @@
-# 視覚化の詳細　 {#visualize2}
+# 視覚化の詳細 {#visualize2}
+
+## 描画の原理
 
 ::: {#gg2 .rmdcaution}
 **描画の原理（Grammar of Graphics）**
@@ -48,6 +50,52 @@ ggplot (data = <DATA> ) +
 5.  全体のテーマなどを最後に指定します。
 :::
 
+## 詳細
+
 上記の原理の詳細について述べます。
+
+### データ：Data
+
+
+### 変数の対応：Aestics（絵を飾る要素）Mapping
+
+### 
+
+幾何的関数：Geom Functions
+
+
+### 統計的処理方法：Stat Option
+
+
+### 配置の選択：Position Option
+
+
+### 座標の選択：Coordinate Function
+
+
+### 尺度関数：Scale Function
+
+-   scale_x_log10(), scale_y_log10(): x 軸、または、y 軸を log10 の値にして表示。log10(1000) = 3, log10(1000000) = 6 など
+
+-   scale_color_manual(\..., values), scale_fill_manual(\..., values): 引数 values = c() で、色を指定。RGB HEX Code または、色名。
+
+    -   RGB Color Codes Chart [[リンク](https://www.rapidtables.com/web/color/RGB_Color.html)]
+
+    -   `values = c("#999999", "#E69F00", "#56B4E9", "#FF0000", "#00FF00")` , `values = c("red", "orange", "yellow", "blue", "green")`
+
+-   scale_size_manual(\..., values)
+
+-   scale_shape_manual(\..., values): [[リンク](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)]
+
+-   scale_linetype_manual(\..., values)
+
+    -   solid, dashed, dotted, dotdash, longdash, twodash. [[リンク](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)]
+
+-   scale_alpha_manual(\..., values)
+
+### 
+
+
+### テーマ関数：Theme Function
 
 ## 視覚化逆引き事典

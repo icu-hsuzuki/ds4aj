@@ -649,6 +649,17 @@ intro2eda
 可視化-data-visualization
 データモデリング-data-modeling
 visualize2
+描画の原理
+詳細
+データdata
+変数の対応aestics絵を飾る要素mapping
+section
+統計的処理方法stat-option
+配置の選択position-option
+座標の選択coordinate-function
+尺度関数scale-function
+section-1
+テーマ関数theme-function
 視覚化逆引き事典
 toolbox
 基本的な関数
