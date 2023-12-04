@@ -56,22 +56,17 @@ ggplot (data = <DATA> ) +
 
 ### データ：Data
 
-
 ### 変数の対応：Aestics（絵を飾る要素）Mapping
 
 ### 
 
 幾何的関数：Geom Functions
 
-
 ### 統計的処理方法：Stat Option
-
 
 ### 配置の選択：Position Option
 
-
 ### 座標の選択：Coordinate Function
-
 
 ### 尺度関数：Scale Function
 
@@ -94,7 +89,6 @@ ggplot (data = <DATA> ) +
 -   scale_alpha_manual(\..., values)
 
 ### 
-
 
 ### テーマ関数：Theme Function
 

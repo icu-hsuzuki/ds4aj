@@ -349,7 +349,7 @@ df_f3 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F3
 df_f3
 ```
 
--   最初の読み込んだ、`mapr` パッケージを使って、世界地図 map_data("world")` を読み込みます。
+-   最初の読み込んだ、`mapr` パッケージを使って、世界地図 map_data("world")\` を読み込みます。
 
 ```{r}
 world_map <- map_data("world")
@@ -364,7 +364,6 @@ df_f3 |>
   geom_map(aes(fill = `T10B50`), map = world_map) +
   expand_limits(x = world_map$long, y = world_map$lat)
 ```
-
 
 ##### Step 2.
 
@@ -394,12 +393,12 @@ datatable(df_f3)
 
     -   最初の方法は Base R の機能を使う方法です。
 
-        -   `df_f3_rev$Country[df_f3_rev$Country == "Russian Federation"] <- "Russia": これにより、`df_f3_rev` の `Country` 列が、"Russian Federation" と一致するものを、"Russia` に取り替える、などです。
+        -   `df_f3_rev$Country[df_f3_rev$Country == "Russian Federation"] <- "Russia": これにより、`df_f3_rev`の`Country`列が、"Russian Federation" と一致するものを、"Russia` に取り替える、などです。
 
     -   二番目の方法は、`tidyverse` の `mutate` を、補助関数 `case_when` とともに使い修正する方法。
 
     -   三番目は、対照表を作っておいて、 `left_join` で、修正する方法です。
-    
+
 データを一つ一つ手で直して言ってもよいように思えますが、上のような修正を記録に残すことで、間違いを減らせます。追跡できる方法を、極力採用してください。
 
 ```{r}
@@ -409,7 +408,7 @@ df_f3_rev$Country[df_f3_rev$Country == "DR Congo"] <- "Democratic Republic of th
 df_f3_rev$Country[df_f3_rev$Country == "Congo"] <- "Republic of Congo"
 ```
 
--   次に `anti_join` を使って、チェックします。これによって、 `df_f3_rev` の Country には入っているが、 `world_map` の `region` には入っていない、もののリストが得られます。 
+-   次に `anti_join` を使って、チェックします。これによって、 `df_f3_rev` の Country には入っているが、 `world_map` の `region` には入っていない、もののリストが得られます。
 
 ```{r}
 df_f3_rev |> anti_join(world_map, by = c("Country" = "region"))
@@ -532,7 +531,7 @@ df_f3_rev |>
   scale_fill_brewer(palette='YlOrRd')
 ```
 
--   最初の読み込んだ、`mapr` パッケージを使って、世界地図 map_data("world")` を読み込み、それに、二文字の ISO コードを付けます。
+-   最初の読み込んだ、`mapr` パッケージを使って、世界地図 map_data("world")\` を読み込み、それに、二文字の ISO コードを付けます。
 
 ##### Steps 3-5 (別法)
 
@@ -549,7 +548,6 @@ world_map_iso2c <- world_map_iso2c |>
                            is.na(iso2c) & region == "Virgin Islands" ~ "US",
                            TRUE ~ iso2c))
 ```
-
 
 ```{r}
 df_f3 |> mutate(iso2c = iso.alpha(Country, n=2)) |> filter(is.na(iso2c)) |> distinct(Country) |> pull()
@@ -593,7 +591,6 @@ world_map_iso2c |> left_join(df_f3_iso2c, by = 'iso2c') |>
         axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
   scale_fill_brewer(palette='YlOrRd')
 ```
-
 
 ### F4: 資本の極端な集中：世界全体の富の不平等、2021年
 
@@ -1082,14 +1079,14 @@ df_f9 |>
 
 ##### Step 1.
 
--   実際の図を見ると、X軸が、等間隔には分割されていない。  (0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 99.9, 99.99, 99.999).
+-   実際の図を見ると、X軸が、等間隔には分割されていない。 (0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 99.9, 99.99, 99.999).
 -   データの p 列を参照。
 
 ```{r}
 df_f9 |> distinct(p) |> pull()
 ```
 
--  `cut` を使って、分割を作成します。
+-   `cut` を使って、分割を作成します。
 
 ```{r}
 brks <- c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 99.9, 99.99, 99.999)
@@ -1118,8 +1115,8 @@ df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks)
 
 ##### Step 4.
 
--  X 軸のラベルを `scale_x_discrete(limits=as.character(brks))` で変更します。
--  Y 軸のラベルを `scale_y_continuous(labels = scales::percent_format(accuracy = 0.1))`で設定します。
+-   X 軸のラベルを `scale_x_discrete(limits=as.character(brks))` で変更します。
+-   Y 軸のラベルを `scale_y_continuous(labels = scales::percent_format(accuracy = 0.1))`で設定します。
 
 ```{r}
 df_f9 |> mutate(level = cut(p, breaks = c(brks,100), labels = as.character(brks), include.lowest = TRUE)) |> 
@@ -1373,7 +1370,7 @@ df_f12 |>
 
 **Female labor income share across the world, 1990-2020**
 
-シート名には F13 の後に、ピリオッドがついています。 ``` summary_sheets[30] = ``r summary_sheets[30] ``` 
+シート名には F13 の後に、ピリオッドがついています。 ``` summary_sheets[30] = ``r summary_sheets[30] ```
 
 ```{r data-f13, cash = TRUE}
 df_f13 <- read_excel("./data/WIR2022TablesFigures-Summary.xlsx", sheet = "data-F13.")
